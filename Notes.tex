@@ -107,13 +107,19 @@ There is a classical method for explicating the morphisms in a derived category,
 D^{\on{sing}}(E) \xra{\simeq} K(E),
 \end{equation}
 where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. One way to model this equivalence is as follows. First note that it makes sense to take a (minimal) free resolution of any complex of finitely generated $E$-modules with bounded homology. With this in mind, the equivalence~\eqref{eqn:buchweitz} sends an object $C$ in $D^{\on{sing}}(E)$ to the mapping cone of the canonical quasi-isomorphism $f \co G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $N$, and $F$ is the $\k$-dual of the minimal free resolution of~$N$. One then arrives at the following key commutative diagram:
-$$
+\begin{equation}
+\label{eqn:tatediagram}
 \xymatrix{
 D^b(S) \ar[d] \ar[r]_-{\simeq}^-{\RR} & D^b(E) \ar[d] \ar[r]_-{\simeq} & K^-(E) \ar[d] \\
 D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq} & K(E). \\
 }
-$$
-The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$. Let $T \co D^b(\PP^n) \xra{\simeq} K(E)$ denote the functor given by composing the equivalences in the bottom row of this diagram. Our claim is that $T$ is the ``right" geometric version of the BGG correspondence.
+\end{equation}
+The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$. 
+
+With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Let $\F$ be a coherent sheaf on $\PP^n$, and let $M$ be a finitely generated graded $S$-module such that $H^0_\m(M) = 0$ and $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M)$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. 
+
+
+Let $T \co D^b(\PP^n) \xra{\simeq} K(E)$ denote the functor given by composing the equivalences in the bottom row of this diagram. Our claim is that $T$ is the ``right" geometric version of the BGG correspondence. 
 
 \begin{defn}\cite{EFS}
 Given a coherent sheaf $\F$ on $\PP^n$, $T(\F)$ is called the \defi{Tate resolution of $\F$}.
