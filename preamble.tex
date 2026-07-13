@@ -1,0 +1,290 @@
+\usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath,verbatim, mathrsfs, fullpage}
+\usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} % for bibliography 
+\usepackage[colorlinks=true,hyperindex,linkcolor=magenta,pagebackref=true,citecolor=cyan]{hyperref}
+\usepackage{ifthen,tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{tikz-cd}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{latexsym}
+\usepackage[color, matrix, arrow]{xy}
+\usepackage{enumerate}
+\usepackage{mathtools,accents}
+\setcounter{MaxMatrixCols}{15}
+
+\def\AA{{\mathbb A}}
+\def\sO{{\mathcal O}}
+\def\de#1{{\bf *** #1 ***}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\numberwithin{equation}{section}
+
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem*{gr}{Green's Linear Syzygy Theorem}
+\newtheorem{propo}[equation]{Proposition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{claim}[equation]{Claim}
+%\newtheorem{claim*}{Claim}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{convention}[equation]{Convention}
+\newtheorem{question}[equation]{Question}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{example}[equation]{Example}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{construction}[equation]{Construction}
+\newtheorem{algorithm}[equation]{Algorithm}
+\newtheorem{warning}[equation]{Warning}
+\newtheorem{conventions}[equation]{Conventions}
+
+\theoremstyle{remark}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{rem}[equation]{Remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{case*}{Case}
+
+% Commands
+
+\newcommand{\Kos}{\mathcal{K}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\rC}{\mathrm{C}}
+\newcommand{\Cech}{\check{\mathrm{C}}}
+\newcommand{\Tate}{\on{Tate}}
+\newcommand{\Tail}{{\mathbf{Tail}}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\tot}{\operatorname{tot}}
+
+\newcommand{\isom}{\cong}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\PPv}{\mathbb P_{\on{var}}}
+\newcommand{\bD}{\mathbf D}
+\newcommand{\df}{\operatorname{diff}}
+\renewcommand{\P}{\PP}
+\newcommand{\bA}{\mathbb A}
+\newcommand{\A}{\bA}
+\newcommand{\HH}{\mathrm H}
+\newcommand{\GG}{\mathbb G}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\bH}{\mathbf H}
+\newcommand{\bF}{\mathbf F}
+\newcommand{\DD}{\mathbf D}
+\newcommand{\lideal}{\langle}
+\newcommand{\rideal}{\rangle}
+\newcommand{\initial}{\operatorname{in}}
+\newcommand{\pdim}{\operatorname{pdim}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\NE}{\overline{\operatorname{NE}}}
+\newcommand{\Eff}{\operatorname{Eff}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\QQbar}{{\overline{\mathbb Q}}}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\Bl}{\operatorname{Bl}}
+\newcommand{\Cox}{\operatorname{Cox}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Hom}{\operatorname{Hom}} %done
+\newcommand{\sheafHom}{\mathcal{H}om}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\HF}{\operatorname{HF}}
+\newcommand{\HP}{\operatorname{HP}}
+\newcommand{\Osh}{{\mathcal O}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\kk}{{\bf k}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\length}{\operatorname{length}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\depth}{\operatorname{depth}}
+%\newcommand{\FF}{\mathbb{F}}
+\newcommand{\F}{\FF}
+\newcommand{\Sym}{\operatorname{Sym}} %done
+\newcommand{\GL}{{GL}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Syz}{\operatorname{Syz}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
+\newcommand{\Htot}{H_{\tot}}
+\newcommand{\Ltot}{L_{\tot}}
+\newcommand{\beq}{\begin{displaymath}}
+\newcommand{\eeq}{\end{displaymath}}
+\newcommand{\bs}{\backslash}
+\newcommand{\ff}{\mathbf{f}}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\Lotimes}{\overset{L}{\otimes}}
+\newcommand{\uHom}{\underline{\Hom}}
+\def\nc{\newcommand}
+\nc{\tors}{\on{tors}}
+
+
+
+\newcommand{\Bmod}{\ensuremath{B_\text{mod}}}
+\newcommand{\Bint}{\ensuremath{B_\text{int}}}
+\newcommand\commentr[1]{{\color{red} \sf [#1]}}
+\newcommand\commentb[1]{{\color{blue} \sf [#1]}}
+\newcommand\commentm[1]{{\color{magenta} \sf [#1]}}
+\newcommand{\daniel}[1]{{\color{blue} \sf $\clubsuit\clubsuit\clubsuit$ Daniel: [#1]}}
+\newcommand{\michael}[1]{{\color{red} \sf $\clubsuit\clubsuit\clubsuit$ Michael: [#1]}}
+\newcommand{\maya}[1]{{\color{green} \sf $\clubsuit\clubsuit\clubsuit$ Maya: [#1]}}
+
+\def\edim{\operatorname{edim}}
+\def\reg{\operatorname{reg}}
+
+\newcommand{\ve}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\chr}{\ensuremath{\operatorname{char}}}
+
+%Added by MB:
+\def\nc{\newcommand}
+\def\on{\operatorname}
+\nc{\Q}{\mathbb{Q}}
+\nc{\RR}{\mathbf{R}}
+\nc{\LL}{\mathbf{L}}
+\nc{\cH}{\mathcal H}
+\nc{\xra}{\xrightarrow}
+\nc{\xla}{\xleftarrow}
+\def\a{\mathbf{a}}
+\def\om{\omega}
+\def\Om{\Omega}
+\def\DM{\operatorname{DM}}
+\def\Coh{\operatorname{Coh}}
+\def\Mod{\operatorname{Mod}}
+\def\free{\operatorname{free}}
+\def\QCoh{\operatorname{QCoh}}
+\def\Cpx{\operatorname{Cpx}}
+\def\th{\on{th}}
+\def\F{\mathcal{F}}
+\def\coker{\on{coker}}
+\def\p{\partial}
+\def\wt{\widetilde}
+\def\i{\iota}
+\nc{\into}{\hookrightarrow}
+\nc{\onto}{\twoheadrightarrow}
+\nc{\OO}{\mathcal{O}}
+\nc{\Z}{\mathbb{Z}}
+\nc{\cA}{\mathcal{A}}
+\nc{\w}{\widehat}
+\nc{\End}{\on{End}}
+\nc{\res}{\frac{1}{x_0x_1}}
+\nc{\tF}{\widetilde{F}}
+\nc{\tG}{\widetilde{G}}
+\nc{\tf}{\widetilde{f}}
+\nc{\Com}{\on{Com}}
+\nc{\exact}{\on{exact}}
+
+\nc{\G}{\mathbb{G}}
+\nc{\cG}{\mathcal{G}}
+\nc{\cE}{\mathcal E}
+\nc{\cF}{\mathcal F}
+\nc{\cR}{\mathcal R}
+\nc{\cD}{\mathcal D}
+\nc{\cB}{\mathcal B}
+\nc{\cT}{\mathcal T}
+\nc{\cL}{\mathcal L}
+\def\M{\mathcal{M}}
+\nc{\bM}{\mathbf M}
+\nc{\bN}{\mathbf N}
+\nc{\U}{\mathbf U}
+\nc{\BM}{\mathbf B \mathbf M}
+\nc{\Dsg}{\on{D}_{\on{sg}}}
+\nc{\fC}{\mathcal{C}}
+\nc{\fG}{\mathcal{G}}
+\nc{\N}{\mathbb{N}}
+
+
+
+%When merging files, add these
+\nc{\del}{\partial}
+\nc{\cone}{\on{cone}}
+\nc{\D}{\on{D}_{\on{diff}}}
+\nc{\DMb}{\on{D}^b_{\DM}}
+\nc{\Db}{\on{D}^{\on{b}}}
+\nc{\Kb}{\on{K}^{\on{b}}}
+\nc{\fm}{\mathfrak{m}}
+\nc{\Flag}{\on{Flag}}
+\nc{\DMmin}{\DM_{\on{min}}}
+\nc{\Ddiff}{\on{D}_{\on{diff}}}
+\nc{\Dbdiff}{\on{D}^\on{b}_{\on{diff}}}
+\nc{\wO}{\widehat{\OO}}
+\nc{\wT}{\widehat{T}}
+\nc{\from}{\leftarrow}
+\nc{\wLL}{\widetilde{\LL}}
+\nc{\augCech}{\widetilde{\cC}}
+\nc{\Fold}{\on{Fold}}
+\nc{\Ext}{\on{Ext}}
+\nc{\RHom}{\on{RHom}}
+\nc{\FF}{\mathbf{F}}
+\nc{\Comper}{\Com_{\on{per}}}
+\nc{\Unfold}{\on{Unfold}}
+\nc{\intHom}{\underline{\Hom}}
+\nc{\Ex}{\on{Ex}}
+\nc{\tg}{\widetilde{g}}
+\def\tP{\widetilde{P}}
+\def\b{\beta}
+\nc{\B}{\mathcal{B}}
+\nc{\K}{\mathcal{K}}
+\nc{\kos}{\on{Kos}}
+\nc{\Perf}{\on{Perf}}
+\nc{\tR}{\widetilde{\cR}}
+\nc{\X}{\mathcal{X}}
+\nc{\Cl}{\on{Cl}}
+\nc{\fU}{\mathcal{U}}
+\nc{\bU}{\mathbf U}
+\def\co{\colon}
+\def\ce{\coloneqq}
+\nc{\st}{\on{st}}
+\def\E{\mathcal{E}}
+\nc{\coh}{\on{coh}}
+\def\ex{\on{ex}}
+\def\D{D}
+\def\lin{\on{lin}}
+\def\g{\gamma}
+\nc{\tU}{\U}
+\nc{\bC}{\mathbf{C}}
+\nc{\aux}{\on{aux}}
+\def\d{\mathbf{d}}
+\def\phi{\varphi}
+\def\cP{\mathcal{P}}
+\def\I{\mathcal{I}}
+\def\geo{\on{geo}}
+\def\T{\mathbf{T}}
+\nc\Dsing{\on{D}^{\on{sing}}}
+\def\Y{\mathcal{Y}}
+\def\bL{\mathbf{L}}
+\def\k{\mathbf{k}}
+\def\e{\epsilon}
+\def\sX{\mathcal X}
+\def\tsX{\widetilde{\mathcal X}}
+\def\epsilon{\varepsilon}
+\def\w{\mathbf w}
+\def\colim{\on{colim}}
+\def\fix#1{{{\bf ***}#1{\bf ***}}}
+\def\xla{\xleftarrow}
+%\title[Toric methods in homological algebra]{Arbeitsgemeinschaft:  \\ Toric methods in homological algebra \\ October 11 - 16, 2026}
+\title[New homological methods in toric geometry]{Notes for Arbeitsgemeinschaft:  \\ New homological methods in toric geometry}
+\author{Michael K. Brown}
+\author{David Eisenbud}
+\author{Daniel Erman}
+%This command gets rid of the MR number in the bibliography
+\def\MR#1{}
