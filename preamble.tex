@@ -1,6 +1,7 @@
 \usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath,verbatim, mathrsfs, fullpage}
 \usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} % for bibliography 
 \usepackage[colorlinks=true,hyperindex,linkcolor=magenta,pagebackref=true,citecolor=cyan]{hyperref}
+\usepackage[dvipsnames]{xcolor} % for colors
 \usepackage{ifthen,tikz}
 \usetikzlibrary{shapes.geometric}
 \usepackage{tikz-cd}
@@ -293,3 +294,6 @@
 % preserve the dotless-i used by bibtex entries, e.g. \u{\i} in Eloísa
 \let\dotlessi\i
 \def\i{\ifmmode\iota\else\dotlessi\fi}
+
+\newcommand{\xto} {\xrightarrow}
+\newcommand{\xgets}{\xleftarrow}
