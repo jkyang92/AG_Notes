@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lecture 7 (Jason McCullough): Constructing the resolution and examples}
+\section{Lecture 7 (Jason McCullough): Constructing the resolution and examples}\label{lec:7-HHL-construction}
 
 \daniel{The notes in this section spill over into Lectures 7 and 8.  Need to subdivide, reframe etc.  A rough overview for how we want these three sections to look is the following:
 
@@ -36,7 +36,7 @@ The length of the resolution $\FF$ is equal to the
 codimension of $I$, reproving the theorem of Hochster that
 $\overline R$ is Cohen-Macaulay.
 
-The resolution $\tilde\FF$ is built from an infinite $L$-invariant cellular subdivision of $L_\RR \ce \RR\otimes L$ constructed from $L$ and the standard subdivision by coordinate planes in $\ZZ^n$, together with a ``compatible $\ZZ^n$-stratification''.  Although \cite{BCHSY} treats a more general situation, the situation they describe through the ``least common multiple stratification'' suffices for the application here, and we will describe the construction only in this special case. 
+The resolution $\tilde\FF$ is built from an infinite $L$-invariant cellular subdivision of $L_\RR \ce \RR\otimes L$ constructed from $L$ and the standard subdivision by coordinate planes in $\ZZ^n$, together with a ``compatible $\ZZ^n$-stratification''.  Although \cite{BCHSY} treats a more general situation, the situation they describe through the ``ceiling stratification'' suffices for the application here, and we will describe the construction only in this special case.
 
 The subdivision of $L_\RR$ used by \cite{BCHSY} is defined by the coordinate hyperplanes $H_i \ce \{x\in L_R\mid x_i = 0\}$. They  divide $L_\RR$ into chambers $\sigma$ whose closures are convex polyhedra, meeting along their faces. This subdivision is preserved by the action of $L\subset \ZZ^n$, and the resulting $S$-free complex $\tilde{\FF}$ is $L$-graded. The generators of the free modules in $\tilde \FF$ correspond to
 chambers in this cell complex, and the $i$-th term of the complex $\tilde\FF$ is $\oplus S\cdot\sigma$, where
@@ -48,7 +48,7 @@ a cell complex according to weights assigned to the chambers, as follows:
 if $A$ is a cell, and $p = (p_1,\dots, p_n) \in \RR^n$ is a point in the
 interior of $A$, then we give $A$ the weight
 $$
-\Psi(A) \ce \prod_1^n x_i^{\lceil p_i\rceil}y^{\lceil p_i\rceil}.
+\Psi(A) \ce \prod_1^n x_i^{\lceil p_i\rceil}.
 $$
 Thus $\tilde\FF_0$ has the weights 
 $$
@@ -230,13 +230,22 @@ $$
 $$
 and we see that the cokernel of $d'$ is also isomorphic to 
 $R\cdot(x^2/y, y) = R\cdot (x^2/y)$, as required.
-
-
 \end{example}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lecture 8 (Ryan Watson): More examples and features}
+\section{Lecture 8 (Ryan Watson): More examples and features}\label{lec:8-HHL-examples}
+
+In the case of a resolution of a point, this use of the ceiling recovers exactly with the Bodal-Thomsen collection. In the case of a point in a toric variety $X$, the as given any cell $A$ and any element $p=(p_1,\ldots,p_n)$ of $A$ in $L_{\RR}$, the summand of the resolution $\mathbf{F}$ corresponding to $A$ is generated in degree $\deg (\Psi(p))\in \Cl(X)$. This is exactly the divisor in the Bondal-Thomsen collection that is the image of $-p\in L_{\RR}$ under the map described in Definition~\ref{defn:BTcollection}. An immediate consequence is the following
+\begin{cor}
+  \label{cor:resPointBT}
+  If $L = M_X$, then the summands in the resolution $\mathbf{F}$ are exactly the Bondal-Thomsen collection
+\end{cor}
+\begin{proof}
+  Let $A$ be a cell in $L_{\RR}$ and let $p\in \RR^n$ be a point in $A$. The summand of $\mathbf{F}$ associated to the cell $A$, is $S(-\deg (\Psi(p)))=S(D)$ where
+  \[D = -\sum_{i=1}^n\lceil p_i\rceil D_i=\sum_{i=1}^n\lfloor -p_i\rfloor D_i\]
+  That is to say $D$ is the element of the Bondal-Thomsen collection corresponding to $-p$.
+\end{proof}
+
 Feature includes the uniformity with respect to the Cox ring, i.e. only depending on the rays or only depending on the Cox ring.  What that means.  That tells us about resolution of graphs of birational morphisms.
 
 \begin{cor}
@@ -256,6 +265,14 @@ Feature includes the uniformity with respect to the Cox ring, i.e. only dependin
 Discussion of how this is kind of surprising!!  There was, a priori, no reason to believe that the ``best'' toric analogue of Beilinson's resolution  would only involve the Cox ring (i.e. that it would not depend on the irrelevant ideal whatsoever).  This is a first clue that these resolutions are pointing towards some sort of uniformity for all of the toric varieties with the same Cox ring.  That uniformity will be explored in more depth in later lectures.
 
 
+This uniformity also be observed via the BT collection. Observe first that the diagonal subvariety $X\subseteq X\times X$ corresponds to the lattice $L=\{(v,-v)\in M_X\,|\, v\in \}\subset \ZZ^{2n}$. This lattice is also known as the Lawrence lift of $M_X$ and can be denoted $\Lambda(M_X)$. This lattice is isomorphic to the lattice $M_X$, and this isomorphism means that the resolution of the diagonal also reflects the BT collection of $X$. More precisely
+\begin{cor}
+  The line bundles appearing the resolution of the diagonal $\mathbf{F}$ arising from HHL are the line bundles of the form $O_X(D)\boxtimes O_X(D')$ for some $D$,$D'$ in the Bondal-Thomsen collection.
+\end{cor}
+\begin{proof}
+  For every point $v\in M_X$, the corresponding line bundle is $O_X(-\lceil v\rceil)\boxtimes O_X(\lfloor v\rfloor)$, The left hand side of which is $O_X(-D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:resPointBT}. And $O_X(\lfloor v\rfloor)$ is quite directly the generator of the BT collection associated to $v$.
+\end{proof}
+
 
 % \daniel{The following is a placeholder for now.  And it is TERRIBLY phrased.  But it will useful to observe this early and come back to later.}
 % \begin{cor}
@@ -267,5 +284,5 @@ Discussion of how this is kind of surprising!!  There was, a priori, no reason t
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lecture 9 (Greg Smith): The proof}
+\section{Lecture 9 (Greg Smith): The proof}\label{lec:9-HHL-proof}
 The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly technical.  However, two recent preprints have dramatically simplified the proof.  The preprint~\cite{BCHSY} relates the Hanlon-Hicks-Lazarev construction to a more classical algebraic construction involving binomial ideals, and provides an elementary and purely algebraic proof of the main result, as well as broad generalization of those results.  The preprint~\cite{BH25} utilizes a similar basic idea as~\cite{BCHSY}, but provides a terser and narrower proof.
