@@ -48,7 +48,7 @@ a cell complex according to weights assigned to the chambers, as follows:
 if $A$ is a cell, and $p = (p_1,\dots, p_n) \in \RR^n$ is a point in the
 interior of $A$, then we give $A$ the weight
 $$
-\Psi(A) \ce \prod_1^n x_i^{\lceil p_i\rceil}y^{\lceil p_i\rceil}.
+\Psi(A) \ce \prod_1^n x_i^{\lceil p_i\rceil}.
 $$
 Thus $\tilde\FF_0$ has the weights 
 $$
@@ -230,13 +230,17 @@ $$
 $$
 and we see that the cokernel of $d'$ is also isomorphic to 
 $R\cdot(x^2/y, y) = R\cdot (x^2/y)$, as required.
-
-
 \end{example}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 8 (Ryan Watson): More examples and features}\label{lec:8-HHL-examples}
+
+In the case of a resolution of a point, this use of the ceiling recovers exactly with the Bodal-Thomsen collection. In the case of a point in a toric variety $X$, the as given any cell $A$ and any element $p=(p_1,\ldots,p_n)$ of $A$ in $L_{\RR}$, the summand of the resolution $\mathbf{F}$ corresponding to $A$ is generated in degree $-\deg (\Psi(p))\in \Cl(X)$. This is exactly the divisor in the Bondal-Thomsen collection that is the image $p\in L_{\RR}$ described in Definition~\ref{defn:BTcollection}. An immediate consequence is the following
+\begin{cor}
+  \label{cor:resPointBT}
+  If $L = M_X$, then the summands in the resolution $\mathbf{F}$ are exactly the Bondal-Thomsen collection
+\end{cor}
+
 Feature includes the uniformity with respect to the Cox ring, i.e. only depending on the rays or only depending on the Cox ring.  What that means.  That tells us about resolution of graphs of birational morphisms.
 
 \begin{cor}
