@@ -1,0 +1,2502 @@
+\documentclass[11pt]{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath,verbatim, mathrsfs, fullpage}
+\usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} % for bibliography 
+\usepackage[colorlinks=true,hyperindex,linkcolor=magenta,pagebackref=true,citecolor=cyan]{hyperref}
+\usepackage{ifthen,tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{tikz-cd}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{cleveref}
+\usepackage{latexsym}
+\usepackage[color, matrix, arrow]{xy}
+\usepackage{enumerate}
+\usepackage{mathtools,accents}
+\setcounter{MaxMatrixCols}{15}
+
+\def\AA{{\mathbb A}}
+\def\sO{{\mathcal O}}
+\def\de#1{{\bf *** #1 ***}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\numberwithin{equation}{section}
+
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem*{gr}{Green's Linear Syzygy Theorem}
+\newtheorem{propo}[equation]{Proposition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{claim}[equation]{Claim}
+%\newtheorem{claim*}{Claim}
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{convention}[equation]{Convention}
+\newtheorem{question}[equation]{Question}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{example}[equation]{Example}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{construction}[equation]{Construction}
+\newtheorem{algorithm}[equation]{Algorithm}
+\newtheorem{warning}[equation]{Warning}
+\newtheorem{conventions}[equation]{Conventions}
+
+\theoremstyle{remark}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{rem}[equation]{Remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{case*}{Case}
+
+% Commands
+
+\newcommand{\Kos}{\mathcal{K}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\rC}{\mathrm{C}}
+\newcommand{\Cech}{\check{\mathrm{C}}}
+\newcommand{\Tate}{\on{Tate}}
+\newcommand{\Tail}{{\mathbf{Tail}}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\tot}{\operatorname{tot}}
+
+\newcommand{\isom}{\cong}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\PPv}{\mathbb P_{\on{var}}}
+\newcommand{\bD}{\mathbf D}
+\newcommand{\df}{\operatorname{diff}}
+\renewcommand{\P}{\PP}
+\newcommand{\bA}{\mathbb A}
+\newcommand{\A}{\bA}
+\newcommand{\HH}{\mathrm H}
+\newcommand{\GG}{\mathbb G}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\bH}{\mathbf H}
+\newcommand{\bF}{\mathbf F}
+\newcommand{\DD}{\mathbf D}
+\newcommand{\lideal}{\langle}
+\newcommand{\rideal}{\rangle}
+\newcommand{\initial}{\operatorname{in}}
+\newcommand{\pdim}{\operatorname{pdim}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\NE}{\overline{\operatorname{NE}}}
+\newcommand{\Eff}{\operatorname{Eff}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\ch}{\operatorname{char}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\QQbar}{{\overline{\mathbb Q}}}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\Bl}{\operatorname{Bl}}
+\newcommand{\Cox}{\operatorname{Cox}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Hom}{\operatorname{Hom}} %done
+\newcommand{\sheafHom}{\mathcal{H}om}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\HF}{\operatorname{HF}}
+\newcommand{\HP}{\operatorname{HP}}
+\newcommand{\Osh}{{\mathcal O}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\kk}{{\bf k}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\length}{\operatorname{length}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\depth}{\operatorname{depth}}
+%\newcommand{\FF}{\mathbb{F}}
+\newcommand{\F}{\FF}
+\newcommand{\Sym}{\operatorname{Sym}} %done
+\newcommand{\GL}{{GL}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Syz}{\operatorname{Syz}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
+\newcommand{\Htot}{H_{\tot}}
+\newcommand{\Ltot}{L_{\tot}}
+\newcommand{\beq}{\begin{displaymath}}
+\newcommand{\eeq}{\end{displaymath}}
+\newcommand{\bs}{\backslash}
+\newcommand{\ff}{\mathbf{f}}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\Lotimes}{\overset{L}{\otimes}}
+\newcommand{\uHom}{\underline{\Hom}}
+\def\nc{\newcommand}
+\nc{\tors}{\on{tors}}
+
+
+
+\newcommand{\Bmod}{\ensuremath{B_\text{mod}}}
+\newcommand{\Bint}{\ensuremath{B_\text{int}}}
+\newcommand\commentr[1]{{\color{red} \sf [#1]}}
+\newcommand\commentb[1]{{\color{blue} \sf [#1]}}
+\newcommand\commentm[1]{{\color{magenta} \sf [#1]}}
+\newcommand{\daniel}[1]{{\color{blue} \sf $\clubsuit\clubsuit\clubsuit$ Daniel: [#1]}}
+\newcommand{\michael}[1]{{\color{red} \sf $\clubsuit\clubsuit\clubsuit$ Michael: [#1]}}
+\newcommand{\maya}[1]{{\color{green} \sf $\clubsuit\clubsuit\clubsuit$ Maya: [#1]}}
+
+\def\edim{\operatorname{edim}}
+\def\reg{\operatorname{reg}}
+
+\newcommand{\ve}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\chr}{\ensuremath{\operatorname{char}}}
+
+%Added by MB:
+\def\nc{\newcommand}
+\def\on{\operatorname}
+\nc{\Q}{\mathbb{Q}}
+\nc{\RR}{\mathbf{R}}
+\nc{\LL}{\mathbf{L}}
+\nc{\cH}{\mathcal H}
+\nc{\xra}{\xrightarrow}
+\nc{\xla}{\xleftarrow}
+\def\a{\mathbf{a}}
+\def\om{\omega}
+\def\Om{\Omega}
+\def\DM{\operatorname{DM}}
+\def\Coh{\operatorname{Coh}}
+\def\Mod{\operatorname{Mod}}
+\def\free{\operatorname{free}}
+\def\QCoh{\operatorname{QCoh}}
+\def\Cpx{\operatorname{Cpx}}
+\def\th{\on{th}}
+\def\F{\mathcal{F}}
+\def\coker{\on{coker}}
+\def\p{\partial}
+\def\wt{\widetilde}
+\def\i{\iota}
+\nc{\into}{\hookrightarrow}
+\nc{\onto}{\twoheadrightarrow}
+\nc{\OO}{\mathcal{O}}
+\nc{\Z}{\mathbb{Z}}
+\nc{\cA}{\mathcal{A}}
+\nc{\w}{\widehat}
+\nc{\End}{\on{End}}
+\nc{\res}{\frac{1}{x_0x_1}}
+\nc{\tF}{\widetilde{F}}
+\nc{\tG}{\widetilde{G}}
+\nc{\tf}{\widetilde{f}}
+\nc{\Com}{\on{Com}}
+\nc{\exact}{\on{exact}}
+
+\nc{\G}{\mathbb{G}}
+\nc{\cG}{\mathcal{G}}
+\nc{\cE}{\mathcal E}
+\nc{\cF}{\mathcal F}
+\nc{\cR}{\mathcal R}
+\nc{\cD}{\mathcal D}
+\nc{\cB}{\mathcal B}
+\nc{\cT}{\mathcal T}
+\nc{\cL}{\mathcal L}
+\def\M{\mathcal{M}}
+\nc{\bM}{\mathbf M}
+\nc{\bN}{\mathbf N}
+\nc{\U}{\mathbf U}
+\nc{\BM}{\mathbf B \mathbf M}
+\nc{\Dsg}{\on{D}_{\on{sg}}}
+\nc{\fC}{\mathcal{C}}
+\nc{\fG}{\mathcal{G}}
+\nc{\N}{\mathbb{N}}
+
+
+
+%When merging files, add these
+\nc{\del}{\partial}
+\nc{\cone}{\on{cone}}
+\nc{\D}{\on{D}_{\on{diff}}}
+\nc{\DMb}{\on{D}^b_{\DM}}
+\nc{\Db}{\on{D}^{\on{b}}}
+\nc{\Kb}{\on{K}^{\on{b}}}
+\nc{\fm}{\mathfrak{m}}
+\nc{\Flag}{\on{Flag}}
+\nc{\DMmin}{\DM_{\on{min}}}
+\nc{\Ddiff}{\on{D}_{\on{diff}}}
+\nc{\Dbdiff}{\on{D}^\on{b}_{\on{diff}}}
+\nc{\wO}{\widehat{\OO}}
+\nc{\wT}{\widehat{T}}
+\nc{\from}{\leftarrow}
+\nc{\wLL}{\widetilde{\LL}}
+\nc{\augCech}{\widetilde{\cC}}
+\nc{\Fold}{\on{Fold}}
+\nc{\Ext}{\on{Ext}}
+\nc{\RHom}{\on{RHom}}
+\nc{\FF}{\mathbf{F}}
+\nc{\Comper}{\Com_{\on{per}}}
+\nc{\Unfold}{\on{Unfold}}
+\nc{\intHom}{\underline{\Hom}}
+\nc{\Ex}{\on{Ex}}
+\nc{\tg}{\widetilde{g}}
+\def\tP{\widetilde{P}}
+\def\b{\beta}
+\nc{\B}{\mathcal{B}}
+\nc{\K}{\mathcal{K}}
+\nc{\kos}{\on{Kos}}
+\nc{\Perf}{\on{Perf}}
+\nc{\tR}{\widetilde{\cR}}
+\nc{\X}{\mathcal{X}}
+\nc{\Cl}{\on{Cl}}
+\nc{\fU}{\mathcal{U}}
+\nc{\bU}{\mathbf U}
+\def\co{\colon}
+\def\ce{\coloneqq}
+\nc{\st}{\on{st}}
+\def\E{\mathcal{E}}
+\nc{\coh}{\on{coh}}
+\def\ex{\on{ex}}
+\def\D{D}
+\def\lin{\on{lin}}
+\def\g{\gamma}
+\nc{\tU}{\U}
+\nc{\bC}{\mathbf{C}}
+\nc{\aux}{\on{aux}}
+\def\d{\mathbf{d}}
+\def\phi{\varphi}
+\def\cP{\mathcal{P}}
+\def\I{\mathcal{I}}
+\def\geo{\on{geo}}
+\def\T{\mathbf{T}}
+\nc\Dsing{\on{D}^{\on{sing}}}
+\def\Y{\mathcal{Y}}
+\def\bL{\mathbf{L}}
+\def\k{\mathbf{k}}
+\def\e{\epsilon}
+\def\sX{\mathcal X}
+\def\tsX{\widetilde{\mathcal X}}
+\def\epsilon{\varepsilon}
+\def\w{\mathbf w}
+\def\colim{\on{colim}}
+\def\fix#1{{{\bf ***}#1{\bf ***}}}
+%\title[Toric methods in homological algebra]{Arbeitsgemeinschaft:  \\ Toric methods in homological algebra \\ October 11 - 16, 2026}
+\title[New homological methods in toric geometry]{Notes for Arbeitsgemeinschaft:  \\ New homological methods in toric geometry}
+\author{Michael K. Brown}
+\author{David Eisenbud}
+\author{Daniel Erman}
+%This command gets rid of the MR number in the bibliography
+\def\MR#1{}
+
+\begin{document}
+    \maketitle
+
+
+
+%\section{Background on toric varieties}
+%\michael{This section is a mess for now.}
+
+ %Let $X = X_\Sigma$ be a simplicial projective toric variety.  
+%Let $\sigma$ be a maximal cone of $\Sigma$.  Define $m_{\sigma}$ to be the monomial $m_{\sigma}:=\prod_{\rho \notin \sigma(1)} x_{\rho}$, i.e. $m_{\sigma}$ is the product of the variables whose corresponding rays do not lie in $\sigma$.  The cone $\sigma$ determines an affine toric variety $U_\sigma$ and we have
+%\[
+%%U_\sigma = \Spec(S[m_{\sigma}^{-1}]_0).
+%\]
+%We may define a sheaf $\widetilde{M}$ on $X$ by determining its sections on the affine open cover $\{U_\sigma\}$ as follows:
+%\[
+%\Gamma(U_\sigma, M|_{X_i}) := M[m_{\sigma^{-1}}]_0.
+%\]
+
+
+
+
+\section{Lecture 1 (Amal Matoo): Derived Category of $\PP^n$, I}
+Briefly define the bounded derived category of a variety, and briefly explain that it is an example of a triangulated category. Define the notion of a Fourier-Mukai transform between derived categories of varieties. Explain why the Fourier-Mukai transform with kernel given by the diagonal sheaf is isomorphic to the identity functor. Discuss Beilinson's resolution of the diagonal sheaf on~$\PP^n \times \PP^n$.
+
+ 
+
+\section{Lecture 2 (Abhik Pal): Derived Category of $\PP^n$, II}
+Define semiorthogonal decompositions and (full, strong) exceptional collections for triangulated categories. As a key example, use Beilinson's resolution of the diagonal to prove that the Beilinson collection gives a full strong exceptional collection for~$D^b(\PP^n)$~\cite{caldararu}*{\S 3}. Discuss how this implies that the Grothendieck group $K_0(\PP^n)$ is isomorphic to~$\Z^{n+1}$. %State Bondal's Theorem relating the derived category of a smooth projective variety with a full strong exceptional collection to the derived category of a noncommutative algebra~\cite{huybrechts}*{Theorem 8.34}. 
+This theorem launched a search for exceptional collections and semiorthgonal decompositions for other varieties.  As time permits, provide a brief overview of some results in this vein, such as Kapranov's exceptional collections for smooth quadrics and Grassmanians~\cite{kapranov}, or
+Orlov's blowup formula~\cite{huybrechts}*{Proposition 11.18} and projective bundle formula~\cite{huybrechts}*{Corollary 8.36}. See~\cite{kuznetsov} for a survey on this topic.
+
+\section{Lecture 3 (Isidora Bailly-Hall): Derived Category of $\PP^n$, III}
+\label{sec:pn3}
+Describe the Bernstein-Gel'fand-Gel'fand (BGG) correspondence, which gives an equivalence of bounded derived categories between a graded polynomial ring~$S$ and its Koszul dual exterior algebra $E$. Describe the functors between these two categories, following \cite{EFS}*{\S 2}, and include some explicit examples. Illustrate that these functors are inverses equivalences by evaluating their compositions at the residue field. (A detailed proof that these functors are inverse equivalences is too much for one lecture.) Letting $D^b_\m(S)$ denote the subcategory of $D^b(S)$ given by complexes with homology supported in the homogeneous maximal ideal $\m$, explain that the BGG correspondence identifies $D^b_\m(S)$  with perfect complexes in $D^b(E)$. Briefly discuss Verdier quotients of triangulated categories, and note that $D^b(S) / D^b_\m(S)$ is equivalent to $D^b(\PP^n)$. Conclude that the BGG correspondence identifies $D^b(\PP^n)$ with the singularity category of~$E$, i.e. $D^b(E)$ modulo perfect complexes. 
+
+
+%\section{Derived Category of $\PP^n$, III}
+%\label{sec:pn3}
+%Describe the Bernstein-Gel'fand-Gel'fand (BGG) correspondence, which gives an equivalence of bounded derived categories between a graded polynomial ring~$S$ and its Koszul dual exterior algebra $E$. Describe the functors between these two categories, following \cite{EFS}*{\S 2}, and include some explicit examples. Illustrate that these functors are inverses equivalences by evaluating their compositions at the residue field. (A detailed proof that these functors are inverse equivalences is too much for one lecture.) Letting $D^b_\m(S)$ denote the subcategory of $D^b(S)$ given by complexes with homology supported in the homogeneous maximal ideal $\m$, explain that the BGG correspondence identifies $D^b_\m(S)$  with perfect complexes in $D^b(E)$. Briefly discuss Verdier quotients of triangulated categories, and note that $D^b(S) / D^b_\m(S)$ is equivalent to $D^b(\PP^n)$. Conclude that the BGG correspondence identifies $D^b(\PP^n)$ with the singularity category of~$E$, i.e. $D^b(E)$ modulo perfect complexes. 
+
+
+
+\section{Lecture 4 (Sharon Robbins): Toric varieties and Cox rings, I}
+Review how to associate a normal toric variety to a fan~\cite{CLS}*{\S 3.1}. Given a fan $\Sigma$ and the associated toric variety $X_\Sigma$, explain how the rays in $\Sigma$ determine divisors on $X_\Sigma$ via the Orbit-Cone Correspondence~\cite{CLS}*{\S 4.1}. Define the Cox ring (also called the homogeneous coordinate ring) $S$ of $X_\Sigma$, its grading by the divisor class group $\Cl(X_\Sigma)$~\cite{CLS}*{Definition 4.0.13}, and its irrelevant ideal $B$. Explain how the variety $X_\Sigma$ arises as the quotient of $\Spec(S) \setminus V(B)$ by a torus action. Potential references for Cox rings are \cite{CLS}*{\S 5.1} or Cox's original paper~\cite{cox}. Include running examples throughout, especially projective space, products of projective spaces, weighted projective spaces, and Hirzebruch surfaces $\mathcal{H}_i$ for $i \ge 1$. 
+
+\section{Lecture 5 (Caitlin Davis): Toric varieties and Cox rings, II}
+Describe the Toric Ideal-Variety Correspondence~\cite{CLS}*{Proposition 5.2.7}. Demonstrate by example that the Cox rings of non-isomorphic toric varieties can be isomorphic as graded rings. Describe how graded modules over the Cox ring induce sheaves on toric varieties~\cite{CLS}*{\S 5.3}. Explain that when $X_\Sigma$ is a smooth toric variety associated to a fan $\Sigma$ with Cox ring $S$, there is an equivalence $D^b(X_\Sigma) \simeq D^b(S) / D^b_B(S)$, where $D^b_B(S)$ denotes the subcategory of complexes with support in $V(B)$: this follows essentially from \cite{CLS}*{Propositions 5.3.9 and 5.3.10}. Explain how this can fail when $X_\Sigma$ is not smooth (see e.g. \cite{CLS}*{Exercise 5.3.5}).  %for instance, letting $S = k[x_0, x_1, x_2]$ denote the Cox ring of the weighted projective space $\PP(1,1,2)$ and $M$ the $S$-module $S / (x_0, x_1)$, the module $M(1)$ is not supported only at the origin, but its associated sheaf on $\PP(1,1,2)$ is zero .  {\color{red} I think we should leave out stacks from this lecture, and maybe mention the connection to toric stacks informally during discussion. I don't know of a good reference for the fact that the derived category of the stack quotient of $\Spec(S) \setminus V(B)$ by the torus action is equivalent to $D^b(S) / D^b_B(S)$.} 
+Finally, state the Demazure vanishing theorem~\cite{CLS}*{Theorem 9.2.3}. 
+%{\color{red} If we assume some prerequisites, we can shorten thus, move some of tuesday's material up here, lightening up tuesday somewhat}
+
+
+%Topics for these two lectures: toric varieties from fans. Key examples. Cox rings and irrelevant ideals. Secondary fan and GIT. Touch on stacks?
+
+%what is a derived category?  Why do people care? 
+
+
+
+
+%\clearpage
+
+
+%
+%
+%\setcounter{section}{4}
+%
+%
+\section{Lecture 6 (Andreas Hochenegger): Equivalent conditions for Bondal-Thomsen}
+The Bondal-Thomsen collection is a finite set of line bundles that can be defined in several different ways.  We will take the following definition, originally due to Bondal, as our definition.  Consider the short exact sequence
+\begin{equation}\label{eqn:SESCl}
+0\to M\overset{\alpha}{\longrightarrow} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(X) \to 0.
+\end{equation}
+We write $\alpha_\rho$ for the projection of $\alpha$ onto the basis vector corresponding to $\rho$ in $\Sigma(1)$.   (Explicitly we have $\alpha_\rho(m) = \langle -m, u_\rho\rangle$ in the standard notation of CLS, but I don't think this is actually so relevant.)
+Identifying $\ZZ^n$ with torus invariant divisors, we explictly have $\alpha(m) = \sum_{\rho} \alpha_\rho(m) D_\rho$ and the class of $\alpha(m)$ is $0$ in $\Cl(X)$ for all $m\in M$.
+
+%%(.5,0) --> 
+%%(1,0) -.5
+%%(0,1)
+
+We now extend this to $M\otimes \QQ$ as follows.  We write $\alpha\otimes {\QQ}$ for the corresponding map of vector spaces $M\otimes \QQ\to \QQ^n$.  And we will write $\lfloor \alpha \rfloor$ for the map
+\[
+\lfloor \alpha \rfloor\colon M\otimes \QQ \to \ZZ^n \text{ where } m\mapsto \sum_{\rho} \lfloor \alpha_\rho(m) \rfloor D_\rho.
+\]
+We note that, while $\alpha(m)$ will always be trivial as an element of $\Cl(X)\otimes \QQ$, this is not the case for $\lfloor \alpha \rfloor(m)$.   
+
+\begin{defn}\label{defn:BTcollection}
+    The \defi{Bondal-Thomsen collection} $\Theta_X\subseteq \Cl(X)$ is the image of $\deg \circ \lfloor \alpha \rfloor$.  
+    %In other words, an element $d\in \Cl(X)$ lies in The Bondal-Thomsen collection if and only if there is some $m\in M\otimes \QQ$ such that $\lfloor \alpha \rfloor(m)$ is linearly equivalent (as $\QQ$-divisors) to the (honest, i.e. non $\QQ$-divisor) $d\in \Cl(X)$.
+\end{defn}
+Note that, since the sublattice $M\subseteq M\otimes \QQ$ maps to $0$ in $\Cl(X)$, it would be equivalent to consider points in the rational torus $M\otimes \QQ / M$.
+
+\begin{example}
+    Let $X=\PP^2$.  Then $M=\ZZ^2$ and $\alpha$ is given by the matrix
+    \[
+    \begin{pmatrix}
+        -1&0\\ 0&-1\\1&1
+    \end{pmatrix}
+    \]
+    Since it suffices to consider points in $(M\otimes \QQ)
+/ M$, it suffices to consider $(a,b)\in M\otimes \QQ^2$ where $0\leq a,b <1$.  In this case we have 
+    \[
+    \lfloor \alpha \rfloor (a,b) = \lfloor -a\rfloor D_0 + \lfloor -b\rfloor D_1 + \lfloor a+b \rfloor D_2.
+    \]
+    Since all the prime torus divisors $D_0,D_1,D_2$ are equivalent to $\cO_{\PP^2}(1)$, determining the Bondal-Thomsen collection for $\PP^2$ amounts to answering: which integers can arise as a sum
+    \[
+    \lfloor -a\rfloor + \lfloor -b\rfloor + \lfloor a+b\rfloor \text{ with } (a,b) \in [0,1)^2.
+    \]
+    If $(a,b)=(0,0)$ we get $0$.  If $0<a<1$ and $b=0$ or vice versa, we get $-1$. $0<a<1$ and $0<b<1$ and $a+b<1$ then we get $-2$, otherwise we get $-1$.  In particular, we conclude that the Bondal-Thomsen collection is $\cO,\cO(-1),\cO(-2)$ in this case.
+\end{example}
+
+\begin{defn}\label{defn:KoszulZonotope}
+    The \defi{Koszul zonotope} is the locus 
+    \[
+    \mathcal Z\ce\sum_{\rho} a_\rho \deg(x_\rho) \subseteq  \Cl(X)\otimes \QQ\footnote{As a technical note:  when $\Cl(X)$ has torsion, we always consider degrees under the natural map $\Cl(X)\to \Cl(X)\otimes \QQ$.} \text{ with } a_\rho \in (-1,0].
+    \]
+\end{defn}
+
+\begin{defn}\label{defn:KoszulZonotope}
+    The \defi{toric Frobenius map of degree $\ell$} is the morphism $F_{\ell} \colon X\to X$ that is induced by the map of Cox rings $S\to S$ given by sending $x_\rho \mapsto x_\rho^{\ell}$ for all $\ell$.
+\end{defn}
+
+\begin{example}
+    Continuing the example of $\PP^2$, the zonotope $\mathcal Z$ is simply the half-open interval $(-3,0]$.  Thus the lattice points correspond to $-2,-1$ and $0$. 
+\end{example}
+\begin{thm}
+    The following subsets of $\Cl(X)$ are all equal to the Bondal-Thomsen collection.
+    \begin{enumerate}
+        \item  The set of degrees $d\in \Cl(X)$ as in Definition~\ref{defn:BTcollection}.
+        \item  The set of degrees $d\in \Cl(X)$ such that: in $\Cl(X)\otimes \QQ$, $d$ is equivalent to an element $\sum_{\rho} a_\rho D_\rho$ with $a_\rho \in (-1,0].$
+        \item  The set of degrees $d\in \Cl(X$) such that $\deg_{\QQ}(d)$ lies in the zonotope $\mathcal Z$.
+        \item  The set of degrees $d\in \Cl(X$) such that: there is some $\ell>0$, where $\cO_X(d)$ appears as a summand of $F_{\ell,*}\cO_X$.
+        \item  The set of degrees $d\in \Cl(X$) such that: for any $\ell\gg 0$, $\cO_X(d)$ appears as a summand of $F_{\ell,*}\cO_X$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+(1) $\subseteq$ (2):
+Let $m \in M\otimes \QQ$.  Consider the difference
+\[
+\lfloor \alpha \rfloor(m) - \alpha(m) = \sum_{\rho} \left(\lfloor \alpha_\rho(m) \rfloor - \alpha_\rho(m)\right) D_\rho.
+\]
+For any rational number $z$, the difference between $\lfloor z\rfloor$ and $z$ lies in $(-1,0]$, and hence this divisor has the desired form.  Since $\alpha(m)$ is trivial in $\Cl(X)\otimes \QQ$, this shows (1) $\subseteq$ (2). 
+
+(2) $\subseteq$ (1): Suppose $d\in\Cl(X)$ is such that there exist
+$a_\rho\in(-1,0]\cap\Q$ with
+\[
+  \deg_\Q(d)\;=\;\sum_\rho a_\rho\,\deg_\Q(D_\rho)
+  \qquad\text{in }\Cl(X)\otimes\Q .
+\]
+Choose a lift
+$D=\sum_\rho c_\rho D_\rho\in\Z^n$, with $c_\rho\in\Z$, such that $\deg(D)=d$.
+Setting $a \ce \sum_\rho a_\rho D_\rho$, we have $D - a \in \ker(\deg_\Q) = \alpha( M \otimes \Q)$. Choose $m \in M \otimes \Q$ such that $a = \alpha(m)$. We have $\alpha_\rho(m)=c_\rho-a_\rho$; since
+$-a_\rho\in[0,1)$ we have $c_\rho-a_\rho\in[c_\rho,c_\rho+1)$, and therefore
+$
+  \bigl\lfloor\alpha_\rho(m)\bigr\rfloor=c_\rho$
+  for every $\rho .
+$
+Thus $\lfloor\alpha\rfloor(m)=\sum_\rho c_\rho D_\rho=D$, and so
+$
+  \deg\bigl(\lfloor\alpha\rfloor(m)\bigr)=\deg(D)=d.
+$
+
+
+(2) $=$  (3): trivial.
+
+(2) $=$ (4) $=$ (5): follows from (the $D=0$ case of)~\cite[Theorem 2]{achinger}, which we discuss below.
+
+\def\AA{{\mathbb A}}
+\def\sO{{\mathcal O}}
+\subsection{Achinger's description}
+
+This is the easy half of Thm 1.1 of \cite{achinger}: Let $X$ be a smooth toric variety. If $F$ is the pushforward under the map $X\to X$
+induced by multiplication on the torus by $n$, then since $X$ is covered by torus-invariant affine spaces, it is enough to analyze the
+pushforward one affine space at a time, and to show that the restriction of $F_* \sO_X$ to each affine space is a rank 1 free module.
+
+Let $T$ be the $n$ torus, acting on $\AA^d$, with coordinate ring $S = k[x_1,\dots,x_d]$. The coordinate ring of $F_* S$, as a module over
+$S$, is the same as $k[x_1,\dots,x_d]$ as a module over $k[x_1^n, \dots, x_d^n]$. The module $F_*(S)$ decomposes as a directs sum of the eigensheaves of the action of
+$T/nT = (Z/n)^d$. If $T$ acts on $S$ with character $\chi= (\chi_1,\dots,\chi_d$, then $T$ acts on $F_*(S)$ with the unique character $\lambda$ such that
+$\chi_i\leq \lambda_i<\chi_i+n$. This is isomorphic, up to shift, to a principal ideal of $S$, and is thus free of rank 1 as required.
+
+Next we determine the summands as sheaves on $X$:
+\end{proof}
+
+One important fact about the Bondal-Thomsen collection is the following easy consequence of Demazure Vanishing.\footnote{A similar statement, proven via similar methods, holds for reasonable toric stacks; see \cite{king}*{Lemma 2.20} for the precise statement.}
+%\michael{This is (close to) \cite{king}*{Lemma 2.20}, which isn't that easy, right?}
+\begin{thm}[Demazure Vanishing] \label{thm:demazure}
+If $X$ is a simplicial, projective toric variety and $D$ is a nef $\QQ$-Cartier divisor on $X$, then
+$H^p(X, \cO_{X}(\lfloor D \rfloor )) = 0$
+for all $p > 0$.
+\end{thm}
+For a proof, see~\cite[Theorem 9.2.3]{CLS}.
+
+\begin{prop}\label{prop:Demauzre}
+    Let $a\in \Cl(X)$ be a nef degree and $-d\in \Theta_X$ be a Bondal--Thomsen degree.  We have 
+    $
+    H^p(X,\cO_X(a-d)) = 0 \text{ for all } p>0.
+    $
+\end{prop}
+\begin{proof}
+    Since $a-d$ is an element of the class group, we can choose an integral toric divisor $B=\sum_{i} \alpha_iD_i$, with $\alpha_i\in \ZZ$, corresponding to $a-d$.  Since $-d$ is a Bondal--Thomsen degree, we can choose a toric divisor $D=\sum_i \epsilon_iD_i$, where $\epsilon_i \in [0,1)$, corresponding to $d$.
+
+    Consider the toric $\QQ$-divisor $B+D$.  This is nef, because its class is $(a-d)+d=a$.  And we have $\rfloor B+D\lfloor = B$ which has class $a-d$.  Theorem~\ref{thm:demazure} thus implies $ H^p(X, \cO_{X}(\lfloor B+D \rfloor ))=0$ for all $p>0$.  And we have:
+    \[
+    H^p(X, \cO_{X}(\lfloor B+D \rfloor )) =  H^p(X, \cO_{X}(B)) =  H^p(X, \cO_{X}(a-d)). 
+    \]
+\end{proof}
+
+\begin{cor}\label{cor:BTNoCohom}
+    If $-d\ \in \Theta_X$ is a Bondal--Thomsen degree, then $H^i(X,\cO_X(-d))=0$ for all $i>0$.  If $d\ne 0$, then $H^0(X,\cO_X(-d))$ also vanishes.
+\end{cor}
+\begin{proof}
+    For $p>0$, we can apply Proposition~\ref{prop:Demauzre} with $a=0$.  For $H^0$, we note that when $d\ne 0$, $\cO_X(-d)$ is anti-effective and so has no global sections.
+\end{proof}
+
+
+\begin{comment}
+    
+Claim:
+There are 4 ways to think about the Bondal-Thomsen collection which we claim are all equivalent.
+
+(1)  Via Bondal’s definition, i.e. as the image in Cl(X) of the map M\otimes \RR —> Cl(X) where the point \theta maps via the round-down formula in Definition 2.12 as in our King paper.  Specifically we send \theta \mapsto D(\theta) \ce \sum_\rho \lfloor <-\theta, u_\rho> \rfloor D_\rho.
+
+(2)  As the elements in Cl(X) that are linearly equivalent (in Cl(X)\otimes RR) to a RR-divisor of the form \sum_{\rho} a_\rho D_{\rho} with with a_\rho \in (-1,0].
+
+(3)  As the lattice points inside of the zonotope associated to (2).
+
+(4)  As the summands of the pushforward under Frobenius.
+
+Proof:
+(2) <==> (3) is obvious.
+
+(1) <==> (2) is as follows.   Let \theta \in M\otimes \RR and D(\theta) as in (1).  Define D’(\theta) by the same formula but without the round down. That is, D’(\theta) = \sum_\rho \lfloor -\theta, u_\rho \rfloor D_\rho is an \RR-divisor which is equivalent to 0 in Cl(X)\otimes RR.  This is because D’(\theta) is the image of \theta under the composition of maps in the exact sequence:
+
+0—> M\otimes RR —> RR^{\Sigma(1)} —> Cl(X)\otimes RR —> 0
+
+Now examine the coefficients of D - D’.  For each \rho, the coefficient of D-D’ is \lfloor <-\theta, u_\rho> \rfloor -  <-\theta, u_\rho>.  But for any real number \zeta, the difference \lfloor \zeta \rfloor - \zeta lies in the range (-1,0].  It follows So D(\theta) - D’(\theta) has the form of a divisor from (2).  Since D’(\theta) is linearly equivalent to 0, we obtain the result.
+
+(2) <==> (4) is from Theorem 2 of Achinger 2015 (the D = 0 case), which is not so bad.
+
+How does this look?
+\end{comment}
+
+
+\begin{comment}
+\section{Secondary fan example}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % Define the points for easier reference
+    \coordinate (A) at (1,0);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (0,1);
+    \coordinate (D) at (0,-1);
+    \coordinate (E) at (0,0);
+    \coordinate (F) at (1.2,0.2);
+    \coordinate (G) at (2.2,0.2);
+    \coordinate (H) at (0.2,1.2);
+    \coordinate (I) at (0.2,-.8);
+    \coordinate (J) at (0.2,0.2);
+
+    % Draw all line segments connecting the points
+    \draw (A) -- (B) -- (C) -- cycle;
+    \draw (A) -- (D) -- (C);
+    \draw (B)--(D);
+    \draw (A) -- (E);
+
+    % Plot the points (as small black circles)
+    \fill (A) circle (2pt);
+    \fill (B) circle (2pt);
+    \fill (C) circle (2pt);
+    \fill (D) circle (2pt);
+    \draw (.3,.3) node {$A$};
+    \draw (.3,-.3) node {$B$};
+\end{tikzpicture}
+\end{center}
+
+\end{comment}
+
+\section{Lecture 7 (Jason McCullough): Constructing the resolution and examples}
+
+\daniel{The notes in this section spill over into Lectures 7 and 8.  Need to subdivide, reframe etc.  A rough overview for how we want these three sections to look is the following:
+
+\begin{itemize}
+    \item  Lecture 6:  Focus on the construction of the resolution.  How are the terms and the differentials defined?  Give examples and get the audience familiar with the notation and with what is going on.  Probably focus primarily on simple cases, like a point in $\PP^1$, a point in $\PP^2$, a quadric in $\PP^2$, the twisted cubic.
+
+    There's a choice to be made in this lecture:  
+        \begin{itemize}
+            \item Whether you then continue on into more complicated examples (like the diagonal $\PP^2\subseteq \PP^2 \times \PP^2$, etc) or
+            \item  Whether you start to incorporate more nuanced properties of the resolution (e.g. that the free summands in the resolution correspond to Bondal-Thomsen degrees.
+        \end{itemize}
+
+    \item  Lecture 7:  This lecture is focused on increasing the complexity of the examples considered and demonstrating some of the more subtle properties of the resolutions.  Where you starts depends on the final choice in the previous lecture.  You should demonstrate the resolution of the diagonal for a Hirzebruch surface of type 3, since that is a running example later on.
+
+    We want to also communicate the fact that the resolution ``only depends on the rays''.  Stating that fact precisely is a little bit delicate; see Corollary~\ref{cor:diagonalUniform} for one attempt at such a statement.  But this fact is relevant to our later treatment of King's Conjecture.
+    
+    \item  Lecture 8: The goal of this lecture is to prove the theorem.  If  you determine that's too hard, then we should reassess.
+\end{itemize}
+}
+
+
+\def\NN{{\mathbb N}}
+This section is an expository introduction to the paper \cite{BCHSY}.
+
+The inclusion of one toric variety in another is defined by a 
+homogeneous \emph{pure binomial prime ideal}
+in the Cox ring of the target; that is, a prime generated by elements $x^m-x^n \in S = k[x_1,\dots, x_n]$, where $m,n\in\ZZ^n$ are multi-indices. As shown in \cite{Eisenbud-Sturmfels}, 
+the set $L = \{m-n\mid x^m-x^n\in I \cdot k[\ZZ]\}$ is a saturated lattice and there is a one-to-one correspondence between pure binomial ideals that are prime and saturated lattices meeting
+ $\NN^n$ only in 0. Such prime ideals correspond to not-necessarily normal, affine toric varieties of embedding dimension $n$, and the ring $R \ce S/I$ is naturally graded by the group $\ZZ^n/L$.
+
+Theorem 3.4 of \cite{BCHSY} provides a canonical $\ZZ^n/L$-graded finite $S$-free resolution $\FF$ of the normalization $\overline R$
+of the ring $R$. It is obtained by factoring out a regular sequence on an $L$-equivariant $S$-free resolution $\tilde F$ 
+of a certain $S$-submodule $M_L$ generated by monomials in $S[L]$.
+The length of the resolution $\FF$ is equal to the 
+codimension of $I$, reproving the theorem of Hochster that
+$\overline R$ is Cohen-Macaulay.
+
+The resolution $\tilde\FF$ is built from an infinite $L$-invariant cellular subdivision of $L_\RR \ce \RR\otimes L$ constructed from $L$ and the standard subdivision by coordinate planes in $\ZZ^n$, together with a ``compatible $\ZZ^n$-stratification''.  Although \cite{BCHSY} treats a more general situation, the situation they describe through the ``least common multiple stratification'' suffices for the application here, and we will describe the construction only in this special case. 
+
+The subdivision of $L_\RR$ used by \cite{BCHSY} is defined by the coordinate hyperplanes $H_i \ce \{x\in L_R\mid x_i = 0\}$. They  divide $L_\RR$ into chambers $\sigma$ whose closures are convex polyhedra, meeting along their faces. This subdivision is preserved by the action of $L\subset \ZZ^n$, and the resulting $S$-free complex $\tilde{\FF}$ is $L$-graded. The generators of the free modules in $\tilde \FF$ correspond to
+chambers in this cell complex, and the $i$-th term of the complex $\tilde\FF$ is $\oplus S\cdot\sigma$, where
+the direct sum runs over all cells of dimension $i$. 
+
+The differential of the resolution $\tilde \FF$ is obtained by choosing
+an orientation on $L_\RR$ and homogenizing the usual differential of
+a cell complex according to weights assigned to the chambers, as follows:
+if $A$ is a cell, and $p = (p_1,\dots, p_n) \in \RR^n$ is a point in the
+interior of $A$, then we give $A$ the weight
+$$
+\Psi(A) \ce \prod_1^n x_i^{\lceil p_i\rceil}y^{\lceil p_i\rceil}.
+$$
+Thus $\tilde\FF_0$ has the weights 
+$$
+\{\Psi(p) \mid p \hbox{ is a vertex of the cell complex } L_\RR\},
+$$
+so there is  an $L$-equivariant augmentation map from $\tilde\FF_0$ to
+the monomial module $M_L$ generated by the weights of the vertices of the cell complex.
+Proposition 3.2 of~\cite{BCHSY} shows that $\tilde \FF$ is acyclic, and is an $S$-free resolution
+of $M_L$.
+
+For $1\neq z\in L$ the element $1-z\in S[L]$ is a nonzerodivisor on any $L$-graded $S[L]$ module. 
+The  resolution $\FF$ is obtained by taking the quotient of $\tilde \FF$
+by the regular sequence $1-z_1, \dots 1-z_m$, where $z_1,\dots, z_m$ are the elements of $L$ that are minimal in the sense that they
+are not divisible by any variables in $S$.
+Proposition 3.3 of~\cite{BCHSY} shows that the quotient of the monomial module $M_L$ by $L$ is a fractional ideal of $R$ that is
+isomorphic to $\overline R$. 
+
+We now describe this resolution in the two simplest cases: when $I = (x_1-x_2)$, so that $\overline R = R$, and when $I = (x_1^3-x_2^2)$, so that $\overline R = k[x_1,x_2/x_1]$. 
+To simplify the notation we write $S =k[x,y]$ in place of $k[x_1,x_2]$. Since the cellular subdivision of $L_R$ is $L$-equivariant, it suffices to consider its restriction to  a fundamental domain for the action of $L$. 
+
+\begin{example}$R \ce k[x,y]/(x-y)$:
+In this case the lattice $L$ is generated by the single vector $x/y = (1,-1)\in \ZZ^2$
+and (the closure of) a fundamental domain for the action of $L$ on $\ZZ^2$ consists
+of a single square, as in Figure~\ref{fig1}.
+
+\begin{figure}[h]\label{fig1}
+$$\begin{tikzpicture}[scale=3]
+  % Horizontal walls - blue
+  \draw[blue] (0, 0) -- (1, 0);
+  \draw[blue] (0,-1) -- (1,-1);
+
+  % Vertical walls - red
+  \draw[red] (0, 0) -- (0,-1);
+  \draw[red] (1, 0) -- (1,-1);
+
+  % Diagonal line - green
+  \draw[green!70!black] (0,0) -- (1,-1);
+
+  % Small dots at corners, labeled a
+  \fill (0, 0) circle (1.2pt) node[above left]  {$a:(0,0)$};
+  \fill (1,-1) circle (1.2pt) node[below right] {$b:(1,-1)$};
+
+  % Larger dot at midpoint, labeled A
+  \fill (1/2,-1/2) circle (2pt) node[above right] {$A$};
+\end{tikzpicture}
+$$
+  \caption{Diagram for the resolution of $k[x,y]/(x-y)$}
+\end{figure}
+The set $L_R\subset \RR^2$ meets this fundamental domain in the diagonal line. There are infinitely many 0-cells and infinitely many 1-cells, which are the $L$-translates of $a$ and $A$ respectively. We choose an (L-invariant) orientation, and take the differential to be the usual one for a cell complex, homogenized by taking the upper left corner
+weight $x^0y^0=1$, the lower right corner weight $x^1y^{-1}$.
+ choosing  $p= (1/2, -1/2)$ in the interior of the chamber A we give $A$ the weight
+$\Psi(A) \ce \Psi(p) = x^{\lceil 1/2\rceil}yx^{\lceil -1/2\rceil} = x^1y^0$. With these choices the differential is 
+$\tilde d(A) = xa-yb$. Taking the quotient by 
+$L$, which identifies $b$ with $a$, we obtain the usual two-term resolution $d: S(-1)\to S$, with map  $d = (x-y)$. 
+\end{example}
+
+\begin{example}$R\ce k[x,y]/(x^3-y^2)$: 
+If $I = (x^3-y^2)$ then $L$ is generated by the single vector
+$x^3/y^2 = (3,-2) \in \ZZ^2$, so
+$L_\RR$ is the diagonal line in Figure~\ref{fig2}, which
+shows the closure of a fundamental domain in $L_R$ for the action of $L$
+on $\RR^n$.
+
+The $S$-free ``hull resolution" of \cite[Section 3]{Bayer-Sturmfels} (see also \cite[Sections 9.2--9.3]{MScomb}) of $R$ would be obtained, in this case, from the cell complex with one 1-cell and one 0-cell by considering the whole of the diagonal line in Figure~\ref{fig2} as a single 1-cell with weight $x^3$, and with vertices
+$(0,0)$ (of weight 1) and $(2,3)$ (of weight $x^2/y^3$ only, yielding the 2-term complex with differential
+$d = (x^3-y^2)$.
+The exposition in the references above differs from
+that of \cite{BCHSY} mostly in considering first a (more general) ``Laurent monomial $S$-module" $M$ (in our case $M_L$)
+and passing to its $S$-module generators, rather than starting
+with the lattice $L$ and considering the $S$-module it generates.
+
+To obtain the resolution of the slightly larger
+module $\overline R = R[y/x]$, \cite{BCHSY} added the vertices given by
+the other intersections of the line with the "standard" lattice generated
+by the vectors corresponding to $x$ and $y$. Since these intersections do not have integral coordinates, \cite{BCHSY} introduced the idea of taking the ceilings of 
+their coordinates. 
+If this were a chess game, I would mark these moves, especially the latter, with "!!".
+
+Up to translation by $L$ the coordinate hyperplanes cut $L_\RR$ into four 0-cells $a,b,c,d$ and and four 1-cells $A,B,C,D$ shown in Figure 2 (here $e$ is a translate of $a$).
+
+\goodbreak
+
+
+Following the general scheme described above we assign weights as follows:
+\begin{itemize}
+    \item[$\Psi(A)$:] $x^1y^0 = x$
+    \item[$\Psi(B)$:] $x^2y^0 = x^2$
+    \item[$\Psi(C)$:] $x^2y^{-1} = x^2/y$
+    \item[$\Psi(D)$:] $x^3y^{-1} = x^3/y$
+    \smallskip
+    \item[$\Psi(a)$:] $x^0y^0 = 1$
+    \item[$\Psi(b)$:] $x^1y^0 = x$
+    \item[$\Psi(c)$:] $x^2y^{-1} = x^2/y$
+    \item[$\Psi(d)$:] $x^2y^{-1} = x^2/y$
+    \item[$\Psi(e)$:] $x^3y^{-2} = x^3/y^{2}$
+\end{itemize}
+Thus, restricted to this domain, the complex $\tilde F$
+has just two terms, with differential
+$$
+\tilde d = \bordermatrix{
+     &A&B&C&D\cr
+    a&x&0&0&0\cr
+    b&-1&x&0&0\cr
+    c&0&-y&1&0\cr
+    d&0&0&-1&x\cr
+    e&0&0&0&-y
+}.
+$$
+\begin{figure}[h]\label{fig2}
+\caption{Diagram for the resolution of the normalization of $k[x,y]/(x^3-y^2)$}
+$$
+\begin{tikzpicture}[scale=3]
+  % Interior vertical grid lines (x=1 and x=2) - black
+  \draw (1, 0) -- (1, -2);
+  \draw (2, 0) -- (2, -2);
+
+  % Top and bottom horizontal lines - blue
+  \draw[blue] (0,  0) -- (3,  0);
+  \draw[blue] (0, -2) -- (3, -2);
+
+  % Left and right verticals - red; middle horizontal - black
+  \draw[red] (0,  0) -- (0, -2);
+  \draw[red] (3,  0) -- (3, -2);
+  \draw (0, -1) -- (3, -1);
+
+  % Diagonal line - green
+  \draw[green!70!black] (0,0) -- (3,-2);
+
+  % Dots at boundary crossings, labeled a,b,c,d,a (smaller)
+  \fill (0,0)    circle (1.2pt) node[above left]  {$a:0,0)$};
+  \fill (1,-2/3) circle (1.2pt) node[above]        {$b$};
+  \fill (3/2,-1) circle (1.2pt) node[below]        {$c$};
+  \fill (2,-4/3) circle (1.2pt) node[above]        {$d$};
+  \fill (3,-2)   circle (1.2pt) node[below right]  {$e:(3,-2)$};
+
+  % Dots at specified x-coordinates, labeled A,B,C,D
+  \fill (1/2,-1/3)   circle (2pt) node[below]  {$A$};
+  \fill (5/4,-5/6)   circle (2pt) node[above]  {$B$};
+  \fill (7/4,-7/6)   circle (2pt) node[below]  {$C$};
+  \fill (5/2,-5/3)   circle (2pt) node[below]  {$D$};
+\end{tikzpicture}
+$$
+\end{figure}
+
+The action of $L$ identifies the vertices $a$ and $e$. Thus, modulo the action of $L$ and ignoring the $\ZZ^2/L = \ZZ$ grading, the  differential
+of $\FF$ is
+$$d: 
+\bordermatrix{
+     &A&B&C&D\cr
+    a&x&0&0&-y\cr
+    b&-1&x&0&0\cr
+    c&0&-y&1&0\cr
+    d&0&0&-1&x\cr    
+}.
+$$
+This non-minimal matrix is equivalent to the direct sum of the
+$2\times 2$ identity matrix and the matrix
+$$
+d'\ce \begin{pmatrix}
+x^2 &-y\\
+-y&x
+\end{pmatrix}
+$$
+If we give $x$ and $y$ the natural weights $2$ and 3, then $d'$ is $\ZZ^2/L \cong \ZZ$-homogeneous as a map $S(-4) \oplus S(-3) \to S\oplus S(-1)$,  
+
+The determinant of $d$ or $d'$ is easily seen to be
+$(x^3-y^2)$, so the cokernel is annihilated by this element,
+but the cokernel is not $k[x,y]/(x^3-y^2)$!
+Since $M_L$ is generated by
+$\Psi(p)$, as $p$ runs over the vertices of $L_\RR$, so $M_L/(1-(x^3/y^2))M_L$
+is generated by the $\Psi(p)$ for $p$ in the fundamental domain. 
+These are the fractions $1,x,x^2/y$, and (since $x^2/y = y/x$ in $R$), these generate
+the fractional ideal $(1, x^2/y)  = \overline R$.
+
+Morever, since $x^3/y = y^2/y = y$ in $R$, we have
+$$
+(1, x^2/y)*d' = 0
+$$
+and we see that the cokernel of $d'$ is also isomorphic to 
+$R\cdot(x^2/y, y) = R\cdot (x^2/y)$, as required.
+
+
+
+
+
+\section{Lecture 8 (Ryan Watson): More examples and features}
+Feature includes the uniformity with respect to the Cox ring, i.e. only depending on the rays or only depending on the Cox ring.  What that means.  That tells us about resolution of graphs of birational morphisms.
+
+\begin{cor}
+\label{cor:diagonalUniform}
+    Assume that $X$ and $X'$ are smooth, projective toric varieties with the same Cox ring $S$.  Then, as free complexes of $S\otimes_k S$-modules, the following are all the same:
+    \begin{enumerate}
+        \item The resolution of the diagonal $X\subseteq X\times X$.
+        \item The resolution of the diagonal $X'\subseteq X'\times X'$.
+        \item  The resolution of the closure of the graph $\Gamma \subseteq X\times X'$ of the birational map $X\dashrightarrow X'$.
+    \end{enumerate}
+\end{cor}
+\begin{proof}
+    Proof 1:  The consturction of the HHL resolution only depends on the rays.  So if you do the construction in any of htese cases, it is literally exactly the same.
+
+    Proof 2:  Write $I_\Delta\subseteq S\otimes_k S$ for the defining ideal of the diagonal $X\subseteq X\times X$.  Write  Write $I_{\Delta'}\subseteq S\otimes_k S$ for the defining ideal of the diagonal $X'\subseteq X'\times X'$.  And write $I_\Gamma\subseteq S\otimes_kS$ for the defining ideal of $\Gamma\subseteq X\times X'$.  These three ideals are all multigraded, prime ideals on $S\otimes_k S$ whose vanishing locus contains the dense torus, and thus the ideals are all equal.  The three HHL resolutions are, up to homotopy, the minimal free resolutions of the normalizations of $S\otimes_k S/I_{\Delta}$, $S\otimes_k S/I_{\Delta'}$, and $S\otimes_k S/I_{\Gamma}$ respectively.  But since these modules are all equal, so are their minimal free resolutions.
+\end{proof}
+Discussion of how this is kind of surprising!!  There was, a priori, no reason to believe that the ``best'' toric analogue of Beilinson's resolution  would only involve the Cox ring (i.e. that it would not depend on the irrelevant ideal whatsoever).  This is a first clue that these resolutions are pointing towards some sort of uniformity for all of the toric varieties with the same Cox ring.  That uniformity will be explored in more depth in later lectures.
+
+
+
+% \daniel{The following is a placeholder for now.  And it is TERRIBLY phrased.  But it will useful to observe this early and come back to later.}
+% \begin{cor}
+% The HHL resolution of the diagonal for $X$ only depends on the rays of the fan for $X$, or equivalently, it only depends on the Cox ring of $X$.  Thus, if $X$ and $X'$ are projective, simplicial toric varieties, both of whose Cox rings equals $S$, then as a complex of free, graded $S\otimes_\kk S$-modules, the HHL resolution for $X$ and for $X'$ will be identical.
+% \end{cor}
+% \begin{proof}
+%     Immediate from the construction, which only references the rays and not the higher dimensional cones.
+% \end{proof}
+
+
+
+\section{Lecture 9 (Greg Smith): The proof}
+The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly technical.  However, two recent preprints have dramatically simplified the proof.  The preprint~\cite{BCHSY} relates the Hanlon-Hicks-Lazarev construction to a more classical algebraic construction involving binomial ideals, and provides an elementary and purely algebraic proof of the main result, as well as broad generalization of those results.  The preprint~\cite{BH25} utilizes a similar basic idea as~\cite{BCHSY}, but provides a terser and narrower proof.
+
+
+
+
+
+
+\section{Lecture 10 (Juliette Bruce): Applications of the Hanlon-Hicks-Lazarev Theorem}
+
+Let $X$ be a smooth projective toric variety, and let $\OO_\Delta$ denote the structure sheaf of the diagonal~$\Delta \into X \times X$. The following is a consequence of the Hanlon-Hicks-Lazarev Theorem:
+
+\begin{thm}
+\label{thm:HHLdiagonal}
+
+There exists a locally free resolution $\cR$ of $\OO_\Delta$ of the diagonal $\Delta_X \subseteq X \times X$ of length $\dim{X}$ whose terms are direct sums of line bundles in the Thomsen collection of $X \times X$. 
+\end{thm}
+
+\begin{remark}
+The elements of the Thomsen collection of $X \times X$ are of the form $\cL \boxtimes \cL'$, where $\cL$ and $\cL'$ are in the Thomsen collection of $X$. 
+\end{remark}
+
+Theorem~\ref{thm:HHLdiagonal} led to proofs of three conjectures in commutative algebra and toric geometry.
+
+\subsection{The Berkesch-Erman-Smith Conjecture} Let $S$ be the Cox ring of $X$, and let $M$ be an~$S$-module. In \cite{BES}, Berkesch-Erman-Smith define a \defi{virtual resolution of $M$} to be a complex $F$ of free $S$-modules such that $\widetilde{F}$ is a locally free resolution of $\widetilde{M}$. They posed the following conjecture: 
+
+\begin{conj}[Berkesch-Erman-Smith's Conjecture]
+\label{conj:BES}
+Every finitely generated $\Pic{X}$-graded $S$-module $M$ admits a virtual resolution of length at most $\dim{X}$. 
+\end{conj}
+
+In fact, this was originally posed as a question~\cite{BES}*{Question 6.5}, but it has been stated as a conjecture in subsequent works, e.g.~\cite{yang,BS24}. Before Hanlon-Hicks-Lazarev proved Conjecture~\ref{conj:BES}, it was known when $X$ is a product of projective spaces~\cite{BES}, when $\Pic(X)$ has rank 2~\cite{BS24}, and when $M$ is a monomial ideal~\cite{yang}. 
+
+Let us explain how Theorem~\ref{thm:HHLdiagonal} implies Conjecture~\ref{conj:BES}. We will need the following:
+
+\begin{thm}[Fujita Vanishing Theorem \cite{lazarsfeld04}*{Theorem 1.4.35}]
+\label{thm:fujita}
+Let $\F$ be a coherent sheaf on~$X$, and let $\cL$ be an ample line bundle on $X$. There exists $m \gg 0$, depending on $\F$ and $\cL$, such that $H^j(X,\F \otimes \cL^m \otimes \cL') = 0$ for all $j > 0$ and all nef line bundles $\cL'$ on $X$.
+\end{thm}
+
+
+\begin{proof}[Proof of Conjecture~\ref{conj:BES}]
+Let $\cR$ be as in Theorem~\ref{thm:HHLdiagonal}. We will write ``$\cL_1 \boxtimes \cL_2 \in \cR_i$" for ``$\cL_1 \boxtimes \cL_2$ is a summand of $\cR_i$". For $i = 1, 2$, let~$\pi_i \co X \times X \to X$ be the projection. Given a sheaf $\E$ on $X$, the projection formula and base change imply that the Fourier-Mukai transform~$(\RR\pi_2)_*(\pi_1^*(\F) \otimes \cR)$ is isomorphic to a complex $\cB(\E)$ with $\ell^{\th}$ term
+\begin{equation}
+\label{eqn:monad}
+\cB(\E)_\ell \ce \bigoplus_{i - j = \ell} \bigoplus_{\cL_1 \boxtimes \cL_2 \in \cR_i} H^j(X, \E \otimes \cL_1) \otimes_\k \cL_2. 
+\end{equation}
+Of course, the homology of $\cB(\E)$ is concentrated in degree 0 and isomorphic to $\E$. Recall that the pairs of line bundles $\cL_1$ and $\cL_2$ appearing in~\eqref{eqn:monad} lie in the Thomsen collection of $X$. 
+
+Let $\F$ be the sheaf on $X$ associated to our $S$-module $M$, and let $\mathcal{A}$ be an ample line bundle on~$X$. Applying Theorem~\ref{thm:fujita} to the pair $\F \otimes \cL$ and $\mathcal{A}$ for all line bundles~$\cL$ in the Thomsen collection of~$X$, we may choose $m \gg 0$ such that $H^j(X, \F \otimes \cL) = 0$ for all $j > 0$. Thus, we have $\B(\F \otimes \cA)_\ell = 0$ unless~$0 \le \ell \le \dim X$, and so $\B(\F \otimes \cA) \otimes \cA^{-1}$ is a locally free resolution of $\cF$ by sums of line bundles of length at most $\dim{X}$. Taking global sections of (all twists of) $\B(\F \otimes \cA) \otimes \cA^{-1}$ gives the desired virtual resolution. 
+\end{proof}
+
+\subsection{Bondal's Conjecture}\label{subsect:bondalConjecture}
+
+Given a triangulated category $\cT$, we say objects $T_1, \dots, T_m \in \cT$ \defi{classically generate} $\cT$ if the smallest triangulated subcategory of $\cT$ that is closed under taking summands and that contains $T_1, \dots T_m$ is $\cT$ itself. 
+
+\begin{conj}[Bondal's Conjecture]
+\label{conj:bondal}
+The line bundles in the Thomsen collection of $X$ classically generate $D^b(X)$. 
+\end{conj}
+
+In fact, Bondal stated without proof in \cite{Bondal} that Conjecture~\ref{conj:bondal} holds. But this statement was later referred to as Bondal's Conjecture in e.g. \cite{Uehara, HHL}. See~\cite{HHL}*{Remark 1.5} for a list of known cases of Bondal's Conjecture before it was proven by Hanlon-Hicks-Lazarev. 
+
+\begin{proof}[Proof of Conjecture~\ref{conj:bondal}]
+Given a coherent sheaf $\E$ on $X$, the complex $\cB(\cE)$ from the proof of Conjecture~\ref{conj:BES} exhibits~$\E$ as an iterated extension in $D^b(X)$ of line bundles in the Thomsen collection of $X$. Conjecture~\ref{conj:bondal} immediately follows. 
+\end{proof}
+
+\subsection{The toric case of Orlov's Conjecture}
+
+Theorem~\ref{thm:HHLdiagonal} also resolved the toric case of a conjecture of Orlov on the Rouquier dimension of derived categories. Let us begin with the definition of Rouquier dimension. 
+
+\begin{defn}[\cite{rouquier08}*{Definition 3.2}]
+Let $\cT$ be a triangulated category. If $T \in \cT$ and $i \ge 0$, we let $\langle T \rangle_i$ denote the (not necessarily triangulated) subcategory of $\cT$ given by direct summands of objects obtained by
+taking an $i$-fold extension of finite direct sums of shifts of $T$. The \defi{Rouquier dimension} of $\cT$ is defined to be $\dim\mathcal{T} \ce \inf \{ d \text{ : } \cT =  \langle T \rangle_{d+1} \text{ for some } T \in \cT\}$.  
+\end{defn}
+
+\begin{conj}[\cite{orlov}*{Conjecture 10}]
+\label{conj:orlov}
+If $Y$ is a smooth, quasi-projective variety, then the equality $\dim D^b(Y) = \dim Y$ holds. 
+\end{conj}
+
+See \cite{BC}*{\S 1.2} for  known cases of Conjecture~\ref{conj:orlov}. This list predates the resolution of the toric case of Conjecture~\ref{conj:orlov}, which is due, independently, to Favero-Huang and Hanlon-Hicks-Lazarev:
+
+\begin{thm}[\cite{FH,HHL}]
+Conjecture~\ref{conj:orlov} holds when $Y$ is a toric variety. 
+\end{thm}
+
+\begin{proof}
+This is immediate from \cite{rouquier08}*{Proposition 7.6} and Theorem~\ref{thm:HHLdiagonal}, noting that Theorem~\ref{thm:HHLdiagonal} does not require $X$ to be projective (see \cite{HHL}*{Corollary B}). 
+\end{proof}
+
+\section{Lecture 11 (Lauren Cranton Heller): The secondary fan}
+In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring.
+
+\subsection{The toric varieties associated to a multigraded ring}
+Let $X$ be a projective toric variety with fan $\Sigma$ and class group $\Cl(S)$. Let $S = \kk[x_1, \dots, x_n]$ be the corresponding Cox ring and $B\subseteq S$ the irrelevant ideal.  Distinct toric varieties can have the same Cox ring, and this adds a wrinkle to any attempt to generalize results related to the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is generally called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this.
+
+In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$. 
+
+\begin{defn}\label{defn:idealConeCorrespondence}
+Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$} 
+%\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \} 
+%\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e. 
+if there exist $q_i \in \QQ_{>0}$ such that
+$
+d = \sum_{i} q_i\deg_{\QQ}(x_i^{{a_i}}).
+$
+For a convex cone $\Gamma \subseteq \Cl(S)\otimes \QQ$, we define 
+    \[
+    \text{ideal}(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
+    \]
+    Conversely, given a monomial ideal $B$, we define 
+     \[
+    \text{cone}(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
+    \]
+\end{defn}
+It is immediate that $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial of largest degree dividing~$\mathbf{x}^{\mathbf{a}}$ spans $d$. Thus, $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.  
+%and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.   
+It is elementary to check that
+\[
+\text{ideal}(\text{cone}(\text{ideal}(\Gamma))) = \text{ideal}(\Gamma) \qquad \text{ and } \qquad \text{cone}(\text{ideal}(\text{cone}(B))) = \text{cone}(B). 
+\]
+
+
+ \begin{remark}
+ \label{rem:open}
+Because we insist that the coefficients $q_i$ be strictly positive, the condition that $\mathbf{x}^\a$ spans $d$ is an open condition on the points $d$ {\color{red} in the effective cone of $X$.}
+\end{remark}
+ 
+Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. We call the interiors of the corresponding cones the \defi{chambers for $S$}.  By definition, the chambers are disjoint from one another.
+%By definition, the effective cone is the union of the closures of these chambers.
+
+\begin{defn}\label{defn:chambersIrrelevant}
+We enumerate the chambers as $\Gamma_1, \dots, \Gamma_s$, and we write $B_1, \dots, B_s$ for the corresponding squarefree monomial ideal.  
+By construction, the effective cone $\Eff(X)$ is the union of the closures of these cones $\Eff(X) = \bigcup_{i=1}^s \overline{\Gamma_i}$.
+\end{defn}
+
+\daniel{New remark below.}
+\begin{remark}
+    The \defi{secondary fan of $X$} is a fan structure on $\Eff(X)$ where the maximal chambers are precisely $\Gamma_1, \dots, \Gamma_s$.  In these notes, we will not utilize any aspects of the secondary fan beyond the chambers, and so we will avoid giving a precise definition of the lower dimensional faces of the secondary fan.
+\end{remark}
+
+
+
+\begin{example}
+\label{ex:hirzsecondary}
+Let us consider the example of $\mathcal H_3$, the Hirzebruch surface of type $3$.  The Cox ring is~$S=\CC[x_0,x_1,x_2,x_3]$, and the degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.    First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+
+  \def\axlim{1.6}
+
+  \begin{scope}
+    \clip (-\axlim,-\axlim) rectangle (\axlim,\axlim);
+
+    % Cone region (left): x<=0 and y >= -x/3
+    \fill[orange!35]
+      (0,0)
+      -- (0, \axlim)
+      -- (-\axlim, \axlim)
+      -- (-\axlim, {1/3*\axlim})
+      -- cycle;
+
+    % Positive quadrant (right)
+    \fill[blue!20]
+      (0,0) rectangle (\axlim, \axlim);
+  \end{scope}
+
+  % Draw only the negative x-axis and negative y-axis as solid
+  \draw[->, thick] (-\axlim, 0) -- (0, 0);
+  \draw[->, thick] (0, -\axlim) -- (0, 0);
+
+  % Positive x-axis and positive y-axis as dotted boundary rays
+  \draw[black, thick, dotted, ->, shorten >=2pt] (0,0) -- (\axlim, 0);
+  \draw[black, thick, dotted, ->, shorten >=2pt] (0,0) -- (0, \axlim);
+
+  % Tick marks
+  \foreach \x in {-1, 1} {
+    \draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {$\x$};
+  }
+  \foreach \y in {-1, 1} {
+    \draw (2pt, \y) -- (-2pt, \y) node[left, font=\small] {$\y$};
+  }
+
+  % Left boundary ray of cone: direction (-3,1), dotted
+  \draw[black, thick, dotted, ->, shorten >=2pt]
+    (0,0) -- ({-3/sqrt(10)*\axlim*1.05}, {1/sqrt(10)*\axlim*1.05})
+    node[left, font=\small] {$(-3,1)$};
+
+  % Label (0,1) placed to the right of the y-axis, clear of shading
+  \node[font=\small] at (0.22, \axlim*0.92) {$(0,1)$};
+
+  % Labels centered in each shaded region
+  \node[orange!70!black] at ({-\axlim/2}, {\axlim/2}) {$\Gamma_1$};
+  \node[blue!60!black]   at ({ \axlim/2}, {\axlim/2}) {$\Gamma_2$};
+
+  % Origin dot
+  \filldraw (0,0) circle (1pt);
+
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.
+\begin{defn}\label{defn:Xi}
+    We define $X_i$ to be the toric variety associated to $\Sigma_i$.  By a mild abuse of notation (see Remark~\ref{rmk:abuseNotation}), we will refer to $B_i\subseteq S$ as the irrelevant ideal of $X_i$.  
+\end{defn}
+There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$:
+
+
+\begin{thm}
+\label{thm:mainsecondary}
+Fix a chamber $\Gamma_i\subseteq \Eff(X)$ for some $1\leq i \leq s$. Let $B_i$ the corresponding square-free maximal ideal, $\Sigma_i$ the associated fan, and $X_i$ as in Definition~\ref{defn:Xi}. Write $G \ce \Hom(\Cl(X), \kk^*)$.   We have the following:
+\begin{enumerate}
+	\item  {\bf Simplicial:}  $\Sigma_i$ is a simplicial fan whose rays are a subset of the rays of $\Sigma$ and such that~$|\Sigma_i| = |\Sigma|$. In particular, $X_i$ is a projective, simplicial toric variety. 
+	\item   {\bf Quotient:}  $\Spec(S) - V(B_i)\to X_i$ is a geometric quotient as in~\cite[Chapter 5]{CLS}.
+%	\item  {\bf Toric stack:}   $[\Spec(S) - V(B_i) / G]$ is a smooth toric DM stack with coarse moduli space equal to $X_i$. 
+\end{enumerate}
+
+Choose any point $a=(a_1, \dots, a_n) \in \ZZ^n$ such that $\deg_{\QQ}(a)$ lies in the interior of $\Gamma_i$. 
+We also have the following:
+\begin{enumerate}\setcounter{enumi}{2}
+	\item  {\bf Proj:}  Let $S_a$ be the $\ZZ$-graded ring 
+	$
+	S_{a} = \bigoplus_{e\geq 0} S_{ea}.
+	$
+	We have $\Proj(S_a)=X_i$.  
+	%Moreover, if $u_\tau$ is the primitive point on the ray $\tau$ then the divisor corresponding $eu_{\tau}$ equals $S_\tau(e)|_{X_i}$.
+	\item   {\bf Normal fan:}  Let $P_a\subseteq M$ be the polytope
+$
+P_{{a}} \ce \bigcap_{i=1}^n \{ m \in M \text{ $|$ } \alpha_i(m) \geq -a_i\},
+$
+	where $\alpha_i$ is given by composing the canonical map $M \into \Z^n$ with the projection onto the $i^{\th}$ coordinate. The normal fan of $P_a$ is $\Sigma_i$.
+%	\item  
+\end{enumerate}
+Moreover, $\widetilde{S_{a}(1)}$ is equal to the rank one torsion free sheaf associated to the polytope $P_a$.
+\end{thm}
+\begin{proof}
+%Part (3) follows from \cite{BorisovChenSmith2004}*{\S 3}
+All of these results can be extracted from \cite[Chapters 14-15]{CLS}, but those are pretty technical paragraphs so it is not so easy to find an overarching statement like this.  Statement (1) essentially follows from~\cite[Proposition 14.4.9]{CLS}.  Statement (2) follows from ~\cite[Proposition 14.4.14]{CLS} combined with the fact from \cite[Theorem 5.1.11]{CLS} that for a simplicial toric variety, the quotient is a geometric quotient.
+%\daniel{Mostly just cite the places in CLS?}
+\end{proof}
+
+\begin{example}\label{ex:hirzSecondary2}
+    We return Example~\ref{ex:hirzsecondary}. The ideal $B_2$ is the irrelevant ideal of the Hirzebruch surface~$\mathcal{H}_3$, so the chamber $\Gamma_2$ corresponds to $\mathcal{H}_3$. The chamber $\Gamma_1$ corresponds to the weighted projective space $\PP(1,1,3)$; one way to see this is to apply Theorem~\ref{thm:mainsecondary}(4) with $a = (-1, 1)$, and notice there is an isomorphism of $\Z$-graded rings $S_a \cong \k[y_0, y_1, y_2]$, where $\deg(y_0) = \deg(y_1) = 1$, and $\deg(y_2) = 3$. These two cases demonstrate notably different behavior.  For $\mathcal H_3$, we have that~$\Cl(\mathcal H_3)=\ZZ^2 = \Cl(S)$, and hence we have not contracted any divisors.  In this case, {\color{red} $\Gamma_2$} is precisely the ample cone of $\mathcal H_3$.
+Things are more complicated for $\PP(1,1,3)$, as the presentation of $\PP(1,1,3)$ is nonstandard.  The Cox ring of $\PP(1,1,3)$ involves only 3 variables, but we have $S=\CC[x_0, x_1, x_2, x_3]$.  This is because the ray $\rho_1$ is not utilized in the fan corresponding to $\PP(1,1,3)$.  At the algebraic level, the corresponding variables determines a principal component of the irrelevant ideal, as we have $B_1 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle$.  There is still a natural map~$\Phi\colon \ZZ^2 = \Cl(S) \to \Cl(\PP(1,1,3))$; it must have $\deg(x_1)$ in its kernel, i.e. it must be the map $\Phi(a,b) = a +3b$. Under this map, every element $\Phi(\Gamma_1)$ covers the ample cone of $\PP(1,1,3)$.  However, there are elements outside of $\Gamma_1$ that also map to ample divisors under this map.
+\end{example}
+
+
+The previous example illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
+\begin{lemma}\label{lem:MovingConeEquivalence}
+The following are equivalent:
+\begin{enumerate}
+    \item The Cox ring of $X_i$ equals $S$;
+    \item $\Cl(X_i)=\Cl(S)$;
+    \item  The rays of $\Sigma_i$ are precisely $\rho_1, \dots, \rho_n$;
+    \item  $B_i$ does not belong to any principal ideal $\langle x_j\rangle$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}[Sketch of proof]
+    For each $X_i$, the rays of $\Sigma_i$ are a subset of $\rho_1, \dots, \rho_n$~\cite[ Chapter 14.4]{CLS}.  Since the Cox ring of $X_i$ is a polynomial ring whose variables are in bijection the rays of $\Sigma_i$, this yields the equivalence of (1) and (3).  If any of the rays $\rho_j$ does not arise in $\Sigma_i$, then the vanishing of the corresponding variable $x_j$ defines the empty set on $X_i$ and thus $x_j$ form a minimal component of $B_i$.  This yields the equivalence of (3) and (4).  The equivalence of (2) and (3) comes from the short exact sequence \eqref{eqn:SESCl}.
+   
+\end{proof}
+\begin{remark}\label{rmk:abuseNotation}
+    By a mild abuse of notation, we will refer to $B_i\subseteq S$ as \defi{the irrelevant ideal of $X_i$}.  Why is this an abuse of notation?  When the Cox ring of $X_i$ equals $S$, i.e. when the conditions of Lemma~\ref{lem:MovingConeEquivalence} are satisfied, this is not an abuse of notation; in that case, $B_i$ is precisely the irrelevant ideal of $X_i$, in the standard definition.  But as we have seen, it can happen that the Cox ring of $X_i$ does not equal $S$.  This happens precisely when the fan $\Sigma_i$ does not involve all of the original rays.  In this case, at least one of the variables $x_j$ from the original ring $S$ will not appear in the Cox ring of $X_i$.  
+    
+    Considering our running Example~\ref{ex:hirzSecondary} is helpful: one of the varieties is $\PP(1,1,3)$ whose fan does {\em not} involve the ray $\rho_1 = (0,1)$.  Thus, the Cox ring of $\PP(1,1,3)$ would be a polynomial ring involving only $3$ variables, and a $\Cl(\PP(1,1,3)) = \ZZ$-grading, as opposed to $S$ itself which has $4$ variables and a $\ZZ^2$-grading.  
+    
+    However, we can recover $\PP(1,1,3)$ from $S$ with the $\ZZ^2$-grading by including the variable $x_1$ but then making it into a component of the irrelevant ideal.  Thus, we set $B_2 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle \subseteq S$.  Theorem~\ref{thm:mainsecondary} tells us that with this definition, we still recover $\PP(1,1,3)$ as a quotient of $\Spec(S) - V(B_2)$.
+
+    It would be more accurate to think of $B_i$ as the irrelevant associated to the chamber $\Gamma_i$, as opposed to the irrelevant ideal associated to $X_i$.  This viewpoint is developed in greater detail in ~\cite[\S7]{BEF}.
+\end{remark}
+
+
+
+
+
+When the conditions of Lemma~\ref{lem:MovingConeEquivalence} are satisfied, the ample cone equals $\Gamma_i$.  When these conditions are not satisfied, one needs to be more careful, as $\Gamma_i\subseteq \Cl(S)\otimes \QQ \ne \Cl(X_i)\otimes \QQ$.
+(Note:  the more common notation for this sheaf is $\widetilde{M}$, however when considering a single module with respect to different toric varieties, it is useful to have a notation that also specifies the toric variety $X_i$.)
+\medskip
+ We saw in an earlier lecture that if $X_i$ satisfies the conditions of Lemma~\ref{lem:MovingConeEquivalence}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf $\widetilde{M}$ on $X_i$. 
+ 
+\begin{notation}
+To emphasize the dependence of $\widetilde{M}$ on $X_i$, we will from now on write $\widetilde{M}$ as $M|_{X_i}$. 
+\end{notation}A minor modification of the associated sheaf construction works for the other $X_i$'s as well. We therefore have:
+\begin{prop}
+    Let $X_i$ be any of the simplicial toric varieties from Definition~\ref{defn:Xi} and let $\cE$ be a quasi-coherent sheaf on $X_i$.
+    \begin{enumerate}
+        \item There exists a graded $S$-module $M$ such that $M|_{X_i}\cong \cE$.
+        \item  If $\cE$ is coherent then $M$ can be chosen to be a finitely generated $S$-module
+    \end{enumerate}
+\end{prop}
+
+%We will in the next lecture see  this correspondence is simpler to describe if one passes to the toric stack associated to~$X_i$ (in fact, this is the {\em main} reason to talk about stacks, in our opinion).
+
+
+%, and thus the following construction is not necessary for the main results about Cox categories.  However, for those familiar with the relationship between modules on a Cox rings and sheaves on a toric variety, it may provide a helpful perspective.
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{thm}
+%The chamber s are in bijection with any of the following:
+%\begin{enumerate}
+%	\item Simplicial toric varieties  with a subset of the given rays
+%	\item GIT quotients that arise in a a simplicial toric variety
+%	\item  The coarse moduli space of the quotient stack $[\Spec(S) - V(B_i) / G]$ equals $X_i$.
+%	\item  Choose any point $a\in \Cl(S)$ where $\deg_{\QQ}(a)$ lies in the interior of $\Gamma_i$.  Let $P_a\subseteq M$ be associated polytope and let $\Sigma$ be the normal fan of $P_a$.  The toric variety associated to $\Sigma$ is $X_i$.
+%%	\item  
+%\end{enumerate}
+%\end{thm}
+
+
+%\begin{remark}
+%     We will confirm below that each pair $(S,B_i)$ determines a simplicial projective variety $X_i$.  The rough statement is that $X_i$ the quotient $\Spec(S) - V(B_i) / G$ (with the action of $G$ induced by the grading group), but this is a ``rough'' statement because of various subtleties involving quotients of projective varieties.  So there is a sense in which the multigraded ring $S$ naturally corresponds to the set of toric varieties $X_1, \dots, X_r$.
+%
+%    This connection is even sharper from a homological perspective.  The pair $(S,B_i)$ determines a module category as follows:  we write $\mod(S)$ for the category of $\Cl(S)$-graded $S$-modules and we write $\mod_{B_i}(S)$ for the subcategory  modulo those modules that are annihilated by a power of $B_i$.  To the pair $(S,B_i)$ we can attach the quotient category $\mod(S)/\mod_{B_i}(S)$.  This equals--essentially by defintion--the category of sheaves on the quotient stack $[\Spec(S) - V(B_i)/G]$ which we denote as $\mathcal X_i$.  We will see later that $\mathcal X_i$ is closely related to the aforementioned toric variety $X_i$.
+%\end{remark}
+
+
+\section{Lecture 12 (Martin Kalck); The Cox Category, I: Definition}
+As we saw in one of the introductory lectures, Beilinson gave a very concrete description of the derived category of $\PP^n$~\cite{beilinson}.  Recall the
+\defi{Beilinson collection} of line bundles $\cO_{\PP^n}(-n), \ldots,
+\cO_{\PP^n}(-1), \cO_{\PP^n}$.  And the fact that the Beilinson collection is a full, strong, exceptional collection means that every sheaf on $\PP^n$ can be represented, in an essentially unique way, as a complex whose terms are sums of these line bundles.
+
+\begin{thm}\label{thm:BeilinsonFSEC}
+The Beilinson collection of line bundles on $\PP^n$ is a full, strong exceptional collection.
+\end{thm}
+
+
+\begin{thm}\label{thm:UniquenessAndFSEC}
+    For every sheaf $\mathcal F$ on $\PP^n$, there is a (unique up to homotopy) complex $F$ which is quasisomorphic to $\mathcal F$ and where $F_i = \oplus_{j=0}^n \cO(-j)^{m_{ij}}$.
+\end{thm}
+
+Some well-known toric varieties satisfy an analogue of Beilinson's theorem.
+
+\begin{example}
+    The Beilinson collection for $\PP^1$ consists of the line bundles of degrees $-1$ and $0$.   On $\PP^1\times \PP^1$, the bundles $\cO_{\PP^1\times \PP^1}(-1,-1),\cO_{\PP^1\times \PP^1}(-1,0), \cO_{\PP^1\times \PP^1}(0,-1),\cO_{\PP^1\times \PP^1}$ form a full, strong exceptional collection.  Note that the degrees that arise are the products of the degrees from the Beilinson collection of the factors.  A variant of Theorem~\ref{thm:UniquenessAndFSEC} thus holds for sheaves on $\PP^1\times \PP^1$.
+
+    A similar result holds for any product $\PP^n\times \PP^m$.  In this case, the degrees that should up at $\cO(-i,-j)$ where $-n \leq -i \leq 0$ and $-m \leq -j \leq 0$.  In fact, a similar result holds for multifactor products like $\PP^a\times \PP^b\times \PP^c\times \PP^d$.  
+    
+    The proofs of all of these cases follow fairly easily from Beilinson's original work.  This is for the following reasons:
+    \begin{enumerate}
+        \item Exceptionality is a simple calculation.
+        \item Fullness follows easily from having a resolution of the diagonal like Beilinson's.
+        \item If $F$ is Beilinson's resolution of the diagonal for $\PP^n$ and $G$ is Beilinson's resolution of the diagonal for $\PP^m$ then $F\boxtimes G$ is a resolution of the diagonal for $\PP^n\times \PP^m.$
+    \end{enumerate}
+
+    For instance, in the case of $\PP^1\times \PP^1$ in more detail.  The fact that 
+    \[
+    \cO_{\PP^1\times \PP^1}(-1,-1),\cO_{\PP^1\times \PP^1}(-1,0), \cO_{\PP^1\times \PP^1}(0,-1),\cO_{\PP^1\times \PP^1}
+    \]form a strong exceptional collection is a simple cohomology computation.  For fullness, we start with the fact that
+    \[
+    \cO_{(\PP^1)^2} \gets \cO_{(\PP^1)^2}(-1,-1)\gets 0
+    \]
+     is a resolution of $\Delta_{\PP^1} \subseteq (\PP^1)^2$.  Taking the box product of this complex with itself yields a resolution of $\Delta_{(\PP^1)^2} \subseteq (\PP^1)^4$:
+     \[
+    \cO_{(\PP^1)^4} \gets 
+    \begin{matrix}
+      \cO_{(\PP^1)^4}(-1,0,-1,0)\\
+      \oplus
+      \cO_{(\PP^1)^4}(0,-1,0,-1)
+    \end{matrix}
+    \gets 
+     \cO_{(\PP^1)^4}(-1,-1,-1,-1) \gets 0.
+     \]
+     Applying the Fourier--Mukai transform trick, similar to what we saw in Lecture 2 and in the proof of Conjecture~\ref{conj:bondal}, will show fullness.
+\end{example}
+
+
+
+Some of the other classical examples of smooth projective toric varieties also satisfy an analogue of Beilinson's theorem.
+\begin{example}
+Let $X$ be the Hirzebruch surface of type $3$, as introduced in Example~\ref{ex:Hirzebruch}.  Then $\cO_{X}(-1,-1),\cO_{X}(-1,0), \cO_{X}(0,-1),\cO_{X}$
+form a full, strong exceptional collection.  The same result holds for a Hirzebruch surface of any type.  For those who are curious: this is a special case of Orlov's semi-orthogonal decomposition result for projective bundles.\daniel{add citation}
+\end{example}
+
+A natural question then is to ask:  which smooth, projective toric varieties satisfy an analogue of Beilnson's theorem?  In 1997, King conjectured that the answer was ``all of them''.
+
+\begin{conj}[King, 1997]
+    Every smooth, projective toric variety has a full, strong exceptional collection of line bundles.
+\end{conj}
+
+This turned out to be
+false.  Hille-Perling gave the first counterexamples, and followup work of Michalek and Efimov showed counterexamples for fairly simple varieties, and showed that the conjecture could not be salvaged by restricting, for instance, to Fano toric varieties
+~\cites{hille-perling, michalek11, efimov}.
+
+Nevertheless, King's Conjecture 
+continued to inspire work on exceptional collections for toric
+varieties, and there is a huge literature in this vein:
+~\cites{altmann-immaculate,
+BFK_GIT,BallardEtAl2019ArithmeticToric,BallardEtAl2019ToricFrobenius,BallardEtAl2018arxivDerivedCategories,bernardi-tirabassi,borisov-hua,borisov-orlov-equivariant,borisov-wang,costa-miro-roig04,costa-miro-roig10,costa-miro-roig2,dey-lason-michalek,Jerby1,Jerby2,Jerby3,kawamataI,kawamataII,lason-michalek,ohkawa2013frobenius,prabhu-naik,sanchez2023derived,Uehara},
+\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{kawamataI}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Theorem~\ref{thm:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks (the line bundles in the Beilinson collection), the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve compelxes of sheaves.
+
+Over the remaining lectures, we will develop and prove an alternative 
+realization of King’s Conjecture.  (The king is dead, long live the king!)
+The basic idea originates from three observations:
+\begin{enumerate}
+    \item Several distinct toric varieties can have the same Cox ring.
+    \item  The Hanlon-Hicks-Lazarev Theorem shows that the analogue of Beilinson's resolution of the diagonal is uniform for all toric varieties with the same Cox ring.
+    \item  The Bondal-Thomsen collection--which is also uniform for all toric varieties with the same Cox ring--is an excellent analogue of the Beilinson in many ways.
+\end{enumerate}
+The picture that emerges is the following:
+\begin{center}
+\begin{tabular}{c|c}
+    $\PP^n$ & Smooth, projective toric variety \\ \hline 
+Beilinson collection   &  Bondal-Thomsen collection\\
+Beilinson resolution of diagonal & HHL resolution of diagonal\\
+Theorem~\ref{thm:BeilinsonFSEC} (King's Conjecture for $\PP^n$)    &  {\bf Revised King's Conjecture}
+\end{tabular}
+\end{center}
+Note that the Bondal-Thomsen collection and the HHL resolution depend only on the Cox ring.  This suggests that the ``right'' analogue of Theorem~\ref{thm:BeilinsonFSEC}, i.e. the ``right'' version of King's Conjecture, should perhaps depend only on the Cox ring.  In other words, maybe a revised King's Conjecture will involve a category that combines the sheaves from all of the toric varieties with the same Cox ring.
+
+This only raises another question:  if $X$ and $X'$ are two toric varieties with the same Cox ring, how do ``combine'' their derived categories?
+
+
+
+More specifically, in Section 5.1, we saw that a multigraded polynomial ring $S$ determines a finite set of simplicial toric varieties $X_1, X_2, \dots, X_r$ each of which has a corresponding stack $\sX_1, \sX_2, \dots, \sX_r$.  
+How can we combine their derived categories?  That is to say: we want to define a single category--which we refer to 
+ as the \defi{Cox category}, and denote by $D_{\Cox}(X)$ or $D_{\Cox}(S)$--that combines the study of modules on these $\sX_i$ {\em simultaneously}.
+The theorem we are driving for is:
+
+\begin{thm}[Revised King's Conjecture]\label{thm:main1}
+If $X$ is a projective toric variety with Cox ring $S$, then the Bondal--Thomsen collection, under a natural ordering, forms a full strong exceptional collection of line bundles for $D_{\Cox}(S)$.
+\end{thm}
+
+This should be viewed as a vague statement for the moment, as we have not defined $D_{\Cox}(S)$ precisely, nor have we have identified the Bondal--Thomsen collection as a subset of the Cox category.  But it gives a sense of where we are going: for toric varieties, the Bondal--Thomsen collection and the resolution of the diagonal only depend on the Cox ring.  And Theorem~\ref{thm:main1} is a revised King's Conjecture, and an extension of Theorem~\ref{thm:BeilinsonFSEC}, that also only depends on the Cox ring.
+
+We now aim to make the theorem precise.
+\begin{lemma}\label{lem:TildeX}
+    There exists a smooth, toric stack $\widetilde{\sX}$ that admits proper birational maps $\pi_i\colon \widetilde{\sX} \to \sX_i$ for all $i=1,2,\dots,r$.
+\end{lemma}
+\begin{proof}
+    At the level of varieties, this would be very standard as one could just take a simplicial refinement of the fans of each of the $X_i$.  Extending that proof to toric stacks requires working with additional notation of toric stacks, but there are very few new ideas and so we omit the proof.  See \cite{king}*{\S 3.1} for details.
+\end{proof}
+
+A standard fact \cite{king}*{Lemma 3.7} is that the (derived) pullback $\pi_i^*$ from $D(\sX_i)$ to $D(\widetilde{\sX})$ is fully faithful.\footnote{Because we are focused on derived categories, every time we write $\pi_i^*$ we should really be using the derived functor $L\pi_i^*$.  However, since we focus almost entirely on the pullbacks of line bundles, $L\pi_i^*$ and $\pi_i^*$ will coincide.  We will thus abuse notation and write $\pi_i^*$ throughout.}  Thus, $\pi_i^*$ essentially embeds the derived category of $\sX_i$ into the derived category of $\widetilde{\sX}$.  
+This provides a way to ``combine'' $D(\sX_1), D(\sX_2), \cdots, D(\sX_r)$: we can take the span of these categories inside of the ambient category $D(\widetilde{\sX})$.
+
+\begin{defn}\label{defn:CoxCategory}
+We define the Cox category of $S$, denoted $D_{\Cox}(S)$ as follows.  Since each pullback functor $\pi_i^*$ is fully faithful, $\pi_i^* D(\sX_i)$ is like a perfect copy of $D(\sX_i)$ that lives in $D(\widetilde{\sX})$.  
+We define $D_{\Cox}(S)$ as the subcategory of $D(\widetilde{\sX})$ generated\footnote{By ``generated'' we mean the smallest triangulated category containing these objects and that is closed under taking summands and extensions.} by $\pi_1^*D(\sX_1), \pi_2^* D(\sX_2), \dots, \pi_r^* D(\sX_r)$. In other words, $D_{\Cox}(S)$ is like the category generated by (the pullbacks of) all sheaves from all of the $\sX_i$.
+\end{defn}
+It is easy to check that the definition of $D_{\Cox}(S)$ 
+does not depend upon the choice of $\widetilde{\sX}$ from Lemma~\ref{lem:TildeX}; see \cite{king}*{Corollary 3.9}.
+
+ But these copies overlap. 
+\begin{example}
+   For any $1\leq i \leq r$ consider the structure sheaf $\cO_{\sX_i}$.  We have $\pi_i^*\cO_{\sX_i} = \cO_{\tsX}$.  Thus $\cO_{\tsX}$ lies in the intersection of the copy of each $D(\sX_i)$.
+\end{example}
+
+%Similarly, since the $\sX_i$ are all birational, the algebraic torus in each $\sX_i$ and in $\widetilde{\sX}$ are naturally identified with one another.  If we let $e_i$ denote the identity point in that torus in $\sX_i$ and $\widetilde{e}$ be the identity point in $\widetilde{\sX}$, then $\pi_i^* \cO_{e_i} = \cO_{\widetilde{e}}$ for all $i$.  So again, we see that $\cO_{\widetilde{e}}$ lies in the intersection of the copy of $ D(\sX_i)$ for each $i$.
+
+We can thus think of $D_{\Cox}(S)$ as ``gluing'' the various $D(\sX_i)$ together.  See Figure~\ref{fig:venn_diagram}.  The main results we will see ahead show that $D_{\Cox}(S)$ has nicer properties than any of the individual $D(\sX_i)$, in a manner that is (metaphorically at least) akin to how a projective variety can have nicer properties than its various affine patches.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.0]
+
+    % Define the ovals (ellipses) with rotation for a symmetrical layout
+    % Oval 1: Top
+\draw[thick] (0, 0.4) ellipse (4.8cm and 3.2cm);
+
+    \node[ellipse, draw, minimum width=4cm, minimum height=2.5cm, rotate=90] 
+        (A) at (0, 1.2) {};
+    
+    % Oval 2: Bottom Left
+    \node[ellipse, draw, minimum width=4cm, minimum height=2.5cm, rotate=150] 
+        (B) at (-0.95, -0.4) {};
+        
+    % Oval 3: Bottom Right
+    \node[ellipse, draw, minimum width=4cm, minimum height=2.5cm, rotate=30] 
+        (C) at (0.95, -0.4) {};
+
+    % Outer labels for the sets
+    \node[below left, xshift=-34mm] at (-1,2.5) {$D(\widetilde{\mathcal X})$};
+    \node[above, yshift=15mm] at (A.north) {$D(\mathcal{X}_1)$};
+    \node[below left, xshift=-34mm] at (B.south west) {$D(\mathcal{X}_2)$};
+    \node[below right, xshift=-3mm] at (C.south east) {$D(\mathcal{X}_3)$};
+
+    % Center intersection point and its label
+    \filldraw (0, 0.15) circle (2pt) node[below, yshift=-2mm] {$\mathcal{O}_{\widetilde{\mathcal{X}}}$};
+
+\end{tikzpicture}
+\caption{The Cox category is built by embedding the categories of the $\sX_i$ into the ambient category $D(\tsX)$.  These copies overlap, and so the Cox category is like a gluing of the sheaves on the $\sX_i$.}
+\label{fig:venn_diagram}
+\end{figure}
+
+% How do the copies of $D(\sX_i)$ in $D_{\Cox}$ relate to one another?
+% The graphs of the birational maps $\sX_i \dashrightarrow \sX_j$ induce
+% Fourier--Mukai transforms  $\Phi_{ij}\colon D(\sX_i)\to D(\sX_j)$. For any
+% $\cE\in D(\sX_i)$, we refer to the set of $\Phi_{ij}(\cE)$ (for all $j$) as the
+% \defi{Fourier--Mukai transforms of $\cE$}.
+% Continuing with the metaphor that $D(\sX_i)$ is analogous to an ``affine
+% patch'' of $D_{\Cox}$, each Fourier--Mukai transform corresponds to a
+% transition function, and each $\pi_{i*}\colon D_{\Cox} \to D(\sX_i)$
+% represents restriction to the patch.
+
+
+\begin{example}\label{ex:CoxProjectiveSpace}
+    Let $S$ be the Cox ring of $\PP^n$.  In this case, the secondary fan only has a single chamber, i.e. the chamber corresponding to $\PP^n$ and thus $D_{\Cox}(S)=D(\PP^n)$.  The same holds for any toric variety whose secondary fan has a single chamber, such as weighted projective space or product of projective spaces.
+\end{example}
+
+\begin{example}\label{ex:BlowupAtOnePoint}
+    Let $S$ be the Cox ring of $\cH_1$ the Hirzebruch surface of type $1$.  In this case, the secondary fan as two chambers: one chamber corresponds to $\PP^2$ and one corresponding to $\cH_1$.  Both are smooth, and so in each case, the corresponding toric stack is simply the variety itself.  There is a natural morphism $\alpha\colon \cH_1\to \PP^2$ given by the blowup of $\PP^2$ at point and thus $\alpha^* D(\PP^2)$ is naturally a subcategory of $D(\cH_1)$.  We thus have
+    \[
+    D_{\Cox}(S) = \langle \pi_1^* D(\cH_1), \pi_2^* D(\PP^2)\rangle =
+    \langle \pi_1^* D(\cH_1), \pi_1^* \alpha^* D(\PP^2)\rangle = \langle \pi_1^* D(\cH_1)\rangle.
+    \]
+    So in this case, we also see that $D_{\Cox}(S)$ is simply equal to $D(\cH_1)$.
+\end{example}
+
+\begin{example}\label{ex:Hirzebruch}
+    Let $S$ be the Cox ring of $\cH_3$ the Hirzebruch surface of type $3$.  In this case, the secondary fan has two chambers: one chamber corresponds to a weighted projective space $\PP(1,1,3)$ and one corresponding to $\cH_3$.  Unlike the previous example, $\PP(1,1,3)$ is simplicial but not smooth, and so we need to consider the weighted projective stack $\PP_{\operatorname{stack}}(1,1,3)$. There is a morphism from $\cH_3$ to the weighted projective space $\PP(1,1,3)$, where the pullback of the line bundle $\cO_{\PP(1,1,3)}(3)$ is $\cO_{\cH_3}(0,1)$.  But there is no such morphism to $\PP_{\operatorname{stack}}(1,1,3)$.  The reason for this is simple:  if there were such a morphism $\alpha\colon \cH_3 \to \PP_{\operatorname{stack}}(1,1,3)$, then since $\cO(1)$ is a line bundle on the stack, its pullback would need be a line $L$ such that $L^{\otimes 3} = \alpha^* \cO(3) = \cO_{\cH_3}(0,1)$.  And this is impossible.  (The issue is avoided on the weighted projective space because $\cO(1)$ is not a line bundle on that space.)
+
+    Thus, this is our first example where $D_{\Cox}(S)$ is a genuine combination of two subcategories.
+\end{example}
+
+
+
+\begin{remark}\label{rmk:mythical}
+    It is rarely the case that there is some $\widetilde{\sX}$ as in Lemma~\ref{lem:TildeX} where $D_{\Cox}(S)$ equals $D(\widetilde{\sX})$.  In other words, $D_{\Cox}(S)$ is generally a genuine subcategory of $D(\tsX)$, as illustrated somewhat cartoonishly in Figure~\ref{fig:venn_diagram}.
+    
+Nevertheless, it can sometimes be helpful to think of the Cox category as the derived category of a mythical toric variety $\sX_{\text{myth}}$ associated to the Cox ring $S$.  This $\sX_{\text{myth}}$ would be smooth and proper and birational to each of the $\sX_i$. This yields a heuristic for properties of $D_{\Cox}(S)$, and as we will in \S\ref{subsec:smooth}, some of those resulting predictions are correct.
+\end{remark}
+
+\begin{remark}
+Let us continue with the metaphor that $D_{\Cox}(S)$ is like a projective variety, obtained the ``affine patches'' $D(\sX_i)$, of $D_{\Cox}$.  One might ask:  what is the analogue of the transition functions, that take you from affine patch to another?  The answer is the Fourier--Mukai transforms associated to the birational maps $\sX_i \dashrightarrow \sX_j$.  We will examine these transforms in greater depth in Section \ref{sec:FMTransform}.
+
+% these copies 
+% overlap. For example, the structure sheaf $\cO_{\sX_i}$ pulls 
+% back to $\cO_{\tsX}$ for all $i$, meaning that $\cO_{\tsX}$ lies in 
+% $\pi_i^* D(\sX_i)$ for all $i$.  
+% How do the copies of $D(\sX_i)$ in $D_{\Cox}$ relate to one another?
+% The graphs of the birational maps $\sX_i \dashrightarrow \sX_j$ induce
+% Fourier--Mukai transforms  $\Phi_{ij}\colon D(\sX_i)\to D(\sX_j)$. For any
+% $\cE\in D(\sX_i)$, we refer to the set of $\Phi_{ij}(\cE)$ (for all $j$) as the
+% \defi{Fourier--Mukai transforms of $\cE$}.
+% Continuing with the metaphor that $D(\sX_i)$ is analogous to an ``affine
+% patch'' of $D_{\Cox}$, each Fourier--Mukai transform corresponds to a
+% transition function, and each $\pi_{i*}\colon D_{\Cox} \to D(\sX_i)$
+% represents restriction to the patch.
+
+One can also make this metaphor more precise, and totally excise the cover $\tsX$, by using the Grothendieck construction \cite{SGA1}*{\S\.VI.8}.  This gets pretty technical, and so we omit it in these notes, but one can see \cite{king}*{Appendix A} for details.
+% birational-gluing-via-integral-transforms
+% perspective precise (see \Cref{thm:cox_groth}) by providing an equivalent 
+% characterization of $D_{\Cox}$ as constructed from a lax functor whose 1-skeleton is the data of 
+% $(D(\sX_i),\Phi_{ij})$, using the  Just as a scheme is glued as a colimit of affine
+% schemes, $D_{\Cox}$ is the pretriangulated envelope of the lax colimit of
+% derived categories.
+\end{remark}
+
+
+We have now defined $D_{\Cox}(S)$, but to make Theorem~\ref{thm:main1} precise, we also need to define the Bondal--Thomsen collection as a subset of $D_{\Cox}(S)$.  We will consider return to our running example before giving the full definition.
+
+
+% We construct $D_{\Cox}(X)$ using the secondary fan $\Sigma_{GKZ}$. 
+% The maximal chambers of $\Sigma_{GKZ}$ correspond to simplicial toric varieties, which we label as $X_1, \dots, X_r$ as well as corresponding toric stacks $\sX_1, \dots, \sX_r$.
+%Each $X_i$ comes with an irrelevant ideal $B_i\subseteq S$, and the pair $(S,B_i)$ determines both the toric variety $X_i$ as a GIT quotient of $\Spec(S) - V(B_i)$ and a Deligne--Mumford toric stack $\sX_i$ as the corresponding stack quotient. These are identical when $X_i$ is smooth, but when $X_i$ is simplicial but not smooth, the stack $\sX_i$ remains smooth, making its derived category better behaved. Accordingly, our central definition will involve these toric stacks.
+
+% \begin{defn}\label{defn:DCox}
+% Let $\sX_1, \dots, \sX_r$ be the toric stacks corresponding to the maximal chambers of $\Sigma_{GKZ}(X)$.
+% Let $\tsX$ be any smooth toric stack with proper birational toric morphisms $\pi_i\colon \tsX\to \sX_i$ for all $i$.  The \defi{Cox category} $D_{\Cox}(X)$ is  the full subcategory of $D(\tsX)$ generated by $\pi_i^*D(\sX_i)$ for $1\leq i\leq r$.  We will often refer to $D_{\Cox}(X)$ as simply $D_{\Cox}$. 
+% \end{defn}
+
+
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale = .65]
+\draw[step=1cm,gray,dashed,very thin] (0,0) grid (7,7);
+\draw[fill=gray!60] (4,3)--(0,4.33)--(0,7)--(7,7)--(7,3)--(4,3);
+\draw (4,3) -- (4,7);
+\filldraw[black] (5,3) circle (3pt);
+\filldraw[black] (5,3) circle (0pt) node[anchor=south]{\tiny $d_1$};
+\filldraw[black] (3.5,5.5) circle (0pt) node[anchor=east]{{ $\PP(1,1,3)$}};
+\filldraw[black] (4.8,5.5) circle (0pt) node[anchor=west]{{ $\cH_3$}};
+\filldraw[black] (2,4) circle (3pt) node[anchor=south]{\tiny$d_2$};
+\filldraw[black] (3,4) circle (3pt) node[anchor=south]{\tiny$d_3$};
+\filldraw[black] (4,4) circle (3pt) node[anchor=south]{\tiny$d_4$};
+\filldraw[black] (5,4) circle (3pt) node[anchor=south]{\tiny$d_5$};
+\filldraw[black] (4,3) circle (3pt) node[anchor=north]{\tiny$d_0=(0,0)$};
+\filldraw[black]  (1,-1) circle (0pt);
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale = .65]
+\draw[step=1cm,gray,dashed,very thin] (0,0) grid (7,7);
+\node[anchor=north] at (5,3){\tiny $\deg(x_0)=\deg(x_2)$};
+\draw[black, ->, line width = .4mm] (4,3)--(5,3);
+\draw[black, ->, line width = .4mm] (4,3)--(4,4);
+\draw[black, ->, line width = .4mm] (4,3)--(1,4);
+\node at (4,4.25){\tiny $\deg(x_3)$};
+\node[anchor=south] at (1,4) {\tiny $\deg(x_1)$};
+\filldraw[black]  (1,-1) circle (0pt);
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale = .65]
+\draw[step=1cm,gray,dashed,very thin] (0,0) grid (7,7);
+\filldraw[black] (4.3,5.2) circle (0pt) node[anchor=west]{{ $- Z$}};
+\filldraw[black] (5,3) circle (3pt) node[anchor=north]{\tiny $d_1$};
+\draw[black, line width = .75mm] (6,3)--(4,3)--(1,4);
+\draw[black, dashed, line width = .75mm] (1,4) -- (1,5)--(3,5)--(6,4)--(6,3);
+\draw[fill = gray, opacity = .3] (4,3)--(1,4) -- (1,5)--(3,5)--(6,4)--(6,3)--(4,3);
+\filldraw[black] (2,4) circle (3pt) node[anchor=south]{\tiny$d_2$};
+\filldraw[black] (3,4) circle (3pt) node[anchor=south]{\tiny$d_3$};
+\filldraw[black] (4,4) circle (3pt) node[anchor=south]{\tiny$d_4$};
+\filldraw[black] (5,4) circle (3pt) node[anchor=north]{\tiny$d_5$};
+\filldraw[black] (4,3) circle (3pt) node[anchor=north]{\tiny$d_0$};
+\filldraw[black]  (1,-1) circle (0pt);
+\end{tikzpicture}
+\caption{The secondary fan for a Hirzebruch surface $\cH_3$ has two maximal
+chambers: one corresponding to $\cH_3$ and the other to $\PP(1,1,3)$.  The
+Bondal--Thomsen collection $\Theta$ consists of the degrees in a half-open
+zonotope $Z$ determined by the degrees of the variables.   In this
+example, $\Theta$ consists of the $6$ degrees $-d_i$, with $d_i$ as marked in
+$-Z$.}
+\label{fig:HirzSecondaryFan}
+\end{figure}
+
+\begin{example}\label{ex:hirzGKZ}
+Let $X=\cH_3$ be a Hirzebruch surface of type $3$. As we have already seen, its secondary fan has two maximal chambers (see Figure~\ref{fig:HirzSecondaryFan}): one corresponding to $\cH_3$, and the other to the weighted projective stack $\PP(1,1,3)$.
+After choosing $\tsX$ (see \cref{subsec:constructionOfWX}), $D_{\Cox}$ is generated by pullbacks of line bundles from $\cH_3$ and $\PP(1,1,3)$.
+Some of these ``glue,'' for example, the pullbacks of $\cO_{\cH_3}(0,d)$ and $\cO_{\PP(1,1,3)}(3d)$ agree for all $d\in \ZZ$.  For other bundles, the correspondence is more subtle. For instance, the Fourier--Mukai transform of the structure sheaf of the exceptional curve on $\cH_3$ is supported on the stacky point of $\PP(1,1,3)$.
+
+The Bondal--Thomsen collection corresponds to a set of degrees in $\Cl(\cH_3)= \ZZ^2$.  Each of these degrees has the form $-d_i$ where $d_i$ is some effective degree.  The secondary fan lives in $\Cl(\cH_3)\otimes_{\ZZ} \QQ$ and has support equal to the effective cone of $\cH_3$.  So we can overlay the secondary fan with the $d_i$ from the  Bondal--Thomsen collection.  This is illustrated in
+Figure~\ref{fig:HirzSecondaryFan}. 
+
+To state Theorem~\ref{thm:main1} precisely, we need to assign to each element $-d\in \Theta$ an appropriate object in
+$D_{\Cox}$. This issue is that we have too many possible choices!  For a given $-d$ should we take the pullback of $\cO_{\PP(1,1,3)}(-d)$ or the pullback of $\cO_{\cH_3}(-d)$.  If these always coincided, we would not have an issue, but we are not that lucky.
+
+So for a given degree $d$, how do we decide when to pull back from $\PP(1,1,3)$ and when to pullback from $\cH_3$?  We let the secondary fan be our guide.  For instance, referring to Figure~\ref{fig:HirzSecondaryFan},
+$d_5$ lies in the chamber for $\cH_3$; thus, we define $\cO_{\Cox}(-d_5)$ as
+the pullback of $\cO_{\cH_3}(-d_5)$. 
+
+We thus pull back $-d_1$ and $-d_5$ from $\cH_3$, and $-d_2$ and $-d_3$ from $\PP(1,1,3)$; for $-d_0$ and $-d_4$, either choice will work because the pullbacks will coincide. 
+\end{example}
+This example indicates the general recipe.
+\begin{defn}\label{defn:ThetaCox}
+Choose $-d \in \Theta$.  Since $d$ is an effective degree, its image in $\Cl(X)_\RR$ lies in one of the maximal chambers $\Gamma_i$ of the secondary fan, and this chamber corresponds to some $\sX_i$.  For this degree, we define $\cO_{\Cox}(-d)\ce\pi_i^*\cO_{\sX_i}(-d)$.
+\end{defn}
+We also need to choose an ordering on the elements of $\Theta$.
+\begin{defn}\label{defn:ordering}
+   The set $\Theta$ is equipped with a partial ordering such that $-d \le -d'$ if and only if $d - d'$ is effective. We choose any refinement of this partial ordering to a total ordering $-d_0, \dots, -d_t$.
+\end{defn}
+
+\begin{example}
+Continuing with the notation of Figure~\ref{fig:HirzSecondaryFan}, the ordering would be $-d_5<-d_4<-d_3<-d_2<-d_1<-d_0$
+\end{example}
+
+
+\section{Lecture 13 (John Cobb): The Cox category, II: Fourier-Mukai Transforms}
+\label{sec:FMTransform}
+Each of the toric stacks $\sX_1, \dots, \sX_r$ contains a copy of the same dense torus.  In particular, there is a natural birational map $\sX_i\dashrightarrow \sX_j$ for any $i,j$.  We write $\Gamma_{ij}$ for the graph of this birational map as a subvariety of $\sX_i\times \sX_j$.  There are natural projection maps $p,q$ from $\sX_i\times \sX_j$ to the two factors. We obtain the following diagram:
+\[
+\xymatrix{
+&\sX_i\times \sX_j\ar[ld]_{p}\ar[rd]^{q}&\\
+\sX_i&&\sX_j.
+}
+\]
+This allows us to define a Fourier--Mukai transform
+\[
+\Phi_{ij}\colon D^b(\sX_i)\to D^b(\sX_j) \text{ where } \Phi_{ij}(\cE) := Rq_*\left(p^*\cE \Lotimes_{\cO_{\sX_i\times \sX_j}} \cO_{\Gamma_{ij}}\right).
+\]
+At a more concrete level, the Fourier--Mukai transform can be understand as follows.  There is a Hanlon-Hicks-Lazarev complex $F$ which resolves $\Gamma_{ij}\subseteq \sX_i\times \sX_j$ and so we can ``underive'' the tensor product, by replacing $\cO_{\Gamma_{ij}}$ by $F$:
+\[
+\Phi_{ij}(\cE) = Rq_*\left(p^*\cE \otimes_{\cO_{\sX_i\times \sX_j}} F\right).
+\]
+
+
+This provides a geometric way to ``move'' a sheaf (or an object of the derived category) from one of the $\sX_i$ to all of the other.  Namely, imagine we have a sheaf $\cE_1$ on $\sX_1$.  For each $j$, we obtain $\Phi_{1j}(\cE_1)$ on $\sX_j$.  Since the $\sX_i$ all agree on the dense torus, $\Phi_{1j}(\cE_1)$ will agree with $\cE_1$ on the dense torus, and will only exhibit different behavior on the toric boundary.
+
+\begin{example}
+    For any $i,j$ we have $\Phi_{ij}(\cO_{\sX_i})=\cO_{\sX_j}$.  Why?  The pullback $p^*\cO_{\sX_i}$ is simply $\cO_{\sX_i\times \sX_j}$; this is a line bundle, and so the derived tensor product with $\cO_{\Gamma_{ij}}$ is simply the (underived) tensor product, which is
+    \[
+    \cO_{\sX_i\times\sX_j} \otimes_{\cO_{\sX_i\times \sX_j}}\cO_{\Gamma_{ij}} = \cO_{\Gamma_{ij}}.
+    \]
+We thus have that $\Phi_{ij}(\cO_{\sX_j})$ is the pushforward of $\cO_{\Gamma_{ij}}$ under the natural birational morphism $\Gamma_{ij}\to \sX_j$.  We then have $R(q|_{\Gamma_{ij}})_* \cO_{\Gamma_{ij}} = \cO_{\sX_j}$ by \cite{king}*{Proposition 3.5}.
+\end{example}
+
+\begin{example}
+    If $i=j$ then $\Gamma_{ij}$ is simply the diagonal $\Delta\subseteq \sX_i\times \sX_i$.  In this case,  $\Phi_{ii}$ is a Fourier--Mukai transform with respect to a resolution of the diagonal.  Thus $\Phi_{ii}$ is equivalent to the identity functor.  See for example \daniel{Add reference to Caldararu notes}.
+\end{example}
+
+\begin{example}\label{ex:HirzFMTransform}
+Let us return to our running example of the Hirzebruch surface of type $3$.  Consider
+\[
+\Phi_{21}\colon D(\mathcal H_3) \to D(\PP(1,1,3)).
+\]
+Let us consider what happens when we apply this nontrivial transform to the Bondal--Thomsen element $\cO_{\mathcal H_3}(-1,0)$.  To perform the computation, we start with the Hanlon-Hicks-Lazarev resolution for $\Gamma_{ij}$.  This has the form
+\[
+\begin{matrix}
+    \cO(0,0,0)\\
+    \oplus \\
+    \cO(2,-1,-2)\\
+    \oplus\\
+    \cO(1,-1,-1)
+\end{matrix}
+\longleftarrow
+\begin{matrix}
+    \cO(1,-1,-2)^2\\
+    \oplus \\
+    \cO(2,-1,-3)^2\\
+    \oplus\\
+    \cO(0,-1,-1)^2 \\
+    \oplus \\
+    \cO(-1,0,-1)
+\end{matrix}
+\longleftarrow
+\begin{matrix}
+    \cO(1,-1,-3)\\
+    \oplus \\
+    \cO(2,-1,-4)\\
+    \oplus\\
+    \cO(0,-1,-2)\\
+    \oplus \\
+    \cO(-1,-1,-1)
+\end{matrix}.
+\]
+Note that each line bundle is a box product from the factors.  For instance, $\cO(2,-1,-2)$ means $\cO_{\mathcal H_3}(2,-1) \boxtimes \cO_{\PP(1,1,3)}(-2)$.
+
+When we pull back $\cO_{\mathcal H_3}(-1,0)$ and tensor with this complex, we get:
+\[
+\begin{matrix}
+    \cO(-1,0,0)\\
+    \oplus \\
+    \cO(1,-1,-2)\\
+    \oplus\\
+    \cO(0,-1,-1)
+\end{matrix}
+\longleftarrow
+\begin{matrix}
+    \cO(0,-1,-2)^2\\
+    \oplus \\
+    \cO(1,-1,-3)^2\\
+    \oplus\\
+    \cO(-1,-1,-1)^2 \\
+    \oplus \\
+    \cO(-2,0,-1)
+\end{matrix}
+\longleftarrow
+\begin{matrix}
+    \cO(0,-1,-3)\\
+    \oplus \\
+    \cO(1,-1,-4)\\
+    \oplus\\
+    \cO(-1,-1,-2)\\
+    \oplus \\
+    \cO(-2,-1,-1)
+\end{matrix}.
+\]
+Since each of the terms is box product, we can thus compute the pushforward of this complex in terms of the pushforwards of the terms.  For a box product $\cF\boxtimes \cG$ on a product $X_1\times X_2$, the projection formula implies that 
+\[
+R\pi_{1*}\left(\cF\boxtimes \cG\right) \cong \cF \otimes R\pi_{1*}(\cG).
+\]
+ This allows us to easily compute the pushforward of each term.  For instance:
+\[
+Rp_*(\cO(1,-1,-2)) = Rp_*\left((\cO_{\mathcal H_3})(1,-1)\boxtimes \cO_{\PP(1,1,3)}(-2)\right) = H^*(\cO_{\mathcal H_3}(1,-1)) \otimes \cO_{\PP(1,1,3)}(-2))
+\]
+which equals $0$ because $\cO_{\mathcal H_3)}(1,-1)$ has no cohomology whatsoever by Corollary~\ref{cor:BTNoCohom}.    In fact, in this example, all of the terms vanish except $\cO(-2,0,-1)$ which has nonzero $H^1$ and so we end up with
+\[
+\Phi_{21}(\cO_{\mathcal H_3}(-1,0)) \cong H^1(\mathcal H_3, \cO(-2,0)) \otimes \cO_{\PP(1,1,3)}(-1) \cong \cO_{\PP(1,1,3)}(-1).
+\]
+% Degrees:
+% --conversion to P(1,1,3) is a+3b
+% %0,0,0,0
+% %2,-1,1,-1
+% %1,-1,2,-1
+% 0,0,0
+% 2,-1,-2
+% 1,-1,-1
+
+% 1,-1,-2 (2)
+% 2,-1,-3 (2)
+% 0,-1,-1 (2)
+% 0,-1,-3
+
+
+% %1,-1,0,-1
+% %2,-1,-1,-1
+% %0,-1,1,-1
+% %-1,-1,2,-1
+
+% \cO(1,-1,-3) \\
+% \oplus \\
+% \cO(2,-1,-4) \\
+% \oplus \\
+% \cO(0,-1,-2) \\
+% \oplus \\
+% \cO(0,-1,-1) \\
+
+
+\end{example}
+
+
+\begin{remark}
+    There is also an algebraic method to ``move'' a sheaf from one of the $\sX_i$ to all of the other.  
+    %Namely, if we choose a graded $S$-module $M$ such that $M|_{\sX_1}\cong \cE_1$ then we can obtain sheaves $M|_{\sX_j}$ on each of the $\sX_j$.  But there is an issue with this process:  the sheaf $M|_{\sX_j}$ may depend not just on $\cE_1$ but also on the choice of the module $M$.     
+ For instance, as in Example~\ref{ex:HirzFMTransform}, let us start with $\cO_{\cH_3}(-1,0)$ on $\cH_3$.  We can represent this by a graded $S$-module: for instance $S(-1,0)$ is a natural choice, as $S(-1,0)|_{\cH_3} = \cO_{\cH_3}(-1,0)$.  We can then use $S(-1,0)$ to determine a sheaf on $\PP(1,1,3)$ namely: $S(-1,0)|_{\PP(1,1,3)} = \cO_{\PP(1,1,3)}(-1)$.
+
+ But one should be cautious, as the outcome of this method depends on the module one uses to represent the initial sheaf.  For instance, we could also have represented $\cO_{\cH_3}(-1,0)$ via a different module.  A rather artificial choice would be to write $M=S(-1,0) \oplus S/(x_0,x_2)$.  Since $(x_0,x_2)$ is a component of the irrelevant ideal for $\cH_3$, we have $(S/(x_0,x_2))|_{\cH_3}=0$ as a sheaf on $\cH_3$.  Thus $M|_{\cH_3} \cong \cO_{\cH_3}(-1,0)$.  But on $\PP(1,1,3)$, $(x_0,x_2)$ is not a component of the irrelevant ideal.  It is the ideal of the singular point  $p=[0:0:1]$.  Thus $M|_{\PP(1,1,3)} = \cO_{\PP(1,1,3)}(-1) \oplus \cO_p$.
+
+ 
+% Then we have $M|_{\cH_3} = \cO_{\cH_3}(-1,0)$ and $M|_{\PP(1,1,3)}=\cO_{\PP(1,1,3)}(-1)$.  
+ 
+%  $I=\langle x_0,x_2\rangle$.  We have  $I(1,0)|_{\cH_3}=\cO_{\cH_3}$ but of course $S|_{\cH_3}=\cO_{\cH_3}$ as well.  The corresponding sheaves on $\PP(1,1,3)$ are distinct however:  $S|_{\PP(1,1,3)}=\cO_{\PP(1,1,3)}$ whereas $I(1,0)|_{\PP(1,1,3)}$ 
+\end{remark}
+
+
+\begin{remark}\label{rmk:WhatIsRevisedKingsConjectureAbout}
+What does the Revised King's Conjecture really tell us?  Let's first address what it specifically tells us about sheaves and multigraded rings.
+
+We get a uniqueness property akin to Theorem~\ref{thm:UniquenessAndFSEC}.  Namely, take a sheaf $\cE$ on a toric variety $X$.  Because $\Theta$ generates $D(X)$, one can represent $\cE$ in terms of the Bondal--Thomsen collection, but this representation will often be fundamentally non-unique.  However, if we want to represent $\cE$ AND the Fourier--Mukai transforms of $\cE$ to the other $\sX_i$ from the secondary fan, then we can do this in a unique (up to homotopy) way.  This is the statement of Corollary \daniel{FILL IN}.  In short: in some sense, it is simpler to classify sheaves on the whole secondary fan, than it is to just classify sheaves on a single toric variety $X$.
+
+So the theorem tells us that while King's Conjecture was false, the underlying idea was very much correct.  The cases where full strong exceptional cases of line bundles exist--projective space, products, projective bundles, etc--are indicative of what happens in the general case.  The correct statement just required a framework that was not yet obvious back then.
+\end{remark}
+\section{Lecture 14 (Milena Hering): Proof of revised King's conjecture, I: Outline}
+The Revised King's Conjecture claims that the line bundles $\cO_{\Cox}(-d)$ for $-d$ in the Bondal-Thomsen collection form a full strong exceptional collection.  Why would this be true and how could we prove this?
+
+Let's start with the special case where the secondary fan only has a single chamber, and where the toric variety in that chamber is smooth.  We write $X$ for this toric varite.  Then $D_{\Cox}(S)=D(\sX)$ and each $\cO_{\Cox}(-d)$ is simply $\cO_{\sX}(-d)$.  Choose two elements $-d,-d'$ in the Bondal-Thomsen collection $\Theta$.  We must show several things:
+\begin{enumerate}
+    \item Exceptionality:  For any $-d\in \Theta$ we have
+    \[
+    \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = k \text{ and }
+    \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) = 0 \text { for $i>0$.}
+    \]
+    \item Orthogonality: For any $-d'<-d\in \Theta$ we have
+        \begin{enumerate}
+            \item  
+            
+            $\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0$ for $i>0$ and
+            \item  $\Hom(\cO_{X}(-d), \cO_{X}(-d'))=0$.
+        \end{enumerate}
+    \item Fullness:  The bundles $\cO_{X}(-d)$ with $-d\in \Theta$ generate the derived category.
+\end{enumerate}
+Exceptionality is trivial:
+\[
+\Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^0(X, \cO_{X}(-d -(-d)) = H^0(X, \cO_{X}) = k^1
+\]
+because $X$ is a projective variety.  Also
+\[
+\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d)) = H^i(X, \cO_{X}) = 0
+\]
+because $X$ is a rational variety.
+
+Fullness follows from the Hanlon--Hicks--Lazarev's proof of the Bondal's Conjecture (Conjecture \ref{conj:bondal}) which we saw back in \S\ref{subsect:bondalConjecture}.
+
+Let us turn to orthogonality.  Part (b) of orthogonality is literally built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a) is the meat of the argument.
+\begin{lemma}
+    Let $-d,-d'$ be two elements of the Bondal--Thomsen collection for $\sX$.  Assume that $-d'$ is anti-nef.  Then
+    \[
+    \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0 \text{ for all } i>0.
+    \]
+\end{lemma}
+\begin{proof}
+   Follows from Demazure vanishing.  Namely \daniel{fill in details}
+\end{proof}
+
+The following outline extends to the case where the secondary fan has one chamber, but where $X$ is simplicial but not smooth, with only standard changes required for working with the stack $\sX$ in place of $X$.
+
+\bigskip
+
+The case above is very special, however, as secondary fans generally have more than one chamber.  Nevertheless, it can provide something of a roadmap for the general proof.  Exceptionality will remain trivial.  Fullness will be due to a variant of a Hanlon--Hicks--Lazarev resolution of the diagonal, utilizing the  fact that the resolution of the diagonal is ``uniform'' for all of the $\sX_i$ associated to the Cox ring $S$ (see Corollary~\ref{cor:diagonalUniform}).  Orthogonality (b) will essentially follow from the definition of the ordering.  And so, as above, Orthogonality (a) will be the hardest part.
+
+Let's examine what we would need to do in order to obtain Orthogonality.  
+Each $\cO_{\Cox}(-d)$ is defined as a pullback from one particular $\sX_i$.  For Orthogonality, we need to understand the relationship between two such bundles.  So let's say that $\cO_{\Cox}(-d)$ is the pullback of $\cO_{\sX_1}(-d)$ and $\cO_{\Cox}(-d')$ is the pullback of $\cO_{\sX_2}(-d')$.  
+
+We need to compute the $\Hom$ and $\Ext$ between these sheaves, and we thus need a way to compare sheaves pulled back from $\sX_1$ with sheaves pulled back from $\sX_2$.  That is, we need to compute:
+\begin{align*}
+\Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) &= 
+\Ext^i_{D_{\Cox}(S)}(\pi_1^*\cO_{\sX_1}(-d),\pi_2^*\cO_{\sX_2}(-d'))\\
+\intertext{The Projection Formula allows us to swap the $\pi_1^*$ in the first factor to a $\pi_{1*}$ in the second factor.  This yields}
+&=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\pi_{1*}\pi_2^*\cO_{\sX_2}(-d'))\\
+\intertext{So we can reduce the Orthogonality computation to a computation on $\sX_1$, but we will need to understand this weird-looking object $\pi_{1*}\pi_2^*\cO_{\sX_2}(-d')$.  But wait, we have seen this before!  It is the result of the Fourier--Mukai transform $\Phi_{21}$.  So we have}
+&=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\Phi_{21}\cO_{\sX_2}(-d')).
+\end{align*}
+
+And so the proof of Revised King's Conjecture will require us to understand the effect of Fourier--Mukai transforms on Bondal--Thomsen line bundles.  In general, understanding the Fourier--Mukai of a sheaf can be incredibly subtle or difficult.  But it turns out that, for the Bondal--Thomsen elements, the results of the Fourier--Mukai transforms are as simple as one could ever hope for. 
+\begin{lemma}[$\Theta$-Transform Lemma]\label{lem:PushPull}
+Let $-d\in \Theta_X$ be an element whose image in $\Sigma_{GKZ}$ lies in the chamber corresponding to $\sX_i$.  For any $j$,  
+\[
+\Phi_{ij}(\cO_{\sX_i}(-d)) = \cO_{\sX_j}(-d).
+\]
+Equivalently:
+\[
+\pi_{j*}\cO_{\Cox}(-d) = \cO_{\sX_j}(-d).
+\]
+\end{lemma}
+In particular, the statement says the following:  start with a Bondal--Thomsen line bundle $\cO_{\sX_i}(-d)$ where $d$ comes from the chamber corresponding to $\sX_i$.  When you Fourier--Mukai transform this bundle to another chamber, you will get the corresponding Bondal--Thomsen line bundle on the nose.  In other words, $\cO_{\sX_i}(-d)$ will become $\cO_{\sX_j}(-d)$.  
+
+There are two miracles here, neither of which is obvious at first.  The first miracle is that the transform of this sheaf is a sheaf, i.e. that the higher pushforwards $R^i$ all vanish.  This is not generally true for Fourier--Mukai transforms, and so it is special for this case.  The second miracle is that the transform of a line bundle is still a line bundle.  Again, this is not generally true for Fourier--Mukai transforms.
+
+In short, Lemma~\ref{lem:PushPull} is quite subtle, and it fails if one alters the hypotheses even
+slightly.  We will explore this delicacy in more detail in \S\ref{sec:proofKing2}.
+But we emphasize that the challenge in the lemma has nothing to do with stackiness, as the statement seems equally subtle when both $\sX_i$ and $\sX_j$ are smooth toric varieties.
+
+\begin{remark}
+  As far as we were able to determine, the $\Theta$-Transform Lemma does not appear to easily follow from known vanishing results from toric or birational geometry.  However, it would be interesting to explore this in greater detail.  \daniel{Michael asks if lev's simplification does this.  Come back to this point.}
+\end{remark} 
+
+The next lecture will tackle the proof of the $\Theta$-Transform Lemma.  Before we dive into that, we want to note that the lemma almost immediately implies the Orthogonality statement we needed.
+
+Combining the above computation with the $\Theta$-Transform Lemma, we conclude:
+\[
+\Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) = 
+\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\cO_{\sX_1}(-d')) = H^i(\sX_1, \cO_{\sX_1}(d-d')).
+\]
+Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(-d)$ is anti-nef; and since $-d'$ comes from the Bondal--Thomsen collection, it is a divisor with ``pure fractional coefficients''.  This is precisely the domain for Demazure Vanishing, which will thus immediately imply that all of these Ext groups vanish.  In short:  combining the $\Theta$-Tranform Lemma and Demazure Vanishing will immediately yield the Orthogonality statement we need.
+
+\begin{example}\label{ex:hirzStrongBT}
+Revisiting Example~\ref{ex:hirzGKZ} and Figure~\ref{fig:HirzSecondaryFan},  
+write $\pi_1\colon \tsX\to \cH_3$ and $\pi_2\colon \tsX \to \PP(1,1,3)$.
+By Definition~\ref{defn:ThetaCox}, $\cO_{\Cox}(-1,0) = \pi_1^* \cO_{\cH_3}(-1,0)$.  Since $d=(-2,1)$ lies in the chamber corresponding to $\PP(1,1,3)$, we must use the fact that there is a natural corresponding element in $\Theta_{\PP(1,1,3)}$.  
+In this case, the map $\alpha\colon \ZZ^2\to \Cl(\PP(1,1,3))$ is given by $(a,b) \mapsto a+3b$ and thus $\cO_{\Cox}(2,-1) = \pi_2^* \cO_{\PP(1,1,3)}(\alpha(2,-1))=\pi_2^* \cO_{\PP(1,1,3)}(-1)$.  
+Here is a sample Hom computation: 
+\begin{align*}
+\RHom(\cO_{\Cox}(-1,0), \cO_{\Cox}(2,-1))
+&=\RHom(\pi_1^*\cO_{\cH_3}(-1,0), \pi_2^*\cO_{\PP}(2,-1)) & \text{by definition,}\\
+&=\RHom(\cO_{\cH_3}(-1,0), \pi_{1*}\pi_2^*\cO_{\PP}(2,-1)) & \text{by adjunction,}\\
+&=\RHom(\cO_{\cH_3}(-1,0), \cO_{\cH_3}(2,-1)) & \text{by Lemma~\ref{lem:PushPull},}\\
+&=\RHom(\cO_{\cH_3}, \cO_{\cH_3}(3,-1))=0 & \text{by direct computation.}
+\end{align*}
+Note that the inverse computation is nonzero:
+\begin{align*}
+\RHom(\cO_{\Cox}(2,-1),  \cO_{\Cox}(-1&,0)) \\
+\qquad 
+&=\RHom(\pi_2^*\cO_{\PP(1,1,3)}(-1), \pi_1^*\cO_{\cH_3}(-1,0))&\text{by definition,}\\
+&=\RHom(\cO_{\PP(1,1,3)}(-1), \pi_{1*}\pi_2^*\cO_{\cH_3}(-1,0)) & \text{by adjunction,}\\
+&=\RHom(\cO_{\PP(1,1,3)}(-1), \cO_{\PP(1,1,3)}(-1)) & \text{by \cref{lem:PushPull},} \\
+&= \Bbbk^1 & \text{by direct computation.}
+\end{align*}
+Through similar computations for the other pairs, one can directly confirm that $\Theta$ forms a strong, exceptional collection.  Fullness requires an additional argument.
+\end{example}
+
+To summarize, the outline of the proof amounts to:
+\begin{enumerate}
+    \item  Combine the $\Theta$-Transform Lemma and Demazure Vanishing to obtain the necessary orthogonality statement .
+    \item Use uniformity properties (Corollary~\ref{cor:diagonalUniform}) of the Hanlon-Hicks-Lazarev resolution of the diagonal to conclude that $\cO_{\Cox}(-d)$ with $-d\in \Theta$ generate $D_{\Cox}(S)$.
+\end{enumerate}
+
+
+{\color{blue} Paste in Example 4.5 from the King's paper, to demonstrate this point.  Remark on fullness.}
+
+% Namely, we must compute $\RHom(\cO_{\Cox}(-d), \cO_{\Cox}(-d'))$ for two elements $-d,-d' \in \Theta$.
+% By adjunction and the $\Theta$-Transform Lemma, this reduces to computing
+% \[ \RHom(\cO_{\Cox}(-d), \cO_{\Cox}(-d'))
+% \cong \RHom_{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d'))
+% \cong H^*(\sX_i, \cO_{\sX_i}(d-d')).
+% \]
+% The element $d$ lies in the nef cone of $\sX_i$ and since $-d'$ is an element of $\Theta$, it can be written as a toric $\QQ$-divisor with all coefficients in $(-1,0]$.  The vanishing of the higher cohomology groups then follows from a stacky version of Demazure Vanishing for $\QQ$-divisors (\cref{thm:demazure}).  
+
+% \smallskip
+
+% Fullness of the Bondal--Thomsen collection for each $\sX_i$ was proven in \cite{HHL}*{Corollary D} and \cite{FH}; the second step is to extend those results to show that $\Theta$ generates $D_{\Cox}$.  For this, we combine the fact that $\Theta_{\tsX}$ generates $D(\tsX)$ with \cref{lem:PushPull} and explicit computations regarding the behavior of Bondal--Thomsen bundles with respect to pushforward.  
+
+
+\section{Lecture 15 (Patrick Kennedy-Hunt): Proof of revised King's conjecture, II: Exceptionality}\label{sec:proofKing2}
+As discussed in the previous section, when it comes to proving the orthogonality properties of the Bondal--Thomsen collection, the $\Theta$-Transform Lemma is the key.  Let us recall the setup.
+
+Choose some degree $-d\in \Theta$ where $d$ lies in the chamber $\Gamma_1$ corresponding to $\sX_1$.  We have the following diagram:
+\[
+\xymatrix{
+&\Gamma_{12}\ar[ld]_{p}\ar[rd]^{q}&\\
+\sX_1&&\sX_2.
+}
+\]
+And we must prove that
+\[
+R^\ell q_*(p^*\cO_{\sX_1}(-d)) = 
+\begin{cases}
+\cO_{\sX_2}(-d) & \text{ if $\ell =0$}\\
+0 & \text{ if $\ell > 0$}.
+\end{cases}
+\]
+This breaks into fundamentally different parts: 
+\begin{itemize}
+    \item  {\bf $R^0$-term:}  we must show that the $R^0q_*$-term is precisely the right line bundle.
+    \item {\bf Vanishing:}  we must show a vanishing statement for the higher direct images $R^\ell q_*$ with $\ell>0$.  
+\end{itemize}
+As we will try to demonstrate in the next example, these two parts are in tension with one another.
+
+\begin{example}[Atiyah Flop]\label{ex:atiyahFlop}
+This is a non-projective example, but it is instructive for thinking about the $\Theta$-Transform Lemma.  Consider the Cox ring $S=\Bbbk[x_0,x_1,y_0,y_1]$ with $\deg(x_i)=1$ and $\deg(y_j)=-1$.  The Koszul zonotope associated to this nonstandard graded ring (see Definition~\ref{defn:KoszulZonotope}) is the open interval $(-2,2)$ and so the Bondal--Thomsen collection consists of the divisors of degree $-1,0$ and $1$.
+
+The secondary fan has two chambers: $\mathbb R_{\geq 0}$ and $\mathbb R_{\leq 0}$.
+The first chamber corresponds to a threefold $Y_+ =[\Spec(S) - V(x_0,x_1) / \GG_m]$.  This is a $\PP^1$-bundle (coordinates $x_0,x_1$ on the fibers) over $\mathbb A^2$ (coordinates $y_0,y_1$ on the base).  The second chamber corresponds to $Y_- =[\Spec(S) - V(y_0,y_1) / \GG_m]$, which is a $\PP^1$-bundle (coordinates $y_0,y_1$ on the fibers) over $\mathbb A^2$ (coordinates $x_0,x_1$ on the base). 
+%The origin corresponds to $Y_0=\Spec(S_0)$ where $S_0=\Bbbk[x_0y_0, x_0y_1, x_1y_0, x_1y_1]$.  
+Let $\widetilde{Y}$ be the blowup of $Y_+$ at the line $V(y_0,y_1)$; one can check that this is isomorphic to the blowup of $Y_-$ at $V(x_0,x_1)$.   So we have a diagram:
+\[
+\xymatrix{
+&\widetilde{Y}\ar[ld]_{p}\ar[rd]^{q}&\\
+Y_+&&Y_-.
+}
+\]
+
+As we often do, we will express sheaves on $Y_+$ and $Y_-$ via the corresponding $S$-modules.
+We have $\Pic(Y_+)=\ZZ$, and for $d\in \ZZ$, we write $\cO_{Y_+}(d)$ for the line bundle associated to the free module $S(d)$.  Let us consider the Fourier--Mukai transforms $R_{q*}p^* \cO_{Y_+}(d)$ for all $d$.  
+
+We start by computing the $R^0$-term.  For any $d$ we have
+\[
+R^0q_*p^*\cO_{Y_+}(d) = \widetilde{S_{\geq d}}(d).
+\]
+Note that this is a line bundle if and only if $d\leq 0$,  More specifically, for $d\leq 0$ we have $S_{\geq d} = S$ and thus $R^0q_*\cO_{Y_+}(d) = \widetilde{S}(d) = \cO_{Y_-}(d)$.  But for $d>0$, we have $S_{\geq d} = \langle x_0,x_1\rangle^d$.  Since $\langle x_0,x_1\rangle$ is {\em not} a component of the irrelevant ideal on $Y_-$, this induces a nontrivial ideal sheaf on $Y_-$.   In particular, we have $R^0q_*\cO_{Y_+}(d) = \cO_{Y_-}(d)$ if and only if $d\leq 0$.  Thus, obtaining the correct $R^0$-term requires the initial line bundle to be ``{\em not too positive}''.
+
+Let us now turn to the higher direct images.  The map $\widetilde{Y}\to Y_-$ is birational over $Y_- \setminus V(x_0,x_1)$, and the fibers over $V(x_0,x_1)$ are $1$-dimensional. Thus the $R^\ell q_*$ terms will automatically vanish for all $\ell > 1$, so we only need to be concerned about $R^1$.  A straightforward, if somewhat involved, computation shows that 
+\[
+R^1q_*p^*\cO_{Y_+}(d) \ne 0 \iff H^1(Y_+, \cO_{Y_+}(d))\ne 0 \iff H^1(\PP^1, \cO_{\PP^1}(d)) \ne 0 \iff d>-2.
+\]
+So we will have the vanishing of the higher direct images if and only if  the initial line bundle is ``{\em not too negative}''.
+
+Let us summarize.  Both conclusions--the correct $R^0$ and the vanishing of the higher direct images--are only satisfied for $d=0$ and $d=-1$. These are precisely the elements of the Bondal--Thomsen collection whose negatives lie in the chamber of the secondary fan corresponding to $Y_+$.
+% \daniel{Need better notation here.}
+% \[
+% \begin{tabular}{c|c|c}
+% &$R^0q_*$$&$R^1q_*$$\\\hline
+% $d\geq 0$&$\widetilde{(x_0,x_1)^d}$$&$0$\\ \hline
+% $d = -1$&$\cO_{Y_-}(-1)$&$0$\\ \hline
+% $d\leq -2$&$\cO_{Y_-}(-1)$$&$H^1(\PP^1, \cO_{\PP^1}(d)) \otimes_k \cO_{pt}\ne 0$
+% \end{tabular}
+% \]
+% The Bondal--Thomsen collection $\Theta$ consists of the degree $-1,0,1$ divisors.  By Definition~\ref{defn:ThetaCox}, we have $\cO_{\Cox}(-1)\ce p^* \cO_{Y_+}(-1)$ and $\cO_{\Cox}(1)\ce q* \cO_{Y_-}(1)$; and the pullbacks of $\cO_{Y_+}$ and $\cO_{Y-}$ coincide and are equal to $\cO_{\Cox}$.  
+
+% The $\Theta$-Transform Lemma implies that the Fourier--Mukai transform of $\cO_{Y_+}(d)$ from $Y_+$ to $Y_-$ will equal $\cO_{Y_-}(d)$ when $d=0$ or $d=-1$.
+% A direct computation confirms that these are the {\em only} values of $d$ where this holds.  If $d > 0$ then the degree zero cohomology of the Fourier--Mukai transform will be the ideal sheaf of $(y_0,y_1)^d$, and if $d\leq -2$ then the degree one cohomology will be nonzero.
+\end{example}
+
+
+The example demonstrates that we require a delicate balance in order to obtain the conclusion of the $\Theta$-Transform Lemma.
+A complete proof of the $\Theta$-Transform Lemma is given in \cite[\S4.3]{king}.  Instead of presenting the details of the proof in these notes, we will try instead to capture what aspects of the lemma are nontrivial.
+
+Let us set some notation.  We start with a line bundle $\cO_{\sX_1}(-d)$ on $\sX_1$ and where $d$ lies in the chamber $\Gamma_1$ of the secondary fan.  This implies that $\cO_{\sX_1}(d)$ is a nef line bundle on $\sX_1$, and hence that $\cO_{\sX_1}(-d)$ is anti-nef.  Write $L:=p^* \cO_{\sX_1}(-d)$ for the corresponding line bundle on the graph $\Gamma_{12}$ and note that, since nefness is stable under pullback, $L$ is an anti-nef line bundle on $\Gamma_{12}$.
+
+
+
+Let us start with the $R^0$-term.  We want to show that $q_*L \cong \cO_{\sX_2}(-d)$.  This is done in \cite[Lemma~4.14]{king} by comparing the global sections over each cone $\sigma$ in the fan $\Sigma_2$ corresponding to $\sX_2$.  We can compute the global sections in terms of lattice points satisfying certain inequalities involving piecewise linear support functions.  One key computation, given in\cite[Proposition~4.2]{king}, is that when $d$ lies in the chamber $\Gamma_1$, then the corresponding support function  for $\cO_{\sX_1}(-d)$ ``majorizes'' the support function for $\cO_{\sX_j}(-d)$ for any other $j$.  This shows that each section coming from $\cO_{\sX_2}(-d)$ also yields a section from $q_*L$.
+
+The opposite direction is more subtle.  It relies on the fact that the Bondal--Thomsen line bundles can be expressed as toric divisors with purely fractional coefficients, and then utilizes this to create an inequality related to support functions of the form $\alpha \leq \alpha' \leq \lceil \alpha \rceil$.  The key trick is then:  if $\alpha$ is rational and $\alpha'$ is integral, then this inequality implies that $\alpha' = \lceil \alpha \rceil$.  Again, we refer to \cite[Lemma~4.14]{king} for the details, but we remark that the computation, while a bit longwinded, only relies on elementary facts about toric geometry and the behavior of the ceiling function.
+
+The vanishing of the higher direct pushforwards is more involved.
+The higher direct image sheaves $R^\ell q_*L$ encode the higher cohomology groups of $L$ restricted to the fibers of $q\colon \Gamma_{12} \to \sX_2$.   We would immediately obtain the vanishing of these if $L$ satisfied an appropriate positivty condition.  For instance, if $L$ were a nef line bundle then a relative version of Demazure vanishing would imply that the higher direct images vanish.  However $L$ is not nef:  in fact, as noted above, $L$ is anti-nef.  
+
+So to avoid having nonzero higher direct images, it is crucial that $L$ be {\em not too negative}.   Here is where the Bondal--Thomsen condition must come into play.  Recall that $L$ is the pullback of the Bondal--Thomsen element $\cO_{\sX_1}(-d)$, which is a divisor whose coefficients lie in $(-1,0]$.
+
+If $L$ itself were an element of the Bondal--Thomsen collection of $\Gamma_{12}$, then Demazure Vanishing would again imply that the higher direct images vanish.  However, it is {\em not necessarily} the case that the pullback of a Bondal--Thomsen element is a Bondal--Thomsen element.  The pullback can acquire coefficients along exceptional divisors that are not in the range $(-1,0]$.  
+
+In fact, the $\Theta$-Transform Lemma holds true even if one replaces $\Gamma_{12}$ by some larger, birational toric cover.  This is the fundamentally most subtle aspect of the proof: we cannot easily control what happens to the coefficients of the toric divisor $L$ on $\Gamma_{12}$, and so it is difficult to utilize ``off-the-shelf'' vanishing statements, like Kawamata--Viehweg Vanishing.  The proof in \cite[\S4.3]{king} utilizes a polytope method, due to~\cite[Theorem~3.6]{altmann-immaculate}, to compute the higher cohomology of line bundles of the form $D-D'$ where both $D$ and $D'$ are nef.
+
+\begin{remark}
+    Often, the first proofs of an essential statement prove to be more complicated than necessary.  This happened with Hanlon--Hicks--Lazarev's proofs involving their resolutions, as their proof was later simplified by both \cite{BCHSY} and \cite{BH25}.  We expect that something similar will happen with the $\Theta$-Transform Lemma at some point, i.e. the proof outlined above will not be the ``final'' proof.
+\end{remark}
+
+
+\section{Lecture 16 (John Nolan): Proof of Revised King Conjecture, III: Conclusion}
+
+In this section, we will complete the proof of the Revised King Conjecture.  We recall our outline of what we need to prove.
+\begin{enumerate}
+    \item Exceptionality:  For any $-d\in \Theta$ we have
+    \[
+    \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = k \text{ and }
+    \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) = 0 \text { for $i>0$.}
+    \]
+    \item Orthogonality: For any $-d'<-d\in \Theta$ we have
+        \begin{enumerate}
+            \item  
+            
+            $\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0$ for $i>0$ and
+            \item  $\Hom(\cO_{X}(-d), \cO_{X}(-d'))=0$.
+        \end{enumerate}
+    \item Fullness:  The bundles $\cO_{X}(-d)$ with $-d\in \Theta$ generate the derived category.
+\end{enumerate}
+
+{\bf Proof of Exceptionality:}  Let $-d\in \Theta$ and say that $d$ lies in the chamber $\Gamma_i$.  Then we have
+\begin{align*}
+    \Hom_{D_{\Cox}(S)}(\cO_{\Cox}(-d), \cO_{\Cox}(-d)) &=\Hom_{D_{\Cox}(S)}(\pi_i^*\cO_{\sX_i}(-d), \pi_i^*\cO_{\sX_i}(-d)) &\text{By Definition~\ref{defn:ThetaCox}}\\
+    &=\Hom_{\sX_i}(\cO_{\sX_i}(-d), \pi_{i*}\pi_i^*\cO_{\sX_i}(-d)) &\text{By Projection Formula}\\
+    \intertext{By \cite{king}*{Lemma 3.7}, $\pi_{i*}\pi_i^*$ is just the identity.  So we have }
+    &=\Hom_{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d)) &\text{By \cite{king}*{Lemma 3.7}}\\
+    &=H^0(\sX_i, \cO_{\sX_i}) = k^1. &
+\end{align*}
+The last equality is because $\sX_i$ is irreducible and proper. \daniel{Should we say more because of stackiness?  E.g. $H^0(\sX_i, \cO_{\sX_i})= H^0(X_i, \cO_{X_i}) =k^1$ where the first equality in this line is because of being a good moduli space/coarse moduli space, or something like that?}
+The computation for the higher Ext groups is similar and boils down to the fact that
+\[
+H^p(\sX_i, \cO_{\sX_i}) = H^p(X_i, \cO_{X_i}) = 0 \text{ for $p>0$},
+\]
+which follows from Demazure Vanishing or from Corollary~\ref{cor:BTNoCohom}.
+
+{\bf Orthogonality (a)}:  Choose $-d$ and $-d'$ in $\Theta$ and let $\Gamma_i$ be a chamber whose closure contains $d$  and let $\Gamma_j$ be a chamber whose closure contains $d'$.  We have
+\begin{align*}
+      \Ext^p{D_{\Cox}(S)}(\cO_{\Cox}(-d), \cO_{\Cox}(-d')) &=\Hom_{D_{\Cox}(S)}(\pi_i^*\cO_{\sX_i}(-d), \pi_j^*\cO_{\sX_i}(-d')) &\text{By Definition~\ref{defn:ThetaCox}}\\
+    &=\Ext^p{\sX_i}(\cO_{\sX_i}(-d), \pi_{i*}\pi_j^*\cO_{\sX_i}(-d')) &\text{By Projection Formula}\\
+    &=\Ext^p{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d')) &\text{Lemma~\ref{lem:PushPull}}\\
+    &=H^p(\sX_i, \cO_{\sX_i}(d-d'))=0. &
+\end{align*}
+The final equality follows from Proposition~\ref{prop:Demauzre},\footnote{We are using the stacky version of that proposition.  But again, the shift from varieties to stacks is mostly formal in this setting.  See \cite[Theorem 2.11]{king} for the necessary stacky statement.}noting that $d$ is a nef class on $\sX_i$ because $d$ lies in the closure of the chamber $\Gamma_i$.
+
+{\bf Orthogonality (b)}: This follows from Definition~\ref{defn:BTcollection}.
+
+{\bf Fullness:}  We now turn to proving fullness.  We need to show:
+
+\begin{prop}\label{prop:generation}
+    The Cox category $D_{\Cox}(S)$ is generated by $\cO_{\Cox}(-d)$ with $-d \in \Theta$.
+\end{prop}
+\begin{proof}
+By Bondal's Conjecture, the line bundles corresponding Bondal--Thomsen degrees generate $D(\sX_j)$ for all $j$.  And by the $\Theta$-Transform Lemma, the line bundles $\cO_{\Cox}(-d)$ with $-d\in \Theta$ pushforward to the Bondal--Thomsen line bundles on $\sX_j$ for all $j$.  In other words, the line bundles  $\cO_{\Cox}(-d)$ with $-d\in \Theta$  push forward to a generating set on $D(\sX_j)$ for each $j$.  Since $D_{\Cox}(S)$ was built as the ``union'', in some sense, of the $D(\sX_j)$, this suggests that that $D_{\Cox}(S)$ will be generated by $\cO_{\Cox}(-d)$ with $-d \in \Theta$.  But to make that precise, we require one additional fact.
+
+Specifically, we need to know that if $\cE\in D_{\Cox}(S)$ is any element with $\pi_{j*}(\cE)=0$ for all $j$, then $\cE=0$ in $D_{\Cox}(S)$.  
+
+
+
+% Let $\theta \in M_{\RR}$, and let $-\widetilde{d}\ce
+% \widetilde{d}(\theta) \in \Cl(\tsX)$ and $-d\ce -d(\theta)\in \Cl(X)$ be the
+% corresponding elements of the class groups.  Suppose that the image of $-d$ is
+% in $\Gamma_i$, the chamber of $\Sigma_{GKZ}$ corresponding to $\sX_i$ so that,
+% by Definition~\ref{defn:ThetaCox}, 
+% $\cO_{\Cox}(-d)=\pi_i^*\cO_{\sX_i}(-d)$.  By adjunction and
+%  \cref{prop:pushforwardBTstack}, 
+% $\RHom_{\tsX}(\cO_{\Cox}(-d), \cO_{\tsX}(-\widetilde{d}))\cong \RHom_{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d))$.
+% The latter $\Hom$ group contains an identity morphism, so write $f\colon \cO_{\Cox}(-d) \to \cO_{\tsX}(-\widetilde{d})$ for the corresponding morphism.
+% Let $C(f)$ be the cone of $f$.  We next observe that $\pi_{j*}(C(f))=0$ for all $j$.  Namely, by the $\Theta$-Transform Lemma and \cref{prop:pushforwardBTstack} as referenced above,  $\pi_{j*}(C(f))$ is
+% \[
+%  \cO_{\sX_j}(-d) \xrightarrow{\ \pi_{j*}(f)\ }\cO_{\sX_j}(-d).
+% \]
+% Since $f$ was defined as the adjoint to the identity on $\cO_{\sX_i}(-d)$, and since the identity, $f$, and $\pi_{j*}(f)$ all agree over the torus, it follows that $\pi_{j*}(C(f))=0$.
+
+% Now, recall that $\mathcal Q\subseteq D(\tsX)$  was defined in
+% \cref{subsec:BTdefinitions} as the subcategory of $\cE\in D(\tsX)$ such that 
+% $\pi_{i*}\cE =0$ for all $i$, and consider the Verdier quotient 
+% $\pi \colon D(\tsX) \to D(\tsX)/\mathcal Q$. 
+% Since $D_{\Cox} \subset {}^\perp \mathcal Q$, the composition 
+% $D_{\Cox} \to D(\tsX) \to D(\tsX)/\mathcal Q$ 
+% is fully faithful. 
+% The line bundles $\cO_{\tsX}(-\widetilde{d})$ 
+% for $-\widetilde{d} \in \Theta_{\tsX}$ generate $D(\tsX)$ by~\cite{HHL}*{Corollary D} or \cite{FH}, and 
+% hence they also generate $D(\tsX)/\mathcal Q$. From the above, 
+% $\pi (\mathcal O_{\Cox}(-d)) = 
+% \pi (\mathcal O_{\tsX}(-\widetilde{d}))$.
+
+% Thus both functors
+% $\langle \mathcal O_{\Cox}(-d) \rangle \subset D_{\Cox} \to 
+% D(\widetilde{X}) / \mathcal Q$ 
+% are equivalences.
+\end{proof}
+
+
+
+\begin{itemize}
+    \item  Fullness and categorical resolution of teh diagonal.
+    \item  Putting it all together.
+\end{itemize}
+
+\section{Lecture 17 (Prashanth Sridhar): Some consequences of the revised King conjecture}
+
+We next explore several consequences of the main theorem of \cite{king} and its proof. 
+
+
+
+\subsection{Smoothness, properness, and Rouquier dimension of the Cox category}\label{subsec:smooth}
+
+A $\k$-linear triangulated category $\cT$ is called \defi{proper} if $\dim_\k \Hom_{\cT}(T, T') < \infty$ for all $T, T' \in \cT$. There is also a categorical notion of smoothness, but it is probably not helpful to give the definition in a talk: we say $\cT$ is \defi{smooth} if $\cT$ possesses a dg-enhancement whose diagonal bimodule is perfect. Let us not dwell on this latter definition. There are two points to take away here: (1) the category of perfect complexes on a separated scheme $X$ of finite type over $\k$ is smoooth (resp. proper) if and only if $X$ is smooth (resp. proper) (see the proof of \cite{orlov16}*{Proposition 3.31}) and (2) smooth and proper triangulated categories enjoy many of the same properties as derived categories of smooth and proper varieties. One illustration of (2) is the extensive literature on Hodge theory of smooth and proper dg-categories, as originally proposed by Katzarkov-Kontsevich-Pantev~\cite{KKP}. 
+
+\begin{thm} Let $X$ be a smooth projective toric variety. The category $D_{\Cox}(X)$ is smooth and proper, and its Rouquier dimension (see Lecture 9 for the definition) is $\dim(X)$. 
+\end{thm}
+
+\begin{proof}
+Choose a smooth toric stack $\X$ as in the definition of $D_{\Cox}(X)$, so that $D_{\Cox}(X)$ is a full triangulated subcategory of $D(\X)$. The stack $\X$ is projective, in the sense of \cite{BLS16}*{Definition 2.5}, and it is tame in the sense of \cite{BLS16}*{Definition 2.1}. It follows from \cite{BLS16}*{Theorem 6.4} that $D(\X)$ is smooth and proper. The properness of $D_{\Cox}(X)$ is an immediate consequence, and smoothness follows from \cite{orlov16}*{Proposition 3.8, Theorem 3.25}. As for Rouquier dimension, recall that there are fully faithful embeddings $D^b(X) \into D_{\Cox}(X) \into D^b(\X)$, and so there are inequalities~$\dim D^b(X) \le \dim D_{\Cox}(X) \le \dim D^b(\X)$. Finally, we have 
+$$
+\dim D^b(X) = \dim{X} = \dim{\X} = \dim D^b(\X),
+$$
+where the first and third equalities follow from \cite{FH, HHL}.
+\end{proof}
+
+\begin{remark}\label{rmk:mythical2}
+Loosely speaking, it is a general mantra that smooth and proper triangulated categories should be ``geometric" in some sense. Of course, $D_{\Cox}(X)$ is of geometric origin: it is by definition a subcategory of the derived category of a toric stack. It is an open question as to whether~$D_{\Cox}(X)$, or its invariants, can be given an intrinsic algebro-geometric description.
+
+The intuition is that Cox category is the derived category of a ``mythical" toric variety whose Cox ring is $S$ and whose effective cone and nef cone coincide. Since $D_{\Cox}(X)$ is not closed under tensor products, it is not (monoidally) equivalent to the derived category of a smooth projective scheme or stack, and so it is unlikely that this intuition can be made fully rigorous. But nevertheless, we can ask wheter its~$K$-theory, Hochschild homology, etc. admit geometric interpretations? For example, singularity categories of hypersurfaces do not have a monoidal structure, but their $K$-theory and Hochschild homology nevertheless recover classical geometric invariants of the hypersurface singularity: this has been an active area of research over the past two decades~\cite{BD, BFK1, BFK2, BP, BRTV, BW, BW1,BW2, CT, dyckerhoff, efimov2,  HLP, KP, kim1,pippi, PV,  segal, shk2, shklyarov1}. 
+\end{remark}
+
+\subsection{Homotopy category description of the Cox category}
+\label{subsec:homotopy}
+Let $X$ be a smooth projective toric variety with Cox ring $S$, and let $K_{\Theta}(S)$ denote the homotopy category of bounded complexes of $\Cl(X)$-graded free $S$-modules whose terms are direct sums of modules of the form $S(d)$, where $d$ lies in the Bondal-Thompsen collection $\Theta$. By \cite{king}*{Corollary 4.28} (which is used in the proof that $D_{\Cox}(X)$ has a full strong exceptional collection), there is a natural isomorphism 
+$$
+S_{d' - d} \xra{\cong} \Hom_{\Cox}(\OO_{\Cox}(d), \OO_{\Cox}(d'))
+$$
+for all $d, d' \in \Theta$. It follows that there is a fully faithful functor $\Psi \co K_{\Theta}(S) \to D_{\Cox}(X)$ that sends~$S(d)$ to $\OO_{\Cox}(d)$ for all $d \in \Theta$. 
+
+\begin{thm}
+The functor $\Psi$ is an equivalence.  
+\end{thm}
+
+\begin{proof}
+Since $D_{\Cox}(X)$ is generated by $\OO_{\Cox}(d)$ for $d \in \Theta$, this is immediate. 
+\end{proof}
+
+
+\subsection*{Resolution of the diagonal for the Cox category}
+Let $X$ be a smooth projective toric variety with Cox ring $S$.
+As emphasized above, a major source of motivation for the revised King's Conjecture is that the HHL resolution of the diagonal of $X$ depends only on the rays of fan determining $X$. That is, the resolution of the diagonal looks the same for every toric stack $\X_i$ corresponding to a maximal chamber of the secondary fan of $X$ (Corollary~\ref{cor:diagonalUniform}). This suggests that the HHL resolution should somehow be an invariant of the Cox category, and the goal of this subsection is to make this intuition precise by constructing a ``resolution of the diagonal for the Cox category" that pushes forward to the HHL resolutions of the stacks $\X_i$.
+
+We begin with an auxiliary construction. Recall that each $X_i$ is of the form $(\Spec(S) \setminus V(B_i)) / G$ for some monomial ideal $B_i \subseteq S$ and an action of a group $G$ arising from the $\Cl(X)$-grading on~$S$. Let $I \ce \sum B_i$, and let $\mathscr{X}$ denote the toric stack $[(\Spec(S) \setminus V(I)) / G]$. We want to take an HHL resolution of the diagonal for $\mathscr{X}$. We cannot quite directly do this, because $\mathscr{X}$ need not be separated (i.e. the diagonal need not be a closed substack), and one can only take an HHL resolution of a closed substack. So instead, we consider the HHL resolution of the closure of the diagonal torus in $\mathscr{X} \times \mathscr{X}$. Let $H$ denote the complex of free $S \otimes_\k S$-modules associated to this complex of $\OO_{\mathscr{X} \times \mathscr{X}}$-modules, and let $\cH_{i, j}$ denote the HHL resolution of the (closure of the) graph of the birational map $\X_i \dashrightarrow \X_j$. The following result is a consequence of technical machinery in~\cite{HHL}; we omit the proof. 
+
+\begin{prop}
+\label{prop:homotopy}
+For any $i, j$, $H|_{\X_i \times \X_j}$
+is homotopy equivalent to $\cH_{i, j}$. %Moreover, if both chambers Γi and Γj for Xi and Xj are in the moving
+%cone of ΣGKZ(X), then these complexes are equal.
+\end{prop}
+
+
+%Let $\mathcal{R}$ be the HHL resolution of the diagonal for $X$. The complex~$R \ce \bigoplus_{a \in \Cl(X)} \Gamma(X, \mathcal{R})$ is an object in $K_{\Theta}(S \otimes_\k S)$. 
+Applying the functor $\Psi$ from \S \ref{subsec:homotopy} to $H$ gives an object $\cH\in D_{\Cox}(X \times X)$. Choose a smooth toric stack $\X$ as in the definition of $D_{\Cox}(X)$, so that $D_{\Cox}(X)$ is a full triangulated subcategory of~$D^b(\X)$, and let $\pi_i \co \X \to \X_i$ denote the accompanying morphisms of toric stacks. Of course,~$D_{\Cox}(X \times X)$ is a full triangulated subcategory of $D(\X \times \X)$ as well. It follows from Proposition~\ref{prop:homotopy} that the object~$(\pi_i \times \pi_j)_*\cH$ is homotopy equivalent to $\cH_{i, j}$: see \cite{king}*{Lemma 6.8(1)} for the straightforward proof. Let~$\Phi_{i, j} \co D^b(\X_i) \to D^b(\X_j)$ (resp. $\Phi \co D^b(\X) \to D^b(\X)$ be the Fourier-Mukai transform with kernel~$\cH_{i, j}$ (resp. $\cH$). The functor $\Phi$ induces an endofunctor of $D_{\Cox}(X)$. We have a commutative diagram
+\begin{equation}
+\label{eqn:phidiagram}
+\xymatrix{
+D(\X_i) \ar[r]^-{\Phi_{i, j}} \ar[d]_-{\pi_i^*} & D(\X_j) \\
+D_{\Cox}(X) \ar[r]^-{\Phi} & D_{\Cox}(X).\ar[u]_-{(\pi_j)_*}
+}
+\end{equation}
+To see this, use that pullbacks and pushforwards may be realized as Fourier-Mukai transforms, and refer to the formula for convolution of Fourier-Mukai kernels~\cite{huybrechts}*{ Proposition 5.10}.
+%$(\pi_i)_* \co D_{\Cox}(X) \to D(\X_i)$ denote the functor induced by the (derived) pushforward $D(\X) \to D(\X_i)$ for all the toric stacks $\X_i$ corresponding to maximal chambers in the secondary fan of $X$. 
+
+
+
+\begin{thm}\label{thm:resDiagCoxVague}
+ The endofunctor $\Phi$ of $D_{\Cox}(X)$ is naturally isomorphic to the identity.
+\end{thm}
+
+\begin{proof}
+One reduces to showing that there is a natural isomorphism $\Phi(\OO_{\Cox}(d)) \cong \Phi(\OO_{\Cox}(d))$ for all $d \in \Theta$, and similarly for morphisms of these objects. This proof is straightforward and can probably be suppressed in this talk: see~\cite{king}*{Proof of Corollary 6.10}. 
+\end{proof}
+
+\subsection{Noncommutative resolution of singularities}
+
+
+\begin{defn}\cite{kuznetsov08}
+Let $X$ be a scheme. A \defi{categorical (or noncommutative) resolution of singularities for $X$} is a pair of triangulated functors $G \co \cD \to D^b(X)$ and $F \co \Perf(X) \to \cD$, where~$\cD$ is a smooth triangulated category (see \S \ref{subsec:smooth}), such that
+\begin{enumerate}
+\item We have $\Hom_{D^b(X)}(F(\F), D) \cong \Hom(\F, G(D))$ for all $\F \in \Perf(X)$, $D \in \cD$.
+\item There is a natural isomorphism $G F \cong \id_{\Perf(X)}$. 
+\end{enumerate}
+\end{defn}
+
+Noncommutative resolutions of singularities, in the sense of Van den Bergh~\cite{VdB04}, give examples of categorical resolutions of singularities: see \cite{kuznetsov08}*{\S 3}. Affine toric varieties are known to admit noncommutative resolutions of singularities~\cite{spenko-van-den-bergh-inventiones, faber-muller-smith}. The final application of the main result of \cite{king} that we discuss is a generalization of this result beyond the affine case. 
+
+Let $X$ be a semiprojective toric variety (see \cite{CLS}*{\S 7.2} for the definition). For instance, any affine or projective toric variety is semiprojective.
+Let $G \co D_{\Cox}(X) \to D^b(X)$ be the pushforward functor, and let $F \co \Perf(X) \to D_{\Cox}(X)$ be the pullback. Recall that $F$ is fully faithful, and we established in \S \ref{subsec:smooth} that $D_{\Cox}(X)$ is smooth (the smooth and projective assumptions were not necessary for this argument). Thus, $D_{\Cox}(X)$ is a categorical resolution of singularities for $X$. 
+
+So far, we have not applied the main results of \cite{king}, and we do so now. Let $A_{\Theta}$ be the algebra $\End_{D_{\Cox}(X)}(\bigoplus_{d \in \Theta} \OO_{\Cox}(d))$. Since $\bigoplus_{d \in \Theta} \OO_{\Cox}(d)$ is a tilting object for $D_{\Cox}(X)$ (this does not require $X$ to be smooth or projective), we have
+$
+D_{\Cox}(X) \simeq D^b(A_\Theta). 
+$
+We conclude:
+
+\begin{thm}
+\label{thm:ncres}
+The category $D^b(A_\Theta)$ is a noncommutative resolution of singularities for $X$. Moreover, $A_\Theta$ has global dimension $\dim{X}$. 
+\end{thm}
+
+\begin{proof}
+We have  proven the first statement, and the second follows from \cite{FH}*{Theorem 2.14}.
+\end{proof}
+
+The noncommutative resolutions of singularities for affine toric varieties given by~\cite{spenko-van-den-bergh-inventiones, faber-muller-smith} follow from Theorem~\ref{thm:ncres}, though there is just a bit of additional work needed for this: see \cite{king}*{Corollary 7.13 and Remark 7.14}.
+
+
+\section{Lecture 18 (Matthias Zach): Tate resolutions over projective space} 
+\section{Lecture 19 (Sasha Zotine): Tate resolutions over toric varieties}
+\clearpage
+
+\section{Residual material}
+
+\section{Good multigradings}
+We let $S=k[x_1, \dots, x_n]$ be a polynomial ring and we will use $\Cl(S)$ to denote an arbitrary finitely generated abelian group.  We will consider $S$ as graded with respect to $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$.  
+To avoid trivialities, we will always assume that the map $\deg$ is surjective.
+
+Our goal in this section is to articulate conditions under which the multigraded ring $S$ corresponds to the Cox ring of some projective toric variety.
+
+We will need some notation.  We write $M\ce\ker(\deg)$ and we consider the induced short exact sequence:
+\[
+0\to M\overset{\alpha}{\to} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(S) \to 0.
+\]
+We will define $\Eff(S) \ce\{d \in \Cl(S) | S_d \ne 0\}$.  We refer to this as the \defi{effective semigroup} as it forms a subsemigroup of $\Cl(S)$.  We can consider the corresponding cone $\Eff(S)_{\QQ}\subseteq \Cl(S)\otimes_{\ZZ}\QQ$ which is the positive rational cone spanned by the image of $\Eff(S)$ under the natural map to $\Cl(S)\otimes_{\ZZ}\QQ$.
+
+
+\begin{defn}\label{defn:posGrading}
+    We say that $S$ is a \defi{positively graded ring} if there exists a group homomorphism $\phi\colon \Cl(S) \to \ZZ$ such that $\phi \circ \deg(\epsilon_i) > 0 $ for all $i$.
+\end{defn}
+\begin{lemma}
+The following are equivalent:
+\begin{enumerate}
+    \item $S$ is positively graded.
+    \item $S_0=k$.
+    \item $\Eff(S)_{\QQ}$ is a pointed cone.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) implies (2) is easy.
+
+For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exist $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$. If $S_0= k$ then, since $S$ is a domain whose only units are the 
+scalars, we must have $d=0$, a contradiction.
+
+For (3) implies (1):  Define the positive grading $\phi$ by choosing a vector space $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}$ into $\QQ_{>0}$ and then clearing denominators as needed
+\end{proof}
+
+\begin{prop}
+The following are equivalent:
+\begin{enumerate}
+ \item There is a polynomial ring $S$, graded via $\deg\colon \ZZ^n\to \Cl(S)$, that satisfies the following conditions:
+    \begin{enumerate}
+        \item $\deg$ is surjective;
+        \item $S$ is positively graded;
+        \item Each row of $\alpha$ is the primitive point on a distinct ray; that is, the rows of
+        $\alpha$ are distinct, nonzero, and have greatest common divisor 1.
+        %matrix representing $\alpha\colon M\to \ZZ^n$ has no zero rows and no rows that are scalar multiples of one another.
+    \end{enumerate}
+    \item There is a simplicial, projective toric variety $X$ with $\Cl(X) = \Cl(S)$ and where the Cox ring of $X$ equals $S$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+    (2) implies (1) is easy.  Given such an $X$ we start choose a basis for the lattice $N$ and take the corresponding basis for the dual lattice $M$.  Since the Cox ring of $X$ is $S$, we know that $X$ involes $n$ rays, and so we have the matrix of rays $N\gets \ZZ^n$.  Since the rays are distinct (and nonzero) the columns of this matrix all nonzero and are not scalar multiples of one another. Dualizing this then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (iii).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (i) and (ii) by standard facts.
+    
+    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan.  If $X_{\Sigma}$ is the toric variety associated to some of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?}(a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
+
+    \begin{lemma}[CLS 14.3.2 without the extra notation]
+     Fix a basis $\epsilon$ of $\RR^n$, and let
+     $$
+     \begin{tikzcd}     
+    0\arrow{r} &M_\RR^* \arrow{r}{\delta} & \RR^n \arrow{r}{\nu}&N_\RR \arrow{r}&0
+    \end{tikzcd}
+    $$
+    be an exact sequence of real vector spaces. If every element of $\epsilon$ maps
+    to a nonzero element of $N_\RR$ then $ cone(\nu(\epsilon)) = N_\RR$
+    if and only if $cone(\delta^*(\epsilon))$ is pointed.
+    \end{lemma} 
+    In particular, any $X_{\Sigma}$ from the secondary fan will be proper.
+
+    \begin{proof}[Proof of the Lemma] Set $C_\nu\ce cone(\nu(\epsilon))$ and
+    \def\Eff{\rm Eff}
+    $\Eff \ce cone(\delta^*(\epsilon))$. We will prove the contrapositive: 
+    
+    \noindent $\Rightarrow$: Suppose that $C_\nu = N_\RR$, so $C_\nu^\vee = 0$.
+    Suppose that both $v$ and $-v$ are non-negative combinations of the rays
+    of $\Eff$. Adding the expressions for these vectors, we get a map $\RR \to \RR^n$ that has non-negative coefficients
+    with respect to $\epsilon$, and whose image is in the kernel of $\delta^*$.
+    Thus it factors through $N_\RR^*$. Dualizing, we get a functional on
+    $N_\RR$ that is non-negative on every ray; that is an element
+    of $C_\nu^\vee$. Thus $v = 0$, proving that $\Eff$ is pointed.
+  
+    \noindent $\Leftarrow$: Conversely, if $\Eff$ is pointed then there
+    is a map $M_\RR \to \RR$ that is positive on every ray of $C_\nu$. Dualizing, we get an
+    element $w \in \ker \nu$ with all positive coefficients. If $\phi: N_\RR \to \RR$
+    is an element of $C_\nu^\vee$, then, because all the rays of $N_R$ are nonzero, $\phi(w)=0$ is a positive combination of some of the coefficients of $w$. Thus $C_\nu^\vee = 0$ and $C_\nu = C_\nu^{\vee\vee} = N_\RR$.
+    \end{proof}
+    
+    % We find the rays by dualizing the map $\alpha\colon M\to \ZZ^n$ obtaining $\alpha^*\colon \ZZ^n \to N$.  So we need to show that the positive rational cone spanned by the columns of $\alpha^*$ in $N_{\QQ}$ is the entire space.  Choose $\phi$ as in Definition~\ref{defn:posGrading}.  We get a new exact sequence
+%    \[
+ %   0\to M'\overset{\gamma}{\to} \ZZ^n \overset{\phi\circ \beta}{\to} \ZZ\to 0.
+ %   \]
+  %  Because we have a positive grading, the map $\ZZ^n\to \ZZ$ has the form $(a_1, \dots, a_n)$ for positive integers $a_i\in \ZZ_{>0}$ and we can explicitly compute the kernel as 
+   %%\begin{pmatrix}
+     %   -a_2&-a_3&\cdots &-a_n\\
+      %  a_1&0&\cdots &0\\
+       % 0&a_1&\cdots &0\\
+       % 0&0&\cdots &a_1
+   % \end{pmatrix}
+   % \]
+   % The cone over the rows of $\gamma$ fills an entire $\QQ^{n-1}$.  And the cone over the rows of $\alpha$ is a projective of that cone under a map $\QQ^{n-1} \to N\otimes \QQ$ and hence we obtain the desired result.
+
+    Proposition 14.4.1 also implies that each $X_{\Sigma}$ is semiprojective and since it is proper by the previous paragraph, it is also projective.
+    
+   We next utilize Proposition 15.1.6 of CLS.  This says that we have a chamber of the secondary fan where the corresponding variety $X_{\Sigma}$ requires $n$ rays if and only if the rows of $\alpha$ are nonzero and generate distinct rays, which is implied by condition (c).  In this case, $\alpha^*: \ZZ^n\to N$ will determine the rays of $X_{\Sigma}$.  The stronger condition, that the rows of $\alpha$ each represent a primitive point on a distinct ray, then implies that the ray matrix for $X_{\Sigma}$ will be precisely $\alpha^*$.  Since the Class group of $X$ is computed in terms of the ray matrix, we have that the class group of $X$ will equal $\Cl(S)$, and the map $\ZZ^{n}\to \Cl(X)$ will agree with the map $\deg$.  Thus the Cox ring of $X_{\Sigma}$ will be a polynomial ring on $n$ variables and the grading will be as desired.
+\end{proof}
+
+
+\daniel{I've been copying and pasting things here which we wrote but which don't obviously fit into a ``prep for the notes'' section.}
+\begin{cor}
+Each $B_i$ is generated by products of $r$ distinct variables.
+\end{cor}
+\begin{proof}
+    Let $x_{i_1}\cdots x_{i_p}$ be a minimal generator of $B_i$ and assume $p>r$.  We have that $\Gamma_i$ is in the span of $\deg_{\QQ}(x_{i_1}), \cdots, \deg_{\QQ}(x_{i_p})$.   Since $\Gamma_i$ is $r$-dimensional, after potentially reindexing, we can assume that $\deg_{\QQ}(x_{i_1}), \cdots \deg_{\QQ}(x_{i_r})$ are linearly independent.  If $\Gamma_i$ lies in the span of these, then $x_{i_1}\cdots x_{i_r}$ lies in $B_i$, contradicting the initial minimal generator assumption.  But then some portion of $\Gamma_i$ would correspond to an ideal containing $x_{i_1}\cdots x_{i_r}$, contradicting the fact that the chambers of squarefree monomial ideals must be disjoint.
+\end{proof}
+\begin{remark}
+By considering intersections of the chambers, we can endow $\Eff(S)$ with a fan structure which is known as the secondary fan.  However, for the applications to Cox categories and King's Conjecture, we do not need the full structure of the secondary fan, we simply need to know the chambers.  So we will omit a fuller discussion of the secondary fan.
+\end{remark}
+\begin{remark}
+    Because each chamber is defined in terms of spanning sets of monomials, the hyperplanes used to define each chamber will have a special form.  Namely, each such hyperplane will be spanned by a codimension $1$ set of linearly independent vectors $\deg_{\QQ}(x_i)$.  
+    
+    In particular, we can build a naive stratification of $\Eff(X)$ as follows.  Write $r$ for the rank of $\Cl(S)\otimes \QQ$.  For each linearly independent $(r-1)$-tuple of vectors $\deg_{\QQ}(x_i)$, we get a hyperplane, and taking the union of all of these hyperplanes will slice $\Eff(X)$ into a finite set of chambers, each of belongs entirely to one of the chambers $\Gamma_1,\dots, \Gamma_s$.  The chambers of the secondary fan are a coarsening of the chambers of this naive stratification.
+\end{remark}
+
+
+We can describe the $B_i$ in several equivalent ways.  Recall that we have the map $\deg\colon \ZZ^n\to \Cl(S)$; we write $\deg_{\QQ}$ for the induced map to $\Cl(S)\otimes \QQ$.
+\begin{prop}
+    Fix a chamber $\Gamma_i$ for $S$ and any ray $\rho$ in the interior of $\Gamma_i$.  The following ideals are equal
+    \begin{enumerate}
+        \item  $\operatorname{ideal}(B_i)$ as in Definition~\ref{defn:idealConeCorrespondence}.
+        \item  The radical of the ideal $\langle \mathbf{x}^{\mathbf{a}} \text{ such that } \deg_{\QQ}(\mathbf{x}^{\mathbf{a}})\in \Gamma_i\rangle$.
+        \item  The ideal $\sqrt{B_{\rho}}$ where  $B_{\rho} = \langle \mathbf{x}^{\mathbf{a}} \text{ such that } \deg_{\QQ}(\mathbf{x}^{\mathbf{a}})\in \rho \rangle$
+    \end{enumerate}
+\end{prop}
+\begin{proof}[Sketch of proof, in progress]
+For (1) $\Rightarrow$ (3): Let $x_{i_1}\cdots x_{i_s}$ be a squarefree monomial which spans $\Gamma_i$.  Since $\rho$ lies in $\Gamma_i$, for some integers $a_1, \dots, a_s$ we have that $\deg_{\QQ}(x_{i_1}^{a_1}\cdots x_{i_s}^{a_s}) \in \rho$.  In particular, $x_{i_1}\cdots x_{i_s}$ belongs to $\sqrt{B_{\rho}}$.
+
+Certainly the ideal from (3) belongs the ideal from (2).
+
+Finally we have (2) $\Rightarrow$ (1):  Let $x_{i_1}, \cdots, x_{i_p}$ be the variables dividing $\mathbf{x}^{\mathbf{a}}$.  Assume, for contradiction, that the corresponding degrees all line on some hyperplane $H$.  Then $H$ subdivides $\Gamma_i$ into two pieces $\Gamma_i^{+}$ and $\Gamma_i^{-}$, corresponding to the two side of $H$.  There must therefore be at least one monomial whose degree lies on either side of $H$, say $\deg_{\QQ}(x_{+})$ is on the $\Gamma_i^{+}$-side and $\deg_{\QQ}(x_{-})$ is on the $\Gamma_i^{-}$-side.  But then the ideals $B_{\Gamma_i^{+}}$ and $\Gamma_i^{-}$ would be distinct, and so $\Gamma_i$ would not be a valid chamber.
+
+We conclude that $\deg_{\QQ}(x_{i_1}), \cdots, \deg_{\QQ}(x_{i_p})$ span an $r$-dimensional cone.  Since this span includes a point in $\Gamma_i$, by construction of the chambers, it must contain the entire chamber $\Gamma_i$.  It follows that $x_{i_1}\cdots x_{i_p}$ lies in $B_i$\dots
+\end{proof}
+
+%\subsection{Chambers and toric varieties}
+%\begin{defn}\label{defn:normalFan}
+%From the irrelevant ideal $B_i$ we can produce a fan $\Sigma_i$ for a toric variety as follows.  We let the rays of $\Sigma_i$ be the set of rays $\rho_j$ such that the corresponding principal ideal $\langle x_j\rangle$ does not contain $B_i$.  And we let the cones of $\Sigma_i$ be the cones spanned by the tuples $\rho_{j_1}, \cdots, \rho_{j_p}$ such that $B_i$ does not contain the monomial $x_{j_1}\cdots x_{j_p}$.    The fans $\Sigma_1, \dots, \Sigma_s$ are all distinct because the $B_i$ are all distinct.
+%
+%For a point $\mathbf{a}=(a_1, \dots, a_n)\in \ZZ^{n}$ we define the polyhedron
+%\[
+%P_{\mathbf{a}} \ce \cap_{i=1}^n \{ m \in M | \alpha_i(m) \geq -a_i\}.
+%\]
+%To a polyhedron $P_{\mathbf{a}}\subseteq M\otimes \QQ$ there is a dual normal fan $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$.  We recall that $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$ is defined as \dots
+%\end{defn}
+%
+%The key fact relating these definitions is:
+%\begin{prop}\label{prop:polytopeAndFan}
+%We have that $P_{\mathbf{a}}$ is nonempty if and only if $\deg_{\QQ}(\mathbf{a})$ lies in the effective cone.  
+%Moreover, we have that $\deg_{\QQ}(\mathbf{a}) \in \Gamma_i$ if and only if there is an open neighborhood $U_{\mathbf{a}}$ of $\mathbf{a}$ such that the normal fan of $P_{\mathbf{a'}}$ equals $\Sigma_i$ for all $\mathbf{a}'\in U_{\mathbf{a}}$.
+%\end{prop}
+%\daniel{To do:  add references from CLS.}
+%
+%In particular, the chambers $\Gamma_i$ also precisely correspond the distinct 
+
+
+
+
+
+%Each point $\mathbf{a} = (a_1, \dots, a_n)\in \ZZ^n$ determines a set of halfspaces in $M\otimes \QQ$ of the form $\alpha_i(m) \geq -a_i$ for $1\leq i \leq n$.  We write $H_{\mathbf{a}} = \cap_{i=1}^n \{\alpha_i(m)\geq -a_i\}$.  The locus $H_{\mathbf{a}}$ will be a convex polytope if and only if the divisor $\sum_{i=1}^n a_iD_i$ is an effective divisor.
+
+%Recall that $r$ is the rank of $\Cl(S)$.  Start with the points $\{ \deg(x_i) \forall 1 \leq i \leq n\}\subseteq \Cl(S)\otimes \QQ$.  
+
+\begin{remark}
+\daniel{This remark is residual but I liked it.}
+     We will confirm below that each pair $(S,B_i)$ determines a simplicial projective variety $X_i$.  The rough statement is that $X_i$ the quotient $\Spec(S) - V(B_i) / G$ (with the action of $G$ induced by the grading group), but this is a ``rough'' statement because of various subtleties involving quotients of projective varieties.  So there is a sense in which the multigraded ring $S$ naturally corresponds to the set of toric varieties $X_1, \dots, X_r$.
+
+    This connection is even sharper from a homological perspective.  The pair $(S,B_i)$ determines a module category as follows:  we write $\mod(S)$ for the category of $\Cl(S)$-graded $S$-modules and we write $\mod_{B_i}(S)$ for the subcategory  modulo those modules that are annihilated by a power of $B_i$.  To the pair $(S,B_i)$ we can attach the quotient category $\mod(S)/\mod_{B_i}(S)$.  This equals--essentially by defintion--the category of sheaves on the quotient stack $[\Spec(S) - V(B_i)/G]$ which we denote as $\mathcal X_i$.  We will see later that $\mathcal X_i$ is closely related to the aforementioned toric variety $X_i$.
+\end{remark}
+
+\begin{comment}
+\subsection{Chambers and toric varieties}
+From the irrelevant ideal $B_i$ we can produce a fan $\Sigma_i$ for a toric variety as follows.  We let the rays of $\Sigma_i$ be the set of rays $\rho_j$ such that the corresponding principal ideal $\langle x_j\rangle$ does not contain $B_i$.  And we let the cones of $\Sigma_i$ be the cones spanned by the tuples $\rho_{j_1}, \cdots, \rho_{j_p}$ such that $B_i$ does not contain the monomial $x_{j_1}\cdots x_{j_p}$.    The fans $\Sigma_1, \dots, \Sigma_s$ are all distinct because the $B_i$ are all distinct.
+
+For a point $\mathbf{a}=(a_1, \dots, a_n)\in \ZZ^{n}$ we define the polyhedron
+\[
+P_{\mathbf{a}} \ce \cap_{i=1}^n \{ m \in M | \alpha_i(m) \geq -a_i\}.
+\]
+To a polyhedron $P_{\mathbf{a}}\subseteq M\otimes \QQ$ there is a dual normal fan $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$.  We recall that $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$ is defined as \dots
+
+The key fact relating these definitions is:
+\begin{prop}\label{prop:polytopeAndFan}
+We have that $P_{\mathbf{a}}$ is nonempty if and only if $\deg_{\QQ}(\mathbf{a})$ lies in the effective cone.  
+
+Moreover, we have that $\deg_{\QQ}(\mathbf{a}) \in \Gamma_i$ if and only if there is an open neighborhood $U_{\mathbf{a}}$ of $\mathbf{a}$ such that the normal fan of $P_{\mathbf{a'}}$ equals $\Sigma_i$ for all $\mathbf{a}'\in U_{\mathbf{a}}$.
+\end{prop}
+\daniel{To do:  add references from CLS.}
+
+%In particular, the chambers $\Gamma_i$ also precisely correspond the distinct 
+
+
+\begin{prop}\label{defn:fanAndXi}
+    As defined above we have the following: $\Sigma_i$ is a simplicial fan such that $|\Sigma_i|=N\otimes \QQ$.  In particular,  $\Sigma_i$ is the fan associated to a simplicial, projective toric variety which we denote as $X_i$.
+\end{prop}
+
+
+\begin{lemma}
+The following are equivalent:
+\begin{enumerate}
+    \item The Cox ring of $X_i$ equals $S$;
+    \item $\Cl(X_i)=\Cl(S)$;
+    \item  The rays of $\Sigma_i$ are precisely $\rho_1, \dots, \rho_n$;
+    \item  $B_i$ does not belong to any principal ideal $\langle x_j\rangle$.
+\end{enumerate}
+\end{lemma}
+When these conditions are satsified, the ample cone equals $\Gamma_i$.  \daniel{When these conditions are not satisfied, one needs to be a bit more careful in relating the ample cone with $\Gamma_i$.}
+\end{comment}
+\begin{comment}
+\subsection{Irrelevant ideals for faces of secondary fan}
+\daniel{Not sure what we want to put here.}
+\begin{lemma}
+    For a face of the secondary fan, the irrelevant ideal is the sum irrelevant ideals of the chambers with that face in its boundary.
+\end{lemma}
+\end{comment}
+
+
+\section{Toric stacks}
+\michael{I think this should be shortened and moved earlier, to one of the talks on background on toric varieties. That is, I think there should be one talk on the module/sheaf correspondence, and this content should be part of that.}
+Recall that if $X$ is a smooth projective toric variety with Cox ring $S$ and irrelevant ideal $B$, then $\D^b(X) = D^b(S) / D^b_B(S)$. We have seen that this fails when $X$ is not smooth, for instance in the case of a weighted projective space. This problem can be solved using toric \emph{stacks}. For this reason (and only this reason) we give a brief introduction to toric stacks. For concreteness, we will mostly confine ourselves to the example of a weighted projective stack, as the general story is similar. 
+
+
+Let $X$ be a simplicial toric variety, with Cox ring $S$ and irrelevant ideal $B$.  Let $G=\Hom_{\ZZ}(\Cl(X), \kk^*)$ be the group acting on $\Spec(S)$ as in Definition~\ref{defn:Gaction}.  There is a canonical toric stack $\mathcal X$ one can build from this data: $\mathcal X = [\Spec(S) - V(B) / G]$.  Since $X$ was simplicial, it turns out that $\mathcal X$ is always a smooth toric DM stack, as in \cite{BorisovChenSmith2004}.
+
+
+
+\subsection{Passing to toric stacks}
+When considering a weighted projective space $\PP(1,1,2)$, one can mean either the projective variety or the corresponding stack.  In this brief subsection, we will try to summarize some of the distinctions between these perspectives.  In particular, we will view the distinction between a toric variety and a toric stack through the lens of modules and sheaves.\footnote{This is a rather algebraic way to think about toric stacks, but that is in line with the syzygetic perspective in these notes.  A more geometric understanding of toric stacks would examine stacky fans, toric morphisms, and so on.  Such a perspective is introduced in \cite{BorisovChenSmith2004} and greatly expanded in \cite{GS1, GS2}.}
+It is natural to think of $\PP(1,1,2)$ as a quotient.  We have $S = \kk[x,y,z]$ with degrees $1,1,$ and $2$, and have the $\CC^*$-action on $\Spec(S) = \mathbb A^3$ given by $\lambda \cdot (x,y,z) = (\lambda x, \lambda y, \lambda^2 z)$.  After removing the origin, the orbits become disjoint, and we can consider the quotient $\mathbb A^3 - \{0\} / \CC^*$ as either a GIT quotient or a stack quotient. 
+
+Let us start with the stack quotient $\PP_{\text{stack}}(1,1,2) = [\mathbb A^3 - \{0\} / \CC^*]$ (the brackets indicate that we are taking the stack quotient).  It is easy to understand sheaves on quotient stacks: if $G$ acts on a variety $X$ then a sheaf on the stack quotient $[X/G]$ is simply a $G$-equivariant sheaf on $X$.  So in our case, giving a sheaf on $\PP_{\text{stack}}(1,1,2) $ is the the same as giving a $\CC^*$-equivariant sheaf on $\mathbb A^3 - \{0\}$.  Let us explore what this means.  A sheaf on $\mathbb A^3$ is simply a (not necessarily graded) $S$-module $M$.  If $M$ is $\CC^*$-equivariant, then it will decompose according to irreducible $\CC^*$-representations. Since the irreducible representations of $\CC^*$ are simply $\ZZ$, we will get a decomposition $M=\oplus_{d\in \ZZ} M_d$.   One can check that this decomposition endows $M$ with the structure of a {\em graded} $S$-module, with respect to the grading of the variables as above.  To summarize, a $\CC^*$-equivariant sheaf on $\mathbb A^3$ is simply a graded $S$-module $M$.  What happens when we remove the origin?  Those familiar with sheaves on $\PP^n$ will know the answer:  removing $V(\mathfrak m)$ means that any module $M$ whose support is just $\mathfrak m$ will be the zero sheaf.
+
+Let us summarize this in more categorical terms.  Write $\Mod_{gr}(S)$ for the category of finitely generated, graded $S$-modules and $\Mod_{\mathfrak m}(S)$ for the subcategory consisting of modules whose $S$-modules whose support equals the singleton set $\{\mathfrak m\}$.\footnote{A finitely generated $S$-module $M$ has support equal to $\mathfrak m$ if and only if $M$ is annihilated by a power of $\mathfrak m$ if and only if $M$ is finite length.  So $\Mod_{\mathfrak m}(S)$ is equivalent to the subcategory of finite length modules.} Let us write $\Coh(\PP_{\text{stack}}(1,1,2) )$ for the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$.  What we have is that
+\[
+\Coh(\PP_{\text{stack}}(1,1,2) ) = \Mod_{gr}(S) / \Mod_{\mathfrak m}(S),
+\]
+i.e. the category of coherent sheaves on the stack $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of graded $S$-modules by the subcategory  $\Mod_{\mathfrak m}(S)$.
+
+Now let us turn to the GIT quotient.  In this case, this is simply the same as taking $\Proj(S)$, as defined in any introductory text on algebraic geometry (e.g~\cite[Chapter 2]{hartshorne}).  To review, $\Proj(S)$ will have an open affine cover
+\[
+\PP(1,1,2) = \Proj(S) = D_+(x) \cup D_+(y) \cup D_+(z)
+\]
+where
+\[
+D_+(x) = \Spec\left(S[x^{-1}]_0\right)=\Spec\left(\kk\left[\frac{y}{x}, \frac{z}{x^2}\right]\right) \cong \mathbb A^2.
+\]
+Similarly, $D_+(y) \cong \mathbb A^2$.  However, we also have 
+\[
+D_+(z) =   \Spec\left([z^{-1}]_0\right)=\Spec\left(\kk\left[\frac{x^2}{z}, \frac{xy}{z}, \frac{y^2}{z}\right]\right)\cong \Spec\left(\kk[u,v,w] / \langle uw-v^2 \rangle)\right).
+\]
+Note that $D_+(z)$ is a surface with a singularity at the origin.  In particular, the toric variety $\PP(1,1,2)$ has a singularity at the point with projective coordinates $[0:0:1]$.    The class group is $\Cl(\PP(1,1,2)) \cong \ZZ$ where the degree $d$ element of the class group corresponds to any hypersurface of degree $d$.  This divisor is Cartier if and only if $d$ is even (more generally if $d$ is divisible by the least common of the degrees of the weighted space).
+%  $\Pic(\PP(1,1,2)) = 2\ZZ\subseteq \ZZ = \Cl(\PP(1,1,2))$. 
+ In particular, the sheaf $\cO_{\PP(1,1,2)}(1)$, i.e. the sheaf corresponding to the module $S(1)$, is not a line bundle on the weighted projective space $\PP(1,1,2)$.
+
+
+In fact, from the perspective of sheaves and modules, $\PP_{\text{stack}}(1,1,2)$ is fairly simple.  Let $M$ be a finitely generated, graded $S$-module.  Then, using the standard construction for sheaves on $\Proj$ of a graded ring, we get a  coherent sheaf $M|_{\PP(1,1,2)}$ on the variety $\Proj(S) = \PP(1,1,2)$.  Similarly, since $M$ is a graded $S$-module, it is a $\CC^*$-equivariant module on $\Spec(S)$ and on $\Spec(S) - \{0\}$; thus, by standard facts about quotient stacks, $M$ induces a coherent sheaf on the stack quotient.  In short, a finitely generated, graded $S$-module will induce a coherent sheaf on both the variety and the stack.
+
+The subtlety arises when we ask:  when is this sheaf $M|_{\PP(1,1,2)}$ equal to $0$?  For the stack, the answer was simple: the sheaf $M|_{\PP_{\text{stack}}(1,1,2)}$ is $0$ if and only if $M$ is a finite length module.  But 
+%In other words, for the stack, we have a nearly direct analogue of the situation from projective space, where the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of finitely generated, graded $S$-modules by the subcategory of finite length modules.  
+for the variety, the answer is more complicated.  Consider the following example. 
+%as there exist non-finite length modules $M$ where $\widetilde{M}$ is the zero sheaf on $\PP(1,1,2)$.  The following is the simplest such example:
+
+
+%
+%
+% In this case, the GIT quotient is simply the same as taking $\Proj(S)$, as defined in any introductory text on algebraic geometry (e.g~\cite[Chapter 2]{hartshorne}).  Namely $\Proj(S)$ has an open affine cover
+%\[
+%\PP(1,1,2) = \Proj(S) = D_+(x) \cup D_+(y) \cup D_+(z)
+%\]
+%where
+%\[
+%D_+(x) = \Spec\left(S[x^{-1}]_0\right)=\Spec\left(\kk\left[\frac{y}{x}, \frac{z}{x^2}\right]\right) \cong \mathbb A^2.
+%\]
+%Similarly, $D_+(y) \cong \mathbb A^2$.  However, we also have 
+%\[
+%D_+(z) =   \Spec\left([z^{-1}]_0\right)=\Spec\left(\kk\left[\frac{x^2}{z}, \frac{xy}{z}, \frac{y^2}{z}\right]\right)\cong \Spec\left(\kk[u,v,w] / \langle uw-v^2 \rangle)\right).
+%\]
+%This is a surface with a singularity at the origin.  In particular, the toric variety $\PP(1,1,2)$ has a singularity at the point with projective coordinates $[0:0:1]$.    As $\PP(1,1,2)$ is singular, its Class group and Picard group do not agree.  The class group is $\Cl(\PP(1,1,2)) \cong \ZZ$ where the degree $d$ element of the class group corresponds to any hypersurface of degree $d$.  This divisor is Cartier if and only if $d$ is even (more generally if $d$ is divisible by the least common of the degrees of the weighted space).
+%%  $\Pic(\PP(1,1,2)) = 2\ZZ\subseteq \ZZ = \Cl(\PP(1,1,2))$. 
+% In particular, the sheaf $\cO_{\PP(1,1,2)}(1)$, i.e. the sheaf corresponding to the module $S(1)$, is not a line bundle on the weighted projective space $\PP(1,1,2)$.
+%
+%Let us contrast this with the stack quotient $\PP_{\text{stack}}(1,1,2):= [\Spec(S) - \{0\} / \CC^*]$, where we still have the $\CC^*$-action from above.  Obviously, there is a major downside to working with the stack which is that the category of stacks is simply more complicated than the category of varieties.  However, there are some advantages to the stack.  To begin with,  $\PP_{\text{stack}}(1,1,2)$ is a smooth Deligne-Mumford toric stack~\cite{BorisovChenSmith2004}.  Thus the class group equals the Picard group, and in particular, $\cO(1)$ is a line bundle on the stack.  This is the first glimmer of a more general fact, which is that the stack $\PP_{\text{stack}}(1,1,2)$ has simpler algebraic properties.  
+%
+%In fact, from the perspective of sheaves and modules, $\PP_{\text{stack}}(1,1,2)$ is fairly simple.  Let $M$ be a finitely generated, graded $S$-module.  Then, using the standard construction for sheaves on $\Proj$ of a graded ring, we get a  coherent sheaf $\widetilde{M}$ on the variety $\Proj(S) = \PP(1,1,2)$.  Similarly, since $M$ is a graded $S$-module, it is a $\CC^*$-equivariant module on $\Spec(S)$ and on $\Spec(S) - \{0\}$; thus, by standard facts about quotient stacks, $M$ induces a coherent sheaf on the stack quotient.  In short, a finitely generated, graded $S$-module will induce a coherent sheaf on both the variety and the stack.
+%
+%The subtlety arises when we ask:  when is this sheaf equal to $0$?  For the stack, the answer is simple: the sheaf induced by $M$ is $0$ if and only if $M$ is a finite length module.  In other words, for the stack, we have a nearly direct analogue of the situation from projective space, where the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of finitely generated, graded $S$-modules by the subcategory of finite length modules.  For the variety, the answer is a bit more complicated, as there exist non-finite length modules $M$ where $\widetilde{M}$ is the zero sheaf on $\PP(1,1,2)$.  The following is the simplest such example:
+
+\begin{example}\label{ex:oddP112}
+Let $M=S/(x,y)(1)$.  Note that $M$ is not finite length as $M\cong \kk[z](1)$ and thus $\dim M = 1$.  Now, let us consider the corresponding sheaf $M|_{\PP(1,1,2)}$ on the three basic affine opens.  We have
+\[
+H^0(D_+(x), M|_{\PP(1,1,2)}) = M[x^{-1}]_0 =0 \qquad H^0(D_+(y), M|_{\PP(1,1,2)}) = M[y^{-1}]_0 =0
+\]
+since both $x$ and $y$ annihilate $M$.  We also have
+\[
+H^0(D_+(z), M|_{\PP(1,1,2)})= M[z^{-1}]_0 \cong (\kk[z^{\pm}](1))_0 = \kk[z^{\pm}]_1 = 0.
+\]
+Note that $\kk[z^{\pm}]_1 = 0$ because $\deg(z)=2$.  So $M|_{\PP(1,1,2)}$ has no sections on $D_+(z)$ not because $z$ annihilates $M$, but because of an arithmetic coincidence that $\kk[z^{\pm}]$ has no odd degree elements.  Of course, since the sheaf $M|_{\PP(1,1,2)}$ equals the zero sheaf on an open cover, it follows that $M|_{\PP(1,1,2)}$ is itself the zero sheaf on $\PP(1,1,2)$.
+\end{example}
+
+Example~\ref{ex:oddP112} indicates that passing from $S$-modules to sheaves on $\PP(1,1,2)$ is more complicated than it is for the stack quotient.  A much longer discussion of sheaves on GIT quotients appears in \cite[Chapter 5]{CLS}, but we can give a categorical description in this case as follows.  Write $S^{(2)}=k[x^2,xy,y^2,z]$ for the degree $2$ Veronese subring of $S$.  For a graded $S$-module $M$, the submodule $M^{(2)} = \oplus_{d \in 2\ZZ} M_d$ will be an $S^{(2)}$-module.  Perhaps the simplest description of coherent sheaves on $\PP(1,1,2)$ is as the following Verdier quotient:
+\[
+\coh(\PP(1,1,2)) = \Mod_{gr}(S^{(2)}) / \Mod_{\mathfrak m}(S^{(2)})
+\]
+where $\Mod_{\mathfrak m}(S^{(2)})$ is the subcategory of finite length $S^{(2)}$.  Note how this explains Example~\ref{ex:oddP112}: in that example, $M$ is not a finite length $S$-module and so the induced sheaf on the stack quotient is nonzero.  But $M^{(2)}$ is a finite length $S^{(2)}$-module, and so the induced sheaf on the GIT quotient is zero.
+
+In short, the stack quotient $\PP_{\text{stack}}(1,1,2)$ is more closely connected to the polynomial ring $S$ itself, whereas the GIT quotient $\PP(1,1,2)$ is more closely tied to the degree $2$ Veronese subring $S^{(2)}$.   Thus, for those (like me) who are primarily interested in the study of modules over multigraded polynomial rings like $S$ itself, the stack quotient $\PP_{\text{stack}}(1,1,2)$ provides a better framework than the standard toric variety $\PP(1,1,2)$.  In fact in my experience, among researchers working on homological aspects of toric varieties, including resolutions or derived categories, the stack is generally the focal point.
+
+
+
+Of course, there are also major advantages to studying the toric variety instead of the toric stack.  For instance, the category of stacks is far more complicated than the category of varieties, and the literature on stacks is much less well-developed than that the literature on varieties.  In addition, geometric intuition about varieties can by misleading in stacky situations.  
+% However, there are some advantages to the stack.  To begin with,  $\PP_{\text{stack}}(1,1,2)$ is a smooth Deligne-Mumford toric stack~\cite{BorisovChenSmith2004}.  Thus the class group equals the Picard group, and in particular, $\cO(1)$ is a line bundle on the stack.  This is the first glimmer of a more general fact, which is that the stack $\PP_{\text{stack}}(1,1,2)$ has simpler algebraic properties.  
+%
+
+%  Most notably: $\PP(1,1,2)$ is a toric variety and so one can leverage the robust literature on varieties and toric varieties.  By contrast, the literature on stacks is significantly more scattershot, notable challenge is that working with stacks requires a  that can be challenging most notable advantage The main upshot of Example discussion is that there are subtle differences between considering the weighted projective variety $\PP(1,1,2)$ and the weighted projective stack  $\PP_{\text{stack}}(1,1,2)$, and that there can be advantages to either perspective.  Specifically, for many researchers who are interested in derived categories or related questions, the stack is generally thought to be better behaved.  
+
+We should note that the variety and the stack are also closely tied to one another, as there is a direct connection between the variety and the stack.  Since $\PP_{\text{stack}}(1,1,2)$ is a smooth toric DM stack, and $\PP(1,1,2)$ is its coarse moduli space, there is  a morphism $\pi\colon \PP_{\text{stack}}(1,1,2) \to \PP(1,1,2)$ that has various nice properties.  See~\cite{BorisovChenSmith2004}.
+
+A similar story holds for any weighted projective space.  For any $\PP(d_0, \dots, d_n)$ there is a corresponding stack $\PP_{\text{stack}}(d_0, \dots, d_n)$.  The stack is smooth while the variety is not.  The algebraic properties of the stack are generally simpler than that of the variety.  And there is a morphism from the stack to the variety satisfying a host of nice properties.  In fact, a similar story even holds for any simplicial toric variety; again one should see~\cite{BorisovChenSmith2004} for some of the background on this topic.
+
+
+\daniel{Make sure we've defined the categories $\Coh$ and $\operatorname{mod}$ somewhere.}
+
+
+\begin{thm}\label{thm:simplicialStack}
+Let $X$ be a simplicial toric variety with $\Cl(X)$-graded Cox ring $S$ and irrelevant ideal $B$.  Let $G=\Hom_{\ZZ}(\Cl(X),\kk^*)$ act on $\Spec(S)$ in the natural way.  Let $\sX$ be the stack quotient $[\Spec(S) - V(B) / G]$.  Moreover, we have
+\[
+\Coh(\sX) = \operatorname{mod}_{gr}(S)/\operatorname{mod}_{B}(S).
+\]
+\end{thm}
+In short, the relationship between coherent sheaves on $\sX$ and graded $S$-modules is just like the relationship for $\PP^n$.  This is the {\em whole point} of passing from the variety $X$ to the stack $\sX$: sheaves on $\sX$ are literally in bijection with graded $S$-modules, modulo $B$-torsion.
+
+
+When $X$ is simplicial but not smooth, another sense in which the stack $\sX$ is ``better'' than the variety $X$ is that $\sX$ is a smooth, Deligne-Mumford stack with $\Pic(\sX) \cong \Cl(X)$.  But these features  will not be relevant for any of the results under consideration.  Applying Theorem~\ref{thm:simplicialStack} to the varieties from the secondary fan, we obtain:
+
+\begin{cor}\label{cor:stacksAndDb}
+    Let $X_i$ be any of the toric varieties from Definition~\ref{defn:Xi} and let $B_i\subseteq S$ be the corresponding irrelevant ideal.  Let $\sX_i$ be thse stack as in Example~\ref{ex:CoxConstruction}.  We have
+   \[
+    D^b(\sX_i) = D^b(S) / D^b_{B_i}(S),
+    \]
+    where we recall that: $D^b(\sX_i)$ is the bounded derived category of coherent sheaves on $\sX_i$; $D^b(S)$ is the bounded derived category of graded $S$-modules; and $D^b_{B_i}(S)\subseteq D^b(S)$ is the full triangulated subcategory generated by modules $M$ which are annihilated by some power of $B_i$. 
+\end{cor}
+This corollary follows from several well-known and more general results in the literature.  Since our interest in stacks is nearly entirely based upon this corollary (i.e. we will have to further discussion of stacks), we will simply provide references but skip the proof.  Perhaps the most direct reference is \cite{AOV2008}*{Section~2.1}, which--once one unravels the notation--provides a full proof of an equivalent fact.  Other references, working in various levels of generality, include  \cite{stacks-project}*{06WT}, \cite{vistoli}*{Theorem 4.46}, and  \cite{alper}*{Theorem 7.1.11}. \michael{Also include that the bounded derived category of $G$-equivariant sheaves on $\AA^n \setminus V(B_i)$ is $D^b(S) / D^b_{B_i}(S)$, which is an equivariant version of the Thomason-Trobaugh localization theorem.}
+
+
+
+\subsection{Wish List}
+\begin{enumerate}
+    \item  Add a simple proof that the free module degrees in BCHSY come from Bondal-Thomsen.
+    \item  Mention that BCHSY works in the radical case and include an example (maybe an example where the defining ideal of $X\subseteq Y$ is radical but not prime, e.g. the case of a point in a fake projective plane, which appeared in Brown-Erman's paper.)
+    \item  
+\end{enumerate}
+
+\subsection{Work on Notes and an M2 package for the week of July 13}
+Notes:
+\begin{itemize}
+\item Main focus for DE, JY, MS, LCH: 5-8, 10 need a lot of work then expand on 1-4
+
+\item The BCHSY treatment of HHL res should be broken into 3 lectures (sect 6-8) (possible outline at head of sect 6)
+
+
+\item comments only on 11-14 (except for Michael)
+
+\item Lauren should be chief of the material on the secondary fan
+
+\item DE will work on Achinger material --  in sect 5
+
+\item Lectures 1-5 could use some significant fleshing out, especially if we want this to eventually be a standalone document.
+\end{itemize}
+
+M2 Package
+\begin{itemize}
+\item  Have the package for computing HHL resolutions of equivariant sheaves and toric subvarietes in good enough shape, including documentation, to share with all participants.
+
+\item  Include code for computing the secondary fan associated to a multigraded ring.
+
+\item  Can we write code that would allow for Fourier-Mukai transforms of line bundles, as in the Transform Lemma?
+
+\end{itemize}
+
+
+
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{example}
+\end{document}
