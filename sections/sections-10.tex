@@ -1,0 +1,82 @@
+\section{Lecture 10 (Juliette Bruce): Applications of the Hanlon-Hicks-Lazarev Theorem}
+
+Let $X$ be a smooth projective toric variety, and let $\OO_\Delta$ denote the structure sheaf of the diagonal~$\Delta \into X \times X$. The following is a consequence of the Hanlon-Hicks-Lazarev Theorem:
+
+\begin{thm}
+\label{thm:HHLdiagonal}
+
+There exists a locally free resolution $\cR$ of $\OO_\Delta$ of the diagonal $\Delta_X \subseteq X \times X$ of length $\dim{X}$ whose terms are direct sums of line bundles in the Thomsen collection of $X \times X$.
+\end{thm}
+
+\begin{remark}
+The elements of the Thomsen collection of $X \times X$ are of the form $\cL \boxtimes \cL'$, where $\cL$ and $\cL'$ are in the Thomsen collection of $X$.
+\end{remark}
+
+Theorem~\ref{thm:HHLdiagonal} led to proofs of three conjectures in commutative algebra and toric geometry.
+
+\subsection{The Berkesch-Erman-Smith Conjecture} Let $S$ be the Cox ring of $X$, and let $M$ be an~$S$-module. In \cite{BES}, Berkesch-Erman-Smith define a \defi{virtual resolution of $M$} to be a complex $F$ of free $S$-modules such that $\widetilde{F}$ is a locally free resolution of $\widetilde{M}$. They posed the following conjecture:
+
+\begin{conj}[Berkesch-Erman-Smith's Conjecture]
+\label{conj:BES}
+Every finitely generated $\Pic{X}$-graded $S$-module $M$ admits a virtual resolution of length at most $\dim{X}$.
+\end{conj}
+
+In fact, this was originally posed as a question~\cite{BES}*{Question 6.5}, but it has been stated as a conjecture in subsequent works, e.g.~\cite{yang,BS24}. Before Hanlon-Hicks-Lazarev proved Conjecture~\ref{conj:BES}, it was known when $X$ is a product of projective spaces~\cite{BES}, when $\Pic(X)$ has rank 2~\cite{BS24}, and when $M$ is a monomial ideal~\cite{yang}.
+
+Let us explain how Theorem~\ref{thm:HHLdiagonal} implies Conjecture~\ref{conj:BES}. We will need the following:
+
+\begin{thm}[Fujita Vanishing Theorem \cite{lazarsfeld04}*{Theorem 1.4.35}]
+\label{thm:fujita}
+Let $\F$ be a coherent sheaf on~$X$, and let $\cL$ be an ample line bundle on $X$. There exists $m \gg 0$, depending on $\F$ and $\cL$, such that $H^j(X,\F \otimes \cL^m \otimes \cL') = 0$ for all $j > 0$ and all nef line bundles $\cL'$ on $X$.
+\end{thm}
+
+
+\begin{proof}[Proof of Conjecture~\ref{conj:BES}]
+Let $\cR$ be as in Theorem~\ref{thm:HHLdiagonal}. We will write ``$\cL_1 \boxtimes \cL_2 \in \cR_i$" for ``$\cL_1 \boxtimes \cL_2$ is a summand of $\cR_i$". For $i = 1, 2$, let~$\pi_i \co X \times X \to X$ be the projection. Given a sheaf $\E$ on $X$, the projection formula and base change imply that the Fourier-Mukai transform~$(\RR\pi_2)_*(\pi_1^*(\F) \otimes \cR)$ is isomorphic to a complex $\cB(\E)$ with $\ell^{\th}$ term
+\begin{equation}
+\label{eqn:monad}
+\cB(\E)_\ell \ce \bigoplus_{i - j = \ell} \bigoplus_{\cL_1 \boxtimes \cL_2 \in \cR_i} H^j(X, \E \otimes \cL_1) \otimes_\k \cL_2.
+\end{equation}
+Of course, the homology of $\cB(\E)$ is concentrated in degree 0 and isomorphic to $\E$. Recall that the pairs of line bundles $\cL_1$ and $\cL_2$ appearing in~\eqref{eqn:monad} lie in the Thomsen collection of $X$.
+
+Let $\F$ be the sheaf on $X$ associated to our $S$-module $M$, and let $\mathcal{A}$ be an ample line bundle on~$X$. Applying Theorem~\ref{thm:fujita} to the pair $\F \otimes \cL$ and $\mathcal{A}$ for all line bundles~$\cL$ in the Thomsen collection of~$X$, we may choose $m \gg 0$ such that $H^j(X, \F \otimes \cL) = 0$ for all $j > 0$. Thus, we have $\B(\F \otimes \cA)_\ell = 0$ unless~$0 \le \ell \le \dim X$, and so $\B(\F \otimes \cA) \otimes \cA^{-1}$ is a locally free resolution of $\cF$ by sums of line bundles of length at most $\dim{X}$. Taking global sections of (all twists of) $\B(\F \otimes \cA) \otimes \cA^{-1}$ gives the desired virtual resolution.
+\end{proof}
+
+\subsection{Bondal's Conjecture}\label{subsect:bondalConjecture}
+
+Given a triangulated category $\cT$, we say objects $T_1, \dots, T_m \in \cT$ \defi{classically generate} $\cT$ if the smallest triangulated subcategory of $\cT$ that is closed under taking summands and that contains $T_1, \dots T_m$ is $\cT$ itself.
+
+\begin{conj}[Bondal's Conjecture]
+\label{conj:bondal}
+The line bundles in the Thomsen collection of $X$ classically generate $D^b(X)$.
+\end{conj}
+
+In fact, Bondal stated without proof in \cite{Bondal} that Conjecture~\ref{conj:bondal} holds. But this statement was later referred to as Bondal's Conjecture in e.g. \cite{Uehara, HHL}. See~\cite{HHL}*{Remark 1.5} for a list of known cases of Bondal's Conjecture before it was proven by Hanlon-Hicks-Lazarev.
+
+\begin{proof}[Proof of Conjecture~\ref{conj:bondal}]
+Given a coherent sheaf $\E$ on $X$, the complex $\cB(\cE)$ from the proof of Conjecture~\ref{conj:BES} exhibits~$\E$ as an iterated extension in $D^b(X)$ of line bundles in the Thomsen collection of $X$. Conjecture~\ref{conj:bondal} immediately follows.
+\end{proof}
+
+\subsection{The toric case of Orlov's Conjecture}
+
+Theorem~\ref{thm:HHLdiagonal} also resolved the toric case of a conjecture of Orlov on the Rouquier dimension of derived categories. Let us begin with the definition of Rouquier dimension.
+
+\begin{defn}[\cite{rouquier08}*{Definition 3.2}]
+Let $\cT$ be a triangulated category. If $T \in \cT$ and $i \ge 0$, we let $\langle T \rangle_i$ denote the (not necessarily triangulated) subcategory of $\cT$ given by direct summands of objects obtained by
+taking an $i$-fold extension of finite direct sums of shifts of $T$. The \defi{Rouquier dimension} of $\cT$ is defined to be $\dim\mathcal{T} \ce \inf \{ d \text{ : } \cT =  \langle T \rangle_{d+1} \text{ for some } T \in \cT\}$.
+\end{defn}
+
+\begin{conj}[\cite{orlov}*{Conjecture 10}]
+\label{conj:orlov}
+If $Y$ is a smooth, quasi-projective variety, then the equality $\dim D^b(Y) = \dim Y$ holds.
+\end{conj}
+
+See \cite{BC}*{\S 1.2} for  known cases of Conjecture~\ref{conj:orlov}. This list predates the resolution of the toric case of Conjecture~\ref{conj:orlov}, which is due, independently, to Favero-Huang and Hanlon-Hicks-Lazarev:
+
+\begin{thm}[\cite{FH,HHL}]
+Conjecture~\ref{conj:orlov} holds when $Y$ is a toric variety.
+\end{thm}
+
+\begin{proof}
+This is immediate from \cite{rouquier08}*{Proposition 7.6} and Theorem~\ref{thm:HHLdiagonal}, noting that Theorem~\ref{thm:HHLdiagonal} does not require $X$ to be projective (see \cite{HHL}*{Corollary B}).
+\end{proof}

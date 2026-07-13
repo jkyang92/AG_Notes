@@ -1,0 +1,173 @@
+\section{Lecture 6 (Andreas Hochenegger): Equivalent conditions for Bondal-Thomsen}
+The Bondal-Thomsen collection is a finite set of line bundles that can be defined in several different ways.  We will take the following definition, originally due to Bondal, as our definition.  Consider the short exact sequence
+\begin{equation}\label{eqn:SESCl}
+0\to M\overset{\alpha}{\longrightarrow} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(X) \to 0.
+\end{equation}
+We write $\alpha_\rho$ for the projection of $\alpha$ onto the basis vector corresponding to $\rho$ in $\Sigma(1)$.   (Explicitly we have $\alpha_\rho(m) = \langle -m, u_\rho\rangle$ in the standard notation of CLS, but I don't think this is actually so relevant.)
+Identifying $\ZZ^n$ with torus invariant divisors, we explictly have $\alpha(m) = \sum_{\rho} \alpha_\rho(m) D_\rho$ and the class of $\alpha(m)$ is $0$ in $\Cl(X)$ for all $m\in M$.
+
+%%(.5,0) -->
+%%(1,0) -.5
+%%(0,1)
+
+We now extend this to $M\otimes \QQ$ as follows.  We write $\alpha\otimes {\QQ}$ for the corresponding map of vector spaces $M\otimes \QQ\to \QQ^n$.  And we will write $\lfloor \alpha \rfloor$ for the map
+\[
+\lfloor \alpha \rfloor\colon M\otimes \QQ \to \ZZ^n \text{ where } m\mapsto \sum_{\rho} \lfloor \alpha_\rho(m) \rfloor D_\rho.
+\]
+We note that, while $\alpha(m)$ will always be trivial as an element of $\Cl(X)\otimes \QQ$, this is not the case for $\lfloor \alpha \rfloor(m)$.
+
+\begin{defn}\label{defn:BTcollection}
+    The \defi{Bondal-Thomsen collection} $\Theta_X\subseteq \Cl(X)$ is the image of $\deg \circ \lfloor \alpha \rfloor$.
+    %In other words, an element $d\in \Cl(X)$ lies in The Bondal-Thomsen collection if and only if there is some $m\in M\otimes \QQ$ such that $\lfloor \alpha \rfloor(m)$ is linearly equivalent (as $\QQ$-divisors) to the (honest, i.e. non $\QQ$-divisor) $d\in \Cl(X)$.
+\end{defn}
+Note that, since the sublattice $M\subseteq M\otimes \QQ$ maps to $0$ in $\Cl(X)$, it would be equivalent to consider points in the rational torus $M\otimes \QQ / M$.
+
+\begin{example}
+    Let $X=\PP^2$.  Then $M=\ZZ^2$ and $\alpha$ is given by the matrix
+    \[
+    \begin{pmatrix}
+        -1&0\\ 0&-1\\1&1
+    \end{pmatrix}
+    \]
+    Since it suffices to consider points in $(M\otimes \QQ)
+/ M$, it suffices to consider $(a,b)\in M\otimes \QQ^2$ where $0\leq a,b <1$.  In this case we have
+    \[
+    \lfloor \alpha \rfloor (a,b) = \lfloor -a\rfloor D_0 + \lfloor -b\rfloor D_1 + \lfloor a+b \rfloor D_2.
+    \]
+    Since all the prime torus divisors $D_0,D_1,D_2$ are equivalent to $\cO_{\PP^2}(1)$, determining the Bondal-Thomsen collection for $\PP^2$ amounts to answering: which integers can arise as a sum
+    \[
+    \lfloor -a\rfloor + \lfloor -b\rfloor + \lfloor a+b\rfloor \text{ with } (a,b) \in [0,1)^2.
+    \]
+    If $(a,b)=(0,0)$ we get $0$.  If $0<a<1$ and $b=0$ or vice versa, we get $-1$. $0<a<1$ and $0<b<1$ and $a+b<1$ then we get $-2$, otherwise we get $-1$.  In particular, we conclude that the Bondal-Thomsen collection is $\cO,\cO(-1),\cO(-2)$ in this case.
+\end{example}
+
+\begin{defn}\label{defn:KoszulZonotope}
+    The \defi{Koszul zonotope} is the locus
+    \[
+    \mathcal Z\ce\sum_{\rho} a_\rho \deg(x_\rho) \subseteq  \Cl(X)\otimes \QQ\footnote{As a technical note:  when $\Cl(X)$ has torsion, we always consider degrees under the natural map $\Cl(X)\to \Cl(X)\otimes \QQ$.} \text{ with } a_\rho \in (-1,0].
+    \]
+\end{defn}
+
+\begin{defn}\label{defn:KoszulZonotope}
+    The \defi{toric Frobenius map of degree $\ell$} is the morphism $F_{\ell} \colon X\to X$ that is induced by the map of Cox rings $S\to S$ given by sending $x_\rho \mapsto x_\rho^{\ell}$ for all $\ell$.
+\end{defn}
+
+\begin{example}
+    Continuing the example of $\PP^2$, the zonotope $\mathcal Z$ is simply the half-open interval $(-3,0]$.  Thus the lattice points correspond to $-2,-1$ and $0$.
+\end{example}
+\begin{thm}
+    The following subsets of $\Cl(X)$ are all equal to the Bondal-Thomsen collection.
+    \begin{enumerate}
+        \item  The set of degrees $d\in \Cl(X)$ as in Definition~\ref{defn:BTcollection}.
+        \item  The set of degrees $d\in \Cl(X)$ such that: in $\Cl(X)\otimes \QQ$, $d$ is equivalent to an element $\sum_{\rho} a_\rho D_\rho$ with $a_\rho \in (-1,0].$
+        \item  The set of degrees $d\in \Cl(X$) such that $\deg_{\QQ}(d)$ lies in the zonotope $\mathcal Z$.
+        \item  The set of degrees $d\in \Cl(X$) such that: there is some $\ell>0$, where $\cO_X(d)$ appears as a summand of $F_{\ell,*}\cO_X$.
+        \item  The set of degrees $d\in \Cl(X$) such that: for any $\ell\gg 0$, $\cO_X(d)$ appears as a summand of $F_{\ell,*}\cO_X$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+(1) $\subseteq$ (2):
+Let $m \in M\otimes \QQ$.  Consider the difference
+\[
+\lfloor \alpha \rfloor(m) - \alpha(m) = \sum_{\rho} \left(\lfloor \alpha_\rho(m) \rfloor - \alpha_\rho(m)\right) D_\rho.
+\]
+For any rational number $z$, the difference between $\lfloor z\rfloor$ and $z$ lies in $(-1,0]$, and hence this divisor has the desired form.  Since $\alpha(m)$ is trivial in $\Cl(X)\otimes \QQ$, this shows (1) $\subseteq$ (2).
+
+(2) $\subseteq$ (1): Suppose $d\in\Cl(X)$ is such that there exist
+$a_\rho\in(-1,0]\cap\Q$ with
+\[
+  \deg_\Q(d)\;=\;\sum_\rho a_\rho\,\deg_\Q(D_\rho)
+  \qquad\text{in }\Cl(X)\otimes\Q .
+\]
+Choose a lift
+$D=\sum_\rho c_\rho D_\rho\in\Z^n$, with $c_\rho\in\Z$, such that $\deg(D)=d$.
+Setting $a \ce \sum_\rho a_\rho D_\rho$, we have $D - a \in \ker(\deg_\Q) = \alpha( M \otimes \Q)$. Choose $m \in M \otimes \Q$ such that $a = \alpha(m)$. We have $\alpha_\rho(m)=c_\rho-a_\rho$; since
+$-a_\rho\in[0,1)$ we have $c_\rho-a_\rho\in[c_\rho,c_\rho+1)$, and therefore
+$
+  \bigl\lfloor\alpha_\rho(m)\bigr\rfloor=c_\rho$
+  for every $\rho .
+$
+Thus $\lfloor\alpha\rfloor(m)=\sum_\rho c_\rho D_\rho=D$, and so
+$
+  \deg\bigl(\lfloor\alpha\rfloor(m)\bigr)=\deg(D)=d.
+$
+
+
+(2) $=$  (3): trivial.
+
+(2) $=$ (4) $=$ (5): follows from (the $D=0$ case of)~\cite[Theorem 2]{achinger}, which we discuss below.
+
+\def\AA{{\mathbb A}}
+\def\sO{{\mathcal O}}
+\subsection{Achinger's description}
+
+This is the easy half of Thm 1.1 of \cite{achinger}: Let $X$ be a smooth toric variety. If $F$ is the pushforward under the map $X\to X$
+induced by multiplication on the torus by $n$, then since $X$ is covered by torus-invariant affine spaces, it is enough to analyze the
+pushforward one affine space at a time, and to show that the restriction of $F_* \sO_X$ to each affine space is a rank 1 free module.
+
+Let $T$ be the $n$ torus, acting on $\AA^d$, with coordinate ring $S = k[x_1,\dots,x_d]$. The coordinate ring of $F_* S$, as a module over
+$S$, is the same as $k[x_1,\dots,x_d]$ as a module over $k[x_1^n, \dots, x_d^n]$. The module $F_*(S)$ decomposes as a directs sum of the eigensheaves of the action of
+$T/nT = (Z/n)^d$. If $T$ acts on $S$ with character $\chi= (\chi_1,\dots,\chi_d$, then $T$ acts on $F_*(S)$ with the unique character $\lambda$ such that
+$\chi_i\leq \lambda_i<\chi_i+n$. This is isomorphic, up to shift, to a principal ideal of $S$, and is thus free of rank 1 as required.
+
+Next we determine the summands as sheaves on $X$:
+\end{proof}
+
+One important fact about the Bondal-Thomsen collection is the following easy consequence of Demazure Vanishing.\footnote{A similar statement, proven via similar methods, holds for reasonable toric stacks; see \cite{king}*{Lemma 2.20} for the precise statement.}
+%\michael{This is (close to) \cite{king}*{Lemma 2.20}, which isn't that easy, right?}
+\begin{thm}[Demazure Vanishing] \label{thm:demazure}
+If $X$ is a simplicial, projective toric variety and $D$ is a nef $\QQ$-Cartier divisor on $X$, then
+$H^p(X, \cO_{X}(\lfloor D \rfloor )) = 0$
+for all $p > 0$.
+\end{thm}
+For a proof, see~\cite[Theorem 9.2.3]{CLS}.
+
+\begin{prop}\label{prop:Demauzre}
+    Let $a\in \Cl(X)$ be a nef degree and $-d\in \Theta_X$ be a Bondal--Thomsen degree.  We have
+    $
+    H^p(X,\cO_X(a-d)) = 0 \text{ for all } p>0.
+    $
+\end{prop}
+\begin{proof}
+    Since $a-d$ is an element of the class group, we can choose an integral toric divisor $B=\sum_{i} \alpha_iD_i$, with $\alpha_i\in \ZZ$, corresponding to $a-d$.  Since $-d$ is a Bondal--Thomsen degree, we can choose a toric divisor $D=\sum_i \epsilon_iD_i$, where $\epsilon_i \in [0,1)$, corresponding to $d$.
+
+    Consider the toric $\QQ$-divisor $B+D$.  This is nef, because its class is $(a-d)+d=a$.  And we have $\rfloor B+D\lfloor = B$ which has class $a-d$.  Theorem~\ref{thm:demazure} thus implies $ H^p(X, \cO_{X}(\lfloor B+D \rfloor ))=0$ for all $p>0$.  And we have:
+    \[
+    H^p(X, \cO_{X}(\lfloor B+D \rfloor )) =  H^p(X, \cO_{X}(B)) =  H^p(X, \cO_{X}(a-d)).
+    \]
+\end{proof}
+
+\begin{cor}\label{cor:BTNoCohom}
+    If $-d\ \in \Theta_X$ is a Bondal--Thomsen degree, then $H^i(X,\cO_X(-d))=0$ for all $i>0$.  If $d\ne 0$, then $H^0(X,\cO_X(-d))$ also vanishes.
+\end{cor}
+\begin{proof}
+    For $p>0$, we can apply Proposition~\ref{prop:Demauzre} with $a=0$.  For $H^0$, we note that when $d\ne 0$, $\cO_X(-d)$ is anti-effective and so has no global sections.
+\end{proof}
+
+
+\begin{comment}
+
+Claim:
+There are 4 ways to think about the Bondal-Thomsen collection which we claim are all equivalent.
+
+(1)  Via Bondal’s definition, i.e. as the image in Cl(X) of the map M\otimes \RR —> Cl(X) where the point \theta maps via the round-down formula in Definition 2.12 as in our King paper.  Specifically we send \theta \mapsto D(\theta) \ce \sum_\rho \lfloor <-\theta, u_\rho> \rfloor D_\rho.
+
+(2)  As the elements in Cl(X) that are linearly equivalent (in Cl(X)\otimes RR) to a RR-divisor of the form \sum_{\rho} a_\rho D_{\rho} with with a_\rho \in (-1,0].
+
+(3)  As the lattice points inside of the zonotope associated to (2).
+
+(4)  As the summands of the pushforward under Frobenius.
+
+Proof:
+(2) <==> (3) is obvious.
+
+(1) <==> (2) is as follows.   Let \theta \in M\otimes \RR and D(\theta) as in (1).  Define D’(\theta) by the same formula but without the round down. That is, D’(\theta) = \sum_\rho \lfloor -\theta, u_\rho \rfloor D_\rho is an \RR-divisor which is equivalent to 0 in Cl(X)\otimes RR.  This is because D’(\theta) is the image of \theta under the composition of maps in the exact sequence:
+
+0—> M\otimes RR —> RR^{\Sigma(1)} —> Cl(X)\otimes RR —> 0
+
+Now examine the coefficients of D - D’.  For each \rho, the coefficient of D-D’ is \lfloor <-\theta, u_\rho> \rfloor -  <-\theta, u_\rho>.  But for any real number \zeta, the difference \lfloor \zeta \rfloor - \zeta lies in the range (-1,0].  It follows So D(\theta) - D’(\theta) has the form of a divisor from (2).  Since D’(\theta) is linearly equivalent to 0, we obtain the result.
+
+(2) <==> (4) is from Theorem 2 of Achinger 2015 (the D = 0 case), which is not so bad.
+
+How does this look?
+\end{comment}

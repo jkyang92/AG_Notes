@@ -1,0 +1,336 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lecture 14 (Milena Hering): Proof of revised King's conjecture, I: Outline}
+The Revised King's Conjecture claims that the line bundles $\cO_{\Cox}(-d)$ for $-d$ in the Bondal-Thomsen collection form a full strong exceptional collection.  Why would this be true and how could we prove this?
+
+Let's start with the special case where the secondary fan only has a single chamber, and where the toric variety in that chamber is smooth.  We write $X$ for this toric varite.  Then $D_{\Cox}(S)=D(\sX)$ and each $\cO_{\Cox}(-d)$ is simply $\cO_{\sX}(-d)$.  Choose two elements $-d,-d'$ in the Bondal-Thomsen collection $\Theta$.  We must show several things:
+\begin{enumerate}
+    \item Exceptionality:  For any $-d\in \Theta$ we have
+    \[
+    \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = k \text{ and }
+    \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) = 0 \text { for $i>0$.}
+    \]
+    \item Orthogonality: For any $-d'<-d\in \Theta$ we have
+        \begin{enumerate}
+            \item
+
+            $\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0$ for $i>0$ and
+            \item  $\Hom(\cO_{X}(-d), \cO_{X}(-d'))=0$.
+        \end{enumerate}
+    \item Fullness:  The bundles $\cO_{X}(-d)$ with $-d\in \Theta$ generate the derived category.
+\end{enumerate}
+Exceptionality is trivial:
+\[
+\Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^0(X, \cO_{X}(-d -(-d)) = H^0(X, \cO_{X}) = k^1
+\]
+because $X$ is a projective variety.  Also
+\[
+\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d)) = H^i(X, \cO_{X}) = 0
+\]
+because $X$ is a rational variety.
+
+Fullness follows from the Hanlon--Hicks--Lazarev's proof of the Bondal's Conjecture (Conjecture \ref{conj:bondal}) which we saw back in \S\ref{subsect:bondalConjecture}.
+
+Let us turn to orthogonality.  Part (b) of orthogonality is literally built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a) is the meat of the argument.
+\begin{lemma}
+    Let $-d,-d'$ be two elements of the Bondal--Thomsen collection for $\sX$.  Assume that $-d'$ is anti-nef.  Then
+    \[
+    \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0 \text{ for all } i>0.
+    \]
+\end{lemma}
+\begin{proof}
+   Follows from Demazure vanishing.  Namely \daniel{fill in details}
+\end{proof}
+
+The following outline extends to the case where the secondary fan has one chamber, but where $X$ is simplicial but not smooth, with only standard changes required for working with the stack $\sX$ in place of $X$.
+
+\bigskip
+
+The case above is very special, however, as secondary fans generally have more than one chamber.  Nevertheless, it can provide something of a roadmap for the general proof.  Exceptionality will remain trivial.  Fullness will be due to a variant of a Hanlon--Hicks--Lazarev resolution of the diagonal, utilizing the  fact that the resolution of the diagonal is ``uniform'' for all of the $\sX_i$ associated to the Cox ring $S$ (see Corollary~\ref{cor:diagonalUniform}).  Orthogonality (b) will essentially follow from the definition of the ordering.  And so, as above, Orthogonality (a) will be the hardest part.
+
+Let's examine what we would need to do in order to obtain Orthogonality.
+Each $\cO_{\Cox}(-d)$ is defined as a pullback from one particular $\sX_i$.  For Orthogonality, we need to understand the relationship between two such bundles.  So let's say that $\cO_{\Cox}(-d)$ is the pullback of $\cO_{\sX_1}(-d)$ and $\cO_{\Cox}(-d')$ is the pullback of $\cO_{\sX_2}(-d')$.
+
+We need to compute the $\Hom$ and $\Ext$ between these sheaves, and we thus need a way to compare sheaves pulled back from $\sX_1$ with sheaves pulled back from $\sX_2$.  That is, we need to compute:
+\begin{align*}
+\Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) &=
+\Ext^i_{D_{\Cox}(S)}(\pi_1^*\cO_{\sX_1}(-d),\pi_2^*\cO_{\sX_2}(-d'))\\
+\intertext{The Projection Formula allows us to swap the $\pi_1^*$ in the first factor to a $\pi_{1*}$ in the second factor.  This yields}
+&=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\pi_{1*}\pi_2^*\cO_{\sX_2}(-d'))\\
+\intertext{So we can reduce the Orthogonality computation to a computation on $\sX_1$, but we will need to understand this weird-looking object $\pi_{1*}\pi_2^*\cO_{\sX_2}(-d')$.  But wait, we have seen this before!  It is the result of the Fourier--Mukai transform $\Phi_{21}$.  So we have}
+&=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\Phi_{21}\cO_{\sX_2}(-d')).
+\end{align*}
+
+And so the proof of Revised King's Conjecture will require us to understand the effect of Fourier--Mukai transforms on Bondal--Thomsen line bundles.  In general, understanding the Fourier--Mukai of a sheaf can be incredibly subtle or difficult.  But it turns out that, for the Bondal--Thomsen elements, the results of the Fourier--Mukai transforms are as simple as one could ever hope for.
+\begin{lemma}[$\Theta$-Transform Lemma]\label{lem:PushPull}
+Let $-d\in \Theta_X$ be an element whose image in $\Sigma_{GKZ}$ lies in the chamber corresponding to $\sX_i$.  For any $j$,
+\[
+\Phi_{ij}(\cO_{\sX_i}(-d)) = \cO_{\sX_j}(-d).
+\]
+Equivalently:
+\[
+\pi_{j*}\cO_{\Cox}(-d) = \cO_{\sX_j}(-d).
+\]
+\end{lemma}
+In particular, the statement says the following:  start with a Bondal--Thomsen line bundle $\cO_{\sX_i}(-d)$ where $d$ comes from the chamber corresponding to $\sX_i$.  When you Fourier--Mukai transform this bundle to another chamber, you will get the corresponding Bondal--Thomsen line bundle on the nose.  In other words, $\cO_{\sX_i}(-d)$ will become $\cO_{\sX_j}(-d)$.
+
+There are two miracles here, neither of which is obvious at first.  The first miracle is that the transform of this sheaf is a sheaf, i.e. that the higher pushforwards $R^i$ all vanish.  This is not generally true for Fourier--Mukai transforms, and so it is special for this case.  The second miracle is that the transform of a line bundle is still a line bundle.  Again, this is not generally true for Fourier--Mukai transforms.
+
+In short, Lemma~\ref{lem:PushPull} is quite subtle, and it fails if one alters the hypotheses even
+slightly.  We will explore this delicacy in more detail in \S\ref{sec:proofKing2}.
+But we emphasize that the challenge in the lemma has nothing to do with stackiness, as the statement seems equally subtle when both $\sX_i$ and $\sX_j$ are smooth toric varieties.
+
+\begin{remark}
+  As far as we were able to determine, the $\Theta$-Transform Lemma does not appear to easily follow from known vanishing results from toric or birational geometry.  However, it would be interesting to explore this in greater detail.  \daniel{Michael asks if lev's simplification does this.  Come back to this point.}
+\end{remark}
+
+The next lecture will tackle the proof of the $\Theta$-Transform Lemma.  Before we dive into that, we want to note that the lemma almost immediately implies the Orthogonality statement we needed.
+
+Combining the above computation with the $\Theta$-Transform Lemma, we conclude:
+\[
+\Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) =
+\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\cO_{\sX_1}(-d')) = H^i(\sX_1, \cO_{\sX_1}(d-d')).
+\]
+Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(-d)$ is anti-nef; and since $-d'$ comes from the Bondal--Thomsen collection, it is a divisor with ``pure fractional coefficients''.  This is precisely the domain for Demazure Vanishing, which will thus immediately imply that all of these Ext groups vanish.  In short:  combining the $\Theta$-Tranform Lemma and Demazure Vanishing will immediately yield the Orthogonality statement we need.
+
+\begin{example}\label{ex:hirzStrongBT}
+Revisiting Example~\ref{ex:hirzGKZ} and Figure~\ref{fig:HirzSecondaryFan},
+write $\pi_1\colon \tsX\to \cH_3$ and $\pi_2\colon \tsX \to \PP(1,1,3)$.
+By Definition~\ref{defn:ThetaCox}, $\cO_{\Cox}(-1,0) = \pi_1^* \cO_{\cH_3}(-1,0)$.  Since $d=(-2,1)$ lies in the chamber corresponding to $\PP(1,1,3)$, we must use the fact that there is a natural corresponding element in $\Theta_{\PP(1,1,3)}$.
+In this case, the map $\alpha\colon \ZZ^2\to \Cl(\PP(1,1,3))$ is given by $(a,b) \mapsto a+3b$ and thus $\cO_{\Cox}(2,-1) = \pi_2^* \cO_{\PP(1,1,3)}(\alpha(2,-1))=\pi_2^* \cO_{\PP(1,1,3)}(-1)$.
+Here is a sample Hom computation:
+\begin{align*}
+\RHom(\cO_{\Cox}(-1,0), \cO_{\Cox}(2,-1))
+&=\RHom(\pi_1^*\cO_{\cH_3}(-1,0), \pi_2^*\cO_{\PP}(2,-1)) & \text{by definition,}\\
+&=\RHom(\cO_{\cH_3}(-1,0), \pi_{1*}\pi_2^*\cO_{\PP}(2,-1)) & \text{by adjunction,}\\
+&=\RHom(\cO_{\cH_3}(-1,0), \cO_{\cH_3}(2,-1)) & \text{by Lemma~\ref{lem:PushPull},}\\
+&=\RHom(\cO_{\cH_3}, \cO_{\cH_3}(3,-1))=0 & \text{by direct computation.}
+\end{align*}
+Note that the inverse computation is nonzero:
+\begin{align*}
+\RHom(\cO_{\Cox}(2,-1),  \cO_{\Cox}(-1&,0)) \\
+\qquad
+&=\RHom(\pi_2^*\cO_{\PP(1,1,3)}(-1), \pi_1^*\cO_{\cH_3}(-1,0))&\text{by definition,}\\
+&=\RHom(\cO_{\PP(1,1,3)}(-1), \pi_{1*}\pi_2^*\cO_{\cH_3}(-1,0)) & \text{by adjunction,}\\
+&=\RHom(\cO_{\PP(1,1,3)}(-1), \cO_{\PP(1,1,3)}(-1)) & \text{by \cref{lem:PushPull},} \\
+&= \Bbbk^1 & \text{by direct computation.}
+\end{align*}
+Through similar computations for the other pairs, one can directly confirm that $\Theta$ forms a strong, exceptional collection.  Fullness requires an additional argument.
+\end{example}
+
+To summarize, the outline of the proof amounts to:
+\begin{enumerate}
+    \item  Combine the $\Theta$-Transform Lemma and Demazure Vanishing to obtain the necessary orthogonality statement .
+    \item Use uniformity properties (Corollary~\ref{cor:diagonalUniform}) of the Hanlon-Hicks-Lazarev resolution of the diagonal to conclude that $\cO_{\Cox}(-d)$ with $-d\in \Theta$ generate $D_{\Cox}(S)$.
+\end{enumerate}
+
+
+{\color{blue} Paste in Example 4.5 from the King's paper, to demonstrate this point.  Remark on fullness.}
+
+% Namely, we must compute $\RHom(\cO_{\Cox}(-d), \cO_{\Cox}(-d'))$ for two elements $-d,-d' \in \Theta$.
+% By adjunction and the $\Theta$-Transform Lemma, this reduces to computing
+% \[ \RHom(\cO_{\Cox}(-d), \cO_{\Cox}(-d'))
+% \cong \RHom_{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d'))
+% \cong H^*(\sX_i, \cO_{\sX_i}(d-d')).
+% \]
+% The element $d$ lies in the nef cone of $\sX_i$ and since $-d'$ is an element of $\Theta$, it can be written as a toric $\QQ$-divisor with all coefficients in $(-1,0]$.  The vanishing of the higher cohomology groups then follows from a stacky version of Demazure Vanishing for $\QQ$-divisors (\cref{thm:demazure}).
+
+% \smallskip
+
+% Fullness of the Bondal--Thomsen collection for each $\sX_i$ was proven in \cite{HHL}*{Corollary D} and \cite{FH}; the second step is to extend those results to show that $\Theta$ generates $D_{\Cox}$.  For this, we combine the fact that $\Theta_{\tsX}$ generates $D(\tsX)$ with \cref{lem:PushPull} and explicit computations regarding the behavior of Bondal--Thomsen bundles with respect to pushforward.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lecture 15 (Patrick Kennedy-Hunt): Proof of revised King's conjecture, II: Exceptionality}\label{sec:proofKing2}
+As discussed in the previous section, when it comes to proving the orthogonality properties of the Bondal--Thomsen collection, the $\Theta$-Transform Lemma is the key.  Let us recall the setup.
+
+Choose some degree $-d\in \Theta$ where $d$ lies in the chamber $\Gamma_1$ corresponding to $\sX_1$.  We have the following diagram:
+\[
+\xymatrix{
+&\Gamma_{12}\ar[ld]_{p}\ar[rd]^{q}&\\
+\sX_1&&\sX_2.
+}
+\]
+And we must prove that
+\[
+R^\ell q_*(p^*\cO_{\sX_1}(-d)) =
+\begin{cases}
+\cO_{\sX_2}(-d) & \text{ if $\ell =0$}\\
+0 & \text{ if $\ell > 0$}.
+\end{cases}
+\]
+This breaks into fundamentally different parts:
+\begin{itemize}
+    \item  {\bf $R^0$-term:}  we must show that the $R^0q_*$-term is precisely the right line bundle.
+    \item {\bf Vanishing:}  we must show a vanishing statement for the higher direct images $R^\ell q_*$ with $\ell>0$.
+\end{itemize}
+As we will try to demonstrate in the next example, these two parts are in tension with one another.
+
+\begin{example}[Atiyah Flop]\label{ex:atiyahFlop}
+This is a non-projective example, but it is instructive for thinking about the $\Theta$-Transform Lemma.  Consider the Cox ring $S=\Bbbk[x_0,x_1,y_0,y_1]$ with $\deg(x_i)=1$ and $\deg(y_j)=-1$.  The Koszul zonotope associated to this nonstandard graded ring (see Definition~\ref{defn:KoszulZonotope}) is the open interval $(-2,2)$ and so the Bondal--Thomsen collection consists of the divisors of degree $-1,0$ and $1$.
+
+The secondary fan has two chambers: $\mathbb R_{\geq 0}$ and $\mathbb R_{\leq 0}$.
+The first chamber corresponds to a threefold $Y_+ =[\Spec(S) - V(x_0,x_1) / \GG_m]$.  This is a $\PP^1$-bundle (coordinates $x_0,x_1$ on the fibers) over $\mathbb A^2$ (coordinates $y_0,y_1$ on the base).  The second chamber corresponds to $Y_- =[\Spec(S) - V(y_0,y_1) / \GG_m]$, which is a $\PP^1$-bundle (coordinates $y_0,y_1$ on the fibers) over $\mathbb A^2$ (coordinates $x_0,x_1$ on the base).
+%The origin corresponds to $Y_0=\Spec(S_0)$ where $S_0=\Bbbk[x_0y_0, x_0y_1, x_1y_0, x_1y_1]$.
+Let $\widetilde{Y}$ be the blowup of $Y_+$ at the line $V(y_0,y_1)$; one can check that this is isomorphic to the blowup of $Y_-$ at $V(x_0,x_1)$.   So we have a diagram:
+\[
+\xymatrix{
+&\widetilde{Y}\ar[ld]_{p}\ar[rd]^{q}&\\
+Y_+&&Y_-.
+}
+\]
+
+As we often do, we will express sheaves on $Y_+$ and $Y_-$ via the corresponding $S$-modules.
+We have $\Pic(Y_+)=\ZZ$, and for $d\in \ZZ$, we write $\cO_{Y_+}(d)$ for the line bundle associated to the free module $S(d)$.  Let us consider the Fourier--Mukai transforms $R_{q*}p^* \cO_{Y_+}(d)$ for all $d$.
+
+We start by computing the $R^0$-term.  For any $d$ we have
+\[
+R^0q_*p^*\cO_{Y_+}(d) = \widetilde{S_{\geq d}}(d).
+\]
+Note that this is a line bundle if and only if $d\leq 0$,  More specifically, for $d\leq 0$ we have $S_{\geq d} = S$ and thus $R^0q_*\cO_{Y_+}(d) = \widetilde{S}(d) = \cO_{Y_-}(d)$.  But for $d>0$, we have $S_{\geq d} = \langle x_0,x_1\rangle^d$.  Since $\langle x_0,x_1\rangle$ is {\em not} a component of the irrelevant ideal on $Y_-$, this induces a nontrivial ideal sheaf on $Y_-$.   In particular, we have $R^0q_*\cO_{Y_+}(d) = \cO_{Y_-}(d)$ if and only if $d\leq 0$.  Thus, obtaining the correct $R^0$-term requires the initial line bundle to be ``{\em not too positive}''.
+
+Let us now turn to the higher direct images.  The map $\widetilde{Y}\to Y_-$ is birational over $Y_- \setminus V(x_0,x_1)$, and the fibers over $V(x_0,x_1)$ are $1$-dimensional. Thus the $R^\ell q_*$ terms will automatically vanish for all $\ell > 1$, so we only need to be concerned about $R^1$.  A straightforward, if somewhat involved, computation shows that
+\[
+R^1q_*p^*\cO_{Y_+}(d) \ne 0 \iff H^1(Y_+, \cO_{Y_+}(d))\ne 0 \iff H^1(\PP^1, \cO_{\PP^1}(d)) \ne 0 \iff d>-2.
+\]
+So we will have the vanishing of the higher direct images if and only if  the initial line bundle is ``{\em not too negative}''.
+
+Let us summarize.  Both conclusions--the correct $R^0$ and the vanishing of the higher direct images--are only satisfied for $d=0$ and $d=-1$. These are precisely the elements of the Bondal--Thomsen collection whose negatives lie in the chamber of the secondary fan corresponding to $Y_+$.
+% \daniel{Need better notation here.}
+% \[
+% \begin{tabular}{c|c|c}
+% &$R^0q_*$$&$R^1q_*$$\\\hline
+% $d\geq 0$&$\widetilde{(x_0,x_1)^d}$$&$0$\\ \hline
+% $d = -1$&$\cO_{Y_-}(-1)$&$0$\\ \hline
+% $d\leq -2$&$\cO_{Y_-}(-1)$$&$H^1(\PP^1, \cO_{\PP^1}(d)) \otimes_k \cO_{pt}\ne 0$
+% \end{tabular}
+% \]
+% The Bondal--Thomsen collection $\Theta$ consists of the degree $-1,0,1$ divisors.  By Definition~\ref{defn:ThetaCox}, we have $\cO_{\Cox}(-1)\ce p^* \cO_{Y_+}(-1)$ and $\cO_{\Cox}(1)\ce q* \cO_{Y_-}(1)$; and the pullbacks of $\cO_{Y_+}$ and $\cO_{Y-}$ coincide and are equal to $\cO_{\Cox}$.
+
+% The $\Theta$-Transform Lemma implies that the Fourier--Mukai transform of $\cO_{Y_+}(d)$ from $Y_+$ to $Y_-$ will equal $\cO_{Y_-}(d)$ when $d=0$ or $d=-1$.
+% A direct computation confirms that these are the {\em only} values of $d$ where this holds.  If $d > 0$ then the degree zero cohomology of the Fourier--Mukai transform will be the ideal sheaf of $(y_0,y_1)^d$, and if $d\leq -2$ then the degree one cohomology will be nonzero.
+\end{example}
+
+
+The example demonstrates that we require a delicate balance in order to obtain the conclusion of the $\Theta$-Transform Lemma.
+A complete proof of the $\Theta$-Transform Lemma is given in \cite[\S4.3]{king}.  Instead of presenting the details of the proof in these notes, we will try instead to capture what aspects of the lemma are nontrivial.
+
+Let us set some notation.  We start with a line bundle $\cO_{\sX_1}(-d)$ on $\sX_1$ and where $d$ lies in the chamber $\Gamma_1$ of the secondary fan.  This implies that $\cO_{\sX_1}(d)$ is a nef line bundle on $\sX_1$, and hence that $\cO_{\sX_1}(-d)$ is anti-nef.  Write $L:=p^* \cO_{\sX_1}(-d)$ for the corresponding line bundle on the graph $\Gamma_{12}$ and note that, since nefness is stable under pullback, $L$ is an anti-nef line bundle on $\Gamma_{12}$.
+
+
+
+Let us start with the $R^0$-term.  We want to show that $q_*L \cong \cO_{\sX_2}(-d)$.  This is done in \cite[Lemma~4.14]{king} by comparing the global sections over each cone $\sigma$ in the fan $\Sigma_2$ corresponding to $\sX_2$.  We can compute the global sections in terms of lattice points satisfying certain inequalities involving piecewise linear support functions.  One key computation, given in\cite[Proposition~4.2]{king}, is that when $d$ lies in the chamber $\Gamma_1$, then the corresponding support function  for $\cO_{\sX_1}(-d)$ ``majorizes'' the support function for $\cO_{\sX_j}(-d)$ for any other $j$.  This shows that each section coming from $\cO_{\sX_2}(-d)$ also yields a section from $q_*L$.
+
+The opposite direction is more subtle.  It relies on the fact that the Bondal--Thomsen line bundles can be expressed as toric divisors with purely fractional coefficients, and then utilizes this to create an inequality related to support functions of the form $\alpha \leq \alpha' \leq \lceil \alpha \rceil$.  The key trick is then:  if $\alpha$ is rational and $\alpha'$ is integral, then this inequality implies that $\alpha' = \lceil \alpha \rceil$.  Again, we refer to \cite[Lemma~4.14]{king} for the details, but we remark that the computation, while a bit longwinded, only relies on elementary facts about toric geometry and the behavior of the ceiling function.
+
+The vanishing of the higher direct pushforwards is more involved.
+The higher direct image sheaves $R^\ell q_*L$ encode the higher cohomology groups of $L$ restricted to the fibers of $q\colon \Gamma_{12} \to \sX_2$.   We would immediately obtain the vanishing of these if $L$ satisfied an appropriate positivty condition.  For instance, if $L$ were a nef line bundle then a relative version of Demazure vanishing would imply that the higher direct images vanish.  However $L$ is not nef:  in fact, as noted above, $L$ is anti-nef.
+
+So to avoid having nonzero higher direct images, it is crucial that $L$ be {\em not too negative}.   Here is where the Bondal--Thomsen condition must come into play.  Recall that $L$ is the pullback of the Bondal--Thomsen element $\cO_{\sX_1}(-d)$, which is a divisor whose coefficients lie in $(-1,0]$.
+
+If $L$ itself were an element of the Bondal--Thomsen collection of $\Gamma_{12}$, then Demazure Vanishing would again imply that the higher direct images vanish.  However, it is {\em not necessarily} the case that the pullback of a Bondal--Thomsen element is a Bondal--Thomsen element.  The pullback can acquire coefficients along exceptional divisors that are not in the range $(-1,0]$.
+
+In fact, the $\Theta$-Transform Lemma holds true even if one replaces $\Gamma_{12}$ by some larger, birational toric cover.  This is the fundamentally most subtle aspect of the proof: we cannot easily control what happens to the coefficients of the toric divisor $L$ on $\Gamma_{12}$, and so it is difficult to utilize ``off-the-shelf'' vanishing statements, like Kawamata--Viehweg Vanishing.  The proof in \cite[\S4.3]{king} utilizes a polytope method, due to~\cite[Theorem~3.6]{altmann-immaculate}, to compute the higher cohomology of line bundles of the form $D-D'$ where both $D$ and $D'$ are nef.
+
+\begin{remark}
+    Often, the first proofs of an essential statement prove to be more complicated than necessary.  This happened with Hanlon--Hicks--Lazarev's proofs involving their resolutions, as their proof was later simplified by both \cite{BCHSY} and \cite{BH25}.  We expect that something similar will happen with the $\Theta$-Transform Lemma at some point, i.e. the proof outlined above will not be the ``final'' proof.
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lecture 16 (John Nolan): Proof of Revised King Conjecture, III: Conclusion}
+
+In this section, we will complete the proof of the Revised King Conjecture.  We recall our outline of what we need to prove.
+\begin{enumerate}
+    \item Exceptionality:  For any $-d\in \Theta$ we have
+    \[
+    \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = k \text{ and }
+    \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) = 0 \text { for $i>0$.}
+    \]
+    \item Orthogonality: For any $-d'<-d\in \Theta$ we have
+        \begin{enumerate}
+            \item
+
+            $\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0$ for $i>0$ and
+            \item  $\Hom(\cO_{X}(-d), \cO_{X}(-d'))=0$.
+        \end{enumerate}
+    \item Fullness:  The bundles $\cO_{X}(-d)$ with $-d\in \Theta$ generate the derived category.
+\end{enumerate}
+
+{\bf Proof of Exceptionality:}  Let $-d\in \Theta$ and say that $d$ lies in the chamber $\Gamma_i$.  Then we have
+\begin{align*}
+    \Hom_{D_{\Cox}(S)}(\cO_{\Cox}(-d), \cO_{\Cox}(-d)) &=\Hom_{D_{\Cox}(S)}(\pi_i^*\cO_{\sX_i}(-d), \pi_i^*\cO_{\sX_i}(-d)) &\text{By Definition~\ref{defn:ThetaCox}}\\
+    &=\Hom_{\sX_i}(\cO_{\sX_i}(-d), \pi_{i*}\pi_i^*\cO_{\sX_i}(-d)) &\text{By Projection Formula}\\
+    \intertext{By \cite{king}*{Lemma 3.7}, $\pi_{i*}\pi_i^*$ is just the identity.  So we have }
+    &=\Hom_{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d)) &\text{By \cite{king}*{Lemma 3.7}}\\
+    &=H^0(\sX_i, \cO_{\sX_i}) = k^1. &
+\end{align*}
+The last equality is because $\sX_i$ is irreducible and proper. \daniel{Should we say more because of stackiness?  E.g. $H^0(\sX_i, \cO_{\sX_i})= H^0(X_i, \cO_{X_i}) =k^1$ where the first equality in this line is because of being a good moduli space/coarse moduli space, or something like that?}
+The computation for the higher Ext groups is similar and boils down to the fact that
+\[
+H^p(\sX_i, \cO_{\sX_i}) = H^p(X_i, \cO_{X_i}) = 0 \text{ for $p>0$},
+\]
+which follows from Demazure Vanishing or from Corollary~\ref{cor:BTNoCohom}.
+
+{\bf Orthogonality (a)}:  Choose $-d$ and $-d'$ in $\Theta$ and let $\Gamma_i$ be a chamber whose closure contains $d$  and let $\Gamma_j$ be a chamber whose closure contains $d'$.  We have
+\begin{align*}
+      \Ext^p{D_{\Cox}(S)}(\cO_{\Cox}(-d), \cO_{\Cox}(-d')) &=\Hom_{D_{\Cox}(S)}(\pi_i^*\cO_{\sX_i}(-d), \pi_j^*\cO_{\sX_i}(-d')) &\text{By Definition~\ref{defn:ThetaCox}}\\
+    &=\Ext^p{\sX_i}(\cO_{\sX_i}(-d), \pi_{i*}\pi_j^*\cO_{\sX_i}(-d')) &\text{By Projection Formula}\\
+    &=\Ext^p{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d')) &\text{Lemma~\ref{lem:PushPull}}\\
+    &=H^p(\sX_i, \cO_{\sX_i}(d-d'))=0. &
+\end{align*}
+The final equality follows from Proposition~\ref{prop:Demauzre},\footnote{We are using the stacky version of that proposition.  But again, the shift from varieties to stacks is mostly formal in this setting.  See \cite[Theorem 2.11]{king} for the necessary stacky statement.}noting that $d$ is a nef class on $\sX_i$ because $d$ lies in the closure of the chamber $\Gamma_i$.
+
+{\bf Orthogonality (b)}: This follows from Definition~\ref{defn:BTcollection}.
+
+{\bf Fullness:}  We now turn to proving fullness.  We need to show:
+
+\begin{prop}\label{prop:generation}
+    The Cox category $D_{\Cox}(S)$ is generated by $\cO_{\Cox}(-d)$ with $-d \in \Theta$.
+\end{prop}
+\begin{proof}
+By Bondal's Conjecture, the line bundles corresponding Bondal--Thomsen degrees generate $D(\sX_j)$ for all $j$.  And by the $\Theta$-Transform Lemma, the line bundles $\cO_{\Cox}(-d)$ with $-d\in \Theta$ pushforward to the Bondal--Thomsen line bundles on $\sX_j$ for all $j$.  In other words, the line bundles  $\cO_{\Cox}(-d)$ with $-d\in \Theta$  push forward to a generating set on $D(\sX_j)$ for each $j$.  Since $D_{\Cox}(S)$ was built as the ``union'', in some sense, of the $D(\sX_j)$, this suggests that that $D_{\Cox}(S)$ will be generated by $\cO_{\Cox}(-d)$ with $-d \in \Theta$.  But to make that precise, we require one additional fact.
+
+Specifically, we need to know that if $\cE\in D_{\Cox}(S)$ is any element with $\pi_{j*}(\cE)=0$ for all $j$, then $\cE=0$ in $D_{\Cox}(S)$.
+
+
+
+% Let $\theta \in M_{\RR}$, and let $-\widetilde{d}\ce
+% \widetilde{d}(\theta) \in \Cl(\tsX)$ and $-d\ce -d(\theta)\in \Cl(X)$ be the
+% corresponding elements of the class groups.  Suppose that the image of $-d$ is
+% in $\Gamma_i$, the chamber of $\Sigma_{GKZ}$ corresponding to $\sX_i$ so that,
+% by Definition~\ref{defn:ThetaCox},
+% $\cO_{\Cox}(-d)=\pi_i^*\cO_{\sX_i}(-d)$.  By adjunction and
+%  \cref{prop:pushforwardBTstack},
+% $\RHom_{\tsX}(\cO_{\Cox}(-d), \cO_{\tsX}(-\widetilde{d}))\cong \RHom_{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d))$.
+% The latter $\Hom$ group contains an identity morphism, so write $f\colon \cO_{\Cox}(-d) \to \cO_{\tsX}(-\widetilde{d})$ for the corresponding morphism.
+% Let $C(f)$ be the cone of $f$.  We next observe that $\pi_{j*}(C(f))=0$ for all $j$.  Namely, by the $\Theta$-Transform Lemma and \cref{prop:pushforwardBTstack} as referenced above,  $\pi_{j*}(C(f))$ is
+% \[
+%  \cO_{\sX_j}(-d) \xrightarrow{\ \pi_{j*}(f)\ }\cO_{\sX_j}(-d).
+% \]
+% Since $f$ was defined as the adjoint to the identity on $\cO_{\sX_i}(-d)$, and since the identity, $f$, and $\pi_{j*}(f)$ all agree over the torus, it follows that $\pi_{j*}(C(f))=0$.
+
+% Now, recall that $\mathcal Q\subseteq D(\tsX)$  was defined in
+% \cref{subsec:BTdefinitions} as the subcategory of $\cE\in D(\tsX)$ such that
+% $\pi_{i*}\cE =0$ for all $i$, and consider the Verdier quotient
+% $\pi \colon D(\tsX) \to D(\tsX)/\mathcal Q$.
+% Since $D_{\Cox} \subset {}^\perp \mathcal Q$, the composition
+% $D_{\Cox} \to D(\tsX) \to D(\tsX)/\mathcal Q$
+% is fully faithful.
+% The line bundles $\cO_{\tsX}(-\widetilde{d})$
+% for $-\widetilde{d} \in \Theta_{\tsX}$ generate $D(\tsX)$ by~\cite{HHL}*{Corollary D} or \cite{FH}, and
+% hence they also generate $D(\tsX)/\mathcal Q$. From the above,
+% $\pi (\mathcal O_{\Cox}(-d)) =
+% \pi (\mathcal O_{\tsX}(-\widetilde{d}))$.
+
+% Thus both functors
+% $\langle \mathcal O_{\Cox}(-d) \rangle \subset D_{\Cox} \to
+% D(\widetilde{X}) / \mathcal Q$
+% are equivalences.
+\end{proof}
+
+
+
+\begin{itemize}
+    \item  Fullness and categorical resolution of teh diagonal.
+    \item  Putting it all together.
+\end{itemize}
