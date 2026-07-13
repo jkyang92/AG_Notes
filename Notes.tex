@@ -70,242 +70,7 @@
 
 \pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lecture 11 (Lauren Cranton Heller): The secondary fan}\label{lec:11-secondary-fan}
-In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring.
-
-\subsection{The toric varieties associated to a multigraded ring}
-Let $X$ be a projective toric variety with fan $\Sigma$ and class group $\Cl(S)$. Let $S = \kk[x_1, \dots, x_n]$ be the corresponding Cox ring and $B\subseteq S$ the irrelevant ideal.  Distinct toric varieties can have the same Cox ring, and this adds a wrinkle to any attempt to generalize results related to the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is generally called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this.
-
-In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
-
-\begin{defn}\label{defn:idealConeCorrespondence}
-Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
-%\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \}
-%\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
-if there exist $q_i \in \QQ_{>0}$ such that
-$
-d = \sum_{i} q_i\deg_{\QQ}(x_i^{{a_i}}).
-$
-For a convex cone $\Gamma \subseteq \Cl(S)\otimes \QQ$, we define
-    \[
-    \text{ideal}(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
-    \]
-    Conversely, given a monomial ideal $B$, we define
-     \[
-    \text{cone}(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
-    \]
-\end{defn}
-It is immediate that $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial of largest degree dividing~$\mathbf{x}^{\mathbf{a}}$ spans $d$. Thus, $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
-%and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
-It is elementary to check that
-\[
-\text{ideal}(\text{cone}(\text{ideal}(\Gamma))) = \text{ideal}(\Gamma) \qquad \text{ and } \qquad \text{cone}(\text{ideal}(\text{cone}(B))) = \text{cone}(B).
-\]
-
-
- \begin{remark}
- \label{rem:open}
-Because we insist that the coefficients $q_i$ be strictly positive, the condition that $\mathbf{x}^\a$ spans $d$ is an open condition on the points $d$ {\color{red} in the effective cone of $X$.}
-\end{remark}
-
-Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. We call the interiors of the corresponding cones the \defi{chambers for $S$}.  By definition, the chambers are disjoint from one another.
-%By definition, the effective cone is the union of the closures of these chambers.
-
-\begin{defn}\label{defn:chambersIrrelevant}
-We enumerate the chambers as $\Gamma_1, \dots, \Gamma_s$, and we write $B_1, \dots, B_s$ for the corresponding squarefree monomial ideal.
-By construction, the effective cone $\Eff(X)$ is the union of the closures of these cones $\Eff(X) = \bigcup_{i=1}^s \overline{\Gamma_i}$.
-\end{defn}
-
-\daniel{New remark below.}
-\begin{remark}
-    The \defi{secondary fan of $X$} is a fan structure on $\Eff(X)$ where the maximal chambers are precisely $\Gamma_1, \dots, \Gamma_s$.  In these notes, we will not utilize any aspects of the secondary fan beyond the chambers, and so we will avoid giving a precise definition of the lower dimensional faces of the secondary fan.
-\end{remark}
-
-
-
-\begin{example}\label{ex:hirzsecondary}
-Let us consider the example of $\mathcal H_3$, the Hirzebruch surface of type $3$.  The Cox ring is~$S=\CC[x_0,x_1,x_2,x_3]$, and the degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.    First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
-
-\begin{center}
-\begin{tikzpicture}[scale=2]
-
-  \def\axlim{1.6}
-
-  \begin{scope}
-    \clip (-\axlim,-\axlim) rectangle (\axlim,\axlim);
-
-    % Cone region (left): x<=0 and y >= -x/3
-    \fill[orange!35]
-      (0,0)
-      -- (0, \axlim)
-      -- (-\axlim, \axlim)
-      -- (-\axlim, {1/3*\axlim})
-      -- cycle;
-
-    % Positive quadrant (right)
-    \fill[blue!20]
-      (0,0) rectangle (\axlim, \axlim);
-  \end{scope}
-
-  % Draw only the negative x-axis and negative y-axis as solid
-  \draw[->, thick] (-\axlim, 0) -- (0, 0);
-  \draw[->, thick] (0, -\axlim) -- (0, 0);
-
-  % Positive x-axis and positive y-axis as dotted boundary rays
-  \draw[black, thick, dotted, ->, shorten >=2pt] (0,0) -- (\axlim, 0);
-  \draw[black, thick, dotted, ->, shorten >=2pt] (0,0) -- (0, \axlim);
-
-  % Tick marks
-  \foreach \x in {-1, 1} {
-    \draw (\x, 2pt) -- (\x, -2pt) node[below, font=\small] {$\x$};
-  }
-  \foreach \y in {-1, 1} {
-    \draw (2pt, \y) -- (-2pt, \y) node[left, font=\small] {$\y$};
-  }
-
-  % Left boundary ray of cone: direction (-3,1), dotted
-  \draw[black, thick, dotted, ->, shorten >=2pt]
-    (0,0) -- ({-3/sqrt(10)*\axlim*1.05}, {1/sqrt(10)*\axlim*1.05})
-    node[left, font=\small] {$(-3,1)$};
-
-  % Label (0,1) placed to the right of the y-axis, clear of shading
-  \node[font=\small] at (0.22, \axlim*0.92) {$(0,1)$};
-
-  % Labels centered in each shaded region
-  \node[orange!70!black] at ({-\axlim/2}, {\axlim/2}) {$\Gamma_1$};
-  \node[blue!60!black]   at ({ \axlim/2}, {\axlim/2}) {$\Gamma_2$};
-
-  % Origin dot
-  \filldraw (0,0) circle (1pt);
-
-\end{tikzpicture}
-\end{center}
-\end{example}
-
-Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.
-\begin{defn}\label{defn:Xi}
-    We define $X_i$ to be the toric variety associated to $\Sigma_i$.  By a mild abuse of notation (see Remark~\ref{rmk:abuseNotation}), we will refer to $B_i\subseteq S$ as the irrelevant ideal of $X_i$.
-\end{defn}
-There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$:
-
-
-\begin{thm}
-\label{thm:mainsecondary}
-Fix a chamber $\Gamma_i\subseteq \Eff(X)$ for some $1\leq i \leq s$. Let $B_i$ the corresponding square-free maximal ideal, $\Sigma_i$ the associated fan, and $X_i$ as in Definition~\ref{defn:Xi}. Write $G \ce \Hom(\Cl(X), \kk^*)$.   We have the following:
-\begin{enumerate}
-	\item  {\bf Simplicial:}  $\Sigma_i$ is a simplicial fan whose rays are a subset of the rays of $\Sigma$ and such that~$|\Sigma_i| = |\Sigma|$. In particular, $X_i$ is a projective, simplicial toric variety.
-	\item   {\bf Quotient:}  $\Spec(S) - V(B_i)\to X_i$ is a geometric quotient as in~\cite[Chapter 5]{CLS}.
-%	\item  {\bf Toric stack:}   $[\Spec(S) - V(B_i) / G]$ is a smooth toric DM stack with coarse moduli space equal to $X_i$.
-\end{enumerate}
-
-Choose any point $a=(a_1, \dots, a_n) \in \ZZ^n$ such that $\deg_{\QQ}(a)$ lies in the interior of $\Gamma_i$.
-We also have the following:
-\begin{enumerate}\setcounter{enumi}{2}
-	\item  {\bf Proj:}  Let $S_a$ be the $\ZZ$-graded ring
-	$
-	S_{a} = \bigoplus_{e\geq 0} S_{ea}.
-	$
-	We have $\Proj(S_a)=X_i$.
-	%Moreover, if $u_\tau$ is the primitive point on the ray $\tau$ then the divisor corresponding $eu_{\tau}$ equals $S_\tau(e)|_{X_i}$.
-	\item   {\bf Normal fan:}  Let $P_a\subseteq M$ be the polytope
-$
-P_{{a}} \ce \bigcap_{i=1}^n \{ m \in M \text{ $|$ } \alpha_i(m) \geq -a_i\},
-$
-	where $\alpha_i$ is given by composing the canonical map $M \into \Z^n$ with the projection onto the $i^{\th}$ coordinate. The normal fan of $P_a$ is $\Sigma_i$.
-%	\item
-\end{enumerate}
-Moreover, $\widetilde{S_{a}(1)}$ is equal to the rank one torsion free sheaf associated to the polytope $P_a$.
-\end{thm}
-\begin{proof}
-%Part (3) follows from \cite{BorisovChenSmith2004}*{\S 3}
-All of these results can be extracted from \cite[Chapters 14-15]{CLS}, but those are pretty technical paragraphs so it is not so easy to find an overarching statement like this.  Statement (1) essentially follows from~\cite[Proposition 14.4.9]{CLS}.  Statement (2) follows from ~\cite[Proposition 14.4.14]{CLS} combined with the fact from \cite[Theorem 5.1.11]{CLS} that for a simplicial toric variety, the quotient is a geometric quotient.
-%\daniel{Mostly just cite the places in CLS?}
-\end{proof}
-
-\begin{example}\label{ex:hirzSecondary2}
-    We return Example~\ref{ex:hirzsecondary}. The ideal $B_2$ is the irrelevant ideal of the Hirzebruch surface~$\mathcal{H}_3$, so the chamber $\Gamma_2$ corresponds to $\mathcal{H}_3$. The chamber $\Gamma_1$ corresponds to the weighted projective space $\PP(1,1,3)$; one way to see this is to apply Theorem~\ref{thm:mainsecondary}(4) with $a = (-1, 1)$, and notice there is an isomorphism of $\Z$-graded rings $S_a \cong \k[y_0, y_1, y_2]$, where $\deg(y_0) = \deg(y_1) = 1$, and $\deg(y_2) = 3$. These two cases demonstrate notably different behavior.  For $\mathcal H_3$, we have that~$\Cl(\mathcal H_3)=\ZZ^2 = \Cl(S)$, and hence we have not contracted any divisors.  In this case, {\color{red} $\Gamma_2$} is precisely the ample cone of $\mathcal H_3$.
-Things are more complicated for $\PP(1,1,3)$, as the presentation of $\PP(1,1,3)$ is nonstandard.  The Cox ring of $\PP(1,1,3)$ involves only 3 variables, but we have $S=\CC[x_0, x_1, x_2, x_3]$.  This is because the ray $\rho_1$ is not utilized in the fan corresponding to $\PP(1,1,3)$.  At the algebraic level, the corresponding variables determines a principal component of the irrelevant ideal, as we have $B_1 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle$.  There is still a natural map~$\Phi\colon \ZZ^2 = \Cl(S) \to \Cl(\PP(1,1,3))$; it must have $\deg(x_1)$ in its kernel, i.e. it must be the map $\Phi(a,b) = a +3b$. Under this map, every element $\Phi(\Gamma_1)$ covers the ample cone of $\PP(1,1,3)$.  However, there are elements outside of $\Gamma_1$ that also map to ample divisors under this map.
-\end{example}
-
-
-The previous example illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
-\begin{lemma}\label{lem:MovingConeEquivalence}
-The following are equivalent:
-\begin{enumerate}
-    \item The Cox ring of $X_i$ equals $S$;
-    \item $\Cl(X_i)=\Cl(S)$;
-    \item  The rays of $\Sigma_i$ are precisely $\rho_1, \dots, \rho_n$;
-    \item  $B_i$ does not belong to any principal ideal $\langle x_j\rangle$.
-\end{enumerate}
-\end{lemma}
-\begin{proof}[Sketch of proof]
-    For each $X_i$, the rays of $\Sigma_i$ are a subset of $\rho_1, \dots, \rho_n$~\cite[ Chapter 14.4]{CLS}.  Since the Cox ring of $X_i$ is a polynomial ring whose variables are in bijection the rays of $\Sigma_i$, this yields the equivalence of (1) and (3).  If any of the rays $\rho_j$ does not arise in $\Sigma_i$, then the vanishing of the corresponding variable $x_j$ defines the empty set on $X_i$ and thus $x_j$ form a minimal component of $B_i$.  This yields the equivalence of (3) and (4).  The equivalence of (2) and (3) comes from the short exact sequence \eqref{eqn:SESCl}.
-
-\end{proof}
-\begin{remark}\label{rmk:abuseNotation}
-    By a mild abuse of notation, we will refer to $B_i\subseteq S$ as \defi{the irrelevant ideal of $X_i$}.  Why is this an abuse of notation?  When the Cox ring of $X_i$ equals $S$, i.e. when the conditions of Lemma~\ref{lem:MovingConeEquivalence} are satisfied, this is not an abuse of notation; in that case, $B_i$ is precisely the irrelevant ideal of $X_i$, in the standard definition.  But as we have seen, it can happen that the Cox ring of $X_i$ does not equal $S$.  This happens precisely when the fan $\Sigma_i$ does not involve all of the original rays.  In this case, at least one of the variables $x_j$ from the original ring $S$ will not appear in the Cox ring of $X_i$.
-
-    Considering our running Example~\ref{ex:hirzSecondary} is helpful: one of the varieties is $\PP(1,1,3)$ whose fan does {\em not} involve the ray $\rho_1 = (0,1)$.  Thus, the Cox ring of $\PP(1,1,3)$ would be a polynomial ring involving only $3$ variables, and a $\Cl(\PP(1,1,3)) = \ZZ$-grading, as opposed to $S$ itself which has $4$ variables and a $\ZZ^2$-grading.
-
-    However, we can recover $\PP(1,1,3)$ from $S$ with the $\ZZ^2$-grading by including the variable $x_1$ but then making it into a component of the irrelevant ideal.  Thus, we set $B_2 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle \subseteq S$.  Theorem~\ref{thm:mainsecondary} tells us that with this definition, we still recover $\PP(1,1,3)$ as a quotient of $\Spec(S) - V(B_2)$.
-
-    It would be more accurate to think of $B_i$ as the irrelevant associated to the chamber $\Gamma_i$, as opposed to the irrelevant ideal associated to $X_i$.  This viewpoint is developed in greater detail in ~\cite[\S7]{BEF}.
-\end{remark}
-
-
-
-
-
-When the conditions of Lemma~\ref{lem:MovingConeEquivalence} are satisfied, the ample cone equals $\Gamma_i$.  When these conditions are not satisfied, one needs to be more careful, as $\Gamma_i\subseteq \Cl(S)\otimes \QQ \ne \Cl(X_i)\otimes \QQ$.
-(Note:  the more common notation for this sheaf is $\widetilde{M}$, however when considering a single module with respect to different toric varieties, it is useful to have a notation that also specifies the toric variety $X_i$.)
-\medskip
- We saw in an earlier lecture that if $X_i$ satisfies the conditions of Lemma~\ref{lem:MovingConeEquivalence}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf $\widetilde{M}$ on $X_i$.
-
-\begin{notation}
-To emphasize the dependence of $\widetilde{M}$ on $X_i$, we will from now on write $\widetilde{M}$ as $M|_{X_i}$.
-\end{notation}A minor modification of the associated sheaf construction works for the other $X_i$'s as well. We therefore have:
-\begin{prop}
-    Let $X_i$ be any of the simplicial toric varieties from Definition~\ref{defn:Xi} and let $\cE$ be a quasi-coherent sheaf on $X_i$.
-    \begin{enumerate}
-        \item There exists a graded $S$-module $M$ such that $M|_{X_i}\cong \cE$.
-        \item  If $\cE$ is coherent then $M$ can be chosen to be a finitely generated $S$-module
-    \end{enumerate}
-\end{prop}
-
-%We will in the next lecture see  this correspondence is simpler to describe if one passes to the toric stack associated to~$X_i$ (in fact, this is the {\em main} reason to talk about stacks, in our opinion).
-
-
-%, and thus the following construction is not necessary for the main results about Cox categories.  However, for those familiar with the relationship between modules on a Cox rings and sheaves on a toric variety, it may provide a helpful perspective.
-
-
-
-
-
-
-
-
-
-
-
-
-%\begin{thm}
-%The chamber s are in bijection with any of the following:
-%\begin{enumerate}
-%	\item Simplicial toric varieties  with a subset of the given rays
-%	\item GIT quotients that arise in a a simplicial toric variety
-%	\item  The coarse moduli space of the quotient stack $[\Spec(S) - V(B_i) / G]$ equals $X_i$.
-%	\item  Choose any point $a\in \Cl(S)$ where $\deg_{\QQ}(a)$ lies in the interior of $\Gamma_i$.  Let $P_a\subseteq M$ be associated polytope and let $\Sigma$ be the normal fan of $P_a$.  The toric variety associated to $\Sigma$ is $X_i$.
-%%	\item
-%\end{enumerate}
-%\end{thm}
-
-
-%\begin{remark}
-%     We will confirm below that each pair $(S,B_i)$ determines a simplicial projective variety $X_i$.  The rough statement is that $X_i$ the quotient $\Spec(S) - V(B_i) / G$ (with the action of $G$ induced by the grading group), but this is a ``rough'' statement because of various subtleties involving quotients of projective varieties.  So there is a sense in which the multigraded ring $S$ naturally corresponds to the set of toric varieties $X_1, \dots, X_r$.
-%
-%    This connection is even sharper from a homological perspective.  The pair $(S,B_i)$ determines a module category as follows:  we write $\mod(S)$ for the category of $\Cl(S)$-graded $S$-modules and we write $\mod_{B_i}(S)$ for the subcategory  modulo those modules that are annihilated by a power of $B_i$.  To the pair $(S,B_i)$ we can attach the quotient category $\mod(S)/\mod_{B_i}(S)$.  This equals--essentially by defintion--the category of sheaves on the quotient stack $[\Spec(S) - V(B_i)/G]$ which we denote as $\mathcal X_i$.  We will see later that $\mathcal X_i$ is closely related to the aforementioned toric variety $X_i$.
-%\end{remark}
-
+\include{sections/sections-11}
 
 \pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -341,7 +106,7 @@ where $\om_E(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we s
 \label{eqn:geobgg}
 \overline{\RR} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce D^b(E) / \Perf(E),
 \end{equation}
-where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. Recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the residual projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications. 
+where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. Recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the residual projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications.
 
 There is a classical method for explicating the morphisms in a derived category, namely replacing it with an appropriate homotopy category. For instance, $D^b(E)$ is equivalent to the homotopy category $K^-(E)$ of complexes of finitely generated graded free $E$-modules whose terms vanish in large homological degrees. In the case of an exterior algebra, this equivalence may be given by taking the $\k$-dual of a minimal free resolution. There is a similar result for the singularity category, due to Buchweitz~\cite{buc21}*{Theorem 4.4.1}: there is an equivalence
 \begin{equation}
@@ -355,10 +120,10 @@ D^b(S) \ar[d] \ar[r]_-{\simeq}^-{\RR} & D^b(E) \ar[d] \ar[r]_-{\simeq} & K^-(E) 
 D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq} & K(E). \\
 }
 $$
-The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$. Let $T \co D^b(\PP^n) \xra{\simeq} K(E)$ denote the functor given by composing the equivalences in the bottom row of this diagram. Our claim is that $T$ is the ``right" geometric version of the BGG correspondence. 
+The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$. Let $T \co D^b(\PP^n) \xra{\simeq} K(E)$ denote the functor given by composing the equivalences in the bottom row of this diagram. Our claim is that $T$ is the ``right" geometric version of the BGG correspondence.
 
 \begin{defn}\cite{EFS}
-Given a coherent sheaf $\F$ on $\PP^n$, $T(\F)$ is called the \defi{Tate resolution of $\F$}. 
+Given a coherent sheaf $\F$ on $\PP^n$, $T(\F)$ is called the \defi{Tate resolution of $\F$}.
 \end{defn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
