@@ -97,7 +97,7 @@ that sends a finitely generated module $M$ (thought of as a complex concentrated
 where $\om_E(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we saw that we get an induced equivalence
 \begin{equation}
 \label{eqn:geobgg}
-\overline{\RR} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce D^b(E) / \Perf(E),
+\overline{\RR} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce B \co D^b(E) / \Perf(E),
 \end{equation}
 where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. Recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the residual projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications.
 
@@ -111,15 +111,21 @@ where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exac
 \label{eqn:tatediagram}
 \xymatrix{
 D^b(S) \ar[d] \ar[r]_-{\simeq}^-{\RR} & D^b(E) \ar[d] \ar[r]_-{\simeq} & K^-(E) \ar[d] \\
-D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq} & K(E). \\
+D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq}^B & K(E). \\
 }
 \end{equation}
 The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$. 
 
 With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Let $\F$ be a coherent sheaf on $\PP^n$, and let $M$ be a finitely generated graded $S$-module such that $H^0_\m(M) = 0$ and $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M)$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. 
 
-
-Let $T \co D^b(\PP^n) \xra{\simeq} K(E)$ denote the functor given by composing the equivalences in the bottom row of this diagram. Our claim is that $T$ is the ``right" geometric version of the BGG correspondence. 
+\begin{thm}
+Let $\F$ be a coherent sheaf on $\PP^n$.
+\begin{enumerate}
+\item $T(\F) = (B \circ \overline{\RR})(\F)$. 
+\item $T(\F)$ is minimal. 
+\item For all $i, j \in \Z$, there is an isomorphism $T(\F)_i = \bigoplus_{j \in \Z} \om_E(i + j) \otimes_\k H^j(\PP^n, \FF(-i - j))$
+\end{enumerate}
+\end{thm}
 
 \begin{defn}\cite{EFS}
 Given a coherent sheaf $\F$ on $\PP^n$, $T(\F)$ is called the \defi{Tate resolution of $\F$}.
