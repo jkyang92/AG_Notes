@@ -116,16 +116,24 @@ D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq
 \end{equation}
 The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$. 
 
-With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Let $\F$ be a coherent sheaf on $\PP^n$, and let $M$ be a finitely generated graded $S$-module such that $H^0_\m(M) = 0$ and $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M)$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. 
+With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Let $\F$ be a coherent sheaf on $\PP^n$ of Castelnuovo-Mumford regularity $r$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M_{\ge r+1})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. 
+
+\begin{remark}
+The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$, which makes the minimal free resolution $G$ especially easy to compute. Moreover, the quasi-isomorphism $G \xra{\simeq} \RR(M)$ is minimal: this is because $H^0_\m(M) = 0$, so no linear combination of the generators of the free $E$-module 
+\end{remark}
 
 \begin{thm}
 Let $\F$ be a coherent sheaf on $\PP^n$.
 \begin{enumerate}
 \item $T(\F) = (B \circ \overline{\RR})(\F)$. 
 \item $T(\F)$ is minimal. 
-\item For all $i, j \in \Z$, there is an isomorphism $T(\F)_i = \bigoplus_{j \in \Z} \om_E(i + j) \otimes_\k H^j(\PP^n, \FF(-i - j))$
+\item For all $i, j \in \Z$, there is an isomorphism $T(\F)_i = \bigoplus_{j \in \Z} \om_E(i + j) \otimes_\k H^j(\PP^n, \FF(-i - j))$.
 \end{enumerate}
 \end{thm}
+
+\begin{proof}
+Part (1) follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. Part~(2) is nearly immediate: both $G$ and $\RR(M)$ are minimal, and the quasi-isomorphism $G \xra{\simeq} \RR(M)$ is minimal because $H^0_\m(M) = 0$: this guarantees that no linear combination of the generators of
+\end{proof}
 
 \begin{defn}\cite{EFS}
 Given a coherent sheaf $\F$ on $\PP^n$, $T(\F)$ is called the \defi{Tate resolution of $\F$}.
