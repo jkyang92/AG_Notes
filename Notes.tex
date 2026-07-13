@@ -1531,11 +1531,17 @@ Let $S = \k[x_0, \dots, x_n]$, $\Z$-graded with $\deg(x_i) = 1$, and let $E = \b
 $$
 \RR \co D^b(S) \xra{\simeq} D^b(E)
 $$
-that sends a finitely generated module $M$ (thought of as a complex concentrated in homological degree 0) to $\RR(M) = \left[\cdots \xla{\del_\RR} \om_E(i) \otimes_\k M_{-i} \xla{\del_\RR} \om_E(i + 1) \otimes_\k M_{-i - 1} \xla{\del_\RR} \cdots \right]$, where $\om_E(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we saw that we get an induced equivalence
-$$
+that sends a finitely generated module $M$ (thought of as a complex concentrated in homological degree 0) to
+\begin{equation}
+\label{eqn:RMformula}
+\RR(M) = \left[\cdots \xla{\del_\RR} \om_E(i) \otimes_\k M_{-i} \xla{\del_\RR} \om_E(i + 1) \otimes_\k M_{-i - 1} \xla{\del_\RR} \cdots \right],
+\end{equation}
+where $\om_E(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we saw that we get an induced equivalence
+\begin{equation}
+\label{eqn:geobgg}
 D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce D^b(E) / \Perf(E),
-$$
-where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of 
+\end{equation}
+where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. This is a ``geometric" version of the BGG correspondence, though an unsatisfying one. All of the geometry on the exterior algebra side is hidden in the localization 
 
 
 \pagebreak
