@@ -179,7 +179,6 @@
 \def\coker{\on{coker}}
 \def\p{\partial}
 \def\wt{\widetilde}
-\def\i{\iota}
 \nc{\into}{\hookrightarrow}
 \nc{\onto}{\twoheadrightarrow}
 \nc{\OO}{\mathcal{O}}
@@ -289,3 +288,7 @@
 \author{Daniel Erman}
 %This command gets rid of the MR number in the bibliography
 \def\MR#1{}
+
+% preserve the dotless-i used by bibtex entries, e.g. \u{\i} in Eloísa
+\let\dotlessi\i
+\def\i{\ifmmode\iota\else\dotlessi\fi}
