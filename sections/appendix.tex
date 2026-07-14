@@ -1,0 +1,343 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Good multigradings}
+
+We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$ and $\deg(a)=0$ for $a\in k$.  \lauren{I don't see why this is implied otherwise}  To avoid trivialities, we will always assume that the map $\deg$ is surjective.
+
+Our goal in this section is to articulate conditions under which the multigraded ring $S$ corresponds to the Cox ring of some projective toric variety.
+
+We will need some notation.  We write $M\ce\ker(\deg)$ and we consider the induced short exact sequence:
+\[
+0\to M\overset{\alpha}{\to} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(S) \to 0.
+\]
+We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the \defi{effective semigroup} as it forms a subsemigroup of $\Cl(S)$.  We can consider the corresponding cone $\Eff(S)_{\QQ}\subseteq \Cl(S)\otimes_{\ZZ}\QQ$ which is the positive rational cone spanned by the image of $\Eff(S)$ under the natural map to $\Cl(S)\otimes_{\ZZ}\QQ$.
+
+\begin{defn}\label{defn:posGrading}
+  We say that $S$ is a \defi{positively graded ring} if there exists a group homomorphism $\phi\colon \Cl(S) \to \ZZ$ such that $\phi \circ \deg(\epsilon_i) > 0 $ for all $i$.
+\end{defn}
+\begin{lemma}
+  The following are equivalent:
+  \begin{enumerate}
+    \item $S$ is positively graded.
+    \item $S_0=k$.
+    \item $\Eff(S)_{\QQ}$ is a pointed cone.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+    For (1) implies (2):  By assumption $k$ lies in $S_0$.  If another polynomial lies in $S_0$ then there exists $b\neq 0$ such that $\deg b=0$.  Thus $\sum b_i\deg\epsilon_i=0$ so $\sum b_i\varphi\circ\deg(\epsilon_i)=0$ for some $\varphi$ witnessing the positive grading, which is impossible.
+
+    For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
+
+    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
+  \end{proof}
+
+  \begin{prop}
+    The following are equivalent: \lauren{the logic of this reads very strangely to me currently .. there does indeed exist a polynomial ring satisfying the conditions in (1) so it seems like (2) should always be true}
+    \begin{enumerate}
+      \item There is a polynomial ring $S$, graded via $\deg\colon \ZZ^n\to \Cl(S)$, that satisfies the following conditions:
+      \begin{enumerate}
+        \item $\deg$ is surjective;
+        \item $S$ is positively graded;
+        \item Each row of $\alpha$ \lauren{what is $\alpha$?} is the primitive point on a distinct ray; that is, the rows of
+        $\alpha$ are distinct, nonzero, and have greatest common divisor 1. \lauren{what does it mean for vectors to have greatest common divisor 1?}
+        %matrix representing $\alpha\colon M\to \ZZ^n$ has no zero rows and no rows that are scalar multiples of one another.
+      \end{enumerate}
+      \item There is a simplicial, projective toric variety $X$ with $\Cl(X) = \Cl(S)$ and where the Cox ring of $X$ equals $S$.
+    \end{enumerate}
+  \end{prop}
+  \begin{proof}
+    (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$ we choose a basis for the lattice $N$ and take the dual basis for the lattice $M$.  Since the Cox ring of $X$ is $S$, we know that the fan for $X$ contains $n$ rays, giving a matrix $N\gets \ZZ^n$.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (c).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (a) and (b) by \lauren{cite positively graded, and then (a) is basically definitional}
+
+    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
+
+    \begin{lemma}[CLS 14.3.2 without the extra notation]
+      Fix a basis $\epsilon$ of $\RR^n$, and let
+      $$
+      \begin{tikzcd}
+        0\arrow{r} &M_\RR^* \arrow{r}{\delta} & \RR^n \arrow{r}{\nu}&N_\RR \arrow{r}&0
+      \end{tikzcd}
+      $$
+      be an exact sequence of real vector spaces. If every element of $\epsilon$ maps
+      to a nonzero element of $N_\RR$ then $ cone(\nu(\epsilon)) = N_\RR$
+      if and only if $cone(\delta^*(\epsilon))$ is pointed.
+    \end{lemma}
+    In particular, any $X_{\Sigma}$ from the secondary fan will be proper.
+
+    \begin{proof}[Proof of the Lemma] Set $C_\nu\ce cone(\nu(\epsilon))$ and
+      \def\Eff{\rm Eff}
+      $\Eff \ce cone(\delta^*(\epsilon))$. We will prove the contrapositive:
+
+      \noindent $\Rightarrow$: Suppose that $C_\nu = N_\RR$, so $C_\nu^\vee = 0$.
+      Suppose that both $v$ and $-v$ are non-negative combinations of the rays
+      of $\Eff$. Adding the expressions for these vectors, we get a map $\RR \to \RR^n$ that has non-negative coefficients
+      with respect to $\epsilon$, and whose image is in the kernel of $\delta^*$.
+      Thus it factors through $N_\RR^*$. Dualizing, we get a functional on
+      $N_\RR$ that is non-negative on every ray; that is an element
+      of $C_\nu^\vee$. Thus $v = 0$, proving that $\Eff$ is pointed.
+
+      \noindent $\Leftarrow$: Conversely, if $\Eff$ is pointed then there
+      is a map $M_\RR \to \RR$ that is positive on every ray of $C_\nu$. Dualizing, we get an
+      element $w \in \ker \nu$ with all positive coefficients. If $\phi: N_\RR \to \RR$
+      is an element of $C_\nu^\vee$, then, because all the rays of $N_R$ are nonzero, $\phi(w)=0$ is a positive combination of some of the coefficients of $w$. Thus $C_\nu^\vee = 0$ and $C_\nu = C_\nu^{\vee\vee} = N_\RR$.
+    \end{proof}
+
+    % We find the rays by dualizing the map $\alpha\colon M\to \ZZ^n$ obtaining $\alpha^*\colon \ZZ^n \to N$.  So we need to show that the positive rational cone spanned by the columns of $\alpha^*$ in $N_{\QQ}$ is the entire space.  Choose $\phi$ as in Definition~\ref{defn:posGrading}.  We get a new exact sequence
+    %    \[
+    %   0\to M'\overset{\gamma}{\to} \ZZ^n \overset{\phi\circ \beta}{\to} \ZZ\to 0.
+    %   \]
+    %  Because we have a positive grading, the map $\ZZ^n\to \ZZ$ has the form $(a_1, \dots, a_n)$ for positive integers $a_i\in \ZZ_{>0}$ and we can explicitly compute the kernel as
+    %%\begin{pmatrix}
+    %   -a_2&-a_3&\cdots &-a_n\\
+    %  a_1&0&\cdots &0\\
+    % 0&a_1&\cdots &0\\
+    % 0&0&\cdots &a_1
+    % \end{pmatrix}
+  % \]
+  % The cone over the rows of $\gamma$ fills an entire $\QQ^{n-1}$.  And the cone over the rows of $\alpha$ is a projective of that cone under a map $\QQ^{n-1} \to N\otimes \QQ$ and hence we obtain the desired result.
+
+  Proposition 14.4.1 \lauren{I think we are basically trying to prove this prop though---is the idea to cite it but then also prove projective using 14.3.2?} also implies that each $X_{\Sigma}$ is semiprojective and since it is proper by the previous paragraph, it is also projective.
+
+  We next utilize Proposition 15.1.6 of CLS.  This says that we have a chamber of the secondary fan where the corresponding variety $X_{\Sigma}$ requires $n$ rays if and only if the rows of $\alpha$ are nonzero and generate distinct rays, which is implied by condition (c).  In this case, $\alpha^*: \ZZ^n\to N$ will determine the rays of $X_{\Sigma}$.  The stronger condition, that the rows of $\alpha$ each represent a primitive point on a distinct ray, then implies that the ray matrix for $X_{\Sigma}$ will be precisely $\alpha^*$.  Since the Class group of $X$ is computed in terms of the ray matrix, we have that the class group of $X$ will equal $\Cl(S)$, and the map $\ZZ^{n}\to \Cl(X)$ will agree with the map $\deg$.  Thus the Cox ring of $X_{\Sigma}$ will be a polynomial ring on $n$ variables and the grading will be as desired.  \lauren{I can't tell what we're trying to do ourselves v.~what we're citing to CLS, and if we only want to prove part of it then 14.3.2 seems like the wrong part!}
+\end{proof}
+
+
+\daniel{I've been copying and pasting things here which we wrote but which don't obviously fit into a ``prep for the notes'' section.}
+\begin{cor}
+  Each $B_i$ is generated by products of $r$ distinct variables.
+\end{cor}
+\begin{proof}
+  Let $x_{i_1}\cdots x_{i_p}$ be a minimal generator of $B_i$ and assume $p>r$.  We have that $\Gamma_i$ is in the span of $\deg_{\QQ}(x_{i_1}), \cdots, \deg_{\QQ}(x_{i_p})$.   Since $\Gamma_i$ is $r$-dimensional, after potentially reindexing, we can assume that $\deg_{\QQ}(x_{i_1}), \cdots \deg_{\QQ}(x_{i_r})$ are linearly independent.  If $\Gamma_i$ lies in the span of these, then $x_{i_1}\cdots x_{i_r}$ lies in $B_i$, contradicting the initial minimal generator assumption.  But then some portion of $\Gamma_i$ would correspond to an ideal containing $x_{i_1}\cdots x_{i_r}$, contradicting the fact that the chambers of squarefree monomial ideals must be disjoint.
+\end{proof}
+\begin{remark}
+  By considering intersections of the chambers, we can endow $\Eff(S)$ with a fan structure which is known as the secondary fan.  However, for the applications to Cox categories and King's Conjecture, we do not need the full structure of the secondary fan, we simply need to know the chambers.  So we will omit a fuller discussion of the secondary fan.
+\end{remark}
+\begin{remark}
+  Because each chamber is defined in terms of spanning sets of monomials, the hyperplanes used to define each chamber will have a special form.  Namely, each such hyperplane will be spanned by a codimension $1$ set of linearly independent vectors $\deg_{\QQ}(x_i)$.
+
+  In particular, we can build a naive stratification of $\Eff(X)$ as follows.  Write $r$ for the rank of $\Cl(S)\otimes \QQ$.  For each linearly independent $(r-1)$-tuple of vectors $\deg_{\QQ}(x_i)$, we get a hyperplane, and taking the union of all of these hyperplanes will slice $\Eff(X)$ into a finite set of chambers, each of belongs entirely to one of the chambers $\Gamma_1,\dots, \Gamma_s$.  The chambers of the secondary fan are a coarsening of the chambers of this naive stratification.
+\end{remark}
+
+
+We can describe the $B_i$ in several equivalent ways.  Recall that we have the map $\deg\colon \ZZ^n\to \Cl(S)$; we write $\deg_{\QQ}$ for the induced map to $\Cl(S)\otimes \QQ$.
+\begin{prop}
+  Fix a chamber $\Gamma_i$ for $S$ and any ray $\rho$ in the interior of $\Gamma_i$.  The following ideals are equal
+  \begin{enumerate}
+    \item  $\operatorname{ideal}(B_i)$ as in Definition~\ref{defn:idealConeCorrespondence}.
+    \item  The radical of the ideal $\langle \mathbf{x}^{\mathbf{a}} \text{ such that } \deg_{\QQ}(\mathbf{x}^{\mathbf{a}})\in \Gamma_i\rangle$.
+    \item  The ideal $\sqrt{B_{\rho}}$ where  $B_{\rho} = \langle \mathbf{x}^{\mathbf{a}} \text{ such that } \deg_{\QQ}(\mathbf{x}^{\mathbf{a}})\in \rho \rangle$
+  \end{enumerate}
+\end{prop}
+\begin{proof}[Sketch of proof, in progress]
+  For (1) $\Rightarrow$ (3): Let $x_{i_1}\cdots x_{i_s}$ be a squarefree monomial which spans $\Gamma_i$.  Since $\rho$ lies in $\Gamma_i$, for some integers $a_1, \dots, a_s$ we have that $\deg_{\QQ}(x_{i_1}^{a_1}\cdots x_{i_s}^{a_s}) \in \rho$.  In particular, $x_{i_1}\cdots x_{i_s}$ belongs to $\sqrt{B_{\rho}}$.
+
+  Certainly the ideal from (3) belongs the ideal from (2).
+
+  Finally we have (2) $\Rightarrow$ (1):  Let $x_{i_1}, \cdots, x_{i_p}$ be the variables dividing $\mathbf{x}^{\mathbf{a}}$.  Assume, for contradiction, that the corresponding degrees all line on some hyperplane $H$.  Then $H$ subdivides $\Gamma_i$ into two pieces $\Gamma_i^{+}$ and $\Gamma_i^{-}$, corresponding to the two side of $H$.  There must therefore be at least one monomial whose degree lies on either side of $H$, say $\deg_{\QQ}(x_{+})$ is on the $\Gamma_i^{+}$-side and $\deg_{\QQ}(x_{-})$ is on the $\Gamma_i^{-}$-side.  But then the ideals $B_{\Gamma_i^{+}}$ and $\Gamma_i^{-}$ would be distinct, and so $\Gamma_i$ would not be a valid chamber.
+
+  We conclude that $\deg_{\QQ}(x_{i_1}), \cdots, \deg_{\QQ}(x_{i_p})$ span an $r$-dimensional cone.  Since this span includes a point in $\Gamma_i$, by construction of the chambers, it must contain the entire chamber $\Gamma_i$.  It follows that $x_{i_1}\cdots x_{i_p}$ lies in $B_i$\dots
+\end{proof}
+
+%\subsection{Chambers and toric varieties}
+%\begin{defn}\label{defn:normalFan}
+%From the irrelevant ideal $B_i$ we can produce a fan $\Sigma_i$ for a toric variety as follows.  We let the rays of $\Sigma_i$ be the set of rays $\rho_j$ such that the corresponding principal ideal $\langle x_j\rangle$ does not contain $B_i$.  And we let the cones of $\Sigma_i$ be the cones spanned by the tuples $\rho_{j_1}, \cdots, \rho_{j_p}$ such that $B_i$ does not contain the monomial $x_{j_1}\cdots x_{j_p}$.    The fans $\Sigma_1, \dots, \Sigma_s$ are all distinct because the $B_i$ are all distinct.
+%
+%For a point $\mathbf{a}=(a_1, \dots, a_n)\in \ZZ^{n}$ we define the polyhedron
+%\[
+%P_{\mathbf{a}} \ce \cap_{i=1}^n \{ m \in M | \alpha_i(m) \geq -a_i\}.
+%\]
+%To a polyhedron $P_{\mathbf{a}}\subseteq M\otimes \QQ$ there is a dual normal fan $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$.  We recall that $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$ is defined as \dots
+%\end{defn}
+%
+%The key fact relating these definitions is:
+%\begin{prop}\label{prop:polytopeAndFan}
+%We have that $P_{\mathbf{a}}$ is nonempty if and only if $\deg_{\QQ}(\mathbf{a})$ lies in the effective cone.
+%Moreover, we have that $\deg_{\QQ}(\mathbf{a}) \in \Gamma_i$ if and only if there is an open neighborhood $U_{\mathbf{a}}$ of $\mathbf{a}$ such that the normal fan of $P_{\mathbf{a'}}$ equals $\Sigma_i$ for all $\mathbf{a}'\in U_{\mathbf{a}}$.
+%\end{prop}
+%\daniel{To do:  add references from CLS.}
+%
+%In particular, the chambers $\Gamma_i$ also precisely correspond the distinct
+
+
+
+
+
+%Each point $\mathbf{a} = (a_1, \dots, a_n)\in \ZZ^n$ determines a set of halfspaces in $M\otimes \QQ$ of the form $\alpha_i(m) \geq -a_i$ for $1\leq i \leq n$.  We write $H_{\mathbf{a}} = \cap_{i=1}^n \{\alpha_i(m)\geq -a_i\}$.  The locus $H_{\mathbf{a}}$ will be a convex polytope if and only if the divisor $\sum_{i=1}^n a_iD_i$ is an effective divisor.
+
+%Recall that $r$ is the rank of $\Cl(S)$.  Start with the points $\{ \deg(x_i) \forall 1 \leq i \leq n\}\subseteq \Cl(S)\otimes \QQ$.
+
+\begin{remark}
+  \daniel{This remark is residual but I liked it.}
+  We will confirm below that each pair $(S,B_i)$ determines a simplicial projective variety $X_i$.  The rough statement is that $X_i$ the quotient $\Spec(S) - V(B_i) / G$ (with the action of $G$ induced by the grading group), but this is a ``rough'' statement because of various subtleties involving quotients of projective varieties.  So there is a sense in which the multigraded ring $S$ naturally corresponds to the set of toric varieties $X_1, \dots, X_r$.
+
+  This connection is even sharper from a homological perspective.  The pair $(S,B_i)$ determines a module category as follows:  we write $\mod(S)$ for the category of $\Cl(S)$-graded $S$-modules and we write $\mod_{B_i}(S)$ for the subcategory  modulo those modules that are annihilated by a power of $B_i$.  To the pair $(S,B_i)$ we can attach the quotient category $\mod(S)/\mod_{B_i}(S)$.  This equals--essentially by defintion--the category of sheaves on the quotient stack $[\Spec(S) - V(B_i)/G]$ which we denote as $\mathcal X_i$.  We will see later that $\mathcal X_i$ is closely related to the aforementioned toric variety $X_i$.
+\end{remark}
+
+\begin{comment}
+  \subsection{Chambers and toric varieties}
+  From the irrelevant ideal $B_i$ we can produce a fan $\Sigma_i$ for a toric variety as follows.  We let the rays of $\Sigma_i$ be the set of rays $\rho_j$ such that the corresponding principal ideal $\langle x_j\rangle$ does not contain $B_i$.  And we let the cones of $\Sigma_i$ be the cones spanned by the tuples $\rho_{j_1}, \cdots, \rho_{j_p}$ such that $B_i$ does not contain the monomial $x_{j_1}\cdots x_{j_p}$.    The fans $\Sigma_1, \dots, \Sigma_s$ are all distinct because the $B_i$ are all distinct.
+
+  For a point $\mathbf{a}=(a_1, \dots, a_n)\in \ZZ^{n}$ we define the polyhedron
+  \[
+  P_{\mathbf{a}} \ce \cap_{i=1}^n \{ m \in M | \alpha_i(m) \geq -a_i\}.
+  \]
+  To a polyhedron $P_{\mathbf{a}}\subseteq M\otimes \QQ$ there is a dual normal fan $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$.  We recall that $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$ is defined as \dots
+
+  The key fact relating these definitions is:
+  \begin{prop}\label{prop:polytopeAndFan}
+    We have that $P_{\mathbf{a}}$ is nonempty if and only if $\deg_{\QQ}(\mathbf{a})$ lies in the effective cone.
+
+    Moreover, we have that $\deg_{\QQ}(\mathbf{a}) \in \Gamma_i$ if and only if there is an open neighborhood $U_{\mathbf{a}}$ of $\mathbf{a}$ such that the normal fan of $P_{\mathbf{a'}}$ equals $\Sigma_i$ for all $\mathbf{a}'\in U_{\mathbf{a}}$.
+  \end{prop}
+  \daniel{To do:  add references from CLS.}
+
+  %In particular, the chambers $\Gamma_i$ also precisely correspond the distinct
+
+
+  \begin{prop}\label{defn:fanAndXi}
+    As defined above we have the following: $\Sigma_i$ is a simplicial fan such that $|\Sigma_i|=N\otimes \QQ$.  In particular,  $\Sigma_i$ is the fan associated to a simplicial, projective toric variety which we denote as $X_i$.
+  \end{prop}
+
+
+  \begin{lemma}
+    The following are equivalent:
+    \begin{enumerate}
+      \item The Cox ring of $X_i$ equals $S$;
+      \item $\Cl(X_i)=\Cl(S)$;
+      \item  The rays of $\Sigma_i$ are precisely $\rho_1, \dots, \rho_n$;
+      \item  $B_i$ does not belong to any principal ideal $\langle x_j\rangle$.
+    \end{enumerate}
+  \end{lemma}
+  When these conditions are satsified, the ample cone equals $\Gamma_i$.  \daniel{When these conditions are not satisfied, one needs to be a bit more careful in relating the ample cone with $\Gamma_i$.}
+\end{comment}
+\begin{comment}
+  \subsection{Irrelevant ideals for faces of secondary fan}
+  \daniel{Not sure what we want to put here.}
+  \begin{lemma}
+    For a face of the secondary fan, the irrelevant ideal is the sum irrelevant ideals of the chambers with that face in its boundary.
+  \end{lemma}
+\end{comment}
+
+
+\section{Toric stacks}
+\michael{I think this should be shortened and moved earlier, to one of the talks on background on toric varieties. That is, I think there should be one talk on the module/sheaf correspondence, and this content should be part of that.}
+Recall that if $X$ is a smooth projective toric variety with Cox ring $S$ and irrelevant ideal $B$, then $\D^b(X) = D^b(S) / D^b_B(S)$. We have seen that this fails when $X$ is not smooth, for instance in the case of a weighted projective space. This problem can be solved using toric \emph{stacks}. For this reason (and only this reason) we give a brief introduction to toric stacks. For concreteness, we will mostly confine ourselves to the example of a weighted projective stack, as the general story is similar.
+
+
+Let $X$ be a simplicial toric variety, with Cox ring $S$ and irrelevant ideal $B$.  Let $G=\Hom_{\ZZ}(\Cl(X), \kk^*)$ be the group acting on $\Spec(S)$ as in Definition~\ref{defn:Gaction}.  There is a canonical toric stack $\mathcal X$ one can build from this data: $\mathcal X = [\Spec(S) - V(B) / G]$.  Since $X$ was simplicial, it turns out that $\mathcal X$ is always a smooth toric DM stack, as in \cite{BorisovChenSmith2004}.
+
+
+
+\subsection{Passing to toric stacks}
+When considering a weighted projective space $\PP(1,1,2)$, one can mean either the projective variety or the corresponding stack.  In this brief subsection, we will try to summarize some of the distinctions between these perspectives.  In particular, we will view the distinction between a toric variety and a toric stack through the lens of modules and sheaves.\footnote{This is a rather algebraic way to think about toric stacks, but that is in line with the syzygetic perspective in these notes.  A more geometric understanding of toric stacks would examine stacky fans, toric morphisms, and so on.  Such a perspective is introduced in \cite{BorisovChenSmith2004} and greatly expanded in \cite{GS1, GS2}.}
+It is natural to think of $\PP(1,1,2)$ as a quotient.  We have $S = \kk[x,y,z]$ with degrees $1,1,$ and $2$, and have the $\CC^*$-action on $\Spec(S) = \mathbb A^3$ given by $\lambda \cdot (x,y,z) = (\lambda x, \lambda y, \lambda^2 z)$.  After removing the origin, the orbits become disjoint, and we can consider the quotient $\mathbb A^3 - \{0\} / \CC^*$ as either a GIT quotient or a stack quotient.
+
+Let us start with the stack quotient $\PP_{\text{stack}}(1,1,2) = [\mathbb A^3 - \{0\} / \CC^*]$ (the brackets indicate that we are taking the stack quotient).  It is easy to understand sheaves on quotient stacks: if $G$ acts on a variety $X$ then a sheaf on the stack quotient $[X/G]$ is simply a $G$-equivariant sheaf on $X$.  So in our case, giving a sheaf on $\PP_{\text{stack}}(1,1,2) $ is the the same as giving a $\CC^*$-equivariant sheaf on $\mathbb A^3 - \{0\}$.  Let us explore what this means.  A sheaf on $\mathbb A^3$ is simply a (not necessarily graded) $S$-module $M$.  If $M$ is $\CC^*$-equivariant, then it will decompose according to irreducible $\CC^*$-representations. Since the irreducible representations of $\CC^*$ are simply $\ZZ$, we will get a decomposition $M=\oplus_{d\in \ZZ} M_d$.   One can check that this decomposition endows $M$ with the structure of a {\em graded} $S$-module, with respect to the grading of the variables as above.  To summarize, a $\CC^*$-equivariant sheaf on $\mathbb A^3$ is simply a graded $S$-module $M$.  What happens when we remove the origin?  Those familiar with sheaves on $\PP^n$ will know the answer:  removing $V(\mathfrak m)$ means that any module $M$ whose support is just $\mathfrak m$ will be the zero sheaf.
+
+Let us summarize this in more categorical terms.  Write $\Mod_{gr}(S)$ for the category of finitely generated, graded $S$-modules and $\Mod_{\mathfrak m}(S)$ for the subcategory consisting of modules whose $S$-modules whose support equals the singleton set $\{\mathfrak m\}$.\footnote{A finitely generated $S$-module $M$ has support equal to $\mathfrak m$ if and only if $M$ is annihilated by a power of $\mathfrak m$ if and only if $M$ is finite length.  So $\Mod_{\mathfrak m}(S)$ is equivalent to the subcategory of finite length modules.} Let us write $\Coh(\PP_{\text{stack}}(1,1,2) )$ for the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$.  What we have is that
+\[
+\Coh(\PP_{\text{stack}}(1,1,2) ) = \Mod_{gr}(S) / \Mod_{\mathfrak m}(S),
+\]
+i.e. the category of coherent sheaves on the stack $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of graded $S$-modules by the subcategory  $\Mod_{\mathfrak m}(S)$.
+
+Now let us turn to the GIT quotient.  In this case, this is simply the same as taking $\Proj(S)$, as defined in any introductory text on algebraic geometry (e.g~\cite[Chapter 2]{hartshorne}).  To review, $\Proj(S)$ will have an open affine cover
+\[
+\PP(1,1,2) = \Proj(S) = D_+(x) \cup D_+(y) \cup D_+(z)
+\]
+where
+\[
+D_+(x) = \Spec\left(S[x^{-1}]_0\right)=\Spec\left(\kk\left[\frac{y}{x}, \frac{z}{x^2}\right]\right) \cong \mathbb A^2.
+\]
+Similarly, $D_+(y) \cong \mathbb A^2$.  However, we also have
+\[
+D_+(z) =   \Spec\left([z^{-1}]_0\right)=\Spec\left(\kk\left[\frac{x^2}{z}, \frac{xy}{z}, \frac{y^2}{z}\right]\right)\cong \Spec\left(\kk[u,v,w] / \langle uw-v^2 \rangle)\right).
+\]
+Note that $D_+(z)$ is a surface with a singularity at the origin.  In particular, the toric variety $\PP(1,1,2)$ has a singularity at the point with projective coordinates $[0:0:1]$.    The class group is $\Cl(\PP(1,1,2)) \cong \ZZ$ where the degree $d$ element of the class group corresponds to any hypersurface of degree $d$.  This divisor is Cartier if and only if $d$ is even (more generally if $d$ is divisible by the least common of the degrees of the weighted space).
+%  $\Pic(\PP(1,1,2)) = 2\ZZ\subseteq \ZZ = \Cl(\PP(1,1,2))$.
+In particular, the sheaf $\cO_{\PP(1,1,2)}(1)$, i.e. the sheaf corresponding to the module $S(1)$, is not a line bundle on the weighted projective space $\PP(1,1,2)$.
+
+
+In fact, from the perspective of sheaves and modules, $\PP_{\text{stack}}(1,1,2)$ is fairly simple.  Let $M$ be a finitely generated, graded $S$-module.  Then, using the standard construction for sheaves on $\Proj$ of a graded ring, we get a  coherent sheaf $M|_{\PP(1,1,2)}$ on the variety $\Proj(S) = \PP(1,1,2)$.  Similarly, since $M$ is a graded $S$-module, it is a $\CC^*$-equivariant module on $\Spec(S)$ and on $\Spec(S) - \{0\}$; thus, by standard facts about quotient stacks, $M$ induces a coherent sheaf on the stack quotient.  In short, a finitely generated, graded $S$-module will induce a coherent sheaf on both the variety and the stack.
+
+The subtlety arises when we ask:  when is this sheaf $M|_{\PP(1,1,2)}$ equal to $0$?  For the stack, the answer was simple: the sheaf $M|_{\PP_{\text{stack}}(1,1,2)}$ is $0$ if and only if $M$ is a finite length module.  But
+%In other words, for the stack, we have a nearly direct analogue of the situation from projective space, where the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of finitely generated, graded $S$-modules by the subcategory of finite length modules.
+for the variety, the answer is more complicated.  Consider the following example.
+%as there exist non-finite length modules $M$ where $\widetilde{M}$ is the zero sheaf on $\PP(1,1,2)$.  The following is the simplest such example:
+
+
+%
+%
+% In this case, the GIT quotient is simply the same as taking $\Proj(S)$, as defined in any introductory text on algebraic geometry (e.g~\cite[Chapter 2]{hartshorne}).  Namely $\Proj(S)$ has an open affine cover
+%\[
+%\PP(1,1,2) = \Proj(S) = D_+(x) \cup D_+(y) \cup D_+(z)
+%\]
+%where
+%\[
+%D_+(x) = \Spec\left(S[x^{-1}]_0\right)=\Spec\left(\kk\left[\frac{y}{x}, \frac{z}{x^2}\right]\right) \cong \mathbb A^2.
+%\]
+%Similarly, $D_+(y) \cong \mathbb A^2$.  However, we also have
+%\[
+%D_+(z) =   \Spec\left([z^{-1}]_0\right)=\Spec\left(\kk\left[\frac{x^2}{z}, \frac{xy}{z}, \frac{y^2}{z}\right]\right)\cong \Spec\left(\kk[u,v,w] / \langle uw-v^2 \rangle)\right).
+%\]
+%This is a surface with a singularity at the origin.  In particular, the toric variety $\PP(1,1,2)$ has a singularity at the point with projective coordinates $[0:0:1]$.    As $\PP(1,1,2)$ is singular, its Class group and Picard group do not agree.  The class group is $\Cl(\PP(1,1,2)) \cong \ZZ$ where the degree $d$ element of the class group corresponds to any hypersurface of degree $d$.  This divisor is Cartier if and only if $d$ is even (more generally if $d$ is divisible by the least common of the degrees of the weighted space).
+%%  $\Pic(\PP(1,1,2)) = 2\ZZ\subseteq \ZZ = \Cl(\PP(1,1,2))$.
+% In particular, the sheaf $\cO_{\PP(1,1,2)}(1)$, i.e. the sheaf corresponding to the module $S(1)$, is not a line bundle on the weighted projective space $\PP(1,1,2)$.
+%
+%Let us contrast this with the stack quotient $\PP_{\text{stack}}(1,1,2):= [\Spec(S) - \{0\} / \CC^*]$, where we still have the $\CC^*$-action from above.  Obviously, there is a major downside to working with the stack which is that the category of stacks is simply more complicated than the category of varieties.  However, there are some advantages to the stack.  To begin with,  $\PP_{\text{stack}}(1,1,2)$ is a smooth Deligne-Mumford toric stack~\cite{BorisovChenSmith2004}.  Thus the class group equals the Picard group, and in particular, $\cO(1)$ is a line bundle on the stack.  This is the first glimmer of a more general fact, which is that the stack $\PP_{\text{stack}}(1,1,2)$ has simpler algebraic properties.
+%
+%In fact, from the perspective of sheaves and modules, $\PP_{\text{stack}}(1,1,2)$ is fairly simple.  Let $M$ be a finitely generated, graded $S$-module.  Then, using the standard construction for sheaves on $\Proj$ of a graded ring, we get a  coherent sheaf $\widetilde{M}$ on the variety $\Proj(S) = \PP(1,1,2)$.  Similarly, since $M$ is a graded $S$-module, it is a $\CC^*$-equivariant module on $\Spec(S)$ and on $\Spec(S) - \{0\}$; thus, by standard facts about quotient stacks, $M$ induces a coherent sheaf on the stack quotient.  In short, a finitely generated, graded $S$-module will induce a coherent sheaf on both the variety and the stack.
+%
+%The subtlety arises when we ask:  when is this sheaf equal to $0$?  For the stack, the answer is simple: the sheaf induced by $M$ is $0$ if and only if $M$ is a finite length module.  In other words, for the stack, we have a nearly direct analogue of the situation from projective space, where the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of finitely generated, graded $S$-modules by the subcategory of finite length modules.  For the variety, the answer is a bit more complicated, as there exist non-finite length modules $M$ where $\widetilde{M}$ is the zero sheaf on $\PP(1,1,2)$.  The following is the simplest such example:
+
+\begin{example}\label{ex:oddP112}
+  Let $M=S/(x,y)(1)$.  Note that $M$ is not finite length as $M\cong \kk[z](1)$ and thus $\dim M = 1$.  Now, let us consider the corresponding sheaf $M|_{\PP(1,1,2)}$ on the three basic affine opens.  We have
+  \[
+  H^0(D_+(x), M|_{\PP(1,1,2)}) = M[x^{-1}]_0 =0 \qquad H^0(D_+(y), M|_{\PP(1,1,2)}) = M[y^{-1}]_0 =0
+  \]
+  since both $x$ and $y$ annihilate $M$.  We also have
+  \[
+  H^0(D_+(z), M|_{\PP(1,1,2)})= M[z^{-1}]_0 \cong (\kk[z^{\pm}](1))_0 = \kk[z^{\pm}]_1 = 0.
+  \]
+  Note that $\kk[z^{\pm}]_1 = 0$ because $\deg(z)=2$.  So $M|_{\PP(1,1,2)}$ has no sections on $D_+(z)$ not because $z$ annihilates $M$, but because of an arithmetic coincidence that $\kk[z^{\pm}]$ has no odd degree elements.  Of course, since the sheaf $M|_{\PP(1,1,2)}$ equals the zero sheaf on an open cover, it follows that $M|_{\PP(1,1,2)}$ is itself the zero sheaf on $\PP(1,1,2)$.
+\end{example}
+
+Example~\ref{ex:oddP112} indicates that passing from $S$-modules to sheaves on $\PP(1,1,2)$ is more complicated than it is for the stack quotient.  A much longer discussion of sheaves on GIT quotients appears in \cite[Chapter 5]{CLS}, but we can give a categorical description in this case as follows.  Write $S^{(2)}=k[x^2,xy,y^2,z]$ for the degree $2$ Veronese subring of $S$.  For a graded $S$-module $M$, the submodule $M^{(2)} = \oplus_{d \in 2\ZZ} M_d$ will be an $S^{(2)}$-module.  Perhaps the simplest description of coherent sheaves on $\PP(1,1,2)$ is as the following Verdier quotient:
+\[
+\coh(\PP(1,1,2)) = \Mod_{gr}(S^{(2)}) / \Mod_{\mathfrak m}(S^{(2)})
+\]
+where $\Mod_{\mathfrak m}(S^{(2)})$ is the subcategory of finite length $S^{(2)}$.  Note how this explains Example~\ref{ex:oddP112}: in that example, $M$ is not a finite length $S$-module and so the induced sheaf on the stack quotient is nonzero.  But $M^{(2)}$ is a finite length $S^{(2)}$-module, and so the induced sheaf on the GIT quotient is zero.
+
+In short, the stack quotient $\PP_{\text{stack}}(1,1,2)$ is more closely connected to the polynomial ring $S$ itself, whereas the GIT quotient $\PP(1,1,2)$ is more closely tied to the degree $2$ Veronese subring $S^{(2)}$.   Thus, for those (like me) who are primarily interested in the study of modules over multigraded polynomial rings like $S$ itself, the stack quotient $\PP_{\text{stack}}(1,1,2)$ provides a better framework than the standard toric variety $\PP(1,1,2)$.  In fact in my experience, among researchers working on homological aspects of toric varieties, including resolutions or derived categories, the stack is generally the focal point.
+
+
+Of course, there are also major advantages to studying the toric variety instead of the toric stack.  For instance, the category of stacks is far more complicated than the category of varieties, and the literature on stacks is much less well-developed than that the literature on varieties.  In addition, geometric intuition about varieties can by misleading in stacky situations.
+% However, there are some advantages to the stack.  To begin with,  $\PP_{\text{stack}}(1,1,2)$ is a smooth Deligne-Mumford toric stack~\cite{BorisovChenSmith2004}.  Thus the class group equals the Picard group, and in particular, $\cO(1)$ is a line bundle on the stack.  This is the first glimmer of a more general fact, which is that the stack $\PP_{\text{stack}}(1,1,2)$ has simpler algebraic properties.
+%
+
+%  Most notably: $\PP(1,1,2)$ is a toric variety and so one can leverage the robust literature on varieties and toric varieties.  By contrast, the literature on stacks is significantly more scattershot, notable challenge is that working with stacks requires a  that can be challenging most notable advantage The main upshot of Example discussion is that there are subtle differences between considering the weighted projective variety $\PP(1,1,2)$ and the weighted projective stack  $\PP_{\text{stack}}(1,1,2)$, and that there can be advantages to either perspective.  Specifically, for many researchers who are interested in derived categories or related questions, the stack is generally thought to be better behaved.
+
+We should note that the variety and the stack are also closely tied to one another, as there is a direct connection between the variety and the stack.  Since $\PP_{\text{stack}}(1,1,2)$ is a smooth toric DM stack, and $\PP(1,1,2)$ is its coarse moduli space, there is  a morphism $\pi\colon \PP_{\text{stack}}(1,1,2) \to \PP(1,1,2)$ that has various nice properties.  See~\cite{BorisovChenSmith2004}.
+
+A similar story holds for any weighted projective space.  For any $\PP(d_0, \dots, d_n)$ there is a corresponding stack $\PP_{\text{stack}}(d_0, \dots, d_n)$.  The stack is smooth while the variety is not.  The algebraic properties of the stack are generally simpler than that of the variety.  And there is a morphism from the stack to the variety satisfying a host of nice properties.  In fact, a similar story even holds for any simplicial toric variety; again one should see~\cite{BorisovChenSmith2004} for some of the background on this topic.
+
+
+\daniel{Make sure we've defined the categories $\Coh$ and $\operatorname{mod}$ somewhere.}
+
+
+\begin{thm}\label{thm:simplicialStack}
+  Let $X$ be a simplicial toric variety with $\Cl(X)$-graded Cox ring $S$ and irrelevant ideal $B$.  Let $G=\Hom_{\ZZ}(\Cl(X),\kk^*)$ act on $\Spec(S)$ in the natural way.  Let $\sX$ be the stack quotient $[\Spec(S) - V(B) / G]$.  Moreover, we have
+  \[
+  \Coh(\sX) = \operatorname{mod}_{gr}(S)/\operatorname{mod}_{B}(S).
+  \]
+\end{thm}
+In short, the relationship between coherent sheaves on $\sX$ and graded $S$-modules is just like the relationship for $\PP^n$.  This is the {\em whole point} of passing from the variety $X$ to the stack $\sX$: sheaves on $\sX$ are literally in bijection with graded $S$-modules, modulo $B$-torsion.
+
+
+When $X$ is simplicial but not smooth, another sense in which the stack $\sX$ is ``better'' than the variety $X$ is that $\sX$ is a smooth, Deligne-Mumford stack with $\Pic(\sX) \cong \Cl(X)$.  But these features  will not be relevant for any of the results under consideration.  Applying Theorem~\ref{thm:simplicialStack} to the varieties from the secondary fan, we obtain:
+
+\begin{cor}\label{cor:stacksAndDb}
+  Let $X_i$ be any of the toric varieties from Definition~\ref{defn:Xi} and let $B_i\subseteq S$ be the corresponding irrelevant ideal.  Let $\sX_i$ be thse stack as in Example~\ref{ex:CoxConstruction}.  We have
+  \[
+  D^b(\sX_i) = D^b(S) / D^b_{B_i}(S),
+  \]
+  where we recall that: $D^b(\sX_i)$ is the bounded derived category of coherent sheaves on $\sX_i$; $D^b(S)$ is the bounded derived category of graded $S$-modules; and $D^b_{B_i}(S)\subseteq D^b(S)$ is the full triangulated subcategory generated by modules $M$ which are annihilated by some power of $B_i$.
+\end{cor}
+This corollary follows from several well-known and more general results in the literature.  Since our interest in stacks is nearly entirely based upon this corollary (i.e. we will have to further discussion of stacks), we will simply provide references but skip the proof.  Perhaps the most direct reference is \cite{AOV2008}*{Section~2.1}, which--once one unravels the notation--provides a full proof of an equivalent fact.  Other references, working in various levels of generality, include  \cite{stacks-project}*{06WT}, \cite{vistoli}*{Theorem 4.46}, and  \cite{alper}*{Theorem 7.1.11}. \michael{Also include that the bounded derived category of $G$-equivariant sheaves on $\AA^n \setminus V(B_i)$ is $D^b(S) / D^b_{B_i}(S)$, which is an equivariant version of the Thomason-Trobaugh localization theorem.}

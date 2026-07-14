@@ -246,7 +246,74 @@ In the case of a resolution of a point, this use of the ceiling recovers exactly
   That is to say $D$ is the element of the Bondal-Thomsen collection corresponding to $-p$.
 \end{proof}
 
-Feature includes the uniformity with respect to the Cox ring, i.e. only depending on the rays or only depending on the Cox ring.  What that means.  That tells us about resolution of graphs of birational morphisms.
+\begin{example}
+  \label{ex:resHirzebruch3}
+
+  A single fundamental domain is as follows:
+  \[
+  \begin{tikzpicture}[scale=2]
+    \fill[opacity=0.5, green] (0,2) -- (0,3) -- (3,3) -- (0,2);
+    \fill[opacity=0.5, blue] (0,1) -- (0,2) -- (3,3) -- (3,2) -- (0,1);
+    \fill[opacity=0.5, red] (0,0) -- (0,1) -- (3,2) -- (3,1) -- (0,0);
+    \fill[opacity=0.5, brown] (0,0) -- (3,1) -- (3,0) -- (0,0);
+    
+    \draw[line width=3pt, brown] (0,0) -- (0,1);
+    \draw[line width=3pt, red] (0,1) -- (0,2);
+    \draw[line width=3pt, blue] (0,2)-- (0,3);
+    \draw[line width=3pt, orange] (0,3) -- (3,3);
+
+    \draw[line width=3pt, brown] (3,0) -- (3,1);
+    \draw[line width=3pt, red] (3,1) -- (3,2);
+    \draw[line width=3pt, blue] (3,2)-- (3,3);
+
+
+    %\draw (3,3) -- (3,0);
+    \draw[line width=3pt, orange] (3,0) -- (0,0);
+    \draw[line width=3pt, brown] (0,0) -- (3,1);
+    \draw[line width=3pt, red] (0,1) -- (3,2);
+    %\draw (0,1) -- (3,2);
+    \draw[line width=3pt, blue] (0,2) -- (3,3);
+    %\draw (0,2) -- (3,3);
+    
+
+    %vertices
+    \node[fill, circle, yellow, inner sep = 4pt] at (0,0) {};
+    \node[fill, circle, yellow, inner sep = 4pt] at (3,0) {};
+    \node[fill, circle, yellow, inner sep = 4pt] at (3,3) {};
+    \node[fill, circle, yellow, inner sep = 4pt] at (0,3) {};
+    \node at (0,0) {$1$};
+    \node at (0,1) {$x_2x_3$};
+    \node at (0,2) {$x_2x_3^2$};
+    %\node at (0,3) {$x_2x_3^3$};
+
+    %horizontal edges
+    \node at (1.5,0) {$x_1$};
+
+    %vertical edges
+    \node at (0,0.5) {$x_2x_3$};
+    \node at (0,1.5) {$x_2x_3^2$};
+    \node at (0,2.5) {$x_2x_3^3$};
+    
+
+    %diagonal edges
+    \node at (1.5,0.5) {$x_1x_2$};
+    \node at (1.5,1.5) {$x_1x_2x_3$};
+    \node at (1.5,2.5) {$x_1x_2x_3^2$};
+
+    %2-cells
+    \node at (2,0.25) {$x_1x_2$};
+    \node at (1.5,1) {$x_1x_2x_3$};
+    \node at (1.5,2) {$x_1x_2x_3^2$};
+    \node at (1,2.75) {$x_1x_2x_3^3$};
+    
+  \end{tikzpicture}
+  \]
+
+  The cells in this fundamental domain have been colored corresponding to the BT collection elements, which in this case are $\textcolor{yellow}{(0,0)}$, $\textcolor{orange}{(-1,0)}$, $\textcolor{brown}{(2,-1)}$, $\textcolor{red}{(1,-1)}$ $\textcolor{blue}{(0,-1)}$, and $\textcolor{green}{(-1,-1)}$
+\end{example}
+
+
+The resolution depends only on the Cox ring and the lattice $L\subseteq \ZZ^n$. An interesting consequence of this is that the diagonal, and the other graphs of birational morphisms between toric varieties with the same Cox ring have the same resolution.
 
 \begin{cor}
 \label{cor:diagonalUniform}
@@ -258,14 +325,14 @@ Feature includes the uniformity with respect to the Cox ring, i.e. only dependin
     \end{enumerate}
 \end{cor}
 \begin{proof}
-    Proof 1:  The consturction of the HHL resolution only depends on the rays.  So if you do the construction in any of htese cases, it is literally exactly the same.
+  Proof 1:  The construction of the HHL resolution only depends on the rays of the product and the lattice determining the diagonal. So if you do the construction in any of these cases, it is literally exactly the same.
 
     Proof 2:  Write $I_\Delta\subseteq S\otimes_k S$ for the defining ideal of the diagonal $X\subseteq X\times X$.  Write  Write $I_{\Delta'}\subseteq S\otimes_k S$ for the defining ideal of the diagonal $X'\subseteq X'\times X'$.  And write $I_\Gamma\subseteq S\otimes_kS$ for the defining ideal of $\Gamma\subseteq X\times X'$.  These three ideals are all multigraded, prime ideals on $S\otimes_k S$ whose vanishing locus contains the dense torus, and thus the ideals are all equal.  The three HHL resolutions are, up to homotopy, the minimal free resolutions of the normalizations of $S\otimes_k S/I_{\Delta}$, $S\otimes_k S/I_{\Delta'}$, and $S\otimes_k S/I_{\Gamma}$ respectively.  But since these modules are all equal, so are their minimal free resolutions.
 \end{proof}
 Discussion of how this is kind of surprising!!  There was, a priori, no reason to believe that the ``best'' toric analogue of Beilinson's resolution  would only involve the Cox ring (i.e. that it would not depend on the irrelevant ideal whatsoever).  This is a first clue that these resolutions are pointing towards some sort of uniformity for all of the toric varieties with the same Cox ring.  That uniformity will be explored in more depth in later lectures.
 
 
-This uniformity also be observed via the BT collection. Observe first that the diagonal subvariety $X\subseteq X\times X$ corresponds to the lattice $L=\{(v,-v)\in M_X\,|\, v\in \}\subset \ZZ^{2n}$. This lattice is also known as the Lawrence lift of $M_X$ and can be denoted $\Lambda(M_X)$. This lattice is isomorphic to the lattice $M_X$, and this isomorphism means that the resolution of the diagonal also reflects the BT collection of $X$. More precisely
+This uniformity also be observed in the BT collection. Observe first that the diagonal subvariety $X\subseteq X\times X$ corresponds to the lattice $L=\{(v,-v)\in M_X\,|\, v\in \}\subset \ZZ^{2n}$. This lattice is also known as the Lawrence lift of $M_X$ and can be denoted $\Lambda(M_X)$. This lattice is isomorphic to the lattice $M_X$, and this isomorphism means that the resolution of the diagonal also reflects the BT collection of $X$. More precisely
 \begin{cor}
   The line bundles appearing the resolution of the diagonal $\mathbf{F}$ arising from HHL are the line bundles of the form $O_X(D)\boxtimes O_X(D')$ for some $D$,$D'$ in the Bondal-Thomsen collection.
 \end{cor}
@@ -286,3 +353,47 @@ This uniformity also be observed via the BT collection. Observe first that the d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 9 (Greg Smith): The proof}\label{lec:9-HHL-proof}
 The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly technical.  However, two recent preprints have dramatically simplified the proof.  The preprint~\cite{BCHSY} relates the Hanlon-Hicks-Lazarev construction to a more classical algebraic construction involving binomial ideals, and provides an elementary and purely algebraic proof of the main result, as well as broad generalization of those results.  The preprint~\cite{BH25} utilizes a similar basic idea as~\cite{BCHSY}, but provides a terser and narrower proof.
+
+
+Regardless of the exact approach, a key observation is that the strands of the complex $\mathbf{F}$ in a fixed degree $\alpha\in \ZZ^n/L$ can be given in terms of the cellular chain complex of a space..
+
+
+\begin{prop}[TODO cite both]
+  \label{prop:hhlStrands}
+  For $u\in \ZZ^n$, an element of the class $\alpha\in \ZZ^n/L$, the strand $\mathbf{F}_{\alpha}$ is equal to the celluar homology of the subcomplex $(L_{\RR})_{\leq \alpha}$.
+\end{prop}
+\begin{proof}
+  The complex $\mathbf{F}'$ from the universal cover has strands in degree $\alpha$ given by $C_\bullet((L_{\RR})_{\leq \alpha})$.
+\end{proof}
+
+That $\mathbf{F}$ is a resolution is then immediate, as the subcomplex $(L_{\RR})_{\leq \alpha}$ only has $H_0$.
+
+The second key is to prove that the module is infact the integral closure $\overline{S/I_L}$. Here we recall a fact about toric rings. First the ring $S/I_L$ is a semigroup ring for the semigroup $A=\NN^n/L$, that is the image of $\NN^n$ under the map $\ZZ^n \rightarrow \ZZ^n/L$. Then for a semigroup ring $k[A]$, the integral closure is itself a semigroup ring, and is in fact the semigroup ring of the saturation $\overline{A}$.
+
+The saturation is given by
+\[\overline{A} := (\RR_{\geq 0}A)\cap \ZZ^n \]
+
+\begin{prop}[TODO cite both]
+  \label{prop:resolves-integral-closure}
+  The complex $\mathbf{F}$ resolves $\overline{S/I_L}$ as an $S$-module.
+\end{prop}
+\begin{proof}
+  %% The approach in \cite{BCHSY} is to compute with the vertices, as those generate the $S$-module.
+
+  %% The approach in \cite{BH25} instead 
+
+  
+  %% $H_0(\mathbf{F}')$ is generated by monomials in $k[\ZZ^n/L]$ of the form $\prod_{i=1}^n x_i^{\lceil v_i\rceil}$ for $v$ a vertex of the cell structure on $L_{\RR}$. Moreover, this module has the structure of a semigroup ring by using the subring structure from $k[\ZZ^n/L]$.
+
+  %% From this it suffices to show that the vectors $\lceil v\rceil\in \ZZ^n/L$ generate $\overline{A}$ over $A$.
+
+  %% Let $\eta:\ZZ^n\rightarrow \ZZ^n/L$ be the usual quotient map and $\eta_{\RR}:\RR^n\rightarrow \RR^n/L$ the corresponding map after tensor with $\RR$. We first establish that for a vertex $\mathbf{p}\in L_{\RR}$, we have $\eta(\lceil \mathbf{p}\rceil)\in \overline{A}$. This requires that $\eta(\mathbf{p})\in \RR_{\geq 0} A$, However, observe
+
+  %% \[\eta(\lceil \mathbf{p}\rceil) = \eta(\lceil \mathbf{p}\rceil)-\eta(\mathbf{p}) = \eta(\lceil \mathbf{p}\rceil - \mathbf{p})\]
+  %% However $\lceil \mathbf{p}\rceil - \mathbf{p}$ has all positive coordinates and so is in $\RR_{\geq 0} A=\eta(\RR_{\geq 0}^n)$.
+
+  %% Now suppose that $a\in \overline{A}$, then there exists $\mathbf{q}\in \RR_{\geq 0}^n$ and $\mathbf{u}\in \ZZ^n$ such that
+  %% \[a = \eta_{\RR}(\mathbf{q}) = \eta(\mathbf{u})\]
+  %% Set $b = \eta_{\RR}(\lfloor \mathbf{q}\rfloor)$, $
+  
+\end{proof}
