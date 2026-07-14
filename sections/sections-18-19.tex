@@ -21,9 +21,9 @@ where $\om_E(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we s
 \label{eqn:geobgg}
 \overline{\RR} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce B \co D^b(E) / \Perf(E),
 \end{equation}
-where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. Recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the residual projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications.
+where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. Recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications.
 
-There is a classical method for explicating the morphisms in a derived category, namely replacing it with an appropriate homotopy category. For instance, $D^b(E)$ is equivalent to the homotopy category $K^-(E)$ of complexes of finitely generated graded free $E$-modules whose terms vanish in large homological degrees. In the case of an exterior algebra, this equivalence may be given by taking the $\k$-dual of a minimal free resolution\footnote{It makes sense to take a (minimal) free resolution of any complex of finitely generated $E$-modules with bounded homology~\cite{Rob98}*{Proposition 4.4.1}.}. There is a similar result for the singularity category, due to Buchweitz~\cite{buc21}*{Theorem 4.4.1}: there is an equivalence
+Conceptually, we need a way to get our hands on the morphisms in $D^{\on{sing}}(E)$. There is a classical method for making the morphisms in a derived category explicit, namely by replacing it with an appropriate homotopy category. For instance, $D^b(E)$ is equivalent to the homotopy category $K^-(E)$ of complexes of finitely generated graded free $E$-modules whose terms vanish in large homological degrees. In the case of an exterior algebra, this equivalence may be given by taking the $\k$-dual of a minimal free resolution\footnote{It makes sense to take a (minimal) free resolution of any complex of finitely generated $E$-modules with bounded homology~\cite{Rob98}*{Proposition 4.4.1}.}. There is a similar result for the singularity category, due to Buchweitz~\cite{buc21}*{Theorem 4.4.1}, and this is the added ingredient we need. Specifically: there is an equivalence
 \begin{equation}
 \label{eqn:buchweitz}
 D^{\on{sing}}(E) \xra{\simeq} K(E),
@@ -38,14 +38,28 @@ D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq
 \end{equation}
 The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$.
 
-With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Let $\F$ be a coherent sheaf on $\PP^n$ of Castelnuovo-Mumford regularity $r$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M_{\ge r+1})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. The sole reason for the truncation past the regularity of $M$ is to ensure the following:
+With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Essentially, it is given by composing the functors in the bottom row of Diagram~\eqref{eqn:tatediagram}. To obtain an explicit formula for this composition, we proceed as follows. Let $\F$ be a coherent sheaf on $\PP^n$ of Castelnuovo-Mumford regularity $r$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M_{\ge r+1})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. 
+
+\begin{defn}[\cite{EFS}*{Section 4}]
+The complex $T(\F)$ is called the \emph{Tate resolution of $\F$.} 
+\end{defn}
+
+\begin{prop}
+For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{\RR})(\F)$.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+The sole reason for the truncation past the regularity of $M$ is to ensure the following:
 
 \begin{prop}
 If $\F$ is a coherent sheaf on $\PP^n$, the complex $T(\F)$ is minimal. 
 \end{prop}
 
 \begin{proof}
-Since $G$ and $\RR(M_{\ge r + 1})$ are minimal, we just need to check that the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r + 1})$ is minimal. The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$. Thus $G$, is the minimal free resolution of the kernel of the $(-r-1)^{\on{st}}$ differential of $\RR(M
+Since $G$ and $\RR(M_{\ge r + 1})$ are minimal, we just need to check that the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r + 1})$ is minimal. The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$. Thus $G$, is the minimal free resolution of the kernel of the $(-r-1)^{\on{st}}$ differential of $\RR(M_{\ge r+1})$, and so we just have to check that the kernel of this map lies in 
 \end{proof}
 
 \begin{example}
@@ -63,21 +77,19 @@ Moreover, the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r+1})$ is minimal. In
 \end{remark}
 
 \begin{thm}
+\label{thm:tate1}
 Let $\F$ be a coherent sheaf on $\PP^n$.
 \begin{enumerate}
 \item $T(\F) = (B \circ \overline{\RR})(\F)$.
-\item $T(\F)$ is minimal.
 \item For all $i, j \in \Z$, there is an isomorphism $T(\F)_i = \bigoplus_{j \in \Z} \om_E(i + j) \otimes_\k H^j(\PP^n, \FF(-i - j))$.
 \end{enumerate}
 \end{thm}
 
-\begin{proof}
-Part (1) follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. Part~(2) is nearly immediate: both $G$ and $\RR(M)$ are minimal, and the quasi-isomorphism $G \xra{\simeq} \RR(M)$ is minimal because $H^0_\m(M) = 0$: this guarantees that no linear combination of the generators of
-\end{proof}
+Conceptually, Part (1) of Theorem~\ref{thm:tate1} is saying that the functor $T$ deserves to be called the BGG functor 
 
-\begin{defn}\cite{EFS}
-Given a coherent sheaf $\F$ on $\PP^n$, $T(\F)$ is called the \defi{Tate resolution of $\F$}.
-\end{defn}
+\begin{proof}
+Part (1) follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. 
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 19 (Sasha Zotine): Tate resolutions over toric varieties}\label{lec:19-tate-resolutions-toric}
