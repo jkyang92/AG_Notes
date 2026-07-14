@@ -34,8 +34,24 @@ The only functor here we have not yet described is the rightmost vertical one, w
 
 With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Let $\F$ be a coherent sheaf on $\PP^n$ of Castelnuovo-Mumford regularity $r$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M_{\ge r+1})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$.
 
+The sole reason for the truncation past the regularity of $M$ is ensure the following:
+
+\begin{prop}
+The complex $T(\F)$ is minimal. 
+\end{prop}
+
+\begin{example}
+Suppose we did not apply the truncation in the definition of the functor $T$. The zero sheaf on $\PP^n$ lifts to the residue field $\k$ on $S$. Applying the formula for $T$ to $\k$ without truncating gives the complex $0 \from E \xla{1} E \from 0$. This complex is contractible, as expected, but it is not minimal. 
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
 \begin{remark}
-The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$, which makes the minimal free resolution $G$ especially easy to compute. Moreover, the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r+1})$ is minimal: this is because $H^0_\m(M_{\ge r+1}) = 0$, so the kernel  
+The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$, which makes the minimal free resolution $G$ especially easy to compute. It follows 
+
+Moreover, the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r+1})$ is minimal. Indeed, this is because $H^0_\m(M_{\ge r+1}) = 0$, so the kernel  
 \end{remark}
 
 \begin{thm}
