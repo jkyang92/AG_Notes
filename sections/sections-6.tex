@@ -89,14 +89,14 @@ of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}.
     The Bondal zonotope $\PP^2$   is  the half-open interval $(-3,0] \subset \RR = \Cl(\P^{2})\otimes \RR$.\end{example}
     
 \begin{thm}
-    The following conditions on an element $d\in \Cl(X)\otimes \QQ$ are equivalent:.
+    The following conditions on an element $d\in \Cl(X)$ are equivalent:.
     \begin{enumerate}
         \item  $d$ is a Bondal-Thomsen class.
         \item  $d$ is equivalent to a rational divisor of the form $\sum_{\rho} a_\rho D_\rho$ with $a_\rho \in (-1,0].$
-        \item  $d\otimes 1 \in Cl(X) \otimes \RR$  lies in the Bondal zonotope of $X$.
+        \item  $d\otimes 1 \in \Cl(X) \otimes \RR$  lies in the Bondal zonotope of $X$.
         \item  In case $X$ is smooth: $d$ represents a line bundle that appears as a direct summand of
-        $F_{\ell,*}\cO_X$ for some $\ell$, or, equivalently, for every sufficiently large $\ell$ \footnote{This can be done in the simplicial case as
-        well by using the toric stack; see \cite[Remark 5.4]{HHL}.}.
+        $F_{\ell,*}\cO_X$ for some $\ell$, or, equivalently, for every sufficiently large $\ell$ \footnote{According to \cite[Remark 5.4]{HHL} this can be done in the simplicial case
+        by using the toric stack in place of the variety.}.
      \end{enumerate}
 \end{thm}
 \begin{proof}
@@ -104,44 +104,88 @@ of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}.
 As explained after Definition~\ref{defn:BTcollection}, the Bondal-Thomsen collection is the image of $M\otimes Q)/M$ under the
 map $\alph$, and every element of $M\otimes Q)/M$ is represented by an element with coefficients in $(-1,0].$
 
-%(2) $\Rightarrow$ (1): Suppose $d\in\Cl(X)$ is such that there exist
-%$a_\rho\in(-1,0]\cap\Q$ with
-%\[
-%  \deg_\Q(d)\;=\;\sum_\rho a_\rho\,\deg_\Q(D_\rho)
-%  \qquad\text{in }\Cl(X)\otimes\Q .
-%\]
-%Choose a lift
-%$D=\sum_\rho c_\rho D_\rho\in\Z^n$, with $c_\rho\in\Z$, such that $\deg(D)=d$.
-%Setting $a \ce \sum_\rho a_\rho D_\rho$, we have $D - a \in \ker(\deg_\Q) = \alpha( M \otimes \Q)$. Choose $m \in M \otimes \Q$ such that $a = \alpha(m)$. We have $\alpha_\rho(m)=c_\rho-a_\rho$; since
-%$-a_\rho\in[0,1)$ we have $c_\rho-a_\rho\in[c_\rho,c_\rho+1)$, and therefore
-%$
-%  \bigl\lfloor\alpha_\rho(m)\bigr\rfloor=c_\rho$
-%  for every $\rho .
-%$
-%Thus $\lfloor\alpha\rfloor(m)=\sum_\rho c_\rho D_\rho=D$, and so
-%$
-%  \deg\bigl(\lfloor\alpha\rfloor(m)\bigr)=\deg(D)=d.
-%$
-%
-
 (2) $\equiv$  (3): trivial.
 
-(2) $\equiv$ (4) We follow the proof given in \cite[Theorem 1.1]{achinger}:
+(2) $\equiv$ (4) We follow the proof given in \cite[Theorem 1.1]{achinger}. We first show that 
+$F_{\ell,*}\cO_X$ is a direct sum of line bundles. Since
+ $X$ has an open
+affine covering by affine spaces it suffices to treat the case $X = \AA^{d}$, and in this case 
+$F_{\ell,*}\cO_X$ is the polynomial ring $k[x_{1},...,x_{n}]$ regarded as a module over
+$S := k[x_{1}^{\ell},\dots,x_{n}^{\ell}$, which is obviously a direct sum of the rank 1 free modules
+$x^{a}S$ for all multi-indices $a$ such with entries $0\leq a_{i}<\ell$. 
 
-\def\AA{{\mathbb A}}
-\def\sO{{\mathcal O}}
-\subsection{Achinger's description}
+To see that these patch together,
+note that for any sheaf $L$ on $X$ the sheaf $F_{\ell,*}\cO_X$ carries a natural action by the
+group $G := \NN^{n}/\ell \NN^{n} \cong \ZZ/\ell^{n}$, acting by a character of $G$.
+In the case of $\AA^{n}$ the summand $S(a)$ is the eigensheaf for eigenvalue $a$ and it follows
+that there is no problem patching the summands across different open affine sets.
 
- If $F$ is the pushforward under the map $X\to X$
-induced by multiplication on the torus by $n$, then since $X$ is covered by torus-invariant affine spaces, it is enough to analyze the
-pushforward one affine space at a time, and to show that the restriction of $F_* \sO_X$ to each affine space is a rank 1 free module.
+More generally, $F_{\ell,*}\cO_X(b)$ corresponds, when restricted to an open set $\AA^{n}$,
+to $k[x_{1},\dots,x_{n}](b)$ regarded as an $S$-module, and this decomposes in the same way,
+but with a shift by $b$.
 
-Let $T$ be the $n$ torus, acting on $\AA^d$, with coordinate ring $S = k[x_1,\dots,x_d]$. The coordinate ring of $F_* S$, as a module over
-$S$, is the same as $k[x_1,\dots,x_d]$ as a module over $k[x_1^n, \dots, x_d^n]$. The module $F_*(S)$ decomposes as a directs sum of the eigensheaves of the action of
-$T/nT = (Z/n)^d$. If $T$ acts on $S$ with character $\chi= (\chi_1,\dots,\chi_d$, then $T$ acts on $F_*(S)$ with the unique character $\lambda$ such that
-$\chi_i\leq \lambda_i<\chi_i+n$. This is isomorphic, up to shift, to a principal ideal of $S$, and is thus free of rank 1 as required.
+To prove that the Bondal-Thomsen sheaves appear in the decomposition
+of $F_{\ell,*}\cO_X$
+we define exponents $m(e,d)$, for $d,e\in \Cl(X)$, by the formula
+$$
+F_{\ell,*}\cO_X(d) = \oplus_{e} \cO_{X}(e)^{\oplus m(e,d)}.
+$$
+From the push-pull formula we get
+$$\leqno{(1)} \qquad
+F_{\ell,*} O_X(d)  \otimes \cO_{X}(-e)= F_{\ell,*}\cO_X(d-\ell e)
+$$
+\noindent from which we see that $m(e,d) = m(0,d-\ell e)$ depends only on the difference $d-\ell e$.
+Thus we define $m(d) := m(0,d)$.
 
-Next we determine the summands as sheaves on $X$:
+Assuming, for the moment, that $X$ is complete, so that $h^{0}(\cO_{X}(e))$ is finite-dimensional for all $e$, we 
+consider the generating function
+$$
+h^{0}(F_{\ell,*}\cO_X(d)) := \sum_{e\in \Cl(X) }m(e,d) h^{0}(\cO_{X}(e)) = \sum_{e\in \Cl(X)}m(d-\ell E) h^{0}(\cO_{X}(e)).
+$$
+ Fixing a basis $\{\cO_{X}(d_{i})\}_{i = 1,\dots,\rho}$ of $\Cl(X)$ we define generating functions
+ $$
+ s(t) = \sum_{a \in \ZZ^{\rho}} h^{0}( \cO_{X}(\sum_{i}a_{i}d_{i})) t^{a}, \qquad
+ m(t) = \sum_{a \in \ZZ^{\rho}} m(\cO_{X}(\sum_{i}a_{i}d_{i})) t^{a}.
+ $$
+ where as usual $a = (a_{1}\dots,a_{\rho})$ is a multi-index.
+From equation (1) we get
+$$
+s(t) = m(t)s(t_{1}^{\ell a_{1}}\cdots t_{\rho}^{\ell a_{\rho}}).
+$$
+
+Now $h^{0}(\cO_X(d))$ is the number of degrees $d' \in \text{Div}(X) = \ZZ^{n}$ with 
+$\cO_X(d') \cong \cO_X(d)$, that is, the number of $d' \in \ZZ^{n}$ that map to a given $d = \deg(d')\in \Cl(X)$,
+so
+$$
+s(t) = \sum_{d'\in ZZ^{n}} t^{\deg d'} = \prod_{i = 1}^{n}\frac{1}{1-t^{\deg e_{i}}}
+$$
+where $e_{i}$ is the $i$-th basis element of $\ZZ^{n}$. Thus
+$$
+m(t) = 
+\frac{s(t)}{s((t_{1}^{\ell a_{1}}}\cdots t_{\rho}^{\ell a_{\rho}}) = 
+\prod_{i=1}^{n}\frac{1-\ell \deg e_{i})}{1 -t^{\deg e_{i}}} = 
+\prod_{i=1}^{n}(1+t^{\deg e_{i}})+\cdots + t^{(\ell-1)\deg e_{i}}).
+$$
+Comparing coefficients, it follows that 
+$m(d)$ is the number of divisors $d'$ with $\deg(d') = d\in \Cl(X)$ that have the form
+ $d' = \sum a_{i}e_{i}$ with $0\leq a_{i}\leq \ell$.
+ 
+ 
+ 
+%\def\AA{{\mathbb A}}
+%\def\sO{{\mathcal O}}
+%\subsection{Achinger's description}
+%
+% If $F$ is the pushforward under the map $X\to X$
+%induced by multiplication on the torus by $n$, then since $X$ is covered by torus-invariant affine spaces, it is enough to analyze the
+%pushforward one affine space at a time, and to show that the restriction of $F_* \sO_X$ to each affine space is a rank 1 free module.
+%
+%Let $T$ be the $n$ torus, acting on $\AA^d$, with coordinate ring $S = k[x_1,\dots,x_d]$. The coordinate ring of $F_* S$, as a module over
+%$S$, is the same as $k[x_1,\dots,x_d]$ as a module over $k[x_1^n, \dots, x_d^n]$. The module $F_*(S)$ decomposes as a directs sum of the eigensheaves of the action of
+%$T/nT = (Z/n)^d$. If $T$ acts on $S$ with character $\chi= (\chi_1,\dots,\chi_d$, then $T$ acts on $F_*(S)$ with the unique character $\lambda$ such that
+%$\chi_i\leq \lambda_i<\chi_i+n$. This is isomorphic, up to shift, to a principal ideal of $S$, and is thus free of rank 1 as required.
+%
+%Next we determine the summands as sheaves on $X$:
 \end{proof}
 
 One important fact about the Bondal-Thomsen collection is the following easy consequence of Demazure Vanishing.\footnote{A similar statement, proven via similar methods, holds for reasonable toric stacks; see \cite{king}*{Lemma 2.20} for the precise statement.}
