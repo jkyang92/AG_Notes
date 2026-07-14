@@ -117,8 +117,18 @@ $\Psi(A) \ce \Psi(p) = x^{\lceil 1/2\rceil}yx^{\lceil -1/2\rceil} = x^1y^0$. Wit
 $\tilde d(A) = xa-yb$. Taking the quotient by 
  $L$, which identifies $b$ with $a$, we obtain the usual two-term resolution $d: S(-1)\to S$, with map  $d = (x-y)$.
 
- Topologically, this has the structure of a 1-torus \jay{TODO picture and more details here}
- 
+ Topologically, this has the structure of a 1-torus
+\[
+\begin{tikzpicture}
+  \draw (0,0) circle (1cm);
+  \fill (270:1cm) circle (1pt) node [below] {$a/b$};
+  \fill (90:1cm) circle (2pt) node [below] {$A$};
+  \draw[->] (95:1.1cm)  arc[radius=1.1cm,start angle=95, end angle = 180] node[above, midway] {$x$};
+  \draw[->] (85:1.1cm) arc[radius=1.1cm,start angle=85, end angle = 0] node[above, midway] {$y$};
+\end{tikzpicture}
+\]
+
+
 \end{example}
 
 \begin{example}
@@ -222,6 +232,39 @@ $$d:
     d&0&0&-1&x\cr    
 }.
 $$
+
+Again this can be illustrated on the 1-torus
+
+\[
+\begin{tikzpicture}
+  \draw (0,0) circle (2cm);
+  \fill (270:2cm) circle (2pt) node [below] {$a/e$};
+  \fill (90:2cm) circle (2pt) node [above] {$c$};
+  \fill (180:2cm) circle (2pt) node [left] {$b$};
+  \fill (0:2cm) circle (2pt) node [right] {$d$};
+
+  \fill (45:2cm) circle (4pt) node [above right] {$C$};
+  \fill (135:2cm) circle (4pt) node [above left] {$B$};
+  \fill (225:2cm) circle (4pt) node [below left] {$A$};
+  \fill (315:2cm) circle (4pt) node [below right] {$D$};
+
+
+
+  \draw[->] (50:2.1cm)  arc[radius=2.1cm,start angle=50, delta angle = 25] node[above, midway] {$1$};
+  \draw[->] (40:2.1cm) arc[radius=2.1cm,start angle=40, delta angle = -25] node[above, midway] {$1$};
+
+  \draw[->] (140:2.1cm)  arc[radius=2.1cm,start angle=140, delta angle = 25] node[above, midway] {$x$};
+  \draw[->] (130:2.1cm) arc[radius=2.1cm,start angle=130, delta angle = -25] node[above, midway] {$y$};
+
+  \draw[->] (230:2.1cm)  arc[radius=2.1cm,start angle=230, delta angle = 25] node[below, midway] {$x$};
+  \draw[->] (220:2.1cm) arc[radius=2.1cm,start angle=220, delta angle = -25] node[below, midway] {$1$};
+
+  \draw[->] (320:2.1cm)  arc[radius=2.1cm,start angle=320, delta angle = 25] node[below, midway] {$x$};
+  \draw[->] (310:2.1cm) arc[radius=2.1cm,start angle=310, delta angle = -25] node[below, midway] {$y$};
+
+\end{tikzpicture}
+\]
+
 This non-minimal matrix is equivalent to the direct sum of the
 $2\times 2$ identity matrix and the matrix
 $$
