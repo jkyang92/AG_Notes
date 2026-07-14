@@ -1,3 +1,10 @@
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 
 \def\alph{{ \lfloor \alpha \rfloor}}
 
@@ -197,7 +204,10 @@ How does this look?
 
 \end{comment}
 
+\ifdefined\whole
+\else
 \bibliographystyle{plain}
 \bibliography{Bibliography}
-
 \end{document}
+\fi
+

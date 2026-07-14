@@ -1,4 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 \section{Lecture 14 (Milena Hering): Proof of revised King's conjecture, I: Outline}\label{lec:14-proof-outline}
 The Revised King's Conjecture claims that the line bundles $\cO_{\Cox}(-d)$ for $-d$ in the Bondal-Thomsen collection form a full strong exceptional collection.  Why would this be true and how could we prove this?
 
@@ -342,3 +349,10 @@ Specifically, we need to know that if $\cE\in D_{\Cox}(S)$ is any element with $
     \item  Fullness and categorical resolution of teh diagonal.
     \item  Putting it all together.
 \end{itemize}
+
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi
