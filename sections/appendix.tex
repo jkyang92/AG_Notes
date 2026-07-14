@@ -1,7 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Good multigradings}
-We let $S=k[x_1, \dots, x_n]$ be a polynomial ring and we will use $\Cl(S)$ to denote an arbitrary finitely generated abelian group.  We will consider $S$ as graded with respect to $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$.
-To avoid trivialities, we will always assume that the map $\deg$ is surjective.
+We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$ and $\deg(a)=0$ for $a\in k$.  \lauren{I don't see why this is implied otherwise}  To avoid trivialities, we will always assume that the map $\deg$ is surjective.
 
 Our goal in this section is to articulate conditions under which the multigraded ring $S$ corresponds to the Cox ring of some projective toric variety.
 
@@ -9,8 +8,7 @@ We will need some notation.  We write $M\ce\ker(\deg)$ and we consider the induc
 \[
 0\to M\overset{\alpha}{\to} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(S) \to 0.
 \]
-We will define $\Eff(S) \ce\{d \in \Cl(S) | S_d \ne 0\}$.  We refer to this as the \defi{effective semigroup} as it forms a subsemigroup of $\Cl(S)$.  We can consider the corresponding cone $\Eff(S)_{\QQ}\subseteq \Cl(S)\otimes_{\ZZ}\QQ$ which is the positive rational cone spanned by the image of $\Eff(S)$ under the natural map to $\Cl(S)\otimes_{\ZZ}\QQ$.
-
+We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the \defi{effective semigroup} as it forms a subsemigroup of $\Cl(S)$.  We can consider the corresponding cone $\Eff(S)_{\QQ}\subseteq \Cl(S)\otimes_{\ZZ}\QQ$ which is the positive rational cone spanned by the image of $\Eff(S)$ under the natural map to $\Cl(S)\otimes_{\ZZ}\QQ$.
 
 \begin{defn}\label{defn:posGrading}
   We say that $S$ is a \defi{positively graded ring} if there exists a group homomorphism $\phi\colon \Cl(S) \to \ZZ$ such that $\phi \circ \deg(\epsilon_i) > 0 $ for all $i$.
@@ -24,12 +22,11 @@ We will define $\Eff(S) \ce\{d \in \Cl(S) | S_d \ne 0\}$.  We refer to this as t
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-    (1) implies (2) is easy.
+    For (1) implies (2):  By assumption $k$ lies in $S_0$.  If another polynomial lies in $S_0$ then there exists $b\neq 0$ such that $\deg b=0$.  Thus $\sum b_i\deg\epsilon_i=0$ so $\sum b_i\varphi\circ\deg(\epsilon_i)=0$ for some $\varphi$ witnessing the positive grading, which is impossible.
 
-    For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exist $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$. If $S_0= k$ then, since $S$ is a domain whose only units are the
-    scalars, we must have $d=0$, a contradiction.
+    For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
 
-    For (3) implies (1):  Define the positive grading $\phi$ by choosing a vector space $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}$ into $\QQ_{>0}$ and then clearing denominators as needed
+    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} $\Cl(S)\otimes \QQ\to \QQ$ that sends the pointed cone $\Eff(S)_{\QQ}$ into $\QQ_{>0}$ and then clearing denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
   \end{proof}
 
   \begin{prop}
