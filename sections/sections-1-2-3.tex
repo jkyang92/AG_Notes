@@ -1,4 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 \section{Lecture 1 (Amal Matoo): Derived Category of $\PP^n$, I}\label{lec:1-DbPPn}
 % Briefly define the bounded derived category of a variety, and briefly explain that it is an example of a triangulated category. Define the notion of a Fourier-Mukai transform between derived categories of varieties. Explain why the Fourier-Mukai transform with kernel given by the diagonal sheaf is isomorphic to the identity functor. Discuss Beilinson's resolution of the diagonal sheaf on $\PP^n\times\PP^n$.
 
@@ -21,9 +28,12 @@ The category $\Db(X)$ is triangulated, with the shift given on a complex $\cE^\b
 
 There is a fully faithful embedding $\coh X\into \Db(X)$ sending a sheaf to the complex concentrated in degree $0$, and under this embedding
 \[ \Ext^i_X(\cE,\cF)\cong \Hom_{\Db(X)}(\cE,\cF[i]), \]
-so that extension groups are recovered as morphisms into shifts. We henceforth identify a sheaf with the corresponding complex so that a short exact sequence $0 \to \cE \to \cF \to \cG \to 0$ in $\coh X$ is represented by a distinguished triangle $\cE \to \cF \to \cG \to \cE[1]$ in $\\Db(X)$, but note that distinguished triangles allow extensions between objects that live in different cohomological degrees, thus not every distinguished triangle comes from a short exact sequence.
+so that extension groups are recovered as morphisms into shifts. We henceforth identify a sheaf with the corresponding complex so that a short exact sequence $0 \to \cE \to \cF \to \cG \to 0$ in $\coh X$ is represented by a distinguished triangle $\cE \to \cF \to \cG \to \cE[1]$ in $\Db(X)$, but note that distinguished triangles allow extensions between objects that live in different cohomological degrees, thus not every distinguished triangle comes from a short exact sequence.
 
 \mahrud{show an explicit triangle with a derived map, or discuss \cite[Exc.~2.6]{huybrechts}?}
+
+\david{Maybe also mention the internal Hom (RHom?). I would have thought that this is generally what
+we write as Hom, and the Hom above is $H^{i}(\Hom)$.}
 \begin{example}
 \end{example}
 
@@ -51,8 +61,8 @@ A special case of the Fourier--Mukai transform occurs when $Y = X$ and $\cK \in 
   The Fourier--Mukai transform $\Phi_{\cO_\Delta}\colon \Db(X)\to \Db(X)$ is isomorphic to the identity functor.
 \end{prop}
 \begin{proof}
-  Write $\iota$ for the diagonal embedding, so that $p\circ\iota=q\circ\iota=\id_X$.  Using the projection formula and $\cO_\Delta=\iota_*\cO_X$, we compute
-  \[   \Phi_{\cO_\Delta}(\cE)=Rq_*\!\left(p^*\cE\Lotimes \iota_*\cO_X\right)\cong Rq_*\iota_*\!\left(\iota^*p^*\cE\right)\cong R(q\circ\iota)_*(p\circ\iota)^*\cE\cong \cE. \qedhere   \]
+  Write $\iota$ for the diagonal embedding, so that $p\circ\iota=q\circ\iota=\id_X$.  Using the projection formula, $\cO_\Delta=\iota_*\cO_X$, and the composition rule $L\iota^*\circ Lp^*\cong L(p\circ\iota)^*=\id$ (note that $\iota$ is not flat, so the derived pullback $L\iota^*$ is essential here), we compute
+  \[   \Phi_{\cO_\Delta}(\cE)=Rq_*\!\left(p^*\cE\Lotimes \iota_*\cO_X\right)\cong Rq_*\iota_*\!\left(L\iota^*p^*\cE\right)\cong R(q\circ\iota)_*\,L(p\circ\iota)^*\cE\cong \cE. \qedhere   \]
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,11 +72,11 @@ Proposition~\ref{prop:diagonalidentity} becomes a powerful computational tool on
 
 On $X=\PP^n$ such a resolution was constructed by Beilinson \cite{beilinson}.  Let $\cT_{\PP^n}$ denote the tangent bundle and set
 \[ \mathcal W\ce \cO_{\PP^n}(1)\boxtimes \cT_{\PP^n}(-1), \]
-a vector bundle of rank $n$ on $\PP^n\times\PP^n$, where $\cF\boxtimes\cG\ce p^*\cF\otimes q^*\cG$ denotes the external tensor product.  There is a canonical section $s\in \HH^0(\PP^n\times\PP^n,\mathcal W)$ whose vanishing locus is precisely the diagonal $\Delta$ (see \cite[\S3]{caldararu} or \cite[\S8.3]{huybrechts}). \mahrud{good opportunity for an enlightning M2 computation of the actual section here} Since $\Delta$ has codimension $n=\rank\mathcal W$, the Koszul complex on $s$ is a locally free resolution
+a vector bundle of rank $n$ on $\PP^n\times\PP^n$, where $\cF\boxtimes\cG\ce p^*\cF\otimes q^*\cG$ denotes the external tensor product.  There is a canonical section $s\in \HH^0(\PP^n\times\PP^n,\mathcal W)$ whose vanishing locus is precisely the diagonal $\Delta$ (see \cite[\S3]{caldararu} or \cite[\S8.3]{huybrechts}). \mahrud{good opportunity for an enlightning M2 computation of the actual section here} Since $\PP^n\times\PP^n$ is smooth, hence Cohen--Macaulay, and the vanishing locus $\Delta$ has codimension $n=\rank\mathcal W$, the section $s$ is regular, so the Koszul complex on $s$ is a locally free resolution
 \[ 0\to \textstyle\bigwedge^n\mathcal W^\vee \to \cdots\to \bigwedge^2\mathcal W^\vee\to \mathcal W^\vee \to \cO_{\PP^n\times\PP^n}\to \cO_\Delta\to 0. \]
 Using $\mathcal W^\vee\cong \cO(-1)\boxtimes \Omega^1_{\PP^n}(1)$ and $\bigwedge^i\bigl(\Omega^1(1)\bigr)\cong \Omega^i(i)$, we obtain $\bigwedge^i\mathcal W^\vee \cong \cO(-i)\boxtimes \Omega^i_{\PP^n}(i)$, so Beilinson's resolution takes the form
 \[ \cO_\Delta \simeq \Big[\, \cO(-n)\boxtimes\Omega^n(n)\to \cdots\to \cO(-1)\boxtimes\Omega^1(1)\to \cO\boxtimes\cO\,\Big], \]
-a complex whose terms are finite direct sums of box products of line bundles with twisted exterior powers of the cotangent bundle. In the next lecture we combine this resolution with Proposition~\ref{prop:diagonalidentity} to prove that the line bundles $\cO,\cO(1),\dots,\cO(n)$ generate $\Db(\PP^n)$.  The same circle of ideas---now applied to resolutions of the diagonal on toric varieties---reappears in Lecture~\ref{sec:FMTransform} as the Fourier--Mukai transforms at the heart of the Cox category.
+a complex each of whose terms is a box product of a line bundle with a twisted exterior power of the cotangent bundle. In the next lecture we combine this resolution with Proposition~\ref{prop:diagonalidentity} to prove that the line bundles $\cO,\cO(1),\dots,\cO(n)$ generate $\Db(\PP^n)$.  The same circle of ideas---now applied to resolutions of the diagonal on toric varieties---reappears in Lecture~\ref{sec:FMTransform} as the Fourier--Mukai transforms at the heart of the Cox category.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,7 +87,7 @@ a complex whose terms are finite direct sums of box products of line bundles wit
 
 In this lecture we decompose the derived category $\Db(X)$ of a smooth projective variety into simple building blocks. The relevant notions are those of a semiorthogonal decomposition and, in the best case, a full strong exceptional collection. We follow \cite[\S1.4]{huybrechts} and \cite[\S3]{caldararu}, and refer to \cite{kuznetsov} for a survey.
 
-Given a full triangulated subcategory $\cB\subseteq \cD$, its \defi{right orthogonal} $\cB^\perp$ is the full subcategory of objects $C$ with $\Hom_\cD(B, C[\ell])=0$ for all $B\in\cB$ and all $\ell$; the \defi{left orthogonal} ${}^\perp\cB$ is defined symmetrically. A sequence $(\cB_0,\dots,\cB_r)$ of triangulated subcategories is \defi{semiorthogonal} if $\cB_j\subseteq \cB_i^\perp$ whenever $j<i$.
+Given a full triangulated subcategory $\cB\subseteq \cD$, its \defi{right orthogonal} $\cB^\perp$ is the full subcategory of objects $C$ with $\Hom_\cD(B, C[\ell])=0$ for all $B\in\cB$ and all $\ell$ \michael{the shifts by $\ell$ are not necessary here}; the \defi{left orthogonal} ${}^\perp\cB$ is defined symmetrically. A sequence $(\cB_0,\dots,\cB_r)$ of triangulated subcategories is \defi{semiorthogonal} if $\cB_j\subseteq \cB_i^\perp$ whenever $j<i$.
 
 \begin{defn}
   A \defi{semiorthogonal decomposition} $\cD = \langle \cB_0,\dots,\cB_r\rangle$ is a semiorthogonal sequence of subcategories that together generate $\cD$. That is, the smallest thick triangulated subcategory containing all objects from every $\cB_i$ is precisely $\cD$.
@@ -88,7 +98,7 @@ The finest such decompositions come from exceptional objects.
 \begin{defn}
   Let $\cD$ be a $\kk$-linear triangulated category.  An object $E\in\cD$ is \defi{exceptional} if
   \[ \Hom_\cD(E,E[\ell]) = \begin{cases}\kk & \ell=0, \\ 0 & \ell\ne 0.\end{cases} \]
-  An ordered sequence $E_0,\dots,E_r$ of exceptional objects is an \defi{exceptional collection} if $\Ext^\bullet(E_i,E_j)=0$ whenever $i>j$.  It is \defi{strong} if in addition $\Ext^\ell(E_i,E_j)=0$ for all $i\le j$ and all $\ell>0$, and \defi{full} if the collection generates $\cD$.
+  An ordered sequence $E_0,\dots,E_r$ of exceptional objects is an \defi{exceptional collection} if $\Ext^\bullet(E_i,E_j)=0$ whenever $i>j$.  It is \defi{strong} if in addition $\Ext^\ell(E_i,E_j)=0$ for all $i\le j$ and all $\ell\ne0$ (for a collection of sheaves the negative $\Ext$ groups vanish automatically, so only $\ell>0$ needs to be checked), and \defi{full} if the collection generates $\cD$.
 \end{defn}
 
 A convenient way to visually ``see'' an exceptional collection is through its \defi{Ext table}, the $(r+1)\times(r+1)$ matrix whose $(i,j)$ entry is the Laurent polynomial
@@ -105,7 +115,7 @@ A full exceptional collection $E_0,\dots,E_r$ yields a semiorthogonal decomposit
 \end{thm}
 
 \begin{proof}[Sketch]
-  For the sequence $\cO,\cO(1),\dots,\cO(n)$ we have $\Ext^\ell_{\PP^n}(\cO(i),\cO(j))=\HH^\ell(\PP^n,\cO(j-i))$.  When $i\le j$ the twist $j-i$ is nonnegative, so this vanishes for $\ell>0$; this gives the strong exceptional condition.  When $i>j$ the twist lies in $\{-n,\dots,-1\}$, so $\HH^0=0$ (a negative twist has no sections) and $\HH^n(\PP^n,\cO(j-i))=0$ as well, since $j-i\ge -n>-(n+1)$; this gives the exceptional condition.  For fullness, let $\cF\in \Db(\PP^n)$ and apply Proposition~\ref{prop:diagonalidentity} to write $\cF\cong \Phi_{\cO_\Delta}(\cF)=Rq_*(p^*\cF\Lotimes \cO_\Delta)$.  Replacing $\cO_\Delta$ by Beilinson's resolution and applying the projection formula termwise, the term $\cO(-i)\boxtimes\Omega^i(i)$ contributes
+  For the sequence $\cO,\cO(1),\dots,\cO(n)$ we have $\Ext^\ell_{\PP^n}(\cO(i),\cO(j))=\HH^\ell(\PP^n,\cO(j-i))$.  Recall the cohomology of line bundles on $\PP^n$ (see \cite[Thm.~III.5.1]{hartshorne}): $\HH^\ell(\PP^n,\cO(d))=0$ for $0<\ell<n$ and every $d$, while $\HH^0(\PP^n,\cO(d))=0$ for $d<0$ and $\HH^n(\PP^n,\cO(d))=0$ for $d>-(n+1)$.  When $i\le j$ the twist $j-i$ is nonnegative, so only $\HH^0$ survives; this gives the strong exceptional condition.  When $i>j$ the twist lies in $\{-n,\dots,-1\}$, so all cohomology vanishes; this gives the exceptional condition. \michael{It isn't essential to address the exceptional collection involving the $\Omega^j(j)$'s, but if we do, we should at least comment here on why they form a strong exceptional collection.} For fullness, let $\cF\in \Db(\PP^n)$ and apply Proposition~\ref{prop:diagonalidentity} to write $\cF\cong \Phi_{\cO_\Delta}(\cF)=Rq_*(p^*\cF\Lotimes \cO_\Delta)$.  Replacing $\cO_\Delta$ by Beilinson's resolution and applying the projection formula termwise, \michael{explain a bit more why we can apply the functor termwise. We're passing to the $E^1$ page of a hypercohomology spectral sequence} the term $\cO(-i)\boxtimes\Omega^i(i)$ contributes
   \[ Rq_*\bigl(p^*(\cF(-i))\otimes q^*\Omega^i(i)\bigr)\cong R\Gamma\bigl(\PP^n,\cF(-i)\bigr)\otimes \Omega^i(i). \]
   Thus $\cF$ is built by iterated cones out of the objects $\Omega^i(i)$ tensored with $\kk$-vector spaces, so the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$; a dual computation handles the collection of twists of $\cO$. See \cite[\S3]{caldararu} and \cite[\S{A.2}]{BCHS26} for details of the construction.
 \end{proof}
@@ -127,9 +137,9 @@ Recall that the \defi{Grothendieck group} $K_0(X)$ of a smooth projective variet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beilinson's collection and tilting bundles}
 
-Theorem~\ref{thm:beilinsonFSEC} launched a search for exceptional collections and semiorthogonal decompositions on other varieties. When a smooth projective variety $X$ carries a full strong exceptional collection $E_0,\dots,E_r$, the object $T=\bigoplus_i E_i$ is a \defi{tilting object}: its endomorphism algebra $A=\End_X(T)$ has finite global dimension, and $\RHom_X(T,-)$ induces an equivalence $\Db(X)\simeq \Db(A)$ with the derived category of the (noncommutative) algebra $A$ \cite{Bondal90}.
+Theorem~\ref{thm:beilinsonFSEC} launched a search for exceptional collections and semiorthogonal decompositions on other varieties. When a smooth projective variety $X$ carries a full strong exceptional collection $E_0,\dots,E_r$, the object $T=\bigoplus_i E_i$ is a \defi{tilting object}, meaning that its endomorphism algebra $A=\End_X(T)$ has finite global dimension, and $\RHom_X(T,-)$ induces an equivalence $\Db(X)\simeq \Db(A)$ with the derived category of the (noncommutative) algebra $A$ \cite{Bondal90}.
 
-For $\PP^n$ with the Beilinson collection, $A$ is the path algebra of the \defi{Beilinson quiver} modulo relations: it has one vertex for each $\cO(i)$, the arrows from the vertex of $\cO(i)$ to that of $\cO(i+1)$ record a basis of $\Hom(\cO(i),\cO(i+1))\cong\HH^0(\PP^n,\cO(1))$, and the relations identify those compositions of arrows that agree as maps of line bundles, i.e., they arise from commutativity of homomorphisms.
+For $\PP^n$ with the Beilinson collection, $A$ is the path algebra of the \defi{Beilinson quiver} modulo relations. In detail: it has one vertex for each $\cO(i)$, the arrows from the vertex of $\cO(i)$ to that of $\cO(i+1)$ record a basis of $\Hom(\cO(i),\cO(i+1))\cong\HH^0(\PP^n,\cO(1))$, and the relations identify those compositions of arrows that agree as maps of line bundles, i.e., they arise from commutativity of homomorphisms.
 
 For example, the Beilinson collection $\cO,\cO(1),\cO(2)$ on $\PP^2$ gives the quiver
 \[
@@ -164,16 +174,17 @@ E = \textstyle\bigwedge(V) = \bigwedge(e_0,\dots,e_n),
 where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional (noncommutative) algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, a relationship encoded by the distinguished element $\sum_j x_j\otimes e_j\in S\otimes_\kk E$, which squares to zero and governs all of the constructions below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The BGG correspondense}
+\subsection{The BGG correspondence}
 
 The correspondence is realized by an adjoint pair of exact functors between the bounded derived categories $\Db(S)$ and $\Db(E)$ of finitely generated graded modules.
 
 \begin{defn}\label{defn:BGGfunctors}
-  For a graded $S$-module $M$, let $\mathbf R(M)$ be the complex of free graded $E$-modules with
-  \[   \mathbf R(M)^i = \Hom_\kk(E, M_i) \cong M_i \otimes_\kk E \quad\text{in cohomological degree } i, \]
-  whose differential $M_i\otimes_\kk E\to M_{i+1}\otimes_\kk E$ is induced by the Koszul element $\sum_j x_j\otimes e_j$, that is, $m\otimes \varepsilon\mapsto \sum_j x_j m\otimes e_j\varepsilon$. Dually, for a graded $E$-module $P$, let $\mathbf L(P)$ be the complex of free graded $S$-modules with
-  \[ \mathbf L(P)^i = S\otimes_\kk P_i \quad\text{in cohomological degree } i, \]
-  whose differential is induced by the same element $\sum_j x_j\otimes e_j$. Both constructions extend termwise to complexes.
+  Set $\omega_E \ce \Hom_\kk(E,\kk)$, a free graded $E$-module of rank one generated in internal degree $n+1$, so that $\omega_E\cong E(-n-1)$. \michael{maybe explain the notation $\om_E$ (it is the canonical module of the Gorenstein ring $E$)} For a graded $S$-module $M$, let $\mathbf R(M)$ be the complex of free graded $E$-modules with
+  \[   \mathbf R(M)^i = \Hom_\kk(E, M_i) \cong M_i \otimes_\kk \omega_E \quad\text{in cohomological degree } i, \]
+  \michael{include the grading twists--this will matter for tate resolutions}
+  whose differential $\Hom_\kk(E, M_i)\to \Hom_\kk(E, M_{i+1})$ is induced by the Koszul element $\sum_j x_j\otimes e_j$, that is, $(\mathrm d\phi)(\varepsilon) = \sum_j x_j\,\phi(e_j\varepsilon)$. Dually, for a graded $E$-module $P$, let $\mathbf L(P)$ be the complex of free graded $S$-modules with
+  \[ \mathbf L(P)^i = S\otimes_\kk P_{-i} \quad\text{in cohomological degree } i, \]
+  whose differential $s\otimes p\mapsto \sum_j x_j s\otimes e_j p$ is induced by the same element; note that multiplication by $e_j$ lowers internal degree, so this map indeed raises the cohomological degree by one. Both constructions extend termwise to complexes.
 \end{defn}
 
 \begin{thm}[\cite{EFS}*{\S2}, \cite{BGG}]\label{thm:BGG}
@@ -181,12 +192,12 @@ The correspondence is realized by an adjoint pair of exact functors between the 
   \[  \mathbf R\colon \Db(S)\xto{\simeq}\Db(E), \qquad \mathbf L\colon \Db(E)\xto{\simeq}\Db(S). \]
 \end{thm}
 
-We do not prove Theorem~\ref{thm:BGG}; a complete argument is more than one lecture allows. Instead we illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
+A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $\mathbf R(M)$ is an unbounded complex. However, $\mathbf R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $\mathbf L$, since $P$ is finite-dimensional over $\kk$. We do not prove Theorem~\ref{thm:BGG}; a complete argument is more than one lecture allows. Instead we illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
 
 \begin{example}\label{ex:BGGresidue}
-  Since $\kk$ is concentrated in internal degree $0$, the complex $\mathbf R(\kk)$ has a single nonzero term, the free module $E$ in cohomological degree $0$. Applying $\mathbf L$, the terms $S \otimes_\kk E_{-p} = S \otimes_\kk\bigwedge^p V$ with the differential coming from $\sum_j x_j\otimes e_j$ assemble into the Koszul complex
-  \[  \mathbf L(E)\colon\quad S\otimes\textstyle\bigwedge^{n+1}V\to\cdots\to S\otimes\bigwedge^1 V\to S,  \]
-  which is the minimal free resolution of $\kk$ over $S$. Hence $\mathbf L\mathbf R(\kk)\simeq \kk$ in $\Db(S)$, as Theorem~\ref{thm:BGG} predicts.
+  Since $\kk$ is concentrated in internal degree $0$, the complex $\mathbf R(\kk)$ has a single nonzero term, the free module $\omega_E$ in cohomological degree $0$. Now to apply $\mathbf L$, note that the graded piece $(\omega_E)_p = \Hom_\kk(E_{-p},\kk)\cong\bigwedge^p W$ contributes the term $S \otimes_\kk\bigwedge^p W$ in cohomological degree $-p$, and $e_j$ acts on $\omega_E$ by contraction, so the differential coming from $\sum_j x_j\otimes e_j$ assembles these terms into the Koszul complex \michael{including the twists in these examples would be helpful too. Not only is this useful for Tate resolutions later, but I think it helps the audience line up which summands correspond to which basis elements in $\om_E$}
+  \[  \mathbf L(\omega_E)\colon\quad S\otimes\textstyle\bigwedge^{n+1}W\to\cdots\to S\otimes\bigwedge^1 W\to S,  \]
+  sitting in cohomological degrees $-(n+1),\dots,0$, which is the minimal free resolution of $\kk$ over $S$. Hence $\mathbf L\mathbf R(\kk)\simeq \kk$ in $\Db(S)$, as Theorem~\ref{thm:BGG} predicts. Note the role of the twist in $\omega_E\cong E(-n-1)$ is that applying $\mathbf L$ to the untwisted module $E$ instead yields the dual Koszul complex on the $\bigwedge^p V$, whose only cohomology is $\kk(n+1)$ in cohomological degree $n+1$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,7 +209,7 @@ The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategorie
   Under the equivalence of Theorem~\ref{thm:BGG}, the subcategory $\Db_\m(S)$ corresponds to $\Perf(E)$.
 \end{prop}
 
-In the context of Example~\ref{ex:BGGresidue}, since the residue field is supported at $\m$, we have $\kk\in\Db_\m(S)$, and the proposition states that $\mathbf R(\kk) = E$ is a perfect complex.
+In the context of Example~\ref{ex:BGGresidue}, since the residue field is supported at $\m$, we have $\kk\in\Db_\m(S)$, and the proposition states that $\mathbf R(\kk) = \omega_E$ is a perfect complex.
 
 \begin{defn}[see {\cite[Ch.~10]{weibel}}]
   Given a thick subcategory $\cB\subseteq \cD$, the \defi{Verdier quotient} $\cD/\cB$ is the triangulated category with the same objects as $\cD$, obtained by formally inverting all morphisms whose cone lies in $\cB$.
@@ -219,3 +230,9 @@ That is, the BGG correspondence identifies the derived category of $\PP^n$ with 
   \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk \omega_E(j) \]
   appearing as a canonical subquotient.  This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations.  Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
 \end{remark}
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi

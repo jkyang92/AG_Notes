@@ -1,7 +1,6 @@
 \usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath,verbatim, mathrsfs, fullpage}
-\usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} % for bibliography
+\usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} % for bibliography 
 \usepackage[colorlinks=true,hyperindex,linkcolor=magenta,pagebackref=true,citecolor=cyan]{hyperref}
-\usepackage[dvipsnames]{xcolor} % for colors
 \usepackage{ifthen,tikz}
 \usetikzlibrary{shapes.geometric}
 \usepackage{tikz-cd}
@@ -150,9 +149,6 @@
 \newcommand{\daniel}[1]{{\color{blue} \sf $\clubsuit\clubsuit\clubsuit$ Daniel: [#1]}}
 \newcommand{\michael}[1]{{\color{red} \sf $\clubsuit\clubsuit\clubsuit$ Michael: [#1]}}
 \newcommand{\maya}[1]{{\color{green} \sf $\clubsuit\clubsuit\clubsuit$ Maya: [#1]}}
-\newcommand{\mahrud}[1]{{\color{ForestGreen} \sf $\blacklozenge$ Mahrud: [#1]}}
-\newcommand{\lauren}[1]{{\color{Fuchsia} \sf $\diamondsuit$ Lauren: [#1]}}
-\newcommand{\david}[1]{{\color{magenta} \sf ** David: [#1] **}}
 \newcommand{\jay}[1]{{\color{teal} \sf $\spadesuit\spadesuit\spadesuit$ Jay: [#1]}}
 
 \def\edim{\operatorname{edim}}
@@ -184,6 +180,7 @@
 \def\coker{\on{coker}}
 \def\p{\partial}
 \def\wt{\widetilde}
+\def\i{\iota}
 \nc{\into}{\hookrightarrow}
 \nc{\onto}{\twoheadrightarrow}
 \nc{\OO}{\mathcal{O}}
@@ -286,17 +283,11 @@
 \def\colim{\on{colim}}
 \def\fix#1{{{\bf ***}#1{\bf ***}}}
 \def\xla{\xleftarrow}
+\begin{document}
 %\title[Toric methods in homological algebra]{Arbeitsgemeinschaft:  \\ Toric methods in homological algebra \\ October 11 - 16, 2026}
-\title[New homological methods in toric geometry]{Notes for Arbeitsgemeinschaft:  \\ New homological methods in toric geometry}
-\author{Michael K. Brown}
-\author{David Eisenbud}
-\author{Daniel Erman}
+\title{Section from Notes for the Arbeitsgemeinschaft}
+%\author{Michael K. Brown}
+%\author{David Eisenbud}
+%\author{Daniel Erman}
 %This command gets rid of the MR number in the bibliography
 \def\MR#1{}
-
-% preserve the dotless-i used by bibtex entries, e.g. \u{\i} in Eloísa
-\let\dotlessi\i
-\def\i{\ifmmode\iota\else\dotlessi\fi}
-
-\newcommand{\xto} {\xrightarrow}
-\newcommand{\xgets}{\xleftarrow}

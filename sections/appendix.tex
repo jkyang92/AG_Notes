@@ -1,6 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 \section{Good multigradings}
-We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$ and $\deg(a)=0$ for $a\in k$.  \lauren{I don't see why this is implied otherwise}  To avoid trivialities, we will always assume that the map $\deg$ is surjective.
+
+We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$.  We extend this to a grading of $S$ where $\deg(x_1^{b_1}\cdots x_n^{b_n})\ce \sum_{i=1}^n b_i\deg(x_i)$ and $\deg(a)=0$ for $a\in k$.  \lauren{I don't see why this is implied otherwise}  
+\daniel{I was being loose.  I rewrote even more dramatically to be clear.}
+To avoid trivialities, we will always assume that the map $\deg$ is surjective.
 
 Our goal in this section is to articulate conditions under which the multigraded ring $S$ corresponds to the Cox ring of some projective toric variety.
 
@@ -26,18 +37,18 @@ We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the
 
     For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
 
-    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
+    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} \daniel{I don't remember what I meant but this looks correct}$\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
   \end{proof}
 
-  \begin{prop}
-    The following are equivalent: \lauren{the logic of this reads very strangely to me currently .. there does indeed exist a polynomial ring satisfying the conditions in (1) so it seems like (2) should always be true}
+  \begin{prop}\label{prop:goodMultigradings}
+    The following are equivalent: \lauren{the logic of this reads very strangely to me currently .. there does indeed exist a polynomial ring satisfying the conditions in (1) so it seems like (2) should always be true}\daniel{Good point, totally agree.  Rewrite as you see fit.}
     \begin{enumerate}
       \item There is a polynomial ring $S$, graded via $\deg\colon \ZZ^n\to \Cl(S)$, that satisfies the following conditions:
       \begin{enumerate}
         \item $\deg$ is surjective;
         \item $S$ is positively graded;
-        \item Each row of $\alpha$ \lauren{what is $\alpha$?} is the primitive point on a distinct ray; that is, the rows of
-        $\alpha$ are distinct, nonzero, and have greatest common divisor 1. \lauren{what does it mean for vectors to have greatest common divisor 1?}
+        \item Each row of $\alpha$ \lauren{what is $\alpha$?}\daniel{It was a name I gave to the matrix $M\to \ZZ^n$.} is the primitive point on a distinct ray; that is, the rows of
+        $\alpha$ are distinct, nonzero, and {\color{blue} the entries of each row} have greatest common divisor 1. \lauren{what does it mean for vectors to have greatest common divisor 1?}
         %matrix representing $\alpha\colon M\to \ZZ^n$ has no zero rows and no rows that are scalar multiples of one another.
       \end{enumerate}
       \item There is a simplicial, projective toric variety $X$ with $\Cl(X) = \Cl(S)$ and where the Cox ring of $X$ equals $S$.
@@ -46,7 +57,7 @@ We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the
   \begin{proof}
     (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$ we choose a basis for the lattice $N$ and take the dual basis for the lattice $M$.  Since the Cox ring of $X$ is $S$, we know that the fan for $X$ contains $n$ rays, giving a matrix $N\gets \ZZ^n$.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (c).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (a) and (b) by \lauren{cite positively graded, and then (a) is basically definitional}
 
-    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
+    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?}\daniel{there's work to do here.} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
 
     \begin{lemma}[CLS 14.3.2 without the extra notation]
       Fix a basis $\epsilon$ of $\RR^n$, and let
@@ -95,7 +106,7 @@ We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the
 
   Proposition 14.4.1 \lauren{I think we are basically trying to prove this prop though---is the idea to cite it but then also prove projective using 14.3.2?} also implies that each $X_{\Sigma}$ is semiprojective and since it is proper by the previous paragraph, it is also projective.
 
-  We next utilize Proposition 15.1.6 of CLS.  This says that we have a chamber of the secondary fan where the corresponding variety $X_{\Sigma}$ requires $n$ rays if and only if the rows of $\alpha$ are nonzero and generate distinct rays, which is implied by condition (c).  In this case, $\alpha^*: \ZZ^n\to N$ will determine the rays of $X_{\Sigma}$.  The stronger condition, that the rows of $\alpha$ each represent a primitive point on a distinct ray, then implies that the ray matrix for $X_{\Sigma}$ will be precisely $\alpha^*$.  Since the Class group of $X$ is computed in terms of the ray matrix, we have that the class group of $X$ will equal $\Cl(S)$, and the map $\ZZ^{n}\to \Cl(X)$ will agree with the map $\deg$.  Thus the Cox ring of $X_{\Sigma}$ will be a polynomial ring on $n$ variables and the grading will be as desired.  \lauren{I can't tell what we're trying to do ourselves v.~what we're citing to CLS, and if we only want to prove part of it then 14.3.2 seems like the wrong part!}
+  We next utilize Proposition 15.1.6 of CLS.  This says that we have a chamber of the secondary fan where the corresponding variety $X_{\Sigma}$ requires $n$ rays if and only if the rows of $\alpha$ are nonzero and generate distinct rays, which is implied by condition (c).  In this case, $\alpha^*: \ZZ^n\to N$ will determine the rays of $X_{\Sigma}$.  The stronger condition, that the rows of $\alpha$ each represent a primitive point on a distinct ray, then implies that the ray matrix for $X_{\Sigma}$ will be precisely $\alpha^*$.  Since the Class group of $X$ is computed in terms of the ray matrix, we have that the class group of $X$ will equal $\Cl(S)$, and the map $\ZZ^{n}\to \Cl(X)$ will agree with the map $\deg$.  Thus the Cox ring of $X_{\Sigma}$ will be a polynomial ring on $n$ variables and the grading will be as desired.  \lauren{I can't tell what we're trying to do ourselves v.~what we're citing to CLS, and if we only want to prove part of it then 14.3.2 seems like the wrong part!}\daniel{I can't tell either.  This proof got significantly rewritten by David at some point, and I never looked at it closely. My plan was to almost entirely cite CLS facts and prove next to nothing original, i.e. to just repackage results from CLS in Proposition~\ref{prop:goodMultigradings}.  David added the gale duality proof, I think because he liked it and wanted more proofs and less pure citations, but we never really discussed this.}
 \end{proof}
 
 
@@ -340,3 +351,9 @@ When $X$ is simplicial but not smooth, another sense in which the stack $\sX$ is
   where we recall that: $D^b(\sX_i)$ is the bounded derived category of coherent sheaves on $\sX_i$; $D^b(S)$ is the bounded derived category of graded $S$-modules; and $D^b_{B_i}(S)\subseteq D^b(S)$ is the full triangulated subcategory generated by modules $M$ which are annihilated by some power of $B_i$.
 \end{cor}
 This corollary follows from several well-known and more general results in the literature.  Since our interest in stacks is nearly entirely based upon this corollary (i.e. we will have to further discussion of stacks), we will simply provide references but skip the proof.  Perhaps the most direct reference is \cite{AOV2008}*{Section~2.1}, which--once one unravels the notation--provides a full proof of an equivalent fact.  Other references, working in various levels of generality, include  \cite{stacks-project}*{06WT}, \cite{vistoli}*{Theorem 4.46}, and  \cite{alper}*{Theorem 7.1.11}. \michael{Also include that the bounded derived category of $G$-equivariant sheaves on $\AA^n \setminus V(B_i)$ is $D^b(S) / D^b_{B_i}(S)$, which is an equivariant version of the Thomason-Trobaugh localization theorem.}
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi

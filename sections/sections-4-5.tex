@@ -1,4 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 \section{Lecture 4 (Sharon Robbins): Toric varieties and Cox rings, I}\label{lec:4-toric-cox}
 Review how to associate a normal toric variety to a fan~\cite{CLS}*{\S 3.1}. Given a fan $\Sigma$ and the associated toric variety $X_\Sigma$, explain how the rays in $\Sigma$ determine divisors on $X_\Sigma$ via the Orbit-Cone Correspondence~\cite{CLS}*{\S 4.1}. Define the Cox ring (also called the homogeneous coordinate ring) $S$ of $X_\Sigma$, its grading by the divisor class group $\Cl(X_\Sigma)$~\cite{CLS}*{Definition 4.0.13}, and its irrelevant ideal $B$. Explain how the variety $X_\Sigma$ arises as the quotient of $\Spec(S) \setminus V(B)$ by a torus action. Potential references for Cox rings are \cite{CLS}*{\S 5.1} or Cox's original paper~\cite{cox}. Include running examples throughout, especially projective space, products of projective spaces, weighted projective spaces, and Hirzebruch surfaces $\mathcal{H}_i$ for $i \ge 1$. 
 
@@ -12,3 +19,11 @@ Finally, state the Demazure vanishing theorem~\cite{CLS}*{Theorem 9.2.3}.
 %Topics for these two lectures: toric varieties from fans. Key examples. Cox rings and irrelevant ideals. Secondary fan and GIT. Touch on stacks?
 
 %what is a derived category?  Why do people care? 
+
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi
+
