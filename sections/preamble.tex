@@ -1,6 +1,7 @@
 \usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath,verbatim, mathrsfs, fullpage}
 \usepackage[alphabetic,backrefs,abbrev,lite]{amsrefs} % for bibliography 
 \usepackage[colorlinks=true,hyperindex,linkcolor=magenta,pagebackref=true,citecolor=cyan]{hyperref}
+\usepackage[dvipsnames]{xcolor} % for colors
 \usepackage{ifthen,tikz}
 \usetikzlibrary{shapes.geometric}
 \usepackage{tikz-cd}
@@ -149,6 +150,9 @@
 \newcommand{\daniel}[1]{{\color{blue} \sf $\clubsuit\clubsuit\clubsuit$ Daniel: [#1]}}
 \newcommand{\michael}[1]{{\color{red} \sf $\clubsuit\clubsuit\clubsuit$ Michael: [#1]}}
 \newcommand{\maya}[1]{{\color{green} \sf $\clubsuit\clubsuit\clubsuit$ Maya: [#1]}}
+\newcommand{\mahrud}[1]{{\color{ForestGreen} \sf $\blacklozenge$ Mahrud: [#1]}}
+\newcommand{\lauren}[1]{{\color{Fuchsia} \sf $\diamondsuit$ Lauren: [#1]}}
+\newcommand{\david}[1]{{\color{magenta} \sf ** David: [#1] **}}
 \newcommand{\jay}[1]{{\color{teal} \sf $\spadesuit\spadesuit\spadesuit$ Jay: [#1]}}
 
 \def\edim{\operatorname{edim}}
@@ -291,3 +295,6 @@
 %\author{Daniel Erman}
 %This command gets rid of the MR number in the bibliography
 \def\MR#1{}
+
+\newcommand{\xto} {\xrightarrow}
+\newcommand{\xgets}{\xleftarrow}
