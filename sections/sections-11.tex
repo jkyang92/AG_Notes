@@ -1,16 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifdefined\whole
 \else
-\documentclass{amsart}
+\documentclass{article}
 \input{preamble}
-\begin{document}
+%\begin{document}
 \fi
 
 \section{Lecture 11 (Lauren Cranton Heller): The secondary fan}\label{lec:11-secondary-fan}
 In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring.
 
 \subsection{The toric varieties associated to a multigraded ring}
-Let $X$ be a projective toric variety with fan $\Sigma$ and class group $\Cl(S)$. Let $S = \kk[x_1, \dots, x_n]$ be the corresponding Cox ring and $B\subseteq S$ the irrelevant ideal.  Distinct toric varieties can have the same Cox ring, and this adds a wrinkle to any attempt to generalize results related to the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is generally called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this.
+Distinct projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is generally called the \defi{secondary fan} or \defi{GKZ fan} \lauren{does the GKZ fan live in a different ambient space?} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this fan.
 
 In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
 
@@ -244,7 +244,7 @@ We saw in an earlier lecture that if $X_i$ satisfies the conditions of Lemma~\re
 
 \ifdefined\whole
 \else
-\bibliographystyle{plain}
-\bibliography{Bibliography}
-\end{document}
+\documentclass{article}
+\input{preamble}
+%\begin{document}
 \fi
