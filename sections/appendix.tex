@@ -9,9 +9,7 @@
 
 \section{Good multigradings}
 
-We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$.  We extend this to a grading of $S$ where $\deg(x_1^{b_1}\cdots x_n^{b_n})\ce \sum_{i=1}^n b_i\deg(x_i)$ and $\deg(a)=0$ for $a\in k$.  \lauren{I don't see why this is implied otherwise}  
-\daniel{I was being loose.  I rewrote even more dramatically to be clear.}
-To avoid trivialities, we will always assume that the map $\deg$ is surjective.
+We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$.  We extend this to a grading of $S$ where $\deg(x_1^{b_1}\cdots x_n^{b_n})\ce \sum_{i=1}^n b_i\deg(x_i)$ and $\deg(a)=0$ for $a\in k$.  To avoid trivialities, we will always assume that the map $\deg$ is surjective.
 
 Our goal in this section is to articulate conditions under which the multigraded ring $S$ corresponds to the Cox ring of some projective toric variety.
 
@@ -22,7 +20,7 @@ We will need some notation.  We write $M\ce\ker(\deg)$ and we consider the induc
 We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the \defi{effective semigroup} as it forms a subsemigroup of $\Cl(S)$.  We can consider the corresponding cone $\Eff(S)_{\QQ}\subseteq \Cl(S)\otimes_{\ZZ}\QQ$ which is the positive rational cone spanned by the image of $\Eff(S)$ under the natural map to $\Cl(S)\otimes_{\ZZ}\QQ$.
 
 \begin{defn}\label{defn:posGrading}
-  We say that $S$ is a \defi{positively graded ring} if there exists a group homomorphism $\phi\colon \Cl(S) \to \ZZ$ such that $\phi \circ \deg(\epsilon_i) > 0 $ for all $i$.
+  We say that $\deg\colon\ZZ^n\to\Cl(S)$ is a \defi{positive grading} if there exists a group homomorphism $\phi\colon \Cl(S) \to \ZZ$ such that $\phi \circ \deg(\epsilon_i) > 0 $ for all $i$.
 \end{defn}
 \begin{lemma}
   The following are equivalent:
@@ -33,32 +31,32 @@ We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-    For (1) implies (2):  By assumption $k$ lies in $S_0$.  If another polynomial lies in $S_0$ then there exists $b\neq 0$ such that $\deg b=0$.  Thus $\sum b_i\deg\epsilon_i=0$ so $\sum b_i\varphi\circ\deg(\epsilon_i)=0$ for some $\varphi$ witnessing the positive grading, which is impossible.
+    For (1) implies (2):  By assumption $k$ lies in $S_0$.  If another polynomial lies in $S_0$ then there exists $b\neq 0$ such that $\deg b=0$.  Thus $\sum b_i\deg\epsilon_i=0$ so $\sum b_i\varphi\circ\deg(\epsilon_i)=0$ for some $\varphi$ witnessing the positivity of the grading, which is impossible.
 
     For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
 
-    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} \daniel{I don't remember what I meant but this looks correct}$\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
+    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
   \end{proof}
 
 \begin{prop}\label{prop:goodMultigradings}
-Let $S=k[x_1, \dots, x_n]$ be a polynomial ring, and let $\Cl(S)$ be a finitely generated abelian group.  
-Let $S$ be graded via $\deg\colon \ZZ^n\to \Cl(S)$.  Let $M:=\ker \deg$ so we have a short exact sequence:
+Let $S=k[x_1, \dots, x_n]$ be a polynomial ring, and let $\Cl(S)$ be a finitely generated abelian group.
+Suppose $S$ is graded via $\deg\colon \ZZ^n\to \Cl(S)$.  Write $M:=\ker \deg$ so we have a short exact sequence:
 \[
 0\to M\overset{\alpha}{\to} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(S) \to 0.
 \]
-For convenience, we fix bases of $M$ and $\ZZ^n$ so that we can represent $\alpha$ as a matrix, however we note that the conditions below are not affected by the change of basis for $M$.
+For convenience, we fix bases of $M$ and $\ZZ^n$ so that we can represent $\alpha$ as a matrix. However the conditions below are not affected by a change of basis for $M$.
 
 The following are equivalent:
 \begin{enumerate}
-    \item The degree map satisfies:
+    \item The ring and degree map satisfy the properties:
       \begin{enumerate}
-        \item $\deg$ is surjective;
-        \item 
-        Each row of $\alpha$ is the primitive point on a distinct ray; that is, the rows of
-        $\alpha$ are distinct, nonzero, and  the entries of each row have greatest common divisor 1;
-        \item $\deg$ is a positive grading.\daniel{rewrite ``$S$ is positively graded'' from earlier to ``is a positive grading''.}
+        \item The map $\deg$ is surjective;
+        \item
+        Each row of $\alpha$ is the primitive point on a distinct ray, meaning that the rows of
+        $\alpha$ are distinct and nonzero, and the entries of each row have greatest common divisor 1;
+        \item The grading on $S$ defined by $\deg$ is a positive grading.
     \end{enumerate}
-    \item  There exists a projective, simplicial toric variety $X$ whose Cox ring equals $S$ as a multigraded ring, in the following specific sense: we have an isomoprhism class group $\Cl(X)\cong \Cl(S)$, the Cox ring of $X$ equals $S=k[x_1, \dots, x_n]$, and $\deg(x_i)\in \Cl(S)$ is the class in $\Cl(X)$ of the torus invariant divisor corresponding to the $i$'th ray of the fan of $X$.
+    \item  There exists a projective, simplicial toric variety $X$ whose Cox ring is $S$ as a multigraded ring, in the following specific sense: The fan for $X$ contains $n$ rays and we have an isomorphism $\Cl(X)\cong \Cl(S)$ such that for each $i$ the image $\deg(x_i)\in \Cl(S)$ is the class in $\Cl(X)$ of the torus invariant divisor corresponding to the $i$th ray of $X$.
 \end{enumerate}
 \end{prop}
 
@@ -78,20 +76,19 @@ The following are equivalent:
   %   \end{enumerate}
   % \end{prop}
   \begin{proof}
-    (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$ we choose a basis for the lattice $N$ and take the dual basis for the lattice $M$.  Since the Cox ring of $X$ is $S$, we know that the fan for $X$ contains $n$ rays, giving a matrix $N\gets \ZZ^n$.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (c).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (a) and (b) by \lauren{cite positively graded, and then (a) is basically definitional}
+    (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$, the degree map $\deg\colon\ZZ^n\to\Cl(X)$ is surjective because the classes of torus-invariant divisors generate $\Cl(X)$ \lauren{cite CLS}.  We choose a basis for the lattice $N$ containing the fan for $X$ and take the dual basis for the lattice $M$, giving a matrix $N\gets \ZZ^n$ containing primitive elements along each ray of the fan.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (b).  The grading $\deg$ is positive by \lauren{cite something}.
 
-    (1) implies (2) is more subtle.  
+    (1) implies (2) is more subtle.  We will be using facts from~\cite[Chapters 14 and 15]{CLS}.
 
-    We will be utilizing citations from~\cite[Chapters 14 and 15]{CLS} and we note in particular (see the beginning of \cite[Chapter 14.4]{CLS}) that these allow for the action of a subgroup $G\subseteq (k^*)^n$ on $\Spec(S)\cong \mathbb A^n$ to be arbitrary.  \daniel{let's justify that this is equivalent to allowing for an arbitrary $\deg$ map with surjective!}
+    The beginning of \cite[Chapter 14.4]{CLS} defines a secondary fan for arbitrary algebraic actions of a subgroup $G\subseteq (k^*)^n$ on $\Spec(S)\cong \mathbb A^n$ (see for instance \cite[Lemma 14.4.6]{CLS}).  Our map $\deg\colon\ZZ^n\to\Cl(S)$ defines a map of group rings $k[\ZZ^n]\to k[\Cl(S)]$.  The surjectivity in (a) implies that the corresponding map of algebraic groups defines a subgroup of $\Spec k[\ZZ^n]\cong(\CC^*)^n$. \lauren{is this right?} The \lauren{possibly nonexistent?} chambers of the secondary fan for the induced action of this subgroup on $\Spec S$ correspond to GIT quotients for different choices of linearized line bundle.  We will show that at least one has the properties we desire.
 
-Condition 1 gives the existence of a secondary fan (14.4.6).
+    In particular, \cite[Proposition 15.1.6]{CLS} describes when the secondary fan contains a chamber which uses all rows of $\alpha$.  Condition (b) implies that this collection of rows is ``geometric'' and thus satisfies the hypotheses of the proposition.  By \cite[Theorem 14.2.13]{CLS} each chamber gives a toric GIT quotient whose fan contains rays along the rows of $\alpha$, so all of these rays appear.  Since the entries of each row have no common factor the matrix $\alpha$ appears directly in the computation of $\Cl(X)$ \lauren{cite probably the same thing from above about the class group}, implying that $\deg$ is the degree function of torus-invariant divisors for some isomorphism $\Cl(X)\cong\Cl(S)$ \lauren{induced by a diagram chasing lemma or something about Gale duals?}.
 
-Then 15.1.3 shows that the $\alpha$ row condition yields a ``geometric'' chamber, which means there is a toric variety with the right Cox ring.
 %Can we give an examples about what happens when the $\alpha$ condition fails?  Like PP(1,2) and $P^0 x P^1$.?
 
-Full support gives proper via Gale duality.  Everybody is semiprojective so this gives projective.
-    
-    The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?}\daniel{there's work to do here.} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
+    Full support gives proper via Gale duality.  Everybody is semiprojective so this gives projective.
+
+    If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
 
     \begin{lemma}[CLS 14.3.2 without the extra notation]
       Fix a basis $\epsilon$ of $\RR^n$, and let
