@@ -1,4 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 \section{Lecture 7 (Jason McCullough): Constructing the resolution and examples}\label{lec:7-HHL-construction}
 
 \daniel{The notes in this section spill over into Lectures 7 and 8.  Need to subdivide, reframe etc.  A rough overview for how we want these three sections to look is the following:
@@ -407,3 +414,10 @@ The saturation is given by
   %% Set $b = \eta_{\RR}(\lfloor \mathbf{q}\rfloor)$, $
   
 \end{proof}
+
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi

@@ -1,4 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
+
 \section{Lecture 17 (Prashanth Sridhar): Some consequences of the revised King conjecture}\label{lec:17-consequences}
 
 We next explore several consequences of the main theorem of \cite{king} and its proof.
@@ -111,3 +119,11 @@ We have  proven the first statement, and the second follows from \cite{FH}*{Theo
 \end{proof}
 
 The noncommutative resolutions of singularities for affine toric varieties given by~\cite{spenko-van-den-bergh-inventiones, faber-muller-smith} follow from Theorem~\ref{thm:ncres}, though there is just a bit of additional work needed for this: see \cite{king}*{Corollary 7.13 and Remark 7.14}.
+
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi
+

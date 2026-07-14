@@ -1,4 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\whole
+\else
+\documentclass{article}
+\input{preamble}
+%\begin{document}
+\fi
+
 \section{Lecture 12 (Martin Kalck); The Cox Category, I: Definition}\label{lec:12-DCox-definition}
 As we saw in one of the introductory lectures, Beilinson gave a very concrete description of the derived category of $\PP^n$~\cite{beilinson}.  Recall the
 \defi{Beilinson collection} of line bundles $\cO_{\PP^n}(-n), \ldots,
@@ -496,3 +503,11 @@ We get a uniqueness property akin to Theorem~\ref{thm:UniquenessAndFSEC}.  Namel
 
 So the theorem tells us that while King's Conjecture was false, the underlying idea was very much correct.  The cases where full strong exceptional cases of line bundles exist--projective space, products, projective bundles, etc--are indicative of what happens in the general case.  The correct statement just required a framework that was not yet obvious back then.
 \end{remark}
+
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi
+
