@@ -26,27 +26,27 @@ We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the
 
     For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
 
-    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} $\Cl(S)\otimes \QQ\to \QQ$ that sends the pointed cone $\Eff(S)_{\QQ}$ into $\QQ_{>0}$ and then clearing denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
+    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces \lauren{is this what you meant?} $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
   \end{proof}
 
   \begin{prop}
-    The following are equivalent:
+    The following are equivalent: \lauren{the logic of this reads very strangely to me currently .. there does indeed exist a polynomial ring satisfying the conditions in (1) so it seems like (2) should always be true}
     \begin{enumerate}
       \item There is a polynomial ring $S$, graded via $\deg\colon \ZZ^n\to \Cl(S)$, that satisfies the following conditions:
       \begin{enumerate}
         \item $\deg$ is surjective;
         \item $S$ is positively graded;
-        \item Each row of $\alpha$ is the primitive point on a distinct ray; that is, the rows of
-        $\alpha$ are distinct, nonzero, and have greatest common divisor 1.
+        \item Each row of $\alpha$ \lauren{what is $\alpha$?} is the primitive point on a distinct ray; that is, the rows of
+        $\alpha$ are distinct, nonzero, and have greatest common divisor 1. \lauren{what does it mean for vectors to have greatest common divisor 1?}
         %matrix representing $\alpha\colon M\to \ZZ^n$ has no zero rows and no rows that are scalar multiples of one another.
       \end{enumerate}
       \item There is a simplicial, projective toric variety $X$ with $\Cl(X) = \Cl(S)$ and where the Cox ring of $X$ equals $S$.
     \end{enumerate}
   \end{prop}
   \begin{proof}
-    (2) implies (1) is easy.  Given such an $X$ we start choose a basis for the lattice $N$ and take the corresponding basis for the dual lattice $M$.  Since the Cox ring of $X$ is $S$, we know that $X$ involes $n$ rays, and so we have the matrix of rays $N\gets \ZZ^n$.  Since the rays are distinct (and nonzero) the columns of this matrix all nonzero and are not scalar multiples of one another. Dualizing this then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (iii).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (i) and (ii) by standard facts.
+    (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$ we choose a basis for the lattice $N$ and take the dual basis for the lattice $M$.  Since the Cox ring of $X$ is $S$, we know that the fan for $X$ contains $n$ rays, giving a matrix $N\gets \ZZ^n$.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (c).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (a) and (b) by \lauren{cite positively graded, and then (a) is basically definitional}
 
-    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan.  If $X_{\Sigma}$ is the toric variety associated to some of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?}(a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
+    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
 
     \begin{lemma}[CLS 14.3.2 without the extra notation]
       Fix a basis $\epsilon$ of $\RR^n$, and let
@@ -93,9 +93,9 @@ We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the
   % \]
   % The cone over the rows of $\gamma$ fills an entire $\QQ^{n-1}$.  And the cone over the rows of $\alpha$ is a projective of that cone under a map $\QQ^{n-1} \to N\otimes \QQ$ and hence we obtain the desired result.
 
-  Proposition 14.4.1 also implies that each $X_{\Sigma}$ is semiprojective and since it is proper by the previous paragraph, it is also projective.
+  Proposition 14.4.1 \lauren{I think we are basically trying to prove this prop though---is the idea to cite it but then also prove projective using 14.3.2?} also implies that each $X_{\Sigma}$ is semiprojective and since it is proper by the previous paragraph, it is also projective.
 
-  We next utilize Proposition 15.1.6 of CLS.  This says that we have a chamber of the secondary fan where the corresponding variety $X_{\Sigma}$ requires $n$ rays if and only if the rows of $\alpha$ are nonzero and generate distinct rays, which is implied by condition (c).  In this case, $\alpha^*: \ZZ^n\to N$ will determine the rays of $X_{\Sigma}$.  The stronger condition, that the rows of $\alpha$ each represent a primitive point on a distinct ray, then implies that the ray matrix for $X_{\Sigma}$ will be precisely $\alpha^*$.  Since the Class group of $X$ is computed in terms of the ray matrix, we have that the class group of $X$ will equal $\Cl(S)$, and the map $\ZZ^{n}\to \Cl(X)$ will agree with the map $\deg$.  Thus the Cox ring of $X_{\Sigma}$ will be a polynomial ring on $n$ variables and the grading will be as desired.
+  We next utilize Proposition 15.1.6 of CLS.  This says that we have a chamber of the secondary fan where the corresponding variety $X_{\Sigma}$ requires $n$ rays if and only if the rows of $\alpha$ are nonzero and generate distinct rays, which is implied by condition (c).  In this case, $\alpha^*: \ZZ^n\to N$ will determine the rays of $X_{\Sigma}$.  The stronger condition, that the rows of $\alpha$ each represent a primitive point on a distinct ray, then implies that the ray matrix for $X_{\Sigma}$ will be precisely $\alpha^*$.  Since the Class group of $X$ is computed in terms of the ray matrix, we have that the class group of $X$ will equal $\Cl(S)$, and the map $\ZZ^{n}\to \Cl(X)$ will agree with the map $\deg$.  Thus the Cox ring of $X_{\Sigma}$ will be a polynomial ring on $n$ variables and the grading will be as desired.  \lauren{I can't tell what we're trying to do ourselves v.~what we're citing to CLS, and if we only want to prove part of it then 14.3.2 seems like the wrong part!}
 \end{proof}
 
 
