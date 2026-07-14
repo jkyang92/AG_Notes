@@ -53,10 +53,10 @@ The following are equivalent:
     \item The degree map satisfies:
       \begin{enumerate}
         \item $\deg$ is surjective;
-        \item $\deg$ is a positive grading;\daniel{rewrite ``$S$ is positively graded'' from earlier to ``is a positive grading''.}
         \item 
         Each row of $\alpha$ is the primitive point on a distinct ray; that is, the rows of
-        $\alpha$ are distinct, nonzero, and  the entries of each row have greatest common divisor 1.
+        $\alpha$ are distinct, nonzero, and  the entries of each row have greatest common divisor 1;
+        \item $\deg$ is a positive grading.\daniel{rewrite ``$S$ is positively graded'' from earlier to ``is a positive grading''.}
     \end{enumerate}
     \item  There exists a projective, simplicial toric variety $X$ whose Cox ring equals $S$ as a multigraded ring, in the following specific sense: we have an isomoprhism class group $\Cl(X)\cong \Cl(S)$, the Cox ring of $X$ equals $S=k[x_1, \dots, x_n]$, and $\deg(x_i)\in \Cl(S)$ is the class in $\Cl(X)$ of the torus invariant divisor corresponding to the $i$'th ray of the fan of $X$.
 \end{enumerate}
@@ -80,7 +80,18 @@ The following are equivalent:
   \begin{proof}
     (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$ we choose a basis for the lattice $N$ and take the dual basis for the lattice $M$.  Since the Cox ring of $X$ is $S$, we know that the fan for $X$ contains $n$ rays, giving a matrix $N\gets \ZZ^n$.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (c).  We set $\Cl(S)\ce\Cl(X)$ and the induced grading satisfies (a) and (b) by \lauren{cite positively graded, and then (a) is basically definitional}
 
-    (1) implies (2) is more subtle.  The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?}\daniel{there's work to do here.} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
+    (1) implies (2) is more subtle.  
+
+    We will be utilizing citations from~\cite[Chapters 14 and 15]{CLS} and we note in particular (see the beginning of \cite[Chapter 14.4]{CLS}) that these allow for the action of a subgroup $G\subseteq (k^*)^n$ on $\Spec(S)\cong \mathbb A^n$ to be arbitrary.  \daniel{let's justify that this is equivalent to allowing for an arbitrary $\deg$ map with surjective!}
+
+Condition 1 gives the existence of a secondary fan (14.4.6).
+
+Then 15.1.3 shows that the $\alpha$ row condition yields a ``geometric'' chamber, which means there is a toric variety with the right Cox ring.
+%Can we give an examples about what happens when the $\alpha$ condition fails?  Like PP(1,2) and $P^0 x P^1$.?
+
+Full support gives proper via Gale duality.  Everybody is semiprojective so this gives projective.
+    
+    The $\Cl(S)$-grading on $S$ induces a GIT problem and hence a secondary fan. \lauren{do we really know this for all gradings?  if not what are we using?}\daniel{there's work to do here.} If $X_{\Sigma}$ is the toric variety associated to some \lauren{chamber?} of the secondary fan, Proposition 14.4.1 \de{14.4.1 or 14.3.2?} \lauren{not sure, 14.3.2 is the basic fact about Gale duality stated below but I think we may need more!} (a basic fact on Gale duality) implies that the support of the fan $\Sigma$ is the cone spanned by the rays in $N_{\QQ}$.
 
     \begin{lemma}[CLS 14.3.2 without the extra notation]
       Fix a basis $\epsilon$ of $\RR^n$, and let
