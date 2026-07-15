@@ -343,7 +343,8 @@ $R\cdot(x^2/y, y) = R\cdot (x^2/y)$, as required.
 
 \section{Lecture 8 (Ryan Watson): More examples and features}\label{lec:8-HHL-examples}
 
-In the case of a resolution of a point, this use of the ceiling recovers exactly with the Bodal-Thomsen collection. In the case of a point in a toric variety $X$, the as given any cell $A$ and any element $p=(p_1,\ldots,p_n)$ of $A$ in $L_{\RR}$, the summand of the resolution $\FF$ corresponding to $A$ is generated in degree $\deg (\Psi(p))\in \Cl(X)$. This is exactly the divisor in the Bondal-Thomsen collection that is the image of $-p\in L_{\RR}$ under the map described in Definition~\ref{defn:BTcollection}.
+The resolution constructed in Lecture~\ref{lec:7-HHL-construction} has several important structural features. The first of these is its connection with the Bondal-Thomsen collection. The key case of this is that of the resolution of the torus identity point in $X$. In this case, which corresponds to the case where $L=M_X$, the summands of the resolution $\FF$ are exactly the Bondal-Thomsen elements. In general, we have the following corollary.
+
 \begin{cor}
   \label{cor:hhlSummandsBT}
   Let $X'\subseteq X$ be a toric subvariety of a toric variety and let $L\subseteq \ZZ^n$ be the lattice such that $V(I_L)$ cuts out $X'$ as a subvariety of $X$. Then $L\subseteq M_X\subseteq \ZZ^n$.
@@ -355,16 +356,16 @@ In the case of a resolution of a point, this use of the ceiling recovers exactly
   Thus the summands that appear in $\FF$ will correspond exactly to the image of $L_{\RR}$ under the composite map
   \[L_{\RR}\xrightarrow{\Psi} \ZZ^n \xrightarrow{-\deg} \Cl(X).\]
 
-  Then observe that the map $\Psi$ factors through $M_X$ as follows
+  Then observe that the map $\Psi$ factors through $\RR\otimes M_X$ as follows
 
 \[\begin{tikzcd}
   L_{\RR}\arrow[rr,"\Psi"] \arrow[rd,hook]& & \ZZ^n \\
-  & M_X \arrow[ru,"\Psi"]&
+  & \RR\otimes M_X \arrow[ru,"\Psi"]&
 \end{tikzcd}\]
 
 This allows us to reduce to the case where $L=M_X$. In that case, we can observe that the composite map $(-\deg)\circ \Psi\circ (-\id)$ gives exactly the map described in Definition~\ref{defn:BTcollection}.
-\[-\deg(\Psi(p)) = -\deg(\prod_{i=1}^n x_i^{\lceil p_i\rceil}) = -\sum_{i=1}^n\lceil p_i\rceil D_i=\sum_{i=1}^n\lfloor -p_i\rfloor D_i.\]
-Since $L_{\RR}$ is a linear subspace of $\RR^n$, the $(-\id)$ in the composite map does not affect the image. Thus the summands of $\FF$ are all Bondal-Thomsen elements and if $L=M_X$, the summands of $\FF$ are exactly the Bondal-Thomsen collection
+\[-\deg(\Psi(-p)) = -\deg(\prod_{i=1}^n x_i^{\lceil -p_i\rceil}) = -\sum_{i=1}^n\lceil -p_i\rceil D_i=\sum_{i=1}^n\lfloor p_i\rfloor D_i.\]
+Since $L_{\RR}$ is a linear subspace of $\RR^n$, the $(-\id)$ in the composite map does not affect the image. Thus the summands of $\FF$ are all Bondal-Thomsen elements and if $L=M_X$, the summands of $\FF$ are exactly the Bondal-Thomsen elements. And as previously noted, in the general case factoring the map through $\RR \otimes M_X$ proves that for any $L\subseteq M_X$ the summands are all Bondal-Thomsen elements.
 \end{proof}
 
 \begin{example}
@@ -449,9 +450,8 @@ The diagram has bee labeled with monomials, and each strata colored according to
 
 \end{example}
 
-There is one other important structural feature of these resolutions, which is that they depend only on the rays of the toric variety $X$ and the lattice $L$ and is independent of the fan structure $\Sigma_X$. Or equivalently, one may say that the resolution depends only on the graded Cox ring $S$ and the toric ideal $I_L\subseteq S$ and is independent of the choice of irrelevant ideal. 
+There is one other important structural feature of these resolutions, which is that they depend only on the rays of the toric variety $X$ and the lattice $L$ and are independent of the fan structure $\Sigma_X$. Or equivalently, one may say that the resolution depends only on the graded Cox ring $S$ and the toric ideal $I_L\subseteq S$ and is independent of the choice of irrelevant ideal. One important case of this we highlight in the following corollary.
 
-One important case of this we highlight in the following corollary,
 \begin{cor}
 \label{cor:diagonalUniform}
     Assume that $X$ and $X'$ are smooth, projective toric varieties with the same Cox ring $S$.  Then, as free complexes of $S\otimes_k S$-modules, the following are all the same:
@@ -474,7 +474,7 @@ This uniformity is a first clue that these resolutions are pointing towards a un
 
 %% Discussion of how this is kind of surprising!!  There was, a priori, no reason to believe that the ``best'' toric analogue of Beilinson's resolution  would only involve the Cox ring (i.e. that it would not depend on the irrelevant ideal whatsoever).  This is a first clue that these resolutions are pointing towards some sort of uniformity for all of the toric varieties with the same Cox ring.  That uniformity will be explored in more depth in later lectures.
 
-One specific case where the correspondence between the BT collection and the summands of the resolution is of particular importance is the diagonal. The summands of the diagonal will all be of the form $O_X(D)\boxtimes O_X(D')$, and the Fourier-Mukai transform which forms a key step in the proof of Conjecture~\cite{conj:BES} results in a complex whose summands will be drawn from the left hand side of the summands of the diagonal.
+One specific case where the correspondence between the BT collection and the summands of the resolution is of particular importance is the diagonal. The summands of the diagonal will all be of the form $O_X(D)\boxtimes O_X(D')$ for pairs of Bondal-Thomsen elements. 
 
 \begin{cor}
   \label{cor:diagonal-BTcollection}
@@ -484,7 +484,7 @@ One specific case where the correspondence between the BT collection and the sum
   For every point $v\in M_X$, the corresponding line bundle is $O_X(-\lceil v\rceil)\boxtimes O_X(\lfloor v\rfloor)$, The left hand side of which is $O_X(-D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:resPointBT}. And $O_X(\lfloor v\rfloor)$ is quite directly the generator of the BT collection associated to $v$.
 \end{proof}
 
-As a consequence, the complexes that result from apply the Fourier-Mukai transform to give monads for arbitrary coherent sheaves will result in complexes whose summands are all Bondal-Thomsen collection elements. This gives rise to the following corollary.
+The Fourier-Mukai transform, which forms a key step in the proof of Conjecture~\cite{conj:BES}, results in a complex whose summands will be drawn from the left hand side of the summands of the diagonal. Consequently, the complexes that result from applying the Fourier-Mukai transform to give monads for arbitrary coherent sheaves will result in complexes whose summands are all Bondal-Thomsen elements. This gives rise to the following corollary.
 
 \begin{cor}
   If $\mathcal{F}$ is a coherent sheaf on $\mathcal{L}$, then it is resolved by a monad containing as summands only Bondal-Thomsen elements.
@@ -493,15 +493,14 @@ As a consequence, the complexes that result from apply the Fourier-Mukai transfo
   This is a consequence of applying the Fourier-Mukai and Corollary~\ref{cor:diagonal-BTcollection}.
 \end{proof}
 
-We conclude with the resolution of the diagonal for the third Hirzebruch surface, and observe first that these resolutions are always minimal, and are supported on the same cell complex as the resolution for the point
+We conclude with the resolution of the diagonal for the third Hirzebruch surface. We also remark that the resolutions constructed for the diagonal are always minimal, a feature that does not hold for general $L$.
 
 \begin{example}
-  Let $X=\cH_3$, Each summand is of the form $S((-\deg(\Phi(A)),-\deg(\Phi(-A))))$. For example, for the summand that corresponds to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, $-\deg(\Phi(A))$ yields $(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, which yields $(-1,-1)$. This gives the summand $S(-2,-1,-1,-1)$.
+  Let $X=\cH_3$, and let $S$ be the Cox ring of $X\times X$. Then each summand is of the form $S((-\deg(\Phi(A)),-\deg(\Phi(-A))))$. For example, for the summand that corresponds to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, $-\deg(\Phi(A))$ which corresponds to the Bondal-Thomsen element $O_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, corresponds to the Bondal-Thomsen element $O_X(-1,-1)$. This gives the summand $S(-2,-1,-1,-1)$.
 
-  The resolution of the diagonal resulting from the construction of HHL is as follows
-
+  Repeating this construction for every cell will give all summands of the resolution of the diagonal.
   \[
-  \begin{matrix}
+   \FF : \begin{matrix}
     S(0,0,0,0)\\
     \oplus\\
     S(2,-1,1,-1)\\
