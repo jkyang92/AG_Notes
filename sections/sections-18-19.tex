@@ -38,7 +38,7 @@ D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq
 \end{equation}
 The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$.
 
-With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Essentially, it is given by composing the functors in the bottom row of Diagram~\eqref{eqn:tatediagram}. To obtain an explicit formula for this composition, we proceed as follows. Let $\F$ be a coherent sheaf on $\PP^n$ of Castelnuovo-Mumford regularity $r$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Let $G$ be the minimal free resolution of $\RR(M_{\ge r+1})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M)$. 
+With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Essentially, it is given by composing the functors in the bottom row of Diagram~\eqref{eqn:tatediagram}. To obtain an explicit and geometrically meaningful formula for this composition, we proceed as follows. Let $\F$ be a coherent sheaf on $\PP^n$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Fix $s > \reg(M)$, the Castelnuovo-Mumford regularity of $M$. Let $G$ be the minimal free resolution of $\RR(M_{\ge s})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge s})$. 
 
 \begin{defn}[\cite{EFS}*{Section 4}]
 The complex $T(\F)$ is called the \emph{Tate resolution of $\F$.} 
@@ -46,10 +46,10 @@ The complex $T(\F)$ is called the \emph{Tate resolution of $\F$.}
 
 \begin{prop}
 \label{prop:tateBR}
-For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{\RR})(\F)$.
+For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{\RR})(\F)$. In particular, $T(\F)$ is well-defined (up to homotopy equivalence) up to the choice of module $M$ such that $\widetilde{M} = \F$ and the choice of $s > r$. 
 \end{prop}
 
-In other words, the Tate resolution functor is a model for the BGG correspondence for $\PP^n$. 
+In other words, the Tate resolution functor is a model for the BGG correspondence for $\PP^n$. We will see soon that the Tate resolution is minimal and therefore 
 
 \begin{proof}
 This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. 
@@ -64,13 +64,18 @@ Let $\F$ be a coherent sheaf on $\PP^n$. Its Tate resolution $T(\F)$ is minimal,
 
 Theorem~\ref{thm:tate1} tells us how to actually see projective geometry via BGG: the terms of the Tate resolution of~$\F$ encode the sheaf cohomology of all the twists of $\F$. That is, the Buchweitz equivalence~\eqref{eqn:buchweitz} pulls the geometry out of the morphisms in the singularity category and expresses  it via the objects of $K(E)$.
 
-
-
-
-
+\begin{remark}
+Let $\F$ be a sheaf on $\PP^n$ and $M$ an $S$-module such that $\widetilde{M} = \F$. If we defined the Tate resolution of $\F$ without truncating past the regularity of $M$, Theorem~\ref{thm:tate1} would become false. For instance, take $\F = 0$. Of course, we have $\widetilde{\k} = \F$. If we applied the formula for the Tate resolution without truncating $\k$, we would get the complex $E \xla{1} E$. This is not a minimal complex, and the ranks of its terms clearly do not correspond to the ranks of the cohomologies of the twists of $\F$, which are all zero. 
+\end{remark}
 
 \begin{proof}[Proof of Theorem~\ref{thm:tate1}]
-Since $G$ and $\RR(M_{\ge r + 1})$ are minimal, we just need to check that the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r + 1})$ is minimal. The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$. Thus $G$, is the minimal free resolution of the kernel of the $(-r-1)^{\on{st}}$ differential of $\RR(M_{\ge r+1})$, and so we just have to check that the kernel of this map lies in 
+We will sketch a proof of the formula for the terms of $T(\F)$ in greater generality in the next lecture. Concerning minimality: let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$, and let $r$ be the regularity of $M$. The key point is that $\RR(M_{\ge r})$ has cohomology concentrated in degree $-r$. This is \cite{EFS}*{Corollary 2.4}.
+
+Since $\RR(M_{\ge r})$ 
+
+let $\m_E$ be the homogeneous maximal ideal of $E$. Since $G$ and $\RR(M_{\ge s})$ are minimal, we just need to check that the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge s})$ takes values in $\m_E \cdot \RR(M_{\ge s})_{-s} = \m_E(-s) \otimes_\k M_s$.
+
+is minimal. The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$. Thus $G$, is the minimal free resolution of the kernel of the $(-r-1)^{\on{st}}$ differential of $\RR(M_{\ge r+1})$, and so we just have to check that the kernel of this map lies in 
 \end{proof}
 
 \begin{remark}
