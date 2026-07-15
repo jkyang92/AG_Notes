@@ -9,10 +9,51 @@
 \section{Lecture 11 (Lauren Cranton Heller): The secondary fan}\label{lec:11-secondary-fan}
 In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring.
 
-\subsection{The toric varieties associated to a multigraded ring}
-Distinct projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is generally called the \defi{secondary fan} or \defi{GKZ fan} \lauren{does the GKZ fan live in a different ambient space?} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this fan.
+\subsection{Toric varieties of a multigraded ring}
+Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} \lauren{does the GKZ fan live in a different ambient space?} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this fan.
 
-In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
+We start with a polynomial ring $k[x_1,\ldots,x_n]$ and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$, which induces a $\Cl(S)$-grading on $S$.  We will assume throughout that this grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
+
+\lauren{put setup in labeled environment for reference}
+
+\subsection{GIT quotients}  Write $M$ for the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebraic group $\Spec k[\Cl(S)]$.  The short exact sequence
+\[0\to M\to\ZZ^n\to\Cl(S)\to 0\]
+then induces maps of algebraic groups
+\[0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.\]  The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.  (Note that we have fixed a basis for $\ZZ^n$ by choosing variables for $S$.)
+
+We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from Geometric Invariant Theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory.  \lauren{give citation for additional reading}
+
+\begin{defn}
+  A \emph{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ \lauren{write out?} such that the zero section of $\cL$ is $G$-invariant.  The \emph{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
+\end{defn}
+
+Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
+
+\begin{prop}\label{prop:eq-Picard-gp}
+  In the setup above $\Cl(S)$ is the $G$-equivariant Picard group of $\Spec S$.
+\end{prop}
+
+\begin{proof}
+  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$. \lauren{why does this agree with linear equivalence?} The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$.  \lauren{explain why it can't have a coefficient}
+
+  Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
+\end{proof}
+
+By Proposition~\ref{prop:eq-Picard-gp} and \lauren{general GIT theorem}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  These are toric varieties, as we will see later by assigning them to fans.  Write $\cL_d$ for the $G$-linearized line bundle on $\Spec S$ determined by $d$.
+
+To get a good quotient we must remove the unstable locus corresponding to $p$.  The quotient of the remaining semistable locus is then isomorphic to
+\[\Proj\bigoplus_{n\in\NN}\Gamma(\Spec S,\cL_p^{\otimes n})^G\]
+where $\cL_p$ is the $G$-linearized line bundle of $p\in P$ and multiplication in the ring is given by tensor product of sections.  In the toric case these equivariant sections are elements of $S$.
+\begin{lemma}
+  Using the notation above $\Gamma(\Spec S,\cL_d)=S_d$.
+\end{lemma}
+Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
+
+\begin{cor}
+  The GIT quotients of $\Spec S$ by $G$ are of the form $\Proj S_{\NN d}$ for $d\in\Cl(S)$.
+\end{cor}
+
+%In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
 
 \begin{defn}\label{defn:idealConeCorrespondence}
   Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
