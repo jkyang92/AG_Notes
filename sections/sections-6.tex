@@ -100,11 +100,14 @@ of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}.
 (1) $\equiv$ (2):
 As explained after Definition~\ref{defn:BTcollection}, the Bondal-Thomsen collection is the image of $(M\otimes \QQ)/M$ under the
 map $\alp$, and every element of $(M\otimes \QQ)/M$ is represented by an element with coefficients in $(-1,0].$
-\daniel{I think this is off. Every element in $(M\otimes \QQ)/M$ is represented by an element in $\QQ^{\dim X}$ with coefficients in $(-1,0]$ but we want an element in $\QQ^{\# \text{ of rays}}$ with coefficients in $(-1,0]$. By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. I think the point is the following
+\daniel{I think the argument here is off. For $(1) \Rightarrow (2)$ we can do the following argument: Every element in $(M\otimes \QQ)/M$ is represented by an element in $\QQ^{\dim X}$ with coefficients in $(-1,0]$ but we want an element in $\QQ^{\# \text{ of rays}}$ with coefficients in $(-1,0]$. By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. I think the point is the following
 \[
-\lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)
+\lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)D_i
 \]
 and $\lfloor \alpha_i\rfloor(m) - \alpha_i(m) \in (-1,0].$
+
+I think that (2) $\Rightarrow$ (1) is a little more subtle.  I worked out a complicated proof (like takes  a full page...), so I'm pretty confident it's true, but there must be a simpler proof.  I'm going take a stab with fresh eyes in morning.
+%We start with a divisor $D\in \Cl(X)$ where $D$ is rationally equivalent equivalent to a $\QQ$-divisor $\sum_i a_iD_i$ with $a_i\in (-1,0]$.  Because $\alpha_{\QQ}(M_{\QQ})$ is the kernel of $\QQ^{\Sigma(1)}\to \Cl(X)\otimes_{\ZZ} \QQ$, this means that there is some $m\in M_{\QQ}$ where $\deg_{\QQ} \circ \alpha_{\QQ}(m) = \deg_{\QQ}\left(D - \sum_i a_iD_i\right)$.  In particular, Lifting to $\ZZ$ we get
 }
 
 (2) $\equiv$  (3): trivial.
