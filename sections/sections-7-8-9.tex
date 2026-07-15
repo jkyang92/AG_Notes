@@ -559,19 +559,37 @@ With notation as in Section 7, the complexes $\tF$ and $\FF$ are $S$-free resolu
 
 The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly technical.  However, two recent preprints have dramatically simplified the proof.  The preprint~\cite{BCHSY} (see in particular Proposition 3.2) relates the Hanlon-Hicks-Lazarev construction to a more classical algebraic construction involving binomial ideals, and provides an elementary and purely algebraic proof of the main result, as well as broad generalization of those results.  The preprint~\cite{BH25} utilizes a similar basic idea as~\cite{BCHSY}, but provides a terser and narrower proof.
 
+Before diving into the proofs of the main theorem, it is important to carefully describe more carefully how the complexes $\tilde \FF$ and $\FF$ are related to each other and in particular provide a careful definition of the complex $\FF$.
+The first step of this is to observe that as $\tilde \FF$ is $L$-equivariant, it acquires the structure of an $S[L]$-module. $S[L]$ can be presented explicitly as follows
+\[S[L]=S\cdot \{z^{\mathbf{u}} \,|\, \mathbf{u}\in L\}\subseteq S[z_1^{\pm},\ldots,z_n^{\pm}]\]
+$M_L$ also acquires the structure of an $S[L]$-module, where $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. It is worth observing that this makes $M_L$ into a finitely generated $S[L]$-module so long as $L\cap \NN^n=\{0\}$. It is not hard to show that the $S[L]$-module structure on $M_L$ and on $\tilde \FF$ are compatible.
 
-Regardless of the exact approach, a key observation is that the strands of the complex $\FF$ in a fixed degree $\alpha\in \ZZ^n/L$ can be given in terms of the cellular chain complex of a space. In particular, we can define the subset given by
-\[(L_{\RR})_{\leq u}:= \{p\in L_{\RR} \,|\, \Psi(p)\text{ divides }x^{u}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
+Then $S$ can also be given an $S[L]$-module structure under the quotient by the ideal $\langle z^{u}-1 \,|\, u\in L\rangle$. Observe that for any choice of basis $u_1,\ldots,u_r\in L$, the sequence $z^{u_1}-1,\ldots,z^{u_r}-1$ forms a regular sequence for $S[L]$ and also of the module $M_L$. Then $\FF$ can be obtained from $\tilde \FF$ by the quotient by such a regular sequence, or equivalently, $\FF = \tilde \FF \otimes_{S[L]} S$.
+
+Regardless of the exact approach, a key observation is that the strands of the complex $\FF$ in a fixed degree $\alpha\in \ZZ^n/L$ is equal to the strands $\FF_{\mathbf{u}}$ for any $\mathbf{u}\in \alpha$. Additionally  and also equal to the can be given in terms of the cellular chain complex of a space. In particular, we can define the subset given by
+\[(L_{\RR})_{\leq \mathbf{u}}:= \{p\in L_{\RR} \,|\, \Psi(p)\text{ divides }x^{\mathbf{u}}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
+Then the cellular chain complex of this subcomplex of $L_{\RR}$ is identical to the strand of $\FF$ in degree $\alpha$.
 
 \begin{prop}[\cite{BCHSY,BH25}]
   \label{prop:hhlStrands}
-  For $u\in \ZZ^n$, an element of the class $\alpha\in \ZZ^n/L$, the strand $\FF_{\alpha}$ is equal to the celluar homology of the subcomplex $(L_{\RR})_{\leq u}$.
+  For $\mathbf{u}\in \ZZ^n$, an element of the class $\alpha\in \ZZ^n/L$, the complexes of $k$-vector spaces $\FF_{\alpha}$, $\tilde \FF_{\mathbf{u}}$ and $C_\bullet(L_{\RR})_{\leq \mathbf{u}};k)$ are isomorphic.
 \end{prop}
 \begin{proof}
-  The complex $\FF'$ from the universal cover has strands in degree $u$ given by $C_\bullet((L_{\RR})_{\leq u})$.
+  That there is a map of complexes of vector spaces $ \tilde \FF_{\mathbf{u}} \rightarrow \FF_{\alpha}$ simply obtained by the tensor $-\otimes_{S[L]}1$\jay{Is it actually tensor against $1$?}. The compatibility with the differentials is immediate from the definition of $\FF$ as a tensor of $\tilde \FF$ against $S$. Thus all that needs to be shown is that the map is an isomorphism of vector spaces. This follows.\jay{This probably needs more detail}
+  
+  Now to relate to the cellular homology, observe that For each cell $A\subseteq L_{\RR}$ the summand of $A$ in $\tilde \FF$ has component in degree $\mathbf{u}$ given by
+
+  \[S(-\Psi(\mathbf{p}))_{\mathbf{u}} = 
+  \begin{cases}
+    k & \Psi(\mathbf{p})\text{ divides } x^{\mathbf{u}}\\
+    0 & \text{otherwise}
+  \end{cases}\]
+
+  Thus the cells of $L_{\RR}$ for which the summand corresponding to $A$ participates is exactly those cells contained in $(L_{\RR})_{\leq \mathbf{u}}$. Moreover, the maps between these summands are exactly the differentials from the cellular structure, so we have
+  \[\tilde \FF_{\mathbf{u}} = C_i((L_{\RR})_{\leq u};k)\]
 \end{proof}
 
-That $\FF$ is a resolution is then immediate, as the subcomplex $(L_{\RR})_{\leq u}$ are polyhedral and thus contractable or empty. As a consequence, the only homology is in $H_0$.
+That $\FF$ is a resolution is then immediate, as the subcomplex $(L_{\RR})_{\leq \mathbf{u}}$ are polyhedral and thus contractable or empty. As a consequence, the only homology is in $H_0$.
 
 The second key is to prove that the module is the integral closure $\overline{S/I_L}$. Here we recall a fact about toric rings. First the ring $S/I_L$ is a semigroup ring for the semigroup $A=\NN^n/L$, that is the image of $\NN^n$ under the map $\ZZ^n \rightarrow \ZZ^n/L$. Then for a semigroup ring $k[A]$, the integral closure is itself a semigroup ring, and is in fact the semigroup ring of the saturation $\overline{A}$.
 
@@ -599,9 +617,12 @@ There are then two plausible approaches to proving this, which correspond to the
   \[\eta(\lceil \mathbf{p}\rceil) = \eta(\lceil \mathbf{p}\rceil)-\eta(\mathbf{p}) = \eta(\lceil \mathbf{p}\rceil - \mathbf{p})\]
   However $\lceil \mathbf{p}\rceil - \mathbf{p}$ has all positive coordinates and so is in $\RR_{\geq 0} A=\eta(\RR_{\geq 0}^n)$.
 
-  For the converse, suppose that $a\in \overline{A}$, then there exists $\mathbf{q}\in \RR_{\geq 0}^n$ and $\mathbf{u}\in \ZZ^n$ such that
-  %% \[a = \eta_{\RR}(\mathbf{q}) = \eta(\mathbf{u})\]
-  %% Set $b = \eta_{\RR}(\lfloor \mathbf{q}\rfloor)$, $
+  For the converse, suppose that $a\in \overline{A}$, then we wish to find a vertex $p\in L_{\RR}$ such that $a = \eta(\lceil p \rceil + b)$ for some $b\in \NN^n$
+
+  there exists $\mathbf{q}\in \RR_{\geq 0}^n$ and $\mathbf{u}\in \ZZ^n$ such that
+  \[a = \eta_{\RR}(\mathbf{q}) = \eta(\mathbf{u})\]
+  Set $b = \eta_{\RR}(\lfloor \mathbf{q}\rfloor)$ and $p:= u-q$
+  \[\eta(p) = \eta(u-\mathbf{q}) = \eta(u)-\eta(\mathbf{q}) = a - a = 0\]
   
 \end{proof}
 
