@@ -73,13 +73,14 @@ For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{R})(
 This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. 
 \end{proof}
 
-In Example~\ref{ex:tate}, we s An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that $R(M_{\ge s})$ has nonzero homology only in degree $-s$, so 
-so $G$ is just the minimal free resolution of $H^{-s}(R(M_{\ge s}))$, which is easier to compute than the minimal free resolution of a general complex. Let us give a quick sketch of a proof of this fact, as we will need it later.
+In Example~\ref{ex:tate}, we only needed to resolve a single module, not a complex with nonzero homology in multiple positions. An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that this always happens: $R(M_{\ge s})$ has nonzero homology only in degree $-s$, so 
+so $G$ is just the minimal free resolution of $H^{-s}(R(M_{\ge s}))$. Let us give a quick sketch of a proof of this fact, as we will need it later. We will use the following technical lemma:
 
 \begin{lemma}[\cite{EFS}*{Proposition 2.3(a)}]
 \label{lem:tor}
 For any graded $S$-module $M$, we have $H_i(R(M)) \cong \Tor^S_{i+j}(M, \k)_j$.
 \end{lemma}
+
 
 \begin{proof}[Sketch of proof]
 The idea is that, forgetting gradings, $R(M)$ is isomorphic to $M \otimes_S K$, where $K$ is the Koszul complex on the variables in $S$. The proof thus boils down to keeping careful track of how this isomorphism interacts with the homological and internal gradings; we omit the details. 
@@ -107,6 +108,14 @@ Let $\F$ be a coherent sheaf on $\PP^n$. Its Tate resolution $T(\F)$ is minimal,
 
 Theorem~\ref{thm:tate1} tells us how to actually see projective geometry via BGG: the terms of the Tate resolution of~$\F$ encode the sheaf cohomology of all the twists of $\F$. That is, the Buchweitz equivalence~\eqref{eqn:buchweitz} pulls the geometry out of the morphisms in the singularity category and expresses  it via the objects of $K(E)$.
 
+\begin{example}
+Let us return to Example~\ref{ex:tate}. Since $\F$ is the structure sheaf of a point, we have
+$$
+H^0(\PP^1, \F(i)) = 1 \quad \text{for all $i$,} \quad H^j(\PP^1, \F(i)) = 0 \quad \text{for all $i, j$.}
+$$
+One sees this immediately from the terms of $T(\F)$ using Theorem~\ref{thm:tate1}. 
+\end{example}
+
 \begin{remark}
 \label{rem:truncation}
 Let $\F$ be a sheaf on $\PP^n$ and $M$ an $S$-module such that $\widetilde{M} = \F$. If we defined the Tate resolution of $\F$ without truncating past the regularity of $M$, Theorem~\ref{thm:tate1} would become false. For instance, take~$\F = 0$. Of course, we have $\widetilde{\k} = \F$. If we applied the formula for the Tate resolution without truncating $\k$, we would get the complex $E \xla{1} E$. This is not a minimal complex, and the ranks of its terms clearly do not correspond to the ranks of the cohomologies of the twists of $\F$, which are all zero. 
@@ -117,33 +126,27 @@ We will sketch a proof of the formula for the terms of $T(\F)$ in greater genera
 \end{proof}
 
 \begin{remark}
-The differentials in Tate resolutions, while readily computable in Macaulay2, remain somewhat mysterious. That is, it is not known how to describe them geometrically in general, though progress on this has been made in special cases~\cite{}. 
+The differentials in Tate resolutions, while readily computable in Macaulay2, remain somewhat mysterious. That is, it is not known how to describe them geometrically in general, though progress on this has been made in some special cases, e.g.~\cite{cox07,cm}. 
 \end{remark}
 
-We conclude with two examples of Tate resolutions. 
+Tate resolutions have had a host of applications; let us highlight two of them. The first is an effective method for computing a Beilinson monad of a sheaf on $\PP^n$, by which we mean a complex of the form
+\begin{equation}
+\label{eqn:monad}
+\cdots 
+\from 
+\bigoplus_{i = 0}^n H^j(\F(j-i+1)) \otimes_\kk \Omega_{\PP^n}^{i-j-1}(i-j - 1) 
+\from
+\bigoplus_{i = 0}^n H^i(\F(j-i)) \otimes_\kk \Omega_{\PP^n}^{i-j}(i-j)\from \cdots 
+\end{equation}
+that is quasi-isomorphic to the sheaf $\F$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
 
-
-
-
-\begin{example}
-Let $S = \k[x_0 \dots x_3]$ and $I \subseteq S$ the defining ideal of the twisted cubic in $\PP^3$, i.e. the ideal generated by the $2 \times 2$ minors of $\begin{pmatrix} x_0 & x_1 & x_2 \\ x_1 & x_2 & x_3 \end{pmatrix}$. Since $\F = \widetilde{S/I}$ is the structure sheaf of a rational normal curve, we have $H^1(\PP^3, \F(-2)) = 2$. We now use the Tate resolution of $\F$ (and Macaulay2) to confirm this. By Theorem~\ref{thm:tate1}, we must check that $T(\F)_1$ has exactly two summands of the form $E^*(2)$. Since $\reg(S/I) = 1$, we first compute the differential of $\RR(S/I)$ in homological degree $-1$: 
-
-
-$\begin{array}{l}\left\{0\right\}\vphantom{00e_{0}e_{3}e_{0}e_{2}e_{0}e_{1}}\\\left\{1\right\}\vphantom{e_{3}e_{2}-e_{1}-e_{0}0}\\\left\{1\right\}\vphantom{0e_{3}-e_{2}-e_{1}-e_{0}}\end{array}\left(\!\begin{array}{ccccc}
-      \vphantom{\left\{0\right\}}0&0&e_{0}e_{3}&e_{0}e_{2}&e_{0}e_{1}\\
-      \vphantom{\left\{1\right\}}e_{3}&e_{2}&-e_{1}&-e_{0}&0\\
-      \vphantom{\left\{1\right\}}0&e_{3}&-e_{2}&-e_{1}&-e_{0}
-      \end{array}\!\right)$
-\end{example}
-
-
-
-\begin{remark}
-Perhaps the most important application of Tate resolutions is the computationally effective construction of Beilinson monads in \cite{EFS}*{Section 6}. 
-\end{remark}
+The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 19 (Sasha Zotine): Tate resolutions over toric varieties}\label{lec:19-tate-resolutions-toric}
+
+
+
 
 \ifdefined\whole
 \else
