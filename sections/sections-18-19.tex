@@ -19,16 +19,16 @@ that sends a finitely generated module $M$ (thought of as a complex concentrated
 where $E^*(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we saw that we get an induced equivalence
 \begin{equation}
 \label{eqn:geobgg}
-\overline{\RR} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce B \co D^b(E) / \Perf(E),
+\overline{\RR} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce D^b(E) / \Perf(E),
 \end{equation}
-where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. Recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications.
+where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect complexes in $E$. We recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which is only visible at the level of morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are essentially unknowable, this renders the projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS}. The goal of this lecture is to explain this theory and gesture toward some of its applications.
 
 Conceptually, we need a way to get our hands on the morphisms in $D^{\on{sing}}(E)$. There is a classical method for making the morphisms in a derived category explicit, namely by replacing it with an appropriate homotopy category. For instance, $D^b(E)$ is equivalent to the homotopy category $K^-(E)$ of complexes of finitely generated graded free $E$-modules whose terms vanish in large homological degrees. In the case of an exterior algebra, this equivalence may be given by taking the $\k$-dual of a minimal free resolution\footnote{It makes sense to take a (minimal) free resolution of any complex of finitely generated $E$-modules with bounded homology~\cite{Rob98}*{Proposition 4.4.1}.}. There is a similar result for the singularity category, due to Buchweitz~\cite{buc21}*{Theorem 4.4.1}, and this is the added ingredient we need. Specifically: there is an equivalence
 \begin{equation}
 \label{eqn:buchweitz}
-D^{\on{sing}}(E) \xra{\simeq} K(E),
+B \co D^{\on{sing}}(E) \xra{\simeq} K(E),
 \end{equation}
-where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. This equivalence sends an object $C$ in $D^{\on{sing}}(E)$ to the mapping cone of the canonical quasi-isomorphism $f \co G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $N$, and $F$ is the $\k$-dual of the minimal free resolution of~$N$. We arrive at the following key commutative diagram:
+where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. This equivalence sends an object $C$ in $D^{\on{sing}}(E)$ to the mapping cone of the canonical quasi-isomorphism $G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $N$, and $F$ is the $\k$-dual of the minimal free resolution of~$N$. We arrive at the following key commutative diagram:
 \begin{equation}
 \label{eqn:tatediagram}
 \xymatrix{
@@ -38,7 +38,8 @@ D^b(\PP^n) \ar[r]^-{\overline{\RR}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq
 \end{equation}
 The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$.
 
-With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Essentially, it is given by composing the functors in the bottom row of Diagram~\eqref{eqn:tatediagram}. To obtain an explicit and geometrically meaningful formula for this composition, we proceed as follows. Let $\F$ be a coherent sheaf on $\PP^n$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Fix $s > \reg(M)$, the Castelnuovo-Mumford regularity of $M$. Let $G$ be the minimal free resolution of $\RR(M_{\ge s})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge s})$. 
+With all this in mind, let us now give an alternative formulation of the BGG correspondence for~$\PP^n$. Essentially, it is given by composing the functors in the bottom row of Diagram~\eqref{eqn:tatediagram}. To obtain an explicit and geometrically meaningful formula for this composition, we proceed as follows. Let $\F$ be a coherent sheaf on $\PP^n$, and let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$. Fix $s > \reg(M)$, the Castelnuovo-Mumford regularity of $M$. Let $G$ be the minimal free resolution of $\RR(M_{\ge s})$, and let $T(\F)$ be the mapping cone of the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge s})$. Since any two finitely generated graded modules representing $\F$ are isomorphic in large degrees, $T(\F)$ is well-defined up to chain isomorphism. 
+
 
 \begin{defn}[\cite{EFS}*{Section 4}]
 The complex $T(\F)$ is called the \emph{Tate resolution of $\F$.} 
@@ -46,70 +47,83 @@ The complex $T(\F)$ is called the \emph{Tate resolution of $\F$.}
 
 \begin{prop}
 \label{prop:tateBR}
-For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{\RR})(\F)$. In particular, $T(\F)$ is well-defined (up to homotopy equivalence) up to the choice of module $M$ such that $\widetilde{M} = \F$ and the choice of $s > r$. 
+For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{\RR})(\F)$. %In particular, $T(\F)$ is well-defined (up to homotopy equivalence) up to the choice of module $M$ such that $\widetilde{M} = \F$ and the choice of $s > r$. 
 \end{prop}
 
-In other words, the Tate resolution functor is a model for the BGG correspondence for $\PP^n$. We will see soon that the Tate resolution is minimal and therefore 
+
+In other words, the Tate resolution functor is a model for the BGG correspondence for $\PP^n$.
 
 \begin{proof}
 This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. 
 \end{proof}
 
-The following is one of the main theorems of \cite{EFS}: 
+An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that $\RR(M_{\ge s})$ has nonzero homology only in degree $-s$, so 
+so $G$ is just the minimal free resolution of $H^{-s}(\RR(M_{\ge s}))$, which is easier to compute than the minimal free resolution of a general complex. Let us give a quick sketch of a proof of this fact, as we will need it later.
+
+\begin{lemma}[\cite{EFS}*{Proposition 2.3(a)}]
+\label{lem:tor}
+For any graded $S$-module $M$, we have $H_i(\RR(M)) \cong \Tor^S_{i+j}(M, \k)_j$.
+\end{lemma}
+
+\begin{proof}[Sketch of proof]
+The idea is that, forgetting gradings, $\RR(M)$ is isomorphic to $M \otimes_S K$, where $K$ is the Koszul complex on the variables in $S$. The proof thus boils down to keeping careful track of how this isomorphism interacts with the homological and internal gradings; we omit the details. 
+\end{proof}
+
+\begin{prop}
+If $M$ is a finitely generated graded $S$-module with regularity $r$, then $\RR(M_{\ge r})$ has nonzero homology only in degree $-r$. 
+\end{prop}
+
+\begin{proof}
+Since $M_{\ge r}$ has a linear free resolution~\cite{EG}, this follows immediately from Lemma~\ref{lem:tor}.
+\end{proof}
+
+ The following is one of the main theorems of \cite{EFS}: 
+
+
+
+
+
 
 \begin{thm}
 \label{thm:tate1}
-Let $\F$ be a coherent sheaf on $\PP^n$. Its Tate resolution $T(\F)$ is minimal, and for all $i, j \in \Z$, there is an isomorphism $T(\F)_i \cong \bigoplus_{j \in \Z} E^*(i + j) \otimes_\k H^j(\PP^n, \FF(-i - j))$.
+Let $\F$ be a coherent sheaf on $\PP^n$. Its Tate resolution $T(\F)$ is minimal, and for all $i, j \in \Z$, there is an isomorphism $T(\F)_i \cong \bigoplus_{j \in \Z} E^*(i + j) \otimes_\k H^j(\PP^n, \F(-i - j))$.
 \end{thm}
 
 Theorem~\ref{thm:tate1} tells us how to actually see projective geometry via BGG: the terms of the Tate resolution of~$\F$ encode the sheaf cohomology of all the twists of $\F$. That is, the Buchweitz equivalence~\eqref{eqn:buchweitz} pulls the geometry out of the morphisms in the singularity category and expresses  it via the objects of $K(E)$.
 
 \begin{remark}
-Let $\F$ be a sheaf on $\PP^n$ and $M$ an $S$-module such that $\widetilde{M} = \F$. If we defined the Tate resolution of $\F$ without truncating past the regularity of $M$, Theorem~\ref{thm:tate1} would become false. For instance, take $\F = 0$. Of course, we have $\widetilde{\k} = \F$. If we applied the formula for the Tate resolution without truncating $\k$, we would get the complex $E \xla{1} E$. This is not a minimal complex, and the ranks of its terms clearly do not correspond to the ranks of the cohomologies of the twists of $\F$, which are all zero. 
+\label{rem:truncation}
+Let $\F$ be a sheaf on $\PP^n$ and $M$ an $S$-module such that $\widetilde{M} = \F$. If we defined the Tate resolution of $\F$ without truncating past the regularity of $M$, Theorem~\ref{thm:tate1} would become false. For instance, take~$\F = 0$. Of course, we have $\widetilde{\k} = \F$. If we applied the formula for the Tate resolution without truncating $\k$, we would get the complex $E \xla{1} E$. This is not a minimal complex, and the ranks of its terms clearly do not correspond to the ranks of the cohomologies of the twists of $\F$, which are all zero. 
 \end{remark}
 
 \begin{proof}[Proof of Theorem~\ref{thm:tate1}]
-We will sketch a proof of the formula for the terms of $T(\F)$ in greater generality in the next lecture. Concerning minimality: let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$, and let $r$ be the regularity of $M$. The key point is that $\RR(M_{\ge r})$ has cohomology concentrated in degree $-r$. This is \cite{EFS}*{Corollary 2.4}.
-
-Since $\RR(M_{\ge r})$ 
-
-let $\m_E$ be the homogeneous maximal ideal of $E$. Since $G$ and $\RR(M_{\ge s})$ are minimal, we just need to check that the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge s})$ takes values in $\m_E \cdot \RR(M_{\ge s})_{-s} = \m_E(-s) \otimes_\k M_s$.
-
-is minimal. The complex $\RR(M_{\ge r+1})$ has homology only in degree $-r-1$. Thus $G$, is the minimal free resolution of the kernel of the $(-r-1)^{\on{st}}$ differential of $\RR(M_{\ge r+1})$, and so we just have to check that the kernel of this map lies in 
+We will sketch a proof of the formula for the terms of $T(\F)$ in greater generality in the next lecture. Concerning minimality: let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$, and let $r$ be the regularity of $M$. Recall that $\RR(M_{\ge r})$ has cohomology concentrated in degree $-r$ \cite{EFS}*{Corollary 2.4}. Let $\m_E$ be the homogeneous maximal ideal of $E$. The complex $G$ is the minimal free resolution of the kernel of the first nonzero differential in the minimal complex $\RR(M_{\ge s})$. So we just need to check that the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge s})$ takes values in $\m_E \cdot \RR(M_{\ge s})_{-s} = \m_E(-s) \otimes_\k M_s$. Equivalently, we must show that the kernel of the first nonzero differential in $\RR(M_{\ge s})$ is contained in $\m_E(-s) \otimes_\k M_s$. This is holds since $\RR(M_{\ge r})$ is exact in homological degrees less than $-r$. 
 \end{proof}
 
 \begin{remark}
 The differentials in Tate resolutions, while readily computable in Macaulay2, remain somewhat mysterious. That is, it is not known how to describe them geometrically in general, though progress on this has been made in special cases~\cite{}. 
 \end{remark}
 
+We conclude with some examples of Tate resolutions. 
+
+
 \begin{example}
-Suppose we did not apply the truncation in the definition of the functor $T$. The zero sheaf on $\PP^n$ lifts to the residue field $\k$ on $S$. Applying the formula for $T$ to $\k$ without truncating gives the complex $0 \from E \xla{1} E \from 0$. This complex is contractible, as expected, but it is not minimal. 
+Say $S = \k[x_0, x_1]$. Take $M = S / (x_0)$, and $\F = \widetilde{M}$, the structure sheaf of a point on $\PP^1$. The regularity of $M$ is 0, so there is no need to truncate. We have 
+$$
+\RR(M) = \left[ \cdots \xla{e_1} E^*(-2) \xla{e_1} E^*(-1) \xla{e_1} E^* \from 0 \right].
+$$
+Resolving, we get the Tate resolution
+$$
+T(\F) = \left[
+\cdots  \xla{e_1} E^*(-1) \xla{e_1} E^* \xla{e_1} E^*(1) \xla{e_1} \cdots
+\right].
+$$
+Using Theorem~\ref{thm:tate1}, we can read off the cohomology of a point from $T(\F)$: we have $H^0(\PP^1, \F(i)) \cong \k$ for all~$i$, and the higher cohomology vanishes, as expected. 
 \end{example}
 
-\begin{proof}
+\begin{example}
 
-\end{proof}
-
-\begin{remark}
-The complex, which makes the minimal free resolution $G$ especially easy to compute. It follows 
-
-Moreover, the quasi-isomorphism $G \xra{\simeq} \RR(M_{\ge r+1})$ is minimal. Indeed, this is because $H^0_\m(M_{\ge r+1}) = 0$, so the kernel  
-\end{remark}
-
-\begin{thm}
-\label{thm:tate1}
-Let $\F$ be a coherent sheaf on $\PP^n$.
-\begin{enumerate}
-\item $T(\F) = (B \circ \overline{\RR})(\F)$.
-\item 
-\end{enumerate}
-\end{thm}
-
-Conceptually, Part (1) of Theorem~\ref{thm:tate1} is saying that the functor $T$ deserves to be called the BGG functor 
-
-\begin{proof}
-Part (1) 
-\end{proof}
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 19 (Sasha Zotine): Tate resolutions over toric varieties}\label{lec:19-tate-resolutions-toric}
