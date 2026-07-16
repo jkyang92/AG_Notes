@@ -9,11 +9,11 @@
 \usepackage{amsthm}
 \usepackage{cleveref}
 \usepackage{latexsym}
-\usepackage[color, matrix, arrow]{xy}
+%\usepackage[color, matrix, arrow]{xy}
 \usepackage{enumerate}
 \usepackage{mathtools,accents}
 \usepackage[all]{xy}
-\setcounter{MaxMatrixCols}{15}
+%\setcounter{MaxMatrixCols}{15} -- this line was causing an ``options class with xy''
 
 \def\AA{{\mathbb A}}
 \def\sO{{\mathcal O}}
@@ -53,6 +53,7 @@
 \newtheorem*{claim*}{Claim}
 \newtheorem*{case*}{Case}
 
+\numberwithin{figure}{section} 
 % Commands
 
 \newcommand{\Kos}{\mathcal{K}}

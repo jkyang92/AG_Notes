@@ -153,30 +153,6 @@ truncationComplex = (X, a) -> (
     fiberTable = hashTable for s in keys baseCells list (
         s => homologySummand complex memoizedFibers s
         );
-    --TODO
-    -- does ONLY the diagram chase step, returns a map between the maps of strands in
-    -- dimension d
-    -- does NOT do any of the homology splitting steps
-    -- 
-    -- between the chain complex of the fiber over the input cell `cell` in dimension d and
-    -- d should be the
-    newBoundaryStep = (C,signType,verts,cells,d,cell) -> (
-        fiber := memoizedFibers(signType);
-        fiberComplex := S**(complex fiber);
-        degreeShift := (degrees C.dd_d)#1#cell;
-        --gInit := S^{-degreeShift}**(S**homologyInc);
-        --this uses C to figure out the boundary, it's a bit of a silly way to do it.
-        boundary := positions(entries(C.dd_d_cell), v -> v!=0);
-        gs := for b in boundary list (
-            currVerts := verts_(cells#(d-1)#b#0);
-            n := numColumns currVerts;
-            currSigns := pointToSigns barycenter currVerts;
-            if currSigns == signType then continue;
-            fiberMap := S**(complex map(memoizedFibers(currSigns),fiber,id_S));
-            m := submatrix(C.dd_d,{b},{cell});
-            (b, ((m**target fiberMap)*(S^{-degreeShift}**fiberMap)))
-            );
-        );
     -- this computes one step of the boundary,
     -- C is the HHL complex restricted to the chamber
     -- signType is the sign type of the target
