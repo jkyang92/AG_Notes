@@ -19,6 +19,8 @@ export {
     "makeHHLPolytopes",
     "makeHHLPolytopesRelative",
     "makeHHLResolution",
+    "hhlPolytopes",
+    "hhlResolution",
     "hhlVectors",
     "toFacesByDimension",
     "toricSemigroupGens",
@@ -61,7 +63,7 @@ hhlModuleGens(phi)
 andersonDiagonalModuleGens(X)
 andersonDiagonalModuleVertices(X)
 
-X = hirzebruchSurface 2
+X = hirzebruchSurface 3
 Y = X ** X;
 phi = diagonalToricMap X
 S = ring Y;
@@ -90,6 +92,10 @@ G'_1
 ML_0+ML_1+ML_8-(ML_5+ML_6+ML_3)
 
 C := makeHHLResolution(Y,matrix phi);
+
+sort (-degrees C_0)
+sort (-degrees C_1)
+sort (-degrees C_2)
 
 M2 := trim HH_0 C
 
