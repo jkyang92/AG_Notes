@@ -101,17 +101,19 @@ of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}.
 (1) $\equiv$ (2):
 As explained after Definition~\ref{defn:BTcollection}, the Bondal-Thomsen collection is the image of $(M\otimes \QQ)/M$ under the
 map $\alp$, and every element of $(M\otimes \QQ)/M$ is represented by an element with coefficients in $(-1,0].$
-\daniel{I think the argument here is off. For $(1) \Rightarrow (2)$ we can do the following argument: Every element in $(M\otimes \QQ)/M$ is represented by an element in $\QQ^{\dim X}$ with coefficients in $(-1,0]$ but we want an element in $\QQ^{\# \text{ of rays}}$ with coefficients in $(-1,0]$. By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. I think the point is the following
+\daniel{I think the argument here is off. Every element in $(M\otimes \QQ)/M$ is represented by an element in $\QQ^{\dim X}$ with coefficients in $(-1,0]$ but we want an element in $\QQ^{\# \text{ of rays}}$ with coefficients in $(-1,0]$.
+
+For $(1) \Rightarrow (2)$ we can do the following argument:  By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. We have
 \[
 \lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)D_i
 \]
-and $\lfloor \alpha_i\rfloor(m) - \alpha_i(m) \in (-1,0].$
+and $\lfloor \alpha_i(m)\rfloor - \alpha_i(m) \in (-1,0]$ for all $i$.
 
-For (2) $\Rightarrow$ (1): let $D=\sum_i n_iD_i$ with $n_i\in \ZZ$ be a toric divisor.  We assume that this rationally equivalent to a divisor $\sum_i a_iD_i$ with $a_i \in (-1,0]$ so we have
+For (2) $\Rightarrow$ (1): let $D=\sum_i n_iD_i$ with $n_i\in \ZZ$ be a toric divisor with $\deg(D) =d$.  We assume that $D$ is rationally equivalent to a divisor $\sum_i a_iD_i$ with $a_i \in (-1,0]$.  So we have
 \[
 D = \sum_i n_iD_i \sim_{\QQ} \sum_i a_iD_i.
 \]
-So $\sum_i (n_i-a_i)D_i \sim_{\QQ} 0$.  Thus this element belongs to the kernel of $\QQ^{n}\to \Cl(X)\otimes \QQ$, but that kernel is precisely $M_{\QQ}$.  We thus have that there exists $m\in M_{\QQ}$ with 
+So $\sum_i (n_i-a_i)D_i \sim_{\QQ} 0$.  Thus this element belongs to the kernel of $\QQ^{n}\to \Cl(X)\otimes \QQ$, but that kernel is precisely $M\otimes {\QQ}$; one can see this by tensoring \eqref{eqn:SESCl}.  We thus have that there exists $m\in M_{\QQ}$ with 
 \[
 \alpha(m) = \sum_i (n_i-a_i)D_i \text{ with } n_i\in \ZZ, a_i\in (-1,0].
 \]
@@ -212,7 +214,8 @@ that is, $e = \deg(D/\ell)$, so that $e$ is a Bondal-Thomsen class, and every Bo
 
 
 \begin{remark}
-    We note one feature of Theorem~\ref{thm:Bondal-Thomsen equivalences} that might seem strange at first.  Condition (2) of Theorem~\ref{thm:Bondal-Thomsen equivalences} only depends on the value of $d\in \Cl(X)$ in the vector space $\Cl(X)\otimes \RR$.  In particular if $d,d' \in \Cl(X)$ and $d-d'$ is a torsion element of $\Cl(X)$, then $d$ is in Bondal-Thomsen collection if and only if $d'$ is.
+\daniel{New remark.}
+    We note one feature of Theorem~\ref{thm:Bondal-Thomsen equivalences} that might seem strange at first.  Condition (2) of Theorem~\ref{thm:Bondal-Thomsen equivalences} only depends on the image of $d\in \Cl(X)$ in the vector space $\Cl(X)\otimes \RR$.  In particular if $d,d' \in \Cl(X)$ and $d-d'$ is a torsion element of $\Cl(X)$, then $d$ is in Bondal-Thomsen collection if and only if $d'$ is.
 \end{remark}
 
 We can use  Demazure's Vanishing Theorem \cite[Theorem 9.2.3]{CLS} to derive a useful vanishing theorem related to Bondal-Thomsen classes.
