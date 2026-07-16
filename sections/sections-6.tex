@@ -103,11 +103,12 @@ As explained after Definition~\ref{defn:BTcollection}, the Bondal-Thomsen collec
 map $\alp$, and every element of $(M\otimes \QQ)/M$ is represented by an element with coefficients in $(-1,0].$
 \daniel{I think the argument here is off. Every element in $(M\otimes \QQ)/M$ is represented by an element in $\QQ^{\dim X}$ with coefficients in $(-1,0]$ but we want an element in $\QQ^{\# \text{ of rays}}$ with coefficients in $(-1,0]$.
 
-For $(1) \Rightarrow (2)$ we can do the following argument:  By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. We have
+For $(1) \Rightarrow (2)$ we can do the following argument:  By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. 
+For (1) we note: we let $d$ bet a Bondal-Thomsen class, which means that $d$ lies in the image of $\deg \circ \lfloor \alpha\rfloor$.  This is equivalent to saying that there is some torus invariant divisor $D$ with $\deg(D) = d$ and $D = \im \lfloor \alpha\rfloor(m)$ for some $m\in M\otimes \QQ$.  Now, we consider:
 \[
-\lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)D_i
+\lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)D_i.
 \]
-and $\lfloor \alpha_i(m)\rfloor - \alpha_i(m) \in (-1,0]$ for all $i$.
+Note that $\lfloor \alpha_i(m)\rfloor - \alpha_i(m) \in (-1,0]$ for all $i$, and so we see that  $D$ satisfies (2). 
 
 For (2) $\Rightarrow$ (1): let $D=\sum_i n_iD_i$ with $n_i\in \ZZ$ be a toric divisor with $\deg(D) =d$.  We assume that $D$ is rationally equivalent to a divisor $\sum_i a_iD_i$ with $a_i \in (-1,0]$.  So we have
 \[
