@@ -389,7 +389,7 @@ The resolution constructed in Lecture~\ref{lec:7-HHL-construction} has several i
 \end{tikzcd}\]
 
 This allows us to reduce to the case where $L=M_X$. In that case, we can observe that the composite map $(-\deg)\circ \Psi\circ (-\id)$ gives exactly the map described in Definition~\ref{defn:BTcollection}.
-\[-\deg(\Psi(-p)) = -\deg(\prod_{i=1}^n x_i^{\lceil -p_i\rceil}) = -\sum_{i=1}^n\lceil -p_i\rceil D_i=\sum_{i=1}^n\lfloor p_i\rfloor D_i.\]
+\[-\deg(\Psi(-\mathbf{p})) = -\deg(x^{\lceil \mathbf{p}\rceil}) = -\sum_{i=1}^n\lceil -p_i\rceil D_i=\sum_{i=1}^n\lfloor p_i\rfloor D_i.\]
 Since $L_{\RR}$ is a linear subspace of $\RR^n$, the $(-\id)$ in the composite map does not affect the image. Thus the summands of $\FF$ are all Bondal-Thomsen elements and if $L=M_X$, the summands of $\FF$ are exactly the Bondal-Thomsen elements. And as previously noted, in the general case factoring the map through $\RR \otimes M_X$ proves that for any $L\subseteq M_X$ the summands are all Bondal-Thomsen elements.
 \end{proof}
 
@@ -397,7 +397,7 @@ Since $L_{\RR}$ is a linear subspace of $\RR^n$, the $(-\id)$ in the composite m
   \label{ex:resHirzebruch3}
   We can illustrate that the summands are Bondal-Thomsen elements in the case of the Hirzebruch by observing that the weights $\Psi$ as a map from $L_{\RR} \rightarrow \ZZ^n$ stratifies $L_{\RR}$ in an $L$-equivariant manner into strata which correspond exactly to the Bondal-Thomsen elements.
   
-The diagram has bee labeled with monomials, and each strata colored according to which Bondal-Thomsen element the monomials in that strata correspond to. Each of the 5 Bondal-Thomsen elements gives a strata 
+The diagram has been labeled with monomials, and each strata colored according to which Bondal-Thomsen element the monomials in that strata correspond to. Each of the 5 Bondal-Thomsen elements gives a strata of $L_{\RR}/L$.
   The cells in this fundamental domain have been colored corresponding to the BT collection elements, which in this case are $\cO_{X}(0,0)$, $\cO_{X}(-1,0)$, $\cO_{X}(2,-1)$, $\cO_{X}(1,-1)$, $\cO_{X}(0,-1)$, $\cO_{X}(-1,-1)$
 
 \begin{figure}
@@ -505,7 +505,7 @@ One specific case where the correspondence between the BT collection and the sum
 
 \begin{cor}
   \label{cor:diagonal-BTcollection}
-  The line bundles appearing the resolution of the diagonal $\FF$ arising from HHL are of the form $O_X(D)\boxtimes O_X(D')$ for some $D$,$D'$ in the Bondal-Thomsen collection. Moreover every element of the Bondal-Thomsen collection appears both on both the right and left hand side of $O_X(D)\boxtimes O_X(D')$.
+  The line bundles appearing the resolution of the diagonal $\FF$ arising from HHL are of the form $O_X(D)\boxtimes O_X(D')$ for some pair $D$,$D'$ of Bondal-Thomsen divisors. Moreover for every element of the Bondal-Thomsen collection, there exist both summands where the element appears on the left hand side and on the right hand side of $O_X(D)\boxtimes O_X(D')$. \jay{I'm saying line bundle here but maybe I should say module and just write $S(D)$?}
 \end{cor}
 \begin{proof}
   Observe that the lattice $L$ for the diagonal is the Lawrence lift of $M_X$, that is the lattice
@@ -527,39 +527,38 @@ The Fourier-Mukai transform, which forms a key step in the proof of Conjecture~\
 We conclude with the resolution of the diagonal for the third Hirzebruch surface. We also remark that the resolutions constructed for the diagonal are always minimal, a feature that does not hold for general $L$.
 
 \begin{example}
-  Let $X=\cH_3$, and let $S$ be the Cox ring of $X\times X$. Then each summand is of the form $S((-\deg(\Psi(A)),-\deg(\Psi(-A))))$. For example, for the summand that corresponds to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, $-\deg(\Psi(A))$ which corresponds to the Bondal-Thomsen element $O_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, corresponds to the Bondal-Thomsen element $O_X(-1,-1)$. This gives the summand $S(-2,-1,-1,-1)$.
+  Let $X=\cH_3$, and let $S$ be the Cox ring of $X$. Then each summand is of the form $S(-\deg(\Psi(A)))\boxtimes S(-\deg(\Psi(-A)))$. For example, for the summand that corresponds to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, $-\deg(\Psi(A))$ which corresponds to the Bondal-Thomsen element $O_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, corresponds to the Bondal-Thomsen element $O_X(-1,-1)$. This gives the summand $S(-2,-1)\boxtimes S(-1,-1)$.
 
   Repeating this construction for every cell will give all summands of the resolution of the diagonal.
   \[
    \FF : \begin{matrix}
-    S(0,0,0,0)\\
+    S(0,0)\boxtimes S(0,0)\\
     \oplus\\
-    S(2,-1,1,-1)\\
+    S(2,-1)\boxtimes S(1,-1)\\
     \oplus\\
-    S(1,-1,2,-1)\\
+    S(1,-1)\boxtimes S(2,-1)\\
   \end{matrix}\longleftarrow
   \begin{matrix}
-    S(-1,0,-1,0)\\
+    S(-1,0)\boxtimes S(-1,0)\\
     \oplus\\
-    S(2,-1,0,-1)^2\\
+    (S(2,-1)\boxtimes S(0,-1))^2\\
     \oplus\\
-    S(1,-1,1,-1)^2\\
+    (S(1,-1)\boxtimes S(1,-1))^2\\
     \oplus\\
-    S(0,-1,2,-1)^2\\
+    (S(0,-1)\boxtimes S(2,-1))^2\\
   \end{matrix}
   \longleftarrow
   \begin{matrix}
-    S(-2,-1,-1,-1)\\
+    S(-2,-1)\boxtimes S(-1,-1)\\
     \oplus\\
-    S(1,-1,0,-1)\\
+    S(1,-1)\boxtimes S(0,-1)\\
     \oplus\\
-    S(0,-1,1,-1)\\
+    S(0,-1)\boxtimes S(1,-1)\\
     \oplus\\
-    S(-1,-1,2,-1)\\
+    S(-1,-1)\boxtimes S(2,-1)\\
   \end{matrix}
   \longleftarrow 0
   \]
-  \jay{Question: should we just use box products for this? It might look more like Bellinson's resolution then}
 \end{example}
 
 
@@ -615,7 +614,7 @@ The saturation affine semigroup $A\subseteq \ZZ^n$ is given by
 
 There are then two plausible approaches to proving this, which correspond to the approaches from \cite{BCHSY} and \cite{BH25} respectively. One can either prove that the generators of the module $M_L$ correspond to monomials in $k[\ZZ^n]$ which generate $\overline{A}$ as a $A$-module. Or one can prove that the those degrees $\alpha\in \ZZ^n/L$ where $(L_{\RR})_{\leq u}$ is non-empty are exactly the degrees of $A$. The approach taken here follows mostly the approach in Proposition~3.3 of \cite{BCHSY}. The corresponding result in \cite{BH25} is Lemma~2.8.
 
-\begin{prop}[TODO cite both]
+\begin{prop}[\cite{BCHSY,BH25}]
   \label{prop:resolves-integral-closure}
   $M_L \otimes_{S[L]} S$ is isomorphic to $\overline{S/I_L}$ as an $S$-module.
 \end{prop}
@@ -624,7 +623,7 @@ There are then two plausible approaches to proving this, which correspond to the
 
   First we show that the monomials $x^{\lceil \textbf{v}\rceil}$ are elements of the semigroup $\overline{A}$.
   Let $\eta:\ZZ^n\rightarrow \ZZ^n/L$ be the usual quotient map and $\eta_{\RR}:\RR^n\rightarrow \RR^n/L$ the corresponding map after tensor with $\RR$. For a vertex $\mathbf{p}\in L_{\RR}$, we have
-  \[\eta(\lceil \mathbf{p}\rceil) = \eta(\lceil \mathbf{p}\rceil)-\eta(\mathbf{p}) = \eta(\lceil \mathbf{p}\rceil - \mathbf{p})\]
+  \[\eta(\lceil \mathbf{p}\rceil) = \eta(\lceil \mathbf{p}\rceil)-\eta_{\RR}(\mathbf{p}) = \eta(\lceil \mathbf{p}\rceil - \mathbf{p})\]
   However $\lceil \mathbf{p}\rceil - \mathbf{p}$ has all positive coordinates and so is in $\RR_{\geq 0} A=\eta(\RR_{\geq 0}^n)$.
 
   For the converse, suppose that $\mathbf{a}\in \overline{A}$, then
