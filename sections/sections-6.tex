@@ -106,13 +106,24 @@ map $\alp$, and every element of $(M\otimes \QQ)/M$ is represented by an element
 \]
 and $\lfloor \alpha_i\rfloor(m) - \alpha_i(m) \in (-1,0].$
 
-I think that (2) $\Rightarrow$ (1) is a little more subtle.  I worked out a complicated proof (like takes  a full page...), so I'm pretty confident it's true, but there must be a simpler proof.  I'm going take a stab with fresh eyes in morning.
-%We start with a divisor $D\in \Cl(X)$ where $D$ is rationally equivalent equivalent to a $\QQ$-divisor $\sum_i a_iD_i$ with $a_i\in (-1,0]$.  Because $\alpha_{\QQ}(M_{\QQ})$ is the kernel of $\QQ^{\Sigma(1)}\to \Cl(X)\otimes_{\ZZ} \QQ$, this means that there is some $m\in M_{\QQ}$ where $\deg_{\QQ} \circ \alpha_{\QQ}(m) = \deg_{\QQ}\left(D - \sum_i a_iD_i\right)$.  In particular, Lifting to $\ZZ$ we get
+For (2) $\Rightarrow$ (1): let $D=\sum_i n_iD_i$ with $n_i\in \ZZ$ be a toric divisor.  We assume that this rationally equivalent to a divisor $\sum_i a_iD_i$ with $a_i \in (-1,0]$ so we have
+\[
+D = \sum_i n_iD_i \sim_{\QQ} \sum_i a_iD_i.
+\]
+So $\sum_i (n_i-a_i)D_i \sim_{\QQ} 0$.  Thus this element belongs to the kernel of $\QQ^{n}\to \Cl(X)\otimes \QQ$, but that kernel is precisely $M_{\QQ}$.  We thus have that there exists $m\in M_{\QQ}$ with 
+\[
+\alpha(m) = \sum_i (n_i-a_i)D_i \text{ with } n_i\in \ZZ, a_i\in (-1,0].
+\]
+Rounding down we get
+\[
+\lfloor \alpha \rfloor(m) = \sum_i \lfloor(n_i-a_i) \alpha \rfloor D_i = \sum_i n_iD_i = D.
+\]
+In particular, we have shown that any element $D$ that satisfies (2) lies in the image of $\lfloor \alpha \rfloor$, and in particular, $\deg(D)$ is a Bondal--Thomsen class.
 }
 
-(2) $\equiv$  (3): trivial.
+(2) $\iff$  (3): trivial.
 
-(2) $\equiv$ (4) We follow the proof given in \cite[Theorem 1.1]{achinger}. We first show that 
+(2) $\iff$ (4) We follow the proof given in \cite[Theorem 1.1]{achinger}. We first show that 
 $F_{\ell,*}\cO_X$ is a direct sum of line bundles. Since
  $X$ has an open
 affine covering by affine spaces it suffices to treat the case $X = \AA^{n}$, and in this case
@@ -198,6 +209,11 @@ if and only if there is a divisor $D$ with $\deg D = -\ell e$ such that $D = \su
 that is, $e = \deg(D/\ell)$, so that $e$ is a Bondal-Thomsen class, and every Bondal-Thomsen class appears for sufficiently divisible $\ell$. 
 \end{proof}
 
+
+\begin{remark}
+    We note one feature of Theorem~\ref{thm:Bondal-Thomsen equivalences} that might seem strange at first.  Condition (2) of Theorem~\ref{thm:Bondal-Thomsen equivalences} only depends on the value of $d\in \Cl(X)$ in the vector space $\Cl(X)\otimes \RR$.  In particular if $d,d' \in \Cl(X)$ and $d-d'$ is a torsion element of $\Cl(X)$, then $d$ is in Bondal-Thomsen collection if and only if $d'$ is.
+\end{remark}
+
 We can use  Demazure's Vanishing Theorem \cite[Theorem 9.2.3]{CLS} to derive a useful vanishing theorem related to Bondal-Thomsen classes.
 %\michael{This is (close to) \cite{king}*{Lemma 2.20}, which isn't that easy, right?}
 \begin{thm}[Demazure Vanishing] \label{thm:demazure}
@@ -229,6 +245,7 @@ The $\QQ$-divisor $B+D$ is nef because its class is $(a-d)+d=a$.  And $\lfloor B
     For $p>0$, we can apply Proposition~\ref{prop:Demazure} with $a=0$.  When $d\ne 0$, $\cO_X(-d)$ is the negative of an effective divisor. Since $X$ is complete, the effective divisors lie in a pointed cone,  so 
     $\cO_X(-d)$ has no global sections.
 \end{proof}
+
 
 
 \begin{comment}
