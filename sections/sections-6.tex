@@ -32,7 +32,7 @@ Note that though $\alpha(m)$ maps to the trivial element of $\Cl(X)\otimes \QQ$,
  \end{defn}
  
 It is important to note that $\Theta_{X}$ actually depends only on the  Cox ring $k[\NN^{n}]$ with its grading, or equivalently on the rays of the fan $\Sigma$, and 
-not on the toric variety $X$ which involves the additional choice of the cones in a fan supported on the rays of $\Sigma$.
+not on the toric variety $X$ which involves the additional choice of the cones in a fan supported on the rays of $\Sigma$. Moreover, as we will see in Theorem~\ref{thm:Bondal-Thomsen equivalences}, (2), being Bondal-Thomsen is determined by the image of a class in $\Cl(X) \otimes \QQ$ or, equivalently, in $\Cl(X)/\hbox{torsion}$.
 
 If $m\in M$, then $\alp(m) = \alpha(m)$, and this  maps to $0$ in $\Cl(X)$, so we may
 consider $\Theta_X$ as the image of the induced (nonlinear) map $(M\otimes \QQ) / M \to \Cl(X)$ which we also
@@ -85,11 +85,11 @@ of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}.
 \begin{example}
     The Bondal zonotope of $\PP^2$ is the half-open interval $(-3,0] \subset \RR = \Cl(\P^{2})\otimes \RR$.\end{example}
     
-\begin{thm}\label{thm:Bondal-Thomsen equivalences}
+\begin{thm}\label{.  }
     The following conditions on an element $d\in \Cl(X)$ are equivalent:
     \begin{enumerate}
         \item  $d$ is a Bondal-Thomsen class.
-        \item  $d$ is equivalent to a rational divisor of the form $\sum_{i} a_i D_i$ with $a_i \in (-1,0].$
+        \item  $d$ is equivalent over $\QQ$ to a rational divisor of the form $\sum_{i} a_i D_i$ with $a_i \in (-1,0].$
         \item  $d\otimes 1 \in \Cl(X) \otimes \RR$  lies in the Bondal zonotope of $X$.
         \item  In case $X$ is smooth: $d$ represents a line bundle that appears as a direct summand of
         $F_{\ell,*}\cO_X$ for some $\ell$, or, equivalently, for every sufficiently divisible $\ell$. 
@@ -98,32 +98,35 @@ of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}.
      \end{enumerate}
 \end{thm}
 \begin{proof}
-(1) $\equiv$ (2):
-As explained after Definition~\ref{defn:BTcollection}, the Bondal-Thomsen collection is the image of $(M\otimes \QQ)/M$ under the
-map $\alp$, and every element of $(M\otimes \QQ)/M$ is represented by an element with coefficients in $(-1,0].$
-\daniel{I think the argument here is off. Every element in $(M\otimes \QQ)/M$ is represented by an element in $\QQ^{\dim X}$ with coefficients in $(-1,0]$ but we want an element in $\QQ^{\# \text{ of rays}}$ with coefficients in $(-1,0]$.
+$(1) \Rightarrow (2)$: By definition, a Bondal-Thomsen class has the form $\alp(D)$ for some $D\in M\otimes \QQ$.
+Since $M$ maps to 0 in $\Cl(X)$ we see that $\deg(\alpha(D)) = 0 \in \Cl(X) \otimes \QQ$, and
+$\alp(D) - \alpha(D)$ has coefficients in $(-1,0)$.\david{This was essentially explained right after the definition, except to note that the ``rational equivalence'' here is necessarily in $\Cl(X)\otimes \QQ$.}
 
-For $(1) \Rightarrow (2)$ we can do the following argument:  By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. 
-For (1) we note: we let $d$ bet a Bondal-Thomsen class, which means that $d$ lies in the image of $\deg \circ \lfloor \alpha\rfloor$.  This is equivalent to saying that there is some torus invariant divisor $D$ with $\deg(D) = d$ and $D = \im \lfloor \alpha\rfloor(m)$ for some $m\in M\otimes \QQ$.  Now, we consider:
-\[
-\lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)D_i.
-\]
-Note that $\lfloor \alpha_i(m)\rfloor - \alpha_i(m) \in (-1,0]$ for all $i$, and so we see that  $D$ satisfies (2). 
+$(2) \Rightarrow (1)$: Conversely, let $D\in \ZZ^{n}$ be an integral divisor such that $\deg D$ is equivalent (necessarily in $\Cl(X) \otimes \QQ$), to a divisor $E$ with coefficients in $(-1,0)$.  It follows that $\lfloor D-E\rfloor = D$.
+But also  $D-E \in \ker (\deg \otimes \QQ)$, so we may write $D-E = m$ for $m \in M\otimes \QQ$.
+Thus $\alp(m) = \deg D$ is a Bondal-Thomsen class.
 
-For (2) $\Rightarrow$ (1): let $D=\sum_i n_iD_i$ with $n_i\in \ZZ$ be a toric divisor with $\deg(D) =d$.  We assume that $D$ is rationally equivalent to a divisor $\sum_i a_iD_i$ with $a_i \in (-1,0]$.  So we have
-\[
-D = \sum_i n_iD_i \sim_{\QQ} \sum_i a_iD_i.
-\]
-So $\sum_i (n_i-a_i)D_i \sim_{\QQ} 0$.  Thus this element belongs to the kernel of $\QQ^{n}\to \Cl(X)\otimes \QQ$, but that kernel is precisely $M\otimes {\QQ}$ (one can see this by tensoring \eqref{eqn:SESCl} with $\QQ$).  We thus have that there exists $m\in M\otimes {\QQ}$ with 
-\[
-\alpha(m) = \sum_i (n_i-a_i)D_i \text{ with } n_i\in \ZZ, a_i\in (-1,0].
-\]
-Rounding down we get
-\[
-\lfloor \alpha \rfloor(m) = \sum_i \lfloor(n_i-a_i) \rfloor D_i = \sum_i n_iD_i = D.
-\]
-In particular, we have shown that any element $D$ that satisfies (2) lies in the image of $\lfloor \alpha \rfloor$, and in particular, $\deg(D)$ is a Bondal--Thomsen class.
-}
+%For $(1) \Rightarrow (2)$ we can do the following argument:  By abuse of notation, write $\alpha$ also for the induced map $M\otimes \QQ \to \QQ^n$. 
+%For (1) we note: we let $d$ bet a Bondal-Thomsen class, which means that $d$ lies in the image of $\deg \circ \lfloor \alpha\rfloor$.  This is equivalent to saying that there is some torus invariant divisor $D$ with $\deg(D) = d$ and $D = \im \lfloor \alpha\rfloor(m)$ for some $m\in M\otimes \QQ$.  Now, we consider:
+%\[
+%\lfloor \alpha\rfloor(m) - \alpha(m) =\sum_i \left( \lfloor \alpha_i(m)\rfloor - \alpha_i(m)\right)D_i.
+%\]
+%Note that $\lfloor \alpha_i(m)\rfloor - \alpha_i(m) \in (-1,0]$ for all $i$, and so we see that  $D$ satisfies (2). 
+%
+%For (2) $\Rightarrow$ (1): let $D=\sum_i n_iD_i$ with $n_i\in \ZZ$ be a toric divisor with $\deg(D) =d$.  We assume that $D$ is rationally equivalent to a divisor $\sum_i a_iD_i$ with $a_i \in (-1,0]$.  So we have
+%\[
+%D = \sum_i n_iD_i \sim_{\QQ} \sum_i a_iD_i.
+%\]
+%So $\sum_i (n_i-a_i)D_i \sim_{\QQ} 0$.  Thus this element belongs to the kernel of $\QQ^{n}\to \Cl(X)\otimes \QQ$, but that kernel is precisely $M\otimes {\QQ}$ (one can see this by tensoring \eqref{eqn:SESCl} with $\QQ$).  We thus have that there exists $m\in M\otimes {\QQ}$ with 
+%\[
+%\alpha(m) = \sum_i (n_i-a_i)D_i \text{ with } n_i\in \ZZ, a_i\in (-1,0].
+%\]
+%Rounding down we get
+%\[
+%\lfloor \alpha \rfloor(m) = \sum_i \lfloor(n_i-a_i) \rfloor D_i = \sum_i n_iD_i = D.
+%\]
+%In particular, we have shown that any element $D$ that satisfies (2) lies in the image of $\lfloor \alpha \rfloor$, and in particular, $\deg(D)$ is a Bondal--Thomsen class.
+
 
 (2) $\iff$  (3): trivial.
 
@@ -214,10 +217,6 @@ that is, $e = \deg(D/\ell)$, so that $e$ is a Bondal-Thomsen class, and every Bo
 \end{proof}
 
 
-\begin{remark}
-\daniel{New remark.}
-    We note one feature of Theorem~\ref{thm:Bondal-Thomsen equivalences} that might seem strange at first.  Condition (2) of Theorem~\ref{thm:Bondal-Thomsen equivalences} only depends on the image of $d\in \Cl(X)$ in the vector space $\Cl(X)\otimes \RR$.  In particular if $d,d' \in \Cl(X)$ and $d-d'$ is a torsion element of $\Cl(X)$, then $d$ is in Bondal-Thomsen collection if and only if $d'$ is.
-\end{remark}
 
 We can use  Demazure's Vanishing Theorem \cite[Theorem 9.2.3]{CLS} to derive a useful vanishing theorem related to Bondal-Thomsen classes.
 %\michael{This is (close to) \cite{king}*{Lemma 2.20}, which isn't that easy, right?}
