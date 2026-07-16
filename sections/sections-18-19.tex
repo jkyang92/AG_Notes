@@ -209,6 +209,7 @@ Let $\F \in \coh(\X)$. There exists $T(\F) \in \DM(E)$ with the following proper
 \item $T(\F)$ is homotopy equivalent to $\Phi(\F)$. 
 \item $T(\F)$ is minimal, i.e. its differential takes values in $\m_E \cdot T(\F)$, where $\m_E$ is the homogeneous maximal ideal of $E$
 \item For any $a \in \Cl(X)$ and $j \in \Z$, we have $T(\F) \cong \bigoplus_{(a;j) \in A \oplus \Z} H^j(\X, \F(a)) \otimes_\k E^*(-a;j)$.
+\item $T(\F)$ is exact. 
 %\item Let $M$ be a $\Cl(X)$-graded $S$-module such that $\widetilde{M} = \F$ and~$H^0_B(M) = 0$. The canonical injection $M \into \bigoplus_{a \in \Cl(X)} H^0(\X, \F(a))$ induces an injection of differential $E$-modules $R(M) \into T(\F)$. 
 \end{enumerate}
 Moreover, $T(\F)$ is unique up to isomorphism of differential $E$-modules. 
@@ -225,7 +226,15 @@ $$
  & \vdots && \vdots &
 }
 $$
-(where the $(i, -j)$ position is the top right term). We can use \cite{EFS}*{Lemma 3.5} to minimize the totalization of this bicomplex, and properties (1) - (3) follow immediately from this result. The uniqueness of $T(\F)$ follows from minimality, via the usual Nakayama's Lemma argument. 
+(where the $(i, -j)$ position is the top right term). We can use \cite{EFS}*{Lemma 3.5} to minimize the totalization of this bicomplex, and parts (1) - (3) follow immediately from this result. The uniqueness of $T(\F)$ follows from minimality, via the usual Nakayama's Lemma argument. Part (4) holds since the rows of the bicomplex are exact. To see this, we start by setting 
+$$
+K \ce \left[
+\cdots \from \bigoplus_{a \in \Cl(X)} S(a) \otimes_\k E^*(-a;i-1) \xra{\sum_{i = 0}^n x_i \otimes e_i} \bigoplus_{a \in \Cl(X)} S(a) \otimes_\k E^*(-a;i-1) \from \cdots 
+\right].
+$$
+As a complex of $S$-modules, 
+which is equal to a direct sum of all twists of the sheafified Koszul complex on the variables of $S$ and hence exact. The row involving $\cC(\F(a))^{j+1}$ is isomorphic to the complex obtained by starting with
+
 \end{proof}
 
 \begin{defn}
@@ -236,8 +245,42 @@ The \emph{Tate resolution} of $\F \in \coh(\X)$ is the differential $E$-module $
 \begin{remark}
 If $\F$ is a coherent sheaf on $\X$, and $M$ is a $\Cl(X)$-graded $S$-module such that $\widetilde{M} = \F$ and~$H^0_B(M) = 0$ (where $B$ is the irrelevant ideal of $X$), there is an injection $\RR(M) \into T(\F)$. When~$X = \PP^n$, Remark~\ref{rem:stdm} implies that $T(\F)$ may be considered as a complex of exterior modules, and one can show that it is the minimal free resolution of this embedded copy of $\RR(M)$. This demonstrates that Definition~\ref{defn:torictate} recovers the classical definition over $\PP^n$.
 
-In fact, 
+In fact, Tate resolutions over weighted projective stacks can also be recast in terms of minimal free resolutions, in a manner similar to Tate resolutions over $\PP^n$: see \cite{BETate}*{Theorem 3.7}. This allows us to easily generate examples of Tate resolutions over weighted projective stacks: if the speaker wishes to discuss some, we refer to \cite{BETate}*{Section 3.4}. This leads to an algorithm for computing sheaf cohomology over weighted projective stacks (and schemes)~\cite{BE25comp}. When $\Cl(X)$ has rank greater than 1, examples of Tate resolutions are more difficult to write down explicitly: see e.g. \cite{BETate}*{Example 3.14} for a schematic of a Tate resolution over a Hirzebruch surface. It is unknown whether toric Tate resolutions can be constructed using free resolutions in general. 
 \end{remark}
+
+We have not yet explained how toric Tate resolutions induce an equivalence between $D^b(\X)$ and a homotopy category of differential $E$-modules. To do so, we must recall an interesting property toric Tate resolutions enjoy, which we call $X$-exactness.
+
+\begin{defn}\label{defn:exactnessProperties}
+Given $I \subseteq \{0, \dots, n\}$, we say $I$ is \defi{irrelevant} if the ideal $(x_i \text{ : } i \in I) \subseteq S$ contains the irrelevant ideal~$B$ of $X$. Let $Q_I$ denote the ideal $(e_i \text{ : } i \notin I) \subseteq E$. We say $D \in \DM(E)$ is~\defi{$X$-exact} if $D \otimes_E E/Q_I $ is exact whenever $I$ is irrelevant. 
+\end{defn}
+
+\begin{remark}
+The minimal irrelevant sets $I$ are in natural bijection with the primitive collections of $X$.
+\end{remark}
+
+
+\begin{example}
+    If $X=\PP^n$, then $I$ is irrelevant if and only if $I=\{0, \dots, n\}$.  In this case, $Q_I = 0$, and so $E/Q_I=E$. Thus, $\PP^n$-exactness is the same as exactness.
+\end{example}
+
+\begin{prop}
+If $\F \in \coh(\X)$, then its toric Tate resolution $T(\F)$ is $X$-exact. 
+\end{prop}
+
+\begin{proof}
+Two homotopy equivalent differential $E$-modules are $X$-exact simultaneously, so it suffices to show $\Phi(\F)$ is $X$-exact. This follows from the proof of Theorem~\ref{thm:tate2}, since the rows of the bicomplex in that proof, considered as differential $E$-modules, are $X$-exact. \michael{Explain more.}
+\end{proof}
+
+Let $K_{\DM}^{X\text{-exact}}(E)$ denote the homotopy category of free differential $E$-modules $F$ that are $X$-exact, and such that $\dim_\k \bigoplus_{i \in \Z} F_{(a;i)}$ is finite dimensional for all $\k$. The following theorem, which will appear in forthcoming work of Brown-Erman~\cite{}, gives the desired equivalence of categories. It can be thought of as a version of Koszul duality for toric varieties. 
+
+\begin{thm}
+The toric Tate resolution functor extends to a map $T \co D^b(X) \to K_{\DM}^{X\text{-exact}}(E)$, and it is an equivalence of categories. 
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
 
 
 \ifdefined\whole
