@@ -385,7 +385,7 @@ The resolution constructed in Lecture~\ref{lec:7-HHL-construction} has several i
 \end{cor}
 \begin{proof}
   Every point in $L_{\RR}$ is contained in a cell of the subdivison of $L_{\RR}$, and each cell $A$ of the subdivision
-  contributes a single summand to the resolution $\FF$ of the form $S(-\deg(\Psi($A$)))$. 
+  contributes a single summand to the resolution $\FF$ of the form $S(-\deg(\Psi(A)))$. 
   Thus the summands that appear in $\FF$ will correspond exactly to the image of $L_{\RR}$ under the composite map
   \[L_{\RR}\xrightarrow{\Psi} \ZZ^n \xrightarrow{-\deg} \Cl(X).\]
 
@@ -518,9 +518,9 @@ One specific case where the correspondence between the BT collection and the sum
 \begin{proof}
   Observe that the lattice $L$ for the diagonal is the Lawrence lift of $M_X$, that is the lattice
   \[L := \{(\mathbf{v},-\mathbf{v}) \in \ZZ^{2n} \,|\, \mathbf{v}\in M_X\}.\]
-  Thus the line bundles that appear in the resolution of the diagonal are of the form $O_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)$ for $p$ a point in $\RR \otimes M_X$ which can then be expanded as follows:
-  \[O_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)=O_X(-\lceil v\rceil)\boxtimes O_X(\lfloor v\rfloor).\]
-  The left hand side of this summand is $O_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:hhlSummandsBT}. And $O_X(\lfloor v\rfloor)$ is quite directly the generator of the BT collection associated to $v$. Finally, as $v$ varies over all points in $\RR \otimes M_X$, every Bondal-Thomsen element appears as by Definition~\ref{defn:BTCollection}.
+  Thus the line bundles that appear in the resolution of the diagonal are of the form $O_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)$ for $\mathbf{p}$ a point in $\RR \otimes M_X$ which can then be expanded as follows:
+  \[O_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)=O_X(-\lceil \mathbf{p}\rceil)\boxtimes O_X(\lfloor \mathbf{p}\rfloor).\]
+  The left hand side of this summand is $O_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:hhlSummandsBT}. And $O_X(\lfloor \mathbf{p}\rfloor)$ is quite directly the generator of the BT collection associated to $\mathbf{p}$. Finally, as $\mathbf{p}$ varies over all points in $\RR \otimes M_X$, every Bondal-Thomsen element appears as the Bondal-Thomsen collection was defined as the image of $M_X$ under the map described in Definition~\ref{defn:BTCollection}.
 \end{proof}
 
 The Fourier-Mukai transform, which forms a key step in the proof of Conjecture~\cite{conj:BES}, results in a complex whose summands will be drawn from the left hand side of the summands of the diagonal. Consequently, the complexes that result from applying the Fourier-Mukai transform to give monads for arbitrary coherent sheaves will result in complexes whose summands are all Bondal-Thomsen elements. This gives rise to the following corollary.
@@ -585,10 +585,10 @@ The first step of this is to observe that as $\tilde \FF$ is $L$-equivariant, it
 \[S[L]=S\cdot \{z^{\mathbf{u}} \,|\, \mathbf{u}\in L\}\subseteq S[z_1^{\pm},\ldots,z_n^{\pm}]\]
 $M_L$ also acquires the structure of an $S[L]$-module, where $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. It is worth observing that this makes $M_L$ into a finitely generated $S[L]$-module so long as $L\cap \NN^n=\{0\}$. It is not hard to show that the $S[L]$-module structure on $M_L$ and on $\tilde \FF$ are compatible.
 
-Then $S$ can also be given an $S[L]$-module structure under the quotient by the ideal $\langle z^{u}-1 \,|\, u\in L\rangle$. Observe that for any choice of basis $u_1,\ldots,u_r\in L$, the sequence $z^{u_1}-1,\ldots,z^{u_r}-1$ forms a regular sequence for $S[L]$ and also of the module $M_L$. Then $\FF$ can be obtained from $\tilde \FF$ by the quotient by such a regular sequence, or equivalently, $\FF = \tilde \FF \otimes_{S[L]} S$.
+Then $S$ can also be given an $S[L]$-module structure under the quotient by the ideal $\langle z^{\mathbf{u}}-1 \,|\, \mathbf{u}\in L\rangle$. Observe that for any choice of basis $\mathbf{u}_1,\ldots,\mathbf{u}_r\in L$, the sequence $z^{\mathbf{u}_1}-1,\ldots,z^{\mathbf{u}_r}-1$ forms a regular sequence for $S[L]$ and also of the module $M_L$. Then $\FF$ can be obtained from $\tilde \FF$ by the quotient by such a regular sequence, or equivalently, $\FF = \tilde \FF \otimes_{S[L]} S$.
 
 Regardless of the exact approach, a key observation is that the strands of the complex $\FF$ in a fixed degree $\alpha\in \ZZ^n/L$ is equal to the strands $\FF_{\mathbf{u}}$ for any $\mathbf{u}\in \alpha$. Additionally  and also equal to the can be given in terms of the cellular chain complex of a space. In particular, we can define the subset given by
-\[(L_{\RR})_{\leq \mathbf{u}}:= \{p\in L_{\RR} \,|\, \Psi(p)\text{ divides }x^{\mathbf{u}}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
+\[(L_{\RR})_{\leq \mathbf{u}}:= \{\mathbf{p}\in L_{\RR} \,|\, \Psi(\mathbf{p})\text{ divides }x^{\mathbf{u}}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
 Then the cellular chain complex of this subcomplex of $L_{\RR}$ is identical to the strand of $\FF$ in degree $\alpha$. Then this following proposition is based primarily on the proof of Proposition~2.13 and the alternate sketch of proof of Corollary~2.15 from \cite{BCHSY} and is similar the proof of Proposition~2.6 from \cite{BH25}.
 
 \begin{prop}[\cite{BCHSY,BH25}]
@@ -627,9 +627,9 @@ There are then two plausible approaches to proving this, which correspond to the
   $M_L \otimes_{S[L]} S$ is isomorphic to $\overline{S/I_L}$ as an $S$-module.
 \end{prop}
 \begin{proof}
-  $M_L\otimes_{S[L]} S$ is generated by monomials in $k[\ZZ^n/L]$ of the form $x^{\lceil \textbf{v}\rceil}$ for $\textbf{v}$ a vertex of the cellular structure on $L_{\RR}$\jay{TODO technically this needs the regular sequence statement/the exactness of the functor}. And the normalization viewed as the semigroup ring $k[\overline{A}]$ is naturally a $S$-submodule of $k[\ZZ^n/L]$. So we will show that they are identical as submodules.
+  $M_L\otimes_{S[L]} S$ is generated by monomials in $k[\ZZ^n/L]$ of the form $x^{\lceil \mathbf{v}\rceil}$ for $\mathbf{v}$ a vertex of the cellular structure on $L_{\RR}$\jay{TODO technically this needs the regular sequence statement/the exactness of the functor}. And the normalization viewed as the semigroup ring $k[\overline{A}]$ is naturally a $S$-submodule of $k[\ZZ^n/L]$. So we will show that they are identical as submodules.
 
-  First we show that the monomials $x^{\lceil \textbf{v}\rceil}$ are elements of the semigroup $\overline{A}$.
+  First we show that the monomials $x^{\lceil \mathbf{v}\rceil}$ are elements of the semigroup $\overline{A}$.
   Let $\eta:\ZZ^n\rightarrow \ZZ^n/L$ be the usual quotient map and $\eta_{\RR}:\RR^n\rightarrow \RR^n/L$ the corresponding map after tensor with $\RR$. For a vertex $\mathbf{p}\in L_{\RR}$, we have
   \[\eta(\lceil \mathbf{p}\rceil) = \eta(\lceil \mathbf{p}\rceil)-\eta_{\RR}(\mathbf{p}) = \eta(\lceil \mathbf{p}\rceil - \mathbf{p})\]
   However $\lceil \mathbf{p}\rceil - \mathbf{p}$ has all positive coordinates and so is in $\RR_{\geq 0} A=\eta(\RR_{\geq 0}^n)$.
