@@ -95,6 +95,10 @@ so there is a natural augmentation map from $\tF_{0}$ to a module $M_{L}$ genera
  $$
 \end{defn}
 
+\begin{remark}
+  While the generators of $M_L$ are phrased in terms of the vertices of the cell structure on $L_{\RR}$, a (more redundant) set of generators can be given by simply taking $\Psi(\mathbf{p})$ for all points $\mathbf{p}\in L_{\RR}$. One observation from this is that while the resolution depends on the cell structure, the module $M_L$ only depends on the lattice $L$ (and our use of the ceiling function).
+\end{remark}
+
 In Theorem~\ref{thm:HHL resolution} we will prove that the complex $\tF$ is a resolution of $M_L$.
 
 Because the differentials of $\tF$ are $L$-invariant we can form a quotient by the action of $L$. Proposition 3.3 of~\cite{BCHSY} shows moreover that the quotient of $M_L$ by this $L$-action is $\overline{R}$, regarded as a fractional ideal of $R$. 
@@ -636,11 +640,6 @@ There are then two plausible approaches to proving this, which correspond to the
   It suffices to prove there exists a vertex $p'\in L_{\RR}$ such that $\Psi(p')$ divides $x^{\mathbf{u}}$.
   Let $\mathbf{p}=\mathbf{u}-\mathbf{q}$, then as $\lceil \mathbf{p} \rceil = \mathbf{u} - \lfloor \mathbf{q}\rfloor$ and thus $\Psi(\mathbf{p})$ divides $x^{\mathbf{u}}$. To get a vertex, observe that if $\mathbf{p}'$ is any vertex of the unique cell of $L_{\RR}$ that contains $\mathbf{p}$ in it's relative interior, then $\Psi(\mathbf{p}')$ divides $\Psi(\mathbf{p})$ and thus divides $x^{\mathbf{u}}$ as desired.
 \end{proof}
-
-\begin{remark}
-  While the generators of $M_L$ are phrased in terms of the vertices of the cell structure on $L_{\RR}$, a (more redundant) set of generators can be given by simply taking $x^{\lceil\mathbf{p} \rceil}$ for all points $p\in L_{\RR}$. One observation from this is that while the resolution depends on the cell structure, the module $M_L$ only depends on the lattice $L$ (and our use of the ceiling function).
-  \jay{TODO move this to section 7}
-\end{remark}
 
 Together these two propositions prove Theorem~\ref{thm:HHL-resolution}
 
