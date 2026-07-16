@@ -568,14 +568,17 @@ Then $S$ can also be given an $S[L]$-module structure under the quotient by the 
 
 Regardless of the exact approach, a key observation is that the strands of the complex $\FF$ in a fixed degree $\alpha\in \ZZ^n/L$ is equal to the strands $\FF_{\mathbf{u}}$ for any $\mathbf{u}\in \alpha$. Additionally  and also equal to the can be given in terms of the cellular chain complex of a space. In particular, we can define the subset given by
 \[(L_{\RR})_{\leq \mathbf{u}}:= \{p\in L_{\RR} \,|\, \Psi(p)\text{ divides }x^{\mathbf{u}}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
-Then the cellular chain complex of this subcomplex of $L_{\RR}$ is identical to the strand of $\FF$ in degree $\alpha$.
+Then the cellular chain complex of this subcomplex of $L_{\RR}$ is identical to the strand of $\FF$ in degree $\alpha$. Then this following proposition is based primarily on the proof of Proposition~2.13 and the alternate sketch of proof of Corollary~2.15 from \cite{BCHSY} and is similar the proof of Proposition~2.6 from \cite{BH25}.
 
 \begin{prop}[\cite{BCHSY,BH25}]
   \label{prop:hhlStrands}
   For $\mathbf{u}\in \ZZ^n$, an element of the class $\alpha\in \ZZ^n/L$, the complexes of $k$-vector spaces $\FF_{\alpha}$, $\tilde \FF_{\mathbf{u}}$ and $C_\bullet(L_{\RR})_{\leq \mathbf{u}};k)$ are isomorphic.
 \end{prop}
 \begin{proof}
-  That there is a map of complexes of vector spaces $ \tilde \FF_{\mathbf{u}} \rightarrow \FF_{\alpha}$ simply obtained by the tensor $-\otimes_{S[L]}1$\jay{Is it actually tensor against $1$?}. The compatibility with the differentials is immediate from the definition of $\FF$ as a tensor of $\tilde \FF$ against $S$. Thus all that needs to be shown is that the map is an isomorphism of vector spaces. This follows.\jay{This probably needs more detail}
+  Interpreting $\FF$ as $\tilde \FF \otimes_{S[L]}S$ there is a map $\tilde \FF \rightarrow \FF$ by $-\otimes_{S[L]}1$. For any cell $A\subseteq L_{\RR}$, the map on the summand of $\tilde \FF$ simply is the identity map $S(-\Psi(A))\rightarrow S(-\deg(\Psi(A)))$ which coarsens the grading from $\ZZ^n$ to $\ZZ^n/L$.
+
+  Then the image of the degree $\mathbf{u}$ component of the above is simply the map to the subspace of $S(-\deg(\Psi(A))$ spanned by the monomial $x^{\mathbf{u}-\Psi(A)}$, or zero if the monomial is a Laurent monomial.
+  Then by varying the $L$-translate $A'$ of $A$, one gets all monomials of $S(-\deg(\Psi(A))$ of the form $x^{\mathbf{u}-\Psi(A)}$, which is a basis for the degree $\alpha$ elements of $S(-\deg(\Psi(A)))$. Applying this across all cells of $L_{\RR}/L$, one finds that the restricted map $\tilde \FF_{\mathbf{u}}\rightarrow \FF_{\alpha}$ is an isomorphism of complexes of k-vector spaces.
   
   Now to relate to the cellular homology, observe that For each cell $A\subseteq L_{\RR}$ the summand of $A$ in $\tilde \FF$ has component in degree $\mathbf{u}$ given by
 
