@@ -32,8 +32,9 @@ The dictionary between the geometry of $X_\Sigma$ and combinatorics of $\Sigma$ 
 Write $\Sigma(1)$ for the set of \defi{rays} (one-dimensional cones) of $\Sigma$, and let $u_\rho\in N$ denote the primitive generator of a ray $\rho$. By the Orbit--Cone Correspondence \cite[\S3.2]{CLS}, each ray $\rho$ corresponds to an irreducible $T$-invariant Weil divisor $D_\rho$ on $X_\Sigma$, and every $T$-invariant divisor is an integral combination $\sum_\rho a_\rho D_\rho$. Identifying $\Div_T(X_\Sigma)=\ZZ^{\Sigma(1)}$, there is an exact sequence \cite[Thm.~4.1.3]{CLS}
 \begin{equation}\label{eqn:SEScl4}
   0\to M\xrightarrow{\ \alpha\ } \ZZ^{\Sigma(1)}\xrightarrow{\ \deg\ } \Cl(X_\Sigma)\to 0,
-  \qquad \alpha(m)=\sum_\rho \langle m,u_\rho\rangle D_\rho,
+  \qquad \alpha(m)=\sum_\rho \langle m,-u_\rho\rangle D_\rho,
 \end{equation}
+\michael{Beware: I introduced a sign on $u_\rho$ above, to match Section 6}
 where $\Cl(X_\Sigma)$ is the \defi{divisor class group}. The map $\alpha$ gives the principal divisor of the character $\chi^m$, and $\deg$ sends a divisor to its class; injectivity of $\alpha$ uses our assumption that the rays span $N\otimes\RR$.
 
 \begin{remark}[Cartier and Weil divisors]\label{rem:PicCl}
