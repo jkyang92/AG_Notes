@@ -131,16 +131,162 @@ Thus a point of a simplicial $X_\Sigma$ is a $G$-orbit of ``homogeneous coordina
   is the quadric cone. Thus $\PP(1,1,2)$ is singular exactly at the point $[0:0:1]$, where the quotient has stabilizer $\mu_2 = \{\pm1\}$. In particular, a divisor class $d\in\Cl(\PP(1,1,2)) = \ZZ$ is Cartier if and only if $d$ is a multiple of $2 = \on{lcm}(1,1,2)$, so $\Pic(\PP(1,1,2)) = 2\ZZ \subsetneq \ZZ$, as Remark~\ref{rem:PicCl} predicts for a simplicial but non-smooth toric variety. In particular the rank-one reflexive sheaf $\cO(1)$, corresponding to the module $S(1)$, is \emph{not} a line bundle. This point is further scruitinized in Lecture~\ref{lec:5-toric-cox}.
 \end{example}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 5 (Caitlin Davis): Toric varieties and Cox rings, II}\label{lec:5-toric-cox}
-Describe the Toric Ideal-Variety Correspondence~\cite{CLS}*{Proposition 5.2.7}. Demonstrate by example that the Cox rings of non-isomorphic toric varieties can be isomorphic as graded rings. Describe how graded modules over the Cox ring induce sheaves on toric varieties~\cite{CLS}*{\S 5.3}. Explain that when $X_\Sigma$ is a smooth toric variety associated to a fan $\Sigma$ with Cox ring $S$, there is an equivalence $D^b(X_\Sigma) \simeq D^b(S) / D^b_B(S)$, where $D^b_B(S)$ denotes the subcategory of complexes with support in $V(B)$: this follows essentially from \cite{CLS}*{Propositions 5.3.9 and 5.3.10}. Explain how this can fail when $X_\Sigma$ is not smooth (see e.g. \cite{CLS}*{Exercise 5.3.5}).  %for instance, letting $S = k[x_0, x_1, x_2]$ denote the Cox ring of the weighted projective space $\PP(1,1,2)$ and $M$ the $S$-module $S / (x_0, x_1)$, the module $M(1)$ is not supported only at the origin, but its associated sheaf on $\PP(1,1,2)$ is zero .  {\color{red} I think we should leave out stacks from this lecture, and maybe mention the connection to toric stacks informally during discussion. I don't know of a good reference for the fact that the derived category of the stack quotient of $\Spec(S) \setminus V(B)$ by the torus action is equivalent to $D^b(S) / D^b_B(S)$.} 
-Finally, state the Demazure vanishing theorem~\cite{CLS}*{Theorem 9.2.3}. 
-%{\color{red} If we assume some prerequisites, we can shorten thus, move some of tuesday's material up here, lightening up tuesday somewhat}
+%% Describe the Toric Ideal-Variety Correspondence~\cite{CLS}*{Proposition 5.2.7}. Demonstrate by example that the Cox rings of non-isomorphic toric varieties can be isomorphic as graded rings. Describe how graded modules over the Cox ring induce sheaves on toric varieties~\cite{CLS}*{\S 5.3}. Explain that when $X_\Sigma$ is a smooth toric variety associated to a fan $\Sigma$ with Cox ring $S$, there is an equivalence $D^b(X_\Sigma) \simeq D^b(S) / D^b_B(S)$, where $D^b_B(S)$ denotes the subcategory of complexes with support in $V(B)$: this follows essentially from \cite{CLS}*{Propositions 5.3.9 and 5.3.10}. Explain how this can fail when $X_\Sigma$ is not smooth (see e.g. \cite{CLS}*{Exercise 5.3.5}). %for instance, letting $S = k[x_0, x_1, x_2]$ denote the Cox ring of the weighted projective space $\PP(1,1,2)$ and $M$ the $S$-module $S / (x_0, x_1)$, the module $M(1)$ is not supported only at the origin, but its associated sheaf on $\PP(1,1,2)$ is zero .
+%% Finally, state the Demazure vanishing theorem~\cite{CLS}*{Theorem 9.2.3}.
+%% %{\color{red} If we assume some prerequisites, we can shorten thus, move some of tuesday's material up here, lightening up tuesday somewhat}
 
 
-%Topics for these two lectures: toric varieties from fans. Key examples. Cox rings and irrelevant ideals. Secondary fan and GIT. Touch on stacks?
+%% %Topics for these two lectures: toric varieties from fans. Key examples. Cox rings and irrelevant ideals. Secondary fan and GIT. Touch on stacks?
 
-%what is a derived category?  Why do people care? 
+%what is a derived category?  Why do people care?
+
+% Lecturer's outline: Toric Ideal-Variety Correspondence (CLS Prop 5.2.7). Example of non-isomorphic toric varieties with isomorphic Cox rings. Graded modules induce sheaves (CLS §5.3). For smooth X, D^b(X) = D^b(S)/D^b_B(S) (CLS 5.3.9-5.3.10). Failure when X is singular (CLS Ex 5.3.5). State Demazure vanishing (CLS Thm 9.2.3).
+
+Continuing from Lecture~\ref{lec:4-toric-cox}, we describe the dictionary between the commutative algebra of the Cox ring $S$ and the geometry of a simplicial toric variety $X = X_\Sigma$, culminating in a derived equivalence that generalizes the description of $D^b(\PP^n)$ from Lecture~\ref{lec:3-DbPPn}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The ideal--variety correspondence}
+
+Just as homogeneous ideals of $\kk[x_0,\dots,x_n]$ cut out closed subschemes of $\PP^n$, homogeneous ideals of $S$ cut out closed subschemes of $X$, provided we account for the irrelevant ideal $B$. Call a homogeneous ideal $I\subseteq S$ \defi{$B$-saturated} if
+\[ I = I : B^\infty = \{f\in S : B^k f\subseteq I \text{ for some } k\}. \]
+
+\begin{remark}[Saturation and local cohomology]\label{rem:localcohomology}
+  Both notions of $B$-saturation are governed by \defi{local cohomology}. For a $\Cl(X)$-graded $S$-module $M$, its \defi{$B$-torsion submodule}
+  \[ H^0_B(M) = \{\,m\in M : B^k m = 0 \text{ for some } k\ge 0\,\} \]
+  is the largest submodule supported on $V(B)$, and $H^i_B(M)$ denotes its higher right-derived functors, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS}. The bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is the four-term exact sequence of $\Cl(X)$-graded modules
+  \[
+  0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \Gamma_{\!*}(\widetilde M) \longrightarrow H^1_B(M) \longrightarrow 0, \qquad
+  \Gamma_{\!*}(\widetilde M) \ce \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr),
+  \]
+  together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections. Passing to $\Gamma_{\!*}(\widetilde M)$ kills both, thus a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$. An ideal $I\subseteq S$ is $B$-saturated in this sense precisely when $H^1_B(I) = H^0_B(S/I) = (I : B^\infty) / I = 0$, since $H^0_B(I) = 0$ is automatic.
+
+  Among all finitely generated modules with a given sheaf, or all ideals cutting out a given subscheme, the saturated one is the canonical choice, which is why the correspondences below are phrased through $B$-saturated representatives.
+\end{remark}
+
+\begin{prop}[Toric Ideal--Variety Correspondence, \cite{CLS}*{Proposition 5.2.7}]\label{prop:ideal-variety}
+  Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. Then there is a bijective correspondence
+  \[ \{\text{closed subvarieties of } X\} \longleftrightarrow \{\text{radical homogeneous ideals } I\subseteq B\}. \]
+\end{prop}
+
+Here CLS normalizes a radical ideal by intersecting with $B$; replacing $I$ by its $B$-saturation instead gives the equivalent normalization by radical $B$-saturated ideals, matching the classical statement for $\PP^n$. At the level of subschemes the correspondence requires smoothness:
+
+\begin{prop}[\cite{CLS}*{Proposition 6.A.7}]\label{prop:ideal-sheaf}
+  On a smooth toric variety $X$, two homogeneous ideals $I,J\subseteq S$ determine the same ideal sheaf (hence the same closed subscheme) if and only if $(I:B^\infty)=(J:B^\infty)$. Consequently, closed subschemes of $X$ correspond bijectively to $B$-saturated homogeneous ideals of $S$.
+\end{prop}
+
+\begin{example}\label{ex:subschemefailure}
+  \mahrud{find Michael's email about this}
+  Smoothness cannot be dropped from Proposition~\ref{prop:ideal-sheaf}. On $\PP(1,1,2)$, with $S=\kk[x,y,z]$ as in Example~\ref{ex:P112charts}, the ideals $I=(x,y)$ and $J=(x^2,xy,y^2)$ are distinct and both $B$-saturated, yet they define the same closed subscheme, namely the reduced point $[0:0:1]$. On the chart $D_+(z)$ both ideals localize to the maximal ideal $\bigl(\tfrac{x^2}{z},\tfrac{xy}{z},\tfrac{y^2}{z}\bigr)$ of the cone point, while on $D_+(x)$ and $D_+(y)$ both give the unit ideal. The discrepancy $I/J\cong\bigl(S/(x,y)\bigr)(-1)^{\oplus 2}$ is a module concentrated in odd degrees; we will meet such modules again in Example~\ref{ex:oddP112}.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The graded ring does not remember the variety}
+
+A subtlety absent from projective space is that the graded ring is not a complete invariant: as observed in Remark~\ref{rem:primitive}, the ring $S$, its grading, and the group $G$ depend only on the rays of $\Sigma$, while the irrelevant ideal remembers the maximal cones.
+
+\begin{example}\label{ex:sameCox}
+  Let $S=\kk[x_0,x_1,x_2,x_3]$ carry the $\ZZ^2$-grading of Example~\ref{ex:toricrunning}(4) with $a=3$, so that
+  \[ \deg(x_0)=\deg(x_2)=(1,0),\qquad \deg(x_1)=(-3,1),\qquad \deg(x_3)=(0,1), \]
+  and let $G = (\kk^*)^2$ act accordingly. Two different squarefree monomial ideals yield two very different geometric quotients:
+  \begin{itemize}
+  \item $B = (x_0,x_2) \cap (x_1,x_3)$ yields the Hirzebruch surface $\mathcal H_3$, which is smooth;
+  \item $B'= (x_1) \cap (x_0,x_2,x_3)$ yields the weighted projective space $\PP(1,1,3)$, which is singular: on the locus $x_1 \neq 0$ we may use part of $G$ to scale $x_1$ to $1$, and the residual $\kk^* = \{(s, s^3)\} \subseteq G$ acts on $(x_0,x_2,x_3)$ with weights $(1,1,3)$, exhibiting the quotient as $(\bA^3\setminus\{0\})\,/\,\kk^* = \PP(1,1,3)$.
+  \end{itemize}
+  Since the two quotients are not isomorphic, the graded ring together with the group action does not determine the variety: the irrelevant ideal is essential extra data. Beware, however, that only the first presentation is the Cox construction of Theorem~\ref{thm:coxquotient}: the Cox ring of $\PP(1,1,3)$ itself is the \emph{three}-variable ring $\kk[y_0,y_1,y_2]$ with $\Cl(\PP(1,1,3))=\ZZ$ and degrees $(1,1,3)$, because the ray corresponding to $x_1$ does not appear in its fan; accordingly, $x_1$ generates a principal component of $B'$. This is the first hint of the \defi{secondary fan}, which parametrizes all the toric varieties arising from a fixed graded polynomial ring; see Example~\ref{ex:hirzsecondary} and Remark~\ref{rmk:abuseNotation} in Lecture~\ref{lec:11-secondary-fan}, and Lecture~\ref{lec:12-DCox-definition} for the derived category incarnation of this same pair of quotients.
+\end{example}
+
+\begin{remark}
+  To reconstruct $X_\Sigma$ from the Cox ring $S$, one may specify any one of the following, each of which determines the others:
+  \begin{enumerate}
+  \item\label{item:max} the choice of maximal cones in $\Sigma_X$; % how to compactify the torus
+  \item\label{item:irr} the choice of an irrelevant ideal $B\subset S$;
+  \item\label{item:nef} the choice of an ample class in $\Cl{X}$.
+  %\item\label{item:ext}the choice of higher extensions between the Frobenius line bundles.
+  \end{enumerate}
+  We will return to this in Lecture~\ref{lec:11-secondary-fan}, where we will see that the chambers in the secondary fan precisely enumerate the possible choices for each of the above.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modules to sheaves}
+
+Every finitely generated graded $S$-module $M$ gives rise to a coherent sheaf $\widetilde M$ on $X$, following \cite{CLS}*{\S5.3}. On the affine chart $U_\sigma$ associated to a maximal cone $\sigma$, the sections are the degree-zero part of the localization at the monomial $x^{\widehat\sigma}=\prod_{\rho\,\notin\,\sigma(1)}x_\rho$:
+\[ \Gamma\bigl(U_\sigma,\widetilde M\bigr)=\bigl(M[\,x^{-\widehat\sigma}\,]\bigr)_0. \]
+These glue to a sheaf $\widetilde M$ on $X$, and $M\mapsto\widetilde M$ is exact. For a class $\mathbf d\in\Cl(X)$, the module $S(\mathbf d)$ sheafifies to the rank-one reflexive sheaf $\cO_X(\mathbf d)=\widetilde{S(\mathbf d)}$.
+
+\begin{remark}\label{rem:twistcaveat}
+  When $X$ is smooth, the sheaves $\cO_X(\mathbf d)$ are line bundles, $\cO(\mathbf d)\otimes\cO(\mathbf e)\cong\cO(\mathbf d+\mathbf e)$, and twisting commutes with sheafification: $\widetilde{M(\mathbf d)}\cong\widetilde M\otimes\cO(\mathbf d)$. All three statements may fail for classes outside $\Pic(X)$ when $X$ is merely simplicial: on $\PP(1,1,2)$ the sheaf $\cO(1)$ is not a line bundle (Example~\ref{ex:P112charts}), and the natural map $\cO(1)\otimes\cO(1)\to\cO(2)$ is not an isomorphism. Handling such twists correctly is one motivation for the toric stacks introduced below.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The derived equivalence and its failure}
+The kernel of the (exact) sheafification functor is what separates the geometry of $X$ from the algebra of $S$. Write $\Mod_{\mathrm{gr}}(S)$ for the category of finitely generated $\Cl(X)$-graded $S$-modules, and $\Mod_B(S)\subseteq\Mod_{\mathrm{gr}}(S)$ for the full subcategory of \defi{$B$-torsion} modules, i.e.\ those annihilated by a power of $B$.
+
+\begin{prop}[\cite{CLS}*{Propositions 5.3.9 and 5.3.10}]\label{prop:sheafmodule}
+  Let $X$ be a toric variety with Cox ring $S$ and irrelevant ideal $B$.
+  \begin{enumerate}
+  \item Every quasicoherent sheaf on $X$ is isomorphic to $\widetilde M$ for some graded $S$-module $M$, which may be chosen finitely generated when the sheaf is coherent.
+  \item If $X$ is \emph{smooth} and $M\in\Mod_{\mathrm{gr}}(S)$, then $\widetilde M=0$ if and only if $M$ is $B$-torsion.
+  \end{enumerate}
+\end{prop}
+
+Consequently, when $X$ is smooth, sheafification induces an equivalence of abelian categories
+\[
+\Coh(X)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_B(S),
+\]
+which is Cox's theorem \cite{cox}. Passing to derived categories yields:
+
+\begin{thm}\label{thm:coxderived}
+  Let $X=X_\Sigma$ be a smooth projective toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $D^b_B(S)\subseteq D^b(S)$ be the thick subcategory of complexes with homology supported on $V(B)$. Then sheafification induces an equivalence of triangulated categories
+  \[
+  D^b(X)\ \simeq\ D^b(S)\,/\,D^b_B(S).
+  \]
+\end{thm}
+
+This is the toric generalization of the equivalence $D^b(\PP^n)\simeq D^b(S)/D^b_\m(S)$ from Lecture~\ref{lec:3-DbPPn}; it follows from the abelian equivalence above, and is also the smooth case of Corollary~\ref{cor:DbCoxStack} below. Smoothness is essential:
+
+\begin{example}[\cite{CLS}*{Example 5.3.11}]\label{ex:oddP112}
+  On $\PP(1,1,2)$, let $M=\bigl(S/(x,y)\bigr)(1)$. Note that $M$ is not $B$-torsion: as $M\cong\kk[z](1)$, its support in $\bA^3$ is the entire $z$-axis, which is not contained in $V(B)=\{0\}$; concretely, $B^\ell M=z^\ell M\neq0$ for all $\ell$. Nevertheless $\widetilde M=0$. Indeed, $M$ is concentrated in \emph{odd} degrees, so on the charts of Example~\ref{ex:P112charts} we compute
+  \[
+  \Gamma\bigl(D_+(x),\widetilde M\bigr)=\bigl(M[x^{-1}]\bigr)_0=0, \qquad
+  \Gamma\bigl(D_+(y),\widetilde M\bigr)=\bigl(M[y^{-1}]\bigr)_0=0,
+  \]
+  since $x$ and $y$ annihilate $M$, and
+  \[
+  \Gamma\bigl(D_+(z),\widetilde M\bigr)=\bigl(M[z^{-1}]\bigr)_0\cong\bigl(\kk[z^{\pm}](1)\bigr)_0=\kk[z^{\pm}]_1=0,
+  \]
+  not because $z$ annihilates $M$ but because $\deg(z)=2$, so the ring $\kk[z^{\pm}]$ has no odd-degree elements. Thus sheafification kills the nonzero object $M\notin D^b_B(S)$, and the induced functor $D^b(S)/D^b_B(S)\to D^b(\PP(1,1,2))$ is not an equivalence.
+\end{example}
+
+\begin{remark}\label{rem:simplicialsheaf}
+  Example~\ref{ex:oddP112} shows that Proposition~\ref{prop:sheafmodule}(2) fails for simplicial $X$. The correct simplicial criterion is that $\widetilde M=0$ if and only if $B^\ell M_\alpha=0$ for $\ell\gg0$ and all $\alpha\in\Pic(X)$ (e.g.~see \cite[Exc.~5.3.5]{CLS}). Only the graded pieces of $M$ in \emph{Picard} degrees are visible to the variety. On $\PP(1,1,2)$ we have $\Pic(X) = 2\ZZ$ (Example~\ref{ex:P112charts}), and the module $M$ above is concentrated in odd degrees, so all of its Picard-degree pieces vanish, thus $\widetilde M=0$.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Demazure vanishing}
+
+We close with the cohomological vanishing theorem that powers the Bondal--Thomsen collection of the next lecture.
+
+\begin{thm}[Demazure Vanishing, \cite{CLS}*{Theorem 9.2.3}]\label{thm:demazureL5}
+  Let $X_\Sigma$ be a toric variety whose fan has convex support (for instance, $X_\Sigma$ complete), and let $D$ be a nef $\QQ$-Cartier divisor on $X_\Sigma$. Then $H^p(X_\Sigma,\cO_{X_\Sigma}(D))=0$ for all $p>0$.
+\end{thm}
+
+\begin{remark}\label{rem:rounddown}
+  Lecture~\ref{lec:6-bondal-thomsen} uses an extension of Theorem~\ref{thm:demazureL5} to $\QQ$-divisors: if $D=\sum_\rho a_\rho D_\rho$ with $a_\rho\in\QQ$ is nef, then $H^p(X,\cO_X(\lfloor D\rfloor))=0$ for all $p>0$, where $\lfloor D\rfloor=\sum_\rho\lfloor a_\rho\rfloor D_\rho$. (Note that the round-down depends on the chosen coefficients $a_\rho$, not only on the class of $D$.)  This follows by the same support-function argument; see \cite{CLS}*{\S9.3} and the stronger vanishing theorems of Musta\c{t}\u{a} \cite{mustata}. It reappears as Theorem~\ref{thm:demazure} in Lecture~\ref{lec:6-bondal-thomsen}, where it yields the cohomology vanishing that characterizes Bondal--Thomsen degrees.
+\end{remark}
+
+\begin{example}[Frobenius pushforwards]\label{ex:frobeniussplit}
+  Here is the application powering the next lecture. For an integer $m>0$, the \defi{toric Frobenius map} on a complete toric variety $X$ is the finite toric morphism $F_m\colon X\to X$ induced by multiplication by $m$ on $N$. Thomsen \cite{thomsen} showed that $F_{m*}\cO_X$ splits as a direct sum of line bundles. Since $F_m$ is finite,
+  \[
+  \bigoplus_{\cO(E)\,\subseteq\, F_{m*}\cO_X} H^p\bigl(X,\cO(E)\bigr) \,=\, H^p\bigl(X,F_{m*}\cO_X\bigr) \,=\, H^p\bigl(X,\cO_X\bigr) \,=\, 0 \quad\text{for } p>0,
+  \]
+  where the last equality is Theorem~\ref{thm:demazureL5} applied to $D=0$. Hence every line bundle summand of a toric Frobenius pushforward has vanishing higher cohomology. The finitely many line bundles arising this way form the Bondal--Thomsen collection of Lecture~\ref{lec:6-bondal-thomsen}.
+\end{example}
+
+
+
 
 \ifdefined\whole
 \else
@@ -148,4 +294,3 @@ Finally, state the Demazure vanishing theorem~\cite{CLS}*{Theorem 9.2.3}.
 \bibliography{Bibliography}
 \end{document}
 \fi
-
