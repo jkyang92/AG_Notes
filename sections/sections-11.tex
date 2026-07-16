@@ -39,19 +39,28 @@ Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions o
   Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
 \end{proof}
 
-By Proposition~\ref{prop:eq-Picard-gp} and \lauren{general GIT theorem}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  These are toric varieties, as we will see later by assigning them to fans.  Write $\cL_d$ for the $G$-linearized line bundle on $\Spec S$ determined by $d$.
+By Proposition~\ref{prop:eq-Picard-gp} and \lauren{general GIT theorem}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
 
-To get a good quotient we must remove the unstable locus corresponding to $p$.  The quotient of the remaining semistable locus is then isomorphic to
-\[\Proj\bigoplus_{n\in\NN}\Gamma(\Spec S,\cL_p^{\otimes n})^G\]
-where $\cL_p$ is the $G$-linearized line bundle of $p\in P$ and multiplication in the ring is given by tensor product of sections.  In the toric case these equivariant sections are elements of $S$.
+According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
+\[\Proj\bigoplus_{n\in\NN}\Gamma(\Spec S,\cL_d^{\otimes n})^G\]
+where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections. \lauren{cite} In the toric case these equivariant sections are elements of $S$.
 \begin{lemma}
-  Using the notation above $\Gamma(\Spec S,\cL_d)=S_d$.
+  Using the notation above $\Gamma(\Spec S,\cL_d)^G=S_d$.
 \end{lemma}
+\begin{proof}
+  \lauren{..}
+\end{proof}
 Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
 
 \begin{cor}
   The GIT quotients of $\Spec S$ by $G$ are of the form $\Proj S_{\NN d}$ for $d\in\Cl(S)$.
 \end{cor}
+
+Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$. We will see combinatorial constructions of these spaces in the next subsection, along with descriptions of the semistable and stable loci.
+
+\subsection{Polytopes and the combinatorial secondary fan}
+
+\subsection{Irrelevant ideals}
 
 %In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
 

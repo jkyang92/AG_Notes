@@ -60,7 +60,7 @@ $$
 \end{example}
 
 
-The next result demonstrates that the Tate resolution functor is a model for the BGG correspondence $D^b(\PP^n) \xra{\simeq} K(E)$.
+The next result demonstrates that the Tate resolution functor is a model for the BGG correspondence~$D^b(\PP^n) \xra{\simeq} K(E)$ applied to sheaves.
 
 
 \begin{prop}
@@ -138,7 +138,7 @@ Tate resolutions have had a host of applications; let us highlight two of them. 
 \from
 \bigoplus_{i = 0}^n H^i(\F(j-i)) \otimes_\kk \Omega_{\PP^n}^{i-j}(i-j)\from \cdots 
 \end{equation}
-that is quasi-isomorphic to the sheaf $\F$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
+that is quasi-isomorphic to the sheaf $\F$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad~\eqref{eqn:monad}. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
 
 The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}.
 
@@ -147,7 +147,39 @@ The second application is an algorithm for computing sheaf cohomology over $\PP^
 
 Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS} was extended to products of projective spaces in \cite{EES} and later generalized further to toric varieties in \cite{BETate}. The goal of this lecture is to give an overview of this latter paper.  
 
-Let $X$ be a smooth projective variety with Cox ring $S$. As usual, we can remove the smoothness hypothesis by considering the associated toric stack
+Let $\X$ be the toric stack associated to a simplicial projective toric variety $X$. As discussed earlier, if $X$ is smooth, then $\X = X$. Let $S = \k[x_0, \dots, x_n]$ be the Cox ring of $X$, equipped with its $\Cl(X)$-grading. To ease notation, we write $A \ce \Cl(X)$ in these notes. To generalize Tate resolutions to sheaves on $\X$, the first thing we need to do is extend the BGG correspondence to $A$-graded polynomial rings. This already introduces a complication: in the standard graded case, the internal grading on a module $M$ over the polynomial ring induces the homological grading on the complex $R(M)$. This cannot possibly work when the $A$-grading is nonstandard. The solution to this problem is to widen our perspective from complexes of exterior modules to \emph{differential modules}. Before explaining what we mean, we fix some notation. Let $E = \bigwedge_\k(e_0, \dots, e_n)$, equipped with the $A \times \Z$-grading such that $\deg(e_i) = (-\deg(x_i); -1)$. 
+
+\begin{defn}
+A \emph{differential $E$-module} is an $A \oplus \Z$-graded right $E$-module $D$ equipped with an $E$-linear endomorphism $\del_D$ of degree $(0;-1)$ such that $\del_D^2 = 0$. A \emph{morphism} of these objects is the obvious thing: an $E$-linear degree $(0;0)$ map that commutes with differentials. 
+\end{defn}
+
+Let $\on{mod}(S)$ be the category of $A$-graded $S$-modules, and let $\DM(E)$ be the category of differential $E$-modules. The $A$-graded BGG functor
+$$
+R \co \on{mod}(S) \to \DM(E)
+$$
+sends $M \in \on{mod}(S)$ to $\bigoplus_{a \in A} E^*(-a;0) \otimes_\k M_a$, with differential given by multiplication on the left by $\sum_{i = 0}^n e_i \otimes x_i$. The functor $R$ extends naturally to complexes of $A$-graded $S$-modules; in fact, it induces an equivalence $D^b(S) \xra{\simeq} D^b_{\DM}(E)$, where the target is the bounded derived category of differential $E$-modules, i.e. the category of differential $E$-modules with finetely generated homology with quasi-isomorphisms inverted. We omit the details. 
+
+\begin{example}\label{ex:ellipticCurve}
+Let us consider the case of the weighted projective stack $\PP(1,1,2)$, so that $\Cl(X) = \Z$, and $S = k[x_0, x_1, x_2]$ with $\deg(x_0) = 1 = \deg(x_1)$ and $\deg(x_2) = 2$. Let $M= S/(x_0^4+x_1^4+x_2^2)$ be the coordinate ring of a genus $1$ curve in $\PP(1,1,2)$.  The differential module $\RR(M)$ is an infinitely generated free $E$-module whose generators are in bijection with a $\kk$-basis for $M$.  In this example, we have:
+\[
+\begin{tabular}{c|c|c|c|c|c|c}
+    $i$&0&1&2&3&4&$\cdots$ \\ \hline
+    $\dim M_i$ & 1 &2&4&6&8&$\cdots$
+\end{tabular}
+\]
+Thus, $\RR(M)$ has the form:
+\vskip\baselineskip
+\footnotesize
+\[
+\RR(M) = \xymatrix{
+\om_E \ar[r]^-{}\ar@/_2pc/[rr]_-{}& \om_E(-1;0)^{\oplus 2} \ar[r]^-{}\ar@/_-2pc/[rr]^-{}&\om_E(-2;0)^{\oplus 4} \ar[r]^-{}\ar@/_2pc/[rr]_-{} &\om_E(-3;0)^{\oplus 6}\ar[r]^-{} & \cdots
+}
+\]
+\normalsize
+The above graphic is an attempt to represent a flag differential module, not a complex.  To be more precise, we choose monomial bases for each $M_i$, e.g. $\{1\}, \{x_0,x_1\}$ and $\{x_0^2,x_0x_1,x_1^2, x_2\}$ for $M_0, M_1$ and $M_2$, respectively.  The differential $\partial$ sends the generator $1 \in \omega_E$ to $e_0\otimes x_0 + e_1\otimes x_1 + e_2\otimes x_2$.  This element lies in $\omega_E(-1;0)^{\oplus 2} \oplus \omega_E(-2; 0)^{\oplus 4}$.  This is indicated in the above graphic by the arrows emanating from $\omega_E$. For any $r \ge 0$, $\RR(M_{\ge r})$ may be depicted by removing all summands of the form $\om_E(-d ; 0)$ for $d < r$ from the picture above.
+\end{example}
+
+
 
 
 \ifdefined\whole

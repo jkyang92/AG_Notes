@@ -501,14 +501,18 @@ This uniformity is a first clue that these resolutions are pointing towards a un
 
 %% Discussion of how this is kind of surprising!!  There was, a priori, no reason to believe that the ``best'' toric analogue of Beilinson's resolution  would only involve the Cox ring (i.e. that it would not depend on the irrelevant ideal whatsoever).  This is a first clue that these resolutions are pointing towards some sort of uniformity for all of the toric varieties with the same Cox ring.  That uniformity will be explored in more depth in later lectures.
 
-One specific case where the correspondence between the BT collection and the summands of the resolution is of particular importance is the diagonal. The summands of the diagonal will all be of the form $O_X(D)\boxtimes O_X(D')$ for pairs of Bondal-Thomsen elements. 
+One specific case where the correspondence between the BT collection and the summands of the resolution is of particular importance is the diagonal. The summands of the diagonal will all be of the form $O_X(D)\boxtimes O_X(D')$ for pairs of Bondal-Thomsen elements. Some care is require though, as not every pair of Bondal-Thomsen elements will appear.
 
 \begin{cor}
   \label{cor:diagonal-BTcollection}
-  The line bundles appearing the resolution of the diagonal $\FF$ arising from HHL are the line bundles of the form $O_X(D)\boxtimes O_X(D')$ for some $D$,$D'$ in the Bondal-Thomsen collection.
+  The line bundles appearing the resolution of the diagonal $\FF$ arising from HHL are of the form $O_X(D)\boxtimes O_X(D')$ for some $D$,$D'$ in the Bondal-Thomsen collection. Moreover every element of the Bondal-Thomsen collection appears both on both the right and left hand side of $O_X(D)\boxtimes O_X(D')$.
 \end{cor}
 \begin{proof}
-  For every point $v\in M_X$, the corresponding line bundle is $O_X(-\lceil v\rceil)\boxtimes O_X(\lfloor v\rfloor)$, The left hand side of which is $O_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:resPointBT}. And $O_X(\lfloor v\rfloor)$ is quite directly the generator of the BT collection associated to $v$.
+  Observe that the lattice $L$ for the diagonal is the Lawrence lift of $M_X$, that is the lattice
+  \[L := \{(\mathbf{v},-\mathbf{v}) \in \ZZ^{2n} \,|\, \mathbf{v}\in M_X\}.\]
+  Thus the line bundles that appear in the resolution of the diagonal are of the form $O_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)$ for $p$ a point in $\RR \otimes M_X$ which can then be expanded as follows:
+  \[O_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)=O_X(-\lceil v\rceil)\boxtimes O_X(\lfloor v\rfloor).\]
+  The left hand side of this summand is $O_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:hhlSummandsBT}. And $O_X(\lfloor v\rfloor)$ is quite directly the generator of the BT collection associated to $v$. Finally, as $v$ varies over all points in $\RR \otimes M_X$, every Bondal-Thomsen element appears as by Definition~\ref{defn:BTCollection}.
 \end{proof}
 
 The Fourier-Mukai transform, which forms a key step in the proof of Conjecture~\cite{conj:BES}, results in a complex whose summands will be drawn from the left hand side of the summands of the diagonal. Consequently, the complexes that result from applying the Fourier-Mukai transform to give monads for arbitrary coherent sheaves will result in complexes whose summands are all Bondal-Thomsen elements. This gives rise to the following corollary.
@@ -523,7 +527,7 @@ The Fourier-Mukai transform, which forms a key step in the proof of Conjecture~\
 We conclude with the resolution of the diagonal for the third Hirzebruch surface. We also remark that the resolutions constructed for the diagonal are always minimal, a feature that does not hold for general $L$.
 
 \begin{example}
-  Let $X=\cH_3$, and let $S$ be the Cox ring of $X\times X$. Then each summand is of the form $S((-\deg(\Phi(A)),-\deg(\Phi(-A))))$. For example, for the summand that corresponds to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, $-\deg(\Phi(A))$ which corresponds to the Bondal-Thomsen element $O_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, corresponds to the Bondal-Thomsen element $O_X(-1,-1)$. This gives the summand $S(-2,-1,-1,-1)$.
+  Let $X=\cH_3$, and let $S$ be the Cox ring of $X\times X$. Then each summand is of the form $S((-\deg(\Psi(A)),-\deg(\Psi(-A))))$. For example, for the summand that corresponds to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, $-\deg(\Psi(A))$ which corresponds to the Bondal-Thomsen element $O_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, corresponds to the Bondal-Thomsen element $O_X(-1,-1)$. This gives the summand $S(-2,-1,-1,-1)$.
 
   Repeating this construction for every cell will give all summands of the resolution of the diagonal.
   \[
@@ -555,6 +559,7 @@ We conclude with the resolution of the diagonal for the third Hirzebruch surface
   \end{matrix}
   \longleftarrow 0
   \]
+  \jay{Question: should we just use box products for this? It might look more like Bellinson's resolution then}
 \end{example}
 
 
@@ -562,56 +567,91 @@ We conclude with the resolution of the diagonal for the third Hirzebruch surface
 \section{Lecture 9 (Greg Smith): The proof}\label{lec:9-HHL-proof}
 The goal of this section is to prove:
 
-\begin{theorem} \cite{HHL}\label{thm:HHL resolution}
+\begin{theorem} \cite{HHL}\label{thm:HHL-resolution}
 With notation as in Section 7, the complexes $\tF$ and $\FF$ are $S$-free resolutions of $M_{L}$ and $\overline{S/I_{L}}$, respectively. 
 \end{theorem}
 
 The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly technical.  However, two recent preprints have dramatically simplified the proof.  The preprint~\cite{BCHSY} (see in particular Proposition 3.2) relates the Hanlon-Hicks-Lazarev construction to a more classical algebraic construction involving binomial ideals, and provides an elementary and purely algebraic proof of the main result, as well as broad generalization of those results.  The preprint~\cite{BH25} utilizes a similar basic idea as~\cite{BCHSY}, but provides a terser and narrower proof.
 
+Before diving into the proofs of the main theorem, it is important to carefully describe more carefully how the complexes $\tilde \FF$ and $\FF$ are related to each other and in particular provide a careful definition of the complex $\FF$.
+The first step of this is to observe that as $\tilde \FF$ is $L$-equivariant, it acquires the structure of an $S[L]$-module. $S[L]$ can be presented explicitly as follows
+\[S[L]=S\cdot \{z^{\mathbf{u}} \,|\, \mathbf{u}\in L\}\subseteq S[z_1^{\pm},\ldots,z_n^{\pm}]\]
+$M_L$ also acquires the structure of an $S[L]$-module, where $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. It is worth observing that this makes $M_L$ into a finitely generated $S[L]$-module so long as $L\cap \NN^n=\{0\}$. It is not hard to show that the $S[L]$-module structure on $M_L$ and on $\tilde \FF$ are compatible.
 
-Regardless of the exact approach, a key observation is that the strands of the complex $\FF$ in a fixed degree $\alpha\in \ZZ^n/L$ can be given in terms of the cellular chain complex of a space. In particular, we can define the subset given by
-\[(L_{\RR})_{\leq u}:= \{p\in L_{\RR} \,|\, \Psi(p)\text{ divides }x^{u}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
+Then $S$ can also be given an $S[L]$-module structure under the quotient by the ideal $\langle z^{u}-1 \,|\, u\in L\rangle$. Observe that for any choice of basis $u_1,\ldots,u_r\in L$, the sequence $z^{u_1}-1,\ldots,z^{u_r}-1$ forms a regular sequence for $S[L]$ and also of the module $M_L$. Then $\FF$ can be obtained from $\tilde \FF$ by the quotient by such a regular sequence, or equivalently, $\FF = \tilde \FF \otimes_{S[L]} S$.
+
+Regardless of the exact approach, a key observation is that the strands of the complex $\FF$ in a fixed degree $\alpha\in \ZZ^n/L$ is equal to the strands $\FF_{\mathbf{u}}$ for any $\mathbf{u}\in \alpha$. Additionally  and also equal to the can be given in terms of the cellular chain complex of a space. In particular, we can define the subset given by
+\[(L_{\RR})_{\leq \mathbf{u}}:= \{p\in L_{\RR} \,|\, \Psi(p)\text{ divides }x^{\mathbf{u}}\} = \{p\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
+Then the cellular chain complex of this subcomplex of $L_{\RR}$ is identical to the strand of $\FF$ in degree $\alpha$. Then this following proposition is based primarily on the proof of Proposition~2.13 and the alternate sketch of proof of Corollary~2.15 from \cite{BCHSY} and is similar the proof of Proposition~2.6 from \cite{BH25}.
 
 \begin{prop}[\cite{BCHSY,BH25}]
   \label{prop:hhlStrands}
-  For $u\in \ZZ^n$, an element of the class $\alpha\in \ZZ^n/L$, the strand $\FF_{\alpha}$ is equal to the celluar homology of the subcomplex $(L_{\RR})_{\leq u}$.
+  For $\mathbf{u}\in \ZZ^n$, an element of the class $\alpha\in \ZZ^n/L$, the complexes of $k$-vector spaces $\FF_{\alpha}$, $\tilde \FF_{\mathbf{u}}$ and $C_\bullet(L_{\RR})_{\leq \mathbf{u}};k)$ are isomorphic.
 \end{prop}
 \begin{proof}
-  The complex $\FF'$ from the universal cover has strands in degree $u$ given by $C_\bullet((L_{\RR})_{\leq u})$.
+  Interpreting $\FF$ as $\tilde \FF \otimes_{S[L]}S$ there is a map $\tilde \FF \rightarrow \FF$ by $-\otimes_{S[L]}1$. For any cell $A\subseteq L_{\RR}$, the map on the summand of $\tilde \FF$ simply is the identity map $S(-\Psi(A))\rightarrow S(-\deg(\Psi(A)))$ which coarsens the grading from $\ZZ^n$ to $\ZZ^n/L$.
+
+  Then the image of the degree $\mathbf{u}$ component of the above is simply the map to the subspace of $S(-\deg(\Psi(A))$ spanned by the monomial $x^{\mathbf{u}-\Psi(A)}$, or zero if the monomial is a Laurent monomial.
+  Then by varying the $L$-translate $A'$ of $A$, one gets all monomials of $S(-\deg(\Psi(A))$ of the form $x^{\mathbf{u}-\Psi(A)}$, which is a basis for the degree $\alpha$ elements of $S(-\deg(\Psi(A)))$. Applying this across all cells of $L_{\RR}/L$, one finds that the restricted map $\tilde \FF_{\mathbf{u}}\rightarrow \FF_{\alpha}$ is an isomorphism of complexes of k-vector spaces.
+  
+  Now to relate to the cellular homology, observe that For each cell $A\subseteq L_{\RR}$ the summand of $A$ in $\tilde \FF$ has component in degree $\mathbf{u}$ given by
+
+  \[S(-\Psi(\mathbf{p}))_{\mathbf{u}} = 
+  \begin{cases}
+    k & \Psi(\mathbf{p})\text{ divides } x^{\mathbf{u}}\\
+    0 & \text{otherwise}
+  \end{cases}\]
+
+  Thus the cells of $L_{\RR}$ for which the summand corresponding to $A$ participates is exactly those cells contained in $(L_{\RR})_{\leq \mathbf{u}}$. Moreover, the maps between these summands are exactly the differentials from the cellular structure, so we have
+  \[\tilde \FF_{\mathbf{u}} = C_i((L_{\RR})_{\leq u};k)\]
 \end{proof}
 
-That $\FF$ is a resolution is then immediate, as the subcomplex $(L_{\RR})_{\leq u}$ are polyhedral and thus contractable or empty. As a consequence, the only homology is in $H_0$.
+That $\FF$ is a resolution is then immediate, as the subcomplex $(L_{\RR})_{\leq \mathbf{u}}$ are polyhedral and thus contractable or empty. As a consequence, the only homology is in $H_0$.
 
 The second key is to prove that the module is the integral closure $\overline{S/I_L}$. Here we recall a fact about toric rings. First the ring $S/I_L$ is a semigroup ring for the semigroup $A=\NN^n/L$, that is the image of $\NN^n$ under the map $\ZZ^n \rightarrow \ZZ^n/L$. Then for a semigroup ring $k[A]$, the integral closure is itself a semigroup ring, and is in fact the semigroup ring of the saturation $\overline{A}$.
 
-The saturation is given by
+The saturation affine semigroup $A\subseteq \ZZ^n$ is given by
 \[\overline{A} := (\RR_{\geq 0}A)\cap \ZZ^n \]
 
-There are then two plausible approaches to proving this, which correspond to the approaches from \cite{BCHSY} and \cite{BH25} respectively. One can either prove that the generators of the module $M_L$ correspond to monomials in $k[\ZZ^n]$ which generate $\overline{A}$ as a $A$-module. Or one can prove that the those degrees $\alpha\in \ZZ^n/L$ where $(L_{\RR})_{\leq u}$ is non-empty are exactly the degrees of $A$.
+There are then two plausible approaches to proving this, which correspond to the approaches from \cite{BCHSY} and \cite{BH25} respectively. One can either prove that the generators of the module $M_L$ correspond to monomials in $k[\ZZ^n]$ which generate $\overline{A}$ as a $A$-module. Or one can prove that the those degrees $\alpha\in \ZZ^n/L$ where $(L_{\RR})_{\leq u}$ is non-empty are exactly the degrees of $A$. The approach taken here follows mostly the approach in Proposition~3.3 of \cite{BCHSY}. The corresponding result in \cite{BH25} is Lemma~2.8.
 
 \begin{prop}[TODO cite both]
   \label{prop:resolves-integral-closure}
-  The complex $\FF$ resolves $\overline{S/I_L}$ as an $S$-module.
+  $M_L \otimes_{S[L]} S$ is isomorphic to $\overline{S/I_L}$ as an $S$-module.
 \end{prop}
 \begin{proof}
+  $M_L\otimes_{S[L]} S$ is generated by monomials in $k[\ZZ^n/L]$ of the form $x^{\lceil \textbf{v}\rceil}$ for $\textbf{v}$ a vertex of the cellular structure on $L_{\RR}$\jay{TODO technically this needs the regular sequence statement/the exactness of the functor}. And the normalization viewed as the semigroup ring $k[\overline{A}]$ is naturally a $S$-submodule of $k[\ZZ^n/L]$. So we will show that they are identical as submodules.
 
-  %% The approach in \cite{BCHSY} is to compute with the vertices, as those generate the $S$-module.
-
-  %% The approach in \cite{BH25} instead 
-
-  
-  $H_0(\FF')$ is generated by monomials in $k[\ZZ^n/L]$ of the form $\prod_{i=1}^n x_i^{\lceil v_i\rceil}$.
-
-  First we show that the monomials $\prod_{i=1}^n x_i^{\lceil v_i\rceil}$ are elements of the semigroup $\overline{A}$.
-
+  First we show that the monomials $x^{\lceil \textbf{v}\rceil}$ are elements of the semigroup $\overline{A}$.
   Let $\eta:\ZZ^n\rightarrow \ZZ^n/L$ be the usual quotient map and $\eta_{\RR}:\RR^n\rightarrow \RR^n/L$ the corresponding map after tensor with $\RR$. For a vertex $\mathbf{p}\in L_{\RR}$, we have
   \[\eta(\lceil \mathbf{p}\rceil) = \eta(\lceil \mathbf{p}\rceil)-\eta(\mathbf{p}) = \eta(\lceil \mathbf{p}\rceil - \mathbf{p})\]
   However $\lceil \mathbf{p}\rceil - \mathbf{p}$ has all positive coordinates and so is in $\RR_{\geq 0} A=\eta(\RR_{\geq 0}^n)$.
 
-  For the converse, suppose that $a\in \overline{A}$, then there exists $\mathbf{q}\in \RR_{\geq 0}^n$ and $\mathbf{u}\in \ZZ^n$ such that
-  %% \[a = \eta_{\RR}(\mathbf{q}) = \eta(\mathbf{u})\]
-  %% Set $b = \eta_{\RR}(\lfloor \mathbf{q}\rfloor)$, $
-  
+  For the converse, suppose that $\mathbf{a}\in \overline{A}$, then
+  we wish to show that the corresponding element of $k[\overline{A}]$ is an element of $M_L\otimes_{S[L]} S$.
+  As $a\in \overline{A} = \eta(\RR_{\geq 0}^n)\cap (\ZZ^n/L)$, there exists
+  $\mathbf{q}\in \RR_{\geq 0}^n$ and $\mathbf{u}\in \ZZ^n$ such that
+  \[\mathbf{a} = \eta_{\RR}(\mathbf{q}) = \eta(\mathbf{u})\]
+
+  It suffices to prove there exists a vertex $p'\in L_{\RR}$ such that $\Psi(p')$ divides $x^{\mathbf{u}}$.
+  Let $\mathbf{p}=\mathbf{u}-\mathbf{q}$, then as $\lceil \mathbf{p} \rceil = \mathbf{u} - \lfloor \mathbf{q}\rfloor$ and thus $\Psi(\mathbf{p})$ divides $x^{\mathbf{u}}$. To get a vertex, observe that if $\mathbf{p}'$ is any vertex of the unique cell of $L_{\RR}$ that contains $\mathbf{p}$ in it's relative interior, then $\Psi(\mathbf{p}')$ divides $\Psi(\mathbf{p})$ and thus divides $x^{\mathbf{u}}$ as desired.
+\end{proof}
+
+\begin{remark}
+  While the generators of $M_L$ are phrased in terms of the vertices of the cell structure on $L_{\RR}$, a (more redundant) set of generators can be given by simply taking $x^{\lceil\mathbf{p} \rceil}$ for all points $p\in L_{\RR}$. One observation from this is that while the resolution depends on the cell structure, the module $M_L$ only depends on the lattice $L$ (and our use of the ceiling function).
+  \jay{TODO move this to section 7}
+\end{remark}
+
+Together these two propositions prove Theorem~\ref{thm:HHL-resolution}
+
+\begin{proof}[Proof of Theorem~\ref{thm:HHL-resolution}]
+  That the complexes $\tilde \FF$ and $\FF$ are resolutions follows from Proposition~\ref{} by observing that $(L_{\RR})_{\leq \mathbf{u}}$ is polyhedral and thus either contractable or empty.
+
+  That the complex $\tilde \FF$ resolves $M_L$ follows first by observing that there exists a canonical $\ZZ^n$-graded map $\FF_0\rightarrow k[\ZZ^n]$ compatible with the resolution thus giving a $\ZZ^n$-graded map $H_0(\tilde FF)\rightarrow k[\ZZ^n]$.
+  To show that $H_0(\tilde \FF)\cong M_L$, observe first that for a degree $\mathbf{u}\in \ZZ^n$,
+  $H_0(\tilde \FF)_{\mathbf{u}}=H_0((L_{\RR})_{\leq \mathbf{u}})$. Moreover $(L_{\RR})_{\leq \mathbf{u}}$ is either contractable if there exists a vertex $\mathbf{v}\in L_{\RR}$ such that $\Phi(\mathbf{v})$ divides $x^{\mathbf{u}}$ or empty otherwise. As $M_L$ is generated by the vertices $\mathbf{v}\in L_{\RR}$, it follows that $(L_{\RR})_{\leq \mathbf{u}}$ is contractable if and only if $x^{\mathbf{u}}\in M_L$ and empty otherwise.
+
+  That the complex $\FF$ resolves $\overline{S/I_L}$ follows from Proposition~\ref{prop:resolves-integral-closure}.
 \end{proof}
 
 \ifdefined\whole
