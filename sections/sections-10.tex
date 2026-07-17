@@ -34,7 +34,11 @@ Let us explain how Theorem~\ref{thm:HHLdiagonal} implies Conjecture~\ref{conj:BE
 
 \begin{thm}[Fujita Vanishing Theorem \cite{lazarsfeld04}*{Theorem 1.4.35}]
 \label{thm:fujita}
-Let $\F$ be a coherent sheaf on~$X$, and let $\cL$ be an ample line bundle on $X$. There exists $m \gg 0$, depending on $\F$ and $\cL$, such that $H^j(X,\F \otimes \cL^m \otimes \cL') = 0$ for all $j > 0$ and all nef line bundles $\cL'$ on $X$.
+Let $\F$ be a coherent sheaf on~$X$, and let~$\cL$ be an ample line bundle on $X$. For $m \gg 0$, depending on $\F$ and $\cL$, such that
+$$
+H^j(X,\F \otimes \cL^m \otimes \cL') = 0
+$$
+for all $j > 0$ and all nef line bundles $\cL'$ on $X$.
 \end{thm}
 
 
@@ -46,7 +50,7 @@ Let $\cR$ be as in Theorem~\ref{thm:HHLdiagonal}. We will write ``$\cL_1 \boxtim
 \end{equation}
 Of course, the homology of $\cB(\E)$ is concentrated in degree 0 and isomorphic to $\E$. Recall that the pairs of line bundles $\cL_1$ and $\cL_2$ appearing in~\eqref{eqn:monad} lie in the Thomsen collection of $X$.
 
-Let $\F$ be the sheaf on $X$ associated to our $S$-module $M$, and let $\mathcal{A}$ be an ample line bundle on~$X$. Applying Theorem~\ref{thm:fujita} to the pair $\F \otimes \cL$ and $\mathcal{A}$ for all line bundles~$\cL$ in the Thomsen collection of~$X$, we may choose $m \gg 0$ such that $H^j(X, \F \otimes \cL) = 0$ for all $j > 0$. Thus, we have $\B(\F \otimes \cA)_\ell = 0$ unless~$0 \le \ell \le \dim X$, and so $\B(\F \otimes \cA) \otimes \cA^{-1}$ is a locally free resolution of $\cF$ by sums of line bundles of length at most $\dim{X}$. Taking global sections of (all twists of) $\B(\F \otimes \cA) \otimes \cA^{-1}$ gives the desired virtual resolution.
+Let $\F$ be the sheaf on $X$ associated to our $S$-module $M$, and let $\mathcal{A}$ be an ample line bundle on~$X$. Applying Theorem~\ref{thm:fujita} to the pair $\F \otimes \cL$ and $\mathcal{A}$ for all the (finitely many) line bundles~$\cL$ in the Thomsen collection of~$X$, we may choose $m \gg 0$ such that $H^j(X, \F \otimes \cL \otimes \cA^m) = 0$ for all $j > 0$. Thus, we have $\B(\F \otimes \cA)_\ell = 0$ unless~$0 \le \ell \le \dim X$, and so $\B(\F \otimes \cA) \otimes \cA^{-1}$ is a locally free resolution of $\cF$ by sums of line bundles of length at most $\dim{X}$. Taking global sections of (all twists of) $\B(\F \otimes \cA) \otimes \cA^{-1}$ gives the desired virtual resolution.
 \end{proof}
 
 \subsection{Bondal's Conjecture}\label{subsect:bondalConjecture}
