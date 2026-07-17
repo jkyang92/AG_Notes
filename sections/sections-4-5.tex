@@ -74,7 +74,7 @@ Thus a point of a simplicial $X_\Sigma$ is a $G$-orbit of ``homogeneous coordina
   \begin{enumerate}
   \item \textbf{Projective space $\PP^n$.}  The fan has as rays the standard basis $u_1,\dots,u_n$ and their complement $u_0 = -u_1-\dots-u_n$, with maximal cones spanned by all $n$-subsets. Then $S = \kk[x_0,\dots,x_n]$ with the standard $\ZZ$-grading $\deg(x_i) = 1$ and $B = (x_0,\dots,x_n)$: the only primitive collection is all of $\Sigma(1)$, so $V(B) = \{0\}$.
 
-  \item \textbf{Products $\PP^{n_1}\times\dots\times\PP^{n_r}$.}  The Cox ring is a multigraded polynomial ring with $\ZZ^r$-grading and $B = \bigcap_i (x_{i,0},\dots,x_{i,n_i})$; the primitive collections are the $k$ sets of rays of the factors.
+  \item \textbf{Products $\PP^{n_1}\times\dots\times\PP^{n_r}$.}  The Cox ring is a multigraded polynomial ring with $\ZZ^r$-grading and $B = \bigcap_i (x_{i,0},\dots,x_{i,n_i})$; the primitive collections are the $r$ sets of rays of the factors.
 
   \item \textbf{Weighted projective space $\PP(a_0,\dots,a_n)$, where $\gcd(a_0,\dots,a_n) = 1$.}  The fan is given by the quotient lattice $N = \ZZ^{n+1}/(a_0,\dots,a_n)$, the rays being the images of the standard basis vectors. Then, $S = \kk[x_0,\dots,x_n]$ and $B = (x_0,\dots,x_n)$ with $\deg(x_i) = a_i$. Note that the inclusion of the Picard group in the class group is $\on{lcm}(a_0,\dots,a_n)\ZZ \xhookrightarrow{} \ZZ$, thus weighted projective spaces are generally singular; see Example~\ref{ex:P112charts}.
 
@@ -168,7 +168,7 @@ Just as homogeneous ideals of $\kk[x_0,\dots,x_n]$ cut out closed subschemes of 
 \end{remark}
 
 \begin{prop}[Toric Ideal--Variety Correspondence, \cite{CLS}*{Prop.~5.2.7}]\label{prop:ideal-variety}
-  Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. Then there is a bijective correspondence
+  Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. There is a bijective correspondence
   \[ \{\text{closed subvarieties of } X\} \longleftrightarrow \{\text{radical homogeneous ideals } I\subseteq B\}. \]
 \end{prop}
 
