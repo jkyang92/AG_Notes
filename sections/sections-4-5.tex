@@ -286,7 +286,36 @@ We close with the cohomological vanishing theorem that powers the Bondal--Thomse
   where the last equality is Theorem~\ref{thm:demazureL5} applied to $D=0$. Hence every line bundle summand of a toric Frobenius pushforward has vanishing higher cohomology. The finitely many line bundles arising this way form the Bondal--Thomsen collection of Lecture~\ref{lec:6-bondal-thomsen}.
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Toric stacks (optional)}
 
+Theorem~\ref{thm:coxderived} fails for $\PP(1,1,2)$ because the geometric quotient forgets the finite stabilizers of the $G$-action, such as the $\mu_2$ at $[0:0:1]$. The failure is repaired not by changing the algebra but by changing the geometry: replace the GIT quotient by the corresponding quotient \emph{stack}. Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $G = \Hom_\ZZ(\Cl(X),\kk^*)$ act on $\Spec S$ as in Theorem~\ref{thm:coxquotient}. The \defi{canonical toric stack} of $X$ is the quotient stack
+\[ \sX \,\ce\, \bigl[\,\Spec(S)\setminus V(B)\,/\,G\,\bigr]. \]
+Since $X$ is simplicial, $\sX$ is a smooth toric Deligne--Mumford stack, and the natural map $\pi\co\sX\to X$ realizes $X$ as its coarse moduli space \cite{BorisovChenSmith2004}.\footnote{Our viewpoint on toric stacks here is deliberately algebraic, through modules and sheaves. A more geometric treatment via stacky fans and toric morphisms is introduced in \cite{BorisovChenSmith2004} and greatly expanded in \cites{GS1,GS2}.}
+
+Sheaves on quotient stacks are concrete algebraic objects. A (quasi)coherent sheaf on $[U/G]$ is precisely a $G$-equivariant (quasi)coherent sheaf on $U$. Consider $\sX = \PP_{\mathrm{stack}}(1,1,2) = [\bA^3\setminus\{0\}\,/\,\kk^*]$. A quasicoherent sheaf on $\bA^3$ is simply an $S$-module $M$, and a $\kk^*$-equivariant structure on it is a decomposition $M = \bigoplus_{d\in\ZZ} M_d$ into eigenspaces of the action. That is, exactly a $\ZZ$-grading compatible with the grading of $S$. Removing $V(\m)$ kills precisely the modules supported at the origin, i.e.\ the finite-length modules. Hence
+\[ \Coh\bigl(\PP_{\mathrm{stack}}(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_{\m}(S), \]
+exactly as for $\PP^n$. The same reasoning applies in general:
+
+\begin{thm}[\cite{BorisovChenSmith2004}]\label{thm:simplicialStack}
+  Let $X$ be a simplicial toric variety with $\Cl(X)$-graded Cox ring $S$ and irrelevant ideal $B$, and let $\sX = [\Spec(S)\setminus V(B)\,/\,G]$ be its canonical toric stack. Then
+  \[ \Coh(\sX)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_B(S). \]
+\end{thm}
+
+In short, sheaves on $\sX$ are graded $S$-modules modulo $B$-torsion, analogous to the smooth case in Proposition~\ref{prop:sheaf-module}, and this is the whole point of passing from the variety $X$ to the stack $\sX$. Passing to derived categories:
+
+\begin{cor}\label{cor:DbCoxStack}
+  With notation as in Theorem~\ref{thm:simplicialStack}, there is an equivalence
+  \[ D^b(\sX)\ \simeq\ D^b(S)\,/\,D^b_B(S). \]
+\end{cor}
+
+We will not prove this; it follows from established results on quotient stacks, of which perhaps the most direct reference is \cite[Ex.~7.21]{Vistoli89}; see also \cite[Tag 06WT]{stacks-project}, \cite[Thm.~4.46]{vistoli}\mahrud{which paper is this?}, and \cite[Thm.~7.1.11]{alper}. When $X$ is smooth, $G$ acts freely on $\Spec(S)\setminus V(B)$, so $\sX\cong X$ and Corollary~\ref{cor:DbCoxStack} recovers Theorem~\ref{thm:coxderived}. When $X$ is simplicial but not smooth, the stack and the variety genuinely differ: for instance $\sX$ is smooth with $\Pic(\sX)\cong\Cl(X)$, so $\cO(1)$ \emph{is} a line bundle on $\PP_{\mathrm{stack}}(1,1,2)$, resolving the issues of Remark~\ref{rem:twistcaveat}.
+
+\begin{remark}[The variety and the Veronese subring]\label{rem:veronese}
+  The singular variety admits a parallel description. Writing $S^{(2)}=\kk[x^2,xy,y^2,z]$ for the second Veronese subring of $S$, generated in degree $2$, one has
+  \[ \coh\bigl(\PP(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}\bigl(S^{(2)}\bigr)\,/\,\Mod_{\m}\bigl(S^{(2)}\bigr), \]
+  the classical Serre description of $\Proj S^{(2)}$. This explains Example~\ref{ex:oddP112}: the module $M$ there is not finite length over $S$, so it induces a \emph{nonzero} sheaf on the stack, but $M^{(2)}=\bigoplus_{d\in2\ZZ}M_d=0$, so it induces the \emph{zero} sheaf on the variety. The stack quotient is thus tied to $S$ itself, while the GIT quotient is tied to the Veronese subring; for the multigraded module theory of these notes the stack is the more natural object, and we pass to it whenever singular simplicial toric varieties arise. % in the Cox category of Lecture~\ref{lec:12-DCox-definition}.
+\end{remark}
 
 
 \ifdefined\whole
