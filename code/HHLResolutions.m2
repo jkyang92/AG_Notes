@@ -1,7 +1,7 @@
 newPackage(
     "HHLResolutions",
-    Version => "0.2",
-    Date => "June 10, 2026",
+    Version => "0.3",
+    Date => "July 16, 2026",
     Authors => {
         { Name => "Jay Yang"
         , Email => "jay.k.yang@vanderbilt.edu"}
@@ -9,8 +9,9 @@ newPackage(
     Headline => "Code to work with HHL and related resolutions",
     AuxiliaryFiles => true,
     PackageExports => {"NormalToricVarieties"},
-    PackageImports => {},
-    DebuggingMode => true
+    PackageImports => {"SimplicialComplexes"},
+--    DebuggingMode => true,
+    HomePage => "https://github.com/jkyang92/HHLResolutions/"
     )
 
 export {
@@ -29,26 +30,44 @@ export {
     "andersonDiagonalModuleVertices",
     "andersonVertexToExponent",
     "andersonLaurentModule",
+    "andersonModule",
     "hhlLaurentModule",
+    "hhlModule",
     "gensToLaurentModule",
+    "gensToToricModule",
     "andersonDiagonalResolution",
     "bondalThomsenStrata",
-    "makeResolution"
+    "makeResolution",
+    "lineBundleBondalThomsenMonad",
     }
+
+--a deprecation helper for all of the renaming
+--provide symbols!
+addDeprecatedName = (oldName,newName) -> (
+    -- compute these values immediately so that errors trigger in installPackage/needsPackage
+    -- instead of when the function is run
+    f := value newName;
+    errStr := "The function " | toString oldName | " has been renamed, please use " | toString newName | " instead";
+    oldName <- (args -> (
+            printerr errStr;
+            f args
+            )))
 
 
 load "./HHLResolutions/resolution_tools.m2"
 load "./HHLResolutions/hhl.m2"
 load "./HHLResolutions/anderson.m2"
 load "./HHLResolutions/modules.m2"
-load "./HHLResolutions/tests.m2"
+load "./HHLResolutions/monads.m2"
 
+load "./HHLResolutions/tests.m2"
 load "./HHLResolutions/doc.m2"
 
 end--
 
 restart
-installPackage "HHLResolutions"
+installPackage("HHLResolutions", RemakeAllDocumentation=>  true)
+installPackage"HHLResolutions"
 needsPackage "HHLResolutions"
 check HHLResolutions
 viewHelp HHLResolutions
