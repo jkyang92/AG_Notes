@@ -76,15 +76,7 @@ This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the form
 In Example~\ref{ex:tate}, we only needed to resolve a single module, not a complex with nonzero homology in multiple positions. An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that this always happens: $R(M_{\ge s})$ has nonzero homology only in degree $-s$, so 
 so $G$ is just the minimal free resolution of $H^{-s}(R(M_{\ge s}))$. Let us give a quick sketch of a proof of this fact, as we will need it later. We will use the following technical lemma:
 
-\begin{lemma}[\cite{EFS}*{Proposition 2.3(a)}]
-\label{lem:tor}
-For any graded $S$-module $M$, we have $H_i(R(M)) \cong \Tor^S_{i+j}(M, \k)_j$.
-\end{lemma}
 
-
-\begin{proof}[Sketch of proof]
-The idea is that, forgetting gradings, $R(M)$ is isomorphic to $M \otimes_S K$, where $K$ is the Koszul complex on the variables in $S$. The proof thus boils down to keeping careful track of how this isomorphism interacts with the homological and internal gradings; we omit the details. 
-\end{proof}
 
 \begin{prop}
 If $M$ is a finitely generated graded $S$-module with regularity $r$, then $R(M_{\ge r})$ has nonzero homology only in degree $-r$. 

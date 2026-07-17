@@ -195,7 +195,7 @@ Let $W$ be an $(n+1)$-dimensional $\kk$-vector space with dual $V = W^*$, and se
 S = \Sym(W) = \kk[x_0,\dots,x_n], \qquad
 E = \textstyle\bigwedge(V) = \bigwedge(e_0,\dots,e_n),
 \]
-where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional (noncommutative) algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, meaning that that there are $\k$-algebra isomorphisms $\Ext_S^*(\k, \k) \cong E$, and $\Ext_E^*(\k, \k) \cong S$. There are many other examples of Koszul dual pairs: see e.g. \cite{PP05} for a survey.
+where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional (noncommutative) algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, meaning that that there are $\k$-algebra isomorphisms $\Ext_S^*(\k, \k) \cong E$, and $\Ext_E^*(\k, \k) \cong S$. There are many other examples of Koszul dual algebras: see e.g. \cite{PP05} for a survey.
 
 %a relationship encoded by the distinguished element $\sum_j x_j\otimes e_j\in S\otimes_\kk E$, which squares to zero and governs all of the constructions below.
 
@@ -209,35 +209,56 @@ The correspondence is realized by an equivalence $R \co \Db(S) \xra{\simeq} \Db(
   whose differential is also multiplication  by $\sum_{i = 0}^n x_i \otimes e_i$. One extends $L$ to complexes in the same way as $R$. 
 
 
+
+Notice that $\rank_E R(M) = \dim_\k M$, and similarly for $L$. Thus, applying $L$ to any finitely generated~$E$-module gives a bounded complex. But since finitely generated $S$-modules are rarely finitely generated, we typically have $R(M)_i \ne 0$ for $i \ll 0$. Nevertheless, if $M$ is finitely generated, the homology of $R(M)$ is as well, by the following lemma: 
+
+\begin{lemma}[\cite{EFS}*{Proposition 2.3(a)}]
+\label{lem:tor}
+For any graded $S$-module $M$, we have $H_i(R(M)) \cong \Tor^S_{i+j}(M, \k)_j$.
+\end{lemma}
+
+In particular, the functor $R$ sends finitely generated $S$-modules to the \emph{bounded} derived category of $E$. We include a sketch of a proof, since we will need this lemma again in Lecture~\ref{lec:18-tate-resolutions-PPn}.
+
+
+\begin{proof}[Sketch of proof]
+The idea is that, forgetting gradings, $R(M)$ is isomorphic to $M \otimes_S K$, where $K$ is the Koszul complex on the variables in $S$. The proof thus boils down to keeping careful track of how this isomorphism interacts with the homological and internal gradings; we omit the details. 
+\end{proof}
+
+We omit the proof of the following theorem; a complete argument is more than one lecture allows. 
+
+
 \begin{thm}[\cite{EFS}*{Corollary 2.7}, \cite{BGG}]\label{thm:BGG}
   The functors $L$ and $R$ descend to mutually inverse equivalences of triangulated categories
   \[  R\colon \Db(S)\xto{\simeq}\Db(E), \qquad L\colon \Db(E)\xto{\simeq}\Db(S). \]
 \end{thm}
 
-Notice that $\rank_E R(M) = \dim_\k M$, and similarly for $L$. Thus, applying $L$ to any finitely generated~$E$-module gives a bounded complex. But since finitely generated $S$-modules are rarely finitely generated, we typically have $R(M)_i \ne 0$ for $i \ll 0$. Nevertheless, if $M$ is finitely generated, the homology of $R(M)$ is as well: this follows from \cite{EFS}*{Lemma 2.3(a)}. 
 
+%A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $R(M)$ is an unbounded complex. However, $R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $L$, since $P$ is finite-dimensional over $\kk$. 
 
-A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $R(M)$ is an unbounded complex. However, $R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $L$, since $P$ is finite-dimensional over $\kk$. We do not prove Theorem~\ref{thm:BGG}; a complete argument is more than one lecture allows. Instead we illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
+Let us illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
 
 \begin{example}\label{ex:BGGresidue}
-  Since $\kk$ is concentrated in internal degree $0$, the complex $R(\kk)$ has a single nonzero term, the free module $\omega_E$ in cohomological degree $0$. Now to apply $L$, note that the graded piece $(\omega_E)_p = \Hom_\kk(E_{-p},\kk)\cong\bigwedge^p W$ contributes the term $S \otimes_\kk\bigwedge^p W$ in cohomological degree $-p$, and $e_j$ acts on $\omega_E$ by contraction, so the differential coming from $\sum_j x_j\otimes e_j$ assembles these terms into the Koszul complex \michael{including the twists in these examples would be helpful too. Not only is this useful for Tate resolutions later, but I think it helps the audience line up which summands correspond to which basis elements in $\om_E$}
-  \[  L(\omega_E)\colon\quad S\otimes\textstyle\bigwedge^{n+1}W\to\cdots\to S\otimes\bigwedge^1 W\to S,  \]
-  sitting in cohomological degrees $-(n+1),\dots,0$, which is the minimal free resolution of $\kk$ over $S$. Hence $LR(\kk)\simeq \kk$ in $\Db(S)$, as Theorem~\ref{thm:BGG} predicts. Note the role of the twist in $\omega_E\cong E(-n-1)$ is that applying $L$ to the untwisted module $E$ instead yields the dual Koszul complex on the $\bigwedge^p V$, whose only cohomology is $\kk(n+1)$ in cohomological degree $n+1$.
+  Since $\kk$ is concentrated in internal degree $0$, the complex $R(\kk)$ has a single nonzero term, the free module $E^*$ in cohomological degree $0$. Now to apply $L$, note that the graded piece $(E^*)_p =\bigwedge^p W$ contributes the term $S(-p) \otimes_\kk\bigwedge^p W$ in homological degree $p$, and $e_j$ acts on $E^*$ by contraction, so the differential coming from $\sum_{i = 0}^n x_j\otimes e_j$ assembles these terms into the Koszul complex 
+  \[  L(E^*)\colon\quad S\from S\otimes\bigwedge^1 W\from \cdots\from S\otimes\textstyle\bigwedge^{n+1}W,  \]
+  sitting in homological degrees $0, \dots, n+1$, which is the minimal free resolution of $\kk$ over $S$. Hence $LR(\kk)\simeq \kk$ in $\Db(S)$, as Theorem~\ref{thm:BGG} predicts. The role of the twist in $E^*\cong E(-n-1)$ is that applying $L$ to the untwisted module $E$ instead yields the dual Koszul complex involving the $\bigwedge^p V$, whose only homology is $\kk(n+1)$ in homological degree $-n-1$.
 \end{example}
 
 \begin{example}
-Maybe add an example with $\RR$, e.g. $\RR(S)$ when $S$ is a polynomial ring in one or two variables. 
+We add one more simple example involving the functor $R$. Say $S = \k[x_0, x_1]$ and $M = S / (x_0)$. Since $\dim_\k M_i = 1$ for $i \ge 0$, each term of $\RR(M)$ has rank 1. And since $x_0$ annihilates $M$, the differential is just multiplication by $e_1$:
+$$
+R(M) = \left[\cdots \xla{e_1} E^*(-2) \xla{e_1} E^*(-1) \xla{e_1} E^* \right].
+$$
 \end{example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The singularity category of $E$}
 
-The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategories, and passing to quotients recovers $\Db(\PP^n)$. Let $\Db_\m(S)\subseteq \Db(S)$ denote the thick subcategory of complexes whose homology is supported on the homogeneous maximal ideal $\m$, and recall that the \defi{perfect complexes} $\Perf(E)\subseteq \Db(E)$ form the thick subcategory generated by the free module $E$.
+The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategories, and passing to quotients recovers $\Db(\PP^n)$. Let $\Db_\m(S)\subseteq \Db(S)$ denote the  subcategory given by complexes whose homology is finite dimensional over $\k$, and let $\Perf(E)$ be the subcategory of \emph{perfect complexes}, i.e. bounded complexes of finitely generated free modules. Since $\Db_\m(S)$ (resp. $\Perf(E)$) is the thick subcategory generated by twists of $\k$ (resp. $E$), and the functor $R$ maps twists of $\k$ to twists (and homological shifts) of $E$, one concludes:
 
 \begin{prop}[\cite{EFS}*{\S2}]\label{prop:BGGsupport}
   Under the equivalence of Theorem~\ref{thm:BGG}, the subcategory $\Db_\m(S)$ corresponds to $\Perf(E)$.
 \end{prop}
 
-In the context of Example~\ref{ex:BGGresidue}, since the residue field is supported at $\m$, we have $\kk\in\Db_\m(S)$, and the proposition states that $R(\kk) = \omega_E$ is a perfect complex.
+%In the context of Example~\ref{ex:BGGresidue}, since the residue field is supported at $\m$, we have $\kk\in\Db_\m(S)$, and the proposition states that $R(\kk) = E^*$ is a perfect complex.
 
 \begin{defn}[see {\cite[Ch.~10]{weibel}}]
   Given a thick subcategory $\cB\subseteq \cD$, the \defi{Verdier quotient} $\cD/\cB$ is the triangulated category with the same objects as $\cD$, obtained by formally inverting all morphisms whose cone lies in $\cB$.
@@ -249,15 +270,15 @@ which is the derived-category analogue of Serre's description of coherent sheave
 
 On the exterior side, the analogous quotient is the \defi{singularity category}
 \[ \Dsg(E) \ce \Db(E)\,/\,\Perf(E), \]
-in the sense of Buchweitz and Orlov \cite{buchweitz}; since $E$ is self-injective, $\Dsg(E)$ is equivalent to the stable module category of $E$. Combining Theorem~\ref{thm:BGG} with Proposition~\ref{prop:BGGsupport} and passing to Verdier quotients, we conclude:
+in the sense of Buchweitz and Orlov \cite{buc21}; since $E$ is self-injective, $\Dsg(E)$ is equivalent to the stable module category of $E$. Combining Theorem~\ref{thm:BGG} with Proposition~\ref{prop:BGGsupport} and passing to Verdier quotients, we conclude:
 \[ \Db(\PP^n) \simeq \Db(S)/\Db_\m(S) \simeq \Db(E)/\Perf(E) = \Dsg(E). \]
 That is, the BGG correspondence identifies the derived category of $\PP^n$ with the singularity category of the exterior algebra $E$.
 
-\begin{remark}
-  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
-  \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk \omega_E(j) \]
-  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
-\end{remark}
+%\begin{remark}
+%  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
+ % \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk E^*(j) \]
+%  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
+%\end{remark}
 \ifdefined\whole
 \else
 \bibliographystyle{plain}
