@@ -14,12 +14,18 @@ Distinct smooth projective toric varieties can have the same Cox ring with the s
 
 We start with a polynomial ring $k[x_1,\ldots,x_n]$ and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$, which induces a $\Cl(S)$-grading on $S$.  We will assume throughout that this grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
 
+Write $M$ for the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebraic group $\Spec k[\Cl(S)]$, so that there is a short exact sequence
+
+\begin{align}\label{eq:M-SES}
+  0\to M\to\ZZ^n\to\Cl(S)\to 0.
+\end{align}
+
 \lauren{put setup in labeled environment for reference}
 
 The crucial observation of the secondary fan is that there are only finitely many toric varieties arising from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
 \begin{description}
   \item[GIT quotient/ample divisor]  In \lauren{reference} we saw that a smooth projective toric variety is a GIT quotient.  The \lauren{geometric??} quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
-  \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know what rays it should have in its fan, in order to satisfy \lauren{reference}.  The collection of polytopes with normal vectors among a fixed set form a fan, and will exactly enumerate the possible simplicial fans with rays among this set. \lauren{how does simplicial come in?}
+  \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know that its rays must come from \eqref{eq:M-SES}.  The collection of polytopes with normal vectors in a fixed list forms a fan, whose cones will exactly enumerate the possible simplicial fans on subsets of the rays. \lauren{how does simplicial come in?}
   \item[irrelevant ideal]  Perhaps the simplest way to describe which toric varieties are possible is to describe their irrelevant ideals, since $S$ with its grading and a suitable irrelevant ideal fully determines a toric variety.  Indeed the set of such ideals is easy to describe in terms of the map $\deg$, and each ideal quickly determines both pieces of data above.
 \end{description}
 
@@ -30,9 +36,7 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
 \end{example}
 
 \subsection{GIT quotients}\label{sec:variation-of-GIT}
-Write $M$ for the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebraic group $\Spec k[\Cl(S)]$.  The short exact sequence \lauren{move this to the general subsection}
-\[0\to M\to\ZZ^n\to\Cl(S)\to 0\]
-then induces maps of algebraic groups
+The sequence \eqref{eq:M-SES} induces maps of algebraic groups
 \[0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.\]  The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.  (Note that we have fixed a basis for $\ZZ^n$ by choosing variables for $S$.)
 
 We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory.  \lauren{give citation for additional reading}
@@ -76,16 +80,28 @@ Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$. We will
 The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan. \lauren{does the original GKZ construction cover the projective case though?} In this context the fan parametrizes polytopes whose normal vectors lie in a fixed list.
 
 \begin{defn}
-  Given $\alpha\in\ZZ^n$, write $P_\alpha$ for the polytope in $M\otimes_\ZZ\QQ$ defined by the restriction of the facets $x_i\geq -\alpha_i$ for all $i$.
+  Given $\alpha\in\QQ^n$, write $P_\alpha$ for the polytope in $M\otimes_\ZZ\QQ$ defined by the restriction of the facets $x_i\geq -\alpha_i$ for all $i$.
 \end{defn}
 
-\lauren{example to show restriction process}
+\begin{example}
+  restriction process
+\end{example}
 
 The polytope $P_\alpha$ may not require all $n$ inequalities, in case some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or possibly at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing $\alpha$ with another vector of the same degree only translates the polytope.
 
 \begin{lemma}[\lauren{cite CLS}]
-  If $\alpha,\alpha'\in\ZZ^d$ have $\deg x^\alpha=\deg x^{\alpha'}$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$.
+  If $\alpha,\alpha'\in\ZZ^d$ have $\deg x^\alpha=\deg x^{\alpha'}$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$. \lauren{does this work for rational $\alpha?$}
 \end{lemma}
+
+Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to translation within $M\otimes_\ZZ\QQ$.  At certain degrees the facet structure may change---for instance when a collection of hyperplanes intersects in unexpected codimension.
+
+\begin{example}
+  \lauren{polytope along a wall}
+\end{example}
+
+However this does not occur for a general choice of $\alpha$, creating a polyhedral fan structure in the collection of polytopes.
+
+\lauren{how exactly do we get the fan in the projective case?  is there a good reference besides CLS?}
 
 The toric variety $X_d$ is determined by the polytope $P_\alpha$ with $\deg\alpha=d$, though this polytope may have nonintegral vertices, requiring a slight generalization of the standard construction.
 
