@@ -195,33 +195,33 @@ Let $W$ be an $(n+1)$-dimensional $\kk$-vector space with dual $V = W^*$, and se
 S = \Sym(W) = \kk[x_0,\dots,x_n], \qquad
 E = \textstyle\bigwedge(V) = \bigwedge(e_0,\dots,e_n),
 \]
-where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional (noncommutative) algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, a relationship encoded by the distinguished element $\sum_j x_j\otimes e_j\in S\otimes_\kk E$, which squares to zero and governs all of the constructions below.
+where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional (noncommutative) algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, meaning that that there are $\k$-algebra isomorphisms $\Ext_S^*(\k, \k) \cong E$, and $\Ext_E^*(\k, \k) \cong S$. There are many other examples of Koszul dual pairs: see e.g. \cite{PP05} for a survey.
+
+%a relationship encoded by the distinguished element $\sum_j x_j\otimes e_j\in S\otimes_\kk E$, which squares to zero and governs all of the constructions below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The BGG correspondence}
 
-The correspondence is realized by an adjoint pair of exact functors between the bounded derived categories $\Db(S)$ and $\Db(E)$ of finitely generated graded modules.
-
-\begin{defn}\label{defn:BGGfunctors}
-  Set $\omega_E \ce \Hom_\kk(E,\kk)$, a free graded $E$-module of rank one generated in internal degree $n+1$, so that $\omega_E\cong E(-n-1)$. \michael{maybe explain the notation $\om_E$ (it is the canonical module of the Gorenstein ring $E$)} For a graded $S$-module $M$, let $\mathbf R(M)$ be the complex of free graded $E$-modules with
-  \[   \mathbf R(M)^i = \Hom_\kk(E, M_i) \cong M_i \otimes_\kk \omega_E \quad\text{in cohomological degree } i, \]
-  \michael{include the grading twists--this will matter for tate resolutions}
-  whose differential $\Hom_\kk(E, M_i)\to \Hom_\kk(E, M_{i+1})$ is induced by the Koszul element $\sum_j x_j\otimes e_j$, that is, $(\mathrm d\phi)(\varepsilon) = \sum_j x_j\,\phi(e_j\varepsilon)$. Dually, for a graded $E$-module $P$, let $\mathbf L(P)$ be the complex of free graded $S$-modules with
-  \[ \mathbf L(P)^i = S\otimes_\kk P_{-i} \quad\text{in cohomological degree } i, \]
+The correspondence is realized by an equivalence $R \co \Db(S) \xra{\simeq} \Db(E)$ of bounded derived categories of graded modules: let us explain how this equivalence works. Let $E^*$ denote the $\k$-dual of~$E$, which is isomorphic as an $E$-module to $E(-n-1)$. For a graded $S$-module $M$, let $R(M)$ be the complex of free graded $E$-modules with
+  \[   R(M)_i =  E^*(i) \otimes_\k M_{-i} \quad\text{in homological degree } i, \]
+  with differential given by multiplication on the left by $\sum_{i = 0}^n e_i \otimes x_i$. One extends $R$ from modules to complexes by applying the above formula term-wise and totalizing, yielding a 
+  
+  The inverse of $R$, which we denote by $L$, is given as follows. For a graded $E$-module $P$, let $L(P)$ be the complex of free graded $E$-modules with
+  \[ L(P)^i = S\otimes_\kk P_{-i} \quad\text{in cohomological degree } i, \]
   whose differential $s\otimes p\mapsto \sum_j x_j s\otimes e_j p$ is induced by the same element; note that multiplication by $e_j$ lowers internal degree, so this map indeed raises the cohomological degree by one. Both constructions extend termwise to complexes.
-\end{defn}
+
 
 \begin{thm}[\cite{EFS}*{\S2}, \cite{BGG}]\label{thm:BGG}
-  The functors $\mathbf L$ and $\mathbf R$ descend to mutually inverse equivalences of triangulated categories
-  \[  \mathbf R\colon \Db(S)\xto{\simeq}\Db(E), \qquad \mathbf L\colon \Db(E)\xto{\simeq}\Db(S). \]
+  The functors $L$ and $R$ descend to mutually inverse equivalences of triangulated categories
+  \[  R\colon \Db(S)\xto{\simeq}\Db(E), \qquad L\colon \Db(E)\xto{\simeq}\Db(S). \]
 \end{thm}
 
-A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $\mathbf R(M)$ is an unbounded complex. However, $\mathbf R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $\mathbf L$, since $P$ is finite-dimensional over $\kk$. We do not prove Theorem~\ref{thm:BGG}; a complete argument is more than one lecture allows. Instead we illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
+A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $R(M)$ is an unbounded complex. However, $R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $L$, since $P$ is finite-dimensional over $\kk$. We do not prove Theorem~\ref{thm:BGG}; a complete argument is more than one lecture allows. Instead we illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
 
 \begin{example}\label{ex:BGGresidue}
-  Since $\kk$ is concentrated in internal degree $0$, the complex $\mathbf R(\kk)$ has a single nonzero term, the free module $\omega_E$ in cohomological degree $0$. Now to apply $\mathbf L$, note that the graded piece $(\omega_E)_p = \Hom_\kk(E_{-p},\kk)\cong\bigwedge^p W$ contributes the term $S \otimes_\kk\bigwedge^p W$ in cohomological degree $-p$, and $e_j$ acts on $\omega_E$ by contraction, so the differential coming from $\sum_j x_j\otimes e_j$ assembles these terms into the Koszul complex \michael{including the twists in these examples would be helpful too. Not only is this useful for Tate resolutions later, but I think it helps the audience line up which summands correspond to which basis elements in $\om_E$}
-  \[  \mathbf L(\omega_E)\colon\quad S\otimes\textstyle\bigwedge^{n+1}W\to\cdots\to S\otimes\bigwedge^1 W\to S,  \]
-  sitting in cohomological degrees $-(n+1),\dots,0$, which is the minimal free resolution of $\kk$ over $S$. Hence $\mathbf L\mathbf R(\kk)\simeq \kk$ in $\Db(S)$, as Theorem~\ref{thm:BGG} predicts. Note the role of the twist in $\omega_E\cong E(-n-1)$ is that applying $\mathbf L$ to the untwisted module $E$ instead yields the dual Koszul complex on the $\bigwedge^p V$, whose only cohomology is $\kk(n+1)$ in cohomological degree $n+1$.
+  Since $\kk$ is concentrated in internal degree $0$, the complex $R(\kk)$ has a single nonzero term, the free module $\omega_E$ in cohomological degree $0$. Now to apply $L$, note that the graded piece $(\omega_E)_p = \Hom_\kk(E_{-p},\kk)\cong\bigwedge^p W$ contributes the term $S \otimes_\kk\bigwedge^p W$ in cohomological degree $-p$, and $e_j$ acts on $\omega_E$ by contraction, so the differential coming from $\sum_j x_j\otimes e_j$ assembles these terms into the Koszul complex \michael{including the twists in these examples would be helpful too. Not only is this useful for Tate resolutions later, but I think it helps the audience line up which summands correspond to which basis elements in $\om_E$}
+  \[  L(\omega_E)\colon\quad S\otimes\textstyle\bigwedge^{n+1}W\to\cdots\to S\otimes\bigwedge^1 W\to S,  \]
+  sitting in cohomological degrees $-(n+1),\dots,0$, which is the minimal free resolution of $\kk$ over $S$. Hence $LR(\kk)\simeq \kk$ in $\Db(S)$, as Theorem~\ref{thm:BGG} predicts. Note the role of the twist in $\omega_E\cong E(-n-1)$ is that applying $L$ to the untwisted module $E$ instead yields the dual Koszul complex on the $\bigwedge^p V$, whose only cohomology is $\kk(n+1)$ in cohomological degree $n+1$.
 \end{example}
 
 \begin{example}
@@ -236,7 +236,7 @@ The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategorie
   Under the equivalence of Theorem~\ref{thm:BGG}, the subcategory $\Db_\m(S)$ corresponds to $\Perf(E)$.
 \end{prop}
 
-In the context of Example~\ref{ex:BGGresidue}, since the residue field is supported at $\m$, we have $\kk\in\Db_\m(S)$, and the proposition states that $\mathbf R(\kk) = \omega_E$ is a perfect complex.
+In the context of Example~\ref{ex:BGGresidue}, since the residue field is supported at $\m$, we have $\kk\in\Db_\m(S)$, and the proposition states that $R(\kk) = \omega_E$ is a perfect complex.
 
 \begin{defn}[see {\cite[Ch.~10]{weibel}}]
   Given a thick subcategory $\cB\subseteq \cD$, the \defi{Verdier quotient} $\cD/\cB$ is the triangulated category with the same objects as $\cD$, obtained by formally inverting all morphisms whose cone lies in $\cB$.
