@@ -204,17 +204,18 @@ where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{
 
 The correspondence is realized by an equivalence $R \co \Db(S) \xra{\simeq} \Db(E)$ of bounded derived categories of graded modules: let us explain how this equivalence works. Let $E^*$ denote the $\k$-dual of~$E$, which is isomorphic as an $E$-module to $E(-n-1)$. For a graded $S$-module $M$, let $R(M)$ be the complex of free graded $E$-modules with
   \[   R(M)_i =  E^*(i) \otimes_\k M_{-i} \quad\text{in homological degree } i, \]
-  with differential given by multiplication on the left by $\sum_{i = 0}^n e_i \otimes x_i$. One extends $R$ from modules to complexes by applying the above formula term-wise and totalizing, yielding a 
-  
-  The inverse of $R$, which we denote by $L$, is given as follows. For a graded $E$-module $P$, let $L(P)$ be the complex of free graded $E$-modules with
-  \[ L(P)^i = S\otimes_\kk P_{-i} \quad\text{in cohomological degree } i, \]
-  whose differential $s\otimes p\mapsto \sum_j x_j s\otimes e_j p$ is induced by the same element; note that multiplication by $e_j$ lowers internal degree, so this map indeed raises the cohomological degree by one. Both constructions extend termwise to complexes.
+  with differential given by multiplication  by $\sum_{i = 0}^n e_i \otimes x_i$. One extends $R$ from modules to complexes by applying the above formula term-wise and totalizing. The inverse of $R$, which we denote by $L$, is given as follows. For a graded $E$-module $P$, let $L(P)$ be the complex of free graded $E$-modules with
+  \[ L(P)_i = S(-i) \otimes_\kk P_{i} \quad\text{in homological degree } i, \]
+  whose differential is also multiplication  by $\sum_{i = 0}^n x_i \otimes e_i$. One extends $L$ to complexes in the same way as $R$. 
 
 
-\begin{thm}[\cite{EFS}*{\S2}, \cite{BGG}]\label{thm:BGG}
+\begin{thm}[\cite{EFS}*{Corollary 2.7}, \cite{BGG}]\label{thm:BGG}
   The functors $L$ and $R$ descend to mutually inverse equivalences of triangulated categories
   \[  R\colon \Db(S)\xto{\simeq}\Db(E), \qquad L\colon \Db(E)\xto{\simeq}\Db(S). \]
 \end{thm}
+
+Notice that $\rank_E R(M) = \dim_\k M$, and similarly for $L$. Thus, applying $L$ to any finitely generated~$E$-module gives a bounded complex. But since finitely generated $S$-modules are rarely finitely generated, we typically have $\RR(
+
 
 A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $R(M)$ is an unbounded complex. However, $R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $L$, since $P$ is finite-dimensional over $\kk$. We do not prove Theorem~\ref{thm:BGG}; a complete argument is more than one lecture allows. Instead we illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
 

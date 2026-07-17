@@ -140,7 +140,7 @@ Tate resolutions have had a host of applications; let us highlight two of them. 
 \end{equation}
 that is quasi-isomorphic to the sheaf $\F$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad~\eqref{eqn:monad}. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
 
-The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}.
+The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}. What makes this algorithm fast is that it involves taking minimal free resolutions over an exterior algebra: since exterior algebras are finite dimensional over a field, homological calculations over them are particularly fast. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 19 (Sasha Zotine): Tate resolutions over toric varieties}\label{lec:19-tate-resolutions-toric}
