@@ -5,32 +5,19 @@
 \input{preamble}
 \begin{document}
 \fi
+\def\tF{{\widetilde \FF}}
+\def\BT{{Bondal-Thomsen\ }}
 
 \section{Lecture 7 (Jason McCullough): Constructing the resolution and examples}\label{lec:7-HHL-construction}
-
-\daniel{The notes in this section spill over into Lectures 7 and 8.  Need to subdivide, reframe etc.  A rough overview for how we want these three sections to look is the following:
-
-\begin{itemize}
-    \item  Lecture 7:  Focus on the construction of the resolution.  How are the terms and the differentials defined?  Give examples and get the audience familiar with the notation and with what is going on.  Probably focus primarily on simple cases, like a point in $\PP^1$, a point in $\PP^2$, a quadric in $\PP^2$, the twisted cubic.
-
-    There's a choice to be made in this lecture:  
-        \begin{itemize}
-            \item Whether you then continue on into more complicated examples (like the diagonal $\PP^2\subseteq \PP^2 \times \PP^2$, etc). 
-            \item  Whether you start to incorporate more nuanced properties of the resolution (e.g. that the free summands in the resolution correspond to Bondal-Thomsen classes) -- this will now be mentioned in 7, proven in section 8.
-        \end{itemize}
-
-    \item  Lecture 8:  This lecture is focused on increasing the complexity of the examples considered and demonstrating some of the more subtle properties of the resolutions.  Where you start depends on the final choice in the previous lecture.  You should demonstrate the resolution of the diagonal for a Hirzebruch surface of type 3, since that is a running example later on.
-
-    We want to also communicate the fact that the resolution ``only depends on the rays''.  Stating that fact precisely is a little bit delicate; see Corollary~\ref{cor:diagonalUniform} for one attempt at such a statement.  But this fact is relevant to our later treatment of King's Conjecture.
-    
-    \item  Lecture 9: The goal of this lecture is to prove the theorem.  If  you determine that's too hard, then we should reassess.
-\end{itemize}
-}
-
-
 This section is an introduction to the papers \cite{BCHSY} and \cite{BH25}.
 
-\def\tF{{\widetilde \FF}}
+As in Section~\ref{sec:*****}, $X = X(\Sigma)$ denotes a simplicial Toric variety where $\Sigma$ is a fan with $n$ rays, and set $M = N^{*}$. We will often make use of the exact sequence:
+$$
+0\to M \xrightarrow {\alpha} \ZZ^{n} \xrightarrow {deg} \Cl(X) \to 0
+$$
+We write $S = k[x_{1},\dots,x_{n}]= k[\NN^{n}]$ for the Cox ring of $X$.
+\david{This blurb should really be near the beginning of the notes, and sections that use it (every section?) should refer to it.}
+
 
 The inclusion of one toric variety in another is defined by a 
 homogeneous \emph{pure binomial prime ideal}
@@ -64,11 +51,10 @@ We regard the subdivision above as making $L_{\RR}$ into an infinite cell comple
 If $A$ is a cell, and $p = (p_1,\dots, p_n) \in \RR^n$ is a point in the
 interior of $A$, then we give $A$ the weight
 $$
-\Psi(A) \ce \prod_{i=1}^n x_i^{\lceil p_i\rceil}\in \ZZ^{n};
+\Psi(A) \ce \lceil p \rceil \in \ZZ^{n}.
 $$
-note that because the subdivision of $L$ is induced by the coordinate hyperplanes this
-is independent of the choice of $p$. 
-
+This is independent of the choice of $p$ because the subdivision of $L$ is induced by the coordinate hyperplanes.
+ 
 If $B$ is 
 a cell in the boundary of the closure $\overline A$, then $B$ is the intersection of
 $\overline A$ with some of the hyperplanes $H_{j}$. Thus any interior point of $B$ will
@@ -76,7 +62,14 @@ be a limit of points in the interior of $A$ where some coordinates become 0. It 
 $\Psi(B)$ will be termwise less than or equal to $\Psi(A)$; in fact $\Psi(A) - \Psi(B)$ is a vector
 of 0s and 1s.
 
-We define the term of $\tF$ corresponding to a cell $A$ to be $S(-\Psi(A))$. The differential of the resolution $\tF$ is obtained by choosing
+We define the term of $\tF$ corresponding to a cell $A$  to be $S(-\Psi(A))$. Thus if $p$ is an interior point of $A$
+we have
+\[
+-\deg(\Psi(A)) = -\deg( \lceil {p}\rceil) = -\sum_{i=1}^n\lceil -p_i\rceil D_i=\sum_{i=1}^n\lfloor p_i\rfloor D_i,
+\] 
+which is a \BT class.
+
+ We define the differential of the resolution $\tF$ is obtained by choosing
 an orientation on $L_\RR$ and homogenizing the usual differential of
 a cell complex $\partial_{L_{\RR}}A = \sum\epsilon_{i}B_{i}$, where each $\epsilon_{i} = \pm 1$, according to weights assigned to the chambers. With this homogenization, the component of the differential that maps $S(-\Psi(A))$ to $S(-\Psi(B_{i}))$ is multiplication by $\epsilon_{i}x^{\Psi(A) - \Psi(B_{i})}$. Thus the
 differential preserves the $\ZZ^{n}$-grading. As the monomials assigned this way are $L$-invariant, the complex $\tF$ is $L$-invariant.
@@ -99,12 +92,11 @@ so there is a natural augmentation map from $\tF_{0}$ to a module $M_{L}$ genera
 In Theorem~\ref{thm:HHL-resolution} we will prove that the complex $\tF$ is a resolution of $M_L$.
 
 \begin{remark}
-  While the generators of $M_L$ are phrased in terms of the vertices of the cell structure on $L_{\RR}$, a (redundant) set of generators can be given by  taking $\Psi(\mathbf{p})$ for all points $\mathbf{p}\in L_{\RR}$. Thus, while the resolution $\tF$ depends on the cell structure, the module $M_L$ only depends on the lattice $L$
+ Because $\Psi(A)$ is termwise $\geq \Psi(B)$ when $B$ is a vertex of $A$, the module $M_{L}$ contains (and thus is generated by) the elements $\Psi(\mathbf{p})$ for all points $\mathbf{p}\in L_{\RR}$. Thus, while the resolution $\tF$ depends on the cell structure, the module $M_L$ only depends on the lattice $L$
 \end{remark}
 
 In Theorem~\ref{thm:HHL resolution} we will prove that the complex $\tF$ is a resolution of $M_L$.
-
-Because the differentials of $\tF$ are $L$-invariant we can form a quotient by the action of $L$. Proposition 3.3 of~\cite{BCHSY} shows moreover that the quotient of $M_L$ by this $L$-action is $\overline{R}$, regarded as a fractional ideal of $R$. 
+Because the differentials of $\tF$ are $L$-invariant we can form a quotient by the action of $L$, obtaining the $\ZZ^{n}/L$-graded complex $\FF$. Proposition 3.3 of~\cite{BCHSY} shows  that the quotient of $M_L$ by this $L$-action is $\overline{R}$, regarded as a fractional ideal of $R$. Putting these results together shows that  $\FF$ is a resolution of $\overline R$.
 
 
 %% For $1\neq z\in L$ the element $1-z\in S[L]$ is a nonzerodivisor on any $L$-graded $S[L]$ module. 
@@ -376,33 +368,37 @@ $R\cdot(x^2/y, y) = R\cdot (x^2/y)$, as required.
 
 \section{Lecture 8 (Ryan Watson): More examples and features}\label{lec:8-HHL-examples}
 
-The resolution constructed in Lecture~\ref{lec:7-HHL-construction} has several important structural features. The first of these is its connection with the Bondal-Thomsen collection. The key case of this is that of the resolution of the torus identity point in $X$. In this case, which corresponds to the case where $L=M_X$, the summands of the resolution $\FF$ are exactly the Bondal-Thomsen elements. In general, we have the following corollary.
-
+The following result summarizes the construction in the previous lecture. 
 \begin{cor}
   \label{cor:hhlSummandsBT}
-  Let $X'\subseteq X$ be a toric subvariety of a toric variety and let $L\subseteq \ZZ^n$ be the lattice such that $V(I_L)$ cuts out $X'$ as a subvariety of $X$. Then $L\subseteq M_X\subseteq \ZZ^n$.
-  The summands of the resolution $\FF$ are all elements of the Bondal-Thomsen collection. Moreover if $L=M_X$ then the summands of the resolution $\FF$ are exactly the Bondal-Thomsen collection of $X$.
+  Let $X'\subseteq X$ be a toric subvariety,  let $L\subseteq M$ be the corresponding sublattice, and let $I_{L}$ be the corresponding binomial ideal. There is an $S$-free $ZZ^{n}/L$-graded resolution $\FF$ of the
+  normalization $\overline R$ of the ring $S/I_{L}$such that the free modules $\FF_{i} = \oplus S(-\Psi(A))$, where the sum is over all the cells  $A$ of $L \otimes \RR$. Moreover each $S(-\Psi(A))$ is a \BT class. 
+  The construction depends only on the Cox ring with its grading, and not on the additional data of the
+  irrelevant ideal of the toric variety\qed
 \end{cor}
-\begin{proof}
-  Every point in $L_{\RR}$ is contained in a cell of the subdivision of $L_{\RR}$, and each cell $A$ of the subdivision
-  contributes a single summand to the resolution $\FF$ of the form $S(-\deg(\Psi(A)))$. 
-  Thus the summands that appear in $\FF$ will correspond exactly to the image of $L_{\RR}$ under the composite map
-  \[L_{\RR}\xrightarrow{\Psi} \ZZ^n \xrightarrow{-\deg} \Cl(X).\]
 
-  Then observe that the map $\Psi$ factors through $\RR\otimes M_X$ as follows
 
-\[\begin{tikzcd}
-  L_{\RR}\arrow[rr,"\Psi"] \arrow[rd,hook]& & \ZZ^n \\
-  & \RR\otimes M_X \arrow[ru,"\Psi"]&
-\end{tikzcd}\]
 
-This allows us to reduce to the case where $L=M_X$. In that case, we can observe that the composite map $(-\deg)\circ \Psi\circ (-\id)$ gives exactly the map described in Definition~\ref{defn:BTcollection}.
-\[-\deg(\Psi(-\mathbf{p})) = -\deg(x^{\lceil \mathbf{p}\rceil}) = -\sum_{i=1}^n\lceil -p_i\rceil D_i=\sum_{i=1}^n\lfloor p_i\rfloor D_i.\]
-Since $L_{\RR}$ is a linear subspace of $\RR^n$, the $(-\id)$ in the composite map does not affect the image. Thus the summands of $\FF$ are all Bondal-Thomsen elements and if $L=M_X$, the summands of $\FF$ are exactly the Bondal-Thomsen elements. And as previously noted, in the general case factoring the map through $\RR \otimes M_X$ proves that for any $L\subseteq M_X$ the summands are all Bondal-Thomsen elements.
-\end{proof}
+
+%\begin{proof}
+%  Every point in $L_{\RR}$ is contained in a cell of the subdivision of $L_{\RR}$, and each cell $A$ of the subdivision
+%  contributes a single summand to the resolution $\FF$ of the form $S(-\deg(\Psi(A)))$. 
+%  Thus the summands that appear in $\FF$ will correspond exactly to the image of $L_{\RR}$ under the composite map
+%  \[L_{\RR}\xrightarrow{\Psi} \ZZ^n \xrightarrow{-\deg} \Cl(X).\]
+%
+%  Then observe that the map $\Psi$ factors through $\RR\otimes M_X$ as follows
+%
+%\[\begin{tikzcd}
+%  L_{\RR}\arrow[rr,"\Psi"] \arrow[rd,hook]& & \ZZ^n \\
+%  & \RR\otimes M_X \arrow[ru,"\Psi"]&
+%\end{tikzcd}\]
 
 \begin{example}
-  \label{ex:resHirzebruch3}
+If $L=M$ then, since the cell decomposition of the linear space $M_{R}$ is defined by the coordinate
+hyperplanes, every non-integral point of $M$ is the interior point of some cell. Thus all the in  all the Bondal-Thomsen classes appear in the resolution $\FF$ of Corollary~\ref{cor:hhlSummandsBT}.
+\end{example}
+
+\label{ex:resHirzebruch3}\david{The following example is important, but the description is incomprehensible without a good deal more explanation!}
   We can illustrate that the summands are Bondal-Thomsen elements in the case of the Hirzebruch surface by observing that the weights $\Psi$ as a map from $L_{\RR} \rightarrow \ZZ^n$ stratify $L_{\RR}$ in an $L$-equivariant manner into strata which correspond exactly to the Bondal-Thomsen elements.
   
 The diagram has been labeled with monomials, and by grouping cells according to the degree in $\Cl(X)$, each of the 6 Bondal-Thomsen elements gives a stratum of $L_{\RR}/L$.
@@ -481,61 +477,64 @@ The diagram has been labeled with monomials, and by grouping cells according to 
 \label{fig:hirzebruch-stratification}
 \end{figure}
 
-\end{example}
-
-There is one other important structural feature of these resolutions, which is that they depend only on the rays of the toric variety $X$ and the lattice $L$ and are independent of the fan structure $\Sigma_X$. Or equivalently, one may say that the resolution depends only on the graded Cox ring $S$ and the toric ideal $I_L\subseteq S$ and is independent of the choice of irrelevant ideal. One important case of this we highlight in the following corollary.
-
-\begin{cor}
-\label{cor:diagonalUniform}
-    Assume that $X$ and $X'$ are smooth, projective toric varieties with the same Cox ring $S$.  Then, as free complexes of $S\otimes_k S$-modules, the following are all the same:
-    \begin{enumerate}
-        \item The resolution of the diagonal $X\subseteq X\times X$.
-        \item The resolution of the diagonal $X'\subseteq X'\times X'$.
-        \item  The resolution of the closure of the graph $\Gamma \subseteq X\times X'$ of the birational map $X\dashrightarrow X'$.
-    \end{enumerate}
-\end{cor}
-\begin{proof}
-  Proof 1:  The construction of the HHL resolution only depends on the rays of the product and the lattice determining the diagonal. So if you do the construction in any of these cases, it is literally exactly the same.
-
-  Proof 2:  Write $I_\Delta\subseteq S\otimes_k S$ for the defining ideal of the diagonal $X\subseteq X\times X$.
-  Write $I_{\Delta'}\subseteq S\otimes_k S$ for the defining ideal of the diagonal $X'\subseteq X'\times X'$.  And write $I_\Gamma\subseteq S\otimes_kS$ for the defining ideal of $\Gamma\subseteq X\times X'$.  These three ideals are all multigraded, prime ideals on $S\otimes_k S$ whose vanishing locus contains the dense torus, and thus the ideals are all equal.  The three HHL resolutions are, up to homotopy, the minimal free resolutions of the normalizations of $S\otimes_k S/I_{\Delta}$, $S\otimes_k S/I_{\Delta'}$, and $S\otimes_k S/I_{\Gamma}$ respectively.  But since these modules are all equal, so are their minimal free resolutions. \jay{Do we want to keep both proofs?}
-\end{proof}
-
-
-
-This is connected to the independence of the Bondal-Thomsen collection from the fan structure as noted after Definition~\ref{defn:BTcollection}. However, a priori, one may be surprised that the resolution does not depend on the toric variety $X$. For instance, it is certainly not the case that simply translating any resolution by line bundles by pushforward along birational maps from one part of the secondary fan to another should yield a resolution!
-
-This uniformity is a first clue that these resolutions are pointing towards a uniformity across all toric varieties with the same Cox ring. This uniformity forms the starting point for the description of the Cox category that is explored starting from Lecture~\ref{lec:12-DCox-definition}.
-
 
 %% Discussion of how this is kind of surprising!!  There was, a priori, no reason to believe that the ``best'' toric analogue of Beilinson's resolution  would only involve the Cox ring (i.e. that it would not depend on the irrelevant ideal whatsoever).  This is a first clue that these resolutions are pointing towards some sort of uniformity for all of the toric varieties with the same Cox ring.  That uniformity will be explored in more depth in later lectures.
 
-One specific case where the correspondence between the BT collection and the summands of the resolution is of particular importance is the diagonal. The summands of the diagonal will all be of the form $\cO_X(D)\boxtimes \cO_X(D')$ for pairs of Bondal-Thomsen elements. Some care is required though, as not every pair of Bondal-Thomsen elements will appear.
+The fact that the resolution $\FF$ in this construction does not depend on the irrelevant ideal of $S$
+suggests a uniformity among the toric varieties having the same graded Cox ring. This
+is the starting point for the description of the Cox category that is explored starting from Lecture~\ref{lec:12-DCox-definition}.
 
-\begin{cor}
-  \label{cor:diagonal-BTcollection}
-  The line bundles appearing in the resolution of the diagonal $\FF$ arising from HHL are of the form $\cO_X(D)\boxtimes \cO_X(D')$ for some pair $D$,$D'$ of Bondal-Thomsen divisors. Moreover for every element of the Bondal-Thomsen collection, there exist both summands where the element appears on the left hand side and on the right hand side of $\cO_X(D)\boxtimes \cO_X(D')$. \jay{I'm saying line bundle here but maybe I should say module and just write $S(D)$?}
-\end{cor}
+Here is an important special case: 
+
+\begin{cor}\label{cor:diagonalUniform}
+If $X$ and $X'$ toric varieties with the same Cox ring $S$ then, the HHL complex of free $S\otimes_k S$-modules resolving the closed graph of the identity  $X\subseteq X\times X$,  is equal to that of the 
+graph $X\subseteq X\times X'$ of the birational map $X$ to $X'$ that restricts to the identity on the dense torus.
+Moreover, the summands of the free modules will all be of the form $S(d)\boxtimes S(d')$ for certain pairs of Bondal-Thomsen classes $d,d'$. 
+ \end{cor}
 \begin{proof}
-  Observe that the lattice $L$ for the diagonal is the Lawrence lift of $M_X$, that is the lattice
-  \[L := \{(\mathbf{v},-\mathbf{v}) \in \ZZ^{2n} \,|\, \mathbf{v}\in M_X\}.\]
-  Thus the line bundles that appear in the resolution of the diagonal are of the form $\cO_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)$ for $\mathbf{p}$ a point in $\RR \otimes M_X$ which can then be expanded as follows:
-  \[\cO_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)=\cO_X(-\lceil \mathbf{p}\rceil)\boxtimes \cO_X(\lfloor \mathbf{p}\rfloor).\]
-  The left hand side of this summand is $\cO_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:hhlSummandsBT}. And $\cO_X(\lfloor \mathbf{p}\rfloor)$ is quite directly the generator of the BT collection associated to $\mathbf{p}$. Finally, as $\mathbf{p}$ varies over all points in $\RR \otimes M_X$, every Bondal-Thomsen element appears as the Bondal-Thomsen collection was defined as the image of $M_X$ under the map described in Definition~\ref{defn:BTcollection}.
+Let $T$ be the common dense torus of $X$ and $X'$. The ideal of the diagonal in $T\times T$ is
+generated by the ideal generated by the monomials 
+$$
+\{x^{a}\otimes 1-1\otimes x^{a}  \mid a\in M\} \subset k[x_{1}^{\pm 1}, \dots, x_{n}^{\pm 1}]
+\otimes k[x_{1}^{\pm 1}, \dots, x_{n}^{\pm 1}]
+$$
+which corresponds to the sublattice 
+$$
+L = \{v,-v\}\mid v\in M\}\subset M\times M.
+$$
+ This is
+the same for each of the cases in the Corollary.
 \end{proof}
 
-The Fourier-Mukai transform, which forms a key step in the proof of Conjecture~\cite{conj:BES}, results in a complex whose summands will be drawn from the left hand side of the summands of the diagonal. Consequently, the complexes that result from applying the Fourier-Mukai transform to give monads for arbitrary coherent sheaves will result in complexes whose summands are all Bondal-Thomsen elements. This gives rise to the following corollary.
-
-\begin{cor}
-  If $\mathcal{F}$ is a coherent sheaf on $X$, then it is resolved by a monad containing as summands only Bondal-Thomsen elements of $X$.
-\end{cor}
+Not every pair of \BT classes will appear in the resolutions described in Corollary~\ref{cor:diagonalUniform},
+but at least we can say something:
+\begin{cor}\label{cor:diagonal-BTcollection}
+Every \BT class appears both as the first and as the second member of a pair $(d,d')$ that appears in the HHL resolution of the diagonal of $X$. \end{cor}
 \begin{proof}
-  This is a consequence of applying the Fourier-Mukai transform and Corollary~\ref{cor:diagonal-BTcollection}.
+The lattice $L$ in the proof above project surjectively on each factor, and the cell decomposition of $L_{\RR}$
+induced by the embedding into $\ZZ^{n}\times \ZZ^{n}$ is the same as that induced by the embedding into
+$\ZZ^{n}$.
+%  \[L := \{(\mathbf{v},-\mathbf{v}) \in \ZZ^{2n} \,|\, \mathbf{v}\in M_X\}.\]
+%  Thus the line bundles that appear in the resolution of the diagonal are of the form $\cO_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)$ for $\mathbf{p}$ a point in $\RR \otimes M_X$ which can then be expanded as follows:
+%  \[\cO_{X\times X}(-\lceil (\mathbf{p},-\mathbf{p})\rceil)=\cO_X(-\lceil \mathbf{p}\rceil)\boxtimes \cO_X(\lfloor \mathbf{p}\rfloor).\]
+%  The left hand side of this summand is $\cO_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:hhlSummandsBT}. And $\cO_X(\lfloor \mathbf{p}\rfloor)$ is quite directly the generator of the BT collection associated to $\mathbf{p}$. Finally, as $\mathbf{p}$ varies over all points in $\RR \otimes M_X$, every Bondal-Thomsen element appears as the Bondal-Thomsen collection was defined as the image of $M_X$ under the map described in Definition~\ref{defn:BTcollection}.
 \end{proof}
 
-We conclude with the resolution of the diagonal for the third Hirzebruch surface. We also remark that the resolutions constructed for the diagonal are always minimal, a feature that does not hold for general $L$.
+The Fourier-Mukai transform with kernel equal to a resolution of the diagonal,  a key tool in the proof of Conjecture~\cite{BES}, takes a sheaf $\cF$ to a monad for $\cF$ (that is, a complex whose only homology is $\cL$).  We will see \david{where?} that the terms of this complex are direct sums of sheaves
+ drawn from the sheafified left hand factors in the HHL resolution of the diagonal. Consequently, the complexes that result from applying the Fourier-Mukai transform to give monads for arbitrary coherent sheaves will result in complexes whose summands are all Bondal-Thomsen elements as follows:
 
+\begin{cor}
+  If $\mathcal{F}$ is a coherent sheaf on $X$, then it is resolved by a monad containing as summands only Bondal-Thomsen elements of $X$.\qed
+\end{cor}
+
+\begin{remark}
+ The HHL resolution of the diagonal are  minimal, a feature that does not hold for general $L$.
+\end{remark}
+
+
+We can now describe the resolution of the diagonal in the case when $X$ is the  Hirzebruch surface $\cH_{3}$. 
 \begin{example}
+\david{look at this again in the light of whatever revision is made of the $\cH_{3}$ example above.}
   Let $X=\cH_3$, and let $S$ be the Cox ring of $X$. Then each summand is of the form $S(-\deg(\Psi(A)))\boxtimes S(-\deg(\Psi(-A)))$. As an example, for the cell $A$ corresponding to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, the Bondal-Thomsen element is $\cO_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, which corresponds to the Bondal-Thomsen element $\cO_X(-1,-1)$. This gives the summand $S(2,-1)\boxtimes S(-1,-1)$.
 
   Repeating this construction for every cell will give all summands of the resolution of the diagonal.
@@ -660,6 +659,6 @@ Together these two propositions prove Theorem~\ref{thm:HHL-resolution}.
 \ifdefined\whole
 \else
 \bibliographystyle{plain}
-\bibliography{Bibliography}
+\bibliography{../Bibliography}
 \end{document}
 \fi
