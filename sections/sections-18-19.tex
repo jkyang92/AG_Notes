@@ -76,15 +76,7 @@ This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the form
 In Example~\ref{ex:tate}, we only needed to resolve a single module, not a complex with nonzero homology in multiple positions. An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that this always happens: $R(M_{\ge s})$ has nonzero homology only in degree $-s$, so 
 so $G$ is just the minimal free resolution of $H^{-s}(R(M_{\ge s}))$. Let us give a quick sketch of a proof of this fact, as we will need it later. We will use the following technical lemma:
 
-\begin{lemma}[\cite{EFS}*{Proposition 2.3(a)}]
-\label{lem:tor}
-For any graded $S$-module $M$, we have $H_i(R(M)) \cong \Tor^S_{i+j}(M, \k)_j$.
-\end{lemma}
 
-
-\begin{proof}[Sketch of proof]
-The idea is that, forgetting gradings, $R(M)$ is isomorphic to $M \otimes_S K$, where $K$ is the Koszul complex on the variables in $S$. The proof thus boils down to keeping careful track of how this isomorphism interacts with the homological and internal gradings; we omit the details. 
-\end{proof}
 
 \begin{prop}
 If $M$ is a finitely generated graded $S$-module with regularity $r$, then $R(M_{\ge r})$ has nonzero homology only in degree $-r$. 
@@ -140,7 +132,7 @@ Tate resolutions have had a host of applications; let us highlight two of them. 
 \end{equation}
 that is quasi-isomorphic to the sheaf $\F$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad~\eqref{eqn:monad}. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
 
-The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}.
+The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}. What makes this algorithm fast is that it involves taking minimal free resolutions over an exterior algebra: since exterior algebras are finite dimensional over a field, homological calculations over them are particularly fast. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 19 (Sasha Zotine): Tate resolutions over toric varieties}\label{lec:19-tate-resolutions-toric}

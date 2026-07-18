@@ -74,7 +74,7 @@ Thus a point of a simplicial $X_\Sigma$ is a $G$-orbit of ``homogeneous coordina
   \begin{enumerate}
   \item \textbf{Projective space $\PP^n$.}  The fan has as rays the standard basis $u_1,\dots,u_n$ and their complement $u_0 = -u_1-\dots-u_n$, with maximal cones spanned by all $n$-subsets. Then $S = \kk[x_0,\dots,x_n]$ with the standard $\ZZ$-grading $\deg(x_i) = 1$ and $B = (x_0,\dots,x_n)$: the only primitive collection is all of $\Sigma(1)$, so $V(B) = \{0\}$.
 
-  \item \textbf{Products $\PP^{n_1}\times\dots\times\PP^{n_r}$.}  The Cox ring is a multigraded polynomial ring with $\ZZ^r$-grading and $B = \bigcap_i (x_{i,0},\dots,x_{i,n_i})$; the primitive collections are the $k$ sets of rays of the factors.
+  \item \textbf{Products $\PP^{n_1}\times\dots\times\PP^{n_r}$.}  The Cox ring is a multigraded polynomial ring with $\ZZ^r$-grading and $B = \bigcap_i (x_{i,0},\dots,x_{i,n_i})$; the primitive collections are the $r$ sets of rays of the factors.
 
   \item \textbf{Weighted projective space $\PP(a_0,\dots,a_n)$, where $\gcd(a_0,\dots,a_n) = 1$.}  The fan is given by the quotient lattice $N = \ZZ^{n+1}/(a_0,\dots,a_n)$, the rays being the images of the standard basis vectors. Then, $S = \kk[x_0,\dots,x_n]$ and $B = (x_0,\dots,x_n)$ with $\deg(x_i) = a_i$. Note that the inclusion of the Picard group in the class group is $\on{lcm}(a_0,\dots,a_n)\ZZ \xhookrightarrow{} \ZZ$, thus weighted projective spaces are generally singular; see Example~\ref{ex:P112charts}.
 
@@ -168,7 +168,7 @@ Just as homogeneous ideals of $\kk[x_0,\dots,x_n]$ cut out closed subschemes of 
 \end{remark}
 
 \begin{prop}[Toric Ideal--Variety Correspondence, \cite{CLS}*{Prop.~5.2.7}]\label{prop:ideal-variety}
-  Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. Then there is a bijective correspondence
+  Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. There is a bijective correspondence
   \[ \{\text{closed subvarieties of } X\} \longleftrightarrow \{\text{radical homogeneous ideals } I\subseteq B\}. \]
 \end{prop}
 
@@ -225,7 +225,7 @@ These glue to a sheaf $\widetilde M$ on $X$, and $M\mapsto\widetilde M$ is exact
 \subsection{The derived equivalence and its failure}
 The kernel of the (exact) sheafification functor is what separates the geometry of $X$ from the algebra of $S$. Write $\Mod_{\mathrm{gr}}(S)$ for the category of finitely generated $\Cl(X)$-graded $S$-modules, and $\Mod_B(S)\subseteq\Mod_{\mathrm{gr}}(S)$ for the full subcategory of \defi{$B$-torsion} modules, i.e.\ those annihilated by a power of $B$.
 
-\begin{prop}[\cite{CLS}*{Prop.~5.3.9 and 5.3.10}]\label{prop:sheafmodule}
+\begin{prop}[\cite{CLS}*{Prop.~5.3.9 and 5.3.10}]\label{prop:sheaf-module}
   Let $X$ be a toric variety with Cox ring $S$ and irrelevant ideal $B$.
   \begin{enumerate}
   \item Every quasicoherent sheaf on $X$ is isomorphic to $\widetilde M$ for some graded $S$-module $M$, which may be chosen finitely generated when the sheaf is coherent.
@@ -262,7 +262,7 @@ This is the toric generalization of the equivalence $D^b(\PP^n)\simeq D^b(S)/D^b
 \end{example}
 
 \begin{remark}\label{rem:simplicialsheaf}
-  Example~\ref{ex:oddP112} shows that Proposition~\ref{prop:sheafmodule}(2) fails for simplicial $X$. The correct simplicial criterion is that $\widetilde M=0$ if and only if $B^\ell M_\alpha=0$ for $\ell\gg0$ and all $\alpha\in\Pic(X)$ (e.g.~see \cite[Exc.~5.3.5]{CLS}). Only the graded pieces of $M$ in \emph{Picard} degrees are visible to the variety. On $\PP(1,1,2)$ we have $\Pic(X) = 2\ZZ$ (Example~\ref{ex:P112charts}), and the module $M$ above is concentrated in odd degrees, so all of its Picard-degree pieces vanish, thus $\widetilde M=0$.
+  Example~\ref{ex:oddP112} shows that Proposition~\ref{prop:sheaf-module}(2) fails for simplicial $X$. The correct simplicial criterion is that $\widetilde M=0$ if and only if $B^\ell M_\alpha=0$ for $\ell\gg0$ and all $\alpha\in\Pic(X)$ (e.g.~see \cite[Exc.~5.3.5]{CLS}). Only the graded pieces of $M$ in \emph{Picard} degrees are visible to the variety. On $\PP(1,1,2)$ we have $\Pic(X) = 2\ZZ$ (Example~\ref{ex:P112charts}), and the module $M$ above is concentrated in odd degrees, so all of its Picard-degree pieces vanish, thus $\widetilde M=0$.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -286,7 +286,36 @@ We close with the cohomological vanishing theorem that powers the Bondal--Thomse
   where the last equality is Theorem~\ref{thm:demazureL5} applied to $D=0$. Hence every line bundle summand of a toric Frobenius pushforward has vanishing higher cohomology. The finitely many line bundles arising this way form the Bondal--Thomsen collection of Lecture~\ref{lec:6-bondal-thomsen}.
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Toric stacks (optional)}
 
+Theorem~\ref{thm:coxderived} fails for $\PP(1,1,2)$ because the geometric quotient forgets the finite stabilizers of the $G$-action, such as the $\mu_2$ at $[0:0:1]$. The failure is repaired not by changing the algebra but by changing the geometry: replace the GIT quotient by the corresponding quotient \emph{stack}. Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $G = \Hom_\ZZ(\Cl(X),\kk^*)$ act on $\Spec S$ as in Theorem~\ref{thm:coxquotient}. The \defi{canonical toric stack} of $X$ is the quotient stack
+\[ \sX \,\ce\, \bigl[\,\Spec(S)\setminus V(B)\,/\,G\,\bigr]. \]
+Since $X$ is simplicial, $\sX$ is a smooth toric Deligne--Mumford stack, and the natural map $\pi\co\sX\to X$ realizes $X$ as its coarse moduli space \cite{BorisovChenSmith2004}.\footnote{Our viewpoint on toric stacks here is deliberately algebraic, through modules and sheaves. A more geometric treatment via stacky fans and toric morphisms is introduced in \cite{BorisovChenSmith2004} and greatly expanded in \cites{GS1,GS2}.}
+
+Sheaves on quotient stacks are concrete algebraic objects. A (quasi)coherent sheaf on $[U/G]$ is precisely a $G$-equivariant (quasi)coherent sheaf on $U$. Consider $\sX = \PP_{\mathrm{stack}}(1,1,2) = [\bA^3\setminus\{0\}\,/\,\kk^*]$. A quasicoherent sheaf on $\bA^3$ is simply an $S$-module $M$, and a $\kk^*$-equivariant structure on it is a decomposition $M = \bigoplus_{d\in\ZZ} M_d$ into eigenspaces of the action. That is, exactly a $\ZZ$-grading compatible with the grading of $S$. Removing $V(\m)$ kills precisely the modules supported at the origin, i.e.\ the finite-length modules. Hence
+\[ \Coh\bigl(\PP_{\mathrm{stack}}(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_{\m}(S), \]
+exactly as for $\PP^n$. The same reasoning applies in general:
+
+\begin{thm}[\cite{BorisovChenSmith2004}]\label{thm:simplicialStack}
+  Let $X$ be a simplicial toric variety with $\Cl(X)$-graded Cox ring $S$ and irrelevant ideal $B$, and let $\sX = [\Spec(S)\setminus V(B)\,/\,G]$ be its canonical toric stack. Then
+  \[ \Coh(\sX)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_B(S). \]
+\end{thm}
+
+In short, sheaves on $\sX$ are graded $S$-modules modulo $B$-torsion, analogous to the smooth case in Proposition~\ref{prop:sheaf-module}, and this is the whole point of passing from the variety $X$ to the stack $\sX$. Passing to derived categories:
+
+\begin{cor}\label{cor:DbCoxStack}
+  With notation as in Theorem~\ref{thm:simplicialStack}, there is an equivalence
+  \[ D^b(\sX)\ \simeq\ D^b(S)\,/\,D^b_B(S). \]
+\end{cor}
+
+We will not prove this; it follows from established results on quotient stacks, of which perhaps the most direct reference is \cite[Ex.~7.21]{Vistoli89}; see also \cite[Tag 06WT]{stacks-project}, \cite[Thm.~4.46]{vistoli}\mahrud{which paper is this?}, and \cite[Thm.~7.1.11]{alper}. When $X$ is smooth, $G$ acts freely on $\Spec(S)\setminus V(B)$, so $\sX\cong X$ and Corollary~\ref{cor:DbCoxStack} recovers Theorem~\ref{thm:coxderived}. When $X$ is simplicial but not smooth, the stack and the variety genuinely differ: for instance $\sX$ is smooth with $\Pic(\sX)\cong\Cl(X)$, so $\cO(1)$ \emph{is} a line bundle on $\PP_{\mathrm{stack}}(1,1,2)$, resolving the issues of Remark~\ref{rem:twistcaveat}.
+
+\begin{remark}[The variety and the Veronese subring]\label{rem:veronese}
+  The singular variety admits a parallel description. Writing $S^{(2)}=\kk[x^2,xy,y^2,z]$ for the second Veronese subring of $S$, generated in degree $2$, one has
+  \[ \coh\bigl(\PP(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}\bigl(S^{(2)}\bigr)\,/\,\Mod_{\m}\bigl(S^{(2)}\bigr), \]
+  the classical Serre description of $\Proj S^{(2)}$. This explains Example~\ref{ex:oddP112}: the module $M$ there is not finite length over $S$, so it induces a \emph{nonzero} sheaf on the stack, but $M^{(2)}=\bigoplus_{d\in2\ZZ}M_d=0$, so it induces the \emph{zero} sheaf on the variety. The stack quotient is thus tied to $S$ itself, while the GIT quotient is tied to the Veronese subring; for the multigraded module theory of these notes the stack is the more natural object, and we pass to it whenever singular simplicial toric varieties arise. % in the Cox category of Lecture~\ref{lec:12-DCox-definition}.
+\end{remark}
 
 
 \ifdefined\whole

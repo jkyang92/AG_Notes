@@ -34,19 +34,35 @@ Let us explain how Theorem~\ref{thm:HHLdiagonal} implies Conjecture~\ref{conj:BE
 
 \begin{thm}[Fujita Vanishing Theorem \cite{lazarsfeld04}*{Theorem 1.4.35}]
 \label{thm:fujita}
-Let $\F$ be a coherent sheaf on~$X$, and let $\cL$ be an ample line bundle on $X$. There exists $m \gg 0$, depending on $\F$ and $\cL$, such that $H^j(X,\F \otimes \cL^m \otimes \cL') = 0$ for all $j > 0$ and all nef line bundles $\cL'$ on $X$.
+Let $\F$ be a coherent sheaf on~$X$, and let~$\cL$ be an ample line bundle on $X$. There exists $m \gg 0$, depending on $\F$ and $\cL$, such that
+$$
+H^j(X,\F \otimes \cL^m \otimes \cL') = 0
+$$
+for all $j > 0$ and all nef line bundles $\cL'$ on $X$.
 \end{thm}
 
+The following construction gives a particularly useful expression of Fourier-Mukai transforms with respect to the kernel $\cR$, where $\cR$ is a resolution of the diagonal as in Theorem~\ref{thm:HHLdiagonal}:
+
+\begin{construction}
+Let $\F_1$ and $\F_2$ be coherent sheaves on $X$, where $\F_2$ is locally free. Let $\pi_1, \pi_2 \co X \times X \to X$ be the projection maps. By the projection formula and base change, we have canonical isomorphisms
+\[ \RR\pi_{2*}(\F_1\boxtimes\F_2) \cong \RR\pi_{2*}\pi^*_1(\F_1)\otimes_{\OO_{X}}\F_2 \cong \RR\Gamma(X, \F_1) \otimes_k \F_2 \]
+in $\Db(X)$. We now use this to compute the Fourier-Mukai transform of a coherent sheaf $\F$ on $X$ with respect to the kernel $\cL$. Given $\cG \in \coh(X)$, let $\cC_{\cG}$ denote the \v{C}ech complex of $\cG$ associated to the affine open cover of $X$ arising from the maximal cones in its fan. Our Fourier-Mukai transform of $\F$ is isomorphic, in $D^b(X)$, to the totalization of the following  bicomplex, where the horizontal maps are induced by the differentials in~$\cR$, the vertical maps are induced by the \v{C}ech differentials,  and
+``$\cL_1 \boxtimes \cL_2 \in \cR_i$'' is shorthand for ``$\cL_1 \boxtimes \cL_2$ is a summand of $\cR_i$'':
+\begin{equation}\label{eq:bicomplex}
+  \xymatrix{
+    0 & \ar[l] \bigoplus_{\cL_1\boxtimes\cL_2 \in \cR_0} \cC_{\F\otimes\cL_1} \otimes \cL_2 & \ar[l] \cdots
+    &   \ar[l] \bigoplus_{\cL_1\boxtimes\cL_2 \in \cR_{\dim{X}}} \cC_{\F\otimes\cL_1} \otimes \cL_2 & \ar[l] 0}.
+\end{equation}
+Since the differentials of $\cC_{\cG}$ have entries in $\kk$, the columns of \eqref{eq:bicomplex} split. Thus, we may apply \cite[Lem.~3.5]{EFS} to conclude that the totalization of \eqref{eq:bicomplex} is homotopy equivalent to a complex $\B(\F)$ concentrated in degrees $k=-\dim{X},\dots,\dim{X}$ with terms
+\begin{equation}\label{eq:BM}
+  \B(\F)_k
+  = \bigoplus_{i-j=k} \bigoplus_{\cL_1\boxtimes\cL_2 \in \cR_i} H^j(X, \F\otimes\cL_1) \otimes\cL_2.
+\end{equation}
+Of course, the homology of $\cB(\E)$ is concentrated in degree 0 and isomorphic to $\F$.
+\end{construction}
 
 \begin{proof}[Proof of Conjecture~\ref{conj:BES}]
-Let $\cR$ be as in Theorem~\ref{thm:HHLdiagonal}. We will write ``$\cL_1 \boxtimes \cL_2 \in \cR_i$" for ``$\cL_1 \boxtimes \cL_2$ is a summand of $\cR_i$". For $i = 1, 2$, let~$\pi_i \co X \times X \to X$ be the projection. Given a sheaf $\E$ on $X$, the projection formula and base change imply that the Fourier-Mukai transform~$(\RR\pi_2)_*(\pi_1^*(\F) \otimes \cR)$ is isomorphic to a complex $\cB(\E)$ with $\ell^{\th}$ term
-\begin{equation}
-\label{eqn:monad}
-\cB(\E)_\ell \ce \bigoplus_{i - j = \ell} \bigoplus_{\cL_1 \boxtimes \cL_2 \in \cR_i} H^j(X, \E \otimes \cL_1) \otimes_\k \cL_2.
-\end{equation}
-Of course, the homology of $\cB(\E)$ is concentrated in degree 0 and isomorphic to $\E$. Recall that the pairs of line bundles $\cL_1$ and $\cL_2$ appearing in~\eqref{eqn:monad} lie in the Thomsen collection of $X$.
-
-Let $\F$ be the sheaf on $X$ associated to our $S$-module $M$, and let $\mathcal{A}$ be an ample line bundle on~$X$. Applying Theorem~\ref{thm:fujita} to the pair $\F \otimes \cL$ and $\mathcal{A}$ for all line bundles~$\cL$ in the Thomsen collection of~$X$, we may choose $m \gg 0$ such that $H^j(X, \F \otimes \cL) = 0$ for all $j > 0$. Thus, we have $\B(\F \otimes \cA)_\ell = 0$ unless~$0 \le \ell \le \dim X$, and so $\B(\F \otimes \cA) \otimes \cA^{-1}$ is a locally free resolution of $\cF$ by sums of line bundles of length at most $\dim{X}$. Taking global sections of (all twists of) $\B(\F \otimes \cA) \otimes \cA^{-1}$ gives the desired virtual resolution.
+Let $\F$ be the sheaf on $X$ associated to our $S$-module $M$, and let $\mathcal{A}$ be an ample line bundle on~$X$. Applying Theorem~\ref{thm:fujita} to the pair $\F \otimes \cL$ and $\mathcal{A}$ for all the (finitely many) line bundles~$\cL$ in the Thomsen collection of~$X$ (and taking $\cL' = \OO$), we may choose $m \gg 0$ such that $H^j(X, \F \otimes \cL \otimes \cA^m) = 0$ for all $j > 0$. Let $\cB(\F)$ be as in \eqref{eq:BM}. We have $\B(\F \otimes \cA^m)_\ell = 0$ unless~$0 \le \ell \le \dim X$, and so $\B(\F \otimes \cA^m) \otimes \cA^{-m}$ is a locally free resolution of $\cF$ by sums of line bundles of length at most $\dim{X}$. Taking global sections of (all twists of) $\B(\F \otimes \cA^m) \otimes \cA^{-m}$ gives the desired virtual resolution.
 \end{proof}
 
 \subsection{Bondal's Conjecture}\label{subsect:bondalConjecture}

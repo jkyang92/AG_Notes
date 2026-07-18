@@ -80,7 +80,7 @@ complexToPolytopes = PC -> applyKeys(faces PC, k -> dim PC - k - 1)
 --returns a hashTable containing enough information to make a resolution.
 makeResolutionTable = (S,raysMatrix,cells,L) -> (
     --verts := vertices PC;
-    elapsedTime (verts, faces) := toFacesByDimension cells; -- ~22% of the computation, ~325s
+    (verts, faces) := toFacesByDimension cells; -- ~22% of the computation, ~325s
     d := max keys faces;
 
     --polytopesByDimension := complexToPolytopes(PC);
@@ -91,11 +91,11 @@ makeResolutionTable = (S,raysMatrix,cells,L) -> (
     pointToFineDegree := p -> (transpose matrix {apply(entries (raysMatrix * p), ceiling)})_0;
     pointToDegree := p -> (degreeMatrix * pointToFineDegree p);
     allPolyhedra := select(flatten values polytopesByDimension, p -> p!={});
-    elapsedTime hulls := hashTable apply(allPolyhedra, p -> (p, convexHull verts_p)); -- ~14s
-    elapsedTime pointsTable := hashTable apply(allPolyhedra, p -> (p, (1/#p * sum cols verts_p)_0)); -- ~27s, interiorPoint hulls#p is much slower
-    elapsedTime modulesTable := applyValues(pointsTable, p -> S^{entries (- pointToDegree p)}); -- ~19s
-    elapsedTime fineDegreeTable := applyValues(pointsTable, pointToFineDegree); -- ~16s
-    elapsedTime polytopeClassesByDimension := applyValues(polytopesByDimension,
+    hulls := hashTable apply(allPolyhedra, p -> (p, convexHull verts_p)); -- ~14s
+    pointsTable := hashTable apply(allPolyhedra, p -> (p, (1/#p * sum cols verts_p)_0)); -- ~27s, interiorPoint hulls#p is much slower
+    modulesTable := applyValues(pointsTable, p -> S^{entries (- pointToDegree p)}); -- ~19s
+    fineDegreeTable := applyValues(pointsTable, pointToFineDegree); -- ~16s
+    polytopeClassesByDimension := applyValues(polytopesByDimension,
 	polys -> partitionVertices(pointsTable, L, polys)); -- ~16s
     new HashTable from {
 	"ring" => S,
@@ -175,7 +175,6 @@ findMinimalMinorSubset = psi -> (
     bestSubset
 )
 
-
 hhlPolytopes = method()
 hhlPolytopes(NormalToricVariety, Matrix) := (Y,    phi) -> hhlPolytopes(matrix rays Y,   kernel transpose phi)
 hhlPolytopes(Ring, Matrix)               := (S,    phi) -> hhlPolytopes(gale effGenerators S, kernel transpose phi)
@@ -195,20 +194,20 @@ hhlPolytopes(Matrix, Module) := (A, L) -> (
     cells := subdivide(K,V,A');
     (cells,A',g,V))
 --compatibility with the old name for now
-makeHHLPolytopes = hhlPolytopes
+addDeprecatedName(global makeHHLPolytopes, global hhlPolytopes)
 
 --expects a toric variety, and a matrix mapping into the N-latice for Y, giving a toric inclusion.
 hhlResolution = method()
 hhlResolution ToricMap := phi -> hhlResolution(target phi, matrix phi)
 hhlResolution(NormalToricVariety, Matrix) := (Y, phi) -> (
-    elapsedTime (cells, raysMatrix, L, fundamentalRays) := hhlPolytopes(Y, phi); -- ~26s all in sliceByHyperplanes
-    printerr("Cells Complete, " | #cells | " cells found");
+    (cells, raysMatrix, L, fundamentalRays) := hhlPolytopes(Y, phi); -- ~26s all in sliceByHyperplanes
+    if debugLevel>0 then printerr("Cells Complete, " | #cells | " cells found");
     n := rank L;
-    elapsedTime RT := makeResolutionTable(ring Y, raysMatrix, cells, mingens (ZZ^n)); -- ~28% of the computation here
-    printerr "Labels Complete";
-    elapsedTime makeResolution RT)                      -- ~70% of the computation here
+    RT := makeResolutionTable(ring Y, raysMatrix, cells, mingens (ZZ^n)); -- ~28% of the computation here
+    if debugLevel>0 then printerr "Labels Complete";
+    makeResolution RT)                      -- ~70% of the computation here
 --compatibility with the old name for now
-makeHHLResolution = hhlResolution
+addDeprecatedName(global makeHHLResolution, global hhlResolution)
 
 --expects a toric map, returns the rays from HHL
 hhlVectors = method()
@@ -220,8 +219,9 @@ hhlVectors(NormalToricVariety, Matrix) := (Y, phi) -> (
     raysMatrix * g
     )
 
-
 bondalThomsenStrata = method()
+bondalThomsenStrata(NormalToricVariety) := (X) ->
+    bondalThomsenStrata (rays X)
 bondalThomsenStrata(List) := (normals) -> (
     normalsMatrix := matrix normals;
     L := source normalsMatrix;
