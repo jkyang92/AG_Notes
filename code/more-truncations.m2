@@ -1,4 +1,6 @@
 -- restart
+printerr "You should probably be using the function lineBundleThomsenMonad from HHLResolutions instead"
+
 needsPackage "Complexes"
 needsPackage("HHLResolutions") -- , FileName=>"../HHLResolutions/HHLResolutions.m2")
 needsPackage "SimplicialComplexes"
@@ -207,7 +209,7 @@ truncationComplex = (X, a) -> (
         cells := dat#"cells";
         applyValues(cells, cellClassList -> (
             hashTable flatten applyPairs(cellClassList,
-                (i, cellList) -> apply(cellList, c -> (c,i)))))
+                (i, cellList) -> apply(cellList, c -> (sort c,i)))))
     ));
     -- for each stratum, construct all of the appropriate maps
     -- the resulting hash table has keys given by the sign type of the source chamber

@@ -181,6 +181,7 @@ doc ///
             C = lineBundleBondalThomsenMonad(X,{0,2,0,1})
             prune HH C
             prune sheaf HH_(-1) C
+            prune sheaf HH_0 C
 ///
 
 doc ///
