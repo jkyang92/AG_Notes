@@ -10,7 +10,7 @@
 In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring.
 
 \subsection{Toric varieties of a multigraded ring}
-Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} \lauren{does the GKZ fan live in a different ambient space?} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this fan.
+Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this fan.
 
 We start with a polynomial ring $k[x_1,\ldots,x_n]$ and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$, which induces a $\Cl(S)$-grading on $S$.  We will assume throughout that this grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
 
@@ -19,6 +19,8 @@ Write $M$ for the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebr
 \begin{align}\label{eq:M-SES}
   0\to M\to\ZZ^n\to\Cl(S)\to 0.
 \end{align}
+
+\lauren{something about Gale duality}
 
 \lauren{put setup in labeled environment for reference}
 
@@ -154,26 +156,38 @@ The toric structure of the quotients $X_d$ connects their GIT problem to the com
 The polytope $P_\alpha$ may not require all $n$ inequalities, in case some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or possibly at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing $\alpha$ with another vector of the same degree only translates the polytope.
 
 \begin{lemma}[\lauren{cite CLS}]
-  If $\alpha,\alpha'\in\ZZ^d$ have $\deg x^\alpha=\deg x^{\alpha'}$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$. \lauren{does this work for rational $\alpha?$}
+  If $\alpha,\alpha'\in\ZZ^d$ have $\deg\alpha=\deg\alpha'$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$. \lauren{does this work for rational $\alpha?$}
 \end{lemma}
 
 Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to translation within $M\otimes_\ZZ\QQ$.  At certain degrees the facet structure may change---for instance when a collection of hyperplanes intersects in unexpected codimension.
 
-\begin{example}
+\begin{example}\label{ex:secondary-wall}
   \lauren{polytope along a wall}
 \end{example}
 
-However this does not occur for a general choice of $\alpha$, creating a polyhedral fan structure in the space of polytopes.
+However this does not occur for a general choice of $\alpha$, creating a polyhedral fan structure in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which $i$ the hyperplanes $\alpha_i$ intersect $P_\alpha$, in order to distinguish cases like Example~\ref{ex:secondary-wall}.
 
-\lauren{how exactly do we get the fan in the projective case?  is there a good reference besides CLS?}
+Given a polytope $Q$ in $M\otimes_\ZZ\QQ$ and a subset $V$ of $\{1,\ldots,n\}$, define $\tilde\Gamma(Q,V)$ to be the set of $\alpha\in\QQ^n$ such that there exists a convex \lauren{convex or concave??} support function $\varphi$ on the normal (generalized) fan $\Sigma$ of $Q$ with $\varphi(\nu_i)=\alpha_i$ for $i\notin V$ and $\varphi(\nu_i)\geq\alpha_i$ for $i\in V$ \lauren{define $\nu_i$ from Gale dual}.
+
+By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(Q,V)$ of $\tilde\Gamma(Q,V)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty}
+
+\begin{rem}
+  We have chosen for $\Gamma$ to depend on a polytope instead of a fan because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  The existence of $\varphi$ on the fan $\Sigma$ requires the class $\deg \alpha$ to be ample on the toric variety of the generalized fan $\Sigma$. \lauren{note that sometimes the GKZ fan is in $\QQ^n$?}
+\end{rem}
+
+\begin{theorem}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]
+  The collection of cones $\Gamma(Q,V)$ forms a rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \emph{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.
+\end{theorem}
 
 The toric variety $X_d$ is determined by the polytope $P_\alpha$ with $\deg\alpha=d$, though this polytope may have nonintegral vertices, requiring a slight generalization of the standard construction.
 
 Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex $v$ of $P$, take the cone of the set $P\cap(M\otimes_\ZZ\QQ)-v$ in $M\otimes_\ZZ\QQ$.  Over all vertices, these form the maximal cones of a fan by \cite[Proposition 14.2.10]{CLS}, which also addresses the situation when $P$ is not full dimensional.  The toric variety of $P$ is then defined by the resulting fan.
 
-\begin{thm}[\cite{Theorem 14.2.13(b)}*{CLS}]
-  The toric variety of the polytope $P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj} for $d=\deg\alpha\in\Cl(S)$. \lauren{does not currently apply to degrees on walls}
+\begin{thm}[\cite{CLS}*{Theorem 14.2.13(b)}]\label{thm:GIT-polytope}
+  Suppose that $\alpha\in\QQ^n$ and $d=\deg\alpha$ is in the interior of a maximal cone of the secondary fan of $S$.  The toric variety of the polytope $P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
 \end{thm}
+
+A version of Theorem~\ref{thm:GIT-polytope} is true for all $d\in\Cl(S)$ but may involve a lower dimensional polytope.
 
 \subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
 
