@@ -31,136 +31,7 @@ The crucial observation of the secondary fan is that there are only finitely man
 
 A reader primarily concerned with computation could start with Section~\ref{sec:irrelevant-ideals} and take on faith that the ideals describe there correspond to valid quotients and form a fan.  Here we give an example of all three perspectives for our favorite toric variety.
 
-\begin{example}
-  \lauren{hirzebruch surface}
-\end{example}
-
-\subsection{GIT quotients}\label{sec:variation-of-GIT}
-The sequence \eqref{eq:M-SES} induces maps of algebraic groups
-\[0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.\]  The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.  (Note that we have fixed a basis for $\ZZ^n$ by choosing variables for $S$.)
-
-We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory.  \lauren{give citation for additional reading}
-
-\begin{defn}
-  A \emph{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ \lauren{write out?} such that the zero section of $\cL$ is $G$-invariant.  The \emph{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
-\end{defn}
-
-Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
-
-\begin{prop}\label{prop:eq-Picard-gp}
-  In the setup above $\Cl(S)$ is the $G$-equivariant Picard group of $\Spec S$.
-\end{prop}
-
-\begin{proof}
-  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$. \lauren{why does this agree with linear equivalence?} The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$.  \lauren{explain why it can't have a coefficient}
-
-  Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
-\end{proof}
-
-By Proposition~\ref{prop:eq-Picard-gp} and \lauren{general GIT theorem}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
-
-According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
-\[\Proj\bigoplus_{n\in\NN}\Gamma(\Spec S,\cL_d^{\otimes n})^G\]
-\lauren{n conflict!} where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections. \lauren{cite} In the toric case these equivariant sections are elements of $S$.
-\begin{lemma}
-  With $\cL_d$ as given by Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ we have $\Gamma(\Spec S,\cL_d)^G=S_d$.
-\end{lemma}
-\begin{proof}
-  \lauren{..}
-\end{proof}
-Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
-
-\begin{cor}\label{cor:quotient-Proj}
-  The GIT quotients of $\Spec S$ by $G$ are of the form $\Proj S_{\NN d}$ for $d\in\Cl(S)$.
-\end{cor}
-
-Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$. We will see more concrete constructions of these spaces in the next subsection, along with descriptions of the semistable and stable loci.
-
-\subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
-The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan. \lauren{does the original GKZ construction cover the projective case though?} In this context the fan parametrizes polytopes whose normal vectors lie in a fixed list.
-
-\begin{defn}
-  Given $\alpha\in\QQ^n$, write $P_\alpha$ for the polytope in $M\otimes_\ZZ\QQ$ defined by the restriction of the facets $x_i\geq -\alpha_i$ for all $i$.
-\end{defn}
-
-\begin{example}
-  restriction process
-\end{example}
-
-The polytope $P_\alpha$ may not require all $n$ inequalities, in case some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or possibly at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing $\alpha$ with another vector of the same degree only translates the polytope.
-
-\begin{lemma}[\lauren{cite CLS}]
-  If $\alpha,\alpha'\in\ZZ^d$ have $\deg x^\alpha=\deg x^{\alpha'}$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$. \lauren{does this work for rational $\alpha?$}
-\end{lemma}
-
-Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to translation within $M\otimes_\ZZ\QQ$.  At certain degrees the facet structure may change---for instance when a collection of hyperplanes intersects in unexpected codimension.
-
-\begin{example}
-  \lauren{polytope along a wall}
-\end{example}
-
-However this does not occur for a general choice of $\alpha$, creating a polyhedral fan structure in the collection of polytopes.
-
-\lauren{how exactly do we get the fan in the projective case?  is there a good reference besides CLS?}
-
-The toric variety $X_d$ is determined by the polytope $P_\alpha$ with $\deg\alpha=d$, though this polytope may have nonintegral vertices, requiring a slight generalization of the standard construction.
-
-Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex $v$ of $P$, take the cone of the set $P\cap M\otimes_\ZZ\QQ-v$ in $M\otimes_\ZZ\QQ$.  Over all vertices, these form the maximal cones of a fan by \cite[Proposition 14.2.10]{CLS}, which also addresses the situation when $P$ is not full dimensional.  The toric variety of $P$ is then defined by the resulting fan.
-
-\begin{thm}[\cite{Theorem 14.2.13(b)}*{CLS}]
-  The toric variety of the polytope $P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj} for $d=\deg\alpha\in\Cl(S)$. \lauren{does not currently apply to degrees on walls}
-\end{thm}
-
-\lauren{define the fan structure here using the combinatorics?}
-
-\subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
-
-%In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
-
-\begin{defn}\label{defn:idealConeCorrespondence}
-  Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
-  %\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \}
-  %\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
-  if there exist $q_i \in \QQ_{>0}$ such that
-  $
-  d = \sum_{i} q_i\deg_{\QQ}(x_i^{{a_i}}).
-  $
-  For a convex cone $\Gamma \subseteq \Cl(S)\otimes \QQ$, we define
-  \[
-  \text{ideal}(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
-  \]
-  Conversely, given a monomial ideal $B$, we define
-  \[
-  \text{cone}(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
-  \]
-\end{defn}
-It is immediate that $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial of largest degree dividing~$\mathbf{x}^{\mathbf{a}}$ spans $d$. Thus, $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
-%and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
-It is elementary to check that
-\[
-\text{ideal}(\text{cone}(\text{ideal}(\Gamma))) = \text{ideal}(\Gamma) \qquad \text{ and } \qquad \text{cone}(\text{ideal}(\text{cone}(B))) = \text{cone}(B).
-\]
-
-
-\begin{remark}
-  \label{rem:open}
-  Because we insist that the coefficients $q_i$ be strictly positive, the condition that $\mathbf{x}^\a$ spans $d$ is an open condition on the points $d$ {\color{red} in the effective cone of $X$.}
-\end{remark}
-
-Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. We call the interiors of the corresponding cones the \defi{chambers for $S$}.  By definition, the chambers are disjoint from one another.
-%By definition, the effective cone is the union of the closures of these chambers.
-
-\begin{defn}\label{defn:chambersIrrelevant}
-  We enumerate the chambers as $\Gamma_1, \dots, \Gamma_s$, and we write $B_1, \dots, B_s$ for the corresponding squarefree monomial ideal.
-  By construction, the effective cone $\Eff(X)$ is the union of the closures of these cones $\Eff(X) = \bigcup_{i=1}^s \overline{\Gamma_i}$.
-\end{defn}
-
-\daniel{New remark below.}
-\begin{remark}
-  The \defi{secondary fan of $X$} is a fan structure on $\Eff(X)$ where the maximal chambers are precisely $\Gamma_1, \dots, \Gamma_s$.  In these notes, we will not utilize any aspects of the secondary fan beyond the chambers, and so we will avoid giving a precise definition of the lower dimensional faces of the secondary fan.
-\end{remark}
-
-
+\lauren{examples moved here from previous version}
 
 \begin{example}\label{ex:hirzsecondary}
   Let us consider the example of $\mathcal H_3$, the Hirzebruch surface of type $3$.  The Cox ring is~$S=\CC[x_0,x_1,x_2,x_3]$, and the degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.    First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
@@ -221,12 +92,141 @@ Since there are only a finite number of squarefree monomial ideals in $S$, it fo
   \end{center}
 \end{example}
 
+\begin{example}\label{ex:hirzSecondary2}
+  We return to Example~\ref{ex:hirzsecondary}. The ideal $B_2$ is the irrelevant ideal of the Hirzebruch surface~$\mathcal{H}_3$, so the chamber $\Gamma_2$ corresponds to $\mathcal{H}_3$. The chamber $\Gamma_1$ corresponds to the weighted projective space $\PP(1,1,3)$; one way to see this is to apply Theorem~\ref{thm:mainsecondary}(4) with $a = (-1, 1)$, and notice there is an isomorphism of $\Z$-graded rings $S_a \cong \k[y_0, y_1, y_2]$, where $\deg(y_0) = \deg(y_1) = 1$, and $\deg(y_2) = 3$. These two cases demonstrate notably different behavior.  For $\mathcal H_3$, we have that~$\Cl(\mathcal H_3)=\ZZ^2 = \Cl(S)$, and hence we have not contracted any divisors.  In this case, {\color{red} $\Gamma_2$} is precisely the ample cone of $\mathcal H_3$.
+  Things are more complicated for $\PP(1,1,3)$, as the presentation of $\PP(1,1,3)$ is nonstandard.  The Cox ring of $\PP(1,1,3)$ involves only 3 variables, but we have $S=\CC[x_0, x_1, x_2, x_3]$.  This is because the ray $\rho_1$ is not utilized in the fan corresponding to $\PP(1,1,3)$.  At the algebraic level, the corresponding variables determines a principal component of the irrelevant ideal, as we have $B_1 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle$.  There is still a natural map~$\Phi\colon \ZZ^2 = \Cl(S) \to \Cl(\PP(1,1,3))$; it must have $\deg(x_1)$ in its kernel, i.e. it must be the map $\Phi(a,b) = a +3b$. Under this map, every element $\Phi(\Gamma_1)$ covers the ample cone of $\PP(1,1,3)$.  However, there are elements outside of $\Gamma_1$ that also map to ample divisors under this map.
+\end{example}
+
+\subsection{GIT quotients}\label{sec:variation-of-GIT}
+The sequence \eqref{eq:M-SES} induces maps of algebraic groups
+\[0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.\]  The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.  (Note that we have fixed a basis for $\ZZ^n$ by choosing variables for $S$.)
+
+We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory.  \lauren{give citation for additional reading}
+
+\begin{defn}
+  A \emph{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ \lauren{write out?} such that the zero section of $\cL$ is $G$-invariant.  The \emph{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
+\end{defn}
+
+Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
+
+\begin{prop}\label{prop:eq-Picard-gp}
+  In the setup above $\Cl(S)$ is the $G$-equivariant Picard group of $\Spec S$.
+\end{prop}
+
+\begin{proof}
+  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$. \lauren{why does this agree with linear equivalence?} The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$.  \lauren{explain why it can't have a coefficient}
+
+  Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
+\end{proof}
+
+By Proposition~\ref{prop:eq-Picard-gp} and \lauren{general GIT theorem}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
+
+According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
+\[\Proj\bigoplus_{n\in\NN}\Gamma(\Spec S,\cL_d^{\otimes n})^G\]
+\lauren{n conflict!} where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections. \lauren{cite} In the toric case these equivariant sections are elements of $S$.
+\begin{lemma}
+  With $\cL_d$ as given by Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ we have $\Gamma(\Spec S,\cL_d)^G=S_d$.
+\end{lemma}
+\begin{proof}
+  \lauren{..}
+\end{proof}
+Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
+
+\begin{cor}\label{cor:quotient-Proj}
+  The GIT quotients of $\Spec S$ by $G$ are of the form $\Proj S_{\NN d}$ for $d\in\Cl(S)$.
+\end{cor}
+
+Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$. We will see more concrete constructions of these spaces in the next subsection, along with descriptions of the semistable and stable loci.
+
+\lauren{describe nef cones here?}
+
+\subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
+The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan. \lauren{does the original GKZ construction cover the projective case though?} In this context the fan parametrizes polytopes whose normal vectors lie in a fixed list.
+
+\begin{defn}
+  Given $\alpha\in\QQ^n$, write $P_\alpha$ for the polytope in $M\otimes_\ZZ\QQ$ defined by the restriction of the facets $x_i\geq -\alpha_i$ for all $i$.
+\end{defn}
+
+\begin{example}
+  \lauren{restriction process}
+\end{example}
+
+The polytope $P_\alpha$ may not require all $n$ inequalities, in case some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or possibly at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing $\alpha$ with another vector of the same degree only translates the polytope.
+
+\begin{lemma}[\lauren{cite CLS}]
+  If $\alpha,\alpha'\in\ZZ^d$ have $\deg x^\alpha=\deg x^{\alpha'}$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$. \lauren{does this work for rational $\alpha?$}
+\end{lemma}
+
+Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to translation within $M\otimes_\ZZ\QQ$.  At certain degrees the facet structure may change---for instance when a collection of hyperplanes intersects in unexpected codimension.
+
+\begin{example}
+  \lauren{polytope along a wall}
+\end{example}
+
+However this does not occur for a general choice of $\alpha$, creating a polyhedral fan structure in the space of polytopes.
+
+\lauren{how exactly do we get the fan in the projective case?  is there a good reference besides CLS?}
+
+The toric variety $X_d$ is determined by the polytope $P_\alpha$ with $\deg\alpha=d$, though this polytope may have nonintegral vertices, requiring a slight generalization of the standard construction.
+
+Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex $v$ of $P$, take the cone of the set $P\cap(M\otimes_\ZZ\QQ)-v$ in $M\otimes_\ZZ\QQ$.  Over all vertices, these form the maximal cones of a fan by \cite[Proposition 14.2.10]{CLS}, which also addresses the situation when $P$ is not full dimensional.  The toric variety of $P$ is then defined by the resulting fan.
+
+\begin{thm}[\cite{Theorem 14.2.13(b)}*{CLS}]
+  The toric variety of the polytope $P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj} for $d=\deg\alpha\in\Cl(S)$. \lauren{does not currently apply to degrees on walls}
+\end{thm}
+
+\subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
+
+%In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
+
+\begin{defn}\label{defn:idealConeCorrespondence}
+  Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
+  %\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \}
+  %\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
+  if there exist $q_i \in \QQ_{>0}$ such that
+  $
+  d = \sum_{i} q_i\deg_{\QQ}(x_i^{{a_i}}).
+  $
+  For a convex cone $\Gamma \subseteq \Cl(S)\otimes \QQ$, we define
+  \[
+  \text{ideal}(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
+  \]
+  Conversely, given a monomial ideal $B$, we define
+  \[
+  \text{cone}(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
+  \]
+\end{defn}
+It is immediate that $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial of largest degree dividing~$\mathbf{x}^{\mathbf{a}}$ spans $d$. Thus, $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
+%and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
+It is elementary to check that
+\[
+\text{ideal}(\text{cone}(\text{ideal}(\Gamma))) = \text{ideal}(\Gamma) \qquad \text{ and } \qquad \text{cone}(\text{ideal}(\text{cone}(B))) = \text{cone}(B).
+\]
+
+
+\begin{remark}
+  \label{rem:open}
+  Because we insist that the coefficients $q_i$ be strictly positive, the condition that $\mathbf{x}^\a$ spans $d$ is an open condition on the points $d$ {\color{red} in the effective cone of $X$.}
+\end{remark}
+
+Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. We call the interiors of the corresponding cones the \defi{chambers for $S$}.  By definition, the chambers are disjoint from one another.
+%By definition, the effective cone is the union of the closures of these chambers.
+
+\begin{defn}\label{defn:chambersIrrelevant}
+  We enumerate the chambers as $\Gamma_1, \dots, \Gamma_s$, and we write $B_1, \dots, B_s$ for the corresponding squarefree monomial ideal.
+  By construction, the effective cone $\Eff(X)$ is the union of the closures of these cones $\Eff(X) = \bigcup_{i=1}^s \overline{\Gamma_i}$.
+\end{defn}
+
+\daniel{New remark below.}
+\begin{remark}
+  The \defi{secondary fan of $X$} is a fan structure on $\Eff(X)$ where the maximal chambers are precisely $\Gamma_1, \dots, \Gamma_s$.  In these notes, we will not utilize any aspects of the secondary fan beyond the chambers, and so we will avoid giving a precise definition of the lower dimensional faces of the secondary fan.
+\end{remark}
+
 Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.
 \begin{defn}\label{defn:Xi}
   We define $X_i$ to be the toric variety associated to $\Sigma_i$.  By a mild abuse of notation (see Remark~\ref{rmk:abuseNotation}), we will refer to $B_i\subseteq S$ as the irrelevant ideal of $X_i$.
 \end{defn}
 There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$:
-
 
 \begin{thm}
   \label{thm:mainsecondary}
@@ -261,13 +261,7 @@ There are several alternate ways to recover a toric variety from a chamber $\Gam
   %\daniel{Mostly just cite the places in CLS?}
 \end{proof}
 
-\begin{example}\label{ex:hirzSecondary2}
-  We return Example~\ref{ex:hirzsecondary}. The ideal $B_2$ is the irrelevant ideal of the Hirzebruch surface~$\mathcal{H}_3$, so the chamber $\Gamma_2$ corresponds to $\mathcal{H}_3$. The chamber $\Gamma_1$ corresponds to the weighted projective space $\PP(1,1,3)$; one way to see this is to apply Theorem~\ref{thm:mainsecondary}(4) with $a = (-1, 1)$, and notice there is an isomorphism of $\Z$-graded rings $S_a \cong \k[y_0, y_1, y_2]$, where $\deg(y_0) = \deg(y_1) = 1$, and $\deg(y_2) = 3$. These two cases demonstrate notably different behavior.  For $\mathcal H_3$, we have that~$\Cl(\mathcal H_3)=\ZZ^2 = \Cl(S)$, and hence we have not contracted any divisors.  In this case, {\color{red} $\Gamma_2$} is precisely the ample cone of $\mathcal H_3$.
-  Things are more complicated for $\PP(1,1,3)$, as the presentation of $\PP(1,1,3)$ is nonstandard.  The Cox ring of $\PP(1,1,3)$ involves only 3 variables, but we have $S=\CC[x_0, x_1, x_2, x_3]$.  This is because the ray $\rho_1$ is not utilized in the fan corresponding to $\PP(1,1,3)$.  At the algebraic level, the corresponding variables determines a principal component of the irrelevant ideal, as we have $B_1 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle$.  There is still a natural map~$\Phi\colon \ZZ^2 = \Cl(S) \to \Cl(\PP(1,1,3))$; it must have $\deg(x_1)$ in its kernel, i.e. it must be the map $\Phi(a,b) = a +3b$. Under this map, every element $\Phi(\Gamma_1)$ covers the ample cone of $\PP(1,1,3)$.  However, there are elements outside of $\Gamma_1$ that also map to ample divisors under this map.
-\end{example}
-
-
-The previous example illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
+The previous example \lauren{now somewhere else} illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
 \begin{lemma}\label{lem:MovingConeEquivalence}
   The following are equivalent:
   \begin{enumerate}
