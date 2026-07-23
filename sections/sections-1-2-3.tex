@@ -27,7 +27,7 @@ Let $X$ be a smooth projective variety over a field $\kk$, and let $\coh X$ deno
   where the middle term resolves $\cO$, while projecting onto its top term gives a map to $\cO(-3)[2]$.
 \end{example}
 
-Note that passing to the derived category destroys the abelian structure: kernels and cokernels no longer make sense, and there are no short exact sequences. What survives is the weaker structure of a \defi{triangulated category}, in which short exact sequences are replaced by \defi{distinguished triangles}.
+Note that passing to the derived category destroys the abelian structure: kernels and cokernels no longer make sense, and there are no short exact sequences. What survives is the  structure of a \defi{triangulated category}, in which short exact sequences are replaced by \defi{distinguished triangles}.
 
 \begin{defn}
   A \defi{triangulated category} is an additive category $\cD$ equipped with an autoequivalence $E\mapsto E[1]$ (the \defi{shift}) and a class of distinguished triangles $E\to F\to G\to E[1]$ subject to a list of axioms (see \cite[\S1.2]{huybrechts}). Moreover, every morphism $f\colon E\to F$ fits into a distinguished triangle
@@ -36,9 +36,9 @@ Note that passing to the derived category destroys the abelian structure: kernel
   \end{tikzcd}\]
 \end{defn}
 
-The category $\Db(X)$ is triangulated, with the shift given on a complex $\cE^\bullet$ by $\cE[1]^i=\cE^{i+1}$ and $d_{\cE[1]}=-d_{\cE}$, and with $\cone(f)^i=\cE^{i+1}\oplus \cF^i$ for a chain map $f\colon\cE^\bullet\to\cF^\bullet$. A full subcategory closed under shifts and cones is a \defi{triangulated subcategory}; it is \defi{thick} if it is moreover closed under direct summands. The smallest thick triangulated subcategory containing a set of objects $\{E_i\}$ is the subcategory they \defi{generate}, and we say $\{E_i\}$ \defi{generates} $\cD$ if this subcategory is all of $\cD$.
+The category $\Db(X)$ is triangulated, with the shift given on a complex $\cE^\bullet$ by $\cE[1]^i=\cE^{i+1}$ and $d_{\cE[1]}=-d_{\cE}$, and with $\cone(f)^i=\cE^{i+1}\oplus \cF^i$ for a chain map $f\colon\cE^\bullet\to\cF^\bullet$. A full subcategory closed under shifts and cones is a \defi{triangulated subcategory}; it is \defi{thick} if it is moreover closed under direct summands. The smallest thick triangulated subcategory containing a set of objects $\{E_i\}$ is the subcategory they \defi{generate}, and we say $\{E_i\}$ \defi{generates} $\cD$ if this subcategory is all of $\cD$. We say a functor between triangulated categories that preserves shifts and distinguished triangles is \defi{exact}. 
 
-There is a fully faithful embedding $\coh X\into \Db(X)$ sending a sheaf to the complex concentrated in degree $0$, and under this embedding
+There is a fully faithful embedding $\coh X\into \Db(X)$ sending a sheaf to the complex concentrated in degree~$0$, and under this embedding
 \[ \Ext^i_X(\cE,\cF)\cong \Hom_{\Db(X)}(\cE,\cF[i]), \]
 so that extension groups are recovered as derived morphisms into shifts. We henceforth identify a sheaf with the corresponding complex so that a short exact sequence $0 \to \cE \to \cF \to \cG \to 0$ in $\coh X$ is represented by a distinguished triangle $\cE \to \cF \to \cG \to \cE[1]$ in $\Db(X)$, but note that distinguished triangles allow extensions between objects that live in different cohomological degrees, thus not every distinguished triangle comes from a short exact sequence.
 \def\cI{{\mathcal I}}
@@ -63,29 +63,29 @@ Any object of the derived category of a product $X\times Y$ induces an exact fun
     & X\times Y \arrow[dl,"p"'] \arrow[dr,"q"] & \\
     X & & Y.
   \end{tikzcd}\]
-  The \defi{Fourier--Mukai transform} with \defi{kernel} $\cK\in \Db(X\times Y)$ is an exact functor
-  \[ \Phi_\cK\colon \Db(X) \xto{Lp^*} \Db(X \times Y) \xto{-\Lotimes\cK} \Db(X \times Y) \xto{Rq_*} \Db(Y). \]
+  The \defi{Fourier--Mukai transform} with \defi{kernel} $\cK\in \Db(X\times Y)$ is the exact functor
+  \[ \Phi_\cK\colon \Db(X) \xto{Lp^*} \Db(X \times Y) \xto{-\Lotimes\cK} \Db(X \times Y) \xto{Rq_*} \Db(Y), \]
   where $Lp^*$, $-\Lotimes\cK$, and $Rq_*$ are the derived functors induced by $p^*$, $-\otimes\cK$, and $q_*$, respectively, but since $p$ is flat $Lp^*$ is the usual pullback.
 \end{defn}
 
 A theorem of Orlov asserts that, for smooth projective $X$ and $Y$, every exact equivalence $\Db(X)\xto{\simeq}\Db(Y)$ arises as a Fourier--Mukai transform for some kernel $\cK$, which is unique up to isomorphism in the derived category \cite{orlov_eqv}.
 
-A special case of the Fourier--Mukai transform occurs when $Y = X$ and $\cK \in \Db(X\times X)$ is the structure sheaf $\cO_\Delta$ of the diagonal subscheme $\iota\colon\Delta\to X\times X$\!.
+A special case of the Fourier--Mukai transform occurs when $Y = X$ and $\cK \in \Db(X\times X)$ is the structure sheaf $\cO_\Delta\ce\iota_*\cO_X$ of the diagonal subscheme $\iota\colon\Delta\to X\times X$\!.
 
 \begin{prop}\label{prop:diagonalidentity}
   The functor $\Phi_{\cO_\Delta}\colon \Db(X)\to \Db(X)$ is isomorphic to the identity functor.
 \end{prop}
 \begin{proof}
-  Write $\iota$ for the diagonal embedding, so that $p\circ\iota=q\circ\iota=\id_X$. Using the projection formula, $\cO_\Delta=\iota_*\cO_X$, and the composition rule $L\iota^*\circ Lp^*\cong L(p\circ\iota)^*=\id$ (note that $\iota$ is not flat, so the derived pullback $L\iota^*$ is essential here), we compute
+  Write $\iota$ for the diagonal embedding, so that $p\circ\iota=q\circ\iota=\id_X$. Using the projection formula, and the isomorphism $L\iota^*\circ Lp^*\cong L(p\circ\iota)^*=\id$ (note that $\iota$ is not flat, so the derived pullback $L\iota^*$ is essential here), we compute
   \[   \Phi_{\cO_\Delta}(\cE)=Rq_*\!\left(p^*\cE\Lotimes \iota_*\cO_X\right)\cong Rq_*\iota_*\!\left(L\iota^*p^*\cE\right)\cong R(q\circ\iota)_*\,L(p\circ\iota)^*\cE\cong \cE. \qedhere   \]
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beilinson's resolution of the diagonal}
 
-Proposition~\ref{prop:diagonalidentity} becomes a powerful computational tool once we replace $\cO_\Delta$ by an explicit locally free resolution. In this case, since $\cK$ is a complex of locally free sheaves, the left derived tensor product with $\cK$ is the usual tensor product.
+Proposition~\ref{prop:diagonalidentity} becomes a powerful computational tool once we replace $\cO_\Delta$ by an explicit locally free resolution. Note that the left derived tensor product with a complex of locally free sheaves is the usual tensor product.
 
-On $X=\PP^n$ such a resolution was constructed by Beilinson \cite{beilinson}. Let $\cT_{\PP^n}$ denote the tangent bundle and set
+On $X=\PP^n$, such a resolution was constructed by Beilinson \cite{beilinson}. Let $\cT_{\PP^n}$ denote the tangent bundle and set
 \[ \mathcal W\ce \cO_{\PP^n}(1)\boxtimes \cT_{\PP^n}(-1), \]
 a vector bundle of rank $n$ on $\PP^n\times\PP^n$, where $\cF\boxtimes\cG\ce p^*\cF\otimes q^*\cG$ denotes the external tensor product.  There is a canonical section $s\in \HH^0(\PP^n\times\PP^n,\mathcal W)$ whose vanishing locus is precisely the diagonal $\Delta$ (see \cite[\S3]{caldararu} or \cite[\S8.3]{huybrechts}). \mahrud{good opportunity for an enlightning M2 computation of the actual section here} Since $\PP^n\times\PP^n$ is smooth, hence Cohen--Macaulay, and the vanishing locus $\Delta$ has codimension $n=\rank\mathcal W$, the section $s$ is regular, so the Koszul complex on $s$ is a locally free resolution
 \[ 0\to \textstyle\bigwedge^n\mathcal W^\vee \to \cdots\to \bigwedge^2\mathcal W^\vee\to \mathcal W^\vee \to \cO_{\PP^n\times\PP^n}\to \cO_\Delta\to 0. \]
@@ -100,7 +100,7 @@ a complex each of whose terms is a box product of a line bundle with a twisted e
 %% This theorem launched a search for exceptional collections and semiorthgonal decompositions for other varieties. As time permits, provide a brief overview of some results in this vein, such as Kapranov's exceptional collections for smooth quadrics and Grassmanians~\cite{kapranov}, or
 %% Orlov's blowup formula~\cite{huybrechts}*{Proposition 11.18} and projective bundle formula~\cite{huybrechts}*{Corollary 8.36}. See~\cite{kuznetsov} for a survey on this topic.
 
-In this lecture we decompose the derived category $\Db(X)$ of a smooth projective variety into simple building blocks. The relevant notions are those of a semiorthogonal decomposition and, in the best case, a full strong exceptional collection. We follow \cite[\S1.4]{huybrechts} and \cite[\S3]{caldararu}, and refer to \cite{kuznetsov} for a survey.
+In this lecture we decompose the derived category $\Db(X)$ of a smooth projective variety into simple building blocks. The relevant notions are those of a semiorthogonal decomposition and, in the best case, a full strong exceptional collection. We follow \cite[\S1.4]{huybrechts} and \cite[\S3]{caldararu}, and we refer to \cite{kuznetsov} for a survey.
 
 Given a full triangulated subcategory $\cB\subseteq \cD$, its \defi{right orthogonal} $\cB^\perp$ is the full subcategory of objects $C$ with $\Hom_\cD(B, C)=0$ for all $B\in\cB$; the \defi{left orthogonal} ${}^\perp\cB$ is defined symmetrically. A sequence $(\cB_0,\dots,\cB_r)$ of triangulated subcategories is \defi{semiorthogonal} if $\cB_j\subseteq \cB_i^\perp$ whenever $j<i$.
 
@@ -116,7 +116,7 @@ The finest such decompositions come from exceptional objects.
   An ordered sequence $E_0,\dots,E_r$ of exceptional objects is an \defi{exceptional collection} if $\Ext^\bullet(E_i,E_j)=0$ whenever $i>j$. It is \defi{strong} if in addition $\Ext^\ell(E_i,E_j)=0$ for all $i\le j$ and all $\ell\ne0$ (for a collection of sheaves the negative $\Ext$ groups vanish automatically, so only $\ell>0$ needs to be checked), and \defi{full} if the collection generates $\cD$.
 \end{defn}
 
-A convenient way to visually ``see'' an exceptional collection is through its \defi{Ext table}, the $(r+1)\times(r+1)$ matrix whose $(i,j)$ entry is the Laurent polynomial
+A convenient way to visualize an exceptional collection is through its \defi{Ext table}, the $(r+1)\times(r+1)$ matrix whose $(i,j)$ entry is the Laurent polynomial
 \[ \sum_{\ell\in\ZZ}\dim_\kk\Ext^\ell(E_i,E_j)\,T^\ell, \]
 where the exponent of $T$ tracks the cohomological degree. The collection is exceptional precisely when this table is upper triangular with every diagonal entry equal to $1$, and strong when in addition every entry is a nonnegative integer. For instance, the collection $\cO,\cO(1),\cO(2)$ on $\PP^2$ has Ext table
 \[ \begin{pmatrix} 1 & 3 & 6 \\ 0 & 1 & 3 \\ 0 & 0 & 1 \end{pmatrix}, \]
@@ -139,9 +139,15 @@ A full exceptional collection $E_0,\dots,E_r$ yields a semiorthogonal decomposit
   \end{itemize}
   In particular, the collection of cotangent bundles is the result of applying a half-twist braid on the collection $\cO,\cO(1),\dots,\cO(n)$, which is a twist of the original collection of line bundles. This orthonormality between the two families explains why Beilinson's resolution of the diagonal pairs one member of each collection in every term, and it is the starting point for the \defi{Beilinson monad}, which we will revisit through the lens of Tate resolutions in Lecture~\ref{lec:18-tate-resolutions-PPn}.
 
-  For fullness, let $\cF\in \Db(\PP^n)$ and apply Proposition~\ref{prop:diagonalidentity} to get $\cF\cong \Phi_{\cO_\Delta}(\cF)=Rq_*(p^*\cF\Lotimes \cO_\Delta)$. Replacing $\cO_\Delta$ by Beilinson's resolution and applying the projection formula termwise, \michael{explain a bit more why we can apply the functor termwise. We're passing to the $E^1$ page of a hypercohomology spectral sequence} the term $\cO(-i)\boxtimes\Omega^i(i)$ contributes
-  \[ Rq_*\bigl(p^*(\cF(-i))\otimes q^*\Omega^i(i)\bigr)\cong R\Gamma\bigl(\PP^n,\cF(-i)\bigr)\otimes \Omega^i(i). \]
-  Thus $\cF$ is built by iterated cones out of the objects $\Omega^i(i)$ tensored with $\kk$-vector spaces, so the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$; a dual computation handles the collection of twists of $\cO$. See \cite[\S3]{caldararu} and \cite[\S{A.2}]{BCHS26} for details of the construction.
+  For fullness: given a coherent sheaf $\cF$ on $\PP^n$,  Proposition~\ref{prop:diagonalidentity} implies that $\cF\cong \Phi_{\cO_\Delta}(\cF)$ in $\Db(\PP^n)$. We will see in Construction~\ref{const:monad} that $\Phi_{\cO_\Delta}(\cF)$ is isomorphic to a complex $\B$ with terms
+  $$
+  \B_k
+  = \bigoplus_{i-j=k} H^j(X, \F(-i)) \otimes\Omega^i(i).
+  $$
+  It follows immediately that the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$; a dual computation handles the collection of twists of $\cO$.
+  %Replacing $\cO_\Delta$ by Beilinson's resolution and applying the projection formula termwise, \michael{explain a bit more why we can apply the functor termwise. We're passing to the $E^1$ page of a hypercohomology spectral sequence} the term $\cO(-i)\boxtimes\Omega^i(i)$ contributes
+  %\[ Rq_*\bigl(p^*(\cF(-i))\otimes q^*\Omega^i(i)\bigr)\cong R\Gamma\bigl(\PP^n,\cF(-i)\bigr)\otimes \Omega^i(i). \]
+  %Thus $\cF$ is built by iterated cones out of the objects $\Omega^i(i)$ tensored with $\kk$-vector spaces, so the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$ See \cite[\S3]{caldararu} and \cite[\S{A.2}]{BCHS26} for details of the construction.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -272,13 +278,13 @@ On the exterior side, the analogous quotient is the \defi{singularity category}
 \[ \Dsg(E) \ce \Db(E)\,/\,\Perf(E), \]
 in the sense of Buchweitz and Orlov \cite{buc21}; since $E$ is self-injective, $\Dsg(E)$ is equivalent to the stable module category of $E$. Combining Theorem~\ref{thm:BGG} with Proposition~\ref{prop:BGGsupport} and passing to Verdier quotients, we conclude:
 \[ \Db(\PP^n) \simeq \Db(S)/\Db_\m(S) \simeq \Db(E)/\Perf(E) = \Dsg(E). \]
-That is, the BGG correspondence identifies the derived category of $\PP^n$ with the singularity category of the exterior algebra $E$.
+That is, the BGG correspondence identifies the derived category of $\PP^n$ with the singularity category of the exterior algebra $E$. We will return to this equivalence in Lecture~\ref{lec:18-tate-resolutions-PPn} and discuss its generalization to toric varieties in Lecture~\ref{lec:19-tate-resolutions-toric}.
 
-\begin{remark}
-  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
-  \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk \omega_E(j) \]
-  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
-\end{remark}
+%\begin{remark}
+%  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
+ % \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk \omega_E(j) \]
+%  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
+%\end{remark}
 
 %\begin{remark}
 %  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
