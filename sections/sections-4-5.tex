@@ -34,7 +34,6 @@ Write $\Sigma(1)$ for the set of \defi{rays} (one-dimensional cones) of $\Sigma$
   0\to M\xrightarrow{\ \alpha\ } \ZZ^{\Sigma(1)}\xrightarrow{\ \deg\ } \Cl(X_\Sigma)\to 0,
   \qquad \alpha(m)=\sum_\rho \langle m,-u_\rho\rangle D_\rho,
 \end{equation}
-\michael{Beware: I introduced a sign on $u_\rho$ above, to match Section 6}
 where $\Cl(X_\Sigma)$ is the \defi{divisor class group}. The map $\alpha$ gives the principal divisor of the character $\chi^m$, and $\deg$ sends a divisor to its class; injectivity of $\alpha$ uses our assumption that the rays span $N\otimes\RR$.
 
 \begin{remark}[Cartier and Weil divisors]\label{rem:PicCl}
@@ -48,12 +47,12 @@ Assign to each ray $\rho\in\Sigma(1)$ a variable $x_\rho$ and consider
 \[ S = \Cox(X_\Sigma) = \kk[x_\rho : \rho\in\Sigma(1)] \]
 to be a polynomial ring graded by $\Cl(X_\Sigma)$ via $\deg(x_\rho)=[D_\rho]$. This is the \defi{Cox ring} (or \defi{homogeneous coordinate ring}) of $X_\Sigma$. A monomial $x^{\mathbf a}=\prod_\rho x_\rho^{a_\rho}$ has degree $[\sum_\rho a_\rho D_\rho]\in\Cl(X_\Sigma)$.
 
-The geometry of $X_\Sigma$, encoded in the combinatorics of the maximal cones of $\Sigma$, is recorded by the so-called \defi{irrelevant ideal}
+The geometry of $X_\Sigma$, encoded in the combinatorics of the maximal cones $\Sigma_{\on{max}}$ of $\Sigma$, is recorded by the so-called \defi{irrelevant ideal}
 \[
 B = \bigl\langle\, x^{\widehat\sigma}\ :\ \sigma\in\Sigma_{\max}\,\bigr\rangle, \qquad
 x^{\widehat\sigma} = \prod_{\rho\;\notin\;\sigma(1)} x_\rho,
 \]
-which is a squarefree monomial ideal generated, for each maximal cone $\sigma$, by the product of the variables whose rays are not in $\sigma$. \michael{$\Sigma_{\on{max}}$ is not defined}
+which is a squarefree monomial ideal generated, for each maximal cone $\sigma$, by the product of the variables whose rays are not in $\sigma$.
 
 \begin{remark}[Primitive collections]\label{rem:primitive}
   The locus $V(B)\subseteq\bA^{\Sigma(1)}$ cut out by the irrelevant ideal is a union of coordinate subspaces, indexed by the \defi{primitive collections} of $\Sigma$: the minimal subsets $\mathcal C\subseteq\Sigma(1)$ that do not span a cone of $\Sigma$, although every proper subset does. Explicitly,
@@ -86,7 +85,7 @@ Thus a point of a simplicial $X_\Sigma$ is a $G$-orbit of ``homogeneous coordina
     \[
     \deg(x_0)=\deg(x_2)=(1,0),\qquad \deg(x_1)=(-a,1),\qquad \deg(x_3)=(0,1),
     \]
-    and the primitive collections $\{u_0,u_2\}$ and $\{u_1,u_3\}$ give $B=(x_0,x_2)\cap(x_1,x_3)$. Geometrically, $(1,0)$ is the class of a fiber of $\mathcal H_a\to\PP^1$ and class $(-a,1)$ is the class of the divisor with self-intersection $-a$.
+    and the primitive collections $\{u_0,u_2\}$ and $\{u_1,u_3\}$ give $B=(x_0,x_2)\cap(x_1,x_3)$. Geometrically, $(1,0)$ is the class of a fiber of $\mathcal H_a\to\PP^1$ and $(-a,1)$ is the class of the divisor with self-intersection $-a$.
   \end{enumerate}
 \end{example}
 
@@ -222,7 +221,7 @@ These glue to a sheaf $\widetilde M$ on $X$, and $M\mapsto\widetilde M$ is exact
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The derived equivalence and its failure}
+\subsection{Derived categories of toric varieties}
 The kernel of the (exact) sheafification functor is what separates the geometry of $X$ from the algebra of $S$. Write $\Mod_{\mathrm{gr}}(S)$ for the category of finitely generated $\Cl(X)$-graded $S$-modules, and $\Mod_B(S)\subseteq\Mod_{\mathrm{gr}}(S)$ for the full subcategory of \defi{$B$-torsion} modules, i.e.\ those annihilated by a power of $B$.
 
 \begin{prop}[\cite{CLS}*{Prop.~5.3.9 and 5.3.10}]\label{prop:sheaf-module}
@@ -240,7 +239,7 @@ Consequently, when $X$ is smooth, sheafification induces an equivalence of abeli
 which is Cox's theorem \cite{cox}. Passing to derived categories yields:
 
 \begin{thm}\label{thm:coxderived}
-  Let $X=X_\Sigma$ be a smooth projective toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $D^b_B(S)\subseteq D^b(S)$ be the thick subcategory of complexes with homology supported on $V(B)$. Then sheafification induces an equivalence of triangulated categories
+  Let $X=X_\Sigma$ be a smooth projective toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $D^b_B(S)\subseteq D^b(S)$ be the thick subcategory of complexes with homology supported on $V(B)$. Sheafification induces an equivalence of triangulated categories
   \[
   D^b(X)\ \simeq\ D^b(S)\,/\,D^b_B(S).
   \]
@@ -258,7 +257,7 @@ This is the toric generalization of the equivalence $D^b(\PP^n)\simeq D^b(S)/D^b
   \[
   \Gamma\bigl(D_+(z),\widetilde M\bigr)=\bigl(M[z^{-1}]\bigr)_0\cong\bigl(\kk[z^{\pm}](1)\bigr)_0=\kk[z^{\pm}]_1=0,
   \]
-  not because $z$ annihilates $M$ but because $\deg(z)=2$, so the ring $\kk[z^{\pm}]$ has no odd-degree elements. Thus sheafification kills the nonzero object $M\notin D^b_B(S)$, and the induced functor $D^b(S)/D^b_B(S)\to D^b(\PP(1,1,2))$ is not an equivalence.
+  because $\deg(z)=2$, so the ring $\kk[z^{\pm}]$ has no odd-degree elements. Thus sheafification kills the nonzero object $M\notin D^b_B(S)$, and the induced functor $D^b(S)/D^b_B(S)\to D^b(\PP(1,1,2))$ is not an equivalence.
 \end{example}
 
 \begin{remark}\label{rem:simplicialsheaf}
@@ -268,14 +267,14 @@ This is the toric generalization of the equivalence $D^b(\PP^n)\simeq D^b(S)/D^b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Demazure vanishing}
 
-We close with the cohomological vanishing theorem that powers the Bondal--Thomsen collection of the next lecture.
+The following cohomological vanishing theorem will be essential to the next lecture.
 
 \begin{thm}[Demazure Vanishing, \cite{CLS}*{Thm.~9.2.3}]\label{thm:demazureL5}
-  Let $X_\Sigma$ be a toric variety whose fan has convex support (for instance, $X_\Sigma$ complete), and let $D$ be a nef Cartier divisor on $X_\Sigma$. Then $H^p(X_\Sigma,\cO_{X_\Sigma}(D))=0$ for all $p>0$.
+  Let $X_\Sigma$ be a toric variety whose fan has convex support (e.g. $X_\Sigma$ complete), and let $D$ be a nef Cartier divisor on $X_\Sigma$. We have $H^p(X_\Sigma,\cO_{X_\Sigma}(D))=0$ for all $p>0$.
 \end{thm}
 
 \begin{remark}\label{rem:rounddown}
-  Lecture~\ref{lec:6-bondal-thomsen} uses an extension of Theorem~\ref{thm:demazureL5} to $\QQ$-divisors: if $D=\sum_\rho a_\rho D_\rho$ with $a_\rho\in\QQ$ is nef, then $H^p(X,\cO_X(\lfloor D\rfloor))=0$ for all $p>0$, where $\lfloor D\rfloor=\sum_\rho\lfloor a_\rho\rfloor D_\rho$. (Note that the round-down depends on the chosen coefficients $a_\rho$, not only on the class of $D$.)  This follows by the same support-function argument; see \cite[\S9.3]{CLS} and the stronger vanishing theorems of Musta\c{t}\u{a} \cite{mustata}. It reappears as Theorem~\ref{thm:demazure} in Lecture~\ref{lec:6-bondal-thomsen}, where it yields the cohomology vanishing that characterizes Bondal--Thomsen degrees.
+  Lecture~\ref{lec:6-bondal-thomsen} uses an extension of Theorem~\ref{thm:demazureL5} to $\QQ$-divisors: if $D=\sum_\rho a_\rho D_\rho$ with $a_\rho\in\QQ$ is nef, then $H^p(X,\cO_X(\lfloor D\rfloor))=0$ for all $p>0$, where $\lfloor D\rfloor=\sum_\rho\lfloor a_\rho\rfloor D_\rho$. (Note that the round-down depends on the chosen coefficients $a_\rho$, not only on the class of $D$.)  This follows by the same support-function argument; see \cite[\S9.3]{CLS} and the stronger vanishing theorems of Musta\c{t}\u{a} \cite{mustata}. It reappears as Theorem~\ref{thm:demazure} in Lecture~\ref{lec:6-bondal-thomsen}, where it yields a cohomology vanishing result for Bondal--Thomsen degrees.
 \end{remark}
 
 \begin{example}[Frobenius pushforwards]\label{ex:frobeniussplit}
@@ -289,11 +288,11 @@ We close with the cohomological vanishing theorem that powers the Bondal--Thomse
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Toric stacks (optional)}
 
-Theorem~\ref{thm:coxderived} fails for $\PP(1,1,2)$ because the geometric quotient forgets the finite stabilizers of the $G$-action, such as the $\mu_2$ at $[0:0:1]$. The failure is repaired not by changing the algebra but by changing the geometry: replace the GIT quotient by the corresponding quotient \emph{stack}. Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $G = \Hom_\ZZ(\Cl(X),\kk^*)$ act on $\Spec S$ as in Theorem~\ref{thm:coxquotient}. The \defi{canonical toric stack} of $X$ is the quotient stack
+Theorem~\ref{thm:coxderived} fails for $\PP(1,1,2)$ because the geometric quotient forgets the finite stabilizers of the $G$-action, such as the $\mu_2$ at $[0:0:1]$. The failure is repaired not by changing the algebra but by changing the geometry: replace the GIT quotient by the corresponding quotient \emph{stack}. Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$, and let $G = \Hom_\ZZ(\Cl(X),\kk^*)$ act on $\Spec S$ as in Theorem~\ref{thm:coxquotient}. The \defi{toric stack associated to $X$} is the quotient stack
 \[ \sX \,\ce\, \bigl[\,\Spec(S)\setminus V(B)\,/\,G\,\bigr]. \]
-Since $X$ is simplicial, $\sX$ is a smooth toric Deligne--Mumford stack, and the natural map $\pi\co\sX\to X$ realizes $X$ as its coarse moduli space \cite{BorisovChenSmith2004}.\footnote{Our viewpoint on toric stacks here is deliberately algebraic, through modules and sheaves. A more geometric treatment via stacky fans and toric morphisms is introduced in \cite{BorisovChenSmith2004} and greatly expanded in \cites{GS1,GS2}.}
+Since $X$ is simplicial, $\sX$ is a smooth toric Deligne--Mumford stack, and the natural map $\pi\co\sX\to X$ realizes $X$ as its coarse moduli space \cite{BorisovChenSmith2004}.\footnote{Our viewpoint on toric stacks here is deliberately algebraic, through modules and sheaves. A more geometric treatment via stacky fans and toric morphisms is introduced in \cite{BorisovChenSmith2004} and expanded in \cites{GS1,GS2}.}
 
-Sheaves on quotient stacks are concrete algebraic objects. A (quasi)coherent sheaf on $[U/G]$ is precisely a $G$-equivariant (quasi)coherent sheaf on $U$. Consider $\sX = \PP_{\mathrm{stack}}(1,1,2) = [\bA^3\setminus\{0\}\,/\,\kk^*]$. A quasicoherent sheaf on $\bA^3$ is simply an $S$-module $M$, and a $\kk^*$-equivariant structure on it is a decomposition $M = \bigoplus_{d\in\ZZ} M_d$ into eigenspaces of the action. That is, exactly a $\ZZ$-grading compatible with the grading of $S$. Removing $V(\m)$ kills precisely the modules supported at the origin, i.e.\ the finite-length modules. Hence
+A (quasi)coherent sheaf on $[U/G]$ is precisely a $G$-equivariant (quasi)coherent sheaf on $U$~\cite[Ex.~7.21]{Vistoli89}. Consider $\sX = \PP_{\mathrm{stack}}(1,1,2) = [\bA^3\setminus\{0\}\,/\,\kk^*]$. A quasicoherent sheaf on $\bA^3$ is simply an $S$-module $M$, and a $\kk^*$-equivariant structure on it is a decomposition $M = \bigoplus_{d\in\ZZ} M_d$ into eigenspaces of the action. That is, exactly a $\ZZ$-grading compatible with the grading of $S$. Removing $V(\m)$ kills precisely the modules supported at the origin, i.e.\ the finite-length modules. Hence
 \[ \Coh\bigl(\PP_{\mathrm{stack}}(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_{\m}(S), \]
 exactly as for $\PP^n$. The same reasoning applies in general:
 
@@ -309,7 +308,8 @@ In short, sheaves on $\sX$ are graded $S$-modules modulo $B$-torsion, analogous 
   \[ D^b(\sX)\ \simeq\ D^b(S)\,/\,D^b_B(S). \]
 \end{cor}
 
-We will not prove this; it follows from established results on quotient stacks, of which perhaps the most direct reference is \cite[Ex.~7.21]{Vistoli89}; see also \cite[Tag 06WT]{stacks-project}, \cite[Thm.~4.46]{vistoli}\mahrud{which paper is this?}, and \cite[Thm.~7.1.11]{alper}. When $X$ is smooth, $G$ acts freely on $\Spec(S)\setminus V(B)$, so $\sX\cong X$ and Corollary~\ref{cor:DbCoxStack} recovers Theorem~\ref{thm:coxderived}. When $X$ is simplicial but not smooth, the stack and the variety genuinely differ: for instance $\sX$ is smooth with $\Pic(\sX)\cong\Cl(X)$, so $\cO(1)$ \emph{is} a line bundle on $\PP_{\mathrm{stack}}(1,1,2)$, resolving the issues of Remark~\ref{rem:twistcaveat}.
+%We will not prove this; it follows from established results on quotient stacks, of which perhaps the most direct reference is %; see also \cite[Tag 06WT]{stacks-project}, \cite[Thm.~4.46]{vistoli}\mahrud{which paper is this?}, and \cite[Thm.~7.1.11]{alper}. 
+When $X$ is smooth, $G$ acts freely on $\Spec(S)\setminus V(B)$, so $\sX\cong X$ and Corollary~\ref{cor:DbCoxStack} recovers Theorem~\ref{thm:coxderived}. When $X$ is simplicial but not smooth, the stack and the variety genuinely differ: for instance $\sX$ is smooth with $\Pic(\sX)\cong\Cl(X)$, so $\cO(1)$ \emph{is} a line bundle on $\PP_{\mathrm{stack}}(1,1,2)$, resolving the issues of Remark~\ref{rem:twistcaveat}.
 
 \begin{remark}[The variety and the Veronese subring]\label{rem:veronese}
   The singular variety admits a parallel description. Writing $S^{(2)}=\kk[x^2,xy,y^2,z]$ for the second Veronese subring of $S$, generated in degree $2$, one has
