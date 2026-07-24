@@ -11,6 +11,8 @@
 
 Let $X$ be a smooth projective variety over a field $\kk$, and let $\coh X$ denote the abelian category of coherent sheaves on $X$. The central object of these notes is the \defi{bounded derived category} $\Db(X)$, which refines the homological information carried by $\coh X$. We briefly recall its construction and refer to \cite{huybrechts} for a thorough treatment.
 
+\michael{We will never consider unbounded derived categories, so we can drop the $b$ throughout the notes.}
+
 \begin{defn}
   Let $K^b(X)$ denote the \defi{bounded homotopy category} of $\coh X$: its objects are bounded cochain complexes of coherent sheaves on $X$, and its morphisms are chain maps modulo homotopy. The \defi{bounded derived category} $\Db(X)$ has the same objects as $K^b(X)$, but every quasi-isomorphism is formally inverted. Concretely, a morphism \begin{tikzcd} \cE \arrow[r] & \cF \end{tikzcd} in $\Db(X)$ is represented by a \defi{roof} $\begin{tikzcd} \cE & \arrow["\simeq"', l] \cE' \arrow[r] & \cF \end{tikzcd}$ in which the left arrow is a quasi-isomorphism.
 \end{defn}
@@ -130,24 +132,32 @@ A full exceptional collection $E_0,\dots,E_r$ yields a semiorthogonal decomposit
 \end{thm}
 
 \begin{proof}[Sketch]
-  For the sequence $\cO(-n),\cO(-n+1),\dots,\cO$ we have $\Ext^\ell_{\PP^n}(\cO(i),\cO(j))=\HH^\ell(\PP^n,\cO(j-i))$. Recall the cohomology of line bundles on $\PP^n$ (see \cite[Thm.~III.5.1]{hartshorne}): $\HH^\ell(\PP^n,\cO(d))=0$ for $0<\ell<n$ and every $d$, while $\HH^0(\PP^n,\cO(d))=0$ for $d<0$ and $\HH^n(\PP^n,\cO(d))=0$ for $d>-(n+1)$. When $i\le j$ the twist $j-i$ is nonnegative, so only $\HH^0$ survives; this gives the strong exceptional condition. When $i>j$ the twist lies in $\{-n,\dots,-1\}$, so all cohomology vanishes; this gives the exceptional condition. To see that the sequence $\Omega^n(n),\dots,\Omega^1(1),\cO$ is exceptional, Bott's formula for the cohomology of twisted differential forms on $\PP^n$ (see \cite[\S8.3]{huybrechts}) gives, for $0\le i,j\le n$,
-  \[ \Ext^\ell\bigl(\cO(i),\Omega^j(j)\bigr) = \HH^\ell\bigl(\PP^n,\Omega^j(j-i)\bigr) = \begin{cases} \kk & i=j=\ell,\\ 0 & \text{otherwise.}\end{cases} \]
-  Alternatively, we can use the following two properties of exceptional collections:
-  \begin{itemize}
-  \item a collection remains exceptional if every term is twisted by an invertible sheaf; and
-  \item exceptional collections admit an action of the braid group by left and right mutations, though note that strongness is not always preserved (see, for instance, \cite[\S4]{BDLS25}).
-  \end{itemize}
-  In particular, the collection of cotangent bundles is the result of applying a half-twist braid on the collection $\cO,\cO(1),\dots,\cO(n)$, which is a twist of the original collection of line bundles. This orthonormality between the two families explains why Beilinson's resolution of the diagonal pairs one member of each collection in every term, and it is the starting point for the \defi{Beilinson monad}, which we will revisit through the lens of Tate resolutions in Lecture~\ref{lec:18-tate-resolutions-PPn}.
-
-  For fullness: given a coherent sheaf $\cF$ on $\PP^n$,  Proposition~\ref{prop:diagonalidentity} implies that $\cF\cong \Phi_{\cO_\Delta}(\cF)$ in $\Db(\PP^n)$. We will see in Construction~\ref{const:monad} that $\Phi_{\cO_\Delta}(\cF)$ is isomorphic to a complex $\B$ with terms
+  We only address the first collection. We have $\Ext^\ell_{\PP^n}(\cO(i),\cO(j))=\HH^\ell(\PP^n,\cO(j-i))$. Recall the cohomology of line bundles on $\PP^n$ (see \cite[Thm.~III.5.1]{hartshorne}): $\HH^\ell(\PP^n,\cO(d))=0$ for $0<\ell<n$ and every $d$, while $\HH^0(\PP^n,\cO(d))=0$ for $d<0$ and $\HH^n(\PP^n,\cO(d))=0$ for $d>-(n+1)$. When $i\le j$ the twist $j-i$ is nonnegative, so only $\HH^0$ survives; this gives the strong exceptional condition. When $i>j$ the twist lies in $\{-n,\dots,-1\}$, so all cohomology vanishes; this gives the strong exceptional condition. %To see that the sequence $\Omega^n(n),\dots,\Omega^1(1),\cO$ is exceptional, Bott's formula for the cohomology of twisted differential forms on $\PP^n$ (see \cite[\S8.3]{huybrechts}) gives, for $0\le i,j\le n$,
+  %\[ \Ext^\ell\bigl(\cO(i),\Omega^j(j)\bigr) = \HH^\ell\bigl(\PP^n,\Omega^j(j-i)\bigr) = \begin{cases} \kk & i=j=\ell,\\ 0 & \text{otherwise.}\end{cases} \]
+  %Alternatively, we can use the following two properties of exceptional collections:
+  %\begin{itemize}
+ % \item a collection remains exceptional if every term is twisted by an invertible sheaf; and
+ % \item exceptional collections admit an action of the braid group by left and right mutations, though note that strongness is not always preserved (see, for instance, \cite[\S4]{BDLS25}).
+  %\end{itemize}
+  %In particular, the collection of cotangent bundles is the result of applying a half-twist braid on the collection $\cO,\cO(1),\dots,\cO(n)$, which is a twist of the original collection of line bundles. This orthonormality between the two families explains why Beilinson's resolution of the diagonal pairs one member of each collection in every term, and it is the starting point for the \defi{Beilinson monad}, which we will revisit through the lens of Tate resolutions in Lecture~\ref{lec:18-tate-resolutions-PPn}.
+For fullness: given a coherent sheaf $\cF$ on $\PP^n$,  Proposition~\ref{prop:diagonalidentity} implies that $\cF\cong \Phi_{\cO_\Delta}(\cF)$ in $\Db(\PP^n)$. We will see in Construction~\ref{const:monad} that $\Phi_{\cO_\Delta}(\cF)$ is isomorphic to a complex $\B$ with terms
   $$
   \B_k
-  = \bigoplus_{i-j=k} H^j(X, \F(-i)) \otimes\Omega^i(i).
+  = \bigoplus_{i-j=k} H^j(X, \F \otimes \Omega^i(i)) \otimes\OO(-i).
   $$
-  It follows immediately that the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$; a dual computation handles the collection of twists of $\cO$.
+  It follows that the objects $\OO(-n), \OO(-n+1) \dots, \OO$ generate $\Db(\PP^n)$. 
   %Replacing $\cO_\Delta$ by Beilinson's resolution and applying the projection formula termwise, \michael{explain a bit more why we can apply the functor termwise. We're passing to the $E^1$ page of a hypercohomology spectral sequence} the term $\cO(-i)\boxtimes\Omega^i(i)$ contributes
   %\[ Rq_*\bigl(p^*(\cF(-i))\otimes q^*\Omega^i(i)\bigr)\cong R\Gamma\bigl(\PP^n,\cF(-i)\bigr)\otimes \Omega^i(i). \]
   %Thus $\cF$ is built by iterated cones out of the objects $\Omega^i(i)$ tensored with $\kk$-vector spaces, so the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$ See \cite[\S3]{caldararu} and \cite[\S{A.2}]{BCHS26} for details of the construction.
+\end{proof}
+
+\michael{Added this, as we want it later.}
+\begin{cor}\label{cor:UniquenessAndFSEC}
+    For every sheaf $\mathcal F$ on $\PP^n$, there is a (unique up to homotopy) complex $F$ that is quasisomorphic to $\mathcal F$ and where $F_i = \bigoplus_{j=0}^n \cO(-j)^{m_{ij}}$.
+\end{cor}
+
+\begin{proof}[Sketch of proof]
+Let $K$ denote the homotopy category of complexes of graded $S$-modules whose terms are direct sums of line bundles in the Beilinson collection. There is a functor $K \to D^b(\PP^n)$ that sends $S(i)$ to~$\OO(i)$ for $-n \le i \le 0$. Fully faithfulness (resp. essential surjectivity) of this functor follows from the strong exceptionality (resp. fullness) of the Beilinson collection.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
