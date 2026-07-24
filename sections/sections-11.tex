@@ -106,7 +106,7 @@ The sequence \eqref{eq:M-SES} induces maps of algebraic groups
 We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory.  \lauren{give citation for additional reading}
 
 \begin{defn}
-  A \emph{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ \lauren{write out?} such that the zero section of $\cL$ is $G$-invariant.  The \emph{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
+  A \defi{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ \lauren{write out?} such that the zero section of $\cL$ is $G$-invariant.  The \defi{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
 \end{defn}
 
 Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
@@ -166,12 +166,12 @@ Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to trans
 
 This behavior cannot occur for a general choice of $\alpha$, creating a polyhedral fan in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which indices~$i$ the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$, in order to distinguish cases like Example~\ref{ex:secondary-wall}.
 
-Let $\Sigma$ be a generalized fan in $N\otimes_\ZZ\QQ$ with rays among the vectors $\nu_1,\ldots,\nu_n$ and $F$ a subset of the indices $1,\ldots,n$ of the $\nu_i$ \emph{not} appearing in $\Sigma$.  \lauren{give pair for example}  Define $\tilde\Gamma(\Sigma,F)$ to be the set of $\alpha\in\QQ^n$ such that there exists a convex support function $\varphi$ on $\Sigma$ with $\varphi(\nu_i)=-\alpha_i$ for all $i\notin F$ and $\varphi(\nu_i)\geq-\alpha_i$ for all $i\in F$ \lauren{define $\nu_i$ from Gale dual}.
+Let $\Sigma$ be a generalized \lauren{simplicial?} fan in $N\otimes_\ZZ\QQ$ with rays among the vectors $\nu_1,\ldots,\nu_n$ and $F$ a subset of the indices $1,\ldots,n$ of the $\nu_i$ \emph{not} appearing in $\Sigma$.  \lauren{give pair for example}  Define $\tilde\Gamma(\Sigma,F)$ to be the set of $\alpha\in\QQ^n$ such that there exists a convex support function $\varphi$ on $\Sigma$ with $\varphi(\nu_i)=-\alpha_i$ for all $i\notin F$ and $\varphi(\nu_i)\geq-\alpha_i$ for all $i\in F$ \lauren{define $\nu_i$ from Gale dual}.
 
 Compared to ordinary fans of toric varieties, generalized fans may contain cones which are not strongly convex.  \lauren{cite CLS}  As with the behavior from Example~\ref{ex:secondary-wall}, this does not occur for a general choice of $\alpha$, and we will focus on the general (not generalized!) case. \lauren{make and reference remark about walls}
 
 \begin{lemma}\label{lem:GKZ-def}
-  Let $\alpha\in\QQ^n$ such that $\dim P_\alpha=n$ and the normal vectors of $P_\alpha$ are exactly $\{\nu_i:i\in G\}$ for $G\subseteq\{1,\ldots,n\}$.  Then $\alpha\in\tilde\Gamma(\Sigma,F)$ where $\Sigma$ is the normal fan of $P_\alpha$ and $F$ is the complement of $G$.
+  Let $\alpha\in\QQ^n$ such that $\dim P_\alpha=n$ and the normal vectors of $P_\alpha$ are exactly $\{\nu_i:i\in G\}$ for $G\subseteq\{1,\ldots,n\}$. \lauren{G conflict!} Then $\alpha\in\tilde\Gamma(\Sigma,F)$ where $\Sigma$ is the normal fan of $P_\alpha$ and $F$ is the complement of $G$.
 \end{lemma}
 
 \begin{proof}
@@ -180,14 +180,14 @@ Compared to ordinary fans of toric varieties, generalized fans may contain cones
   Fix $i\notin G$.  Since $\Sigma$ is the normal fan of a polytope it is complete, so we can write $\nu_i=\sum\beta_j\nu_j$ for $\beta_j>0$ and $\nu_j$ the rays of a single cone in $\Sigma$.  By the definition of a support function $\varphi$ is linear within the cone spanned by the $\nu_j$, so that $\varphi(\nu_i)=\sum\beta_j\alpha_j$.
 \end{proof}
 
-By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(Q,V)$ of $\tilde\Gamma(\Sigma,F)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty?}
+By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(\Sigma,V)$ of $\tilde\Gamma(\Sigma,F)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty?}
 
 \begin{rem}
   We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  The existence of~$\varphi$ on the fan $\Sigma$ requires the class $\deg\alpha$ to be nef on the toric variety of the generalized fan $\Sigma$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.
 \end{rem}
 
 \begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
-  The collection of cones $\Gamma(Q,V)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \emph{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \emph{chambers}.
+  The collection of cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \emph{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \emph{chambers}.
 \end{prop}
 
 \begin{example}
@@ -219,7 +219,7 @@ A version of Theorem~\ref{thm:GIT-polytope} is true for all $d\in\Cl(S)$ but may
 %In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
 
 \begin{defn}\label{defn:idealConeCorrespondence}
-  Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$} \lauren{what is this font?}
+  Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
   %\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \}
   %\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
   if there exist $q_i>0$ such that
@@ -245,6 +245,10 @@ It is elementary to check that
 \lauren{do we want to define this notation, or do we just want a theorem that this is how you get the irrelevant ideal of $X_d$ from the chamber of $d$?}
 
 Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. These are the chambers of the secondary fan.
+
+\begin{thm}
+  The semistable locus of the
+\end{thm}
 
 Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.  There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$: \lauren{this theorem has largely been absorbed by the previous exposition}
 
@@ -281,7 +285,7 @@ Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corres
   %\daniel{Mostly just cite the places in CLS?}
 \end{proof}
 
-\section{Nef and moving cones}
+\subsection{Nef and moving cones}
 
 \lauren{turn this into a subsection about what happens when you lose a ray}
 
