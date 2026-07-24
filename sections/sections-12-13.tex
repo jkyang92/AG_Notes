@@ -7,78 +7,70 @@
 \fi
 
 \section{Lecture 12 (Martin Kalck); The Cox Category, I: Definition}\label{lec:12-DCox-definition}
-As we saw in one of the introductory lectures, Beilinson gave a very concrete description of the derived category of $\PP^n$~\cite{beilinson}.  Recall the
+As we saw in Theorem~\ref{thm:beilinsonFSEC}, the
 \defi{Beilinson collection} of line bundles $\cO_{\PP^n}(-n), \ldots,
-\cO_{\PP^n}(-1), \cO_{\PP^n}$.  And the fact that the Beilinson collection is a full, strong, exceptional collection means that every sheaf on $\PP^n$ can be represented, in an essentially unique way, as a complex whose terms are sums of these line bundles.
-
-\begin{thm}\label{thm:BeilinsonFSEC}
-The Beilinson collection of line bundles on $\PP^n$ is a full, strong exceptional collection.
-\end{thm}
-
-
-\begin{thm}\label{thm:UniquenessAndFSEC}
-    For every sheaf $\mathcal F$ on $\PP^n$, there is a (unique up to homotopy) complex $F$ which is quasisomorphic to $\mathcal F$ and where $F_i = \oplus_{j=0}^n \cO(-j)^{m_{ij}}$.
-\end{thm}
-
-Some well-known toric varieties satisfy an analogue of Beilinson's theorem.
+\cO_{\PP^n}(-1), \cO_{\PP^n}$ is a full strong exceptional collection for $D^b(\PP^n)$. This result extends to products of projective spaces.  
 
 \begin{example}
-    The Beilinson collection for $\PP^1$ consists of the line bundles of degrees $-1$ and $0$.   On $\PP^1\times \PP^1$, the bundles $\cO_{\PP^1\times \PP^1}(-1,-1),\cO_{\PP^1\times \PP^1}(-1,0), \cO_{\PP^1\times \PP^1}(0,-1),\cO_{\PP^1\times \PP^1}$ form a full, strong exceptional collection.  Note that the degrees that arise are the products of the degrees from the Beilinson collection of the factors.  A variant of Theorem~\ref{thm:UniquenessAndFSEC} thus holds for sheaves on $\PP^1\times \PP^1$.
-
-    A similar result holds for any product $\PP^n\times \PP^m$.  In this case, the degrees that should up at $\cO(-i,-j)$ where $-n \leq -i \leq 0$ and $-m \leq -j \leq 0$.  In fact, a similar result holds for multifactor products like $\PP^a\times \PP^b\times \PP^c\times \PP^d$.
-
-    The proofs of all of these cases follow fairly easily from Beilinson's original work.  This is for the following reasons:
+    The Beilinson collection for $\PP^1$ consists of the line bundles of degrees $-1$ and $0$.   On $\PP^1\times \PP^1$, the bundles $\cO_{\PP^1\times \PP^1}(-1,-1),\cO_{\PP^1\times \PP^1}(-1,0), \cO_{\PP^1\times \PP^1}(0,-1),\cO_{\PP^1\times \PP^1}$ form a full, strong exceptional collection.  Notice that the line bundles that arise are the box products of the bundles in the Beilinson collections of the factors. A similar result holds for any product $\PP^n\times \PP^m$.  In this case, the line bundles that appear are $\cO(-i,-j)$ for$-n \leq -i \leq 0$ and $-m \leq -j \leq 0$.  In fact, this extends to any product~$\PP^{n_1} \times \cdots \times \PP^{n_t}$. The proof follows easily from Beilinson's original work.  This is for the following reasons:
     \begin{enumerate}
-        \item Exceptionality is a simple calculation.
+        \item Exceptionality is a simple sheaf cohomology calculation.
         \item Fullness follows easily from having a resolution of the diagonal like Beilinson's.
-        \item If $F$ is Beilinson's resolution of the diagonal for $\PP^n$ and $G$ is Beilinson's resolution of the diagonal for $\PP^m$ then $F\boxtimes G$ is a resolution of the diagonal for $\PP^n\times \PP^m.$
+        \item If $F$ is Beilinson's resolution of the diagonal for $\PP^n$ and $G$ is Beilinson's resolution of the diagonal for $\PP^m$, then $F\boxtimes G$ is a resolution of the diagonal for $\PP^n\times \PP^m.$
     \end{enumerate}
-
-    For instance, in the case of $\PP^1\times \PP^1$ in more detail.  The fact that
+    For instance, let us consider the case of $\PP^1 \times \PP^1$. The fact that
     \[
     \cO_{\PP^1\times \PP^1}(-1,-1),\cO_{\PP^1\times \PP^1}(-1,0), \cO_{\PP^1\times \PP^1}(0,-1),\cO_{\PP^1\times \PP^1}
-    \]form a strong exceptional collection is a simple cohomology computation.  For fullness, we start with the fact that
+    \]form a strong exceptional collection is a simple cohomology computation, using the K\"unneth formula.  For fullness, we start with the fact that
     \[
-    \cO_{(\PP^1)^2} \gets \cO_{(\PP^1)^2}(-1,-1)\gets 0
+    \cO_{\PP^1 \times \PP^1} \gets \cO_{\PP^1 \times \PP^1}(-1,-1)
     \]
-     is a resolution of $\Delta_{\PP^1} \subseteq (\PP^1)^2$.  Taking the box product of this complex with itself yields a resolution of $\Delta_{(\PP^1)^2} \subseteq (\PP^1)^4$:
+     is a resolution of $\Delta_{\PP^1} \subseteq \PP^1 \times \PP^1$.  Taking the box product of this complex with itself yields a resolution of $\Delta_{\PP^1 \times \PP^1} \subseteq (\PP^1)^4$:
      \[
     \cO_{(\PP^1)^4} \gets
     \begin{matrix}
       \cO_{(\PP^1)^4}(-1,0,-1,0)\\
-      \oplus
+      \oplus \\
       \cO_{(\PP^1)^4}(0,-1,0,-1)
     \end{matrix}
     \gets
-     \cO_{(\PP^1)^4}(-1,-1,-1,-1) \gets 0.
+     \cO_{(\PP^1)^4}(-1,-1,-1,-1) .
      \]
-     Applying the Fourier--Mukai transform trick, similar to what we saw in Lecture 2 and in the proof of Conjecture~\ref{conj:bondal}, will show fullness.
+Applying Construction~\ref{const:monad} gives fullness, just as in the proof of Theorem~\ref{thm:beilinsonFSEC}.
 \end{example}
 
 
 
-Some of the other classical examples of smooth projective toric varieties also satisfy an analogue of Beilinson's theorem.
+Some other classical examples of smooth projective toric varieties also satisfy an analogue of Beilinson's theorem.
 \begin{example}
-Let $X$ be the Hirzebruch surface of type $3$, as introduced in Example~\ref{ex:Hirzebruch}.  Then $\cO_{X}(-1,-1),\cO_{X}(-1,0), \cO_{X}(0,-1),\cO_{X}$
-form a full, strong exceptional collection.  The same result holds for a Hirzebruch surface of any type.  For those who are curious: this is a special case of Orlov's semi-orthogonal decomposition result for projective bundles.\daniel{add citation}
+If $X$ is a Hirzebruch surface, then
+$$
+\cO_{X}(-1,-1),\cO_{X}(-1,0), \cO_{X}(0,-1),\cO_{X}
+$$
+is a full, strong exceptional collection for $D^b(X)$.   For those who are curious: this is a special case of Orlov's semiorthogonal decomposition result for projective bundles \cite[Cor.~8.36]{huybrechts}.
 \end{example}
 
-A natural question then is to ask:  which smooth, projective toric varieties satisfy an analogue of Beilnson's theorem?  In 1997, King conjectured that the answer was ``all of them''.
+This raises a natural question:  which smooth, projective toric varieties satisfy an analogue of Beilinson's theorem?  In 1997, King conjectured that the answer was ``all of them''.
 
 \begin{conj}[King, 1997]
     Every smooth, projective toric variety has a full, strong exceptional collection of line bundles.
 \end{conj}
 
-This turned out to be
-false.  Hille-Perling gave the first counterexamples, and followup work of Michalek and Efimov showed counterexamples for fairly simple varieties, and showed that the conjecture could not be salvaged by restricting, for instance, to Fano toric varieties
+\begin{remark}
+\label{rem:monad}
+A variant of Theorem~\ref{thm:UniquenessAndFSEC} holds any variety satisfying King's Conjecture. 
+\end{remark} 
+
+King's Conjecture turned out to be
+false.  Hille-Perling gave the first counterexamples, and followup work of Michalek and Efimov gave counterexamples for fairly simple varieties and showed that the conjecture cannot be salvaged by restricting, for instance, to Fano toric varieties
 ~\cites{hille-perling, michalek11, efimov}.
 
 Nevertheless, King's Conjecture
 continued to inspire work on exceptional collections for toric
 varieties, and there is a huge literature in this vein:
 ~\cites{altmann-immaculate,
-BFK_GIT,BallardEtAl2019ArithmeticToric,BallardEtAl2019ToricFrobenius,BallardEtAl2018arxivDerivedCategories,bernardi-tirabassi,borisov-hua,borisov-orlov-equivariant,borisov-wang,costa-miro-roig04,costa-miro-roig10,costa-miro-roig2,dey-lason-michalek,Jerby1,Jerby2,Jerby3,kawamataI,kawamataII,lason-michalek,ohkawa2013frobenius,prabhu-naik,sanchez2023derived,Uehara},
-\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{kawamataI}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Theorem~\ref{thm:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks (the line bundles in the Beilinson collection), the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve compelxes of sheaves.
+BFK,BallardEtAl2020arxivConsequences,BallardetAl-highFrobenius,BallardEtAl2018arxivDerivedCategories,bernardi-tirabassi,borisov-hua,borisov-orlov-equivariant,borisov-wang,costa-miro-roig04,costa-miro-roig10,dlm,Jerby1,Jerby2,Jerby3,kawamataI,kawamataII,lason-michalek,ohkawa2013frobenius,PN,sanchez2023derived,Uehara},
+\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening of the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{kawamataI}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Theorem~\ref{thm:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks, namely the line bundles in the Beilinson collection, the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve compelxes of sheaves.
 
 Over the remaining lectures, we will develop and prove an alternative
 realization of King’s Conjecture.  (The king is dead, long live the king!)
@@ -86,7 +78,7 @@ The basic idea originates from three observations:
 \begin{enumerate}
     \item Several distinct toric varieties can have the same Cox ring.
     \item  The Hanlon-Hicks-Lazarev Theorem shows that the analogue of Beilinson's resolution of the diagonal is uniform for all toric varieties with the same Cox ring.
-    \item  The Bondal-Thomsen collection--which is also uniform for all toric varieties with the same Cox ring--is an excellent analogue of the Beilinson in many ways.
+    \item  The Bondal-Thomsen collection--which is also uniform for all toric varieties with the same Cox ring--is an excellent analogue of the Beilinson collection in many ways.
 \end{enumerate}
 The picture that emerges is the following:
 \begin{center}
@@ -94,10 +86,10 @@ The picture that emerges is the following:
     $\PP^n$ & Smooth, projective toric variety \\ \hline
 Beilinson collection   &  Bondal-Thomsen collection\\
 Beilinson resolution of diagonal & HHL resolution of diagonal\\
-Theorem~\ref{thm:BeilinsonFSEC} (King's Conjecture for $\PP^n$)    &  {\bf Revised King's Conjecture}
+Theorem~\ref{thm:beilinsonFSEC} (King's Conjecture for $\PP^n$)    &  {\bf Revised King's Conjecture}
 \end{tabular}
 \end{center}
-Note that the Bondal-Thomsen collection and the HHL resolution depend only on the Cox ring.  This suggests that the ``right'' analogue of Theorem~\ref{thm:BeilinsonFSEC}, i.e. the ``right'' version of King's Conjecture, should perhaps depend only on the Cox ring.  In other words, maybe a revised King's Conjecture will involve a category that combines the sheaves from all of the toric varieties with the same Cox ring.
+Note that the Bondal-Thomsen collection and the HHL resolution depend only on the Cox ring.  This suggests that the ``right'' analogue of Theorem~\ref{thm:BeilinsonFSEC}, i.e. the ``right'' version of King's Conjecture, should perhaps depend only on the Cox ring. That is, a revised King's Conjecture should involve a category that combines the sheaves from all of the toric varieties with the same Cox ring.
 
 This only raises another question:  if $X$ and $X'$ are two toric varieties with the same Cox ring, how do ``combine'' their derived categories?
 
@@ -112,34 +104,30 @@ The theorem we are driving for is:
 If $X$ is a projective toric variety with Cox ring $S$, then the Bondal--Thomsen collection, under a natural ordering, forms a full strong exceptional collection of line bundles for $D_{\Cox}(S)$.
 \end{thm}
 
-This should be viewed as a vague statement for the moment, as we have not defined $D_{\Cox}(S)$ precisely, nor have we have identified the Bondal--Thomsen collection as a subset of the Cox category.  But it gives a sense of where we are going: for toric varieties, the Bondal--Thomsen collection and the resolution of the diagonal only depend on the Cox ring.  And Theorem~\ref{thm:main1} is a revised King's Conjecture, and an extension of Theorem~\ref{thm:BeilinsonFSEC}, that also only depends on the Cox ring.
-
-We now aim to make the theorem precise.
+This should be viewed as a vague statement for the moment, as we have not defined $D_{\Cox}(S)$ precisely, nor have we have identified the Bondal--Thomsen collection as a subset of the Cox category.  But it gives a sense of where we are going: for toric varieties, the Bondal--Thomsen collection and the resolution of the diagonal only depend on the Cox ring.  And Theorem~\ref{thm:main1} is a revised King's Conjecture, and an extension of Theorem~\ref{thm:beilinsonFSEC}, that also only depends on the Cox ring. We now aim to make the theorem precise.
 \begin{lemma}\label{lem:TildeX}
     There exists a smooth, toric stack $\widetilde{\sX}$ that admits proper birational maps $\pi_i\colon \widetilde{\sX} \to \sX_i$ for all $i=1,2,\dots,r$.
 \end{lemma}
 \begin{proof}
-    At the level of varieties, this would be very standard as one could just take a simplicial refinement of the fans of each of the $X_i$.  Extending that proof to toric stacks requires working with additional notation of toric stacks, but there are very few new ideas and so we omit the proof.  See \cite{king}*{\S 3.1} for details.
+    At the level of varieties, this would be very standard as one could just take a simplicial refinement of the fans of each of the $X_i$.  Extending that proof to toric stacks requires working with additional notation, but there are very few new ideas and so we omit the proof.  See \cite{king}*{\S 3.1} for details.
 \end{proof}
 
-A standard fact \cite{king}*{Lemma 3.7} is that the (derived) pullback $\pi_i^*$ from $D(\sX_i)$ to $D(\widetilde{\sX})$ is fully faithful.\footnote{Because we are focused on derived categories, every time we write $\pi_i^*$ we should really be using the derived functor $L\pi_i^*$.  However, since we focus almost entirely on the pullbacks of line bundles, $L\pi_i^*$ and $\pi_i^*$ will coincide.  We will thus abuse notation and write $\pi_i^*$ throughout.}  Thus, $\pi_i^*$ essentially embeds the derived category of $\sX_i$ into the derived category of $\widetilde{\sX}$.
+A standard fact \cite{king}*{Lemma 3.7} is that the (derived) pullback $\pi_i^*$ from $D(\sX_i)$ to $D(\widetilde{\sX})$ is fully faithful.\footnote{Because we are focused on derived categories, every time we write $\pi_i^*$ we should really be using the derived functor $L\pi_i^*$.  However, since we focus almost entirely on the pullbacks of line bundles, $L\pi_i^*$ and $\pi_i^*$ will coincide.  We will thus abuse notation and write $\pi_i^*$ throughout.}  Thus, $\pi_i^*$ embeds each derived category of $\sX_i$ into the derived category of $\widetilde{\sX}$.
 This provides a way to ``combine'' $D(\sX_1), D(\sX_2), \cdots, D(\sX_r)$: we can take the span of these categories inside of the ambient category $D(\widetilde{\sX})$.
 
 \begin{defn}\label{defn:CoxCategory}
-We define the Cox category of $S$, denoted $D_{\Cox}(S)$ as follows.  Since each pullback functor $\pi_i^*$ is fully faithful, $\pi_i^* D(\sX_i)$ is like a perfect copy of $D(\sX_i)$ that lives in $D(\widetilde{\sX})$.
-We define $D_{\Cox}(S)$ as the subcategory of $D(\widetilde{\sX})$ generated\footnote{By ``generated'' we mean the smallest triangulated category containing these objects and that is closed under taking summands and extensions.} by $\pi_1^*D(\sX_1), \pi_2^* D(\sX_2), \dots, \pi_r^* D(\sX_r)$. In other words, $D_{\Cox}(S)$ is like the category generated by (the pullbacks of) all sheaves from all of the $\sX_i$.
+We define the Cox category of $S$, denoted $D_{\Cox}(S)$ as follows.  Since each pullback functor $\pi_i^*$ is fully faithful, $\pi_i^* D(\sX_i)$ is a copy of $D(\sX_i)$ that lives in $D(\widetilde{\sX})$.
+We define $D_{\Cox}(S)$ as the subcategory of~$D(\widetilde{\sX})$ generated\footnote{By ``generated'' we mean the smallest triangulated category containing these objects and that is closed under taking summands.} by $\pi_1^*D(\sX_1), \pi_2^* D(\sX_2), \dots, \pi_r^* D(\sX_r)$. In other words, $D_{\Cox}(S)$ is like the category generated by (the pullbacks of) all sheaves from all of the $\sX_i$.
 \end{defn}
 It is easy to check that the definition of $D_{\Cox}(S)$
-does not depend upon the choice of $\widetilde{\sX}$ from Lemma~\ref{lem:TildeX}; see \cite{king}*{Corollary 3.9}.
-
- But these copies overlap.
+does not depend upon the choice of $\widetilde{\sX}$ from Lemma~\ref{lem:TildeX}; see \cite{king}*{Corollary 3.9}. But these copies overlap.
 \begin{example}
    For any $1\leq i \leq r$ consider the structure sheaf $\cO_{\sX_i}$.  We have $\pi_i^*\cO_{\sX_i} = \cO_{\tsX}$.  Thus $\cO_{\tsX}$ lies in the intersection of the copy of each $D(\sX_i)$.
 \end{example}
 
 %Similarly, since the $\sX_i$ are all birational, the algebraic torus in each $\sX_i$ and in $\widetilde{\sX}$ are naturally identified with one another.  If we let $e_i$ denote the identity point in that torus in $\sX_i$ and $\widetilde{e}$ be the identity point in $\widetilde{\sX}$, then $\pi_i^* \cO_{e_i} = \cO_{\widetilde{e}}$ for all $i$.  So again, we see that $\cO_{\widetilde{e}}$ lies in the intersection of the copy of $ D(\sX_i)$ for each $i$.
 
-We can thus think of $D_{\Cox}(S)$ as ``gluing'' the various $D(\sX_i)$ together.  See Figure~\ref{fig:venn_diagram}.  The main results we will see ahead show that $D_{\Cox}(S)$ has nicer properties than any of the individual $D(\sX_i)$, in a manner that is (metaphorically at least) akin to how a projective variety can have nicer properties than its various affine patches.
+We can thus think of $D_{\Cox}(S)$ as ``gluing'' the various $D(\sX_i)$ together.  See Figure~\ref{fig:venn_diagram}.  The main results of the next several lectures show that $D_{\Cox}(S)$ has nicer properties than any of the individual $D(\sX_i)$, in a manner that is (metaphorically at least) akin to how a projective variety can have nicer properties than its various affine patches.
 
 \begin{figure}[htbp]
 \centering
@@ -186,35 +174,30 @@ We can thus think of $D_{\Cox}(S)$ as ``gluing'' the various $D(\sX_i)$ together
 
 
 \begin{example}\label{ex:CoxProjectiveSpace}
-    Let $S$ be the Cox ring of $\PP^n$.  In this case, the secondary fan only has a single chamber, i.e. the chamber corresponding to $\PP^n$ and thus $D_{\Cox}(S)=D(\PP^n)$.  The same holds for any toric variety whose secondary fan has a single chamber, such as weighted projective space or product of projective spaces.
+    Let $S$ be the Cox ring of $\PP^n$.  In this case, the secondary fan only has a single chamber, i.e. the chamber corresponding to $\PP^n$ and thus $D_{\Cox}(S)=D(\PP^n)$.  The same holds for any toric variety whose secondary fan has a single chamber, such as weighted projective space or a product of projective spaces.
 \end{example}
 
+\michael{Edited this next example a bit.}
 \begin{example}\label{ex:BlowupAtOnePoint}
-    Let $S$ be the Cox ring of $\cH_1$ the Hirzebruch surface of type $1$.  In this case, the secondary fan as two chambers: one chamber corresponds to $\PP^2$ and one corresponding to $\cH_1$.  Both are smooth, and so in each case, the corresponding toric stack is simply the variety itself.  There is a natural morphism $\alpha\colon \cH_1\to \PP^2$ given by the blowup of $\PP^2$ at point and thus $\alpha^* D(\PP^2)$ is naturally a subcategory of $D(\cH_1)$.  We thus have
-    \[
+    Let $S$ be the Cox ring of $\cH_1$ the Hirzebruch surface of type $1$.  In this case, the secondary fan as two chambers: one chamber corresponds to $\PP^2$ and one corresponding to $\cH_1$. There is a natural morphism $\alpha\colon \cH_1\to \PP^2$ given by the blowup of $\PP^2$ at point, and thus we can take $\widetilde{X} = \cH_1$, $\pi_1 = \alpha \co \cH_1 \to \PP^2$, and $\pi_2 = \id \co \cH_1 \to \cH_1$.  We thus have
+    $
     D_{\Cox}(S) = \langle \pi_1^* D(\cH_1), \pi_2^* D(\PP^2)\rangle =
-    \langle \pi_1^* D(\cH_1), \pi_1^* \alpha^* D(\PP^2)\rangle = \langle \pi_1^* D(\cH_1)\rangle.
-    \]
-    So in this case, we also see that $D_{\Cox}(S)$ is simply equal to $D(\cH_1)$.
+      D(\cH_1)
+    $.
 \end{example}
 
 \begin{example}\label{ex:Hirzebruch}
-    Let $S$ be the Cox ring of $\cH_3$ the Hirzebruch surface of type $3$.  In this case, the secondary fan has two chambers: one chamber corresponds to a weighted projective space $\PP(1,1,3)$ and one corresponding to $\cH_3$.  Unlike the previous example, $\PP(1,1,3)$ is simplicial but not smooth, and so we need to consider the weighted projective stack $\PP_{\operatorname{stack}}(1,1,3)$. There is a morphism from $\cH_3$ to the weighted projective space $\PP(1,1,3)$, where the pullback of the line bundle $\cO_{\PP(1,1,3)}(3)$ is $\cO_{\cH_3}(0,1)$.  But there is no such morphism to $\PP_{\operatorname{stack}}(1,1,3)$.  The reason for this is simple:  if there were such a morphism $\alpha\colon \cH_3 \to \PP_{\operatorname{stack}}(1,1,3)$, then since $\cO(1)$ is a line bundle on the stack, its pullback would need be a line $L$ such that $L^{\otimes 3} = \alpha^* \cO(3) = \cO_{\cH_3}(0,1)$.  And this is impossible.  (The issue is avoided on the weighted projective space because $\cO(1)$ is not a line bundle on that space.)
-
-    Thus, this is our first example where $D_{\Cox}(S)$ is a genuine combination of two subcategories.
+    Let $S$ be the Cox ring of $\cH_3$ the Hirzebruch surface of type $3$.  In this case, the secondary fan has two chambers: one chamber corresponds to a weighted projective space $\PP(1,1,3)$ and one corresponding to $\cH_3$.  Unlike the previous example, $\PP(1,1,3)$ is simplicial but not smooth, and so we need to consider the weighted projective stack $\PP_{\operatorname{stack}}(1,1,3)$. There is a morphism from $\cH_3$ to the weighted projective space $\PP(1,1,3)$, where the pullback of the line bundle $\cO_{\PP(1,1,3)}(3)$ is $\cO_{\cH_3}(0,1)$.  But there is no such morphism to $\PP_{\operatorname{stack}}(1,1,3)$.  The reason for this is simple:  if there were such a morphism $\alpha\colon \cH_3 \to \PP_{\operatorname{stack}}(1,1,3)$, then since $\cO(1)$ is a line bundle on the stack, its pullback would need be a line $L$ such that $L^{\otimes 3} = \alpha^* \cO(3) = \cO_{\cH_3}(0,1)$, which is impossible. This issue is avoided on the weighted projective space because $\cO(1)$ is not a line bundle on that space. Thus, we have our first example where $D_{\Cox}(S)$ is a genuine combination of two subcategories.
 \end{example}
 
 
 
 \begin{remark}\label{rmk:mythical}
-    It is rarely the case that there is some $\widetilde{\sX}$ as in Lemma~\ref{lem:TildeX} where $D_{\Cox}(S)$ equals $D(\widetilde{\sX})$.  In other words, $D_{\Cox}(S)$ is generally a genuine subcategory of $D(\tsX)$, as illustrated somewhat cartoonishly in Figure~\ref{fig:venn_diagram}.
-
-Nevertheless, it can sometimes be helpful to think of the Cox category as the derived category of a mythical toric variety $\sX_{\text{myth}}$ associated to the Cox ring $S$.  This $\sX_{\text{myth}}$ would be smooth and proper and birational to each of the $\sX_i$. This yields a heuristic for properties of $D_{\Cox}(S)$, and as we will in \S\ref{subsec:smooth}, some of those resulting predictions are correct.
+    It is rarely the case that there is some $\widetilde{\sX}$ as in Lemma~\ref{lem:TildeX} where $D_{\Cox}(S)$ equals $D(\widetilde{\sX})$.  In other words, $D_{\Cox}(S)$ is generally a proper subcategory of $D(\tsX)$, as illustrated somewhat cartoonishly in Figure~\ref{fig:venn_diagram}. Nevertheless, it can sometimes be helpful to think of the Cox category as the derived category of a mythical toric variety $\sX_{\text{myth}}$ associated to the Cox ring $S$.  This $\sX_{\text{myth}}$ would be smooth and proper and birational to each of the $\sX_i$. This yields a heuristic for properties of $D_{\Cox}(S)$, and as we will see in \S\ref{subsec:smooth}, some of those resulting predictions are correct.
 \end{remark}
 
 \begin{remark}
-Let us continue with the metaphor that $D_{\Cox}(S)$ is like a projective variety, obtained the ``affine patches'' $D(\sX_i)$, of $D_{\Cox}$.  One might ask:  what is the analogue of the transition functions, that take you from affine patch to another?  The answer is the Fourier--Mukai transforms associated to the birational maps $\sX_i \dashrightarrow \sX_j$.  We will examine these transforms in greater depth in Section \ref{sec:FMTransform}.
-
+Let us continue with the metaphor that $D_{\Cox}(S)$ is like a projective variety, obtained by gluing the ``affine patches'' $D(\sX_i)$.  One might ask:  what is the analogue of the transition functions from one affine patch to another?  The answer is the Fourier--Mukai transforms associated to the birational maps $\sX_i \dashrightarrow \sX_j$.  We will examine these transforms in greater depth in Section \ref{sec:FMTransform}.
 % these copies
 % overlap. For example, the structure sheaf $\cO_{\sX_i}$ pulls
 % back to $\cO_{\tsX}$ for all $i$, meaning that $\cO_{\tsX}$ lies in
@@ -228,8 +211,7 @@ Let us continue with the metaphor that $D_{\Cox}(S)$ is like a projective variet
 % patch'' of $D_{\Cox}$, each Fourier--Mukai transform corresponds to a
 % transition function, and each $\pi_{i*}\colon D_{\Cox} \to D(\sX_i)$
 % represents restriction to the patch.
-
-One can also make this metaphor more precise, and totally excise the cover $\tsX$, by using the Grothendieck construction \cite{SGA1}*{\S\.VI.8}.  This gets pretty technical, and so we omit it in these notes, but one can see \cite{king}*{Appendix A} for details.
+One can also make this metaphor more precise, and totally excise the cover $\tsX$, by using the Grothendieck construction \cite{SGA1}*{\S\.VI.8}.  This gets pretty technical, and so we omit it in these notes; see \cite{king}*{Appendix A} for details.
 % birational-gluing-via-integral-transforms
 % perspective precise (see \Cref{thm:cox_groth}) by providing an equivalent
 % characterization of $D_{\Cox}$ as constructed from a lax functor whose 1-skeleton is the data of
@@ -239,7 +221,7 @@ One can also make this metaphor more precise, and totally excise the cover $\tsX
 \end{remark}
 
 
-We have now defined $D_{\Cox}(S)$, but to make Theorem~\ref{thm:main1} precise, we also need to define the Bondal--Thomsen collection as a subset of $D_{\Cox}(S)$.  We will consider return to our running example before giving the full definition.
+We have defined $D_{\Cox}(S)$, but to make Theorem~\ref{thm:main1} precise, we also need to define the Bondal--Thomsen collection as a subset of $D_{\Cox}(S)$.  We  return to our running example before giving the full definition.
 
 
 % We construct $D_{\Cox}(X)$ using the secondary fan $\Sigma_{GKZ}$.
