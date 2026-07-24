@@ -152,7 +152,7 @@ The toric structure of the quotients $X_d$ connects their GIT problem to the com
   \lauren{restriction process}
 \end{example}
 
-The polytope $P_\alpha$ may not require all $n$ inequalities, in case some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or possibly at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing $\alpha$ with another vector of the same degree only translates the polytope.
+Note that the normal vectors of the polytope $P_\alpha$ lie in the list $\nu_1,\ldots,\nu_n$.  However not all $n$ inequalities/normal vectors need be required, if some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing~$\alpha$ with another vector of the same degree only translates the polytope.
 
 \begin{lemma}[\lauren{cite CLS}]
   If $\alpha,\alpha'\in\ZZ^d$ have $\deg\alpha=\deg\alpha'$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$. \lauren{does this work for rational $\alpha?$}
@@ -164,21 +164,29 @@ Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to trans
   \lauren{polytope along a wall}
 \end{example}
 
-This behavior cannot occur for a general choice of $\alpha$, creating a polyhedral fan in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which indices $i$ the hyperplanes $\alpha_i$ intersect $P_\alpha$, in order to distinguish cases like Example~\ref{ex:secondary-wall}.
+This behavior cannot occur for a general choice of $\alpha$, creating a polyhedral fan in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which indices~$i$ the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$, in order to distinguish cases like Example~\ref{ex:secondary-wall}.
 
-Given a polytope $Q$ in $M\otimes_\ZZ\QQ$ and a subset $V$ of $\{1,\ldots,n\}$, define $\tilde\Gamma(Q,V)$ to be the set of $\alpha\in\QQ^n$ such that there exists a convex \lauren{convex or concave??  integral?} support function $\varphi$ on the normal (generalized) fan $\Sigma$ of $Q$ with $\varphi(\nu_i)=\alpha_i$ for all $i\notin V$ and $\varphi(\nu_i)\geq\alpha_i$ for all $i\in V$ \lauren{define $\nu_i$ from Gale dual}.
+Let $\Sigma$ be a generalized fan in $N\otimes_\ZZ\QQ$ with rays among the vectors $\nu_1,\ldots,\nu_n$ and $F$ a subset of the indices $1,\ldots,n$ of the $\nu_i$ \emph{not} appearing in $\Sigma$.  \lauren{give pair for example}  Define $\tilde\Gamma(\Sigma,F)$ to be the set of $\alpha\in\QQ^n$ such that there exists a convex support function $\varphi$ on $\Sigma$ with $\varphi(\nu_i)=-\alpha_i$ for all $i\notin F$ and $\varphi(\nu_i)\geq-\alpha_i$ for all $i\in F$ \lauren{define $\nu_i$ from Gale dual}.
 
-By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(Q,V)$ of $\tilde\Gamma(Q,V)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty}
+Compared to ordinary fans of toric varieties, generalized fans may contain cones which are not strongly convex.  \lauren{cite CLS}  As with the behavior from Example~\ref{ex:secondary-wall}, this does not occur for a general choice of $\alpha$, and we will focus on the general (not generalized!) case. \lauren{make and reference remark about walls}
 
-\begin{rem}
-  We have chosen for $\Gamma$ to depend on a polytope instead of a fan because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above. \lauren{nevermind we do need do use the fans :( } The existence of $\varphi$ on the fan $\Sigma$ requires the class $\deg \alpha$ to be nef on the toric variety of the generalized fan $\Sigma$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(Q,V)$.
-\end{rem}
-
-\begin{lemma}
-  Suppose $\alpha\in\QQ^n$ such that $P_\alpha$ is full dimensional and has normal vectors exactly $\{\nu_i\}_{i\in W}$ for $W\subseteq\{1,\ldots,n\}$.  Then $\alpha\in\Gamma(P_\alpha,V)$ for $V$ the complement of $W$.
+\begin{lemma}\label{lem:GKZ-def}
+  Let $\alpha\in\QQ^n$ such that $\dim P_\alpha=n$ and the normal vectors of $P_\alpha$ are exactly $\{\nu_i:i\in G\}$ for $G\subseteq\{1,\ldots,n\}$.  Then $\alpha\in\tilde\Gamma(\Sigma,F)$ where $\Sigma$ is the normal fan of $P_\alpha$ and $F$ is the complement of $G$.
 \end{lemma}
 
-\begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]
+\begin{proof}
+  Let $X_\alpha$ be the toric variety of the polytope $P_\alpha$.  By \cite[Proposition~6.1.10]{CLS} the divisor $\sum_{i\in G}\alpha_iD_i$ \lauren{notation?} is ample on $X_\alpha$, so by \cite[Theorem~6.1.14]{CLS} it has a strongly convex support function $\varphi$ on $\Sigma$, satisfying $\varphi(\nu_i)=-\alpha_i$ for $i\in G$.  We claim that $\varphi(\nu_i)\geq-\alpha_i$ for $i\notin G$ by the fact that the hyperplane $x_i=-\alpha_i$ does not intersect $P_\alpha$.
+
+  Fix $i\notin G$.  Since $\Sigma$ is the normal fan of a polytope it is complete, so we can write $\nu_i=\sum\beta_j\nu_j$ for $\beta_j>0$ and $\nu_j$ the rays of a single cone in $\Sigma$.  By the definition of a support function $\varphi$ is linear within the cone spanned by the $\nu_j$, so that $\varphi(\nu_i)=\sum\beta_j\alpha_j$.
+\end{proof}
+
+By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(Q,V)$ of $\tilde\Gamma(\Sigma,F)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty?}
+
+\begin{rem}
+  We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  The existence of~$\varphi$ on the fan $\Sigma$ requires the class $\deg\alpha$ to be nef on the toric variety of the generalized fan $\Sigma$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.
+\end{rem}
+
+\begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
   The collection of cones $\Gamma(Q,V)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \emph{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \emph{chambers}.
 \end{prop}
 
@@ -201,63 +209,44 @@ A version of Theorem~\ref{thm:GIT-polytope} is true for all $d\in\Cl(S)$ but may
 \end{cor}
 
 \begin{proof}
-  By Theorem~\ref{thm:GIT-polytope} the toric varieties $X_d$ and $X_d'$ are defined by full-dimensional polytopes $P_\alpha$ and $P_\beta$, respectively, coming from the same maximal cone in the secondary fan.  Let $V$ be the subset of indices $i$ such that the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$, meaning that the normal fan $\Sigma$ of $P_\alpha$ does not include rays $\nu_i$ for $i\in V$.  Since $\alpha$ lies in the interior of a chamber we can assume that all other $\nu_i$ appear among the rays of $P_\alpha$.  \lauren{justify?}
-
-  Consider the ample torus-invariant \lauren{Cartier?} divisor $D_\alpha$ defined on $X_d$ by the polytope $P_\alpha$ (for instance by \cite[Theorem 6.2.1]{CLS}).  By
+  Choose $\Sigma$ a fan and $F\subseteq\{1,\ldots,n\}$ so that $d,d'\in \Gamma(\Sigma,F)$, and choose $\alpha,\alpha'\in\QQ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by this fan so they are isomorphic via the identity map.
 \end{proof}
+
+\lauren{describe nef cones here, or somewhere else?}
 
 \subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
 
 %In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
 
 \begin{defn}\label{defn:idealConeCorrespondence}
-  Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
+  Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a point $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$} \lauren{what is this font?}
   %\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \}
   %\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
-  if there exist $q_i \in \QQ_{>0}$ such that
+  if there exist $q_i>0$ such that
   $
-  d = \sum_{i} q_i\deg_{\QQ}(x_i^{{a_i}}).
+  d = \sum_{i} q_i\deg_{\QQ}\mathbf a).
   $
-  For a convex cone $\Gamma \subseteq \Cl(S)\otimes \QQ$, we define
+  \lauren{$\mathbb{Q}$ notation} For a convex cone $\Gamma \subseteq \Cl(S)\otimes \QQ$, let
   \[
   \text{ideal}(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
   \]
-  Conversely, given a monomial ideal $B$, we define
+  Conversely, given a monomial ideal $B$, let
   \[
   \text{cone}(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
   \]
 \end{defn}
-It is immediate that $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial of largest degree dividing~$\mathbf{x}^{\mathbf{a}}$ spans $d$. Thus, $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
+The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
 %and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
 It is elementary to check that
 \[
 \text{ideal}(\text{cone}(\text{ideal}(\Gamma))) = \text{ideal}(\Gamma) \qquad \text{ and } \qquad \text{cone}(\text{ideal}(\text{cone}(B))) = \text{cone}(B).
 \]
 
+\lauren{do we want to define this notation, or do we just want a theorem that this is how you get the irrelevant ideal of $X_d$ from the chamber of $d$?}
 
-\begin{remark}
-  \label{rem:open}
-  Because we insist that the coefficients $q_i$ be strictly positive, the condition that $\mathbf{x}^\a$ spans $d$ is an open condition on the points $d$ {\color{red} in the effective cone of $X$.}
-\end{remark}
+Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. These are the chambers of the secondary fan.
 
-Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. We call the interiors of the corresponding cones the \defi{chambers for $S$}.  By definition, the chambers are disjoint from one another.
-%By definition, the effective cone is the union of the closures of these chambers.
-
-\begin{defn}\label{defn:chambersIrrelevant}
-  We enumerate the chambers as $\Gamma_1, \dots, \Gamma_s$, and we write $B_1, \dots, B_s$ for the corresponding squarefree monomial ideal.
-  By construction, the effective cone $\Eff(X)$ is the union of the closures of these cones $\Eff(X) = \bigcup_{i=1}^s \overline{\Gamma_i}$.
-\end{defn}
-
-\daniel{New remark below.}
-\begin{remark}
-  The \defi{secondary fan of $X$} is a fan structure on $\Eff(X)$ where the maximal chambers are precisely $\Gamma_1, \dots, \Gamma_s$.  In these notes, we will not utilize any aspects of the secondary fan beyond the chambers, and so we will avoid giving a precise definition of the lower dimensional faces of the secondary fan.
-\end{remark}
-
-Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.
-\begin{defn}\label{defn:Xi}
-  We define $X_i$ to be the toric variety associated to $\Sigma_i$.  By a mild abuse of notation (see Remark~\ref{rmk:abuseNotation}), we will refer to $B_i\subseteq S$ as the irrelevant ideal of $X_i$.
-\end{defn}
-There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$:
+Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.  There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$: \lauren{this theorem has largely been absorbed by the previous exposition}
 
 \begin{thm}
   \label{thm:mainsecondary}
@@ -291,6 +280,10 @@ There are several alternate ways to recover a toric variety from a chamber $\Gam
   All of these results can be extracted from \cite[Chapters 14-15]{CLS}, but those are pretty technical paragraphs so it is not so easy to find an overarching statement like this.  Statement (1) essentially follows from~\cite[Proposition 14.4.9]{CLS}.  Statement (2) follows from ~\cite[Proposition 14.4.14]{CLS} combined with the fact from \cite[Theorem 5.1.11]{CLS} that for a simplicial toric variety, the quotient is a geometric quotient.
   %\daniel{Mostly just cite the places in CLS?}
 \end{proof}
+
+\section{Nef and moving cones}
+
+\lauren{turn this into a subsection about what happens when you lose a ray}
 
 The previous example \lauren{now somewhere else} illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
 \begin{lemma}\label{lem:MovingConeEquivalence}
