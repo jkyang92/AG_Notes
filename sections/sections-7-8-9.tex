@@ -49,7 +49,7 @@ treat only the case of  the ``ceiling stratification'' and the $L$-invariant sub
 
 We regard the subdivision above as making $L_{\RR}$ into an infinite cell complex.
 If $A$ is a cell, and $p = (p_1,\dots, p_n) \in \RR^n$ is a point in the
-interior of $A$, then we give $A$ the weight
+interior of $A$, then we give $A$ the weight \jay{If we are going to use $\ZZ^n$ for the weights can we switch to $\psi$ for consistency with \cite{BCHSY}?}
 $$
 \Psi(A) \ce \lceil p \rceil \in \ZZ^{n}.
 $$
@@ -368,16 +368,33 @@ $R\cdot(x^2/y, y) = R\cdot (x^2/y)$, as required.
 
 \section{Lecture 8 (Ryan Watson): More examples and features}\label{lec:8-HHL-examples}
 
-The following result summarizes the construction in the previous lecture. 
+The previous lecture focused on the construction of the resolution, and through examples illustrated that for a $X'\subseteq X$ a toric subvariety with corresponding lattice $L\subseteq M$, the resolution constructed is a $\ZZ^{n}/L$ graded resolution of the normalization $\overline{R}$ of the ring $S/I_L$. The proof of this is defered to Section~\ref{lec:9-HHL-proof}. In this section, we describe in more detail the structure of the resolution as it relates to the Bondal-Thomsen classes. We start with the following summary of the resolution and the general statement on the relation to the Bondal-Thomsen collection.
+
 \begin{cor}
   \label{cor:hhlSummandsBT}
-  Let $X'\subseteq X$ be a toric subvariety,  let $L\subseteq M$ be the corresponding sublattice, and let $I_{L}$ be the corresponding binomial ideal. There is an $S$-free $ZZ^{n}/L$-graded resolution $\FF$ of the
-  normalization $\overline R$ of the ring $S/I_{L}$such that the free modules $\FF_{i} = \oplus S(-\Psi(A))$, where the sum is over all the cells  $A$ of $L \otimes \RR$. Moreover each $S(-\Psi(A))$ is a \BT class. 
+  Let $X'\subseteq X$ be a toric subvariety,  let $L\subseteq M$ be the corresponding sublattice, and let $I_{L}$ be the corresponding binomial ideal. There is an $S$-free $\ZZ^{n}/L$-graded resolution $\FF$ of the
+  normalization $\overline R$ of the ring $S/I_{L}$ such that the free modules $\FF_{i} = \oplus S(-\Psi(A))$, where the sum is over all the cells  $A$ of $L \otimes \RR$. Moreover each $S(-\Psi(A))$ is a \BT class. 
   The construction depends only on the Cox ring with its grading, and not on the additional data of the
   irrelevant ideal of the toric variety\qed
 \end{cor}
+\begin{proof}
+  \jay{There is a key inconsistency between all of this work and Lecture 6. This section treats $M$ and $L$ as sublattices of $\ZZ^n$ whereas Lecture 6 explicitly names the inclusion $\alpha:M\rightarrow \ZZ^n$. In the correspondence, the key is that $\Psi = \lceil \alpha \rceil$. This observation is key to the arguments about BT collection elements}
+  
+  The proof that the complex gives a resolution of the normalization is Theorem~\ref{thm:HHL-resolution}. 
+  
+  Every point in $L_{\RR}$ is contained in a cell of the subdivision of $L_{\RR}$, and each cell $A$ of the subdivision
+  contributes a single summand to the resolution $\FF$ of the form $S(-\deg(\Psi(A)))$.
+  Thus the summands that appear in $\FF$ will be of the form $S(d)$ where $d$ is a degree in the image of the composite map $-\deg \circ \Psi$.
+  %\[L_{\RR}\xrightarrow{\Psi} \ZZ^n \xrightarrow{-\deg} \Cl(X).\]
 
+  A priori, these summands may range over all degrees in $\Cl(X)$ \jay{I don't have notation for the grading group, which may have torsion in general, but formally, these elements should be in the grading group if we want to make a distinction with $\Cl(X)$}. However, observe that as $L\subset M\subseteq \ZZ^n$, the map $\Psi:L_{\RR}\rightarrow \ZZ^n$ factors through $\RR \otimes M_X$.
+  %% \[\begin{tikzcd}
+  %% L_{\RR}\arrow[rr,"\Psi"] \arrow[rd,hook]& & \ZZ^n \\
+  %% & \RR\otimes M_X \arrow[ru,"\Psi"]&
+  %% \end{tikzcd}\]
 
+  Consequently, the image of the composite map $-\deg \circ \Psi$ is contained in the image of $-\deg \circ \Psi$ applied to $M$. However, $-\deg \circ \Psi$ in the notation of Lecture~\ref{lec:6-bondal-thomsen} is exactly $- \deg \circ \lceil \alpha \rceil$ as the degree map is $\ZZ$-linear, we have $\deg \circ \lfloor \alpha\rfloor \circ -id$, the image of which is identical to the image of $\deg \circ \lfloor \alpha \rfloor$. By Definition~\ref{defn:BTcollection}, these are exactly the Bondal-Thomsen classes and thus the summands of $\FF$ are all \BT classes.
+\end{proof}
 
 
 %\begin{proof}
@@ -394,15 +411,19 @@ The following result summarizes the construction in the previous lecture.
 %\end{tikzcd}\]
 
 \begin{example}
-If $L=M$ then, since the cell decomposition of the linear space $M_{R}$ is defined by the coordinate
+If $L=M$ then, since the cell decomposition of the linear space $M_{\RR}$ is defined by the coordinate
 hyperplanes, every non-integral point of $M$ is the interior point of some cell. Thus all the in  all the Bondal-Thomsen classes appear in the resolution $\FF$ of Corollary~\ref{cor:hhlSummandsBT}.
-\end{example}
 
-\label{ex:resHirzebruch3}\david{The following example is important, but the description is incomprehensible without a good deal more explanation!}
+\label{ex:resHirzebruch3}\david{The following example is important, but the description is incomprehensible without a good deal more explanation!} \jay{I added the description of the Cox ring and the degrees to clarify what's happening}
   We can illustrate that the summands are Bondal-Thomsen elements in the case of the Hirzebruch surface by observing that the weights $\Psi$ as a map from $L_{\RR} \rightarrow \ZZ^n$ stratify $L_{\RR}$ in an $L$-equivariant manner into strata which correspond exactly to the Bondal-Thomsen elements.
+
+  Here the Cox ring of the Hirzebruch surface is $S=k[x_1,x_2,x_3,x_4]$ graded by $\ZZ^2$ with $\deg(x_1)=\deg(x_3) = (1,0)$, $\deg(x_2)=(-3,1)$ and $\deg(x_4)=(0,1)$. Here as we have $L=M$, $L\cong \ZZ^2$. Moreover, $L=M$ as a sublattice of $\ZZ^4$ is spanned by the basis vectors $v=(1,0,-1,0)$ and $w=(0,1,3,-1)$. In Figure~\ref{fig:hirzebruch-stratification}, we illustrate $L_{\RR}$ such these two basis vectors are aligned with the $x$ and $y$ axes respectively.
+\end{example}
   
 The diagram has been labeled with monomials, and by grouping cells according to the degree in $\Cl(X)$, each of the 6 Bondal-Thomsen elements gives a stratum of $L_{\RR}/L$.
-  The cells in this fundamental domain have been colored corresponding to the BT collection elements, which in this case are $\cO_{X}(0,0)$, $\cO_{X}(-1,0)$, $\cO_{X}(2,-1)$, $\cO_{X}(1,-1)$, $\cO_{X}(0,-1)$, and $\cO_{X}(-1,-1)$.
+The cells in this fundamental domain have been colored corresponding to the BT collection elements, which in this case are $\cO_{X}(0,0)$, $\cO_{X}(-1,0)$, $\cO_{X}(2,-1)$, $\cO_{X}(1,-1)$, $\cO_{X}(0,-1)$, and $\cO_{X}(-1,-1)$.
+
+As an example, For the bottom edge the monomial is $x_1$, which is of degree $(1,0)$ and the line bundle associated to that degree is $O_X(-1,0)$.
 
 \begin{figure}
   A single fundamental domain is as follows:
@@ -535,7 +556,8 @@ The Fourier-Mukai transform with kernel equal to a resolution of the diagonal,  
 We can now describe the resolution of the diagonal in the case when $X$ is the  Hirzebruch surface $\cH_{3}$. 
 \begin{example}
 \david{look at this again in the light of whatever revision is made of the $\cH_{3}$ example above.}
-  Let $X=\cH_3$, and let $S$ be the Cox ring of $X$. Then each summand is of the form $S(-\deg(\Psi(A)))\boxtimes S(-\deg(\Psi(-A)))$. As an example, for the cell $A$ corresponding to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, the Bondal-Thomsen element is $\cO_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, which corresponds to the Bondal-Thomsen element $\cO_X(-1,-1)$. This gives the summand $S(2,-1)\boxtimes S(-1,-1)$.
+\jay{I added a mention of that the example summand is in homological degree 2}
+  Let $X=\cH_3$, and let $S$ be the Cox ring of $X$. Then each summand is of the form $S(-\deg(\Psi(A)))\boxtimes S(-\deg(\Psi(-A)))$. As an example, for the 2-dimensional cell $A$ corresponding to the bottom right triangle of Figure~\ref{fig:hirzebruch-stratification}, the corresponding Bondal-Thomsen element is $\cO_X(2,-1)$. The cell $-A$ is equivalent after a translation by an element of $L$ to the top left triangle in the diagram, which corresponds to the Bondal-Thomsen element $\cO_X(-1,-1)$. This gives the summand $S(2,-1)\boxtimes S(-1,-1)$ appearing in homological degree $2$. 
 
   Repeating this construction for every cell will give all summands of the resolution of the diagonal.
   \[
