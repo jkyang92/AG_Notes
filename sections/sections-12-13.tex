@@ -339,13 +339,14 @@ At a more concrete level, the Fourier--Mukai transform can be understand as foll
 \]
 This provides a geometric way to ``move'' a sheaf (or an object of the derived category) from one of the $\sX_i$ to all of the others.  Namely, imagine we have a sheaf $\cE_1$ on $\sX_1$.  For each $j$, we obtain $\Phi_{1j}(\cE_1)$ on $\sX_j$.  Since the $\sX_i$ all agree on the dense torus, $\Phi_{1j}(\cE_1)$ will agree with $\cE_1$ on the dense torus and will only exhibit different behavior on the toric boundary.
 
-\begin{remark}
-\label{rem:pullpush}
-It is an easy consequence of the projection formula that $\Phi_{i, j} = Rq_* \circ p^*$. To see this, let $f \co X \to X \times Y$ denote the inclusion of $\Gamma_{ij}$ in $X \times Y$. We have:
-$$
-\Phi_{ij}(\cE) = Rq_*(p^*\cE \otimes_{\cO_{\sX_i\times \sX_j}} f_*\OO_{X}) = R(qf)_*(L(pf)^*\cE \otimes_{\OO_X} \OO_X) = R(qf)_*(\cE)
-$$
-\end{remark}
+%\michael{Finish this remark}
+%\begin{remark}
+%\label{rem:pullpush}
+%It is an easy consequence of the projection formula that $\Phi_{i, j} = Rq_* \circ p^*$. (p and q the projections from the graph, so need different notation.) To see this, let $f \co X \to X \times Y$ denote the inclusion of $\Gamma_{ij}$ in $X \times Y$. We have:
+%$$
+%\Phi_{ij}(\cE) = Rq_*(p^*\cE \otimes_{\cO_{\sX_i\times \sX_j}} f_*\OO_{X}) = R(qf)_*(L(pf)^*\cE \otimes_{\OO_X} \OO_X) = R(qf)_*(\cE)
+%$$
+%\end{remark}
 
 \begin{example}
     For any $i,j$ we have $\Phi_{ij}(\cO_{\sX_i})=\cO_{\sX_j}$.  Why?  The pullback $p^*\cO_{\sX_i}$ is simply $\cO_{\sX_i\times \sX_j}$; this is a line bundle, and so the derived tensor product with $\cO_{\Gamma_{ij}}$ is simply the (underived) tensor product, which is
