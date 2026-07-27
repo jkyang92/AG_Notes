@@ -95,7 +95,10 @@ The next lecture will tackle the proof of the $\Theta$-Transform Lemma.  Before 
 \Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) =
 \Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\cO_{\sX_1}(-d')) = H^i(\sX_1, \cO_{\sX_1}(d-d')).
 \]
-Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef; and since $-d'$ comes from the Bondal--Thomsen collection, it is a $\Q$-divisor with coefficients in $(-1, 0]$.  By the version of Demazure Vanishing involving $\Q$-divisors (Remark~\ref{rem:rounddown}) \michael{double check this}, we conclude that all of these Ext groups vanish.  In short:  combining the $\Theta$-Tranform Lemma and Demazure Vanishing immediately yields the orthogonality statement we need.
+Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By the version of Demazure Vanishing  in Remark~\ref{rem:rounddown}, we conclude that all of these Ext groups vanish. \michael{Added this next explanation.} In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho +f b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply the version of Demazure Vanishing in Remark~\ref{rem:rounddown}.
+
+
+In short:  combining the $\Theta$-Tranform Lemma and Demazure Vanishing immediately yields the orthogonality statement we need.
 
 \begin{example}\label{ex:hirzStrongBT}
  Let us revisit the example of $\cH_3$, the Hirzebruch surface of type 3. Recall that $(-1, 0)$ and $(2, -1)$ are both in the Bondal-Thomsen collection of $\cH_3$ (see Figure~\ref{fig:HirzSecondaryFan}). Since $(-1, 0) - (2, -1) = (-3, 1)$ is effective, we have $(-1, 0) > (2, -1)$, and so we should get $\RHom(\cO_{\Cox}(-1,0), \cO_{\Cox}(2,-1)) = 0$. We now check this directly. Recall that the two chambers of the secondary fan correspond to $\cH_3$ and $\PP(1,1,3)$. Since $(1, 0)$ lies in the chamber corresponding to $\cH_3$, we have $\cO_{\Cox}(-1,0) = \pi_1^* \cO_{\cH_3}(-1,0)$.  Since $d=(-2,1)$ lies in the other chamber, we must use the fact that there is a natural corresponding element in $\Theta_{\PP(1,1,3)}$.
@@ -121,7 +124,7 @@ Through similar computations for the other pairs, one can directly confirm that 
 
 To summarize, the outline of the proof amounts to:
 \begin{enumerate}
-    \item  Combine the $\Theta$-Transform Lemma and Demazure Vanishing to obtain the necessary orthogonality statement .
+    \item  Combine the $\Theta$-Transform Lemma and Demazure Vanishing to obtain the necessary orthogonality statement.
     \item Use the Hanlon-Hicks-Lazarev resolution of the diagonal to conclude that $\cO_{\Cox}(-d)$ with $-d\in \Theta$ generate $D_{\Cox}(S)$.
 \end{enumerate}
 
