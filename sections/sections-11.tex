@@ -269,7 +269,7 @@ The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree m
   By \cite[Proposition~15.2.1]{CLS} these are exactly the subsets of degrees which span $\Gamma$. \lauren{check and maybe explain better}
 \end{proof}
 
-To fully mimic the ordinary construction of a toric variety from $\Spec S$, we should describe the ideal $\idealof(\Gamma(\Sigma,F))$ in terms of the polytope $P_\alpha$ (or equivalently the fan $\Sigma$).  Here we must remember that the subset $F$ indexes facets which do not intersect $P_\alpha$ and whose rays do not appear among its normal vectors.  These correspond to monomial components of the irrelevant ideal.
+To fully mimic the ordinary construction of a toric variety from $\Spec S$, we should describe $\idealof(\Gamma(\Sigma,F))$ in terms of the polytope $P_\alpha$ (or equivalently the fan $\Sigma$).  Here we must remember that the subset $F$ indexes facets which do not intersect $P_\alpha$ and whose rays do not appear among its normal vectors.  These correspond to variables appearing in all generators of the irrelevant ideal.
 
 \begin{cor}
   Let $\alpha\in\QQ^n$ such that $\deg\alpha=d$ is in the interior of a chamber $\Gamma$.  Then
@@ -314,7 +314,23 @@ To fully mimic the ordinary construction of a toric variety from $\Spec S$, we s
 
 \subsection{Nef and moving cones}
 
-\lauren{turn this into a subsection about what happens when you lose a ray}
+In either of the constructions of $X_d$, the resulting torus-invariant divisor must be ample.  From the GIT perspective we are using the line bundle $\cL_d$ to embed $X_d$ in projective space, and from the toric perspective the divisor of the polytope $P_\alpha$ is ample on the variety of its normal fan.  However, we must be careful with what we mean by the divisor corresponding to $d$ in the case where the class group of $X_d$ is smaller than $\Cl(S)$.
+
+\begin{lemma}\label{lem:cl-restrict}
+  Suppose $d\in\Cl(S)$ is in the interior of a chamber of the secondary fan.  There is an inclusion $\Pic X_d\to\Cl(S)$.
+\end{lemma}
+
+\begin{proof}
+  Let $\Sigma$ be the fan of $X_d$.  By \lauren{cite} there is a short exact sequence
+  \[0\to M\to\ZZ^{\Sigma(1)}\to\Cl(X_d)\to 0.\]
+  By Lemma~\ref{lem:GKZ-def} \lauren{better place?} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an inclusion $\ZZ^{\Sigma_1}\to\ZZ^n$ and thus an inclusion $\Cl(X_d)\to\Cl(S)$.
+\end{proof}
+
+Using the inclusion of class groups, we can give a more precise description of the ample and nef classes on $X_d$.  If $\Cl(S)$ is the class group of $X_d$ then the nef cone will be exactly the cone containing $d$ in the secondary fan.
+
+\begin{thm}[\cite{CLS}*{Theorem 15.1.3(a)}]
+  Suppose $d\in\Cl(S)$ is in the interior of a chamber~$\Gamma$ of the secondary fan of $S$.  The cone $\Nef X_p$ is the restriction of $\Gamma$ to $\Pic X_d$ via the inclusion from Lemma~\ref{lem:cl-restrict}.
+\end{thm}
 
 The previous example \lauren{now somewhere else} illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
 \begin{lemma}\label{lem:MovingConeEquivalence}
