@@ -339,14 +339,15 @@ At a more concrete level, the Fourier--Mukai transform can be understand as foll
 \]
 This provides a geometric way to ``move'' a sheaf (or an object of the derived category) from one of the $\sX_i$ to all of the others.  Namely, imagine we have a sheaf $\cE_1$ on $\sX_1$.  For each $j$, we obtain $\Phi_{1j}(\cE_1)$ on $\sX_j$.  Since the $\sX_i$ all agree on the dense torus, $\Phi_{1j}(\cE_1)$ will agree with $\cE_1$ on the dense torus and will only exhibit different behavior on the toric boundary.
 
-%\michael{Finish this remark}
-%\begin{remark}
-%\label{rem:pullpush}
-%It is an easy consequence of the projection formula that $\Phi_{i, j} = Rq_* \circ p^*$. (p and q the projections from the graph, so need different notation.) To see this, let $f \co X \to X \times Y$ denote the inclusion of $\Gamma_{ij}$ in $X \times Y$. We have:
-%$$
-%\Phi_{ij}(\cE) = Rq_*(p^*\cE \otimes_{\cO_{\sX_i\times \sX_j}} f_*\OO_{X}) = R(qf)_*(L(pf)^*\cE \otimes_{\OO_X} \OO_X) = R(qf)_*(\cE)
-%$$
-%\end{remark}
+We will not use the following result in this lecture, but it will be used later. \michael{added this next prop}
+\begin{prop}
+\label{prop:pullpush}
+Let $\widetilde{\X}$ be as in the definition of the Cox category, and let $\pi_i \co \widetilde{\X} \to \X_i$ be the accompanying maps for all $i$. There is an isomorphism $\Phi_{ij} \cong R\pi_{j *}\pi_i^*$.
+\end{prop}
+
+\begin{proof}[Sketch of proof]
+Let $t_i \co \Gamma_{ij} \to \X_i$ and $t_j \co \Gamma_{ij} \to \X_j$ be the canonical maps. The first observation is that $\Phi_{ij}$ is given by $Rt_{j*} t_i^*$; this follows from the projection formula, in a manner similar to the proof of Proposition~\ref{prop:diagonalidentity}. Now, the claim is that there exists a map $\pi \co \widetilde{X} \to \Gamma_{ij}$ such that $\pi^*$ is fully faithful, $t_i\pi = \pi_i$, and $t_j \pi = \pi_j$. Indeed, the fully faithfulness of $\pi^*$ is equivalent to the unit of adjunction $\id \to R\pi_*\pi^*$ being an isomorphism, and so we have $\Phi_{ij} = Rt_{j*} t_i^* = R(t_{j} \circ \pi)_*(t_i\pi)^* = R\pi_{j*} \pi_i^*$. The map $\pi$ may be induced by a refinement of stacky fans, and its fully faithfulness can be deduced from \cite{king}*{Lemma 3.7}; we omit the details. 
+\end{proof}
 
 \begin{example}
     For any $i,j$ we have $\Phi_{ij}(\cO_{\sX_i})=\cO_{\sX_j}$.  Why?  The pullback $p^*\cO_{\sX_i}$ is simply $\cO_{\sX_i\times \sX_j}$; this is a line bundle, and so the derived tensor product with $\cO_{\Gamma_{ij}}$ is simply the (underived) tensor product, which is
