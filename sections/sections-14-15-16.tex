@@ -7,13 +7,13 @@
 \fi
 
 \section{Lecture 14 (Milena Hering): Proof of revised King's conjecture, I: Outline}\label{lec:14-proof-outline}
-The Revised King's Conjecture claims that the line bundles $\cO_{\Cox}(-d)$ for $-d$ in the Bondal-Thomsen collection form a full strong exceptional collection.  Why would this be true and how could we prove this?
+The Revised King's Conjecture claims that the line bundles $\cO_{\Cox}(-d)$ for $-d$ in the Bondal-Thomsen collection form a full strong exceptional collection.  Why would this be true, and how could we prove it?
 
-Let's start with the special case where the secondary fan only has a single chamber, and where the toric variety in that chamber is smooth.  We write $X$ for this toric varite.  Then $D_{\Cox}(S)=D(\sX)$ and each $\cO_{\Cox}(-d)$ is simply $\cO_{\sX}(-d)$.  Choose two elements $-d,-d'$ in the Bondal-Thomsen collection $\Theta$.  We must show several things:
+Let's start with the special case where the secondary fan only has a single chamber, and where the toric variety in that chamber is smooth.  We write $X$ for this toric variety.  Then $D_{\Cox}(S)=D(X)$ and each $\cO_{\Cox}(-d)$ is simply $\cO_{X}(-d)$.  Choose two elements $-d,-d'$ in the Bondal-Thomsen collection $\Theta$.  We must show three things:
 \begin{enumerate}
-    \item Exceptionality:  For any $-d\in \Theta$ we have
+    \item Exceptionality:  For any $-d\in \Theta$, we have
     \[
-    \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = k \text{ and }
+    \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = \k, \text{ and }
     \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) = 0 \text { for $i>0$.}
     \]
     \item Orthogonality: For any $-d'<-d\in \Theta$ we have
@@ -27,43 +27,43 @@ Let's start with the special case where the secondary fan only has a single cham
 \end{enumerate}
 Exceptionality is trivial:
 \[
-\Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^0(X, \cO_{X}(-d -(-d)) = H^0(X, \cO_{X}) = k^1
+\Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^0(X, \cO_{X}(-d -(-d)) = H^0(X, \cO_{X}) = \k
 \]
-because $X$ is a projective variety.  Also
+since $X$ is a projective variety.  Also,
 \[
 \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d)) = H^i(X, \cO_{X}) = 0
 \]
-because $X$ is a rational variety.
-
-Fullness follows from the Hanlon--Hicks--Lazarev's proof of the Bondal's Conjecture (Conjecture \ref{conj:bondal}) which we saw back in \S\ref{subsect:bondalConjecture}.
-
-Let us turn to orthogonality.  Part (b) of orthogonality is literally built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a) is the meat of the argument.
+by Demazure Vanishing (Theorem~\ref{thm:demazureL5}). Fullness follows from Hanlon--Hicks--Lazarev's proof of  Bondal's Conjecture (Conjecture \ref{conj:bondal}), which we saw back in \S\ref{subsect:bondalConjecture}. Let us then turn to orthogonality.  Part (b) of orthogonality is built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a), is the meat of the argument.
+\michael{changed this next lemma and its proof}
 \begin{lemma}
-    Let $-d,-d'$ be two elements of the Bondal--Thomsen collection for $\sX$.  Assume that $-d'$ is anti-nef.  Then
+    Suppose $X$ is a smooth projective toric variety whose secondary fan has a single chamber, and say $-d < -d' \in \Theta$. We have
+    %Let $-d,-d'$ be two elements of the Bondal--Thomsen collection for $\sX$.  Assume that $-d'$ is anti-nef.  Then
     \[
     \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0 \text{ for all } i>0.
     \]
 \end{lemma}
 \begin{proof}
-   Follows from Demazure vanishing.  Namely \daniel{fill in details}
+We have 
+$
+\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong  H^i(X, \cO_{X}(d - d')) = 0
+$, and $d - d'$ is effective. Since the secondary fan of $X$ has a single chamber, this means $d-d'$ is nef, and so we are done by Demazure vanishing  (Theorem~\ref{thm:demazureL5}).
 \end{proof}
 
-The following outline extends to the case where the secondary fan has one chamber, but where $X$ is simplicial but not smooth, with only standard changes required for working with the stack $\sX$ in place of $X$.
+The above outline extends to the case where the secondary fan has one chamber, but where $X$ is simplicial but not smooth, by replacing $X$ with its associated toric stack. 
 
 \bigskip
 
-The case above is very special, however, as secondary fans generally have more than one chamber.  Nevertheless, it can provide something of a roadmap for the general proof.  Exceptionality will remain trivial.  Fullness will be due to a variant of a Hanlon--Hicks--Lazarev resolution of the diagonal, utilizing the  fact that the resolution of the diagonal is ``uniform'' for all of the $\sX_i$ associated to the Cox ring $S$ (see Corollary~\ref{cor:diagonalUniform}).  Orthogonality (b) will essentially follow from the definition of the ordering.  And so, as above, Orthogonality (a) will be the hardest part.
+The case above is very special, however, as secondary fans generally have more than one chamber.  Nevertheless, it provides something of a roadmap for the general proof.  Exceptionality remains trivial.  Fullness essentially also follows from Hanlon--Hicks--Lazarev's proof of  Bondal's Conjecture, but this is a bit more of a delicate argument.  %resolution of the diagonal, utilizing the  fact that the resolution of the diagonal is ``uniform'' for all of the $\sX_i$ associated to the Cox ring $S$ (see Corollary~\ref{cor:diagonalUniform}).  
+Orthogonality (b) once again follows from the definition of the ordering on $\Theta$.  And so, as above, Orthogonality (a) will be the hardest part.
 
-Let's examine what we would need to do in order to obtain Orthogonality.
-Each $\cO_{\Cox}(-d)$ is defined as a pullback from one particular $\sX_i$.  For Orthogonality, we need to understand the relationship between two such bundles.  So let's say that $\cO_{\Cox}(-d)$ is the pullback of $\cO_{\sX_1}(-d)$ and $\cO_{\Cox}(-d')$ is the pullback of $\cO_{\sX_2}(-d')$.
-
-We need to compute the $\Hom$ and $\Ext$ between these sheaves, and we thus need a way to compare sheaves pulled back from $\sX_1$ with sheaves pulled back from $\sX_2$.  That is, we need to compute:
+Let's examine what is needed to prove orthogonality.
+Each $\cO_{\Cox}(-d)$ is defined as a pullback from one particular $\sX_i$.  For orthogonality, we need to understand the relationship between two such bundles.  So let's say that $\cO_{\Cox}(-d)$ is the pullback of $\cO_{\sX_1}(-d)$ and $\cO_{\Cox}(-d')$ is the pullback of $\cO_{\sX_2}(-d')$. We need to compute the $\Hom$ and $\Ext$ between these sheaves, and we thus need a way to compare sheaves pulled back from $\sX_1$ with sheaves pulled back from $\sX_2$.  That is, we need to compute:
 \begin{align*}
 \Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) &=
 \Ext^i_{D_{\Cox}(S)}(\pi_1^*\cO_{\sX_1}(-d),\pi_2^*\cO_{\sX_2}(-d'))\\
-\intertext{The Projection Formula allows us to swap the $\pi_1^*$ in the first factor to a $\pi_{1*}$ in the second factor.  This yields}
-&=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\pi_{1*}\pi_2^*\cO_{\sX_2}(-d'))\\
-\intertext{So we can reduce the Orthogonality computation to a computation on $\sX_1$, but we will need to understand this weird-looking object $\pi_{1*}\pi_2^*\cO_{\sX_2}(-d')$.  But wait, we have seen this before!  It is the result of the Fourier--Mukai transform $\Phi_{21}$.  So we have}
+\intertext{Adjunction allows us to swap the $\pi_1^*$ in the first factor to a $\pi_{1*}$ in the second factor.  This yields}
+&=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\pi_{1*}\pi_2^*\cO_{\sX_2}(-d')).\\
+\intertext{So we can reduce  to a computation on $\sX_1$, but we need to understand this weird-looking object $\pi_{1*}\pi_2^*\cO_{\sX_2}(-d')$.  But wait, we have seen this before!  It is the result of the Fourier--Mukai transform $\Phi_{21}$.  So we have}
 &=\Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\Phi_{21}\cO_{\sX_2}(-d')).
 \end{align*}
 
