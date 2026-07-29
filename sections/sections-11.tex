@@ -24,7 +24,7 @@ Write $M$ for the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebr
 
 \lauren{put setup in labeled environment for reference}
 
-The crucial observation of the secondary fan is that there are only finitely many toric varieties arising from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
+The crucial observation of the secondary fan is that there are only finitely many toric varieties coming from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
 \begin{description}
   \item[GIT quotient/ample divisor]  In \lauren{reference} we saw that a smooth projective toric variety is a GIT quotient.  The \lauren{geometric??} quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
   \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know that its rays must come from \eqref{eq:M-SES}.  The collection of polytopes with normal vectors in a fixed list forms a fan, whose cones will exactly enumerate the possible simplicial fans on subsets of the rays. \lauren{how does simplicial come in?}
@@ -319,7 +319,7 @@ To fully mimic the ordinary construction of a toric variety from $\Spec S$, we s
 In either of the constructions of $X_d$, the resulting torus-invariant divisor must be ample.  From the GIT perspective we are using the line bundle $\cL_d$ to embed $X_d$ in projective space, and from the toric perspective the divisor of the polytope $P_\alpha$ is ample on the variety of its normal fan.  However, we must be careful with what we mean by the divisor corresponding to $d$ in the case where the class group of $X_d$ is smaller than $\Cl(S)$.
 
 \begin{lemma}\label{lem:cl-restrict}
-  Suppose $d\in\Cl(S)$ is in the interior of a chamber of the secondary fan.  There is an inclusion $\Pic X_d\to\Cl(S)$.
+  Suppose $d\in\Cl(S)$ is in the interior of a chamber of the secondary fan.  There is an inclusion $\Cl(X_d)\to\Cl(S)$.
 \end{lemma}
 
 \begin{proof}
@@ -331,70 +331,55 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
 Using the inclusion of class groups, we can give a more precise description of the ample and nef classes on $X_d$.  If $\Cl(S)$ is the class group of $X_d$ then the nef cone will be exactly the cone containing~$d$ in the secondary fan.
 
 \begin{thm}[\cite{CLS}*{Theorem 15.1.3(a)}]
-  Suppose $d\in\Cl(S)$ is in the interior of a chamber~$\Gamma$ of the secondary fan of $S$.  The cone $\Nef X_p$ is the restriction of $\Gamma$ to $\Pic X_d$ via the inclusion from Lemma~\ref{lem:cl-restrict}.
+  Suppose $d\in\Cl(S)$ is in the interior of a chamber~$\Gamma$ of the secondary fan of $S$.  The cone $\Nef X_p$ is the restriction of $\Gamma$ to $\Cl(X_d)\otimes_\ZZ\QQ$ via the inclusion from Lemma~\ref{lem:cl-restrict}.
 \end{thm}
 
-A variety $X_d$ with fewer than $n$ rays still has a nef cone related to its chamber $\Gamma$, and still arises as a quotient of $\Spec S$, but the short exact sequence computing its class groups does not exactly match \eqref{eq:M-SES}.  Similarly, its Cox rings is not actually $S$, as a polynomial ring with fewer variables is sufficient to construct $X_d$.  In one sense the ideal of such a chamber $\Gamma$ is an irrelevant ideal---$V(\idealof(\Gamma))$ is an unstable locus for some choice of linearized line bundle---yet it is not the irrelevant ideal \emph{of $X_d$} for $d\in\Gamma$
+A variety $X_d$ with fewer than $n$ rays still has a nef cone related to its chamber $\Gamma$, and still arises as a quotient of $\Spec S$, but the short exact sequence computing its class groups does not exactly match \eqref{eq:M-SES}.
 
-The previous example \lauren{now somewhere else} illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
-\begin{lemma}\label{lem:MovingConeEquivalence}
-  The following are equivalent:
+Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ring with fewer variables is sufficient to construct the toric variety.  Thus in one sense $\idealof(\Gamma)$ is an irrelevant ideal---it defines a permissible unstable locus in $\Spec S$---yet it is not the irrelevant ideal of $X_d$ in the ordinary sense.
+
+\begin{lemma}\label{lem:mov-equiv}
+  The following are equivalent for $d$ in the interior of a chamber $\Gamma(\Sigma,F)$ of the secondary fan:
   \begin{enumerate}
-    \item The Cox ring of $X_i$ equals $S$;
-    \item $\Cl(X_i)=\Cl(S)$;
-    \item  The rays of $\Sigma_i$ are precisely $\rho_1, \dots, \rho_n$;
-    \item  $B_i$ does not belong to any principal ideal $\langle x_j\rangle$.
+    \item The Cox ring of $X_d$ is $S$;
+    \item $\Cl(X_d)=\Cl(S)$; \lauren{are we sure this is equivalent?}
+    \item  The rays of $\Sigma$ are precisely $\nu_1, \dots, \nu_n$;
+    \item  $\idealof(\Gamma(\Sigma,F))$ is not contained in a principal ideal $\langle x_i\rangle$;
+    \item  $F=\varnothing$; and
+    \item  $d$ is in the moving cone of $X_d$.
   \end{enumerate}
 \end{lemma}
-\begin{proof}[Sketch of proof]
+\begin{proof}[Sketch of proof]\lauren{adjust for new version}
   For each $X_i$, the rays of $\Sigma_i$ are a subset of $\rho_1, \dots, \rho_n$~\cite[ Chapter 14.4]{CLS}.  Since the Cox ring of $X_i$ is a polynomial ring whose variables are in bijection the rays of $\Sigma_i$, this yields the equivalence of (1) and (3).  If any of the rays $\rho_j$ does not arise in $\Sigma_i$, then the vanishing of the corresponding variable $x_j$ defines the empty set on $X_i$ and thus $x_j$ form a minimal component of $B_i$.  This yields the equivalence of (3) and (4).  The equivalence of (2) and (3) comes from the short exact sequence \eqref{eqn:SESCl}.
 
 \end{proof}
 \begin{remark}\label{rmk:abuseNotation}
-  By a mild abuse of notation, we will refer to $B_i\subseteq S$ as \defi{the irrelevant ideal of $X_i$}.  Why is this an abuse of notation?  When the Cox ring of $X_i$ equals $S$, i.e. when the conditions of Lemma~\ref{lem:MovingConeEquivalence} are satisfied, this is not an abuse of notation; in that case, $B_i$ is precisely the irrelevant ideal of $X_i$, in the standard definition.  But as we have seen, it can happen that the Cox ring of $X_i$ does not equal $S$.  This happens precisely when the fan $\Sigma_i$ does not involve all of the original rays.  In this case, at least one of the variables $x_j$ from the original ring $S$ will not appear in the Cox ring of $X_i$.
+  By a mild abuse of notation, we will refer to $B_i\subseteq S$ as \defi{the irrelevant ideal of $X_i$}. \lauren{do we need this in another section?} Why is this an abuse of notation?  When the Cox ring of $X_i$ equals $S$, i.e. when the conditions of Lemma~\ref{lem:mov-equiv} are satisfied, this is not an abuse of notation; in that case, $B_i$ is precisely the irrelevant ideal of $X_i$, in the standard definition.  But as we have seen, it can happen that the Cox ring of $X_i$ does not equal $S$.  This happens precisely when the fan $\Sigma_i$ does not involve all of the original rays.  In this case, at least one of the variables $x_j$ from the original ring $S$ will not appear in the Cox ring of $X_i$.
 
   Considering our running Example~\ref{ex:hirzSecondary} is helpful: one of the varieties is $\PP(1,1,3)$ whose fan does {\em not} involve the ray $\rho_1 = (0,1)$.  Thus, the Cox ring of $\PP(1,1,3)$ would be a polynomial ring involving only $3$ variables, and a $\Cl(\PP(1,1,3)) = \ZZ$-grading, as opposed to $S$ itself which has $4$ variables and a $\ZZ^2$-grading.
 
-  However, we can recover $\PP(1,1,3)$ from $S$ with the $\ZZ^2$-grading by including the variable $x_1$ but then making it into a component of the irrelevant ideal.  Thus, we set $B_2 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle \subseteq S$.  Theorem~\ref{thm:mainsecondary} tells us that with this definition, we still recover $\PP(1,1,3)$ as a quotient of $\Spec(S) - V(B_2)$.
+  However, we can recover $\PP(1,1,3)$ from $S$ with the $\ZZ^2$-grading by including the variable $x_1$ but then making it into a component of the irrelevant ideal.  Thus, we set $B_2 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle \subseteq S$.  Theorem~\lauren{commented right now} tells us that with this definition, we still recover $\PP(1,1,3)$ as a quotient of $\Spec(S) - V(B_2)$.
 
   It would be more accurate to think of $B_i$ as the irrelevant associated to the chamber $\Gamma_i$, as opposed to the irrelevant ideal associated to $X_i$.  This viewpoint is developed in greater detail in ~\cite[\S7]{BEF}.
 \end{remark}
 
+We saw in an earlier lecture that if $X_d$ satisfies the conditions of Lemma~\ref{lem:mov-equiv}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf on $X_d$.  To emphasize the dependence on $X_d$, we write $M|_{X_d}$ for this sheaf.  A minor modification of the associated sheaf construction works for the other $X_d$s as well.
 
-
-
-
-When the conditions of Lemma~\ref{lem:MovingConeEquivalence} are satisfied, the ample cone equals $\Gamma_i$.  When these conditions are not satisfied, one needs to be more careful, as $\Gamma_i\subseteq \Cl(S)\otimes \QQ \ne \Cl(X_i)\otimes \QQ$.
-(Note:  the more common notation for this sheaf is $\widetilde{M}$, however when considering a single module with respect to different toric varieties, it is useful to have a notation that also specifies the toric variety $X_i$.)
-\medskip
-We saw in an earlier lecture that if $X_i$ satisfies the conditions of Lemma~\ref{lem:MovingConeEquivalence}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf $\widetilde{M}$ on $X_i$.
-
-\begin{notation}
-  To emphasize the dependence of $\widetilde{M}$ on $X_i$, we will from now on write $\widetilde{M}$ as $M|_{X_i}$.
-\end{notation}A minor modification of the associated sheaf construction works for the other $X_i$'s as well. We therefore have:
 \begin{prop}
-  Let $X_i$ be any of the simplicial toric varieties from Definition~\ref{defn:Xi} and let $\cE$ be a quasi-coherent sheaf on $X_i$.
+  Suppose $d$ is in the interior of a chamber of the secondary fan of $S$ and $\cE$ is a quasi-coherent sheaf on $X_d$.
   \begin{enumerate}
     \item There exists a graded $S$-module $M$ such that $M|_{X_i}\cong \cE$.
-    \item  If $\cE$ is coherent then $M$ can be chosen to be a finitely generated $S$-module
+    \item  If $\cE$ is coherent then $M$ can be chosen to be a finitely generated $S$-module.
   \end{enumerate}
 \end{prop}
 
+\begin{proof}
+  \lauren{want to add this because I don't think the construction is written anywhere}
+\end{proof}
+
 %We will in the next lecture see  this correspondence is simpler to describe if one passes to the toric stack associated to~$X_i$ (in fact, this is the {\em main} reason to talk about stacks, in our opinion).
 
-
 %, and thus the following construction is not necessary for the main results about Cox categories.  However, for those familiar with the relationship between modules on a Cox rings and sheaves on a toric variety, it may provide a helpful perspective.
-
-
-
-
-
-
-
-
-
-
-
 
 %\begin{thm}
 %The chamber s are in bijection with any of the following:
