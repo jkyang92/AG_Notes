@@ -31,6 +31,8 @@ The crucial observation of the secondary fan is that there are only finitely man
   \item[irrelevant ideal]  Perhaps the simplest way to describe which toric varieties are possible is to describe their irrelevant ideals, since $S$ with its grading and a suitable irrelevant ideal fully determines a toric variety.  Indeed the set of such ideals is easy to describe in terms of the map $\deg$, and each ideal quickly determines both pieces of data above.
 \end{description}
 
+Some spaces appearing in the secondary fan are most properly interpreted as stacks, and some do not use all the rays from \eqref{eq:M-SES}.  We mostly avoid the former in these notes (\lauren{cite remark}) but address the latter in Section~\ref{sec:lower-Pic-rank}.  Note that a variety with fewer than $n$ rays will not actually have $S$ as its own Cox ring, despite arising as a quotient of $\Spec S$.
+
 A reader primarily concerned with computation could start with Section~\ref{sec:irrelevant-ideals} and take on faith that the ideals describe there correspond to valid quotients and form a fan.  Here we give an example of all three perspectives for our favorite toric variety.
 
 \lauren{examples moved here from previous version}
@@ -273,7 +275,7 @@ To fully mimic the ordinary construction of a toric variety from $\Spec S$, we s
 
 \begin{cor}
   Let $\alpha\in\QQ^n$ such that $\deg\alpha=d$ is in the interior of a chamber $\Gamma$.  Then
-  \[\idealof(\Gamma)=\left\langle \prod_{j\in J} x_j \;\middle|\;\text{$J$ the indices of facets \emph{not} intersecting a vertex $v$ of $P_\alpha$} \right\rangle\].
+  \[\idealof(\Gamma)=\left\langle \prod_{j\in J} x_j \;\middle|\;\text{$J$ the indices of facets \emph{not} intersecting a vertex $v$ of $P_\alpha$} \right\rangle.\]
   \lauren{make prettier}
 \end{cor}
 
@@ -312,7 +314,7 @@ To fully mimic the ordinary construction of a toric variety from $\Spec S$, we s
 %  %\daniel{Mostly just cite the places in CLS?}
 %\end{proof}
 
-\subsection{Nef and moving cones}
+\subsection{Nef and moving cones}\label{sec:lower-Pic-rank}
 
 In either of the constructions of $X_d$, the resulting torus-invariant divisor must be ample.  From the GIT perspective we are using the line bundle $\cL_d$ to embed $X_d$ in projective space, and from the toric perspective the divisor of the polytope $P_\alpha$ is ample on the variety of its normal fan.  However, we must be careful with what we mean by the divisor corresponding to $d$ in the case where the class group of $X_d$ is smaller than $\Cl(S)$.
 
@@ -323,14 +325,16 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
 \begin{proof}
   Let $\Sigma$ be the fan of $X_d$.  By \lauren{cite} there is a short exact sequence
   \[0\to M\to\ZZ^{\Sigma(1)}\to\Cl(X_d)\to 0.\]
-  By Lemma~\ref{lem:GKZ-def} \lauren{better place?} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an inclusion $\ZZ^{\Sigma_1}\to\ZZ^n$ and thus an inclusion $\Cl(X_d)\to\Cl(S)$.
+  By Lemma~\ref{lem:GKZ-def} \lauren{better place?} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an injection $\ZZ^{\Sigma_1}\to\ZZ^n$ and thus an injection $\Cl(X_d)\to\Cl(S)$.
 \end{proof}
 
-Using the inclusion of class groups, we can give a more precise description of the ample and nef classes on $X_d$.  If $\Cl(S)$ is the class group of $X_d$ then the nef cone will be exactly the cone containing $d$ in the secondary fan.
+Using the inclusion of class groups, we can give a more precise description of the ample and nef classes on $X_d$.  If $\Cl(S)$ is the class group of $X_d$ then the nef cone will be exactly the cone containing~$d$ in the secondary fan.
 
 \begin{thm}[\cite{CLS}*{Theorem 15.1.3(a)}]
   Suppose $d\in\Cl(S)$ is in the interior of a chamber~$\Gamma$ of the secondary fan of $S$.  The cone $\Nef X_p$ is the restriction of $\Gamma$ to $\Pic X_d$ via the inclusion from Lemma~\ref{lem:cl-restrict}.
 \end{thm}
+
+A variety $X_d$ with fewer than $n$ rays still has a nef cone related to its chamber $\Gamma$, and still arises as a quotient of $\Spec S$, but the short exact sequence computing its class groups does not exactly match \eqref{eq:M-SES}.  Similarly, its Cox rings is not actually $S$, as a polynomial ring with fewer variables is sufficient to construct $X_d$.  In one sense the ideal of such a chamber $\Gamma$ is an irrelevant ideal---$V(\idealof(\Gamma))$ is an unstable locus for some choice of linearized line bundle---yet it is not the irrelevant ideal \emph{of $X_d$} for $d\in\Gamma$
 
 The previous example \lauren{now somewhere else} illustrates that the varieties $X_1, \dots, X_r$ arising in the secondary fan come in two basic flavors:  those whose Cox ring equals the original $S$ (these lie in the ``moving cone'') and those whose Cox rings involve fewer variables.  The former toric varieties are more obviously related to the Cox ring $S$, and the following lemma provides equivalent characterizations of them:
 \begin{lemma}\label{lem:MovingConeEquivalence}
