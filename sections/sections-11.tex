@@ -12,17 +12,21 @@ In this section, we define the Cox category of a toric variety and explain how i
 \subsection{Toric varieties of a multigraded ring}
 Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to provide a crash course in how to think about this fan.
 
-We start with a polynomial ring $k[x_1,\ldots,x_n]$ and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$, which induces a $\Cl(S)$-grading on $S$.  We will assume throughout that this grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
+\begin{notation}
+  We start with a polynomial ring $k[x_1,\ldots,x_n]$ and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$, which induces a $\Cl(S)$-grading on $S$.  We will assume throughout that this grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
 
-Write $M$ for the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebraic group $\Spec k[\Cl(S)]$, so that there is a short exact sequence
+  Let $M$ be the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ for the algebraic group $\Spec k[\Cl(S)]$, so that there is a short exact sequence
+  \begin{align}\label{eq:M-SES}
+    0\to M\to\ZZ^n\to\Cl(S)\to 0.
+  \end{align}
+  Write $\nu_1,\ldots,\nu_n$ for the rows of a matrix representing the map $M\to\ZZ^n$ and $N$ for the dual lattice $\Hom_\ZZ(M,\ZZ)$.  (Note that we have fixed a basis of $\ZZ^n$ by choosing variables for $S$.  This also fixes a basis of $M$, for ease of representing fans in $N\otimes_\ZZ\QQ$.)
+\end{notation}
 
-\begin{align}\label{eq:M-SES}
-  0\to M\to\ZZ^n\to\Cl(S)\to 0.
-\end{align}
-
-\lauren{something about Gale duality}
-
-\lauren{put setup in labeled environment for reference}
+The short exact sequence of vector spaces
+\[0\to M\otimes_\ZZ\QQ\to\QQ^n\to\Cl(S)\otimes_\ZZ\QQ\to 0\]
+has a dual sequence
+\[0\gets N\otimes_\ZZ\QQ\gets\QQ^n\gets\Hom_\QQ(\Cl(S)\otimes_\ZZ\QQ,\QQ)\gets 0\]
+which exchanges the role of the degrees $\deg x_i$ and the vectors $\nu_i$.  This relationship is known as \emph{Gale duality} and can be used to develop the secondary fan.  Hoewever, our setup has already broken the symmetry of degrees and rays by requiring that $\deg$ come from a \emph{projective} toric variety, which forces the $\deg x_i$ to span a strongly convex cone while the $\nu_i$ span all of $\QQ^n$.  (For more on this point see Appendix~\ref{sec:good-gradings}, \cite[Proposition~14.3.2]{CLS}, and Remark~\ref{rem:triangulations}.)
 
 The crucial observation of the secondary fan is that there are only finitely many toric varieties coming from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
 \begin{description}
@@ -103,7 +107,7 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
 
 \subsection{GIT quotients}\label{sec:variation-of-GIT}
 The sequence \eqref{eq:M-SES} induces maps of algebraic groups
-\[0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.\]  The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.  (Note that we have fixed a basis for $\ZZ^n$ by choosing variables for $S$.)
+\[0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.\]  The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.
 
 We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory.  \lauren{give citation for additional reading}
 
@@ -187,7 +191,7 @@ Compared to ordinary fans of toric varieties, generalized fans may contain cones
 By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(\Sigma,V)$ of $\tilde\Gamma(\Sigma,F)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty?}
 
 \begin{rem}
-  We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  The existence of~$\varphi$ on the fan $\Sigma$ requires the class $\deg\alpha$ to be nef on the toric variety of the generalized fan $\Sigma$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.  Lemma~\ref{lem:GKZ-def} then connects the support function definition to a less formal description in terms of polytopes.
+  We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  The existence of~$\varphi$ on the fan $\Sigma$ requires the class $\deg\alpha$ to be nef on the toric variety of the polytope $P_\alpha$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.  Lemma~\ref{lem:GKZ-def} then connects the support function definition to a less formal description in terms of polytopes.
 \end{rem}
 
 \begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
@@ -215,6 +219,10 @@ A version of Theorem~\ref{thm:GIT-polytope} is true for all $d\in\Cl(S)$ but may
 \begin{proof}
   Choose $\Sigma$ a fan and $F\subseteq\{1,\ldots,n\}$ so that $d,d'\in \Gamma(\Sigma,F)$, and choose $\alpha,\alpha'\in\QQ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by this fan so they are isomorphic via the identity map.
 \end{proof}
+
+\begin{rem}\label{rem:triangulations}
+  \lauren{triangulations}
+\end{rem}
 
 \subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
 
@@ -341,10 +349,12 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
 \begin{lemma}\label{lem:mov-equiv}
   The following are equivalent for $d$ in the interior of a chamber $\Gamma(\Sigma,F)$ of the secondary fan:
   \begin{enumerate}
-    \item The Cox ring of $X_d$ is $S$;
-    \item $\Cl(X_d)=\Cl(S)$; \lauren{are we sure this is equivalent?}
-    \item  The rays of $\Sigma$ are precisely $\nu_1, \dots, \nu_n$;
+    \item  The Cox ring of $X_d$ is $S$;
+    \item  $\Cl(X_d)=\Cl(S)$; \lauren{are we sure this is equivalent?}
+    \item  The irrelevant ideal of $X_d$ is $\idealof(\Gamma(\Sigma,F))$;
     \item  $\idealof(\Gamma(\Sigma,F))$ is not contained in a principal ideal $\langle x_i\rangle$;
+    \item  The rays of $\Sigma$ are precisely $\nu_1, \dots, \nu_n$;
+
     \item  $F=\varnothing$; and
     \item  $d$ is in the moving cone of $X_d$.
   \end{enumerate}
