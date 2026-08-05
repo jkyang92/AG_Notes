@@ -10,6 +10,8 @@
 
 \tableofcontents
 
+\include{TODO}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{sections/sections-1-2-3}    % D^b(PP^n) and Beilinson's resolution
 
@@ -22,6 +24,7 @@
 \include{sections/sections-6}        % The Bondal-Thomsen collection
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: where should this go?
 \begin{comment}
 
 \section{Secondary fan example}
@@ -42,7 +45,7 @@
     % Draw all line segments connecting the points
     \draw (A) -- (B) -- (C) -- cycle;
     \draw (A) -- (D) -- (C);
-    \draw (B)--(D);
+    \draw (B) -- (D);
     \draw (A) -- (E);
 
     % Plot the points (as small black circles)
@@ -83,49 +86,15 @@
 
 \pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{sections/sections-18-19} %Tate resolutions
+\include{sections/sections-18-19}    % Tate resolutions
 
 \pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{appendix}
-\include{sections/appendix.tex}
-
-\subsection{Wish List}
-\begin{enumerate}
-    \item  Add a simple proof that the free module degrees in BCHSY come from Bondal-Thomsen.
-    \item  Mention that BCHSY works in the radical case and include an example (maybe an example where the defining ideal of $X\subseteq Y$ is radical but not prime, e.g. the case of a point in a fake projective plane, which appeared in Brown-Erman's paper.)
-    \item
-\end{enumerate}
-
-\subsection{Work on Notes and an M2 package for the week of July 13}
-Notes:
-\begin{itemize}
-\item Main focus for DE, JY, MS, LCH: 5-8, 10 need a lot of work then expand on 1-4
-
-\item The BCHSY treatment of HHL res should be broken into 3 lectures (sect 6-8) (possible outline at head of sect 6)
-
-
-\item comments only on 11-14 (except for Michael)
-
-\item Lauren should be chief of the material on the secondary fan
-
-\item DE will work on Achinger material --  in sect 5
-
-\item Lectures 1-5 could use some significant fleshing out, especially if we want this to eventually be a standalone document.
-\end{itemize}
-
-M2 Package
-\begin{itemize}
-\item  Have the package for computing HHL resolutions of equivariant sheaves and toric subvarietes in good enough shape, including documentation, to share with all participants.
-
-\item BT monads in M2?
-
-\item  Include code for computing the secondary fan associated to a multigraded ring.
-
-\item  Can we write code that would allow for Fourier-Mukai transforms of line bundles, as in the Transform Lemma?
-
-\end{itemize}
-
+%\include{sections/appendix-stacks.tex}       % see after section 5
+\include{sections/appendix-multigradings.tex} %
+\include{sections/appendix-computation.tex}   %
+\include{sections/appendix-literature.tex}    % literature review
 \end{appendix}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

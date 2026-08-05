@@ -1,0 +1,258 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifdefined\whole
+\else
+\documentclass{amsart}
+\input{preamble}
+\begin{document}
+\fi
+
+\section{Good multigradings}\label{sec:good-gradings}
+
+We let $S=k[x_1, \dots, x_n]$ be a polynomial ring graded by an arbitrary finitely generated abelian group $\Cl(S)$ via a map $\ZZ^n\overset{\deg}{\longrightarrow}\Cl(S)$ where $\epsilon_1, \dots, \epsilon_n$ are a fixed basis of $\ZZ^n$ and where we set $\deg(x_i) \ce\deg(\epsilon_i)\in \Cl(S)$.  We extend this to a grading of $S$ where $\deg(x_1^{b_1}\cdots x_n^{b_n})\ce \sum_{i=1}^n b_i\deg(x_i)$ and $\deg(a)=0$ for $a\in k$.  To avoid trivialities, we will always assume that the map $\deg$ is surjective.
+
+Our goal in this section is to articulate conditions under which the multigraded ring $S$ corresponds to the Cox ring of some projective toric variety.
+
+We will need some notation.  We write $M\ce\ker(\deg)$ and we consider the induced short exact sequence:
+\[
+0\to M\overset{\alpha}{\to} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(S) \to 0.
+\]
+We define $\Eff(S) \ce\{d \in \Cl(S) \mid S_d \ne 0\}$.  We refer to this as the \defi{effective semigroup} as it forms a subsemigroup of $\Cl(S)$.  We can consider the corresponding cone $\Eff(S)_{\QQ}\subseteq \Cl(S)\otimes_{\ZZ}\QQ$ which is the positive rational cone spanned by the image of $\Eff(S)$ under the natural map to $\Cl(S)\otimes_{\ZZ}\QQ$.
+
+\begin{defn}\label{defn:posGrading}
+  We say that $\deg\colon\ZZ^n\to\Cl(S)$ is a \defi{positive grading} if there exists a group homomorphism $\phi\colon \Cl(S) \to \ZZ$ such that $\phi \circ \deg(\epsilon_i) > 0 $ for all $i$.
+\end{defn}
+\begin{lemma}\label{lem:positive-gradings}
+  The following are equivalent:
+  \begin{enumerate}
+    \item $S$ is positively graded.
+    \item $S_0=k$.
+    \item $\Eff(S)_{\QQ}$ is a pointed cone.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+    For (1) implies (2):  By assumption $k$ lies in $S_0$.  If another polynomial lies in $S_0$ then there exists $b\neq 0$ such that $\deg b=0$.  Thus $\sum b_i\deg\epsilon_i=0$ so $\sum b_i\varphi\circ\deg(\epsilon_i)=0$ for some $\varphi$ witnessing the positivity of the grading, which is impossible.
+
+    For (2) implies (3):  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
+
+    For (3) implies (1):  Define the positive grading $\phi$ by choosing a projection of vector spaces $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
+  \end{proof}
+
+\begin{prop}\label{prop:goodMultigradings}
+Let $S=k[x_1, \dots, x_n]$ be a polynomial ring, and let $\Cl(S)$ be a finitely generated abelian group.
+Suppose $S$ is graded via $\deg\colon \ZZ^n\to \Cl(S)$.  Write $M:=\ker \deg$ so we have a short exact sequence:
+\[
+0\to M\overset{\alpha}{\to} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(S) \to 0.
+\]
+For convenience, we fix bases of $M$ and $\ZZ^n$ so that we can represent $\alpha$ as a matrix. However the conditions below are not affected by a change of basis for $M$.
+
+The following are equivalent:
+\begin{enumerate}
+    \item The ring and degree map satisfy the properties:
+      \begin{enumerate}
+        \item The map $\deg$ is surjective;
+        \item
+        Each row of $\alpha$ is the primitive point on a distinct ray, meaning that the rows of
+        $\alpha$ are distinct and nonzero, and the entries of each row have greatest common divisor 1;
+        \item The grading on $S$ defined by $\deg$ is a positive grading.
+    \end{enumerate}
+    \item  There exists a projective, simplicial toric variety $X$ whose Cox ring is $S$ as a multigraded ring, in the following specific sense: The fan for $X$ contains $n$ rays and we have an isomorphism $\Cl(X)\cong \Cl(S)$ such that for each $i$ the image $\deg(x_i)\in \Cl(S)$ is the class in $\Cl(X)$ of the torus invariant divisor corresponding to the $i$th ray of $X$.
+\end{enumerate}
+\end{prop}
+
+
+  % \begin{prop}\label{prop:goodMultigradings}
+  %   The following are equivalent: \lauren{the logic of this reads very strangely to me currently .. there does indeed exist a polynomial ring satisfying the conditions in (1) so it seems like (2) should always be true}\daniel{Good point, totally agree.  Rewrite as you see fit.}
+  %   \begin{enumerate}
+  %     \item There is a polynomial ring $S$, graded via $\deg\colon \ZZ^n\to \Cl(S)$, that satisfies the following conditions:
+  %     \begin{enumerate}
+  %       \item $\deg$ is surjective;
+  %       \item $S$ is positively graded;
+  %       \item Each row of $\alpha$ \lauren{what is $\alpha$?}\daniel{It was a name I gave to the matrix $M\to \ZZ^n$.} is the primitive point on a distinct ray; that is, the rows of
+  %       $\alpha$ are distinct, nonzero, and {\color{blue} the entries of each row} have greatest common divisor 1. \lauren{what does it mean for vectors to have greatest common divisor 1?}
+  %       %matrix representing $\alpha\colon M\to \ZZ^n$ has no zero rows and no rows that are scalar multiples of one another.
+  %     \end{enumerate}
+  %     \item There is a simplicial, projective toric variety $X$ with $\Cl(X) = \Cl(S)$ and where the Cox ring of $X$ equals $S$.
+  %   \end{enumerate}
+  % \end{prop}
+  \begin{proof}
+    (2) implies (1) follows from standard facts about toric varieties.  Given such an $X$, the degree map $\deg\colon\ZZ^n\to\Cl(X)$ is surjective because the classes of torus-invariant divisors generate $\Cl(X)$ \lauren{cite CLS}.  We choose a basis for the lattice $N$ containing the fan for $X$ and take the dual basis for the lattice $M$, giving a matrix $N\gets \ZZ^n$ containing primitive elements along each ray of the fan.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (b).  The grading $\deg$ is positive by \lauren{cite something}.
+
+    (1) implies (2) is more subtle.  We will be using facts from~\cite[Chapters 14 and 15]{CLS}.
+
+    The beginning of \cite[Chapter 14.4]{CLS} defines a secondary fan for arbitrary algebraic actions of a subgroup $G\subseteq (k^*)^n$ on $\Spec(S)\cong \mathbb A^n$ (see for instance \cite[Lemma 14.4.6,7]{CLS}).  Our map $\deg\colon\ZZ^n\to\Cl(S)$ defines a map of group rings $k[\ZZ^n]\to k[\Cl(S)]$.  The surjectivity in (a) implies that the corresponding map of algebraic groups defines a subgroup of $\Spec k[\ZZ^n]\cong(k^*)^n$. \lauren{is this right?} The \lauren{possibly nonexistent?} chambers of the secondary fan for the induced action of this subgroup on $\Spec S$ correspond to GIT quotients for different choices of linearized line bundle.  We will show that at least one has the properties we desire.
+
+    In particular, \cite[Proposition 15.1.6]{CLS} describes when the secondary fan contains a chamber which uses all rows of $\alpha$.  Condition (b) implies that this collection of rows is ``geometric'' and thus satisfies the hypotheses of the proposition.  Take $X$ to be a quotient which satisfies the conclusion.  By \cite[Theorem 14.2.13]{CLS} the space $X$ is a toric variety whose fan contains rays along the rows of $\alpha$, so all of these rays appear in its fan.  Since the entries of each row have no common factor the matrix $\alpha$ appears directly in the computation of $\Cl(X)$ \lauren{cite probably the same thing from above about the class group}, implying that $\deg$ is the degree function of torus-invariant divisors for some isomorphism $\Cl(X)\cong\Cl(S)$ \lauren{induced by a diagram chasing lemma or something about Gale duals?}.
+
+    Finally \cite[Proposition 14.4.1]{CLS} implies that $X$ is semiprojective and its fan has support determined by the Gale dual of $\deg$.  Condition (c) implies that $\Eff(S)_\QQ$ is a pointed cone by Lemma~\ref{lem:positive-gradings}, so the support of the fan of $X$ is all of $N_\QQ$ by \cite[Proposition 14.3.2]. \lauren{is strongly convex the same as pointed?} The space $X$ is semiprojective and proper, thus projective. \lauren{in my opinion we shouldn't state or prove this lemma here because it isn't the interesting part of this prop}
+
+    \begin{lemma}[CLS 14.3.2 without the extra notation]
+      Fix a basis $\epsilon$ of $\RR^n$, and let
+      $$
+      \begin{tikzcd}
+        0\arrow{r} &M_\RR^* \arrow{r}{\delta} & \RR^n \arrow{r}{\nu}&N_\RR \arrow{r}&0
+      \end{tikzcd}
+      $$
+      be an exact sequence of real vector spaces. If every element of $\epsilon$ maps
+      to a nonzero element of $N_\RR$ then $ cone(\nu(\epsilon)) = N_\RR$
+      if and only if $cone(\delta^*(\epsilon))$ is pointed.
+    \end{lemma}
+    In particular, any $X_{\Sigma}$ from the secondary fan will be proper.
+
+    \begin{proof}[Proof of the Lemma] Set $C_\nu\ce cone(\nu(\epsilon))$ and
+      \def\Eff{\rm Eff}
+      $\Eff \ce cone(\delta^*(\epsilon))$. We will prove the contrapositive:
+
+      \noindent $\Rightarrow$: Suppose that $C_\nu = N_\RR$, so $C_\nu^\vee = 0$.
+      Suppose that both $v$ and $-v$ are non-negative combinations of the rays
+      of $\Eff$. Adding the expressions for these vectors, we get a map $\RR \to \RR^n$ that has non-negative coefficients
+      with respect to $\epsilon$, and whose image is in the kernel of $\delta^*$.
+      Thus it factors through $N_\RR^*$. Dualizing, we get a functional on
+      $N_\RR$ that is non-negative on every ray; that is an element
+      of $C_\nu^\vee$. Thus $v = 0$, proving that $\Eff$ is pointed.
+
+      \noindent $\Leftarrow$: Conversely, if $\Eff$ is pointed then there
+      is a map $M_\RR \to \RR$ that is positive on every ray of $C_\nu$. Dualizing, we get an
+      element $w \in \ker \nu$ with all positive coefficients. If $\phi: N_\RR \to \RR$
+      is an element of $C_\nu^\vee$, then, because all the rays of $N_R$ are nonzero, $\phi(w)=0$ is a positive combination of some of the coefficients of $w$. Thus $C_\nu^\vee = 0$ and $C_\nu = C_\nu^{\vee\vee} = N_\RR$.
+    \end{proof}
+
+    % We find the rays by dualizing the map $\alpha\colon M\to \ZZ^n$ obtaining $\alpha^*\colon \ZZ^n \to N$.  So we need to show that the positive rational cone spanned by the columns of $\alpha^*$ in $N_{\QQ}$ is the entire space.  Choose $\phi$ as in Definition~\ref{defn:posGrading}.  We get a new exact sequence
+    %    \[
+    %   0\to M'\overset{\gamma}{\to} \ZZ^n \overset{\phi\circ \beta}{\to} \ZZ\to 0.
+    %   \]
+    %  Because we have a positive grading, the map $\ZZ^n\to \ZZ$ has the form $(a_1, \dots, a_n)$ for positive integers $a_i\in \ZZ_{>0}$ and we can explicitly compute the kernel as
+    %%\begin{pmatrix}
+    %   -a_2&-a_3&\cdots &-a_n\\
+    %  a_1&0&\cdots &0\\
+    % 0&a_1&\cdots &0\\
+    % 0&0&\cdots &a_1
+    % \end{pmatrix}
+  % \]
+  % The cone over the rows of $\gamma$ fills an entire $\QQ^{n-1}$.  And the cone over the rows of $\alpha$ is a projective of that cone under a map $\QQ^{n-1} \to N\otimes \QQ$ and hence we obtain the desired result.
+\end{proof}
+
+
+\daniel{I've been copying and pasting things here which we wrote but which don't obviously fit into a ``prep for the notes'' section.}
+\begin{cor}
+  Each $B_i$ is generated by products of $r$ distinct variables.
+\end{cor}
+\begin{proof}
+  Let $x_{i_1}\cdots x_{i_p}$ be a minimal generator of $B_i$ and assume $p>r$.  We have that $\Gamma_i$ is in the span of $\deg_{\QQ}(x_{i_1}), \cdots, \deg_{\QQ}(x_{i_p})$.   Since $\Gamma_i$ is $r$-dimensional, after potentially reindexing, we can assume that $\deg_{\QQ}(x_{i_1}), \cdots \deg_{\QQ}(x_{i_r})$ are linearly independent.  If $\Gamma_i$ lies in the span of these, then $x_{i_1}\cdots x_{i_r}$ lies in $B_i$, contradicting the initial minimal generator assumption.  But then some portion of $\Gamma_i$ would correspond to an ideal containing $x_{i_1}\cdots x_{i_r}$, contradicting the fact that the chambers of squarefree monomial ideals must be disjoint.
+\end{proof}
+\begin{remark}
+  By considering intersections of the chambers, we can endow $\Eff(S)$ with a fan structure which is known as the secondary fan.  However, for the applications to Cox categories and King's Conjecture, we do not need the full structure of the secondary fan, we simply need to know the chambers.  So we will omit a fuller discussion of the secondary fan.
+\end{remark}
+\begin{remark}
+  Because each chamber is defined in terms of spanning sets of monomials, the hyperplanes used to define each chamber will have a special form.  Namely, each such hyperplane will be spanned by a codimension $1$ set of linearly independent vectors $\deg_{\QQ}(x_i)$.
+
+  In particular, we can build a naive stratification of $\Eff(X)$ as follows.  Write $r$ for the rank of $\Cl(S)\otimes \QQ$.  For each linearly independent $(r-1)$-tuple of vectors $\deg_{\QQ}(x_i)$, we get a hyperplane, and taking the union of all of these hyperplanes will slice $\Eff(X)$ into a finite set of chambers, each of belongs entirely to one of the chambers $\Gamma_1,\dots, \Gamma_s$.  The chambers of the secondary fan are a coarsening of the chambers of this naive stratification.
+\end{remark}
+
+
+We can describe the $B_i$ in several equivalent ways.  Recall that we have the map $\deg\colon \ZZ^n\to \Cl(S)$; we write $\deg_{\QQ}$ for the induced map to $\Cl(S)\otimes \QQ$.
+\begin{prop}
+  Fix a chamber $\Gamma_i$ for $S$ and any ray $\rho$ in the interior of $\Gamma_i$.  The following ideals are equal
+  \begin{enumerate}
+    \item  $\operatorname{ideal}(B_i)$ as in Definition~\ref{defn:idealConeCorrespondence}.
+    \item  The radical of the ideal $\langle \mathbf{x}^{\mathbf{a}} \text{ such that } \deg_{\QQ}(\mathbf{x}^{\mathbf{a}})\in \Gamma_i\rangle$.
+    \item  The ideal $\sqrt{B_{\rho}}$ where  $B_{\rho} = \langle \mathbf{x}^{\mathbf{a}} \text{ such that } \deg_{\QQ}(\mathbf{x}^{\mathbf{a}})\in \rho \rangle$
+  \end{enumerate}
+\end{prop}
+\begin{proof}[Sketch of proof, in progress]
+  For (1) $\Rightarrow$ (3): Let $x_{i_1}\cdots x_{i_s}$ be a squarefree monomial which spans $\Gamma_i$.  Since $\rho$ lies in $\Gamma_i$, for some integers $a_1, \dots, a_s$ we have that $\deg_{\QQ}(x_{i_1}^{a_1}\cdots x_{i_s}^{a_s}) \in \rho$.  In particular, $x_{i_1}\cdots x_{i_s}$ belongs to $\sqrt{B_{\rho}}$.
+
+  Certainly the ideal from (3) belongs the ideal from (2).
+
+  Finally we have (2) $\Rightarrow$ (1):  Let $x_{i_1}, \cdots, x_{i_p}$ be the variables dividing $\mathbf{x}^{\mathbf{a}}$.  Assume, for contradiction, that the corresponding degrees all line on some hyperplane $H$.  Then $H$ subdivides $\Gamma_i$ into two pieces $\Gamma_i^{+}$ and $\Gamma_i^{-}$, corresponding to the two side of $H$.  There must therefore be at least one monomial whose degree lies on either side of $H$, say $\deg_{\QQ}(x_{+})$ is on the $\Gamma_i^{+}$-side and $\deg_{\QQ}(x_{-})$ is on the $\Gamma_i^{-}$-side.  But then the ideals $B_{\Gamma_i^{+}}$ and $\Gamma_i^{-}$ would be distinct, and so $\Gamma_i$ would not be a valid chamber.
+
+  We conclude that $\deg_{\QQ}(x_{i_1}), \cdots, \deg_{\QQ}(x_{i_p})$ span an $r$-dimensional cone.  Since this span includes a point in $\Gamma_i$, by construction of the chambers, it must contain the entire chamber $\Gamma_i$.  It follows that $x_{i_1}\cdots x_{i_p}$ lies in $B_i$\dots
+\end{proof}
+
+%\subsection{Chambers and toric varieties}
+%\begin{defn}\label{defn:normalFan}
+%From the irrelevant ideal $B_i$ we can produce a fan $\Sigma_i$ for a toric variety as follows.  We let the rays of $\Sigma_i$ be the set of rays $\rho_j$ such that the corresponding principal ideal $\langle x_j\rangle$ does not contain $B_i$.  And we let the cones of $\Sigma_i$ be the cones spanned by the tuples $\rho_{j_1}, \cdots, \rho_{j_p}$ such that $B_i$ does not contain the monomial $x_{j_1}\cdots x_{j_p}$.    The fans $\Sigma_1, \dots, \Sigma_s$ are all distinct because the $B_i$ are all distinct.
+%
+%For a point $\mathbf{a}=(a_1, \dots, a_n)\in \ZZ^{n}$ we define the polyhedron
+%\[
+%P_{\mathbf{a}} \ce \cap_{i=1}^n \{ m \in M | \alpha_i(m) \geq -a_i\}.
+%\]
+%To a polyhedron $P_{\mathbf{a}}\subseteq M\otimes \QQ$ there is a dual normal fan $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$.  We recall that $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$ is defined as \dots
+%\end{defn}
+%
+%The key fact relating these definitions is:
+%\begin{prop}\label{prop:polytopeAndFan}
+%We have that $P_{\mathbf{a}}$ is nonempty if and only if $\deg_{\QQ}(\mathbf{a})$ lies in the effective cone.
+%Moreover, we have that $\deg_{\QQ}(\mathbf{a}) \in \Gamma_i$ if and only if there is an open neighborhood $U_{\mathbf{a}}$ of $\mathbf{a}$ such that the normal fan of $P_{\mathbf{a'}}$ equals $\Sigma_i$ for all $\mathbf{a}'\in U_{\mathbf{a}}$.
+%\end{prop}
+%\daniel{To do:  add references from CLS.}
+%
+%In particular, the chambers $\Gamma_i$ also precisely correspond the distinct
+
+
+
+
+
+%Each point $\mathbf{a} = (a_1, \dots, a_n)\in \ZZ^n$ determines a set of halfspaces in $M\otimes \QQ$ of the form $\alpha_i(m) \geq -a_i$ for $1\leq i \leq n$.  We write $H_{\mathbf{a}} = \cap_{i=1}^n \{\alpha_i(m)\geq -a_i\}$.  The locus $H_{\mathbf{a}}$ will be a convex polytope if and only if the divisor $\sum_{i=1}^n a_iD_i$ is an effective divisor.
+
+%Recall that $r$ is the rank of $\Cl(S)$.  Start with the points $\{ \deg(x_i) \forall 1 \leq i \leq n\}\subseteq \Cl(S)\otimes \QQ$.
+
+\begin{remark}
+  \daniel{This remark is residual but I liked it.}
+  We will confirm below that each pair $(S,B_i)$ determines a simplicial projective variety $X_i$.  The rough statement is that $X_i$ the quotient $\Spec(S) - V(B_i) / G$ (with the action of $G$ induced by the grading group), but this is a ``rough'' statement because of various subtleties involving quotients of projective varieties.  So there is a sense in which the multigraded ring $S$ naturally corresponds to the set of toric varieties $X_1, \dots, X_r$.
+
+  This connection is even sharper from a homological perspective.  The pair $(S,B_i)$ determines a module category as follows:  we write $\mod(S)$ for the category of $\Cl(S)$-graded $S$-modules and we write $\mod_{B_i}(S)$ for the subcategory  modulo those modules that are annihilated by a power of $B_i$.  To the pair $(S,B_i)$ we can attach the quotient category $\mod(S)/\mod_{B_i}(S)$.  This equals--essentially by defintion--the category of sheaves on the quotient stack $[\Spec(S) - V(B_i)/G]$ which we denote as $\mathcal X_i$.  We will see later that $\mathcal X_i$ is closely related to the aforementioned toric variety $X_i$.
+\end{remark}
+
+\begin{comment}
+  \subsection{Chambers and toric varieties}
+  From the irrelevant ideal $B_i$ we can produce a fan $\Sigma_i$ for a toric variety as follows.  We let the rays of $\Sigma_i$ be the set of rays $\rho_j$ such that the corresponding principal ideal $\langle x_j\rangle$ does not contain $B_i$.  And we let the cones of $\Sigma_i$ be the cones spanned by the tuples $\rho_{j_1}, \cdots, \rho_{j_p}$ such that $B_i$ does not contain the monomial $x_{j_1}\cdots x_{j_p}$.    The fans $\Sigma_1, \dots, \Sigma_s$ are all distinct because the $B_i$ are all distinct.
+
+  For a point $\mathbf{a}=(a_1, \dots, a_n)\in \ZZ^{n}$ we define the polyhedron
+  \[
+  P_{\mathbf{a}} \ce \cap_{i=1}^n \{ m \in M | \alpha_i(m) \geq -a_i\}.
+  \]
+  To a polyhedron $P_{\mathbf{a}}\subseteq M\otimes \QQ$ there is a dual normal fan $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$.  We recall that $\operatorname{NormalFan}(P_{\mathbf{a}})\subseteq N\otimes \QQ$ is defined as \dots
+
+  The key fact relating these definitions is:
+  \begin{prop}\label{prop:polytopeAndFan}
+    We have that $P_{\mathbf{a}}$ is nonempty if and only if $\deg_{\QQ}(\mathbf{a})$ lies in the effective cone.
+
+    Moreover, we have that $\deg_{\QQ}(\mathbf{a}) \in \Gamma_i$ if and only if there is an open neighborhood $U_{\mathbf{a}}$ of $\mathbf{a}$ such that the normal fan of $P_{\mathbf{a'}}$ equals $\Sigma_i$ for all $\mathbf{a}'\in U_{\mathbf{a}}$.
+  \end{prop}
+  \daniel{To do:  add references from CLS.}
+
+  %In particular, the chambers $\Gamma_i$ also precisely correspond the distinct
+
+
+  \begin{prop}\label{defn:fanAndXi}
+    As defined above we have the following: $\Sigma_i$ is a simplicial fan such that $|\Sigma_i|=N\otimes \QQ$.  In particular,  $\Sigma_i$ is the fan associated to a simplicial, projective toric variety which we denote as $X_i$.
+  \end{prop}
+
+
+  \begin{lemma}
+    The following are equivalent:
+    \begin{enumerate}
+      \item The Cox ring of $X_i$ equals $S$;
+      \item $\Cl(X_i)=\Cl(S)$;
+      \item  The rays of $\Sigma_i$ are precisely $\rho_1, \dots, \rho_n$;
+      \item  $B_i$ does not belong to any principal ideal $\langle x_j\rangle$.
+    \end{enumerate}
+  \end{lemma}
+  When these conditions are satsified, the ample cone equals $\Gamma_i$.  \daniel{When these conditions are not satisfied, one needs to be a bit more careful in relating the ample cone with $\Gamma_i$.}
+\end{comment}
+\begin{comment}
+  \subsection{Irrelevant ideals for faces of secondary fan}
+  \daniel{Not sure what we want to put here.}
+  \begin{lemma}
+    For a face of the secondary fan, the irrelevant ideal is the sum irrelevant ideals of the chambers with that face in its boundary.
+  \end{lemma}
+\end{comment}
+
+
+\ifdefined\whole
+\else
+\bibliographystyle{plain}
+\bibliography{Bibliography}
+\end{document}
+\fi

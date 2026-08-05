@@ -1,0 +1,124 @@
+\section{Toric stacks}
+\michael{I think this should be shortened and moved earlier, to one of the talks on background on toric varieties. That is, I think there should be one talk on the module/sheaf correspondence, and this content should be part of that.}
+Recall that if $X$ is a smooth projective toric variety with Cox ring $S$ and irrelevant ideal $B$, then $\D^b(X) = D^b(S) / D^b_B(S)$. We have seen that this fails when $X$ is not smooth, for instance in the case of a weighted projective space. This problem can be solved using toric \emph{stacks}. For this reason (and only this reason) we give a brief introduction to toric stacks. For concreteness, we will mostly confine ourselves to the example of a weighted projective stack, as the general story is similar.
+
+
+Let $X$ be a simplicial toric variety, with Cox ring $S$ and irrelevant ideal $B$.  Let $G=\Hom_{\ZZ}(\Cl(X), \kk^*)$ be the group acting on $\Spec(S)$ as in Definition~\ref{defn:Gaction}.  There is a canonical toric stack $\mathcal X$ one can build from this data: $\mathcal X = [\Spec(S) - V(B) / G]$.  Since $X$ was simplicial, it turns out that $\mathcal X$ is always a smooth toric DM stack, as in \cite{BorisovChenSmith2004}.
+
+
+
+\subsection{Passing to toric stacks}
+When considering a weighted projective space $\PP(1,1,2)$, one can mean either the projective variety or the corresponding stack.  In this brief subsection, we will try to summarize some of the distinctions between these perspectives.  In particular, we will view the distinction between a toric variety and a toric stack through the lens of modules and sheaves.\footnote{This is a rather algebraic way to think about toric stacks, but that is in line with the syzygetic perspective in these notes.  A more geometric understanding of toric stacks would examine stacky fans, toric morphisms, and so on.  Such a perspective is introduced in \cite{BorisovChenSmith2004} and greatly expanded in \cite{GS1, GS2}.}
+It is natural to think of $\PP(1,1,2)$ as a quotient.  We have $S = \kk[x,y,z]$ with degrees $1,1,$ and $2$, and have the $\CC^*$-action on $\Spec(S) = \mathbb A^3$ given by $\lambda \cdot (x,y,z) = (\lambda x, \lambda y, \lambda^2 z)$.  After removing the origin, the orbits become disjoint, and we can consider the quotient $\mathbb A^3 - \{0\} / \CC^*$ as either a GIT quotient or a stack quotient.
+
+Let us start with the stack quotient $\PP_{\text{stack}}(1,1,2) = [\mathbb A^3 - \{0\} / \CC^*]$ (the brackets indicate that we are taking the stack quotient).  It is easy to understand sheaves on quotient stacks: if $G$ acts on a variety $X$ then a sheaf on the stack quotient $[X/G]$ is simply a $G$-equivariant sheaf on $X$.  So in our case, giving a sheaf on $\PP_{\text{stack}}(1,1,2) $ is the the same as giving a $\CC^*$-equivariant sheaf on $\mathbb A^3 - \{0\}$.  Let us explore what this means.  A sheaf on $\mathbb A^3$ is simply a (not necessarily graded) $S$-module $M$.  If $M$ is $\CC^*$-equivariant, then it will decompose according to irreducible $\CC^*$-representations. Since the irreducible representations of $\CC^*$ are simply $\ZZ$, we will get a decomposition $M=\oplus_{d\in \ZZ} M_d$.   One can check that this decomposition endows $M$ with the structure of a {\em graded} $S$-module, with respect to the grading of the variables as above.  To summarize, a $\CC^*$-equivariant sheaf on $\mathbb A^3$ is simply a graded $S$-module $M$.  What happens when we remove the origin?  Those familiar with sheaves on $\PP^n$ will know the answer:  removing $V(\mathfrak m)$ means that any module $M$ whose support is just $\mathfrak m$ will be the zero sheaf.
+
+Let us summarize this in more categorical terms.  Write $\Mod_{gr}(S)$ for the category of finitely generated, graded $S$-modules and $\Mod_{\mathfrak m}(S)$ for the subcategory consisting of modules whose $S$-modules whose support equals the singleton set $\{\mathfrak m\}$.\footnote{A finitely generated $S$-module $M$ has support equal to $\mathfrak m$ if and only if $M$ is annihilated by a power of $\mathfrak m$ if and only if $M$ is finite length.  So $\Mod_{\mathfrak m}(S)$ is equivalent to the subcategory of finite length modules.} Let us write $\Coh(\PP_{\text{stack}}(1,1,2) )$ for the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$.  What we have is that
+\[
+\Coh(\PP_{\text{stack}}(1,1,2) ) = \Mod_{gr}(S) / \Mod_{\mathfrak m}(S),
+\]
+i.e. the category of coherent sheaves on the stack $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of graded $S$-modules by the subcategory  $\Mod_{\mathfrak m}(S)$.
+
+Now let us turn to the GIT quotient.  In this case, this is simply the same as taking $\Proj(S)$, as defined in any introductory text on algebraic geometry (e.g~\cite[Chapter 2]{hartshorne}).  To review, $\Proj(S)$ will have an open affine cover
+\[
+\PP(1,1,2) = \Proj(S) = D_+(x) \cup D_+(y) \cup D_+(z)
+\]
+where
+\[
+D_+(x) = \Spec\left(S[x^{-1}]_0\right)=\Spec\left(\kk\left[\frac{y}{x}, \frac{z}{x^2}\right]\right) \cong \mathbb A^2.
+\]
+Similarly, $D_+(y) \cong \mathbb A^2$.  However, we also have
+\[
+D_+(z) =   \Spec\left([z^{-1}]_0\right)=\Spec\left(\kk\left[\frac{x^2}{z}, \frac{xy}{z}, \frac{y^2}{z}\right]\right)\cong \Spec\left(\kk[u,v,w] / \langle uw-v^2 \rangle)\right).
+\]
+Note that $D_+(z)$ is a surface with a singularity at the origin.  In particular, the toric variety $\PP(1,1,2)$ has a singularity at the point with projective coordinates $[0:0:1]$.    The class group is $\Cl(\PP(1,1,2)) \cong \ZZ$ where the degree $d$ element of the class group corresponds to any hypersurface of degree $d$.  This divisor is Cartier if and only if $d$ is even (more generally if $d$ is divisible by the least common of the degrees of the weighted space).
+%  $\Pic(\PP(1,1,2)) = 2\ZZ\subseteq \ZZ = \Cl(\PP(1,1,2))$.
+In particular, the sheaf $\cO_{\PP(1,1,2)}(1)$, i.e. the sheaf corresponding to the module $S(1)$, is not a line bundle on the weighted projective space $\PP(1,1,2)$.
+
+
+In fact, from the perspective of sheaves and modules, $\PP_{\text{stack}}(1,1,2)$ is fairly simple.  Let $M$ be a finitely generated, graded $S$-module.  Then, using the standard construction for sheaves on $\Proj$ of a graded ring, we get a  coherent sheaf $M|_{\PP(1,1,2)}$ on the variety $\Proj(S) = \PP(1,1,2)$.  Similarly, since $M$ is a graded $S$-module, it is a $\CC^*$-equivariant module on $\Spec(S)$ and on $\Spec(S) - \{0\}$; thus, by standard facts about quotient stacks, $M$ induces a coherent sheaf on the stack quotient.  In short, a finitely generated, graded $S$-module will induce a coherent sheaf on both the variety and the stack.
+
+The subtlety arises when we ask:  when is this sheaf $M|_{\PP(1,1,2)}$ equal to $0$?  For the stack, the answer was simple: the sheaf $M|_{\PP_{\text{stack}}(1,1,2)}$ is $0$ if and only if $M$ is a finite length module.  But
+%In other words, for the stack, we have a nearly direct analogue of the situation from projective space, where the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of finitely generated, graded $S$-modules by the subcategory of finite length modules.
+for the variety, the answer is more complicated.  Consider the following example.
+%as there exist non-finite length modules $M$ where $\widetilde{M}$ is the zero sheaf on $\PP(1,1,2)$.  The following is the simplest such example:
+
+
+%
+%
+% In this case, the GIT quotient is simply the same as taking $\Proj(S)$, as defined in any introductory text on algebraic geometry (e.g~\cite[Chapter 2]{hartshorne}).  Namely $\Proj(S)$ has an open affine cover
+%\[
+%\PP(1,1,2) = \Proj(S) = D_+(x) \cup D_+(y) \cup D_+(z)
+%\]
+%where
+%\[
+%D_+(x) = \Spec\left(S[x^{-1}]_0\right)=\Spec\left(\kk\left[\frac{y}{x}, \frac{z}{x^2}\right]\right) \cong \mathbb A^2.
+%\]
+%Similarly, $D_+(y) \cong \mathbb A^2$.  However, we also have
+%\[
+%D_+(z) =   \Spec\left([z^{-1}]_0\right)=\Spec\left(\kk\left[\frac{x^2}{z}, \frac{xy}{z}, \frac{y^2}{z}\right]\right)\cong \Spec\left(\kk[u,v,w] / \langle uw-v^2 \rangle)\right).
+%\]
+%This is a surface with a singularity at the origin.  In particular, the toric variety $\PP(1,1,2)$ has a singularity at the point with projective coordinates $[0:0:1]$.    As $\PP(1,1,2)$ is singular, its Class group and Picard group do not agree.  The class group is $\Cl(\PP(1,1,2)) \cong \ZZ$ where the degree $d$ element of the class group corresponds to any hypersurface of degree $d$.  This divisor is Cartier if and only if $d$ is even (more generally if $d$ is divisible by the least common of the degrees of the weighted space).
+%%  $\Pic(\PP(1,1,2)) = 2\ZZ\subseteq \ZZ = \Cl(\PP(1,1,2))$.
+% In particular, the sheaf $\cO_{\PP(1,1,2)}(1)$, i.e. the sheaf corresponding to the module $S(1)$, is not a line bundle on the weighted projective space $\PP(1,1,2)$.
+%
+%Let us contrast this with the stack quotient $\PP_{\text{stack}}(1,1,2):= [\Spec(S) - \{0\} / \CC^*]$, where we still have the $\CC^*$-action from above.  Obviously, there is a major downside to working with the stack which is that the category of stacks is simply more complicated than the category of varieties.  However, there are some advantages to the stack.  To begin with,  $\PP_{\text{stack}}(1,1,2)$ is a smooth Deligne-Mumford toric stack~\cite{BorisovChenSmith2004}.  Thus the class group equals the Picard group, and in particular, $\cO(1)$ is a line bundle on the stack.  This is the first glimmer of a more general fact, which is that the stack $\PP_{\text{stack}}(1,1,2)$ has simpler algebraic properties.
+%
+%In fact, from the perspective of sheaves and modules, $\PP_{\text{stack}}(1,1,2)$ is fairly simple.  Let $M$ be a finitely generated, graded $S$-module.  Then, using the standard construction for sheaves on $\Proj$ of a graded ring, we get a  coherent sheaf $\widetilde{M}$ on the variety $\Proj(S) = \PP(1,1,2)$.  Similarly, since $M$ is a graded $S$-module, it is a $\CC^*$-equivariant module on $\Spec(S)$ and on $\Spec(S) - \{0\}$; thus, by standard facts about quotient stacks, $M$ induces a coherent sheaf on the stack quotient.  In short, a finitely generated, graded $S$-module will induce a coherent sheaf on both the variety and the stack.
+%
+%The subtlety arises when we ask:  when is this sheaf equal to $0$?  For the stack, the answer is simple: the sheaf induced by $M$ is $0$ if and only if $M$ is a finite length module.  In other words, for the stack, we have a nearly direct analogue of the situation from projective space, where the category of coherent sheaves on $\PP_{\text{stack}}(1,1,2)$ is the Verdier quotient of the category of finitely generated, graded $S$-modules by the subcategory of finite length modules.  For the variety, the answer is a bit more complicated, as there exist non-finite length modules $M$ where $\widetilde{M}$ is the zero sheaf on $\PP(1,1,2)$.  The following is the simplest such example:
+
+\begin{example}\label{ex:oddP112}
+  Let $M=S/(x,y)(1)$.  Note that $M$ is not finite length as $M\cong \kk[z](1)$ and thus $\dim M = 1$.  Now, let us consider the corresponding sheaf $M|_{\PP(1,1,2)}$ on the three basic affine opens.  We have
+  \[
+  H^0(D_+(x), M|_{\PP(1,1,2)}) = M[x^{-1}]_0 =0 \qquad H^0(D_+(y), M|_{\PP(1,1,2)}) = M[y^{-1}]_0 =0
+  \]
+  since both $x$ and $y$ annihilate $M$.  We also have
+  \[
+  H^0(D_+(z), M|_{\PP(1,1,2)})= M[z^{-1}]_0 \cong (\kk[z^{\pm}](1))_0 = \kk[z^{\pm}]_1 = 0.
+  \]
+  Note that $\kk[z^{\pm}]_1 = 0$ because $\deg(z)=2$.  So $M|_{\PP(1,1,2)}$ has no sections on $D_+(z)$ not because $z$ annihilates $M$, but because of an arithmetic coincidence that $\kk[z^{\pm}]$ has no odd degree elements.  Of course, since the sheaf $M|_{\PP(1,1,2)}$ equals the zero sheaf on an open cover, it follows that $M|_{\PP(1,1,2)}$ is itself the zero sheaf on $\PP(1,1,2)$.
+\end{example}
+
+Example~\ref{ex:oddP112} indicates that passing from $S$-modules to sheaves on $\PP(1,1,2)$ is more complicated than it is for the stack quotient.  A much longer discussion of sheaves on GIT quotients appears in \cite[Chapter 5]{CLS}, but we can give a categorical description in this case as follows.  Write $S^{(2)}=k[x^2,xy,y^2,z]$ for the degree $2$ Veronese subring of $S$.  For a graded $S$-module $M$, the submodule $M^{(2)} = \oplus_{d \in 2\ZZ} M_d$ will be an $S^{(2)}$-module.  Perhaps the simplest description of coherent sheaves on $\PP(1,1,2)$ is as the following Verdier quotient:
+\[
+\coh(\PP(1,1,2)) = \Mod_{gr}(S^{(2)}) / \Mod_{\mathfrak m}(S^{(2)})
+\]
+where $\Mod_{\mathfrak m}(S^{(2)})$ is the subcategory of finite length $S^{(2)}$.  Note how this explains Example~\ref{ex:oddP112}: in that example, $M$ is not a finite length $S$-module and so the induced sheaf on the stack quotient is nonzero.  But $M^{(2)}$ is a finite length $S^{(2)}$-module, and so the induced sheaf on the GIT quotient is zero.
+
+In short, the stack quotient $\PP_{\text{stack}}(1,1,2)$ is more closely connected to the polynomial ring $S$ itself, whereas the GIT quotient $\PP(1,1,2)$ is more closely tied to the degree $2$ Veronese subring $S^{(2)}$.   Thus, for those (like me) who are primarily interested in the study of modules over multigraded polynomial rings like $S$ itself, the stack quotient $\PP_{\text{stack}}(1,1,2)$ provides a better framework than the standard toric variety $\PP(1,1,2)$.  In fact in my experience, among researchers working on homological aspects of toric varieties, including resolutions or derived categories, the stack is generally the focal point.
+
+
+Of course, there are also major advantages to studying the toric variety instead of the toric stack.  For instance, the category of stacks is far more complicated than the category of varieties, and the literature on stacks is much less well-developed than that the literature on varieties.  In addition, geometric intuition about varieties can by misleading in stacky situations.
+% However, there are some advantages to the stack.  To begin with,  $\PP_{\text{stack}}(1,1,2)$ is a smooth Deligne-Mumford toric stack~\cite{BorisovChenSmith2004}.  Thus the class group equals the Picard group, and in particular, $\cO(1)$ is a line bundle on the stack.  This is the first glimmer of a more general fact, which is that the stack $\PP_{\text{stack}}(1,1,2)$ has simpler algebraic properties.
+%
+
+%  Most notably: $\PP(1,1,2)$ is a toric variety and so one can leverage the robust literature on varieties and toric varieties.  By contrast, the literature on stacks is significantly more scattershot, notable challenge is that working with stacks requires a  that can be challenging most notable advantage The main upshot of Example discussion is that there are subtle differences between considering the weighted projective variety $\PP(1,1,2)$ and the weighted projective stack  $\PP_{\text{stack}}(1,1,2)$, and that there can be advantages to either perspective.  Specifically, for many researchers who are interested in derived categories or related questions, the stack is generally thought to be better behaved.
+
+We should note that the variety and the stack are also closely tied to one another, as there is a direct connection between the variety and the stack.  Since $\PP_{\text{stack}}(1,1,2)$ is a smooth toric DM stack, and $\PP(1,1,2)$ is its coarse moduli space, there is  a morphism $\pi\colon \PP_{\text{stack}}(1,1,2) \to \PP(1,1,2)$ that has various nice properties.  See~\cite{BorisovChenSmith2004}.
+
+A similar story holds for any weighted projective space.  For any $\PP(d_0, \dots, d_n)$ there is a corresponding stack $\PP_{\text{stack}}(d_0, \dots, d_n)$.  The stack is smooth while the variety is not.  The algebraic properties of the stack are generally simpler than that of the variety.  And there is a morphism from the stack to the variety satisfying a host of nice properties.  In fact, a similar story even holds for any simplicial toric variety; again one should see~\cite{BorisovChenSmith2004} for some of the background on this topic.
+
+
+\daniel{Make sure we've defined the categories $\Coh$ and $\operatorname{mod}$ somewhere.}
+
+
+\begin{thm}\label{thm:simplicialStack}
+  Let $X$ be a simplicial toric variety with $\Cl(X)$-graded Cox ring $S$ and irrelevant ideal $B$.  Let $G=\Hom_{\ZZ}(\Cl(X),\kk^*)$ act on $\Spec(S)$ in the natural way.  Let $\sX$ be the stack quotient $[\Spec(S) - V(B) / G]$.  Moreover, we have
+  \[
+  \Coh(\sX) = \operatorname{mod}_{gr}(S)/\operatorname{mod}_{B}(S).
+  \]
+\end{thm}
+In short, the relationship between coherent sheaves on $\sX$ and graded $S$-modules is just like the relationship for $\PP^n$.  This is the {\em whole point} of passing from the variety $X$ to the stack $\sX$: sheaves on $\sX$ are literally in bijection with graded $S$-modules, modulo $B$-torsion.
+
+
+When $X$ is simplicial but not smooth, another sense in which the stack $\sX$ is ``better'' than the variety $X$ is that $\sX$ is a smooth, Deligne-Mumford stack with $\Pic(\sX) \cong \Cl(X)$.  But these features  will not be relevant for any of the results under consideration.  Applying Theorem~\ref{thm:simplicialStack} to the varieties from the secondary fan, we obtain:
+
+\begin{cor}\label{cor:stacksAndDb}
+  Let $X_i$ be any of the toric varieties from Definition~\ref{defn:Xi} and let $B_i\subseteq S$ be the corresponding irrelevant ideal.  Let $\sX_i$ be thse stack as in Example~\ref{ex:CoxConstruction}.  We have
+  \[
+  D^b(\sX_i) = D^b(S) / D^b_{B_i}(S),
+  \]
+  where we recall that: $D^b(\sX_i)$ is the bounded derived category of coherent sheaves on $\sX_i$; $D^b(S)$ is the bounded derived category of graded $S$-modules; and $D^b_{B_i}(S)\subseteq D^b(S)$ is the full triangulated subcategory generated by modules $M$ which are annihilated by some power of $B_i$.
+\end{cor}
+This corollary follows from several well-known and more general results in the literature.  Since our interest in stacks is nearly entirely based upon this corollary (i.e. we will have to further discussion of stacks), we will simply provide references but skip the proof.  Perhaps the most direct reference is \cite{AOV2008}*{Section~2.1}, which--once one unravels the notation--provides a full proof of an equivalent fact.  Other references, working in various levels of generality, include  \cite{stacks-project}*{06WT}, \cite{vistoli}*{Theorem 4.46}, and  \cite{alper}*{Theorem 7.1.11}. \michael{Also include that the bounded derived category of $G$-equivariant sheaves on $\AA^n \setminus V(B_i)$ is $D^b(S) / D^b_{B_i}(S)$, which is an equivariant version of the Thomason-Trobaugh localization theorem.}
