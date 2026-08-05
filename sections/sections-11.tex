@@ -147,21 +147,25 @@ where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplicati
 Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
 
 \begin{cor}\label{cor:quotient-Proj}
-  The GIT quotients of $\Spec S$ by $G$ are of the form $X_d=\Proj S_{\NN d}$ for $d\in\Cl(S)$. \lauren{defeq?}
+  The GIT quotients of $\Spec S$ by $G$ are of the form $X_d\ce\Proj S_{\NN d}$ for $d\in\Cl(S)$.
 \end{cor}
 
 %Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$.
-We will see more concrete constructions of these spaces in the next subsection, along with descriptions of the semistable and stable loci.
+We will see more concrete constructions of these spaces in the following subsections, along with descriptions of the semistable and stable loci.
 
 \subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
-The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark21}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list.
+The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list.
 
-\begin{defn}
+\begin{rem}\label{rem:triangulations}
+  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the rays $\nu_i$ span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} of a hyperplane section of the cone of the rays.  \lauren{cite}
+\end{rem}
+
+\begin{defn}\label{def:polytope-of-deg}
   Given $\alpha\in\QQ^n$, write $P_\alpha$ for the polytope in $M\otimes_\ZZ\QQ$ defined by the restriction of the inequalities $x_i\geq -\alpha_i$ for all $i$.
 \end{defn}
 
 \begin{example}\label{ex:secondary-blowup}
-  Let $S=k[x_0,x_1,x_2,x_3,x_4]$ with degrees $(1,0,0),(-1,1,0),(1,-1,1),(0,1,-1),(0,0,1)$.  Fixing a basis $y_0,y_1$ for $M$ we can take $\nu_0=(1,0),\nu_1=(0,1),\nu_2=(-1,1),\nu_3=(-1,0),\nu_4=(0,-1)$.  Let $\alpha=(1,1,1,1,1)$.  The inequality $x_2\geq -1$ restricts to $(y_0,y_1)\cdot\nu_2\geq -1$ or $-y_0+y_1\geq -1$.  \lauren{picture of all of them when we get square}
+  Let $S=k[x_0,x_1,x_2,x_3,x_4]$ with degrees $(1,0,0)$, $(-1,1,0)$, $(1,-1,1)$, $(0,1,-1)$, and $(0,0,1)$.  Fixing a basis $y_0,y_1$ for $M$ we can take $\nu_0=(1,0)$, $\nu_1=(0,1)$, $\nu_2=(-1,1)$, $\nu_3=(-1,0)$, $\nu_4=(0,-1)$.  Let $\alpha=(1,1,1,1,1)$.  The inequality $x_2\geq -1$ restricts to $(y_0,y_1)\cdot\nu_2\geq -1$ or $-y_0+y_1\geq -1$.  \lauren{picture of all of them when we get square, which probably requires a different $\alpha$}
 \end{example}
 
 Note that the normal vectors of the polytope $P_\alpha$ lie in the list $\nu_1,\ldots,\nu_n$.  However not all $n$ inequalities/normal vectors need be required, if some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or at all).  \lauren{CLS} refer to these as ``virtual'' facets.  Replacing~$\alpha$ with another vector of the same degree only translates the polytope.
@@ -176,13 +180,18 @@ Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to trans
   Continuing Example~\ref{ex:secondary-blowup}, when \lauren{find equation} the hyperplane corresponding to $x_2$ intersects $P_\alpha$ in a vertex.  \lauren{picture}
 \end{example}
 
-This behavior cannot occur for a general choice of $\alpha$, creating a polyhedral fan in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which indices~$i$ the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$, in order to distinguish cases like Example~\ref{ex:secondary-wall}.
+This behavior only occurs on finitely many linear subspaces, creating a polyhedral fan in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which indices~$i$ the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$, in order to distinguish cases like Examples  \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall}.  Both share the fan for $\PP^1\times\PP^1$, but we would record the set $\{2\}$ for Example~\ref{ex:secondary-blowup} and $\varnothing$ for Example~\ref{ex:secondary-wall}.
 
-Let $\Sigma$ be a generalized \lauren{simplicial?} fan in $N\otimes_\ZZ\QQ$ with rays among the vectors $\nu_1,\ldots,\nu_n$ and $F$ a subset of the indices $1,\ldots,n$ of the $\nu_i$ \emph{not} appearing in $\Sigma$.  For instance, Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} both give the fan for $\PP^1\times\PP^1$, but we would take $F=\{2\}$ for Example~\ref{ex:secondary-blowup} and $F=\varnothing$ for Example~\ref{ex:secondary-wall}.
+\begin{defn}
+  Let $\Sigma$ be a generalized \lauren{simplicial?} fan in $N\otimes_\ZZ\QQ$ with rays among the vectors $\nu_1,\ldots,\nu_n$ and $F$ a subset of the indices $1,\ldots,n$ of the $\nu_i$ \emph{not} appearing in $\Sigma$.
 
-Define $\tilde\Gamma(\Sigma,F)$ to be the set of $\alpha\in\QQ^n$ such that there exists a convex support function $\varphi$ on $\Sigma$ with $\varphi(\nu_i)=-\alpha_i$ for all $i\notin F$ and $\varphi(\nu_i)\geq-\alpha_i$ for all $i\in F$.
+  Write $\tilde\Gamma(\Sigma,F)$ for the set of $\alpha\in\QQ^n$ such that there exists a convex support function $\varphi$ on $\Sigma$ with $\varphi(\nu_i)=-\alpha_i$ for all $i\notin F$ and $\varphi(\nu_i)\geq-\alpha_i$ for all $i\in F$.
 
-Compared to ordinary fans of toric varieties, generalized fans may contain cones which are not strongly convex.  \lauren{cite CLS}  As with the behavior from Example~\ref{ex:secondary-wall}, this does not occur for a general choice of $\alpha$, and we will focus on the general (not generalized!) case. \lauren{make and reference remark about walls}
+
+  Write $\Gamma(\Sigma,V)$ for the image of $\tilde\Gamma(\Sigma,F)\subseteq\QQ^n$ in $\Cl(S)\otimes_\ZZ\QQ$ under the map induced by \eqref{eq:M-SES}.
+\end{defn}
+
+By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty?}  Compared to ordinary fans of toric varieties, generalized fans may contain cones which are not strongly convex (see \lauren{cite CLS} and Remark~\ref{rem:walls}).  As with the behavior from Example~\ref{ex:secondary-wall}, this does not occur for a general choice of~$\alpha$, and we will focus on the general (not generalized!) case.
 
 \begin{lemma}\label{lem:GKZ-def}
   Let $\alpha\in\QQ^n$ such that $\dim P_\alpha=n$ and the normal vectors of $P_\alpha$ are exactly $\{\nu_i:i\notin F\}$ for $F\subseteq\{1,\ldots,n\}$.  Then $\alpha\in\tilde\Gamma(\Sigma,F)$ where $\Sigma$ is the normal fan of $P_\alpha$.
@@ -196,17 +205,15 @@ Compared to ordinary fans of toric varieties, generalized fans may contain cones
   The rays of a cone in the normal fan correspond to hyperplanes intersecting in a face of $P_\alpha$ (swapping dimension and codimension), and this face consists of points $m$ in $P_\alpha$ whose images $(\nu_j\cdot m)$ satisfy $\nu_j\cdot m=-\alpha_j$.  If $\varphi(\nu_i)=-\alpha_i$ then $-\alpha_i=-\sum\beta_j\alpha_j$, so $\nu_i\cdot m=\sum\beta_j\nu_j\cdot m=-\sum\beta_j\alpha_j=-\nu_i$.  \lauren{needs to be explained better and altered to an inequality but I think this is correct now}
 \end{proof}
 
-By \cite[Proposition 14.4.3]{CLS} the projection $\Gamma(\Sigma,V)$ of $\tilde\Gamma(\Sigma,F)\subseteq\QQ^n$ to $\Cl(S)\otimes_\ZZ\QQ$ is a strongly convex rational polyhedral cone.  \lauren{get polytope from support function and describe when it is nonempty?}
-
 \begin{rem}
-  We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  The existence of~$\varphi$ on the fan $\Sigma$ requires the class $\deg\alpha$ to be nef on the toric variety of the polytope $P_\alpha$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.  Lemma~\ref{lem:GKZ-def} then connects the support function definition to a less formal description in terms of polytopes.
+  We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  Lemma~\ref{lem:GKZ-def} connects the two descriptions.  Compared to the fan $\Sigma$, the polytope $P_\alpha$ retains the data of a torus-invariant divisor on $X_d$.  The existence of~$\varphi$ on the fan $\Sigma$ requires its class $\deg\alpha$ to be nef on $X_d$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.
 \end{rem}
 
 \begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
   The collection of cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \defi{chambers}.
 \end{prop}
 
-\begin{example}
+\begin{example}\label{ex:secondary-blowup-2}
   The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is \lauren{picture}
 \end{example}
 
@@ -218,9 +225,9 @@ Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex
   Suppose that $\alpha\in\QQ^n$ and $d=\deg\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope $P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
 \end{thm}
 
-A version of Theorem~\ref{thm:GIT-polytope} is true for all $d\in\Cl(S)$ but may involve a lower dimensional polytope.  As a consequence, the toric variety $X_d$ is constant within the interior of each cone of the secondary fan.  Varieties from distinct chambers will have distinct normal fans, though they may be isomorphic via a nontrivial map of lattices.  \lauren{reference stacky discussion earlier to briefly discuss walls?}
+The toric variety $X_d$ is constant within the interior of each cone of the secondary fan.  Varieties from distinct chambers will have distinct normal fans, though they may be isomorphic via a nontrivial map of lattices (as in Example~\ref{ex:secondary-blowup-2}, where $\PP^2$ \lauren{?} appears twice).
 
-\begin{cor}
+\begin{cor}\label{cor:chamber-iso}
   Suppose that $d,d'\in\Cl(S)$ are contained in the interior of the same chamber of the secondary fan of $S$.  Then $X_d\cong X_d'$ via the identity map on the lattice $N$.
 \end{cor}
 
@@ -228,8 +235,8 @@ A version of Theorem~\ref{thm:GIT-polytope} is true for all $d\in\Cl(S)$ but may
   Choose $\Sigma$ a fan and $F\subseteq\{1,\ldots,n\}$ so that $d,d'\in \Gamma(\Sigma,F)$, and choose $\alpha,\alpha'\in\QQ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by this fan so they are isomorphic via the identity map.
 \end{proof}
 
-\begin{rem}\label{rem:triangulations}
-  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the rays $\nu_i$ span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} of a hyperplane section of the cone of the rays.  \lauren{cite}
+\begin{rem}\label{rem:walls}
+  Versions of Lemma~\ref{lem:GKZ-def}, Theorem \ref{thm:GIT-polytope}, and Corollary~\ref{cor:chamber-iso} are true for all $d\in\Cl(S)$, not only those in the interior of a chamber.  Degrees on the walls of the secondary fan can have truly generalized fans, polytopes of dimension less than the rank of $M$, indices appearing neither among the rays of $\Sigma$ nor in $F$ (as in Example~\ref{ex:secondary-wall}, which has $F=\varnothing$), and singularities which encourage us to consider them as stacks.  See \lauren{cite} for the relevant constructions in these more technical cases.
 \end{rem}
 
 \subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
@@ -295,41 +302,6 @@ To fully mimic the ordinary construction of a toric variety from $\Spec S$, we s
   \lauren{make prettier}
 \end{cor}
 
-%Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.  There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$: \lauren{this theorem has largely been absorbed by the previous exposition}
-%
-%\begin{thm}
-%  \label{thm:mainsecondary}
-%  Fix a chamber $\Gamma_i\subseteq \Eff(X)$ for some $1\leq i \leq s$. Let $B_i$ the corresponding square-free maximal ideal, $\Sigma_i$ the associated fan, and $X_i$ as in Definition~\ref{defn:Xi}. Write $G \ce \Hom(\Cl(X), \kk^*)$.   We have the following:
-%  \begin{enumerate}
-%    \item  {\bf Simplicial:}  $\Sigma_i$ is a simplicial fan whose rays are a subset of the rays of $\Sigma$ and such that~$|\Sigma_i| = |\Sigma|$. In particular, $X_i$ is a projective, simplicial toric variety.
-%    \item   {\bf Quotient:}  $\Spec(S) - V(B_i)\to X_i$ is a geometric quotient as in~\cite[Chapter 5]{CLS}.
-%    %	\item  {\bf Toric stack:}   $[\Spec(S) - V(B_i) / G]$ is a smooth toric DM stack with coarse moduli space equal to $X_i$.
-%  \end{enumerate}
-%
-%  Choose any point $a=(a_1, \dots, a_n) \in \ZZ^n$ such that $\deg_{\QQ}(a)$ lies in the interior of $\Gamma_i$.
-%  We also have the following:
-%  \begin{enumerate}\setcounter{enumi}{2}
-%    \item  {\bf Proj:}  Let $S_a$ be the $\ZZ$-graded ring
-%    $
-%    S_{a} = \bigoplus_{e\geq 0} S_{ea}.
-%    $
-%    We have $\Proj(S_a)=X_i$.
-%    %Moreover, if $u_\tau$ is the primitive point on the ray $\tau$ then the divisor corresponding $eu_{\tau}$ equals $S_\tau(e)|_{X_i}$.
-%    \item   {\bf Normal fan:}  Let $P_a\subseteq M$ be the polytope
-%    $
-%    P_{{a}} \ce \bigcap_{i=1}^n \{ m \in M \text{ $|$ } \alpha_i(m) \geq -a_i\},
-%    $
-%    where $\alpha_i$ is given by composing the canonical map $M \into \Z^n$ with the projection onto the $i^{\th}$ coordinate. The normal fan of $P_a$ is $\Sigma_i$.
-%    %	\item
-%  \end{enumerate}
-%  Moreover, $\widetilde{S_{a}(1)}$ is equal to the rank one torsion free sheaf associated to the polytope $P_a$.
-%\end{thm}
-%\begin{proof}
-%  %Part (3) follows from \cite{BorisovChenSmith2004}*{\S 3}
-%  All of these results can be extracted from \cite[Chapters 14-15]{CLS}, but those are pretty technical paragraphs so it is not so easy to find an overarching statement like this.  Statement (1) essentially follows from~\cite[Proposition 14.4.9]{CLS}.  Statement (2) follows from ~\cite[Proposition 14.4.14]{CLS} combined with the fact from \cite[Theorem 5.1.11]{CLS} that for a simplicial toric variety, the quotient is a geometric quotient.
-%  %\daniel{Mostly just cite the places in CLS?}
-%\end{proof}
-
 \subsection{Nef and moving cones}\label{sec:lower-Pic-rank}
 
 In either of the constructions of $X_d$, the resulting torus-invariant divisor must be ample.  From the GIT perspective we are using the line bundle $\cL_d$ to embed $X_d$ in projective space, and from the toric perspective the divisor of the polytope $P_\alpha$ is ample on the variety of its normal fan.  However, we must be careful with what we mean by the divisor corresponding to $d$ in the case where the class group of $X_d$ is smaller than $\Cl(S)$.
@@ -341,7 +313,7 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
 \begin{proof}
   Let $\Sigma$ be the fan of $X_d$.  By \lauren{cite} there is a short exact sequence
   \[0\to M\to\ZZ^{\Sigma(1)}\to\Cl(X_d)\to 0.\]
-  By Lemma~\ref{lem:GKZ-def} \lauren{better place?} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an injection $\ZZ^{\Sigma_1}\to\ZZ^n$ and thus an injection $\Cl(X_d)\to\Cl(S)$.
+  By \lauren{what?} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an injection $\ZZ^{\Sigma_1}\to\ZZ^n$ and thus an injection $\Cl(X_d)\to\Cl(S)$.
 \end{proof}
 
 Using the inclusion of class groups, we can give a more precise description of the ample and nef classes on $X_d$.  If $\Cl(S)$ is the class group of $X_d$ then the nef cone will be exactly the cone containing~$d$ in the secondary fan.
@@ -380,6 +352,23 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
 
   It would be more accurate to think of $B_i$ as the irrelevant associated to the chamber $\Gamma_i$, as opposed to the irrelevant ideal associated to $X_i$.  This viewpoint is developed in greater detail in ~\cite[\S7]{BEF}.
 \end{remark}
+
+%Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.  There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$: \lauren{this theorem has largely been absorbed by the previous exposition}
+
+\begin{thm}\label{thm:mainsecondary}
+  Suppose $d\in\Cl(S)$ lies in the interior of a chamber $\Gamma=\Gamma(\Sigma,F)$ of the secondary fan and $B=\idealof(\Gamma)$.  Choose $\alpha$ with $\deg\alpha=d$.
+  \begin{enumerate}
+      \item  The degree $d$ gives a $G$-linearized line bundle $\cL_d$ on $\Spec S$.  The unstable locus of $\cL_d$ is $V(B)$ and the geometric quotient $X_d=\Proj S_{\NN d}$ is a simplicial projective toric variety.
+      \item  The simplicial fan $\Sigma$ is the normal fan of $P_\alpha$ and defines $X_d$.  Its rays are a subset of $\nu_1,\ldots,\nu_n$.  For $i\notin F$ the hyperplane corresponding to $\nu_i$ cuts out a facet of $P_\alpha$ and for $i\in F$ it does not intersect $P_\alpha$.
+      \item  The group $\Cl(X_d)$ is contained in $\Cl(S)$, and they are equal under the conditions from Lemma~\ref{lem:mov-equiv}, in which case $\Gamma=\Nef(X_d)$.
+      %	\item  {\bf Toric stack:}   $[\Spec(S) - V(B_i) / G]$ is a smooth toric DM stack with coarse moduli space equal to $X_i$.
+    \end{enumerate}
+\end{thm}
+%\begin{proof}
+%  %Part (3) follows from \cite{BorisovChenSmith2004}*{\S 3}
+%  All of these results can be extracted from \cite[Chapters 14-15]{CLS}, but those are pretty technical paragraphs so it is not so easy to find an overarching statement like this.  Statement (1) essentially follows from~\cite[Proposition 14.4.9]{CLS}.  Statement (2) follows from ~\cite[Proposition 14.4.14]{CLS} combined with the fact from \cite[Theorem 5.1.11]{CLS} that for a simplicial toric variety, the quotient is a geometric quotient.
+%  %\daniel{Mostly just cite the places in CLS?}
+%\end{proof}
 
 We saw in an earlier lecture that if $X_d$ satisfies the conditions of Lemma~\ref{lem:mov-equiv}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf on $X_d$.  To emphasize the dependence on $X_d$, we write $M|_{X_d}$ for this sheaf.  A minor modification of the associated sheaf construction works for the other $X_d$s as well.
 
