@@ -164,7 +164,22 @@ Continuing from Lecture~\ref{lec:4-toric-cox}, we describe the dictionary betwee
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The ideal--variety correspondence}
 
-Just as homogeneous ideals of $\kk[x_0,\dots,x_n]$ cut out closed subschemes of $\PP^n$, homogeneous ideals of $S$ cut out closed subschemes of $X$, provided we account for the irrelevant ideal $B$. 
+Just as homogeneous ideals of $\kk[x_0,\dots,x_n]$ cut out closed subschemes of $\PP^n$, homogeneous ideals of $S$ cut out closed subschemes of $X$, provided we account for the irrelevant ideal $B$.
+
+\begin{remark}[Saturation and local cohomology]\label{rem:localcohomology}
+  Both notions of $B$-saturation are governed by \defi{local cohomology}. For a $\Cl(X)$-graded $S$-module $M$, its \defi{$B$-torsion submodule}
+  \[ H^0_B(M) = \{\,m\in M : B^k m = 0 \text{ for some } k\ge 0\,\} \]
+  is the largest submodule supported on $V(B)$, and $H^i_B(M)$ denotes its higher right-derived functors, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS}. The bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is the four-term exact sequence of $\Cl(X)$-graded modules
+  \[
+  0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \Gamma_{\!*}(\widetilde M) \longrightarrow H^1_B(M) \longrightarrow 0, \qquad
+  \Gamma_{\!*}(\widetilde M) \ce \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr),
+  \]
+  together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections. Passing to $\Gamma_{\!*}(\widetilde M)$ kills both. Accordingly, a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$, i.e.\ when $M \xrightarrow{\ \sim\ } \Gamma_{\!*}(\widetilde M)$.
+
+  For a homogeneous ideal $I\subseteq S$ this recovers the definition above: since $S$ is a domain, $H^0_B(I)=0$ is automatic, and using $H^1_B(S)=0$, which holds because $\operatorname{codim}V(B)\ge 2$, the sequence for $I$ gives $H^1_B(I) \cong H^0_B(S/I) = (I : B^\infty) / I$. So $I$ is $B$-saturated as a module exactly when $I = I : B^\infty$. Note that this is weaker than asking the \emph{quotient} $S/I$ to be a $B$-saturated module, which would in addition require $H^1_B(S/I) = 0$.
+
+  Among all finitely generated modules with a given sheaf, or all ideals cutting out a given subscheme, the saturated one is the canonical choice, which is why the correspondences below are phrased through $B$-saturated representatives.\daniel{This is subtle, but the paragraph wrong in general because you can lose finite generation.  I'll take a stab at fixing, but this might be worth discussing.}
+\end{remark}
 
 \begin{prop}[Toric Ideal--Variety Correspondence, \cite{CLS}*{Prop.~5.2.7}]\label{prop:ideal-variety}
   Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. There is a bijective correspondence
