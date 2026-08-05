@@ -222,13 +222,23 @@ The $\QQ$-divisor $B+D$ is nef because its class is $(a-d)+d=a$.  And $\lfloor B
 \end{proof}
 
 \begin{cor}\label{cor:BTNoCohom}
-    If $-d\ \in \Theta_X$ is a Bondal-Thomsen class, then $H^i(X,\cO_X(-d))=0$ for all $i>0$.  If $X$ is complete and $d\ne 0$, then $H^0(X,\cO_X(-d))$ also vanishes.
+    If $-d\ \in \Theta_X$ is a Bondal-Thomsen class, then $H^i(X,\cO_X(-d))=0$ for all $i>0$. If $d\ne 0$, then $H^0(X,\cO_X(-d))$ also vanishes.
 \end{cor}
 \begin{proof}
     For $p>0$, we can apply Proposition~\ref{prop:Demazure} with $a=0$.  When $d\ne 0$, $\cO_X(-d)$ is the negative of an effective divisor. Since $X$ is complete, the effective divisors lie in a pointed cone,  so 
     $\cO_X(-d)$ has no global sections.
 \end{proof}
 
+\begin{example}[Frobenius pushforwards]\label{ex:frobeniussplit}
+  Corollary~\ref{cor:BTNoCohom} also follows from the Frobenius pushforward definition. For an integer $m>0$, the \defi{toric Frobenius map} on $X$ is the finite toric morphism $F_m\colon X\to X$ induced by multiplication by $m$ on $N$. Thomsen \cite{thomsen} showed that $F_{m*}\cO_X$ splits as a direct sum of line bundles. Since $F_m$ is finite,
+  \[
+  \bigoplus_{\cO(E)\,\subseteq\, F_{m*}\cO_X} H^p\bigl(X,\cO(E)\bigr) \,=\, H^p\bigl(X,F_{m*}\cO_X\bigr) \,=\, H^p\bigl(X,\cO_X\bigr) \,=\, 0 \quad\text{for } p>0,
+  \]
+  where the last equality is Theorem~\ref{thm:demazureL5} applied to $D=0$. Hence every line bundle summand of a toric Frobenius pushforward, i.e. every line bundle whose class is in the Bondal--Thomsen collection, has vanishing higher cohomology. 
+
+ A similar argument works for the second sentence of Corollary~\ref{cor:BTNoCohom}, regarding $H^0$.
+  %The finitely many line bundles arising this way form the Bondal--Thomsen collection of Lecture~\ref{lec:6-bondal-thomsen}.
+\end{example}
 
 
 \begin{comment}
