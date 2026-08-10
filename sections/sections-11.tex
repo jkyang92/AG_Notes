@@ -244,11 +244,11 @@ The toric variety $X_d$ is constant within the interior of each cone of the seco
 We now describe the secondary fan more concretely in terms of the function $\deg\colon\ZZ^n\to\Cl(S)$.  Its cones correspond to possible irrelevant ideals for the varieties $X_d$, and the list of possible ideals can be computed without any knowledge of GIT or generalized fans and support functions.
 
 \begin{prop}
-  The secondary fan of $S$ and $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg x_i$: \lauren{are we using variables or exponents?} a fan with these vectors among its rays with the property that all other such fans refine it.
+  The secondary fan of $S$ and $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg x_i$: \lauren{are we using variables or exponents?} it refines all fans with these vectors as rays and coarsens all other common refinements.  \lauren{is this right now?}
 \end{prop}
 
 \begin{proof}
-  The coarsest common refinement of a set of rays is characterized by the fact that its chambers are exactly determined by the minimal subsets of rays which span them. \lauren{citation?} This is the content of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  If some rays span a chamber $\Gamma(\Sigma,F)$ then a subset will comprise a ``$\beta$-basis,'' which by 15.2.1(b) has the form $J_\sigma$ for some maximal cone $\sigma$ of $\Sigma$.  The cone $\Gamma(\Sigma,F)$ is the intersection of these spans by 15.2.1(c).  All possible intersections occur by \cite[Theorem~14.4.7(a)]{CLS}.
+  \lauren{right now this proof only shows that the fan refines cones from beta bases} This is the content of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  If some rays span a chamber $\Gamma(\Sigma,F)$ then a subset will comprise a ``$\beta$-basis,'' which by 15.2.1(b) has the form $J_\sigma$ for some maximal cone $\sigma$ of $\Sigma$.  The cone $\Gamma(\Sigma,F)$ is the intersection of these spans by 15.2.1(c).  All possible intersections occur by \cite[Theorem~14.4.7(a)]{CLS}.
 \end{proof}
 
 %In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
