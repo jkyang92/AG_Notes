@@ -53,7 +53,7 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
         \clip (-3.2,-0.8) rectangle (1.6,1.6);
 
         % Cone region (left): x<=0 and y >= -x/3
-        \fill[orange!35]
+        \fill[blue!20]
         (0,0)
         -- (0, 1.6)
         -- (-3.2, 1.6)
@@ -61,7 +61,7 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
         -- cycle;
 
         % Positive quadrant (right)
-        \fill[blue!20]
+        \fill[blue!40]
         (0,0) rectangle (1.6, 1.6);
       \end{scope}
 
@@ -94,8 +94,8 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
       \node[font=\small] at (-2.8, 1.2) {$(-3,1)$};
 
       % Labels centered in each shaded region
-      \node[orange!70!black] at ({-\axlim/2}, {\axlim/2}) {$\Gamma_2$};
-      \node[blue!60!black]   at ({ \axlim/2}, {\axlim/2}) {$\Gamma_1$};
+      \node[blue!80!black] at ({-\axlim/2}, {\axlim/2}) {$\Gamma_2$};
+      \node[blue!80!black]   at ({ \axlim/2}, {\axlim/2}) {$\Gamma_1$};
 
       % Origin dot
       \filldraw (0,0) circle (1pt);
@@ -128,7 +128,7 @@ We will consider the quotient of $\Spec S$ by the action of $G$, which depends o
 Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
 
 \begin{prop}\label{prop:eq-Picard-gp}
-  In the setup above $\Cl(S)$ is the $G$-equivariant Picard group of $\Spec S$.
+  In the setup of Notation~\ref{not:multigrading} the grading group $\Cl(S)$ is the $G$-equivariant Picard group of $\Spec S$.
 \end{prop}
 
 \begin{proof}
@@ -198,7 +198,7 @@ This behavior only occurs on finitely many linear subspaces, creating a polyhedr
 By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly convex rational polyhedral cone.  Compared to ordinary fans of toric varieties, generalized fans may contain cones which are not strongly convex (see \cite[Definition 6.2.2]{CLS} and Remark~\ref{rem:walls}).  As with the behavior from Example~\ref{ex:secondary-wall}, this does not occur for a general choice of~$\alpha$, and we will focus on the general (not generalized!) case.
 
 \begin{lemma}\label{lem:GKZ-def}
-  Let $\alpha\in\QQ^n$ such that $\dim P_\alpha=n$ and the normal vectors of $P_\alpha$ are exactly $\{\nu_i:i\notin F\}$ for $F\subseteq\{1,\ldots,n\}$.  Then $\alpha\in\tilde\Gamma(\Sigma,F)$ where $\Sigma$ is the normal fan of $P_\alpha$.
+  Let $\alpha\in\QQ^n$ such that $P_\alpha$ is integral, full dimensional and has normal vectors exactly $\{\nu_i:i\notin F\}$ for $F\subseteq\{1,\ldots,n\}$.  Then $\alpha\in\tilde\Gamma(\Sigma,F)$ where $\Sigma$ is the normal fan of $P_\alpha$.
 \end{lemma}
 
 \begin{proof}
@@ -214,7 +214,7 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
 \end{rem}
 
 \begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
-  The collection of cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \defi{chambers}.
+  The collection of cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \defi{chambers}. \lauren{explain why these are all full dimensional?}
 \end{prop}
 
 \begin{example}\label{ex:secondary-blowup-2}
@@ -225,18 +225,18 @@ We will see in Theorem~\ref{thm:GIT-polytope} that the toric variety $X_d$ discu
 
 Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex $v$ of $P$, take the cone of the set $P\cap(M\otimes_\ZZ\QQ)-v$ in $M\otimes_\ZZ\QQ$.  Over all vertices, the duals of these form the maximal cones of a fan in $N\otimes_\ZZ\QQ$ by \cite[Proposition 14.2.10]{CLS}, which also addresses the situation when $P$ is not full dimensional.  This process reduces to the standard construction of the normal fan of a polytope when its vertices are integral.  The toric variety of $P$ is then defined by the resulting fan.
 
-\begin{thm}[\cite{CLS}*{Theorem 14.2.13(b)}]\label{thm:GIT-polytope}
-  Suppose that $\alpha\in\ZZ^n$ and $d=\deg\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope $P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
+\begin{thm}[\cite{CLS}*{Theorem 14.2.13(b), Corollary 14.3.19}]\label{thm:GIT-polytope}
+  Suppose that $\alpha\in\ZZ^n$ and $d=\deg\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope~$P_\alpha$ is simplicial and isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
 \end{thm}
 
 The toric variety $X_d$ is constant within the interior of each cone of the secondary fan.  Varieties from distinct chambers will have distinct normal fans, though they may be isomorphic via a nontrivial map of lattices (as in Example~\ref{ex:secondary-blowup-2}, where $\PP^2$ \lauren{check} appears twice).
 
 \begin{cor}\label{cor:chamber-iso}
-  Suppose that $d,d'\in\Cl(S)$ are contained in the interior of the same chamber of the secondary fan of $S$.  Then $X_d\cong X_d'$ via the identity map on the lattice $N$.
+  Suppose that $d,d'\in\Cl(S)$ are contained in the interior of the same chamber $\Gamma(\Sigma,F)$ of the secondary fan of $S$.  Then $X_d\cong X_d'$ via the identity map on the fan $\Sigma$ in $N\otimes_\ZZ\QQ$.
 \end{cor}
 
 \begin{proof}
-  Choose $\Sigma$ a fan and $F\subseteq\{1,\ldots,n\}$ so that $d,d'\in \Gamma(\Sigma,F)$, and choose $\alpha,\alpha'\in\ZZ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by this fan so they are isomorphic via the identity map.
+  Choose $\alpha,\alpha'\in\ZZ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} (generalized to the nonintegral case) and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by this fan so they are isomorphic via the identity map.
 \end{proof}
 
 \begin{rem}\label{rem:walls}
@@ -247,17 +247,13 @@ The toric variety $X_d$ is constant within the interior of each cone of the seco
 
 We now describe the secondary fan more concretely in terms of the function $\deg\colon\ZZ^n\to\Cl(S)$.  Its cones correspond to possible irrelevant ideals for the varieties $X_d$, and the list of possible ideals can be computed without any knowledge of GIT or generalized fans and support functions.
 
-\begin{prop}
-  The secondary fan of $S$ and $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg x_i$: it refines all fans with these vectors as rays and coarsens all other common refinements.  \lauren{is this right now?}
+\begin{prop}\label{prop:ccrefinement}
+  The secondary fan of $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg x_i$: it refines all fans with this list of rays, and it coarsens all other common refinements.
 \end{prop}
-
-\begin{proof}
-  \lauren{right now this proof only shows that the fan refines cones from beta bases} This is the content of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  If some rays span a chamber $\Gamma(\Sigma,F)$ then a subset will comprise a ``$\beta$-basis,'' which by 15.2.1(b) has the form $J_\sigma$ for some maximal cone $\sigma$ of $\Sigma$.  The cone $\Gamma(\Sigma,F)$ is the intersection of these spans by 15.2.1(c).  All possible intersections occur by \cite[Theorem~14.4.7(a)]{CLS}.
-\end{proof}
 
 %In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
 
-The fact that each chamber is determined by the subsets of degrees of variables which spans it motivates the following construction, which will produce irrelevant ideals. \lauren{do we also want to go from ideals to chambers to make the coarsest common refinement easier?}
+We postpone the proof of Proposition~\ref{prop:ccrefinement} until the end of the section.  The idea is that the chamber of the secondary fan containing a degree $d\in\Cl(S)$ is fully determined by the subsets of variables whose degrees span a cone containing $d$.  This motivates the following constructions, which will produce irrelevant ideals.
 
 \begin{defn}\label{defn:idealConeCorrespondence}
   Fix a monomial $\mathbf{x}^{\mathbf{a}} \ce x_1^{a_1}\cdots x_n^{a_n}$ and a degree $d\in \Cl(S)\otimes \QQ$.  We say \defi{$\mathbf{x}^{\mathbf{a}}$~spans~$d$}
@@ -265,19 +261,38 @@ The fact that each chamber is determined by the subsets of degrees of variables 
   %\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
   if there exist $q_i>0$ such that
   $
-  d = \sum_{i} q_i\deg\mathbf a.
+  d = \sum_{i} q_i\deg x_i^{a_i}.
   $
   \lauren{bold vectors?} For a strongly convex cone $\Gamma \subseteq \Cl(S)\otimes_\ZZ \QQ$, let
   \[
-  \text{ideal}(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
+  \idealof(\Gamma) \ce \langle \mathbf{x}^{\mathbf{a}}\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d \text{ for all } d\in \Gamma\}.
   \]
-%  Conversely, given a monomial ideal $B$, let
-%  \[
-%  \text{cone}(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
-%  \]
+  Conversely, given a monomial ideal $B$, let
+  \[
+  \coneof(B) \ce \{ d\  | \ \mathbf{x}^{\mathbf{a}} \text{ spans } d\text{ for all } \mathbf{x}^{\mathbf{a}} \in B\}.
+  \]
 \end{defn}
 
-The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.  As in \lauren{reference classical case}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language from Section~\ref{sec:variation-of-GIT}, the vanishing of the irrelevant ideal is the unstable locus.
+\begin{prop}\label{prop:chamber-of-ideal}
+  Suppose $\Gamma=\Gamma(\Sigma,F)$ is a chamber of the secondary fan of $S$.  The minimal generators of $\idealof(\Gamma)$ are the monomials $\prod_{\nu_i\notin\sigma(1)}x_i$ \lauren{ray notation?} for $\sigma$ a maximal cone of $\Sigma$.  Further we have $\coneof(\idealof(\Gamma))=\Gamma$.
+\end{prop}
+
+\begin{proof}
+  This is almost a restatement of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  Recall from Theorem~\ref{thm:GIT-polytope} and Corollary~\ref{cor:chamber-iso} that $\Sigma$ is a simplicial fan.  Let $\mathbf{x}^\mathbf{a}$ be a monomial of the form $\prod_{\nu_i\notin\sigma(1)}x_i$ for $\sigma$ a maximal cone of $\Sigma$.  Note that $\sigma$ may contain $\nu_i$ for $i\in F$ but these are not rays of $\Sigma$ and thus not contained in $\sigma(1)$.
+
+  Since $\sigma$ is simplicial \cite[Proposition 14.3.1]{CLS} implies that the monomial $\mathbf{x}^\mathbf{a}$ comes from a ``$\beta$-basis,'' so it spans $\Gamma$ by \cite[Proposition 15.2.1(b)]{CLS}.  A subset of the variables spans a cone of smaller dimension, which cannot contain a chamber, so~$\mathbf{x}^{\mathbf a}$ is a minimal generator of $\idealof(\Gamma)$.
+
+  Immediately from definitions we have $\Gamma\subseteq\coneof(\idealof(\Gamma))$.  By \cite[Proposition 15.2.1(c)]{CLS} the cone $\Gamma$ is the intersection of the spans of monomials $\prod_{\nu_i\notin\sigma(1)}x_i$.  This will imply $\Gamma=\coneof(\idealof(\Gamma))$ once we show that all minimal generators of $\idealof(\Gamma)$ have the correct form, since multiplying by additional variables only increases the span of a monomial.
+
+  Let $\mathbf{x}^\mathbf{a}$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the vectors $\deg x_i^{a_i}$ which are nonzero are linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).
+  %By a variant of the construction from \cite[Lemma 15.2.10]{CLS} (to the case where the fan is not complete), each cone on a linearly independent subset of these rays can be extended to a fan on the entire span.
+  This cone has a simplicial subdivision, \lauren{cite?} and by the discussion before \cite[Proposition 15.2.10]{CLS} the chamber $\Gamma$ must be contained in at least one simplicial cone.  Since $\mathbf{x}^\mathbf{a}$ is a minimal generator of $\idealof(\Gamma)$ no proper subset of the variables can span $\Gamma$, so $\mathbf{x}^\mathbf{a}$ itself spans a simplicial cone.  The existence of $\sigma$ then from \cite[Proposition 15.2.1(b)]{CLS}.
+
+  \lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
+\end{proof}
+
+%The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
+As in \lauren{reference classical case}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language from Section~\ref{sec:variation-of-GIT}, the vanishing of the irrelevant ideal is the unstable locus.
 
 %and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
 
@@ -289,7 +304,7 @@ The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree m
 %Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. These are the chambers of the secondary fan.
 
 \begin{thm}
-  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$. \lauren{add that quotient is geometric and simplicial}
+  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$. \lauren{add that quotient is geometric}
 \end{thm}
 
 \begin{proof}
@@ -305,6 +320,10 @@ To fully mimic the ordinary construction of a toric variety from $\Spec S$, we s
   \[\idealof(\Gamma)=\left\langle \prod_{j\in J} x_j \;\middle|\;\text{$J$ the indices of facets \emph{not} intersecting a vertex $v$ of $P_\alpha$} \right\rangle.\]
   \lauren{make prettier}
 \end{cor}
+
+\begin{proof}
+  \lauren{right now this proof only shows that the fan refines cones from beta bases} This is the content of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  If some rays span a chamber $\Gamma(\Sigma,F)$ then a subset will comprise a ``$\beta$-basis,'' which by 15.2.1(b) has the form $J_\sigma$ for some maximal cone $\sigma$ of $\Sigma$.  The cone $\Gamma(\Sigma,F)$ is the intersection of these spans by 15.2.1(c).  All possible intersections occur by \cite[Theorem~14.4.7(a)]{CLS}.
+\end{proof}
 
 \subsection{Nef and moving cones}\label{sec:lower-Pic-rank}
 
