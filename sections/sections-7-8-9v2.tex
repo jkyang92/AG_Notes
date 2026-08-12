@@ -612,20 +612,25 @@ The goal of this section is to prove:
 With notation as in Section 7, the complexes $\tF$ and $\FF$ are $S$-free resolutions of $M_{L}$ and $\overline{S/I_{L}}$, respectively. 
 \end{theorem}
 
-\david{the proof has no clear beginning or end. Fix this by saying 2 parts etc}
-
 The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly technical.  However, two recent preprints have dramatically simplified the proof.  The preprint~\cite{BCHSY} (see in particular Proposition 3.2) relates the Hanlon-Hicks-Lazarev construction to a more classical algebraic construction involving binomial ideals, and provides an elementary and purely algebraic proof of the main result, as well as a broad generalization of this result.  The preprint~\cite{BH25} utilizes a similar basic idea as~\cite{BCHSY}, but provides a terser and narrower proof.
 
-Before diving into the proofs of the main theorem, it is important to carefully describe how the complexes $\tilde \FF$ and $\FF$ are related to each other and in particular provide a careful definition of the complex $\FF$.
-The first step is to observe that, because $\tilde \FF$ is $L$-equivariant, it has the structure of a module over the ring
-\[S[L]=S\cdot \{z^{\mathbf{u}} \,|\, \mathbf{u}\in L\}\subseteq S[z_1^{\pm1},\ldots,z_n^{\pm1}].\]
-Here $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. Observe that this makes $M_L$ into a finitely generated $S[L]$-module so long as $L\cap \NN^n=\{0\}$. It is not hard to show that the $S[L]$-module structure on $M_L$ and on $\tilde \FF$ are compatible.
+\begin{proof}
+The proof divides neatly into two parts: the acyclicity of $\FF$ and $\tF$; and the computation of their homology at homological degree 0.
 
-The ring $S$ can  be given an $S[L]$-module structure via the identification 
+We first provide a careful definition of the complex $\FF$ and describe how the complexes $\tilde \FF$ and $\FF$ are related to each other
+.
+Because $\tF$ is $L$-equivariant, it may be regarded as a free complex over the ring
+\[
+S[L]=S\cdot \{z^{\mathbf{u}} \,|\, \mathbf{u}\in L\}\subseteq S[z_1^{\pm1},\ldots,z_n^{\pm1}],
+\]
+where $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. Similarly, $M_L$ can be regarded as an $S[L]$-module, and in this view it is finitely generated $S[L]$-module because $L\cap \NN^n=\{0\}$. The degrees of the generators of
+$\tF_0$ are the same as those of $M_L$, so there is a natural augmentation $\tF_0\to M_L$, and it is easy to check that this composes to 0 with the differential of $\tF$.
+
+The ring $S$ is a homomorphic image of $S[L]$; indeed,
 $$
 S = S[L]/(\langle z^{\mathbf{u}}-1 \,|\, \mathbf{u}\in L\rangle).
 $$
-Note that if $P$ is any $L$-graded $S[L]$-module, and $u\in L$, then $1-u$ is a nonzerodivisor on $P$ because $p$ and $up$ have distinct degrees. It follows easily by induction that if $\mathbf{u}_1,\ldots,\mathbf{u}_r\in L$ is a basis, then the sequence $z^{\mathbf{u}_1}-1,\ldots,z^{\mathbf{u}_r}-1$ is a regular sequence on $S[L]$ and also on the module $M_L$. The complex
+If $P$ is any $L$-graded $S[L]$-module, and $1 \neq u\in L$, then $1-u$ is a nonzerodivisor on $P$ because $p$ and $up$ have distinct degrees. It follows easily by induction that if $\mathbf{u}_1,\ldots,\mathbf{u}_r\in L$ is a basis, then the sequence $z^{\mathbf{u}_1}-1,\ldots,z^{\mathbf{u}_r}-1$ is a regular sequence on $S[L]$ and also on the module $M_L$. The complex
  $\FF$ has the form
  $$
  \FF = \tF/(\langle z^{\mathbf{u}}-1 \,|\, \mathbf{u}\in L\rangle)\tF =   \tilde \FF \otimes_{S[L]} S.
@@ -697,6 +702,9 @@ There are then two plausible approaches to proving this, which correspond to the
   It suffices to prove that there exists a vertex $\mathbf{p}'\in L_{\RR}$ such that $\Psi(\mathbf{p}')$ divides $x^{\mathbf{u}}$.
   Let $\mathbf{p}=\mathbf{u}-\mathbf{q}$. Since $\lceil \mathbf{p} \rceil = \mathbf{u} - \lfloor \mathbf{q}\rfloor$ and $\mathbf{q}\in \RR_{\geq 0}^n$, it follows that $\Psi(\mathbf{p})$ divides $x^{\mathbf{u}}$. To get a vertex, observe that if $\mathbf{p}'$ is any vertex of the unique cell of $L_{\RR}$ that contains $\mathbf{p}$ in its relative interior, then $\Psi(\mathbf{p}')$ divides $\Psi(\mathbf{p})$ and thus divides $x^{\mathbf{u}}$ as desired.
 \end{proof}
+
+ This completes the proof of Theorem~\ref{thm:HHL-resolution}
+ \end{proof}
 
 This proof can be a bit opaque with the manipulations of floors and ceilings, especially in proving that every element of the saturation appears, so we illusrate it with the following example.
   
