@@ -187,9 +187,16 @@ We therefore proceed as follows. The maximal cones of $\Sigma$ determine a $G$-i
 Let $X$ be the Hirzebruch surface of type $r$. In this case, the canonical affine open cover is given by 
 the open sets $\Spec(S) \setminus V(m)$, where $m$ ranges over the set of monomials $M = \{x_0x_1, x_0x_3, x_1x_2, x_2x_3\}$. The complex $\cC_*(\OO_X)$ therefore has the form
 $$
-S[\frac{1}{x_0 \cdots x_3}] \from \bigoplus_{i = 0}^3 S[\frac{1}{x_0 \cdots \widehat{x_i} \cdots x_3}] \from \bigoplus_{m \in M} S[\frac{1}{m}],
+S[\tfrac{1}{x_0x_1x_2x_3}]
+\from
+S[\tfrac{1}{x_0x_1x_2x_3}]^{\oplus 4}
+\from
+\Big(\bigoplus_{i = 0}^3 S[\tfrac{1}{x_0 \cdots \widehat{x_i} \cdots x_3}]\Big)
+\oplus S[\tfrac{1}{x_0x_1x_2x_3}]^{\oplus 2}
+\from
+\bigoplus_{m \in M} S[\tfrac{1}{m}],
 $$
-with differential given by the usual signed inclusions. 
+with differential given by the usual signed localization maps. 
 \end{example}
 
 We define $\Phi \co \coh(\X) \to \DM(E)$ to be the composition $\RR \circ \RR\Gamma_*$. The toric Tate resolution of a sheaf $\F$ on $\X$ is defined to be the minimization of $\Phi(\F)$. More specifically, we have the following, which is implied by \cite{BETate}*{Theorem 3.3}:
