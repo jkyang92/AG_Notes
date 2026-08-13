@@ -145,7 +145,7 @@ $$\begin{tikzpicture}[scale=3]
 $$
   \caption{Diagram for the resolution of $k[x,y]/(x-y)$ on a fundamental domain}\label{fig1}
 \end{figure}
-The set $L_R\subset \RR^2$ meets this fundamental domain in the diagonal line $A$ (the dot represents a general point of $A$, which gives the label of $A$). There are infinitely many 0-cells, which are $L$-translates of $a$, and infinitely many 1-cells, which are the $L$-translates of $A$. We choose an $L$-invariant orientation, and take the differential to be the usual one for a cell complex, homogenized by taking the upper left corner $a$  
+The set $L_{\RR}\subset \RR^2$ meets this fundamental domain in the diagonal line $A$ (the dot represents a general point of $A$, which gives the label of $A$). There are infinitely many 0-cells, which are $L$-translates of $a$, and infinitely many 1-cells, which are the $L$-translates of $A$. We choose an $L$-invariant orientation, and take the differential to be the usual one for a cell complex, homogenized by taking the upper left corner $a$  
 to have weight $x^0y^0=1$, the lower right corner $b$ to have weight $x^1y^{-1}$, and 
  the cell $A$ to have weight given by the interior point  $p= (1/4, -1/4)$, so that $A$ has weight
 $ \Psi(p) = (\lceil 1/4\rceil,\lceil -1/4\rceil) =(1,0)$. With these choices $\tF$ and its augmentation to $M_{L}$ have the form
@@ -163,7 +163,7 @@ $$
 \end{cases}
 $$
  If we also write $\ell(A)$ for the generator of $S(\ell(A))$, then the differential $\tilde d$ may be written as
-$\tilde d(\ell(A)) = \sum_{\ell \in L}x^{\ell(a)}-y^{\ell(b)}$,  
+$\tilde d(\ell(A)) = x\,\ell(a)-y\,\ell(b)$,  
 which makes sense because $b$ is the translate of $a$ by a generator of $L$.   
 Taking the quotient by 
 $L$ we obtain the usual two-term resolution $\FF: S(-1)\xrightarrow{d} S$, with differential $d = (x-y)$.
@@ -227,7 +227,7 @@ Following the general scheme described above, we assign weights as follows:
   \end{itemize}
 \end{multicols}
 
-As in the previous example, the complex $\tilde F$
+As in the previous example, the complex $\tF$
 has just two terms, each of which is an infinite direct sum over the translates by $\ell \in L$; its differential is the sum of the translates of
 $$
 \tilde d = \bordermatrix{
@@ -381,7 +381,7 @@ The previous lecture focused on the construction of the resolution, and through 
   Let $X'\subseteq X$ be a toric subvariety,  let $L\subseteq M$ be the corresponding sublattice, and let $I_{L}$ be the corresponding binomial ideal. There is an $S$-free $\ZZ^{n}/L$-graded resolution $\FF$ of the
   normalization $\overline R$ of the ring $S/I_{L}$ whose free modules are given by $\FF_{i} = \oplus S(-\deg\Psi(A))$, where the sum is over all cells $A$ of $(L \otimes \RR)/L$ having dimension $i$. Moreover, each $S(-\Psi(A))$ is a \BT class. 
   The construction depends only on the Cox ring with its grading, and not on the additional data of the
-  irrelevant ideal of the toric variety.\qed
+  irrelevant ideal of the toric variety.
 \end{cor}
 
   \jay{There is a key inconsistency between all of this work and Lecture 6. This section treats $M$ and $L$ as sublattices of $\ZZ^n$ whereas Lecture 6 explicitly names the inclusion $\alpha:M\rightarrow \ZZ^n$. In the correspondence, the key is that $\Psi = \lceil \alpha \rceil$. This observation is key to the arguments about BT collection elements}
@@ -614,19 +614,19 @@ The original proof of the Hanlon-Hicks-Lazarev Theorem in~\cite{HHL} is fairly t
 The proof has two parts: the acyclicity of $\FF$ and $\tF$ (that is the statement that $\HH_i = 0 for i>0$; and the computation of their homology $\HH_0$.
 
 \subsection{Acyclicity}
-\footnote{The following proof is derived from that that of Proposition~2.13 and the alternative proof sketch of Corollary~2.15 in \cite{BCHSY} and is similar to the proof of Proposition~2.6 in \cite{BH25}.}
+\footnote{The following proof is derived from that of Proposition~2.13 and the alternative proof sketch of Corollary~2.15 in \cite{BCHSY} and is similar to the proof of Proposition~2.6 in \cite{BH25}.}
 Because $\tF$ is $L$-equivariant, it may be regarded as a free graded complex over the ring
 \[
 S[L]=S\cdot \{z^{\mathbf{u}} \,|\, \mathbf{u}\in L\}\subseteq S[z_1^{\pm1},\ldots,z_n^{\pm1}],
 \]
-where $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. Similarly, $M_L$ can be regarded as an $S[L]$-module, and in this view it is finitely generated $S[L]$-module because $L\cap \NN^n=\{0\}$. The degrees of the generators of
+where $z^{\mathbf{u}}$ acts on a monomial $x^{\mathbf{v}}\in M_L$ by sending it to $x^{\mathbf{v}+\mathbf{u}}$. Similarly, $M_L$ can be regarded as an $S[L]$-module, and in this view it is a finitely generated $S[L]$-module because $L\cap \NN^n=\{0\}$. The degrees of the generators of
 $\tF_0$ are the same as those of $M_L$, so there is a natural augmentation $\tF_0\to M_L$, and it is easy to check that this composes to 0 with the differential of $\tF$.
 
 The ring $S$ is a homomorphic image of $S[L]$; indeed,
 $$
 S = S[L]/(\langle z^{\mathbf{u}}-1 \,|\, \mathbf{u}\in L\rangle).
 $$
-If $P$ is any $L$-graded $S[L]$-module, and $1 \neq u\in L$, then $1-u$ is a nonzerodivisor on $P$ because $p$ and $up$ have distinct degrees. It follows easily by induction that if $\mathbf{u}_1,\ldots,\mathbf{u}_r\in L$ is a basis, then the sequence $z^{\mathbf{u}_1}-1,\ldots,z^{\mathbf{u}_r}-1$ is a regular sequence on $S[L]$ and also on the module $M_L$. The complex
+If $P$ is any $L$-graded $S[L]$-module, and $0 \neq \mathbf{u}\in L$, then $1-z^{\mathbf{u}}$ is a nonzerodivisor on $P$ because $p$ and $z^{\mathbf{u}}p$ have distinct degrees. It follows easily by induction that if $\mathbf{u}_1,\ldots,\mathbf{u}_r\in L$ is a basis, then the sequence $z^{\mathbf{u}_1}-1,\ldots,z^{\mathbf{u}_r}-1$ is a regular sequence on $S[L]$ and also on the module $M_L$. The complex
  $\FF$, which we formerly described as the quotient of $\tF$ by $L$,  has the form
  $$
  \FF = \tF/(\langle z^{\mathbf{u}}-1 \,|\, \mathbf{u}\in L\rangle)\tF =   \tilde \FF \otimes_{S[L]} S.
@@ -649,14 +649,14 @@ As a $k$-vector space the graded complex $\tF$ is the direct sum of the subcompl
 %$\FF$ is equal to (any) one of the strands of $\F$ of the same degree.
 %The proof of the acyclicity of these complexes now follows from the acyclity of the strands. To prove that this is the case, we turn to the topology of the cell complex $L_\RR$.
 
-Fix a degree $u\in \ZZ^n$, and let
+Fix a degree $\mathbf{u}\in \ZZ^n$, and let
  \[(L_{\RR})_{\leq \mathbf{u}}:= \{\mathbf{p}\in L_{\RR} \,|\, \Psi(\mathbf{p})\leq \mathbf{u}\} = \{\mathbf{p}\in L_{\RR} \,|\, \lceil p_i\rceil \leq u_i\text{ for all } i=1,\ldots,n\}\]
 
 For each cell $A\subseteq L_{\RR}$ the summand corresponding to $A$ in $\tF$ has component in degree $\mathbf{u}$ given by
 
  \[  (*)\qquad S(-\Psi(A))_{\mathbf{u}} =
   \begin{cases}
-    k & \text{if }\Psi(A)\text{ divides } x^{\mathbf{u}}\\
+    k & \text{if }x^{\Psi(A)}\text{ divides } x^{\mathbf{u}}\\
     0 & \text{otherwise}
   \end{cases}\]
 
@@ -665,17 +665,17 @@ Thus the cells of $L_{\RR}$ whose corresponding summands contribute to the $\mat
   
  Finally, $(L_{\RR})_{\leq \mathbf{u}}$ is a polyhedron and thus contractible or empty. As a consequence, the only homology is in $H_0$, completing the proof of acyclicity.
 
-\subsection{$\HH_0(\tF)= M_L$ and $\HH_0(\FF) \cong \overline{S/I_L}$}
+\subsection{\texorpdfstring{$\HH_0(\tF)= M_L$ and $\HH_0(\FF) \cong \overline{S/I_L}$}{H0 of the HHL complexes}}
 The monomial module $M_L$ is the $S$-module
 generated by the monomials $x^{\mathbf u}$ as $\mathbf u$ ranges
-over the 0-dimensional faces of the complex $L_R$, and these are, by definition, the degrees
+over the 0-dimensional faces of the complex $L_{\RR}$, and these are, by definition, the degrees
 of the free generators of $\tF_0$, so there is a a canonical $\ZZ^n$-graded map $\tilde \FF_0\rightarrow k[\ZZ^n]$ whose kernel contains the image of $\tF_1$ thus giving a $\ZZ^n$-graded map $H_0(\tilde \FF)\rightarrow k[\ZZ^n]$.
   To show that $H_0(\tilde \FF)\cong M_L$, observe first that for a degree $\mathbf{u}\in \ZZ^n$,
-  $H_0(\tilde \FF)_{\mathbf{u}}=H_0((L_{\RR})_{\leq \mathbf{u}})$. Moreover $(L_{\RR})_{\leq \mathbf{u}}$ is contractible if there exists a vertex $\mathbf{v}\in L_{\RR}$ such that $\Psi(\mathbf{v})$ divides $x^{\mathbf{u}}$, and empty otherwise. As $M_L$ is generated by the vertices $\mathbf{v}\in L_{\RR}$, it follows that $(L_{\RR})_{\leq \mathbf{u}}$ is contractible if and only if $x^{\mathbf{u}}\in M_L$ and empty otherwise.
+  $H_0(\tilde \FF)_{\mathbf{u}}=H_0((L_{\RR})_{\leq \mathbf{u}})$. Moreover $(L_{\RR})_{\leq \mathbf{u}}$ is contractible if there exists a vertex $\mathbf{v}\in L_{\RR}$ such that $x^{\Psi(\mathbf{v})}$ divides $x^{\mathbf{u}}$, and empty otherwise. As $M_L$ is generated by the vertices $\mathbf{v}\in L_{\RR}$, it follows that $(L_{\RR})_{\leq \mathbf{u}}$ is contractible if and only if $x^{\mathbf{u}}\in M_L$ and empty otherwise.
 
 It remains to show that $M_L \otimes_{S[L]} S \cong \overline{S/I_L}$. \footnote{We follow the approach of Proposition~3.3 in \cite{BCHSY}. The corresponding result in \cite{BH25} is Lemma~2.8.}
 The ring $S/I_L$ is the semigroup ring of the semigroup $A$ that is the image of $\NN^n$ under the map $\ZZ^n \rightarrow \ZZ^n/L$. The integral closure of a semigroup ring $k[A]$ is the semigroup ring of the saturation $\overline{A}$ of $A$, which consists of the elements
-in $a \in \ZZ^n/L$ such that  $ma\in A$ for some $m\in \NN$, or equivalently \cite[***]{eisenbudbook}
+in $a \in \ZZ^n/L$ such that $ma\in A$ for some integer $m>0$, or equivalently \cite[Exercise 4.22]{eisenbudbook}
 \[\overline{A} := (\RR_{\geq 0}A)\cap (\ZZ^n/L) \]
 
 %There are then two plausible approaches to proving this, which correspond to the approaches in \cite{BCHSY} and \cite{BH25}, respectively. One can either prove that the generators of the module $M_L$ correspond to monomials in $k[\ZZ^n]$ which generate $\overline{A}$ as an $A$-module. Or one can prove that those degrees $\alpha\in \ZZ^n/L$ for which $(L_{\RR})_{\leq \mathbf{u}}$ is non-empty are exactly the degrees of $A$. The approach taken here largely follows the approach of Proposition~3.3 in \cite{BCHSY}. The corresponding result in \cite{BH25} is Lemma~2.8.
@@ -700,20 +700,20 @@ in $a \in \ZZ^n/L$ such that  $ma\in A$ for some $m\in \NN$, or equivalently \ci
   $\mathbf{q}\in \RR_{\geq 0}^n$ and $\mathbf{u}\in \ZZ^n$ such that
   \[\mathbf{a} = \eta_{\RR}(\mathbf{q}) = \eta(\mathbf{u})\]
 
-  It suffices to prove that there exists a vertex $\mathbf{p}'\in L_{\RR}$ such that $\Psi(\mathbf{p}')$ divides $x^{\mathbf{u}}$.
-  Let $\mathbf{p}=\mathbf{u}-\mathbf{q}$. Since $\lceil \mathbf{p} \rceil = \mathbf{u} - \lfloor \mathbf{q}\rfloor$ and $\mathbf{q}\in \RR_{\geq 0}^n$, it follows that $\Psi(\mathbf{p})$ divides $x^{\mathbf{u}}$. To get a vertex, observe that if $\mathbf{p}'$ is any vertex of the unique cell of $L_{\RR}$ that contains $\mathbf{p}$ in its relative interior, then $\Psi(\mathbf{p}')$ divides $\Psi(\mathbf{p})$ and thus divides $x^{\mathbf{u}}$ as desired.
+  It suffices to prove that there exists a vertex $\mathbf{p}'\in L_{\RR}$ such that $x^{\Psi(\mathbf{p}')}$ divides $x^{\mathbf{u}}$.
+  Let $\mathbf{p}=\mathbf{u}-\mathbf{q}$. Since $\lceil \mathbf{p} \rceil = \mathbf{u} - \lfloor \mathbf{q}\rfloor$ and $\mathbf{q}\in \RR_{\geq 0}^n$, it follows that $x^{\Psi(\mathbf{p})}$ divides $x^{\mathbf{u}}$. To get a vertex, observe that if $\mathbf{p}'$ is any vertex of the unique cell of $L_{\RR}$ that contains $\mathbf{p}$ in its relative interior, then $x^{\Psi(\mathbf{p}')}$ divides $x^{\Psi(\mathbf{p})}$ and thus divides $x^{\mathbf{u}}$ as desired.
 
 
- This completes the proof of Theorem~\ref{thm:HHL-resolution}
+ This completes the proof of Theorem~\ref{thm:HHL-resolution}.
  \end{proof}
   
 \begin{example}
-  Building on Example~\ref{ex:cuspidal-cubic}, where $n=2$ and $L=\ZZ\cdot (3,-2)$, we  illustrate the the proof that $M_L \otimes_{S[L]} S \cong \overline{S/I}$.
+  Building on Example~\ref{ex:cuspidal-cubic}, where $n=2$ and $L=\ZZ\cdot (3,-2)$, we illustrate the proof that $M_L \otimes_{S[L]} S \cong \overline{S/I}$.
 
-  We can  indentify $\gamma:\ZZ^2/L$ with $\ZZ$ by the isomorphism $\gamma:(a,b)\mapsto 2a+3b$.  With this identification, the semigroup $A$ is the generated by $2$ and $3$ in $\ZZ$ and it's saturation $\overline{A}$ is $\NN$. Moreover, $\NN$ is generated as a module over $A$ by the  element $1$.
+  We can identify $\gamma:\ZZ^2/L$ with $\ZZ$ by the isomorphism $\gamma:(a,b)\mapsto 2a+3b$. With this identification, the semigroup $A$ is generated by $2$ and $3$ in $\ZZ$, and its saturation $\overline{A}$ is $\NN$. Moreover, $\NN$ is generated as a module over $A$ by the element $1$.
 
-To prove that $1$ is in the image of $M_L$, consider the point labeled $d=(2,-4/3)$ in Figure~\ref{fig:cuspidal cubic 1}. The Laurent monomial associated to this point by $\Psi$ is $x^2y^{-1}$.
-  This corresponds to the vector $(2,-1)$, and $\gamma(2,-1)=1$ and so the we get the generator of the semigroup in this way.
+To prove that $1$ is in the image of $M_L$, consider the vertex $d=(2,-4/3)$ of the induced cell structure in Figure~\ref{fig:cuspidal cubic 1}. The Laurent monomial associated to this point by $\Psi$ is $x^2y^{-1}$.
+  This corresponds to the vector $(2,-1)$, and $\gamma(2,-1)=1$, and so we get the generator of the semigroup in this way.
   
   To follow the steps of the proof given above observe that $(2,-1)-(2,\frac{-4}{3})=(0,\frac{1}{3})$. This tells us that
   \[\gamma(2,-1) = 0\cdot \gamma(1,0) + \frac{1}{3}\cdot \gamma(0,1)=\frac{1}{3}\cdot 3 = 1.\]
@@ -726,14 +726,24 @@ To prove that $1$ is in the image of $M_L$, consider the point labeled $d=(2,-4/
   \[\bm{p}=\bm{u}-\bm{q} = (\frac{3}{2},-1).\]
   As $\lceil \bm{p} \rceil = (2,-1)$, we exactly recover $(2,-1)$, but the more interesting part of the proof is to realize that $\bm{p}\in L_{\RR}$. Here this follows as $\bm{p}=\frac{1}{2}(3,-2)$.
 
-  In this case, the point $\bm{p}$ is exactly the vertex $c$ from Figure~\ref{fig:cuspidal cubic 1}. Moreover, as we vary the choice of $\bm{q}$, we get all points on the line segment from $c$ to $d$ in Figure~\ref{fig:cuspidal cubic 1}. \jay{Consider reproducing the figure with the segment highlighed}
+  In this case, the point $\bm{p}$ is exactly the vertex $c$ from Figure~\ref{fig:cuspidal cubic 1}. Moreover, as we vary the choice of $\bm{q}$, we get all points on the line segment from $c$ to $d$ in Figure~\ref{fig:cuspidal cubic 1}. \jay{Consider reproducing the figure with the segment highlighted}
 \end{example}
 
+%Together Propositions~\ref{prop:hhlStrands} amd \ref{prop:resolves-intergral-closure} prove Theorem~\ref{thm:HHL-resolution}.
+%
+%\begin{proof}[Proof of Theorem~\ref{thm:HHL-resolution}]
+%  That the complexes $\tilde \FF$ and $\FF$ are resolutions follows from Proposition~\ref{prop:hhlStrands} by observing that $(L_{\RR})_{\leq \mathbf{u}}$ is polyhedral and thus either contractible or empty.
+%
+%  That the complex $\tilde \FF$ resolves $M_L$ follows first by observing that there exists a canonical $\ZZ^n$-graded map $\tilde \FF_0\rightarrow k[\ZZ^n]$ compatible with the resolution, thus giving a $\ZZ^n$-graded map $H_0(\tilde \FF)\rightarrow k[\ZZ^n]$.
+%  To show that $H_0(\tilde \FF)\cong M_L$, observe first that for each degree $\mathbf{u}\in \ZZ^n$,
+%  $H_0(\tilde \FF)_{\mathbf{u}}=H_0((L_{\RR})_{\leq \mathbf{u}})$. Moreover $(L_{\RR})_{\leq \mathbf{u}}$ is contractible if there exists a vertex $\mathbf{v}\in L_{\RR}$ such that $x^{\Psi(\mathbf{v})}$ divides $x^{\mathbf{u}}$, and empty otherwise. As $M_L$ is generated by the monomials corresponding to the vertices $\mathbf{v}\in L_{\RR}$, it follows that $(L_{\RR})_{\leq \mathbf{u}}$ is contractible if and only if $x^{\mathbf{u}}\in M_L$ and empty otherwise.
+%
+%  That the complex $\FF$ resolves $\overline{S/I_L}$ follows from Proposition~\ref{prop:resolves-integral-closure}.
+%\end{proof}
 
 \ifdefined\whole
 \else
 \bibliographystyle{plain}
 \bibliography{../Bibliography}
+\expandafter\enddocument
 \fi
-\end{document}
-
