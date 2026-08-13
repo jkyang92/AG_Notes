@@ -30,7 +30,7 @@ which exchanges the role of the degrees $\deg x_i$ and the vectors $\nu_i$.  Thi
 
 The crucial observation of the secondary fan is that there are only finitely many toric varieties coming from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
 \begin{description}
-  \item[GIT quotient/ample divisor]  In \lauren{reference} we saw that a smooth projective toric variety is a quotient of $\Spec S$.  GIT quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
+  \item[GIT quotient/ample divisor]  In Theorem~\ref{thm:coxquotient} we saw that a smooth \lauren{?} projective toric variety is a quotient of $\Spec S$.  GIT quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
   \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know that its rays must come from \eqref{eq:M-SES}.  The collection of polytopes with normal vectors in a fixed list forms a fan.  The cones of the secondary fan will exactly enumerate complete fans on subsets of these rays.
   \item[irrelevant ideal]  Perhaps the simplest way to describe which toric varieties are possible is to describe their irrelevant ideals, since $S$ with its grading and a suitable irrelevant ideal fully determines a toric variety.  Indeed the set of such ideals is easy to describe in terms of the map $\deg$, and each ideal quickly determines both pieces of data above.
 \end{description}
@@ -235,8 +235,8 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
   We have largely chosen to use polytopes instead of fans because we find the pictures of facets varying over the secondary fan to be more intuitive, and because we want to restrict the use of generalized fans and support functions to the discussion above.  Lemma~\ref{lem:GKZ-def} connects the two descriptions.  Compared to the fan $\Sigma$, the polytope $P_\alpha$ retains the data of a torus-invariant divisor on $X_d$.  The existence of~$\varphi$ on the fan $\Sigma$ requires its class $\deg\alpha$ to be nef on $X_d$, and the vector space structure on support functions clarifies the cone structure of $\Gamma(\Sigma,V)$.
 \end{rem}
 
-\begin{prop}[\cite{OdaPark91}*{Corollary 3.6},\cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
-  The collection of cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \defi{chambers}. \lauren{explain why these are all full dimensional?}
+\begin{prop}[\cite{OdaPark91}*{Corollary 3.6}, \cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
+  The collection of all cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \defi{chambers}. \lauren{explain why these are all full dimensional?}
 \end{prop}
 
 \begin{example}\label{ex:secondary-blowup-2}
@@ -346,7 +346,7 @@ As in \lauren{reference classical case}, the vanishing locus of the irrelevant i
 \begin{proof}[Proof of Proposition~\ref{prop:ccrefinement}]
   Fix $d$ in the interior of a chamber $\Gamma$ of the secondary fan.  We must show that $\Gamma$ is the intersection over all fans $\Delta$ on the rays $\deg x_i$ of the cone in $\Sigma$ which contains~$d$.  By the proof of Proposition~\ref{prop:chamber-of-ideal} it is the intersection of simplicial cones on the rays $\deg x_i$.  Thus we must show that these intersections are the same.
 
-  As in the proof of Proposition~\ref{prop:chamber-of-ideal}, a cone containing $d$ from an arbitrary fan $\Delta$ has a simplicial cone on a subset of its rays that also contains $d$.  Conversely, an arbitrary simplicial cone can be extended to a fan $\Delta$ on the remaining rays by a variant of the construction from \cite[Lemma 15.2.10]{CLS} (to the case where $\Delta$ is not complete).
+  As in the proof of Proposition~\ref{prop:chamber-of-ideal}, a cone containing $d$ from an arbitrary fan $\Delta$ has a simplicial cone on a subset of its rays that also contains $d$.  Conversely, an arbitrary simplicial cone can be extended to a fan $\Delta$ on the remaining rays by a variant of the construction from \cite[Lemma 15.2.10]{CLS} (altered for the case where $\Delta$ is not complete).
 \end{proof}
 
 \subsection{Nef and moving cones}\label{sec:lower-Pic-rank}
@@ -366,7 +366,7 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
     N & \ZZ^n\arrow[l]\\
     N\arrow[u] & \ZZ^{\Sigma(1)}.\arrow[l]\arrow[u]
   \end{tikzcd}\]
-  Taking $\Hom_\ZZ(-,\ZZ)$ \lauren{and using something about class groups} we get
+  Taking $\Hom_\ZZ(-,\ZZ)$ and using \eqref{eqn:SEScl4} we get
   \[\begin{tikzcd}
     0\arrow[r] & M\arrow[r]\arrow[d] & \ZZ^n\arrow[r]\arrow[d] & \Cl(S)\arrow[r] & 0\\
     0\arrow[r] & M\arrow[r] & \ZZ^{\Sigma(1)}\arrow[r] & \Cl(X_d)\arrow[r] & 0
