@@ -40,10 +40,7 @@ Some spaces appearing in the secondary fan are most properly interpreted as stac
 A reader primarily concerned with computation could start with Section~\ref{sec:irrelevant-ideals} and take on faith that the ideals describe there correspond to valid quotients and form a fan.  Here we give an example of all three perspectives for our favorite toric variety.  See also Theorem~\ref{thm:main-secondary} for a summary.
 
 \begin{example}\label{ex:hirzsecondary}
-%  Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is the $\ZZ^2$-graded polynomial ring $S=\CC[x_0,x_1,x_2,x_3]$ so we take $\Cl(S)=\ZZ^2$.  The degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.  These degrees partition the secondary fan into two chambers, which we label $\Gamma_1$ and $\Gamma_2$.
-
-  Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is the $\ZZ^2$-graded polynomial ring $S=\CC[x_0,x_1,x_2,x_3]$ so we take $\Cl(S)=\ZZ^2$.  The degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.  These degrees partition the secondary fan into two chambers, which we label $\Gamma_1$ and $\Gamma_2$.  \lauren{I switched them}
-
+Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is the $\ZZ^2$-graded polynomial ring $S=\CC[x_0,x_1,x_2,x_3]$ so we take $\Cl(S)=\ZZ^2$.  The degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.  These degrees partition the secondary fan into two chambers, which we label $\Gamma_1$ and $\Gamma_2$.
 
 %  First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
 
@@ -93,12 +90,6 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
 
       % Label (0,1) placed to the right of the y-axis, clear of shading
       \node[font=\small] at (-2.8, 1.2) {$(-3,1)$};
-      \draw[black, thick, dotted, ->, shorten >=2pt]
-      (0,0) -- ({-3/sqrt(10)*\axlim*1.05}, {1/sqrt(10)*\axlim*1.05})
-      %node[left, font=\small] {$(-3,1)$};
-
-      % Label (0,1) placed to the right of the y-axis, clear of shading
-     % \node[font=\small] at (0.22, \axlim*0.92) {$(0,1)$};
 
       % Labels centered in each shaded region
       \node at (-0.8, 0.8) {$\Gamma_2$};
