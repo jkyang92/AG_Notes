@@ -30,7 +30,7 @@ which exchanges the role of the degrees $\deg x_i$ and the vectors $\nu_i$.  Thi
 
 The crucial observation of the secondary fan is that there are only finitely many toric varieties coming from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
 \begin{description}
-  \item[GIT quotient/ample divisor]  In Theorem~\ref{thm:coxquotient} we saw that a smooth \lauren{?} projective toric variety is a quotient of $\Spec S$.  GIT quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
+  \item[GIT quotient/ample divisor]  In Theorem~\ref{thm:coxquotient} we saw that a simplicial toric variety is a geometric quotient of $\Spec S$.  GIT quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
   \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know that its rays must come from \eqref{eq:M-SES}.  The collection of polytopes with normal vectors in a fixed list forms a fan.  The cones of the secondary fan will exactly enumerate complete fans on subsets of these rays.
   \item[irrelevant ideal]  Perhaps the simplest way to describe which toric varieties are possible is to describe their irrelevant ideals, since $S$ with its grading and a suitable irrelevant ideal fully determines a toric variety.  Indeed the set of such ideals is easy to describe in terms of the map $\deg$, and each ideal quickly determines both pieces of data above.
 \end{description}
@@ -318,7 +318,7 @@ Note that $\sigma$ may contain $\nu_i$ for $i\in F$ but these are not rays of $\
 \end{proof}
 
 %The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
-As in \lauren{reference classical case}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language from Section~\ref{sec:variation-of-GIT}, the vanishing of the irrelevant ideal is the unstable locus.
+As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language of Section~\ref{sec:variation-of-GIT}, the irrelevant ideal defines the unstable locus.
 
 %and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
 
@@ -330,11 +330,11 @@ As in \lauren{reference classical case}, the vanishing locus of the irrelevant i
 %Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. These are the chambers of the secondary fan.
 
 \begin{thm}
-  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$. \lauren{add that quotient is geometric}
+  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$, and the space $X_d$, as in Corollary~\ref{cor:quotient-Proj}, is a geometric quotient of $\Spec S\setminus V(\idealof(\Gamma))$ by $G$.
 \end{thm}
 
 \begin{proof}
-  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ described in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.
+  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ described in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.  \lauren{add geometric}
 \end{proof}
 
 %\begin{cor}
