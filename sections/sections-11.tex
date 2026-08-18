@@ -7,7 +7,7 @@
 \fi
 
 \section{Lecture 11 (Lauren Cranton Heller): The secondary fan}\label{lec:11-secondary-fan}
-In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring.
+In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring. \lauren{right now we do not!}
 
 \subsection{Toric varieties of a multigraded ring}
 Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to give a crash course in how to think about this fan.
@@ -45,7 +45,7 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
 %  First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
 
   \begin{center}
-    \begin{tikzpicture}[scale=2]
+    \begin{tikzpicture}[scale=1.75]
 
       \begin{scope}
         \clip (-3.2,-0.8) rectangle (1.6,1.6);
@@ -101,33 +101,41 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
     \end{tikzpicture}
   \end{center}
 
-  Each degree in $\Cl(S)$ gives a $(\CC^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of $d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this subring is $\mathbb P(1,1,3)$.
+  Each degree in $\Cl(S)$ gives a $(\CC^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of $d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
 
-  A degree $(a,b)\in\Cl(S)$ is in the image of the vector $(0,0,a,b)\in \ZZ^4$.  The polytope of this vector is defined by the restriction of the inequalities $x_0\geq 0$, $x_1\geq 0$, $x_2\geq -a$, and $x_3\geq -b$.  In the coordinates \lauren{what letters?} we have chosen for $M$ these give $y_0\geq 0$, $y_1\geq 0$, $-y_0+3y_1\geq -a$, and $-y_1\geq -b$.  The inequalities bound a trapezoid for $(a,b)\in\Gamma_1$ and a triangle for $(a,b)\in\Gamma_2$, corresponding to $\cH_3$ and $\PP(1,1,3)$, respectively.
+  A degree $(a,b)\in\Cl(S)$ is in the image of the vector $(0,0,a,b)\in \ZZ^4$.  The polytope of this vector is defined by the restriction of the inequalities $x_0\geq 0$, $x_1\geq 0$, $x_2\geq -a$, and $x_3\geq -b$.  In the coordinates \lauren{letters?} we have chosen for $M$ these give $y_0\geq 0$, $y_1\geq 0$, $-y_0+3y_1\geq -a$, and $-y_1\geq -b$.  The inequalities bound a trapezoid for $(a,b)\in\Gamma_1$ and a triangle for $(a,b)\in\Gamma_2$, corresponding to $\cH_3$ and $\PP(1,1,3)$, respectively.  Outside of $\Gamma_1$ and $\Gamma_2$ the polytope is empty.
 
   \begin{center}
-  \begin{tikzpicture}[scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \begin{scope}
       \clip (-0.2,-0.2) rectangle (2.2,1.2);
 
       \fill[blue!20] (0,1/3) -- (2,1) -- (0,1) -- cycle;
     \end{scope}
 
-    \draw[thick] (0,-0.2) -- (0,1.2);
+    \draw[thick] (0,-0.1) -- (0,1.2);
     \draw[thick] (-1.3,-0.1) -- (2.3,1.1);
-    \draw[thick] (-0.2,1) -- (2.2,1);
-    \draw[thick] (-1.2,0) -- (0.2,0);
+    \draw[thick] (-0.1,1) -- (2.2,1);
+    \draw[thick] (-1.2,0) -- (0.1,0);
+    \node at (-1,-0.25) {$a$};
+    \node at (0,-0.25) {0};
+    \node at (-0.2,1) {$b$};
+    \node at (0.2,0) {0};
   \end{tikzpicture}
-  \begin{tikzpicture}[scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \begin{scope}
       \clip (-0.2,-0.2) rectangle (4.2,1.2);
 
       \fill[blue!40] (0,0) -- (0,1) -- (4,1) -- (1,0) -- cycle;
     \end{scope}
-    \draw[thick] (0,-0.2) -- (0,1.2);
+    \draw[thick] (0,-0.1) -- (0,1.2);
     \draw[thick] (0.7,-0.1) -- (4.3,1.1);
-    \draw[thick] (-0.2,1) -- (4.2,1);
-    \draw[thick] (-0.2,0) -- (1.2,0);
+    \draw[thick] (-0.1,1) -- (4.2,1);
+    \draw[thick] (-0.1,0) -- (1.2,0);
+    \node at (-0.2, 0) {0};
+    \node at (0, -0.25) {0};
+    \node at (-0.2,1) {$b$};
+    \node at (1, -0.25) {$a$};
   \end{tikzpicture}
 \end{center}
 
@@ -144,7 +152,7 @@ The sequence \eqref{eq:M-SES} induces maps of algebraic groups
 We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory, which can be found for instance in \cite{Dolgachev03}.
 
 \begin{defn}
-  A \defi{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ \lauren{write out?} such that the zero section of $\cL$ is $G$-invariant.  The \defi{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
+  A \defi{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ such that the zero section of $\cL$ is $G$-invariant.  The \defi{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
 \end{defn}
 
 Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
@@ -154,21 +162,21 @@ Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions o
 \end{prop}
 
 \begin{proof}
-  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$. \lauren{why does this agree with linear equivalence?} The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$.  \lauren{explain why it can't have a coefficient}
+  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$. \lauren{why does this agree with linear equivalence?} The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$ under the corresponding map of ordinary groups.
 
   Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
 \end{proof}
 
-By Proposition~\ref{prop:eq-Picard-gp} and \lauren{general GIT theorem}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
+By Proposition~\ref{prop:eq-Picard-gp} and \lauren{Mumford--Fogarty--Kirwan p.41}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
 
 According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
 \[\Proj\bigoplus_{i\in\NN}\Gamma(\Spec S,\cL_d^{\otimes i})^G\]
-where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections. \lauren{cite} In the toric case these equivariant sections are elements of $S$.
+where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections (see for instance \cite[Proposition~8.1]{Dolgachev03}).  In the toric case these equivariant sections are elements of $S$.
 \begin{lemma}
   With $\cL_d$ the line bundle on $\Spec S$ given by Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$, we have that $\Gamma(\Spec S,\cL_d)^G=S_d$.
 \end{lemma}
 \begin{proof}
-  \lauren{..}
+  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  Points of $G$ are algebra homomorphisms $\CC[t]\to\CC[\Cl(S)]$, or elements of $\CC[\Cl(S)]$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  \lauren{..}
 \end{proof}
 Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
 
@@ -183,7 +191,7 @@ We will see more concrete constructions of these spaces in the following subsect
 The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the induced map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$.
 
 \begin{rem}\label{rem:triangulations}
-  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, so that the rays span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} on the hyperplane.  \lauren{cite}
+  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} on the hyperplane.  See for instance \lauren{GKZ chapter 7, something else for connection?}
 \end{rem}
 
 \begin{defn}\label{def:polytope-of-deg}
@@ -191,7 +199,7 @@ The toric structure of the quotients $X_d$ connects their GIT problem to the com
 \end{defn}
 
 \begin{example}\label{ex:secondary-blowup}
-  Let $S=k[x_0,x_1,x_2,x_3,x_4]$ with degrees $(1,0,0)$, $(-1,1,0)$, $(1,-1,1)$, $(0,1,-1)$, and $(0,0,1)$.  Fixing a basis $y_0,y_1$ for $M$ we can take $\nu_0=(1,0)$, $\nu_1=(0,1)$, $\nu_2=(-1,1)$, $\nu_3=(-1,0)$, $\nu_4=(0,-1)$.  Let $\alpha=(1,1,1,1,1)$.  The inequality $x_2\geq -1$ restricts to $(y_0,y_1)\cdot\nu_2\geq -1$ or $-y_0+y_1\geq -1$.  \lauren{picture of all of them when we get square, which probably requires a different $\alpha$}
+  Let $S=k[x_0,x_1,x_2,x_3,x_4]$ with degrees \lauren{change basis to match picture} $(1,0,0)$, $(-1,1,0)$, $(1,-1,1)$, $(0,1,-1)$, and $(0,0,1)$.  Fixing a basis $y_0,y_1$ for $M$ we can take $\nu_0=(1,0)$, $\nu_1=(0,1)$, $\nu_2=(-1,1)$, $\nu_3=(-1,0)$, $\nu_4=(0,-1)$.  Let $\alpha=(1,1,1,1,1)$.  The inequality $x_2\geq -1$ restricts to $(y_0,y_1)\cdot\nu_2\geq -1$ or $-y_0+y_1\geq -1$.  \lauren{picture of all of them when we get square, which probably requires a different $\alpha$}
 \end{example}
 
 Note that the normal vectors of the polytope $P_\alpha$ lie in the list $\nu_1,\ldots,\nu_n$.  However not all $n$ inequalities/normal vectors need be required, if some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or at all).  Cox, Little, and Schenck refer to these as ``virtual'' facets.  Replacing~$\alpha$ with another vector of the same degree only translates the polytope.
@@ -200,7 +208,7 @@ Note that the normal vectors of the polytope $P_\alpha$ lie in the list $\nu_1,\
   If $\alpha,\alpha'\in\ZZ^d$ satisfy $\deg_\QQ\alpha=\deg_\QQ\alpha'$ then $P_{\alpha'}=m+P_\alpha$ for some $m\in M$.
 \end{lemma}
 
-Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to translation within $M\otimes_\ZZ\QQ$.  At certain degrees the face structure may change---for instance when a collection of hyperplanes intersects in unexpected codimension.
+Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to translation within $M\otimes_\ZZ\QQ$.  At certain degrees the face structure may change, when some hyperplanes intersect in unexpected codimension.
 
 \begin{example}\label{ex:secondary-wall}
   Continuing Example~\ref{ex:secondary-blowup}, when \lauren{find equation} the hyperplane corresponding to $x_2$ intersects $P_\alpha$ in a vertex.  \lauren{picture}
@@ -209,7 +217,7 @@ Hence $P_\alpha$ is determined by elements of $\Cl(S)\otimes_\ZZ\QQ$ up to trans
 This behavior only occurs on finitely many linear subspaces, creating a polyhedral fan in the space of polytopes.  The interiors of top dimensional cones collect all degrees in $\Cl(S)\otimes_\ZZ\QQ$ whose polytopes share a normal fan.  To describe lower dimensional cones we additionally specify for which indices~$i$ the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$, in order to distinguish cases like Examples  \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall}.  The two quotients share the fan for $\PP^1\times\PP^1$, but we would record the set $\{2\}$ for Example~\ref{ex:secondary-blowup} and $\varnothing$ for Example~\ref{ex:secondary-wall}.
 
 \begin{defn}\label{def:GKZ-cones}
-  Let $\Sigma$ be a generalized fan with support all of $N\otimes_\ZZ\QQ$ and rays among the vectors $\nu_1,\ldots,\nu_n$. \lauren{is this enough?} Let $F$ be a subset of the indices $1,\ldots,n$ of $\nu_i$ \emph{not} appearing in $\Sigma$.
+  Let $\Sigma$ be a generalized fan with support all of $N\otimes_\ZZ\QQ$ and rays among the vectors $\nu_1,\ldots,\nu_n$.  Let $F$ be a subset of the indices $1,\ldots,n$ of $\nu_i$ \emph{not} appearing in $\Sigma$.
 
   Write $\tilde\Gamma(\Sigma,F)$ for the set of $\alpha\in\QQ^n$ such that there exists a convex support function $\varphi$ on $\Sigma$ with $\varphi(\nu_i)=-\alpha_i$ for all $i\notin F$ and $\varphi(\nu_i)\geq-\alpha_i$ for all $i\in F$.
 
@@ -252,7 +260,7 @@ Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex
   Suppose that $\alpha\in\ZZ^n$ and $d=\deg\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope~$P_\alpha$ is simplicial and isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
 \end{thm}
 
-The toric variety $X_d$ is constant within the interior of each cone of the secondary fan.  Varieties from distinct chambers will have distinct normal fans, though they may be isomorphic via a nontrivial map of lattices (as in Example~\ref{ex:secondary-blowup-2}, where $\PP^2$ \lauren{check} appears twice).
+The toric variety $X_d$ is constant within the interior of each cone of the secondary fan.  Varieties from distinct chambers will have distinct normal fans, though they may be isomorphic via a nontrivial map of lattices (as in Example~\ref{ex:secondary-blowup-2}, where $\cH_1$ appears twice).
 
 \begin{cor}\label{cor:chamber-iso}
   Suppose that $d,d'\in\Cl(S)$ are contained in the interior of the same chamber $\Gamma(\Sigma,F)$ of the secondary fan of $S$.  Then $X_d\cong X_d'$ via the identity map on the fan $\Sigma$ in $N\otimes_\ZZ\QQ$.
