@@ -179,7 +179,7 @@ where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplicati
   With $\cL_d$ the line bundle on $\Spec S$ given by Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$, we have that $\Gamma(\Spec S,\cL_d)^G=S_d$.
 \end{lemma}
 \begin{proof}
-  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=\CC[\ZZ^n]$, so elements of the torus also act on monomials of $S$ by the characters corresponding to their exponents.  Thus $g$ acts on a monomial $x^\alpha$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.  \lauren{clarify further?}
+  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=\CC[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters corresponding to their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.  \lauren{clarify further?  and check that our inverse conventions work out}
 \end{proof}
 Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
 
@@ -202,7 +202,7 @@ The toric structure of the quotients $X_d$ connects their GIT problem to the com
 \end{defn}
 
 \begin{example}\label{ex:secondary-blowup}
-  Let $S=k[x_0,x_1,x_2,x_3,x_4]$ with degrees \lauren{change basis to match picture} $(1,0,0)$, $(-1,1,0)$, $(1,-1,1)$, $(0,1,-1)$, and $(0,0,1)$.  Fixing a basis $y_0,y_1$ for $M$ we can take $\nu_0=(1,0)$, $\nu_1=(0,1)$, $\nu_2=(-1,1)$, $\nu_3=(-1,0)$, $\nu_4=(0,-1)$.  Let $\alpha=(1,1,1,1,1)$.  The inequality $x_2\geq -1$ restricts to $(y_0,y_1)\cdot\nu_2\geq -1$ or $-y_0+y_1\geq -1$.  \lauren{picture of all of them when we get square, which probably requires a different $\alpha$}
+  Let $S=k[x_0,x_1,x_2,x_3,x_4]$ with degrees $(0,1,1)$, $(1,0,0)$, $(0,1,0)$, $(0,0,1)$, and $(1,1,0)$.  Fixing a basis $y_0,y_1$ for $M$ we can take $\nu_0=(1,0)$, $\nu_1=(0,1)$, $\nu_2=(-1,1)$, $\nu_3=(-1,0)$, $\nu_4=(0,-1)$.  Let $\alpha=(1,1,1,1,1)$.  The inequality $x_2\geq -1$ restricts to $(y_0,y_1)\cdot\nu_2\geq -1$ or $-y_0+y_1\geq -1$.  \lauren{picture of all of them when we get square, which probably requires a different $\alpha$}
 \end{example}
 
 Note that the normal vectors of the polytope $P_\alpha$ lie in the list $\nu_1,\ldots,\nu_n$.  However not all $n$ inequalities/normal vectors need be required, if some of the hyperplanes $x_i=-\alpha_i$ do not intersect $P_\alpha$ in a facet (or at all).  Cox, Little, and Schenck refer to these as ``virtual'' facets.  Replacing~$\alpha$ with another vector of the same degree only translates the polytope.
