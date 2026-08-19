@@ -1,1 +1,632 @@
-      1 +# Proofreading report for the section files      2 +      3 +Line numbers refer to the current source files. I treated only the explicit author-annotation macros (`\daniel`, `\michael`, `\maya         `, `\mahrud`, `\lauren`, `\david`, and `\jay`) as editorial comments, as requested. I list active annotations and annotations insid         e `%`-commented source separately.      4 +      5 +## Project-wide compilation and assembly issues      6 +      7 +- `../main_v2.tex` is not currently a combined-notes driver: it does not `\input` any of the ten section files. It is a standalone         meeting program/outline. The file that assembles the notes is `../Notes.tex`.      8 +- `../Notes.tex` asks for `sections/sections-7-8-9.tex`, but the file on disk is `sections-7-8-9-v1.tex`. LaTeX reports the missing          file but continues, so Lectures 7–9 are silently absent from the resulting combined PDF. Creating a temporary correctly named copy          makes the combined document include them.      9 +- `sections-11.tex:6` comments out `\begin{document}`, so that file cannot compile separately.     10 +- `sections-11.tex:254` inputs `sections/fig-Bl2P3`. This path works when compilation starts in the parent directory, but not when         this section is compiled from the `sections` directory. A path conditional or a local path is needed for genuinely independent comp         ilation.     11 +- `preamble.tex:199` redefines the standard text command `\i` to mean `\iota`. This breaks bibliography names containing dotless `\         i` and gives a hard `Missing $ inserted` error in the standalone build of `sections-1-2-3.tex`. The same redefinition at `../main_v         2.tex:175` breaks that document. The parent `../preamble.tex` already has a conditional form that avoids this problem.     12 +- Most standalone wrappers close the conditional after `\end{document}`. TeX never reads that closing `\fi`, producing `\end occurr         ed when \ifdefined ... was incomplete`. Put `\fi` before `\end{document}`. This affects `sections-4-5.tex`, `sections-6.tex`, `sect         ions-10.tex`, `sections-12-13.tex`, `sections-14-15-16.tex`, `sections-17.tex`, and `sections-18-19.tex`; `sections-7-8-9-v1.tex` u         ses a different but similarly fragile `\expandafter\enddocument` ending.     13 +- The combined build has a duplicate label, several unresolved references, and missing bibliography keys; details are listed below         and summarized in “Cross-references and bibliography.”     14 +     15 +## `sections-1-2-3.tex`     16 +     17 +### Typos and other errors     18 +     19 +- **13:** “Cech” should be “?ech” (`\v{C}ech`).     20 +- **15:** “It will turn out, moreover …” is an unfinished sentence.     21 +- **20:** A blue provisional standing assumption remains in the notes. “Arbitrary characteristic” also conflicts with the character         istic-two issue in `sections-18-19.tex:165`.     22 +- **34:** `quasi-isomoprhism` ? `quasi-isomorphism`; `H^if` needs a space after the displayed expression.     23 +- **39–45:** The definition of the derived category is not correct as written. Its morphisms are not simply chain maps with quasi-i         somorphisms inverted; one should first pass to the homotopy category (or explicitly account for chain homotopy) and then localize.         The more accurate version immediately below is commented out.     24 +- **49:** The closing quotation mark after “diagram” is a raw double quote rather than TeX closing quotes.     25 +- **82–88:** “We say a functor … that … is exact” is grammatically malformed; use “A functor … is exact if …”.     26 +- **121:** “if `f` is morphism” needs “a”. The assertion that derived pushforward stays in the bounded coherent category also needs          the usual properness/coherence hypotheses.     27 +- **168:** The displayed resolution directly gives the collection `\mathcal O(-n),\ldots,\mathcal O`; the text claims `\mathcal O,\         ldots,\mathcal O(n)`. Twisting fixes this, but that step should be stated.     28 +- **195:** The claimed equivalence between generation-based semiorthogonal decompositions and functorial filtrations needs admissib         ility/idempotent-completeness hypotheses.     29 +- **202:** The definition displays vanishing for every nonzero shift but then says only “all higher Ext groups.” For arbitrary deri         ved objects, negative shifts also matter.     30 +- **214:** “which will see” ? “which we will see.” The reference `thm:demazureL5` is unresolved.     31 +- **230:** The prose reverses the roles of the two checks: vanishing when `i>j` gives semiorthogonality/exceptionality, while vanis         hing of positive Exts when `i\leq j` gives strength.     32 +- **243:** A comma is missing between `\mathcal O(-n+1)` and the ellipsis.     33 +- **249–255:** The uniqueness corollary is false without “minimal” and suitable boundedness/category qualifications: arbitrary cont         ractible summands destroy uniqueness. The proof also calls the line bundles graded `S`-modules, and `Fully faithfulness` should be         `Full faithfulness`.     34 +- **254:** `K` is described as complexes of graded modules whose terms are line bundles; those are different categories. Say either          free graded modules or their associated line bundles.     35 +- **258:** “identified a minimal free complexes” ? “identified minimal free complexes” (or “a minimal free complex”). The sequence         `S(-n),S(-n-1),\ldots,S` should be `S(-n),S(-n+1),\ldots,S`.     36 +- **266:** `thhink` ? `think`.     37 +- **321:** “meaning that that” repeats “that.” The field is denoted both `\k` and `\kk`. Calling `E` noncommutative is not uniforml         y correct under the standing arbitrary-characteristic assumption; in characteristic two the displayed skew-commutation relation bec         omes commutation, although the exterior algebra still has square-zero generators.     38 +- **328–365:** Two versions of the BGG functors are given, first homologically and then cohomologically, with incompatible bold/unb         old notation. Choose one convention and state the indexing once.     39 +- **333:** `\mathbf L(P)` is said to be a complex of free `E`-modules, but the formula makes it a complex of free `S`-modules.     40 +- **344–348:** The example purporting to compute `\mathbf R(S)` repeatedly uses an undefined `M` (`\dim M_i`, `\mathbf R(M)`) inste         ad of `S`.     41 +- **352:** The summation index is inconsistent: `\sum_{i=0}^n x_j\otimes e_j` should sum over `j` (or use `i` throughout).     42 +- **356:** “a natural isomorphisms” ? “natural isomorphisms.” Also distinguish a literal isomorphism from a quasi-isomorphism, and         specify the differential on `S\otimes E`.     43 +- **368:** “finitely generated `S`-modules are rarely finitely generated” should say they are rarely finite-dimensional over the fi         eld. Consequently the free rank in `\mathbf R(M)` may be infinite.     44 +- **372:** The Tor formula has a free `j` on the right and no matching graded-component index on the left; it needs to be rewritten          with all indices quantified.     45 +- **375–387:** The theorem returns to unbold `L,R` after the bold cohomological definitions, so it is unclear which functors and in         dexing convention are intended.     46 +- **Standalone build:** The local `\i` redefinition causes the bibliography hard error described above.     47 +     48 +### Explicit editorial comments     49 +     50 +Active:     51 +     52 +- **12 — Daniel:** Add introductory text; mentions free complexes modulo homotopy and a basis metaphor. The annotation itself has `         combe` ? `come`.     53 +- **17 — Daniel:** Add ideas about free complexes modulo homotopy and the vector-space-basis metaphor.     54 +- **20 — Daniel:** Add any further standing assumptions.     55 +     56 +Inside commented-out source:     57 +     58 +- **163 — Mahrud:** Suggests an illuminating Macaulay2 computation of the actual section.     59 +- **244 — Michael:** Asks for more explanation of why the functor can be applied termwise and relates this to the `E^1` page.     60 +     61 +## `sections-4-5.tex`     62 +     63 +### Typos and other errors     64 +     65 +- **14:** “does indicate” should be “does not indicate.”     66 +- **16:** `should up` ? `show up`; “lots of lots of” repeats words; “Hirzebruch surface” should be plural in context.     67 +- **32:** A fan is not a union of three cones in the stated sense; say it consists of the three cones and all their faces.     68 +- **44–46:** `\alpha(m)` is defined using `\langle m,-u_\rho\rangle` but then called the principal divisor of `\chi^m`. Under the s         tandard convention `\operatorname{div}(\chi^m)=\sum\langle m,u_\rho\rangle D_\rho`, this is its negative. Declare the opposite conv         ention or remove the minus sign. This sign also affects later files.     69 +- **61, 63:** Both `\Sigma_{\max}` and `\Sigma_{\mathrm{max}}` are used.     70 +- **75:** `G=\operatorname{Hom}(\operatorname{Cl}(X),\Bbbk^*)` describes points rather than the diagonalizable group scheme. This d         iffers from `G=\operatorname{Spec} k[\operatorname{Cl}(X)]` in Lecture 11 and matters with torsion or positive characteristic.     71 +- **90:** The rays `(1,0),(0,1),(-1,-2)` have positive relation with weights `(1,2,1)`, not `(1,1,2)` in the listed variable order.          Reorder/relabel the rays or the variables. The accompanying picture also appears to draw the negative diagonal as `(-1,-1)` rather          than `(-1,-2)`.     72 +- **141–145:** A point of the coarse quotient does not itself have the indicated stabilizer; the stabilizer belongs to the group ac         tion or quotient stack. Rephrase accordingly.     73 +- **169, 364:** `rem:localcohomology` is defined twice, causing a duplicate-label warning, and the remarks substantially duplicate         one another.     74 +- **181:** The active annotation correctly flags that the preceding general paragraph can fail because the relevant modules need no         t be finitely generated. The claim should be restricted or repaired before publication.     75 +- **184–199:** Check the scope of the smoothness proposition and its proof: the subsequent prose says the analogous statement holds          for simplicial toric varieties, while an annotation says the proposition is probably only simplicial. State precisely whether smoo         th, simplicial, or general toric varieties are intended and whether normalization is involved.     76 +- **188:** `Berkesch2026Nonsimplicial` is absent from the parent bibliography used by the combined notes.     77 +- **212:** “is a realized” ? “is realized”; “ideals which yields” ? “ideals which yield.”     78 +- **214:** “a subtlety that absent” ? “a subtlety that is absent.”     79 +- **311:** “there a number” ? “there are a number” (or “there is a number”).     80 +- **324:** A space is missing after the display before “Let.”     81 +- **327:** The set-builder expression for `G` is malformed: it needs a colon before the condition, not `\in (k^*)^2`. The intermedi         ate complement calculation omits one excluded component until the final line, so the derivation is hard to follow.     82 +- **337:** `rmk:abuseNotation` is unresolved because its definition is commented out in `sections-11.tex`.     83 +- **368:** “is is” repeats “is.”     84 +- **422:** `z^{\pm}` ? `z^{\pm1}`.     85 +- **424–428:** “zero the sheaf” ? “the zero sheaf.” The text says item (2) of the proposition fails, but item (2) is the always-val         id implication; the intended failure appears to be the converse/item (3).     86 +- **436:** The theorem carrying `thm:demazureL5` is commented out although that label is cited in several files.     87 +- **440:** The remark carrying `rem:rounddown` is commented out although it is cited in `sections-14-15-16.tex`.     88 +- **450–452:** Under the global arbitrary-characteristic convention, simpliciality alone does not guarantee a Deligne–Mumford/tame         quotient stack when stabilizer orders are divisible by the characteristic (for example, `\mu_2` in characteristic two). Add the nee         ded characteristic/tameness hypothesis.     89 +- **452:** Citation keys `GS1` and `GS2` are absent from both section and parent bibliography databases.     90 +- **Standalone build:** The PDF is produced, but duplicate labels, missing citations, and the unmatched conditional make the build         non-clean.     91 +     92 +### Explicit editorial comments     93 +     94 +Active:     95 +     96 +- **181 — Daniel:** Says the paragraph is subtly wrong in general because finite generation can be lost and asks that it be fixed o         r discussed.     97 +- **341 — Daniel:** Notes that the useful “abuse of notation” remark is commented out and that the lecture is long.     98 +     99 +Inside commented-out source:    100 +    101 +- **36 — Mahrud:** Asks whether projective, semiprojective, and quasiprojective should be defined.    102 +- **203 — Mahrud/Daniel:** Mahrud asks to locate Michael’s email; Daniel explains that `J` is not generally radical, suspects the p         roposition is simplicial-only, and cites joint work. The annotation contains `certiain` ? `certain`.    103 +- **377 — Daniel:** Asks whether `B`-saturation is used.    104 +- **380 — Daniel:** Repeats the concern about loss of finite generation.    105 +- **443 — Daniel:** Suggests moving the rational version elsewhere and adding an example.    106 +- **470 — Mahrud:** Asks which Vistoli paper is meant.    107 +    108 +## `sections-6.tex`    109 +    110 +### Typos and other errors    111 +    112 +- **18–20:** Extending `\alpha_i` rationally gives a map to `\mathbb Q`, not to `\mathbb Q^n` for each individual `i`.    113 +- **35, 192:** `thm:Bondal-Thomsen equivalences` is unresolved because the theorem at line 88 has the label `.  ` rather than this         name.    114 +- **58:** `(a,b)\in M\otimes\mathbb Q^2` should be `(a,b)\in M\otimes\mathbb Q` or simply `(a,b)\in\mathbb Q^2`, depending on the i         ntended identification.    115 +- **81:** The set-builder notation for the zonotope is malformed; separate the sum from the conditions on the coefficients.    116 +- **88:** `\label{.  }` is invalid/meaningless and is the source of later broken references.    117 +- **106:** Replace the comma after the displayed expression with suitable punctuation. The argument also writes `D-E=m`; with the e         arlier exact sequence it should be `D-E=\alpha(m)` (or explicitly identify `M` with its image).    118 +- **112:** A colon is missing before the displayed local calculation.    119 +- **115:** A smooth toric affine chart need not be `\mathbb A^n`; it can contain torus factors (`\mathbb A^r\times\mathbb G_m^{n-r}         `). The patching argument should be stated in that generality.    120 +- **122:** `N^n/\ell N^n\cong(\mathbb Z/\ell)^n` is false notation: use `\mathbb Z^n/\ell\mathbb Z^n`. In positive characteristic,         phrase the kernel group-scheme statement carefully.    121 +- **141:** `O_X` should use the document’s `\cO_X` notation.    122 +- **151:** `\operatorname{Div}(X)=\mathbb Z^n` should be the group of torus-invariant divisors, not all Weil divisors.    123 +- **158:** The splitting/basis assertion uses freeness of `\operatorname{Cl}(X)`; state that this follows from the smooth hypothese         s being used.    124 +- **161:** `m` is applied to `\mathcal O(\cdots)` rather than to its class/degree.    125 +- **163:** A comma is missing after the multi-index condition.    126 +- **177:** `s(t^{\ell a})` has a spurious `a`; the surrounding calculation requires `s(t^\ell)`.    127 +- **187:** “class group of `\operatorname{Cl}(X)`” ? “class group `\operatorname{Cl}(X)`.”    128 +- **188:** Restriction does not literally “delete the line bundles” attached to new rays. Explain that the corresponding divisors/c         lasses restrict or trivialize and that the grading descends through the appropriate quotient.    129 +- **195:** If `\deg D=-\ell e`, then `e=-\deg(D/\ell)`, not `+\deg(D/\ell)`.    130 +- **203:** Rounding down is defined for a chosen torus-invariant `\mathbb Q`-divisor presentation, not intrinsically for a class wi         thout choosing representatives; say what is being rounded.    131 +- **225, 228:** A line bundle is not itself “the negative of an effective divisor”; distinguish the divisor, its class, and the ass         ociated line bundle.    132 +- **237:** `thm:demazureL5` is unresolved; the likely target is `prop:Demazure` or the commented theorem in `sections-4-5.tex`.    133 +- Several labels contain spaces or punctuation (for example `lem:Achinger's Lemma`), which is fragile and inconsistent with most of          the project.    134 +- **Standalone build:** The content compiles, but the conditional wrapper remains unmatched.    135 +    136 +### Explicit editorial comments    137 +    138 +Active: none.    139 +    140 +Inside commented-out source:    141 +    142 +- **201 — Michael:** Notes similarity to King’s Lemma 2.20 and asks whether the result is really easy.    143 +    144 +## `sections-7-8-9-v1.tex`    145 +    146 +### Typos and other errors    147 +    148 +- **Filename/project assembly:** `../Notes.tex` requests `sections-7-8-9.tex`, so this entire file is omitted from the combined not         es.    149 +- **14:** `sec:*****` is a placeholder and unresolved reference.    150 +- **18:** Replace raw double quotation marks with TeX quotes. “the same graded ring as Cox ring” needs “as their/the Cox ring.”    151 +- **23:** “a toric inclusion defined by” is too broad as stated; qualify it as the dense-torus/lattice-ideal description or give th         e hypotheses under which the closure is defined this way.    152 +- **35:** “an an” repeats “an,” and the sentence contains a stray malformed ` [\subset`.    153 +- **49:** The hyperplane notation needs both indices, for example `H_{i,j}`; the current `H_i` conflicts with the displayed depende         nce on `j`.    154 +- **61:** The hyperplane subdivision lives in `L_{\mathbb R}`, not in the lattice `L` itself.    155 +- **70, 99, 118, 182, 246:** Labels contain spaces, braces, or long prose. They may compile but are fragile; replace them with stab         le colon-separated identifiers.    156 +- **78:** The sign/rounding identity is wrong: in general `-\lceil p\rceil=\lfloor -p\rfloor`, not `\lfloor p\rfloor`. Apply the de         gree map only after correcting the sign.    157 +- **88–89:** A space is missing after a period, followed by a comma splice.    158 +- **122:** `fig1}.In` needs a space after the period.    159 +- **160–166:** The summands are labeled `S(\ell(A))`, whereas the complex was defined with shifts `S(-\Psi(A))`. If `\ell(A)` is me         ant to abbreviate the divisor/degree, define it and preserve the sign.    160 +- **200:** The point `(3,2)` should be `(3,-2)` in the illustrated arrangement.    161 +- **205:** Replace raw double quotation marks with TeX opening/closing quotes.    162 +- **209:** The sentence needs a final period.    163 +- **293:** The quotient `L_{\mathbb R}/L` is a real torus/circle; `L_{\mathbb R}` alone is not a circle.    164 +- **382:** A divisor vector `\Psi(A)` is conflated with its class/degree. A graded summand should be written using `-\deg\Psi(A)`,         not as `S(-\Psi(A))` unless that abuse is explicitly declared.    165 +- **387–389:** The active annotations identify a central notation problem: `M,L` are used both as sublattices of coordinate lattice         s and as abstract lattices, `\alpha` is sometimes an inclusion and sometimes the divisor map, and `\Psi=\lceil\alpha\rceil` needs d         omains. Write, for example, `\Psi(p)=\lceil\alpha_{\mathbb R}(p)\rceil`.    166 +- **430:** The ceiling operation is applied to a displayed two-coordinate vector, even though the embedding used by `\Psi` lands in          `\mathbb R^4`. Display the embedded vector before rounding.    167 +- **518–520:** The claim that the varieties have “the same Cox ring” is incompatible with examples in which rays are omitted. Say p         recisely whether they share an ambient polynomial ring, ray configuration, grading, or only a common master construction.    168 +- **526:** For `a\in M`, the monomial should be `x^{\alpha(a)}`, not `x^a`, unless `M` has explicitly been identified with its imag         e in `\mathbb Z^n`.    169 +- **531:** The lattice defining the graph sits in `\mathbb Z^n\times\mathbb Z^n` via the two `\alpha` maps; it is not literally a s         ublattice of `M\times M` as displayed.    170 +- **552:** “left hand side” should identify the first factor. The Bondal–Thomsen set is elsewhere an image of `M_{\mathbb R}/M`, no         t of `M` itself.    171 +- **559:** The line-bundle/equivalence statement needs the smooth or quotient-stack hypotheses; on a merely simplicial coarse varie         ty, the indicated classes need not all be line bundles.    172 +- **614:** The displayed formula has mismatched parentheses and malformed math delimiters.    173 +- **622:** Finite generation follows from finiteness of the relevant cell orbits/degree representatives, not merely from taking an         intersection; supply the missing reason.    174 +- **664:** `\]\.` has a stray backslash before the period.    175 +- **672:** “a a” repeats “a”; the sentence is also a run-on.    176 +- **678:** “elements in a” is incomplete; name the set or ring.    177 +- **683:** The regular-sequence quotient argument needs its hypotheses stated rather than asserted for the displayed ideal without         explanation.    178 +- **687:** `A` is introduced as a semigroup, not as the quotient ring `S/I`.    179 +- **693:** `\eta_(` is malformed.    180 +- **696:** Distinguish a lattice vector from its monomial, and use a consistent `\eta`/`\eta_{\mathbb R}` notation.    181 +- **699, 719:** A fractional/real vector requires the real-linear extension `\eta_{\mathbb R}` (and similarly `\gamma_{\mathbb R}`)         , not the lattice map.    182 +- **748:** The `\expandafter\enddocument` wrapper is obscure and leaves the standalone conditional handling fragile; use an ordinar         y conditional closed before `\end{document}`.    183 +    184 +### Explicit editorial comments    185 +    186 +Active:    187 +    188 +- **20 — David:** Suggests moving the blurb near the beginning and referring back to it.    189 +- **36 — David:** Says `M_L` is poor notation because `M` already has a central role.    190 +- **57 — Jay:** Suggests replacing `\Psi` by `\psi` to match BCHSY.    191 +- **387 — Jay:** Flags the inconsistent roles of `M,L`, `\alpha`, and the formula `\Psi=\lceil\alpha\rceil`, and mentions Bondal–Th         omsen notation.    192 +- **503 — Jay:** Requests improved colors/offsets for the strata.    193 +- **555 — David:** Asks “where?”    194 +- **729 — Jay:** Suggests reproducing the figure and highlighting the relevant segment.    195 +    196 +Inside commented-out source:    197 +    198 +- **398 — Jay:** Notes questions about the grading group and torsion notation.    199 +- **635 — Jay:** Notes that `\alpha` was already used for a map in Lecture 6.    200 +    201 +## `sections-10.tex`    202 +    203 +### Typos and other errors    204 +    205 +- **15:** “resolution `R` of `\mathcal O_\Delta` of the diagonal” is redundant. The paragraph also alternates “Thomsen collection”         and “Bondal–Thomsen collection”; choose one term or explain the distinction.    206 +- **49:** `\RR` denotes the resolution here but denotes the real numbers elsewhere. Use `R`, `\mathbf R`, or another dedicated symb         ol.    207 +- **57:** Saying the ?ech differentials have “entries in `k`” is imprecise. The useful fact is that these are complexes of vector s         paces and hence split (with the appropriate finiteness assumptions if needed).    208 +- **62:** `\mathcal B(\mathcal E)` is undefined and inconsistent with the surrounding `\mathcal B(\mathcal F)`; it appears to be a         typo.    209 +- **67:** Recovering a graded module from all twists requires the total section functor `\Gamma_*`, not an undifferentiated ordinar         y global-sections functor. Make the graded assembly explicit.    210 +- **102:** The theorem should carry the smooth toric hypotheses in force; it is not a statement about arbitrary toric varieties as         currently worded.    211 +- **106:** The theorem is stated under a projective assumption, but the proof immediately says projectivity is not needed. State th         e intended nonprojective version and all needed hypotheses directly.    212 +    213 +### Explicit editorial comments    214 +    215 +None.    216 +    217 +## `sections-11.tex`    218 +    219 +### Typos and other errors    220 +    221 +- **6:** `\begin{document}` is commented out, causing a hard standalone compilation failure.    222 +- **10:** The introduction claims that the section defines the Cox category, but it does not; Lauren’s annotation flags this.    223 +- **22:** Choosing a basis of `\mathbb Z^n` does not also choose a basis of the sublattice `M`.    224 +- **29:** The ray vectors span `N_{\mathbb Q}`, not `\mathbb Q^n` unless a separate identification has been chosen.    225 +- **40:** “ideals describe as follows” ? “ideals described as follows.”    226 +- **149:** The notation for `G` alternates between a diagonalizable group scheme and an ordinary torus/group of points. Use the gro         up scheme consistently.    227 +- **155:** Invariance of the zero section is not, by itself, a complete definition of a `G`-linearization. State the lift/action on          the total space and its fiberwise linearity.    228 +- **164–179:** The base field silently switches from `k` to `\mathbb C`. At line 179, points of `G` are not algebra maps `\mathbb C         [t]\to\mathbb C[\operatorname{Cl}(X)]` nor elements of the group algebra in the way displayed. This proof is unfinished and should         be replaced by the character/weight-space argument.    229 +- **174:** `L_p` should be `L_d`.    230 +- **208:** `\alpha` does not lie in `\mathbb Z^d`; it is a map (or its columns lie in the appropriate lattice). The ambient rank sh         ould match the earlier exact sequence.    231 +- **225:** `\Gamma(\Sigma,V)` should be `\Gamma(\Sigma,F)`.    232 +- **230:** “may non-empty” ? “may be non-empty.”    233 +- **235:** `G` is undefined in the complement decomposition and appears to mean the complement `F`.    234 +- **239:** The final equality should involve `-\alpha_i`, not `-\nu_i`; the current expression is dimensionally inconsistent. The m         issing inequality/argument is also flagged by an annotation.    235 +- **243:** `\Gamma(\Sigma,V)` again should use `F`.    236 +- **247:** The fan dimension is governed by `\operatorname{rank}\operatorname{Cl}(S)` (or the relevant quotient space), not automat         ically by `n`.    237 +- **254:** `\input{sections/fig-Bl2P3}` fails in standalone compilation from this directory; use a path that works in both modes.    238 +- **268:** `X_d'` ? `X_{d'}`.    239 +- **284:** A “common refinement of vectors” is not defined. Refer to cones/fans generated by subsets and state the refinement relat         ion precisely.    240 +- **292–307:** In the “span” construction, requiring `q_i>0` for every `i` conflicts with zero coefficients; restrict positivity to          the support or allow `q_i\geq0`. The closing bracket is malformed (`\langle\cdots\}`). The two operations are not plainly inverse         on arbitrary ideals and cones without closure/support conditions, which must be stated.    241 +- **358:** The cone is said to lie in `\Sigma`, but the fan in this discussion is denoted `\Delta`.    242 +- **375:** `\mathbb Z^{\Sigma_1}` is inconsistent with the surrounding ray set and appears to be a leftover symbol.    243 +- **388:** The map displayed is a surjection/projection, not an inclusion.    244 +- **391:** `\operatorname{Nef}(X_p)` should be `\operatorname{Nef}(X_d)`.    245 +- **399–408:** Item (7) is ill-typed: the moving cone belongs in a fixed divisor-class space, not “in `X_d`,” and `d` lying in its         own chamber cannot by itself characterize the global moving cone. Reformulate the equivalence in the common `\operatorname{Cl}(S)_{         \mathbb R}` space.    246 +- **419:** `X_i` should be `X_d`.    247 +- **424–426:** The proposition has an empty proof; the active annotation says the necessary construction has not been written down.    248 +- **447:** The hyperplanes need not be disjoint: they can meet along lower-dimensional faces, as line 205 already acknowledges. Rep         lace “do not intersect” with the intended chamber-interior statement.    249 +    250 +### Explicit editorial comments    251 +    252 +Active:    253 +    254 +- **10 — Lauren:** Notes that the current section does not define the Cox category.    255 +- **16 — Lauren:** Asks whether torsion is harmless.    256 +- **104 — Lauren:** Asks for generators.    257 +- **106 — Lauren:** Questions the choice of letters.    258 +- **155 — Lauren:** Asks whether the GIT terminology is correct.    259 +- **170 — Lauren:** Requests elaboration.    260 +- **179 — Lauren:** Contains an ellipsis marking the incomplete argument.    261 +- **202 — Lauren:** Suggests changing basis to match the picture; also asks for a picture at the end of the displayed discussion.    262 +- **214 — Lauren:** Requests finding the relevant equation and adding a picture.    263 +- **235 — Lauren:** Questions the notation.    264 +- **239 — Lauren:** Requests an explanation/inequality.    265 +- **276 — Lauren:** Requests a citation.    266 +- **299 — Lauren:** Asks whether vectors should be bold.    267 +- **314 — Lauren:** Questions the ray notation.    268 +- **328 — Lauren:** Suggests simplifying rather than referring to 15.2.1.    269 +- **425 — Lauren:** Requests a proposition because the construction has not been written.    270 +    271 +Inside commented-out source:    272 +    273 +- **354 — Lauren:** “make prettier.”    274 +- **373 — Lauren:** Requests a citation.    275 +- **410 — Lauren:** Says to adjust for the new version.    276 +- **429 — Lauren:** Asks whether the material is needed elsewhere.    277 +- **433 — Lauren:** Notes that it changed.    278 +- **438 — Lauren:** Says the theorem was absorbed.    279 +- **455 — Daniel:** Suggests mostly citing CLS.    280 +    281 +## `sections-12-13.tex`    282 +    283 +### Typos and other errors    284 +    285 +- **9:** A colon is more appropriate than the semicolon introducing the list.    286 +- **15:** Add a space after “for” and write the range unambiguously as `0\leq i\leq n`.    287 +- **19:** Move prose punctuation outside the math expression.    288 +- **24:** A space is missing after the displayed notation.    289 +- **26:** The two-term display should include its map to `\mathcal O_\Delta` or be described as the complex whose cokernel is `\mat         hcal O_\Delta`, rather than silently calling the two free terms the whole resolution.    290 +- **46–50:** Verify the claimed four square degrees for every Hirzebruch surface under the chosen class-group basis. Standard proje         ctive-bundle exceptional collections depend on the Hirzebruch parameter, so the basis conversion and degree calculation should be s         hown.    291 +- **61:** “for `1\leq i\leq n`” is missing “for.”    292 +- **73:** “is open question” ? “is an open question”; `compelxes` ? `complexes`.    293 +- **89, 92:** `thm:BeilinsonFSEC` does not match the actual label `thm:beilinsonFSEC` (labels are case-sensitive).    294 +- **94:** “which will discuss” ? “which we will discuss.”    295 +- **98:** “Section 5.1” is ambiguous/misnumbered in the assembled notes; use a label-based reference.    296 +- **107:** “have have” repeats “have.”    297 +- **182:** “fan as” ? “fan has”; “at point” ? “at a point.”    298 +- **184:** The two factors are reversed: `\pi_1^*D^b(\mathbb P^2)` and `\pi_2^*D^b(\mathbb H_1)` are the type-correct subcategories         , not vice versa.    299 +- **190:** “need be a line” ? “need to be a line bundle.”    300 +- **214:** `\S\.VI.8` uses a malformed accent/section reference; typeset the bibliographic section normally.    301 +- **293:** Keep the weighted-projective quotient consistently as a stack if that is intended. Also, a semiorthogonal component is g         enerated by the whole pullback derived category, not merely by an unspecified list of line bundles unless a chosen exceptional coll         ection is supplied.    302 +- **299:** “This issue” ? “The issue”; line 300 also needs final punctuation.    303 +- **310:** If a wall lies in several maximal chambers, choosing `\gamma(\Gamma)` is not obviously independent of the choice. Prove         well-definedness or make the choice part of the data.    304 +- **318:** Add a final period.    305 +- **325:** In the stack setting, call the graph a substack/graph closure rather than a subvariety, or explicitly pass to coarse spa         ces.    306 +- **336:** “could be understand” ? “could be understood.”    307 +- **345:** The pushforward should be derived (`\mathbf R\pi_*`) in this derived-category discussion.    308 +- **349:** `\widetilde X` and `\mathcal X` are mixed for the same object; choose one category/object convention.    309 +- **357:** The input to `\Phi_{ji}` should be `\mathcal O_{X_i}`, not `\mathcal O_{X_j}`.    310 +- **368:** The codomain should use the same variety-versus-stack convention as the domain.    311 +- **433:** The spectral-sequence indices change from `p,q` to `s,t` without explanation.    312 +- **497:** “exceptional cases” ? “exceptional collections.”    313 +    314 +### Explicit editorial comments    315 +    316 +Active:    317 +    318 +- **180 — Michael:** Says he edited the following example.    319 +- **296 — Michael:** Asks whether the coefficient field should be `\mathbb Q` or `\mathbb R`.    320 +- **342 — Michael:** Says he added the proposition.    321 +- **364 — Michael:** Notes small edits.    322 +    323 +Inside commented-out source: none.    324 +    325 +## `sections-14-15-16.tex`    326 +    327 +### Typos and other errors    328 +    329 +- **30, 34:** The arguments of `\mathcal O(\cdots)` are missing closing parentheses.    330 +- **36, 49:** `thm:demazureL5` is unresolved because the labeled theorem is commented out in `sections-4-5.tex`.    331 +- **48:** The second `\mathcal O(-d)` should be `\mathcal O(-d')`.    332 +- **65, 78:** Use derived pushforward `\mathbf R\pi_*` in the derived-category statements.    333 +- **99:** The rounding argument has a sign error. With `d=\sum a_\rho D_\rho`, the rounded divisor representing `d'` gives `d-d'` e         ffective; the current text begins with `-d=\sum a_\rho D_\rho` and then derives `-d-d'`. Rewrite the calculation. There is also a s         tray `+f`. Both references to `rem:rounddown` are unresolved because that remark is commented out.    334 +- **110–111:** The polynomial `P` uses a two-component degree `(2,-1)`, but line 113 calls its class simply `-1`. Specify which gra         ding/class group is meant.    335 +- **173:** The two sides of the Atiyah flop are total spaces of `\mathcal O_{\mathbb P^1}(-1)^{\oplus2}`, not `\mathbb P^1`-bundles          over `\mathbb A^2`.    336 +- **186:** The inequality/order `S\geq d` is used without definition.    337 +- **190:** The displayed identities need `p^*` on one side (for example, compare `q^*\mathcal O` with `p^*\mathcal O`); as written         both sides live on different spaces.    338 +- **218:** The sentence around the chamber notation is grammatically incomplete; the annotation also flags a conflict with graph no         tation.    339 +- **229:** Distinguish a line bundle from a divisor/class rather than identifying them literally.    340 +- **241:** `Kings` ? `King's`.    341 +- **253–256:** `\mathcal O_{\operatorname{Cox}}(S)` and `\mathcal O_{\operatorname{Cox}}` are used inconsistently; define whether `         S` is a twist, a ring, or an accidental argument.    342 +- **276–277:** The Ext notation is malformed (`\operatorname{Ext}^p{D}` has no second argument/subscript). The right side of the as         serted identity should also be an Ext group, not an ordinary Hom unless `p=0`. After pushing from `X_i` to `X_j`, the structure she         af should be that of `X_j`, not `X_i`.    343 +- **281:** `prop:Demauzre` ? `prop:Demazure`.    344 +- **283:** The claimed vanishing is not merely the definition of the Bondal–Thomsen collection; it also uses an ordering/effectivit         y or cohomology-vanishing result. Cite or prove that step.    345 +- **292:** “choose dg category” ? “choose a dg category.”    346 +- **296:** “a dg enhancement” (not “an dg”); “a proof” ? “the proof” where appropriate.    347 +- **303:** Both `-\widetilde d` and `-d` are said to lie in `\operatorname{Cl}(\widetilde X)`; the latter belongs to the original c         lass group unless pulled back. A closing parenthesis is also missing in the pushforward expression.    348 +- **309, 311:** The Hom subscript should be `X_j`, matching the objects after pushforward, not `X_i`.    349 +- **315:** The cone should be the derived/dg cone in the enhanced category; state this explicitly.    350 +- **320:** The definition of `Q` needs “for all `i`” and should use thick closure if direct summands are intended.    351 +- **322:** Orthogonality in a derived category requires vanishing in all shifts (equivalently `\mathbf R\operatorname{Hom}=0`), not          only degree-zero Hom.    352 +    353 +### Explicit editorial comments    354 +    355 +Active:    356 +    357 +- **37 — Michael:** Says he changed the lemma and proof.    358 +- **99 — Michael:** Says he added the explanation and asks whether it should move to the next lecture.    359 +- **186 — Michael:** Requests explanation.    360 +- **218 — Michael:** Dislikes `\Gamma` for chambers because it conflicts with graph notation.    361 +    362 +Inside commented-out source:    363 +    364 +- **91 — Daniel/Michael:** Asks whether Lev’s simplification can be used.    365 +- **199 — Daniel:** Requests better notation.    366 +    367 +## `sections-17.tex`    368 +    369 +### Typos and other errors    370 +    371 +- **Title:** `Kings` ? `King's`.    372 +- **18:** The definition of properness is too weak if it means only that each individual Hom is finite-dimensional; normally one re         quires finite-dimensional total graded Hom (and the appropriate finiteness across shifts). `smoooth` ? `smooth`.    373 +- **20:** “Lecture 9” should be “Lecture 10” for the cited generation result.    374 +- **24:** Smoothness of a full subcategory does not follow merely from fullness. Use admissibility or the full strong exceptional c         ollection to justify the claim, and similarly justify the application of Rouquier’s inequalities.    375 +- **39:** `Thompsen` ? `Thomsen`.    376 +- **51:** The asserted equivalence with `K_\Theta(S)` may require idempotent completion and a precise definition of the minimal-com         plex category; state those qualifications.    377 +- **57:** “rays of fan” ? “rays of the fan”; replace raw double quotes with TeX quotes.    378 +- **70:** The parenthetical “resp.” clause is missing a closing parenthesis. The pushforward should be derived.    379 +- **88:** The displayed identity is tautological (`\Phi(\mathcal O)=\Phi(\mathcal O)`). The intended assertion appears to be `\Phi(         \mathcal O_{\operatorname{Cox}}(d))\cong\mathcal O_{\operatorname{Cox}}(d)`.    380 +- **97:** The Hom group is placed in `D^b(X)` even though its objects are `F(\mathcal F)` and `\mathcal D`; use the target category          of `F`.    381 +- **105:** The final claim says smoothness/projectivity are not needed, but the preceding proof uses them. Separate the stronger th         eorem from the hypotheses needed for the proof given.    382 +    383 +### Explicit editorial comments    384 +    385 +None.    386 +    387 +## `sections-18-19.tex`    388 +    389 +### Typos and other errors    390 +    391 +- **24:** “perfect complexes” should say “perfect complexes of `E`-modules.”    392 +- **26:** Clarify whether `K^-` means bounded above complexes with bounded/finitely generated homology; the present one-sided wordi         ng is incomplete.    393 +- **31:** The module `N` is undefined after the complex `C` is introduced. The complete-resolution construction also needs to be re         conciled with the truncation definition at line 39.    394 +- **41:** A complete resolution is generally unique up to homotopy equivalence, not a literal chain isomorphism. The condition `s>\         operatorname{reg}(M)` conflicts with later uses at equality.    395 +- **50:** The text says there is no truncation at regularity zero, but the definition uses `s>0`. Use `s\geq\operatorname{reg}(M)`         if equality is intended.    396 +- **54:** Prefer `0\text{th}` or “zeroth” to `0^{th}`.    397 +- **68:** The displayed equality in `K(E)` should be an isomorphism.    398 +- **73:** “right most” ? “rightmost.”    399 +- **76:** “so so” repeats “so.”    400 +- **98:** The sentence first quantifies `j` and then shadows it as a summation index. Say “for every `i`” and rename the summation         variable.    401 +- **106:** The display says `\dim H^0=1`, then the sentence says `H^j=0` for all `i,j`. Restrict the vanishing to positive degrees         (and state the range of `i`).    402 +- **117:** The truncation index changes from `r` to `s`; “This is holds” ? “This holds.”    403 +- **124–133:** The monad formula has an unbound/shadowed `j` and inconsistent indices. Replace it with one standard Beilinson-monad          formula and define every index and differential.    404 +- **145, 156:** The text says right `E`-modules, but the differential is written using left multiplication by `e_j`; fix the module         -side convention or signs/order.    405 +- **156:** `finetely` ? `finitely`.    406 +- **165:** In characteristic two, `y^2z-x^3-xz^2` has different smoothness behavior; this conflicts with the initial arbitrary-char         acteristic convention. Add `\operatorname{char}k\ne2` (and any further needed restrictions) or choose a characteristic-independent         example.    407 +- **183:** `M` is reused for a set of monomials, conflicting with its global use for the character lattice and its local use for mo         dules.    408 +- **202:** `\RR` conflicts with its established use for the real numbers.    409 +- **209:** Add a final period.    410 +- **210:** The direct-sum decomposition is malformed and shadows its quantifiers. Write a single formula with distinct indices and         a clearly stated range.    411 +- **231:** Both adjacent terms use the shift `i-1`; one of them is likely an indexing typo. Check against the Tate differential.    412 +- **234:** Homology being annihilated by the maximal ideal does not by itself imply that the displayed rows are exact. Explain the         ?ech/localization argument that kills the relevant homology.    413 +- **271:** “for all `\k`” is meaningless here; likely “for every `a\in A`.” The conclusion also switches from the quotient stack to          `D^b(X)` without explanation.    414 +- **Bibliography:** `Rob98` is present in the parent bibliography but absent from the local standalone bibliography, so the standal         one file has an unresolved citation.    415 +    416 +### Explicit editorial comments    417 +    418 +None.    419 +    420 +## Cross-references and bibliography    421 +    422 +The combined document (after temporarily correcting the Lectures 7–9 filename) reports or contains these section-level problems:    423 +    424 +- Duplicate label: `rem:localcohomology` at `sections-4-5.tex:169` and `:364`.    425 +- Missing `thm:demazureL5`: used at `sections-1-2-3.tex:214`, `sections-6.tex:237`, and `sections-14-15-16.tex:36,49`; its apparent          definition is commented out at `sections-4-5.tex:436`.    426 +- Missing `rmk:abuseNotation`: used at `sections-4-5.tex:337`; its definition is commented out at `sections-11.tex:428`.    427 +- Missing `thm:Bondal-Thomsen equivalences`: used at `sections-6.tex:35,192`; the intended theorem has `\label{.  }` at line 88.    428 +- Placeholder `sec:*****` at `sections-7-8-9-v1.tex:14`.    429 +- Case mismatch `thm:BeilinsonFSEC` versus `thm:beilinsonFSEC` at `sections-12-13.tex:92`.    430 +- Missing `rem:rounddown`: used twice at `sections-14-15-16.tex:99`; its definition is commented out at `sections-4-5.tex:440`.    431 +- Misspelled `prop:Demauzre` at `sections-14-15-16.tex:281`; the defined label is `prop:Demazure`.    432 +- Missing parent-bibliography keys: `Berkesch2026Nonsimplicial`, `GS1`, and `GS2`. The first exists only in the section-local datab         ase; the latter two were not found in either database.    433 +- Missing section-local key: `Rob98`, used in `sections-18-19.tex` and present only in the parent database.    434 +    435 +## Notation inconsistencies across the notes    436 +    437 +- **Base field:** `\k`, `\kk`, `k`, `\Bbbk`, and occasionally `\mathbb C` are used for the ground field. Choose one macro; state ex         plicitly whenever specialization to `\mathbb C` is necessary.    438 +- **Real numbers versus named complexes:** `\RR` denotes `\mathbb R` globally but is reused for a diagonal resolution in Lecture 10          and a BGG/Tate object in Lectures 1–3 and 18–19.    439 +- **Variety versus quotient stack:** `X`, `\mathcal X`, `\widetilde X`, and quotient-stack notation are interchanged, sometimes acr         oss a functor’s source and target. This is especially visible in Lectures 12–16 and 18–19. Fix separate macros for coarse toric var         ieties and Cox quotient stacks.    440 +- **The group `G`:** Lecture 4 writes `\operatorname{Hom}(\operatorname{Cl}(X),k^*)`, while Lecture 11 writes `\operatorname{Spec}k         [\operatorname{Cl}(X)]`; elsewhere `G` also becomes an ordinary set of complex points. Use the diagonalizable group scheme, then wr         ite `G(k)` when points are intended.    441 +- **The divisor map `\alpha`:** It appears with a minus sign in Lecture 4, without a stable sign convention later, as an inclusion         in Lecture 7, and as a map already reserved in Lecture 6. Fix a single exact sequence and sign, for example `M\xrightarrow{m\mapsto         (\langle m,u_\rho\rangle)_\rho}\mathbb Z^{\Sigma(1)}`; reserve another letter for inclusions.    442 +- **Lattices `M,L,N`:** `M` is the character lattice globally, a module in the BGG sections, and a monomial set in Lecture 18. In L         ecture 7, `M` and `L` alternate between abstract lattices and their images in coordinate lattices. Use distinct names for lattices,          modules, and monomial bases and distinguish `L` from `L_{\mathbb R}`.    443 +- **Degree/class versus divisor vector:** Expressions such as `S(-\Psi(A))`, `D-E=m`, and applying a functional to `\mathcal O(D)`         conflate a divisor vector, its class in `\operatorname{Cl}(X)`, a lattice element, and the associated line bundle. Use `\deg(D)` (o         r brackets `[D]`) before forming graded shifts.    444 +- **Rounding maps:** `\Psi`, `\psi`, `\lceil\alpha\rceil`, floor, and round-down notation are not synchronized. Define the real-lin         ear map first, then write componentwise rounding and its induced class explicitly. The identity at Lecture 7 line 78 currently uses          the wrong sign.    445 +- **Bondal–Thomsen terminology:** “Thomsen collection,” “Bondal–Thomsen collection,” `\Theta`, `\Theta_X`, `\operatorname{BT}(X)`,         and `\mathsf{BT}` are used for related objects without stating whether they are divisor representatives, class-group elements, or l         ine bundles. Pick one symbol for the class set and one for the corresponding line bundles.    446 +- **BGG functors:** `L,R`, `\mathbf L,\mathbf R`, homological subscripts, and cohomological superscripts are mixed within Lectures         1–3 and again in Lectures 18–19. Choose one grading convention and specify left/right `E`-modules once.    447 +- **Cox ring notation:** The ring is variously `S`, `S_X`, and `\operatorname{Cox}(X)`; `\mathcal O_{\operatorname{Cox}}(d)` someti         mes denotes a graded free module and sometimes a sheaf/line bundle. Reserve `S(d)` for graded modules and `\mathcal O_{\mathcal X}(         d)` for associated line bundles.    448 +- **Fan/chamber notation:** `\Sigma`, `\Delta`, `\Gamma`, and `F` change roles between fans, chambers, graphs, and complements. Lec         ture 11 even switches `\Delta` back to `\Sigma`, while Lecture 14 notes that `\Gamma` conflicts with graph notation. A uniform conv         ention would eliminate several type errors.    449 +- **Maximal-cone notation:** Both `\Sigma_{\max}` and `\Sigma_{\mathrm{max}}` occur.    450 +- **Derived functors:** Ordinary `\pi_*`, `\operatorname{Hom}`, and equality signs are often used inside derived-category statement         s where `\mathbf R\pi_*`, `\mathbf R\operatorname{Hom}`/all shifts, and isomorphism are intended.    451 +- **Exceptional-collection vocabulary:** “exceptional,” “strong,” “full,” and “semiorthogonal” are occasionally interchanged or ass         igned to the wrong vanishing condition. Fix the definitions early and refer back to them.    452 +- **Labels:** The project mixes stable identifiers with labels containing spaces, apostrophes, formulas, prose, and even `.  `. Sta         ndardize on forms such as `thm:bondal-thomsen-equivalences`; this will also make cross-file references easier to audit.    453 +    454 +## Suggested repair order    455 +    456 +1. Decide whether `Notes.tex` or `main_v2.tex` is the intended master file and fix the Lectures 7–9 input name.    457 +2. Repair the standalone wrappers, restore `\begin{document}` in Lecture 11, and remove the unsafe `\i` redefinition.    458 +3. Fix missing/duplicate labels and bibliography keys so a combined build is diagnostically clean.    459 +4. Set the global conventions for the field, `\alpha`, divisor classes/degrees, varieties versus stacks, and BGG grading.    460 +5. Address the mathematically substantive items—especially the derived-category definition, minimal-resolution uniqueness, Lecture         6 sign/degree computations, Lecture 7 rounding signs, Lecture 11 GIT equivalences, and the derived-functor type errors—before copy-         editing the remaining prose.
+
+      1 +# Proofreading report for the section files
+      2 +
+      3 +Line numbers refer to the current source files. I treated only the explicit author-annotation macros (`\daniel`, `\michael`, `\maya
+         `, `\mahrud`, `\lauren`, `\david`, and `\jay`) as editorial comments, as requested. I list active annotations and annotations insid
+         e `%`-commented source separately.
+      4 +
+      5 +## Project-wide compilation and assembly issues
+      6 +
+      7 +- `../main_v2.tex` is not currently a combined-notes driver: it does not `\input` any of the ten section files. It is a standalone
+         meeting program/outline. The file that assembles the notes is `../Notes.tex`.
+      8 +- `../Notes.tex` asks for `sections/sections-7-8-9.tex`, but the file on disk is `sections-7-8-9-v1.tex`. LaTeX reports the missing
+          file but continues, so Lectures 7–9 are silently absent from the resulting combined PDF. Creating a temporary correctly named copy
+          makes the combined document include them.
+      9 +- `sections-11.tex:6` comments out `\begin{document}`, so that file cannot compile separately.
+     10 +- `sections-11.tex:254` inputs `sections/fig-Bl2P3`. This path works when compilation starts in the parent directory, but not when
+         this section is compiled from the `sections` directory. A path conditional or a local path is needed for genuinely independent comp
+         ilation.
+     11 +- `preamble.tex:199` redefines the standard text command `\i` to mean `\iota`. This breaks bibliography names containing dotless `\
+         i` and gives a hard `Missing $ inserted` error in the standalone build of `sections-1-2-3.tex`. The same redefinition at `../main_v
+         2.tex:175` breaks that document. The parent `../preamble.tex` already has a conditional form that avoids this problem.
+     12 +- Most standalone wrappers close the conditional after `\end{document}`. TeX never reads that closing `\fi`, producing `\end occurr
+         ed when \ifdefined ... was incomplete`. Put `\fi` before `\end{document}`. This affects `sections-4-5.tex`, `sections-6.tex`, `sect
+         ions-10.tex`, `sections-12-13.tex`, `sections-14-15-16.tex`, `sections-17.tex`, and `sections-18-19.tex`; `sections-7-8-9-v1.tex` u
+         ses a different but similarly fragile `\expandafter\enddocument` ending.
+     13 +- The combined build has a duplicate label, several unresolved references, and missing bibliography keys; details are listed below
+         and summarized in "Cross-references and bibliography."
+     14 +
+     15 +## `sections-1-2-3.tex`
+     16 +
+     17 +### Typos and other errors
+     18 +
+     19 +- **13:** "Cech" should be "?ech" (`\v{C}ech`).
+     20 +- **15:** "It will turn out, moreover …" is an unfinished sentence.
+     21 +- **20:** A blue provisional standing assumption remains in the notes. "Arbitrary characteristic" also conflicts with the character
+         istic-two issue in `sections-18-19.tex:165`.
+     22 +- **34:** `quasi-isomoprhism` ? `quasi-isomorphism`; `H^if` needs a space after the displayed expression.
+     23 +- **39–45:** The definition of the derived category is not correct as written. Its morphisms are not simply chain maps with quasi-i
+         somorphisms inverted; one should first pass to the homotopy category (or explicitly account for chain homotopy) and then localize.
+         The more accurate version immediately below is commented out.
+     24 +- **49:** The closing quotation mark after "diagram" is a raw double quote rather than TeX closing quotes.
+     25 +- **82–88:** "We say a functor … that … is exact" is grammatically malformed; use "A functor … is exact if …".
+     26 +- **121:** "if `f` is morphism" needs "a". The assertion that derived pushforward stays in the bounded coherent category also needs
+          the usual properness/coherence hypotheses.
+     27 +- **168:** The displayed resolution directly gives the collection `\mathcal O(-n),\ldots,\mathcal O`; the text claims `\mathcal O,\
+         ldots,\mathcal O(n)`. Twisting fixes this, but that step should be stated.
+     28 +- **195:** The claimed equivalence between generation-based semiorthogonal decompositions and functorial filtrations needs admissib
+         ility/idempotent-completeness hypotheses.
+     29 +- **202:** The definition displays vanishing for every nonzero shift but then says only "all higher Ext groups." For arbitrary deri
+         ved objects, negative shifts also matter.
+     30 +- **214:** "which will see" ? "which we will see." The reference `thm:demazureL5` is unresolved.
+     31 +- **230:** The prose reverses the roles of the two checks: vanishing when `i>j` gives semiorthogonality/exceptionality, while vanis
+         hing of positive Exts when `i\leq j` gives strength.
+     32 +- **243:** A comma is missing between `\mathcal O(-n+1)` and the ellipsis.
+     33 +- **249–255:** The uniqueness corollary is false without "minimal" and suitable boundedness/category qualifications: arbitrary cont
+         ractible summands destroy uniqueness. The proof also calls the line bundles graded `S`-modules, and `Fully faithfulness` should be
+         `Full faithfulness`.
+     34 +- **254:** `K` is described as complexes of graded modules whose terms are line bundles; those are different categories. Say either
+          free graded modules or their associated line bundles.
+     35 +- **258:** "identified a minimal free complexes" ? "identified minimal free complexes" (or "a minimal free complex"). The sequence
+         `S(-n),S(-n-1),\ldots,S` should be `S(-n),S(-n+1),\ldots,S`.
+     36 +- **266:** `thhink` ? `think`.
+     37 +- **321:** "meaning that that" repeats "that." The field is denoted both `\k` and `\kk`. Calling `E` noncommutative is not uniforml
+         y correct under the standing arbitrary-characteristic assumption; in characteristic two the displayed skew-commutation relation bec
+         omes commutation, although the exterior algebra still has square-zero generators.
+     38 +- **328–365:** Two versions of the BGG functors are given, first homologically and then cohomologically, with incompatible bold/unb
+         old notation. Choose one convention and state the indexing once.
+     39 +- **333:** `\mathbf L(P)` is said to be a complex of free `E`-modules, but the formula makes it a complex of free `S`-modules.
+     40 +- **344–348:** The example purporting to compute `\mathbf R(S)` repeatedly uses an undefined `M` (`\dim M_i`, `\mathbf R(M)`) inste
+         ad of `S`.
+     41 +- **352:** The summation index is inconsistent: `\sum_{i=0}^n x_j\otimes e_j` should sum over `j` (or use `i` throughout).
+     42 +- **356:** "a natural isomorphisms" ? "natural isomorphisms." Also distinguish a literal isomorphism from a quasi-isomorphism, and
+         specify the differential on `S\otimes E`.
+     43 +- **368:** "finitely generated `S`-modules are rarely finitely generated" should say they are rarely finite-dimensional over the fi
+         eld. Consequently the free rank in `\mathbf R(M)` may be infinite.
+     44 +- **372:** The Tor formula has a free `j` on the right and no matching graded-component index on the left; it needs to be rewritten
+          with all indices quantified.
+     45 +- **375–387:** The theorem returns to unbold `L,R` after the bold cohomological definitions, so it is unclear which functors and in
+         dexing convention are intended.
+     46 +- **Standalone build:** The local `\i` redefinition causes the bibliography hard error described above.
+     47 +
+     48 +### Explicit editorial comments
+     49 +
+     50 +Active:
+     51 +
+     52 +- **12 @Daniel:** Add introductory text; mentions free complexes modulo homotopy and a basis metaphor. The annotation itself has `
+         combe` ? `come`.
+     53 +- **17 @Daniel:** Add ideas about free complexes modulo homotopy and the vector-space-basis metaphor.
+     54 +- **20 @Daniel:** Add any further standing assumptions.
+     55 +
+     56 +Inside commented-out source:
+     57 +
+     58 +- **163 @Mahrud:** Suggests an illuminating Macaulay2 computation of the actual section.
+     59 +- **244 @Michael:** Asks for more explanation of why the functor can be applied termwise and relates this to the `E^1` page.
+     60 +
+     61 +## `sections-4-5.tex`
+     62 +
+     63 +### Typos and other errors
+     64 +
+     65 +- **14:** "does indicate" should be "does not indicate."
+     66 +- **16:** `should up` ? `show up`; "lots of lots of" repeats words; "Hirzebruch surface" should be plural in context.
+     67 +- **32:** A fan is not a union of three cones in the stated sense; say it consists of the three cones and all their faces.
+     68 +- **44–46:** `\alpha(m)` is defined using `\langle m,-u_\rho\rangle` but then called the principal divisor of `\chi^m`. Under the s
+         tandard convention `\operatorname{div}(\chi^m)=\sum\langle m,u_\rho\rangle D_\rho`, this is its negative. Declare the opposite conv
+         ention or remove the minus sign. This sign also affects later files.
+     69 +- **61, 63:** Both `\Sigma_{\max}` and `\Sigma_{\mathrm{max}}` are used.
+     70 +- **75:** `G=\operatorname{Hom}(\operatorname{Cl}(X),\Bbbk^*)` describes points rather than the diagonalizable group scheme. This d
+         iffers from `G=\operatorname{Spec} k[\operatorname{Cl}(X)]` in Lecture 11 and matters with torsion or positive characteristic.
+     71 +- **90:** The rays `(1,0),(0,1),(-1,-2)` have positive relation with weights `(1,2,1)`, not `(1,1,2)` in the listed variable order.
+          Reorder/relabel the rays or the variables. The accompanying picture also appears to draw the negative diagonal as `(-1,-1)` rather
+          than `(-1,-2)`.
+     72 +- **141–145:** A point of the coarse quotient does not itself have the indicated stabilizer; the stabilizer belongs to the group ac
+         tion or quotient stack. Rephrase accordingly.
+     73 +- **169, 364:** `rem:localcohomology` is defined twice, causing a duplicate-label warning, and the remarks substantially duplicate
+         one another.
+     74 +- **181:** The active annotation correctly flags that the preceding general paragraph can fail because the relevant modules need no
+         t be finitely generated. The claim should be restricted or repaired before publication.
+     75 +- **184–199:** Check the scope of the smoothness proposition and its proof: the subsequent prose says the analogous statement holds
+          for simplicial toric varieties, while an annotation says the proposition is probably only simplicial. State precisely whether smoo
+         th, simplicial, or general toric varieties are intended and whether normalization is involved.
+     76 +- **188:** `Berkesch2026Nonsimplicial` is absent from the parent bibliography used by the combined notes.
+     77 +- **212:** "is a realized" ? "is realized"; "ideals which yields" ? "ideals which yield."
+     78 +- **214:** "a subtlety that absent" ? "a subtlety that is absent."
+     79 +- **311:** "there a number" ? "there are a number" (or "there is a number").
+     80 +- **324:** A space is missing after the display before "Let."
+     81 +- **327:** The set-builder expression for `G` is malformed: it needs a colon before the condition, not `\in (k^*)^2`. The intermedi
+         ate complement calculation omits one excluded component until the final line, so the derivation is hard to follow.
+     82 +- **337:** `rmk:abuseNotation` is unresolved because its definition is commented out in `sections-11.tex`.
+     83 +- **368:** "is is" repeats "is."
+     84 +- **422:** `z^{\pm}` ? `z^{\pm1}`.
+     85 +- **424–428:** "zero the sheaf" ? "the zero sheaf." The text says item (2) of the proposition fails, but item (2) is the always-val
+         id implication; the intended failure appears to be the converse/item (3).
+     86 +- **436:** The theorem carrying `thm:demazureL5` is commented out although that label is cited in several files.
+     87 +- **440:** The remark carrying `rem:rounddown` is commented out although it is cited in `sections-14-15-16.tex`.
+     88 +- **450–452:** Under the global arbitrary-characteristic convention, simpliciality alone does not guarantee a Deligne–Mumford/tame
+         quotient stack when stabilizer orders are divisible by the characteristic (for example, `\mu_2` in characteristic two). Add the nee
+         ded characteristic/tameness hypothesis.
+     89 +- **452:** Citation keys `GS1` and `GS2` are absent from both section and parent bibliography databases.
+     90 +- **Standalone build:** The PDF is produced, but duplicate labels, missing citations, and the unmatched conditional make the build
+         non-clean.
+     91 +
+     92 +### Explicit editorial comments
+     93 +
+     94 +Active:
+     95 +
+     96 +- **181 @Daniel:** Says the paragraph is subtly wrong in general because finite generation can be lost and asks that it be fixed o
+         r discussed.
+     97 +- **341 @Daniel:** Notes that the useful "abuse of notation" remark is commented out and that the lecture is long.
+     98 +
+     99 +Inside commented-out source:
+    100 +
+    101 +- **36 @Mahrud:** Asks whether projective, semiprojective, and quasiprojective should be defined.
+    102 +- **203 @Mahrud/Daniel:** Mahrud asks to locate Michael’s email; Daniel explains that `J` is not generally radical, suspects the p
+         roposition is simplicial-only, and cites joint work. The annotation contains `certiain` ? `certain`.
+    103 +- **377 @Daniel:** Asks whether `B`-saturation is used.
+    104 +- **380 @Daniel:** Repeats the concern about loss of finite generation.
+    105 +- **443 @Daniel:** Suggests moving the rational version elsewhere and adding an example.
+    106 +- **470 @Mahrud:** Asks which Vistoli paper is meant.
+    107 +
+    108 +## `sections-6.tex`
+    109 +
+    110 +### Typos and other errors
+    111 +
+    112 +- **18–20:** Extending `\alpha_i` rationally gives a map to `\mathbb Q`, not to `\mathbb Q^n` for each individual `i`.
+    113 +- **35, 192:** `thm:Bondal-Thomsen equivalences` is unresolved because the theorem at line 88 has the label `.  ` rather than this
+         name.
+    114 +- **58:** `(a,b)\in M\otimes\mathbb Q^2` should be `(a,b)\in M\otimes\mathbb Q` or simply `(a,b)\in\mathbb Q^2`, depending on the i
+         ntended identification.
+    115 +- **81:** The set-builder notation for the zonotope is malformed; separate the sum from the conditions on the coefficients.
+    116 +- **88:** `\label{.  }` is invalid/meaningless and is the source of later broken references.
+    117 +- **106:** Replace the comma after the displayed expression with suitable punctuation. The argument also writes `D-E=m`; with the e
+         arlier exact sequence it should be `D-E=\alpha(m)` (or explicitly identify `M` with its image).
+    118 +- **112:** A colon is missing before the displayed local calculation.
+    119 +- **115:** A smooth toric affine chart need not be `\mathbb A^n`; it can contain torus factors (`\mathbb A^r\times\mathbb G_m^{n-r}
+         `). The patching argument should be stated in that generality.
+    120 +- **122:** `N^n/\ell N^n\cong(\mathbb Z/\ell)^n` is false notation: use `\mathbb Z^n/\ell\mathbb Z^n`. In positive characteristic,
+         phrase the kernel group-scheme statement carefully.
+    121 +- **141:** `O_X` should use the document’s `\cO_X` notation.
+    122 +- **151:** `\operatorname{Div}(X)=\mathbb Z^n` should be the group of torus-invariant divisors, not all Weil divisors.
+    123 +- **158:** The splitting/basis assertion uses freeness of `\operatorname{Cl}(X)`; state that this follows from the smooth hypothese
+         s being used.
+    124 +- **161:** `m` is applied to `\mathcal O(\cdots)` rather than to its class/degree.
+    125 +- **163:** A comma is missing after the multi-index condition.
+    126 +- **177:** `s(t^{\ell a})` has a spurious `a`; the surrounding calculation requires `s(t^\ell)`.
+    127 +- **187:** "class group of `\operatorname{Cl}(X)`" ? "class group `\operatorname{Cl}(X)`."
+    128 +- **188:** Restriction does not literally "delete the line bundles" attached to new rays. Explain that the corresponding divisors/c
+         lasses restrict or trivialize and that the grading descends through the appropriate quotient.
+    129 +- **195:** If `\deg D=-\ell e`, then `e=-\deg(D/\ell)`, not `+\deg(D/\ell)`.
+    130 +- **203:** Rounding down is defined for a chosen torus-invariant `\mathbb Q`-divisor presentation, not intrinsically for a class wi
+         thout choosing representatives; say what is being rounded.
+    131 +- **225, 228:** A line bundle is not itself "the negative of an effective divisor"; distinguish the divisor, its class, and the ass
+         ociated line bundle.
+    132 +- **237:** `thm:demazureL5` is unresolved; the likely target is `prop:Demazure` or the commented theorem in `sections-4-5.tex`.
+    133 +- Several labels contain spaces or punctuation (for example `lem:Achinger's Lemma`), which is fragile and inconsistent with most of
+          the project.
+    134 +- **Standalone build:** The content compiles, but the conditional wrapper remains unmatched.
+    135 +
+    136 +### Explicit editorial comments
+    137 +
+    138 +Active: none.
+    139 +
+    140 +Inside commented-out source:
+    141 +
+    142 +- **201 @Michael:** Notes similarity to King’s Lemma 2.20 and asks whether the result is really easy.
+    143 +
+    144 +## `sections-7-8-9-v1.tex`
+    145 +
+    146 +### Typos and other errors
+    147 +
+    148 +- **Filename/project assembly:** `../Notes.tex` requests `sections-7-8-9.tex`, so this entire file is omitted from the combined not
+         es.
+    149 +- **14:** `sec:*****` is a placeholder and unresolved reference.
+    150 +- **18:** Replace raw double quotation marks with TeX quotes. "the same graded ring as Cox ring" needs "as their/the Cox ring."
+    151 +- **23:** "a toric inclusion defined by" is too broad as stated; qualify it as the dense-torus/lattice-ideal description or give th
+         e hypotheses under which the closure is defined this way.
+    152 +- **35:** "an an" repeats "an," and the sentence contains a stray malformed ` [\subset`.
+    153 +- **49:** The hyperplane notation needs both indices, for example `H_{i,j}`; the current `H_i` conflicts with the displayed depende
+         nce on `j`.
+    154 +- **61:** The hyperplane subdivision lives in `L_{\mathbb R}`, not in the lattice `L` itself.
+    155 +- **70, 99, 118, 182, 246:** Labels contain spaces, braces, or long prose. They may compile but are fragile; replace them with stab
+         le colon-separated identifiers.
+    156 +- **78:** The sign/rounding identity is wrong: in general `-\lceil p\rceil=\lfloor -p\rfloor`, not `\lfloor p\rfloor`. Apply the de
+         gree map only after correcting the sign.
+    157 +- **88–89:** A space is missing after a period, followed by a comma splice.
+    158 +- **122:** `fig1}.In` needs a space after the period.
+    159 +- **160–166:** The summands are labeled `S(\ell(A))`, whereas the complex was defined with shifts `S(-\Psi(A))`. If `\ell(A)` is me
+         ant to abbreviate the divisor/degree, define it and preserve the sign.
+    160 +- **200:** The point `(3,2)` should be `(3,-2)` in the illustrated arrangement.
+    161 +- **205:** Replace raw double quotation marks with TeX opening/closing quotes.
+    162 +- **209:** The sentence needs a final period.
+    163 +- **293:** The quotient `L_{\mathbb R}/L` is a real torus/circle; `L_{\mathbb R}` alone is not a circle.
+    164 +- **382:** A divisor vector `\Psi(A)` is conflated with its class/degree. A graded summand should be written using `-\deg\Psi(A)`,
+         not as `S(-\Psi(A))` unless that abuse is explicitly declared.
+    165 +- **387–389:** The active annotations identify a central notation problem: `M,L` are used both as sublattices of coordinate lattice
+         s and as abstract lattices, `\alpha` is sometimes an inclusion and sometimes the divisor map, and `\Psi=\lceil\alpha\rceil` needs d
+         omains. Write, for example, `\Psi(p)=\lceil\alpha_{\mathbb R}(p)\rceil`.
+    166 +- **430:** The ceiling operation is applied to a displayed two-coordinate vector, even though the embedding used by `\Psi` lands in
+          `\mathbb R^4`. Display the embedded vector before rounding.
+    167 +- **518–520:** The claim that the varieties have "the same Cox ring" is incompatible with examples in which rays are omitted. Say p
+         recisely whether they share an ambient polynomial ring, ray configuration, grading, or only a common master construction.
+    168 +- **526:** For `a\in M`, the monomial should be `x^{\alpha(a)}`, not `x^a`, unless `M` has explicitly been identified with its imag
+         e in `\mathbb Z^n`.
+    169 +- **531:** The lattice defining the graph sits in `\mathbb Z^n\times\mathbb Z^n` via the two `\alpha` maps; it is not literally a s
+         ublattice of `M\times M` as displayed.
+    170 +- **552:** "left hand side" should identify the first factor. The Bondal–Thomsen set is elsewhere an image of `M_{\mathbb R}/M`, no
+         t of `M` itself.
+    171 +- **559:** The line-bundle/equivalence statement needs the smooth or quotient-stack hypotheses; on a merely simplicial coarse varie
+         ty, the indicated classes need not all be line bundles.
+    172 +- **614:** The displayed formula has mismatched parentheses and malformed math delimiters.
+    173 +- **622:** Finite generation follows from finiteness of the relevant cell orbits/degree representatives, not merely from taking an
+         intersection; supply the missing reason.
+    174 +- **664:** `\]\.` has a stray backslash before the period.
+    175 +- **672:** "a a" repeats "a"; the sentence is also a run-on.
+    176 +- **678:** "elements in a" is incomplete; name the set or ring.
+    177 +- **683:** The regular-sequence quotient argument needs its hypotheses stated rather than asserted for the displayed ideal without
+         explanation.
+    178 +- **687:** `A` is introduced as a semigroup, not as the quotient ring `S/I`.
+    179 +- **693:** `\eta_(` is malformed.
+    180 +- **696:** Distinguish a lattice vector from its monomial, and use a consistent `\eta`/`\eta_{\mathbb R}` notation.
+    181 +- **699, 719:** A fractional/real vector requires the real-linear extension `\eta_{\mathbb R}` (and similarly `\gamma_{\mathbb R}`)
+         , not the lattice map.
+    182 +- **748:** The `\expandafter\enddocument` wrapper is obscure and leaves the standalone conditional handling fragile; use an ordinar
+         y conditional closed before `\end{document}`.
+    183 +
+    184 +### Explicit editorial comments
+    185 +
+    186 +Active:
+    187 +
+    188 +- **20 @David:** Suggests moving the blurb near the beginning and referring back to it.
+    189 +- **36 @David:** Says `M_L` is poor notation because `M` already has a central role.
+    190 +- **57 @Jay:** Suggests replacing `\Psi` by `\psi` to match BCHSY.
+    191 +- **387 @Jay:** Flags the inconsistent roles of `M,L`, `\alpha`, and the formula `\Psi=\lceil\alpha\rceil`, and mentions Bondal–Th
+         omsen notation.
+    192 +- **503 @Jay:** Requests improved colors/offsets for the strata.
+    193 +- **555 @David:** Asks "where?"
+    194 +- **729 @Jay:** Suggests reproducing the figure and highlighting the relevant segment.
+    195 +
+    196 +Inside commented-out source:
+    197 +
+    198 +- **398 @Jay:** Notes questions about the grading group and torsion notation.
+    199 +- **635 @Jay:** Notes that `\alpha` was already used for a map in Lecture 6.
+    200 +
+    201 +## `sections-10.tex`
+    202 +
+    203 +### Typos and other errors
+    204 +
+    205 +- **15:** "resolution `R` of `\mathcal O_\Delta` of the diagonal" is redundant. The paragraph also alternates "Thomsen collection"
+         and "Bondal–Thomsen collection"; choose one term or explain the distinction.
+    206 +- **49:** `\RR` denotes the resolution here but denotes the real numbers elsewhere. Use `R`, `\mathbf R`, or another dedicated symb
+         ol.
+    207 +- **57:** Saying the ?ech differentials have "entries in `k`" is imprecise. The useful fact is that these are complexes of vector s
+         paces and hence split (with the appropriate finiteness assumptions if needed).
+    208 +- **62:** `\mathcal B(\mathcal E)` is undefined and inconsistent with the surrounding `\mathcal B(\mathcal F)`; it appears to be a
+         typo.
+    209 +- **67:** Recovering a graded module from all twists requires the total section functor `\Gamma_*`, not an undifferentiated ordinar
+         y global-sections functor. Make the graded assembly explicit.
+    210 +- **102:** The theorem should carry the smooth toric hypotheses in force; it is not a statement about arbitrary toric varieties as
+         currently worded.
+    211 +- **106:** The theorem is stated under a projective assumption, but the proof immediately says projectivity is not needed. State th
+         e intended nonprojective version and all needed hypotheses directly.
+    212 +
+    213 +### Explicit editorial comments
+    214 +
+    215 +None.
+    216 +
+    217 +## `sections-11.tex`
+    218 +
+    219 +### Typos and other errors
+    220 +
+    221 +- **6:** `\begin{document}` is commented out, causing a hard standalone compilation failure.
+    222 +- **10:** The introduction claims that the section defines the Cox category, but it does not; Lauren’s annotation flags this.
+    223 +- **22:** Choosing a basis of `\mathbb Z^n` does not also choose a basis of the sublattice `M`.
+    224 +- **29:** The ray vectors span `N_{\mathbb Q}`, not `\mathbb Q^n` unless a separate identification has been chosen.
+    225 +- **40:** "ideals describe as follows" ? "ideals described as follows."
+    226 +- **149:** The notation for `G` alternates between a diagonalizable group scheme and an ordinary torus/group of points. Use the gro
+         up scheme consistently.
+    227 +- **155:** Invariance of the zero section is not, by itself, a complete definition of a `G`-linearization. State the lift/action on
+          the total space and its fiberwise linearity.
+    228 +- **164–179:** The base field silently switches from `k` to `\mathbb C`. At line 179, points of `G` are not algebra maps `\mathbb C
+         [t]\to\mathbb C[\operatorname{Cl}(X)]` nor elements of the group algebra in the way displayed. This proof is unfinished and should
+         be replaced by the character/weight-space argument.
+    229 +- **174:** `L_p` should be `L_d`.
+    230 +- **208:** `\alpha` does not lie in `\mathbb Z^d`; it is a map (or its columns lie in the appropriate lattice). The ambient rank sh
+         ould match the earlier exact sequence.
+    231 +- **225:** `\Gamma(\Sigma,V)` should be `\Gamma(\Sigma,F)`.
+    232 +- **230:** "may non-empty" ? "may be non-empty."
+    233 +- **235:** `G` is undefined in the complement decomposition and appears to mean the complement `F`.
+    234 +- **239:** The final equality should involve `-\alpha_i`, not `-\nu_i`; the current expression is dimensionally inconsistent. The m
+         issing inequality/argument is also flagged by an annotation.
+    235 +- **243:** `\Gamma(\Sigma,V)` again should use `F`.
+    236 +- **247:** The fan dimension is governed by `\operatorname{rank}\operatorname{Cl}(S)` (or the relevant quotient space), not automat
+         ically by `n`.
+    237 +- **254:** `\input{sections/fig-Bl2P3}` fails in standalone compilation from this directory; use a path that works in both modes.
+    238 +- **268:** `X_d'` ? `X_{d'}`.
+    239 +- **284:** A "common refinement of vectors" is not defined. Refer to cones/fans generated by subsets and state the refinement relat
+         ion precisely.
+    240 +- **292–307:** In the "span" construction, requiring `q_i>0` for every `i` conflicts with zero coefficients; restrict positivity to
+          the support or allow `q_i\geq0`. The closing bracket is malformed (`\langle\cdots\}`). The two operations are not plainly inverse
+         on arbitrary ideals and cones without closure/support conditions, which must be stated.
+    241 +- **358:** The cone is said to lie in `\Sigma`, but the fan in this discussion is denoted `\Delta`.
+    242 +- **375:** `\mathbb Z^{\Sigma_1}` is inconsistent with the surrounding ray set and appears to be a leftover symbol.
+    243 +- **388:** The map displayed is a surjection/projection, not an inclusion.
+    244 +- **391:** `\operatorname{Nef}(X_p)` should be `\operatorname{Nef}(X_d)`.
+    245 +- **399–408:** Item (7) is ill-typed: the moving cone belongs in a fixed divisor-class space, not "in `X_d`," and `d` lying in its
+         own chamber cannot by itself characterize the global moving cone. Reformulate the equivalence in the common `\operatorname{Cl}(S)_{
+         \mathbb R}` space.
+    246 +- **419:** `X_i` should be `X_d`.
+    247 +- **424–426:** The proposition has an empty proof; the active annotation says the necessary construction has not been written down.
+    248 +- **447:** The hyperplanes need not be disjoint: they can meet along lower-dimensional faces, as line 205 already acknowledges. Rep
+         lace "do not intersect" with the intended chamber-interior statement.
+    249 +
+    250 +### Explicit editorial comments
+    251 +
+    252 +Active:
+    253 +
+    254 +- **10 @Lauren:** Notes that the current section does not define the Cox category.
+    255 +- **16 @Lauren:** Asks whether torsion is harmless.
+    256 +- **104 @Lauren:** Asks for generators.
+    257 +- **106 @Lauren:** Questions the choice of letters.
+    258 +- **155 @Lauren:** Asks whether the GIT terminology is correct.
+    259 +- **170 @Lauren:** Requests elaboration.
+    260 +- **179 @Lauren:** Contains an ellipsis marking the incomplete argument.
+    261 +- **202 @Lauren:** Suggests changing basis to match the picture; also asks for a picture at the end of the displayed discussion.
+    262 +- **214 @Lauren:** Requests finding the relevant equation and adding a picture.
+    263 +- **235 @Lauren:** Questions the notation.
+    264 +- **239 @Lauren:** Requests an explanation/inequality.
+    265 +- **276 @Lauren:** Requests a citation.
+    266 +- **299 @Lauren:** Asks whether vectors should be bold.
+    267 +- **314 @Lauren:** Questions the ray notation.
+    268 +- **328 @Lauren:** Suggests simplifying rather than referring to 15.2.1.
+    269 +- **425 @Lauren:** Requests a proposition because the construction has not been written.
+    270 +
+    271 +Inside commented-out source:
+    272 +
+    273 +- **354 @Lauren:** "make prettier."
+    274 +- **373 @Lauren:** Requests a citation.
+    275 +- **410 @Lauren:** Says to adjust for the new version.
+    276 +- **429 @Lauren:** Asks whether the material is needed elsewhere.
+    277 +- **433 @Lauren:** Notes that it changed.
+    278 +- **438 @Lauren:** Says the theorem was absorbed.
+    279 +- **455 @Daniel:** Suggests mostly citing CLS.
+    280 +
+    281 +## `sections-12-13.tex`
+    282 +
+    283 +### Typos and other errors
+    284 +
+    285 +- **9:** A colon is more appropriate than the semicolon introducing the list.
+    286 +- **15:** Add a space after "for" and write the range unambiguously as `0\leq i\leq n`.
+    287 +- **19:** Move prose punctuation outside the math expression.
+    288 +- **24:** A space is missing after the displayed notation.
+    289 +- **26:** The two-term display should include its map to `\mathcal O_\Delta` or be described as the complex whose cokernel is `\mat
+         hcal O_\Delta`, rather than silently calling the two free terms the whole resolution.
+    290 +- **46–50:** Verify the claimed four square degrees for every Hirzebruch surface under the chosen class-group basis. Standard proje
+         ctive-bundle exceptional collections depend on the Hirzebruch parameter, so the basis conversion and degree calculation should be s
+         hown.
+    291 +- **61:** "for `1\leq i\leq n`" is missing "for."
+    292 +- **73:** "is open question" ? "is an open question"; `compelxes` ? `complexes`.
+    293 +- **89, 92:** `thm:BeilinsonFSEC` does not match the actual label `thm:beilinsonFSEC` (labels are case-sensitive).
+    294 +- **94:** "which will discuss" ? "which we will discuss."
+    295 +- **98:** "Section 5.1" is ambiguous/misnumbered in the assembled notes; use a label-based reference.
+    296 +- **107:** "have have" repeats "have."
+    297 +- **182:** "fan as" ? "fan has"; "at point" ? "at a point."
+    298 +- **184:** The two factors are reversed: `\pi_1^*D^b(\mathbb P^2)` and `\pi_2^*D^b(\mathbb H_1)` are the type-correct subcategories
+         , not vice versa.
+    299 +- **190:** "need be a line" ? "need to be a line bundle."
+    300 +- **214:** `\S\.VI.8` uses a malformed accent/section reference; typeset the bibliographic section normally.
+    301 +- **293:** Keep the weighted-projective quotient consistently as a stack if that is intended. Also, a semiorthogonal component is g
+         enerated by the whole pullback derived category, not merely by an unspecified list of line bundles unless a chosen exceptional coll
+         ection is supplied.
+    302 +- **299:** "This issue" ? "The issue"; line 300 also needs final punctuation.
+    303 +- **310:** If a wall lies in several maximal chambers, choosing `\gamma(\Gamma)` is not obviously independent of the choice. Prove
+         well-definedness or make the choice part of the data.
+    304 +- **318:** Add a final period.
+    305 +- **325:** In the stack setting, call the graph a substack/graph closure rather than a subvariety, or explicitly pass to coarse spa
+         ces.
+    306 +- **336:** "could be understand" ? "could be understood."
+    307 +- **345:** The pushforward should be derived (`\mathbf R\pi_*`) in this derived-category discussion.
+    308 +- **349:** `\widetilde X` and `\mathcal X` are mixed for the same object; choose one category/object convention.
+    309 +- **357:** The input to `\Phi_{ji}` should be `\mathcal O_{X_i}`, not `\mathcal O_{X_j}`.
+    310 +- **368:** The codomain should use the same variety-versus-stack convention as the domain.
+    311 +- **433:** The spectral-sequence indices change from `p,q` to `s,t` without explanation.
+    312 +- **497:** "exceptional cases" ? "exceptional collections."
+    313 +
+    314 +### Explicit editorial comments
+    315 +
+    316 +Active:
+    317 +
+    318 +- **180 @Michael:** Says he edited the following example.
+    319 +- **296 @Michael:** Asks whether the coefficient field should be `\mathbb Q` or `\mathbb R`.
+    320 +- **342 @Michael:** Says he added the proposition.
+    321 +- **364 @Michael:** Notes small edits.
+    322 +
+    323 +Inside commented-out source: none.
+    324 +
+    325 +## `sections-14-15-16.tex`
+    326 +
+    327 +### Typos and other errors
+    328 +
+    329 +- **30, 34:** The arguments of `\mathcal O(\cdots)` are missing closing parentheses.
+    330 +- **36, 49:** `thm:demazureL5` is unresolved because the labeled theorem is commented out in `sections-4-5.tex`.
+    331 +- **48:** The second `\mathcal O(-d)` should be `\mathcal O(-d')`.
+    332 +- **65, 78:** Use derived pushforward `\mathbf R\pi_*` in the derived-category statements.
+    333 +- **99:** The rounding argument has a sign error. With `d=\sum a_\rho D_\rho`, the rounded divisor representing `d'` gives `d-d'` e
+         ffective; the current text begins with `-d=\sum a_\rho D_\rho` and then derives `-d-d'`. Rewrite the calculation. There is also a s
+         tray `+f`. Both references to `rem:rounddown` are unresolved because that remark is commented out.
+    334 +- **110–111:** The polynomial `P` uses a two-component degree `(2,-1)`, but line 113 calls its class simply `-1`. Specify which gra
+         ding/class group is meant.
+    335 +- **173:** The two sides of the Atiyah flop are total spaces of `\mathcal O_{\mathbb P^1}(-1)^{\oplus2}`, not `\mathbb P^1`-bundles
+          over `\mathbb A^2`.
+    336 +- **186:** The inequality/order `S\geq d` is used without definition.
+    337 +- **190:** The displayed identities need `p^*` on one side (for example, compare `q^*\mathcal O` with `p^*\mathcal O`); as written
+         both sides live on different spaces.
+    338 +- **218:** The sentence around the chamber notation is grammatically incomplete; the annotation also flags a conflict with graph no
+         tation.
+    339 +- **229:** Distinguish a line bundle from a divisor/class rather than identifying them literally.
+    340 +- **241:** `Kings` ? `King's`.
+    341 +- **253–256:** `\mathcal O_{\operatorname{Cox}}(S)` and `\mathcal O_{\operatorname{Cox}}` are used inconsistently; define whether `
+         S` is a twist, a ring, or an accidental argument.
+    342 +- **276–277:** The Ext notation is malformed (`\operatorname{Ext}^p{D}` has no second argument/subscript). The right side of the as
+         serted identity should also be an Ext group, not an ordinary Hom unless `p=0`. After pushing from `X_i` to `X_j`, the structure she
+         af should be that of `X_j`, not `X_i`.
+    343 +- **281:** `prop:Demauzre` ? `prop:Demazure`.
+    344 +- **283:** The claimed vanishing is not merely the definition of the Bondal–Thomsen collection; it also uses an ordering/effectivit
+         y or cohomology-vanishing result. Cite or prove that step.
+    345 +- **292:** "choose dg category" ? "choose a dg category."
+    346 +- **296:** "a dg enhancement" (not "an dg"); "a proof" ? "the proof" where appropriate.
+    347 +- **303:** Both `-\widetilde d` and `-d` are said to lie in `\operatorname{Cl}(\widetilde X)`; the latter belongs to the original c
+         lass group unless pulled back. A closing parenthesis is also missing in the pushforward expression.
+    348 +- **309, 311:** The Hom subscript should be `X_j`, matching the objects after pushforward, not `X_i`.
+    349 +- **315:** The cone should be the derived/dg cone in the enhanced category; state this explicitly.
+    350 +- **320:** The definition of `Q` needs "for all `i`" and should use thick closure if direct summands are intended.
+    351 +- **322:** Orthogonality in a derived category requires vanishing in all shifts (equivalently `\mathbf R\operatorname{Hom}=0`), not
+          only degree-zero Hom.
+    352 +
+    353 +### Explicit editorial comments
+    354 +
+    355 +Active:
+    356 +
+    357 +- **37 @Michael:** Says he changed the lemma and proof.
+    358 +- **99 @Michael:** Says he added the explanation and asks whether it should move to the next lecture.
+    359 +- **186 @Michael:** Requests explanation.
+    360 +- **218 @Michael:** Dislikes `\Gamma` for chambers because it conflicts with graph notation.
+    361 +
+    362 +Inside commented-out source:
+    363 +
+    364 +- **91 @Daniel/Michael:** Asks whether Lev’s simplification can be used.
+    365 +- **199 @Daniel:** Requests better notation.
+    366 +
+    367 +## `sections-17.tex`
+    368 +
+    369 +### Typos and other errors
+    370 +
+    371 +- **Title:** `Kings` ? `King's`.
+    372 +- **18:** The definition of properness is too weak if it means only that each individual Hom is finite-dimensional; normally one re
+         quires finite-dimensional total graded Hom (and the appropriate finiteness across shifts). `smoooth` ? `smooth`.
+    373 +- **20:** "Lecture 9" should be "Lecture 10" for the cited generation result.
+    374 +- **24:** Smoothness of a full subcategory does not follow merely from fullness. Use admissibility or the full strong exceptional c
+         ollection to justify the claim, and similarly justify the application of Rouquier’s inequalities.
+    375 +- **39:** `Thompsen` ? `Thomsen`.
+    376 +- **51:** The asserted equivalence with `K_\Theta(S)` may require idempotent completion and a precise definition of the minimal-com
+         plex category; state those qualifications.
+    377 +- **57:** "rays of fan" ? "rays of the fan"; replace raw double quotes with TeX quotes.
+    378 +- **70:** The parenthetical "resp." clause is missing a closing parenthesis. The pushforward should be derived.
+    379 +- **88:** The displayed identity is tautological (`\Phi(\mathcal O)=\Phi(\mathcal O)`). The intended assertion appears to be `\Phi(
+         \mathcal O_{\operatorname{Cox}}(d))\cong\mathcal O_{\operatorname{Cox}}(d)`.
+    380 +- **97:** The Hom group is placed in `D^b(X)` even though its objects are `F(\mathcal F)` and `\mathcal D`; use the target category
+          of `F`.
+    381 +- **105:** The final claim says smoothness/projectivity are not needed, but the preceding proof uses them. Separate the stronger th
+         eorem from the hypotheses needed for the proof given.
+    382 +
+    383 +### Explicit editorial comments
+    384 +
+    385 +None.
+    386 +
+    387 +## `sections-18-19.tex`
+    388 +
+    389 +### Typos and other errors
+    390 +
+    391 +- **24:** "perfect complexes" should say "perfect complexes of `E`-modules."
+    392 +- **26:** Clarify whether `K^-` means bounded above complexes with bounded/finitely generated homology; the present one-sided wordi
+         ng is incomplete.
+    393 +- **31:** The module `N` is undefined after the complex `C` is introduced. The complete-resolution construction also needs to be re
+         conciled with the truncation definition at line 39.
+    394 +- **41:** A complete resolution is generally unique up to homotopy equivalence, not a literal chain isomorphism. The condition `s>\
+         operatorname{reg}(M)` conflicts with later uses at equality.
+    395 +- **50:** The text says there is no truncation at regularity zero, but the definition uses `s>0`. Use `s\geq\operatorname{reg}(M)`
+         if equality is intended.
+    396 +- **54:** Prefer `0\text{th}` or "zeroth" to `0^{th}`.
+    397 +- **68:** The displayed equality in `K(E)` should be an isomorphism.
+    398 +- **73:** "right most" ? "rightmost."
+    399 +- **76:** "so so" repeats "so."
+    400 +- **98:** The sentence first quantifies `j` and then shadows it as a summation index. Say "for every `i`" and rename the summation
+         variable.
+    401 +- **106:** The display says `\dim H^0=1`, then the sentence says `H^j=0` for all `i,j`. Restrict the vanishing to positive degrees
+         (and state the range of `i`).
+    402 +- **117:** The truncation index changes from `r` to `s`; "This is holds" ? "This holds."
+    403 +- **124–133:** The monad formula has an unbound/shadowed `j` and inconsistent indices. Replace it with one standard Beilinson-monad
+          formula and define every index and differential.
+    404 +- **145, 156:** The text says right `E`-modules, but the differential is written using left multiplication by `e_j`; fix the module
+         -side convention or signs/order.
+    405 +- **156:** `finetely` ? `finitely`.
+    406 +- **165:** In characteristic two, `y^2z-x^3-xz^2` has different smoothness behavior; this conflicts with the initial arbitrary-char
+         acteristic convention. Add `\operatorname{char}k\ne2` (and any further needed restrictions) or choose a characteristic-independent
+         example.
+    407 +- **183:** `M` is reused for a set of monomials, conflicting with its global use for the character lattice and its local use for mo
+         dules.
+    408 +- **202:** `\RR` conflicts with its established use for the real numbers.
+    409 +- **209:** Add a final period.
+    410 +- **210:** The direct-sum decomposition is malformed and shadows its quantifiers. Write a single formula with distinct indices and
+         a clearly stated range.
+    411 +- **231:** Both adjacent terms use the shift `i-1`; one of them is likely an indexing typo. Check against the Tate differential.
+    412 +- **234:** Homology being annihilated by the maximal ideal does not by itself imply that the displayed rows are exact. Explain the
+         ?ech/localization argument that kills the relevant homology.
+    413 +- **271:** "for all `\k`" is meaningless here; likely "for every `a\in A`." The conclusion also switches from the quotient stack to
+          `D^b(X)` without explanation.
+    414 +- **Bibliography:** `Rob98` is present in the parent bibliography but absent from the local standalone bibliography, so the standal
+         one file has an unresolved citation.
+    415 +
+    416 +### Explicit editorial comments
+    417 +
+    418 +None.
+    419 +
+    420 +## Cross-references and bibliography
+    421 +
+    422 +The combined document (after temporarily correcting the Lectures 7–9 filename) reports or contains these section-level problems:
+    423 +
+    424 +- Duplicate label: `rem:localcohomology` at `sections-4-5.tex:169` and `:364`.
+    425 +- Missing `thm:demazureL5`: used at `sections-1-2-3.tex:214`, `sections-6.tex:237`, and `sections-14-15-16.tex:36,49`; its apparent
+          definition is commented out at `sections-4-5.tex:436`.
+    426 +- Missing `rmk:abuseNotation`: used at `sections-4-5.tex:337`; its definition is commented out at `sections-11.tex:428`.
+    427 +- Missing `thm:Bondal-Thomsen equivalences`: used at `sections-6.tex:35,192`; the intended theorem has `\label{.  }` at line 88.
+    428 +- Placeholder `sec:*****` at `sections-7-8-9-v1.tex:14`.
+    429 +- Case mismatch `thm:BeilinsonFSEC` versus `thm:beilinsonFSEC` at `sections-12-13.tex:92`.
+    430 +- Missing `rem:rounddown`: used twice at `sections-14-15-16.tex:99`; its definition is commented out at `sections-4-5.tex:440`.
+    431 +- Misspelled `prop:Demauzre` at `sections-14-15-16.tex:281`; the defined label is `prop:Demazure`.
+    432 +- Missing parent-bibliography keys: `Berkesch2026Nonsimplicial`, `GS1`, and `GS2`. The first exists only in the section-local datab
+         ase; the latter two were not found in either database.
+    433 +- Missing section-local key: `Rob98`, used in `sections-18-19.tex` and present only in the parent database.
+    434 +
+    435 +## Notation inconsistencies across the notes
+    436 +
+    437 +- **Base field:** `\k`, `\kk`, `k`, `\Bbbk`, and occasionally `\mathbb C` are used for the ground field. Choose one macro; state ex
+         plicitly whenever specialization to `\mathbb C` is necessary.
+    438 +- **Real numbers versus named complexes:** `\RR` denotes `\mathbb R` globally but is reused for a diagonal resolution in Lecture 10
+          and a BGG/Tate object in Lectures 1–3 and 18–19.
+    439 +- **Variety versus quotient stack:** `X`, `\mathcal X`, `\widetilde X`, and quotient-stack notation are interchanged, sometimes acr
+         oss a functor’s source and target. This is especially visible in Lectures 12–16 and 18–19. Fix separate macros for coarse toric var
+         ieties and Cox quotient stacks.
+    440 +- **The group `G`:** Lecture 4 writes `\operatorname{Hom}(\operatorname{Cl}(X),k^*)`, while Lecture 11 writes `\operatorname{Spec}k
+         [\operatorname{Cl}(X)]`; elsewhere `G` also becomes an ordinary set of complex points. Use the diagonalizable group scheme, then wr
+         ite `G(k)` when points are intended.
+    441 +- **The divisor map `\alpha`:** It appears with a minus sign in Lecture 4, without a stable sign convention later, as an inclusion
+         in Lecture 7, and as a map already reserved in Lecture 6. Fix a single exact sequence and sign, for example `M\xrightarrow{m\mapsto
+         (\langle m,u_\rho\rangle)_\rho}\mathbb Z^{\Sigma(1)}`; reserve another letter for inclusions.
+    442 +- **Lattices `M,L,N`:** `M` is the character lattice globally, a module in the BGG sections, and a monomial set in Lecture 18. In L
+         ecture 7, `M` and `L` alternate between abstract lattices and their images in coordinate lattices. Use distinct names for lattices,
+          modules, and monomial bases and distinguish `L` from `L_{\mathbb R}`.
+    443 +- **Degree/class versus divisor vector:** Expressions such as `S(-\Psi(A))`, `D-E=m`, and applying a functional to `\mathcal O(D)`
+         conflate a divisor vector, its class in `\operatorname{Cl}(X)`, a lattice element, and the associated line bundle. Use `\deg(D)` (o
+         r brackets `[D]`) before forming graded shifts.
+    444 +- **Rounding maps:** `\Psi`, `\psi`, `\lceil\alpha\rceil`, floor, and round-down notation are not synchronized. Define the real-lin
+         ear map first, then write componentwise rounding and its induced class explicitly. The identity at Lecture 7 line 78 currently uses
+          the wrong sign.
+    445 +- **Bondal–Thomsen terminology:** "Thomsen collection," "Bondal–Thomsen collection," `\Theta`, `\Theta_X`, `\operatorname{BT}(X)`,
+         and `\mathsf{BT}` are used for related objects without stating whether they are divisor representatives, class-group elements, or l
+         ine bundles. Pick one symbol for the class set and one for the corresponding line bundles.
+    446 +- **BGG functors:** `L,R`, `\mathbf L,\mathbf R`, homological subscripts, and cohomological superscripts are mixed within Lectures
+         1–3 and again in Lectures 18–19. Choose one grading convention and specify left/right `E`-modules once.
+    447 +- **Cox ring notation:** The ring is variously `S`, `S_X`, and `\operatorname{Cox}(X)`; `\mathcal O_{\operatorname{Cox}}(d)` someti
+         mes denotes a graded free module and sometimes a sheaf/line bundle. Reserve `S(d)` for graded modules and `\mathcal O_{\mathcal X}(
+         d)` for associated line bundles.
+    448 +- **Fan/chamber notation:** `\Sigma`, `\Delta`, `\Gamma`, and `F` change roles between fans, chambers, graphs, and complements. Lec
+         ture 11 even switches `\Delta` back to `\Sigma`, while Lecture 14 notes that `\Gamma` conflicts with graph notation. A uniform conv
+         ention would eliminate several type errors.
+    449 +- **Maximal-cone notation:** Both `\Sigma_{\max}` and `\Sigma_{\mathrm{max}}` occur.
+    450 +- **Derived functors:** Ordinary `\pi_*`, `\operatorname{Hom}`, and equality signs are often used inside derived-category statement
+         s where `\mathbf R\pi_*`, `\mathbf R\operatorname{Hom}`/all shifts, and isomorphism are intended.
+    451 +- **Exceptional-collection vocabulary:** "exceptional," "strong," "full," and "semiorthogonal" are occasionally interchanged or ass
+         igned to the wrong vanishing condition. Fix the definitions early and refer back to them.
+    452 +- **Labels:** The project mixes stable identifiers with labels containing spaces, apostrophes, formulas, prose, and even `.  `. Sta
+         ndardize on forms such as `thm:bondal-thomsen-equivalences`; this will also make cross-file references easier to audit.
+    453 +
+    454 +## Suggested repair order
+    455 +
+    456 +1. Decide whether `Notes.tex` or `main_v2.tex` is the intended master file and fix the Lectures 7–9 input name.
+    457 +2. Repair the standalone wrappers, restore `\begin{document}` in Lecture 11, and remove the unsafe `\i` redefinition.
+    458 +3. Fix missing/duplicate labels and bibliography keys so a combined build is diagnostically clean.
+    459 +4. Set the global conventions for the field, `\alpha`, divisor classes/degrees, varieties versus stacks, and BGG grading.
+    460 +5. Address the mathematically substantive items—especially the derived-category definition, minimal-resolution uniqueness, Lecture
+         6 sign/degree computations, Lecture 7 rounding signs, Lecture 11 GIT equivalences, and the derived-functor type errors—before copy-
+         editing the remaining prose.
+
