@@ -162,12 +162,12 @@ Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions o
 \end{prop}
 
 \begin{proof}
-  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$. \lauren{why does this agree with linear equivalence?} The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$ under the corresponding map of ordinary groups.
+  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$.  The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$ under the corresponding map of ordinary groups.
 
   Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
 \end{proof}
 
-By Proposition~\ref{prop:eq-Picard-gp} and \lauren{Mumford--Fogarty--Kirwan p.41}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
+By Proposition~\ref{prop:eq-Picard-gp} and \cite[Converse~1.13]{Mumford65}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
 
 According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
 \[\Proj\bigoplus_{i\in\NN}\Gamma(\Spec S,\cL_d^{\otimes i})^G\]
@@ -191,7 +191,7 @@ We will see more concrete constructions of these spaces in the following subsect
 The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the induced map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$.
 
 \begin{rem}\label{rem:triangulations}
-  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} on the hyperplane.  See for instance \lauren{GKZ chapter 7, something else for connection?}
+  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} on the hyperplane.  See for instance \cite[Chapter~7]{GKZ}.
 \end{rem}
 
 \begin{defn}\label{def:polytope-of-deg}
@@ -244,11 +244,13 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
 \end{rem}
 
 \begin{prop}[\cite{OdaPark91}*{Corollary 3.6}, \cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
-  The collection of all cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.  We call maximal cones of this fan \defi{chambers}. \lauren{explain why these are all full dimensional?}
+  The collection of all cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.
+
+  The support of the secondary fan is the cone spanned by the $\deg x_i$, which in the setup of Notation~\ref{not:multigrading} is strongly convex.  We call maximal (here full dimensional) cones in the fan \defi{chambers}.
 \end{prop}
 
 \begin{example}\label{ex:secondary-blowup-2}
-  The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is \lauren{picture}
+  The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is shown below.
   \input{sections/fig-Bl2P3}
 \end{example}
 
@@ -321,7 +323,7 @@ Note that $\sigma$ may contain $\nu_i$ for $i\in F$ but these are not rays of $\
 
   Immediately from definitions we have $\Gamma\subseteq\coneof(\idealof(\Gamma))$.  By \cite[Proposition 15.2.1(c)]{CLS} the cone $\Gamma$ is the intersection of the spans of monomials $\prod_{\nu_i\notin\sigma(1)}x_i$.  This will imply $\Gamma=\coneof(\idealof(\Gamma))$ once we show that all minimal generators of $\idealof(\Gamma)$ have the correct form, since multiplying by additional variables only increases the span of a monomial.
 
-  Let $\mathbf{x}^\mathbf{a}$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the vectors $\deg x_i^{a_i}$ which are nonzero are linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision, \lauren{cite?} and by the discussion before \cite[Proposition 15.2.10]{CLS} the chamber $\Gamma$ must be contained in at least one simplicial cone.  Since $\mathbf{x}^\mathbf{a}$ is a minimal generator of $\idealof(\Gamma)$ no proper subset of the variables can span $\Gamma$, so~$\mathbf{x}^\mathbf{a}$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS}.
+  Let $\mathbf{x}^\mathbf{a}$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the set of vectors $\deg x_i^{a_i}$ which are nonzero is linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision (e.g.~\cite[Corollary~3.8]{OdaPark91}), and by the discussion before \cite[Proposition 15.2.10]{CLS} the chamber $\Gamma$ must be contained in at least one simplicial cone.  Since $\mathbf{x}^\mathbf{a}$ is a minimal generator of $\idealof(\Gamma)$ no proper subset of the variables can span $\Gamma$, so~$\mathbf{x}^\mathbf{a}$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS}.
 
   \lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
 \end{proof}
@@ -343,7 +345,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
 \end{thm}
 
 \begin{proof}
-  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ described in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.  \lauren{add geometric}
+  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ described in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.  The quotient toric variety is simplicial by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}.
 \end{proof}
 
 %\begin{cor}
@@ -363,7 +365,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
 In either of the constructions of $X_d$, the resulting torus-invariant divisor must be ample.  From the GIT perspective we are using the line bundle $\cL_d$ to embed $X_d$ in projective space, and from the toric perspective the divisor of the polytope $P_\alpha$ is ample on the variety of its normal fan.  However, we must be careful with what we mean by the divisor corresponding to $d$ in the case where the class group of $X_d$ is smaller than $\Cl(S)$.
 
 \begin{lemma}\label{lem:cl-restrict}
-  Suppose $d\in\Cl(S)$ is in the interior of a chamber of the secondary fan.  There is a projection map $\Cl(S)\to\Cl(X_d)$.
+  Suppose $d\in\Cl(S)$ is in the interior of a chamber of the secondary fan.  There is an induced projection $\Cl(S)\to\Cl(X_d)$.
 \end{lemma}
 
 \begin{proof}
@@ -397,7 +399,7 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
   The following are equivalent for $d$ in the interior of a chamber $\Gamma(\Sigma,F)$ of the secondary fan:
   \begin{enumerate}
     \item  The Cox ring of $X_d$ is $S$;
-    \item  $\Cl(X_d)=\Cl(S)$; \lauren{are we sure this is equivalent?}
+    \item  $\Cl(X_d)=\Cl(S)$;
     \item  The irrelevant ideal of $X_d$ is $\idealof(\Gamma(\Sigma,F))$;
     \item  $\idealof(\Gamma(\Sigma,F))$ is not contained in a principal ideal $\langle x_i\rangle$;
     \item  The rays of $\Sigma$ are precisely $\nu_1, \dots, \nu_n$;
