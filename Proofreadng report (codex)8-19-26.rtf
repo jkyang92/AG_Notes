@@ -1,0 +1,644 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red211\green252\blue218;\red24\green26\blue30;
+\red20\green153\blue2;\red105\green107\blue129;\red197\green0\blue44;\red25\green129\blue135;\red59\green61\blue86;
+\red251\green76\blue14;\red214\green123\blue24;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c85490\c98431\c88235;\cssrgb\c12157\c13725\c15686;
+\cssrgb\c0\c65000\c0;\cssrgb\c48627\c49804\c57647;\cssrgb\c82353\c5882\c22353;\cssrgb\c9020\c57255\c60000;\cssrgb\c29804\c30980\c41176;
+\cssrgb\c99608\c39216\c4314;\cssrgb\c87451\c55686\c11373;}
+\margl1440\margr1440\vieww28060\viewh22780\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \CocoaLigature0 \
+\cb3     \cf4   1 \cf5 +\cf6 #\cf7  \cf8 Proofreading report for the section files\cf2 \
+    \cf4   2 \cf5 +\cf2 \
+    \cf4   3 \cf5 +\cf9 Line numbers refer to the current source files. I treated only the explicit author-annotation macros (\cf6 `\cf9 \\daniel\cf6 `\cf9 , \cf6 `\cf9 \\michael\cf6 `\cf9 , \cf6 `\cf9 \\maya\cf2 \
+    \cf4      \cf6 `\cf9 , \cf6 `\cf9 \\mahrud\cf6 `\cf9 , \cf6 `\cf9 \\lauren\cf6 `\cf9 , \cf6 `\cf9 \\david\cf6 `\cf9 , and \cf6 `\cf9 \\jay\cf6 `\cf9 ) as editorial comments, as requested. I list active annotations and annotations insid\cf2 \
+    \cf4      \cf9 e \cf6 `\cf9 %\cf6 `\cf9 -commented source separately.\cf2 \
+    \cf4   4 \cf5 +\cf2 \
+    \cf4   5 \cf5 +\cf6 ##\cf10  \cf8 Project-wide compilation and assembly issues\cf2 \
+    \cf4   6 \cf5 +\cf2 \
+    \cf4   7 \cf5 +\cf6 -\cf9  \cf6 `\cf9 ../main_v2.tex\cf6 `\cf9  is not currently a combined-notes driver: it does not \cf6 `\cf9 \\input\cf6 `\cf9  any of the ten section files. It is a standalone\cf2 \
+    \cf4      \cf9 meeting program/outline. The file that assembles the notes is \cf6 `\cf9 ../Notes.tex\cf6 `\cf9 .\cf2 \
+    \cf4   8 \cf5 +\cf6 -\cf9  \cf6 `\cf9 ../Notes.tex\cf6 `\cf9  asks for \cf6 `\cf9 sections/sections-7-8-9.tex\cf6 `\cf9 , but the file on disk is \cf6 `\cf9 sections-7-8-9-v1.tex\cf6 `\cf9 . LaTeX reports the missing\cf2 \
+    \cf4      \cf9  file but continues, so Lectures 7\'969 are silently absent from the resulting combined PDF. Creating a temporary correctly named copy\cf2 \
+    \cf4      \cf9  makes the combined document include them.\cf2 \
+    \cf4   9 \cf5 +\cf6 -\cf9  \cf6 `\cf9 sections-11.tex:6\cf6 `\cf9  comments out \cf6 `\cf9 \\begin\{document\}\cf6 `\cf9 , so that file cannot compile separately.\cf2 \
+    \cf4  10 \cf5 +\cf6 -\cf9  \cf6 `\cf9 sections-11.tex:254\cf6 `\cf9  inputs \cf6 `\cf9 sections/fig-Bl2P3\cf6 `\cf9 . This path works when compilation starts in the parent directory, but not when\cf2 \
+    \cf4      \cf9 this section is compiled from the \cf6 `\cf9 sections\cf6 `\cf9  directory. A path conditional or a local path is needed for genuinely independent comp\cf2 \
+    \cf4      \cf9 ilation.\cf2 \
+    \cf4  11 \cf5 +\cf6 -\cf9  \cf6 `\cf9 preamble.tex:199\cf6 `\cf9  redefines the standard text command \cf6 `\cf9 \\i\cf6 `\cf9  to mean \cf6 `\cf9 \\iota\cf6 `\cf9 . This breaks bibliography names containing dotless \cf6 `\cf9 \\\cf2 \
+    \cf4      \cf9 i\cf6 `\cf9  and gives a hard \cf6 `\cf9 Missing $ inserted\cf6 `\cf9  error in the standalone build of \cf6 `\cf9 sections-1-2-3.tex\cf6 `\cf9 . The same redefinition at \cf6 `\cf9 ../main_v\cf2 \
+    \cf4      \cf9 2.tex:175\cf6 `\cf9  breaks that document. The parent \cf6 `\cf9 ../preamble.tex\cf6 `\cf9  already has a conditional form that avoids this problem.\cf2 \
+    \cf4  12 \cf5 +\cf6 -\cf9  Most standalone wrappers close the conditional after \cf6 `\cf9 \\end\{document\}\cf6 `\cf9 . TeX never reads that closing \cf6 `\cf9 \\fi\cf6 `\cf9 , producing \cf6 `\cf9 \\end occurr\cf2 \
+    \cf4      \cf9 ed when \\ifdefined ... was incomplete\cf6 `\cf9 . Put \cf6 `\cf9 \\fi\cf6 `\cf9  before \cf6 `\cf9 \\end\{document\}\cf6 `\cf9 . This affects \cf6 `\cf9 sections-4-5.tex\cf6 `\cf9 , \cf6 `\cf9 sections-6.tex\cf6 `\cf9 , \cf6 `\cf9 sect\cf2 \
+    \cf4      \cf9 ions-10.tex\cf6 `\cf9 , \cf6 `\cf9 sections-12-13.tex\cf6 `\cf9 , \cf6 `\cf9 sections-14-15-16.tex\cf6 `\cf9 , \cf6 `\cf9 sections-17.tex\cf6 `\cf9 , and \cf6 `\cf9 sections-18-19.tex\cf6 `\cf9 ; \cf6 `\cf9 sections-7-8-9-v1.tex\cf6 `\cf9  u\cf2 \
+    \cf4      \cf9 ses a different but similarly fragile \cf6 `\cf9 \\expandafter\\enddocument\cf6 `\cf9  ending.\cf2 \
+    \cf4  13 \cf5 +\cf6 -\cf9  The combined build has a duplicate label, several unresolved references, and missing bibliography keys; details are listed below\cf2 \
+    \cf4      \cf9 and summarized in \'93Cross-references and bibliography.\'94\cf2 \
+    \cf4  14 \cf5 +\cf2 \
+    \cf4  15 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-1-2-3.tex\cf6 `\cf2 \
+    \cf4  16 \cf5 +\cf2 \
+    \cf4  17 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4  18 \cf5 +\cf2 \
+    \cf4  19 \cf5 +\cf6 -\cf9  \cf6 **\cf7 13:\cf6 **\cf9  \'93Cech\'94 should be \'93\uc0\u268 ech\'94 (\cf6 `\cf9 \\v\{C\}ech\cf6 `\cf9 ).\cf2 \
+    \cf4  20 \cf5 +\cf6 -\cf9  \cf6 **\cf7 15:\cf6 **\cf9  \'93It will turn out, moreover \'85\'94 is an unfinished sentence.\cf2 \
+    \cf4  21 \cf5 +\cf6 -\cf9  \cf6 **\cf7 20:\cf6 **\cf9  A blue provisional standing assumption remains in the notes. \'93Arbitrary characteristic\'94 also conflicts with the character\cf2 \
+    \cf4      \cf9 istic-two issue in \cf6 `\cf9 sections-18-19.tex:165\cf6 `\cf9 .\cf2 \
+    \cf4  22 \cf5 +\cf6 -\cf9  \cf6 **\cf7 34:\cf6 **\cf9  \cf6 `\cf9 quasi-isomoprhism\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 quasi-isomorphism\cf6 `\cf9 ; \cf6 `\cf9 H^if\cf6 `\cf9  needs a space after the displayed expression.\cf2 \
+    \cf4  23 \cf5 +\cf6 -\cf9  \cf6 **\cf7 39\'9645:\cf6 **\cf9  The definition of the derived category is not correct as written. Its morphisms are not simply chain maps with quasi-i\cf2 \
+    \cf4      \cf9 somorphisms inverted; one should first pass to the homotopy category (or explicitly account for chain homotopy) and then localize.\cf2 \
+    \cf4      \cf9 The more accurate version immediately below is commented out.\cf2 \
+    \cf4  24 \cf5 +\cf6 -\cf9  \cf6 **\cf7 49:\cf6 **\cf9  The closing quotation mark after \'93diagram\'94 is a raw double quote rather than TeX closing quotes.\cf2 \
+    \cf4  25 \cf5 +\cf6 -\cf9  \cf6 **\cf7 82\'9688:\cf6 **\cf9  \'93We say a functor \'85 that \'85 is exact\'94 is grammatically malformed; use \'93A functor \'85 is exact if \'85\'94.\cf2 \
+    \cf4  26 \cf5 +\cf6 -\cf9  \cf6 **\cf7 121:\cf6 **\cf9  \'93if \cf6 `\cf9 f\cf6 `\cf9  is morphism\'94 needs \'93a\'94. The assertion that derived pushforward stays in the bounded coherent category also needs\cf2 \
+    \cf4      \cf9  the usual properness/coherence hypotheses.\cf2 \
+    \cf4  27 \cf5 +\cf6 -\cf9  \cf6 **\cf7 168:\cf6 **\cf9  The displayed resolution directly gives the collection \cf6 `\cf9 \\mathcal O(-n),\\ldots,\\mathcal O\cf6 `\cf9 ; the text claims \cf6 `\cf9 \\mathcal O,\\\cf2 \
+    \cf4      \cf9 ldots,\\mathcal O(n)\cf6 `\cf9 . Twisting fixes this, but that step should be stated.\cf2 \
+    \cf4  28 \cf5 +\cf6 -\cf9  \cf6 **\cf7 195:\cf6 **\cf9  The claimed equivalence between generation-based semiorthogonal decompositions and functorial filtrations needs admissib\cf2 \
+    \cf4      \cf9 ility/idempotent-completeness hypotheses.\cf2 \
+    \cf4  29 \cf5 +\cf6 -\cf9  \cf6 **\cf7 202:\cf6 **\cf9  The definition displays vanishing for every nonzero shift but then says only \'93all higher Ext groups.\'94 For arbitrary deri\cf2 \
+    \cf4      \cf9 ved objects, negative shifts also matter.\cf2 \
+    \cf4  30 \cf5 +\cf6 -\cf9  \cf6 **\cf7 214:\cf6 **\cf9  \'93which will see\'94 \uc0\u8594  \'93which we will see.\'94 The reference \cf6 `\cf9 thm:demazureL5\cf6 `\cf9  is unresolved.\cf2 \
+    \cf4  31 \cf5 +\cf6 -\cf9  \cf6 **\cf7 230:\cf6 **\cf9  The prose reverses the roles of the two checks: vanishing when \cf6 `\cf9 i>j\cf6 `\cf9  gives semiorthogonality/exceptionality, while vanis\cf2 \
+    \cf4      \cf9 hing of positive Exts when \cf6 `\cf9 i\\leq j\cf6 `\cf9  gives strength.\cf2 \
+    \cf4  32 \cf5 +\cf6 -\cf9  \cf6 **\cf7 243:\cf6 **\cf9  A comma is missing between \cf6 `\cf9 \\mathcal O(-n+1)\cf6 `\cf9  and the ellipsis.\cf2 \
+    \cf4  33 \cf5 +\cf6 -\cf9  \cf6 **\cf7 249\'96255:\cf6 **\cf9  The uniqueness corollary is false without \'93minimal\'94 and suitable boundedness/category qualifications: arbitrary cont\cf2 \
+    \cf4      \cf9 ractible summands destroy uniqueness. The proof also calls the line bundles graded \cf6 `\cf9 S\cf6 `\cf9 -modules, and \cf6 `\cf9 Fully faithfulness\cf6 `\cf9  should be\cf2 \
+    \cf4      \cf6 `\cf9 Full faithfulness\cf6 `\cf9 .\cf2 \
+    \cf4  34 \cf5 +\cf6 -\cf9  \cf6 **\cf7 254:\cf6 **\cf9  \cf6 `\cf9 K\cf6 `\cf9  is described as complexes of graded modules whose terms are line bundles; those are different categories. Say either\cf2 \
+    \cf4      \cf9  free graded modules or their associated line bundles.\cf2 \
+    \cf4  35 \cf5 +\cf6 -\cf9  \cf6 **\cf7 258:\cf6 **\cf9  \'93identified a minimal free complexes\'94 \uc0\u8594  \'93identified minimal free complexes\'94 (or \'93a minimal free complex\'94). The sequence\cf2 \
+    \cf4      \cf6 `\cf9 S(-n),S(-n-1),\\ldots,S\cf6 `\cf9  should be \cf6 `\cf9 S(-n),S(-n+1),\\ldots,S\cf6 `\cf9 .\cf2 \
+    \cf4  36 \cf5 +\cf6 -\cf9  \cf6 **\cf7 266:\cf6 **\cf9  \cf6 `\cf9 thhink\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 think\cf6 `\cf9 .\cf2 \
+    \cf4  37 \cf5 +\cf6 -\cf9  \cf6 **\cf7 321:\cf6 **\cf9  \'93meaning that that\'94 repeats \'93that.\'94 The field is denoted both \cf6 `\cf9 \\k\cf6 `\cf9  and \cf6 `\cf9 \\kk\cf6 `\cf9 . Calling \cf6 `\cf9 E\cf6 `\cf9  noncommutative is not uniforml\cf2 \
+    \cf4      \cf9 y correct under the standing arbitrary-characteristic assumption; in characteristic two the displayed skew-commutation relation bec\cf2 \
+    \cf4      \cf9 omes commutation, although the exterior algebra still has square-zero generators.\cf2 \
+    \cf4  38 \cf5 +\cf6 -\cf9  \cf6 **\cf7 328\'96365:\cf6 **\cf9  Two versions of the BGG functors are given, first homologically and then cohomologically, with incompatible bold/unb\cf2 \
+    \cf4      \cf9 old notation. Choose one convention and state the indexing once.\cf2 \
+    \cf4  39 \cf5 +\cf6 -\cf9  \cf6 **\cf7 333:\cf6 **\cf9  \cf6 `\cf9 \\mathbf L(P)\cf6 `\cf9  is said to be a complex of free \cf6 `\cf9 E\cf6 `\cf9 -modules, but the formula makes it a complex of free \cf6 `\cf9 S\cf6 `\cf9 -modules.\cf2 \
+    \cf4  40 \cf5 +\cf6 -\cf9  \cf6 **\cf7 344\'96348:\cf6 **\cf9  The example purporting to compute \cf6 `\cf9 \\mathbf R(S)\cf6 `\cf9  repeatedly uses an undefined \cf6 `\cf9 M\cf6 `\cf9  (\cf6 `\cf9 \\dim M_i\cf6 `\cf9 , \cf6 `\cf9 \\mathbf R(M)\cf6 `\cf9 ) inste\cf2 \
+    \cf4      \cf9 ad of \cf6 `\cf9 S\cf6 `\cf9 .\cf2 \
+    \cf4  41 \cf5 +\cf6 -\cf9  \cf6 **\cf7 352:\cf6 **\cf9  The summation index is inconsistent: \cf6 `\cf9 \\sum_\{i=0\}^n x_j\\otimes e_j\cf6 `\cf9  should sum over \cf6 `\cf9 j\cf6 `\cf9  (or use \cf6 `\cf9 i\cf6 `\cf9  throughout).\cf2 \
+    \cf4  42 \cf5 +\cf6 -\cf9  \cf6 **\cf7 356:\cf6 **\cf9  \'93a natural isomorphisms\'94 \uc0\u8594  \'93natural isomorphisms.\'94 Also distinguish a literal isomorphism from a quasi-isomorphism, and\cf2 \
+    \cf4      \cf9 specify the differential on \cf6 `\cf9 S\\otimes E\cf6 `\cf9 .\cf2 \
+    \cf4  43 \cf5 +\cf6 -\cf9  \cf6 **\cf7 368:\cf6 **\cf9  \'93finitely generated \cf6 `\cf9 S\cf6 `\cf9 -modules are rarely finitely generated\'94 should say they are rarely finite-dimensional over the fi\cf2 \
+    \cf4      \cf9 eld. Consequently the free rank in \cf6 `\cf9 \\mathbf R(M)\cf6 `\cf9  may be infinite.\cf2 \
+    \cf4  44 \cf5 +\cf6 -\cf9  \cf6 **\cf7 372:\cf6 **\cf9  The Tor formula has a free \cf6 `\cf9 j\cf6 `\cf9  on the right and no matching graded-component index on the left; it needs to be rewritten\cf2 \
+    \cf4      \cf9  with all indices quantified.\cf2 \
+    \cf4  45 \cf5 +\cf6 -\cf9  \cf6 **\cf7 375\'96387:\cf6 **\cf9  The theorem returns to unbold \cf6 `\cf9 L,R\cf6 `\cf9  after the bold cohomological definitions, so it is unclear which functors and in\cf2 \
+    \cf4      \cf9 dexing convention are intended.\cf2 \
+    \cf4  46 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Standalone build:\cf6 **\cf9  The local \cf6 `\cf9 \\i\cf6 `\cf9  redefinition causes the bibliography hard error described above.\cf2 \
+    \cf4  47 \cf5 +\cf2 \
+    \cf4  48 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4  49 \cf5 +\cf2 \
+    \cf4  50 \cf5 +\cf9 Active:\cf2 \
+    \cf4  51 \cf5 +\cf2 \
+    \cf4  52 \cf5 +\cf6 -\cf9  \cf6 **\cf7 12 \'97 Daniel:\cf6 **\cf9  Add introductory text; mentions free complexes modulo homotopy and a basis metaphor. The annotation itself has \cf6 `\cf2 \
+    \cf4      \cf9 combe\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 come\cf6 `\cf9 .\cf2 \
+    \cf4  53 \cf5 +\cf6 -\cf9  \cf6 **\cf7 17 \'97 Daniel:\cf6 **\cf9  Add ideas about free complexes modulo homotopy and the vector-space-basis metaphor.\cf2 \
+    \cf4  54 \cf5 +\cf6 -\cf9  \cf6 **\cf7 20 \'97 Daniel:\cf6 **\cf9  Add any further standing assumptions.\cf2 \
+    \cf4  55 \cf5 +\cf2 \
+    \cf4  56 \cf5 +\cf9 Inside commented-out source:\cf2 \
+    \cf4  57 \cf5 +\cf2 \
+    \cf4  58 \cf5 +\cf6 -\cf9  \cf6 **\cf7 163 \'97 Mahrud:\cf6 **\cf9  Suggests an illuminating Macaulay2 computation of the actual section.\cf2 \
+    \cf4  59 \cf5 +\cf6 -\cf9  \cf6 **\cf7 244 \'97 Michael:\cf6 **\cf9  Asks for more explanation of why the functor can be applied termwise and relates this to the \cf6 `\cf9 E^1\cf6 `\cf9  page.\cf2 \
+    \cf4  60 \cf5 +\cf2 \
+    \cf4  61 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-4-5.tex\cf6 `\cf2 \
+    \cf4  62 \cf5 +\cf2 \
+    \cf4  63 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4  64 \cf5 +\cf2 \
+    \cf4  65 \cf5 +\cf6 -\cf9  \cf6 **\cf7 14:\cf6 **\cf9  \'93does indicate\'94 should be \'93does not indicate.\'94\cf2 \
+    \cf4  66 \cf5 +\cf6 -\cf9  \cf6 **\cf7 16:\cf6 **\cf9  \cf6 `\cf9 should up\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 show up\cf6 `\cf9 ; \'93lots of lots of\'94 repeats words; \'93Hirzebruch surface\'94 should be plural in context.\cf2 \
+    \cf4  67 \cf5 +\cf6 -\cf9  \cf6 **\cf7 32:\cf6 **\cf9  A fan is not a union of three cones in the stated sense; say it consists of the three cones and all their faces.\cf2 \
+    \cf4  68 \cf5 +\cf6 -\cf9  \cf6 **\cf7 44\'9646:\cf6 **\cf9  \cf6 `\cf9 \\alpha(m)\cf6 `\cf9  is defined using \cf6 `\cf9 \\langle m,-u_\\rho\\rangle\cf6 `\cf9  but then called the principal divisor of \cf6 `\cf9 \\chi^m\cf6 `\cf9 . Under the s\cf2 \
+    \cf4      \cf9 tandard convention \cf6 `\cf9 \\operatorname\{div\}(\\chi^m)=\\sum\\langle m,u_\\rho\\rangle D_\\rho\cf6 `\cf9 , this is its negative. Declare the opposite conv\cf2 \
+    \cf4      \cf9 ention or remove the minus sign. This sign also affects later files.\cf2 \
+    \cf4  69 \cf5 +\cf6 -\cf9  \cf6 **\cf7 61, 63:\cf6 **\cf9  Both \cf6 `\cf9 \\Sigma_\{\\max\}\cf6 `\cf9  and \cf6 `\cf9 \\Sigma_\{\\mathrm\{max\}\}\cf6 `\cf9  are used.\cf2 \
+    \cf4  70 \cf5 +\cf6 -\cf9  \cf6 **\cf7 75:\cf6 **\cf9  \cf6 `\cf9 G=\\operatorname\{Hom\}(\\operatorname\{Cl\}(X),\\Bbbk^*)\cf6 `\cf9  describes points rather than the diagonalizable group scheme. This d\cf2 \
+    \cf4      \cf9 iffers from \cf6 `\cf9 G=\\operatorname\{Spec\} k[\\operatorname\{Cl\}(X)]\cf6 `\cf9  in Lecture 11 and matters with torsion or positive characteristic.\cf2 \
+    \cf4  71 \cf5 +\cf6 -\cf9  \cf6 **\cf7 90:\cf6 **\cf9  The rays \cf6 `\cf9 (1,0),(0,1),(-1,-2)\cf6 `\cf9  have positive relation with weights \cf6 `\cf9 (1,2,1)\cf6 `\cf9 , not \cf6 `\cf9 (1,1,2)\cf6 `\cf9  in the listed variable order.\cf2 \
+    \cf4      \cf9  Reorder/relabel the rays or the variables. The accompanying picture also appears to draw the negative diagonal as \cf6 `\cf9 (-1,-1)\cf6 `\cf9  rather\cf2 \
+    \cf4      \cf9  than \cf6 `\cf9 (-1,-2)\cf6 `\cf9 .\cf2 \
+    \cf4  72 \cf5 +\cf6 -\cf9  \cf6 **\cf7 141\'96145:\cf6 **\cf9  A point of the coarse quotient does not itself have the indicated stabilizer; the stabilizer belongs to the group ac\cf2 \
+    \cf4      \cf9 tion or quotient stack. Rephrase accordingly.\cf2 \
+    \cf4  73 \cf5 +\cf6 -\cf9  \cf6 **\cf7 169, 364:\cf6 **\cf9  \cf6 `\cf9 rem:localcohomology\cf6 `\cf9  is defined twice, causing a duplicate-label warning, and the remarks substantially duplicate\cf2 \
+    \cf4      \cf9 one another.\cf2 \
+    \cf4  74 \cf5 +\cf6 -\cf9  \cf6 **\cf7 181:\cf6 **\cf9  The active annotation correctly flags that the preceding general paragraph can fail because the relevant modules need no\cf2 \
+    \cf4      \cf9 t be finitely generated. The claim should be restricted or repaired before publication.\cf2 \
+    \cf4  75 \cf5 +\cf6 -\cf9  \cf6 **\cf7 184\'96199:\cf6 **\cf9  Check the scope of the smoothness proposition and its proof: the subsequent prose says the analogous statement holds\cf2 \
+    \cf4      \cf9  for simplicial toric varieties, while an annotation says the proposition is probably only simplicial. State precisely whether smoo\cf2 \
+    \cf4      \cf9 th, simplicial, or general toric varieties are intended and whether normalization is involved.\cf2 \
+    \cf4  76 \cf5 +\cf6 -\cf9  \cf6 **\cf7 188:\cf6 **\cf9  \cf6 `\cf9 Berkesch2026Nonsimplicial\cf6 `\cf9  is absent from the parent bibliography used by the combined notes.\cf2 \
+    \cf4  77 \cf5 +\cf6 -\cf9  \cf6 **\cf7 212:\cf6 **\cf9  \'93is a realized\'94 \uc0\u8594  \'93is realized\'94; \'93ideals which yields\'94 \u8594  \'93ideals which yield.\'94\cf2 \
+    \cf4  78 \cf5 +\cf6 -\cf9  \cf6 **\cf7 214:\cf6 **\cf9  \'93a subtlety that absent\'94 \uc0\u8594  \'93a subtlety that is absent.\'94\cf2 \
+    \cf4  79 \cf5 +\cf6 -\cf9  \cf6 **\cf7 311:\cf6 **\cf9  \'93there a number\'94 \uc0\u8594  \'93there are a number\'94 (or \'93there is a number\'94).\cf2 \
+    \cf4  80 \cf5 +\cf6 -\cf9  \cf6 **\cf7 324:\cf6 **\cf9  A space is missing after the display before \'93Let.\'94\cf2 \
+    \cf4  81 \cf5 +\cf6 -\cf9  \cf6 **\cf7 327:\cf6 **\cf9  The set-builder expression for \cf6 `\cf9 G\cf6 `\cf9  is malformed: it needs a colon before the condition, not \cf6 `\cf9 \\in (k^*)^2\cf6 `\cf9 . The intermedi\cf2 \
+    \cf4      \cf9 ate complement calculation omits one excluded component until the final line, so the derivation is hard to follow.\cf2 \
+    \cf4  82 \cf5 +\cf6 -\cf9  \cf6 **\cf7 337:\cf6 **\cf9  \cf6 `\cf9 rmk:abuseNotation\cf6 `\cf9  is unresolved because its definition is commented out in \cf6 `\cf9 sections-11.tex\cf6 `\cf9 .\cf2 \
+    \cf4  83 \cf5 +\cf6 -\cf9  \cf6 **\cf7 368:\cf6 **\cf9  \'93is is\'94 repeats \'93is.\'94\cf2 \
+    \cf4  84 \cf5 +\cf6 -\cf9  \cf6 **\cf7 422:\cf6 **\cf9  \cf6 `\cf9 z^\{\\pm\}\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 z^\{\\pm1\}\cf6 `\cf9 .\cf2 \
+    \cf4  85 \cf5 +\cf6 -\cf9  \cf6 **\cf7 424\'96428:\cf6 **\cf9  \'93zero the sheaf\'94 \uc0\u8594  \'93the zero sheaf.\'94 The text says item (2) of the proposition fails, but item (2) is the always-val\cf2 \
+    \cf4      \cf9 id implication; the intended failure appears to be the converse/item (3).\cf2 \
+    \cf4  86 \cf5 +\cf6 -\cf9  \cf6 **\cf7 436:\cf6 **\cf9  The theorem carrying \cf6 `\cf9 thm:demazureL5\cf6 `\cf9  is commented out although that label is cited in several files.\cf2 \
+    \cf4  87 \cf5 +\cf6 -\cf9  \cf6 **\cf7 440:\cf6 **\cf9  The remark carrying \cf6 `\cf9 rem:rounddown\cf6 `\cf9  is commented out although it is cited in \cf6 `\cf9 sections-14-15-16.tex\cf6 `\cf9 .\cf2 \
+    \cf4  88 \cf5 +\cf6 -\cf9  \cf6 **\cf7 450\'96452:\cf6 **\cf9  Under the global arbitrary-characteristic convention, simpliciality alone does not guarantee a Deligne\'96Mumford/tame\cf2 \
+    \cf4      \cf9 quotient stack when stabilizer orders are divisible by the characteristic (for example, \cf6 `\cf9 \\mu_2\cf6 `\cf9  in characteristic two). Add the nee\cf2 \
+    \cf4      \cf9 ded characteristic/tameness hypothesis.\cf2 \
+    \cf4  89 \cf5 +\cf6 -\cf9  \cf6 **\cf7 452:\cf6 **\cf9  Citation keys \cf6 `\cf9 GS1\cf6 `\cf9  and \cf6 `\cf9 GS2\cf6 `\cf9  are absent from both section and parent bibliography databases.\cf2 \
+    \cf4  90 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Standalone build:\cf6 **\cf9  The PDF is produced, but duplicate labels, missing citations, and the unmatched conditional make the build\cf2 \
+    \cf4      \cf9 non-clean.\cf2 \
+    \cf4  91 \cf5 +\cf2 \
+    \cf4  92 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4  93 \cf5 +\cf2 \
+    \cf4  94 \cf5 +\cf9 Active:\cf2 \
+    \cf4  95 \cf5 +\cf2 \
+    \cf4  96 \cf5 +\cf6 -\cf9  \cf6 **\cf7 181 \'97 Daniel:\cf6 **\cf9  Says the paragraph is subtly wrong in general because finite generation can be lost and asks that it be fixed o\cf2 \
+    \cf4      \cf9 r discussed.\cf2 \
+    \cf4  97 \cf5 +\cf6 -\cf9  \cf6 **\cf7 341 \'97 Daniel:\cf6 **\cf9  Notes that the useful \'93abuse of notation\'94 remark is commented out and that the lecture is long.\cf2 \
+    \cf4  98 \cf5 +\cf2 \
+    \cf4  99 \cf5 +\cf9 Inside commented-out source:\cf2 \
+    \cf4 100 \cf5 +\cf2 \
+    \cf4 101 \cf5 +\cf6 -\cf9  \cf6 **\cf7 36 \'97 Mahrud:\cf6 **\cf9  Asks whether projective, semiprojective, and quasiprojective should be defined.\cf2 \
+    \cf4 102 \cf5 +\cf6 -\cf9  \cf6 **\cf7 203 \'97 Mahrud/Daniel:\cf6 **\cf9  Mahrud asks to locate Michael\'92s email; Daniel explains that \cf6 `\cf9 J\cf6 `\cf9  is not generally radical, suspects the p\cf2 \
+    \cf4      \cf9 roposition is simplicial-only, and cites joint work. The annotation contains \cf6 `\cf9 certiain\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 certain\cf6 `\cf9 .\cf2 \
+    \cf4 103 \cf5 +\cf6 -\cf9  \cf6 **\cf7 377 \'97 Daniel:\cf6 **\cf9  Asks whether \cf6 `\cf9 B\cf6 `\cf9 -saturation is used.\cf2 \
+    \cf4 104 \cf5 +\cf6 -\cf9  \cf6 **\cf7 380 \'97 Daniel:\cf6 **\cf9  Repeats the concern about loss of finite generation.\cf2 \
+    \cf4 105 \cf5 +\cf6 -\cf9  \cf6 **\cf7 443 \'97 Daniel:\cf6 **\cf9  Suggests moving the rational version elsewhere and adding an example.\cf2 \
+    \cf4 106 \cf5 +\cf6 -\cf9  \cf6 **\cf7 470 \'97 Mahrud:\cf6 **\cf9  Asks which Vistoli paper is meant.\cf2 \
+    \cf4 107 \cf5 +\cf2 \
+    \cf4 108 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-6.tex\cf6 `\cf2 \
+    \cf4 109 \cf5 +\cf2 \
+    \cf4 110 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 111 \cf5 +\cf2 \
+    \cf4 112 \cf5 +\cf6 -\cf9  \cf6 **\cf7 18\'9620:\cf6 **\cf9  Extending \cf6 `\cf9 \\alpha_i\cf6 `\cf9  rationally gives a map to \cf6 `\cf9 \\mathbb Q\cf6 `\cf9 , not to \cf6 `\cf9 \\mathbb Q^n\cf6 `\cf9  for each individual \cf6 `\cf9 i\cf6 `\cf9 .\cf2 \
+    \cf4 113 \cf5 +\cf6 -\cf9  \cf6 **\cf7 35, 192:\cf6 **\cf9  \cf6 `\cf9 thm:Bondal-Thomsen equivalences\cf6 `\cf9  is unresolved because the theorem at line 88 has the label \cf6 `\cf9 .  \cf6 `\cf9  rather than this\cf2 \
+    \cf4      \cf9 name.\cf2 \
+    \cf4 114 \cf5 +\cf6 -\cf9  \cf6 **\cf7 58:\cf6 **\cf9  \cf6 `\cf9 (a,b)\\in M\\otimes\\mathbb Q^2\cf6 `\cf9  should be \cf6 `\cf9 (a,b)\\in M\\otimes\\mathbb Q\cf6 `\cf9  or simply \cf6 `\cf9 (a,b)\\in\\mathbb Q^2\cf6 `\cf9 , depending on the i\cf2 \
+    \cf4      \cf9 ntended identification.\cf2 \
+    \cf4 115 \cf5 +\cf6 -\cf9  \cf6 **\cf7 81:\cf6 **\cf9  The set-builder notation for the zonotope is malformed; separate the sum from the conditions on the coefficients.\cf2 \
+    \cf4 116 \cf5 +\cf6 -\cf9  \cf6 **\cf7 88:\cf6 **\cf9  \cf6 `\cf9 \\label\{.  \}\cf6 `\cf9  is invalid/meaningless and is the source of later broken references.\cf2 \
+    \cf4 117 \cf5 +\cf6 -\cf9  \cf6 **\cf7 106:\cf6 **\cf9  Replace the comma after the displayed expression with suitable punctuation. The argument also writes \cf6 `\cf9 D-E=m\cf6 `\cf9 ; with the e\cf2 \
+    \cf4      \cf9 arlier exact sequence it should be \cf6 `\cf9 D-E=\\alpha(m)\cf6 `\cf9  (or explicitly identify \cf6 `\cf9 M\cf6 `\cf9  with its image).\cf2 \
+    \cf4 118 \cf5 +\cf6 -\cf9  \cf6 **\cf7 112:\cf6 **\cf9  A colon is missing before the displayed local calculation.\cf2 \
+    \cf4 119 \cf5 +\cf6 -\cf9  \cf6 **\cf7 115:\cf6 **\cf9  A smooth toric affine chart need not be \cf6 `\cf9 \\mathbb A^n\cf6 `\cf9 ; it can contain torus factors (\cf6 `\cf9 \\mathbb A^r\\times\\mathbb G_m^\{n-r\}\cf2 \
+    \cf4      \cf6 `\cf9 ). The patching argument should be stated in that generality.\cf2 \
+    \cf4 120 \cf5 +\cf6 -\cf9  \cf6 **\cf7 122:\cf6 **\cf9  \cf6 `\cf9 N^n/\\ell N^n\\cong(\\mathbb Z/\\ell)^n\cf6 `\cf9  is false notation: use \cf6 `\cf9 \\mathbb Z^n/\\ell\\mathbb Z^n\cf6 `\cf9 . In positive characteristic,\cf2 \
+    \cf4      \cf9 phrase the kernel group-scheme statement carefully.\cf2 \
+    \cf4 121 \cf5 +\cf6 -\cf9  \cf6 **\cf7 141:\cf6 **\cf9  \cf6 `\cf9 O_X\cf6 `\cf9  should use the document\'92s \cf6 `\cf9 \\cO_X\cf6 `\cf9  notation.\cf2 \
+    \cf4 122 \cf5 +\cf6 -\cf9  \cf6 **\cf7 151:\cf6 **\cf9  \cf6 `\cf9 \\operatorname\{Div\}(X)=\\mathbb Z^n\cf6 `\cf9  should be the group of torus-invariant divisors, not all Weil divisors.\cf2 \
+    \cf4 123 \cf5 +\cf6 -\cf9  \cf6 **\cf7 158:\cf6 **\cf9  The splitting/basis assertion uses freeness of \cf6 `\cf9 \\operatorname\{Cl\}(X)\cf6 `\cf9 ; state that this follows from the smooth hypothese\cf2 \
+    \cf4      \cf9 s being used.\cf2 \
+    \cf4 124 \cf5 +\cf6 -\cf9  \cf6 **\cf7 161:\cf6 **\cf9  \cf6 `\cf9 m\cf6 `\cf9  is applied to \cf6 `\cf9 \\mathcal O(\\cdots)\cf6 `\cf9  rather than to its class/degree.\cf2 \
+    \cf4 125 \cf5 +\cf6 -\cf9  \cf6 **\cf7 163:\cf6 **\cf9  A comma is missing after the multi-index condition.\cf2 \
+    \cf4 126 \cf5 +\cf6 -\cf9  \cf6 **\cf7 177:\cf6 **\cf9  \cf6 `\cf9 s(t^\{\\ell a\})\cf6 `\cf9  has a spurious \cf6 `\cf9 a\cf6 `\cf9 ; the surrounding calculation requires \cf6 `\cf9 s(t^\\ell)\cf6 `\cf9 .\cf2 \
+    \cf4 127 \cf5 +\cf6 -\cf9  \cf6 **\cf7 187:\cf6 **\cf9  \'93class group of \cf6 `\cf9 \\operatorname\{Cl\}(X)\cf6 `\cf9 \'94 \uc0\u8594  \'93class group \cf6 `\cf9 \\operatorname\{Cl\}(X)\cf6 `\cf9 .\'94\cf2 \
+    \cf4 128 \cf5 +\cf6 -\cf9  \cf6 **\cf7 188:\cf6 **\cf9  Restriction does not literally \'93delete the line bundles\'94 attached to new rays. Explain that the corresponding divisors/c\cf2 \
+    \cf4      \cf9 lasses restrict or trivialize and that the grading descends through the appropriate quotient.\cf2 \
+    \cf4 129 \cf5 +\cf6 -\cf9  \cf6 **\cf7 195:\cf6 **\cf9  If \cf6 `\cf9 \\deg D=-\\ell e\cf6 `\cf9 , then \cf6 `\cf9 e=-\\deg(D/\\ell)\cf6 `\cf9 , not \cf6 `\cf9 +\\deg(D/\\ell)\cf6 `\cf9 .\cf2 \
+    \cf4 130 \cf5 +\cf6 -\cf9  \cf6 **\cf7 203:\cf6 **\cf9  Rounding down is defined for a chosen torus-invariant \cf6 `\cf9 \\mathbb Q\cf6 `\cf9 -divisor presentation, not intrinsically for a class wi\cf2 \
+    \cf4      \cf9 thout choosing representatives; say what is being rounded.\cf2 \
+    \cf4 131 \cf5 +\cf6 -\cf9  \cf6 **\cf7 225, 228:\cf6 **\cf9  A line bundle is not itself \'93the negative of an effective divisor\'94; distinguish the divisor, its class, and the ass\cf2 \
+    \cf4      \cf9 ociated line bundle.\cf2 \
+    \cf4 132 \cf5 +\cf6 -\cf9  \cf6 **\cf7 237:\cf6 **\cf9  \cf6 `\cf9 thm:demazureL5\cf6 `\cf9  is unresolved; the likely target is \cf6 `\cf9 prop:Demazure\cf6 `\cf9  or the commented theorem in \cf6 `\cf9 sections-4-5.tex\cf6 `\cf9 .\cf2 \
+    \cf4 133 \cf5 +\cf6 -\cf9  Several labels contain spaces or punctuation (for example \cf6 `\cf9 lem:Achinger's Lemma\cf6 `\cf9 ), which is fragile and inconsistent with most of\cf2 \
+    \cf4      \cf9  the project.\cf2 \
+    \cf4 134 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Standalone build:\cf6 **\cf9  The content compiles, but the conditional wrapper remains unmatched.\cf2 \
+    \cf4 135 \cf5 +\cf2 \
+    \cf4 136 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 137 \cf5 +\cf2 \
+    \cf4 138 \cf5 +\cf9 Active: none.\cf2 \
+    \cf4 139 \cf5 +\cf2 \
+    \cf4 140 \cf5 +\cf9 Inside commented-out source:\cf2 \
+    \cf4 141 \cf5 +\cf2 \
+    \cf4 142 \cf5 +\cf6 -\cf9  \cf6 **\cf7 201 \'97 Michael:\cf6 **\cf9  Notes similarity to King\'92s Lemma 2.20 and asks whether the result is really easy.\cf2 \
+    \cf4 143 \cf5 +\cf2 \
+    \cf4 144 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-7-8-9-v1.tex\cf6 `\cf2 \
+    \cf4 145 \cf5 +\cf2 \
+    \cf4 146 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 147 \cf5 +\cf2 \
+    \cf4 148 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Filename/project assembly:\cf6 **\cf9  \cf6 `\cf9 ../Notes.tex\cf6 `\cf9  requests \cf6 `\cf9 sections-7-8-9.tex\cf6 `\cf9 , so this entire file is omitted from the combined not\cf2 \
+    \cf4      \cf9 es.\cf2 \
+    \cf4 149 \cf5 +\cf6 -\cf9  \cf6 **\cf7 14:\cf6 **\cf9  \cf6 `\cf9 sec:*****\cf6 `\cf9  is a placeholder and unresolved reference.\cf2 \
+    \cf4 150 \cf5 +\cf6 -\cf9  \cf6 **\cf7 18:\cf6 **\cf9  Replace raw double quotation marks with TeX quotes. \'93the same graded ring as Cox ring\'94 needs \'93as their/the Cox ring.\'94\cf2 \
+    \cf4 151 \cf5 +\cf6 -\cf9  \cf6 **\cf7 23:\cf6 **\cf9  \'93a toric inclusion defined by\'94 is too broad as stated; qualify it as the dense-torus/lattice-ideal description or give th\cf2 \
+    \cf4      \cf9 e hypotheses under which the closure is defined this way.\cf2 \
+    \cf4 152 \cf5 +\cf6 -\cf9  \cf6 **\cf7 35:\cf6 **\cf9  \'93an an\'94 repeats \'93an,\'94 and the sentence contains a stray malformed \cf6 `\cf9  [\\subset\cf6 `\cf9 .\cf2 \
+    \cf4 153 \cf5 +\cf6 -\cf9  \cf6 **\cf7 49:\cf6 **\cf9  The hyperplane notation needs both indices, for example \cf6 `\cf9 H_\{i,j\}\cf6 `\cf9 ; the current \cf6 `\cf9 H_i\cf6 `\cf9  conflicts with the displayed depende\cf2 \
+    \cf4      \cf9 nce on \cf6 `\cf9 j\cf6 `\cf9 .\cf2 \
+    \cf4 154 \cf5 +\cf6 -\cf9  \cf6 **\cf7 61:\cf6 **\cf9  The hyperplane subdivision lives in \cf6 `\cf9 L_\{\\mathbb R\}\cf6 `\cf9 , not in the lattice \cf6 `\cf9 L\cf6 `\cf9  itself.\cf2 \
+    \cf4 155 \cf5 +\cf6 -\cf9  \cf6 **\cf7 70, 99, 118, 182, 246:\cf6 **\cf9  Labels contain spaces, braces, or long prose. They may compile but are fragile; replace them with stab\cf2 \
+    \cf4      \cf9 le colon-separated identifiers.\cf2 \
+    \cf4 156 \cf5 +\cf6 -\cf9  \cf6 **\cf7 78:\cf6 **\cf9  The sign/rounding identity is wrong: in general \cf6 `\cf9 -\\lceil p\\rceil=\\lfloor -p\\rfloor\cf6 `\cf9 , not \cf6 `\cf9 \\lfloor p\\rfloor\cf6 `\cf9 . Apply the de\cf2 \
+    \cf4      \cf9 gree map only after correcting the sign.\cf2 \
+    \cf4 157 \cf5 +\cf6 -\cf9  \cf6 **\cf7 88\'9689:\cf6 **\cf9  A space is missing after a period, followed by a comma splice.\cf2 \
+    \cf4 158 \cf5 +\cf6 -\cf9  \cf6 **\cf7 122:\cf6 **\cf9  \cf6 `\cf9 fig1\}.In\cf6 `\cf9  needs a space after the period.\cf2 \
+    \cf4 159 \cf5 +\cf6 -\cf9  \cf6 **\cf7 160\'96166:\cf6 **\cf9  The summands are labeled \cf6 `\cf9 S(\\ell(A))\cf6 `\cf9 , whereas the complex was defined with shifts \cf6 `\cf9 S(-\\Psi(A))\cf6 `\cf9 . If \cf6 `\cf9 \\ell(A)\cf6 `\cf9  is me\cf2 \
+    \cf4      \cf9 ant to abbreviate the divisor/degree, define it and preserve the sign.\cf2 \
+    \cf4 160 \cf5 +\cf6 -\cf9  \cf6 **\cf7 200:\cf6 **\cf9  The point \cf6 `\cf9 (3,2)\cf6 `\cf9  should be \cf6 `\cf9 (3,-2)\cf6 `\cf9  in the illustrated arrangement.\cf2 \
+    \cf4 161 \cf5 +\cf6 -\cf9  \cf6 **\cf7 205:\cf6 **\cf9  Replace raw double quotation marks with TeX opening/closing quotes.\cf2 \
+    \cf4 162 \cf5 +\cf6 -\cf9  \cf6 **\cf7 209:\cf6 **\cf9  The sentence needs a final period.\cf2 \
+    \cf4 163 \cf5 +\cf6 -\cf9  \cf6 **\cf7 293:\cf6 **\cf9  The quotient \cf6 `\cf9 L_\{\\mathbb R\}/L\cf6 `\cf9  is a real torus/circle; \cf6 `\cf9 L_\{\\mathbb R\}\cf6 `\cf9  alone is not a circle.\cf2 \
+    \cf4 164 \cf5 +\cf6 -\cf9  \cf6 **\cf7 382:\cf6 **\cf9  A divisor vector \cf6 `\cf9 \\Psi(A)\cf6 `\cf9  is conflated with its class/degree. A graded summand should be written using \cf6 `\cf9 -\\deg\\Psi(A)\cf6 `\cf9 ,\cf2 \
+    \cf4      \cf9 not as \cf6 `\cf9 S(-\\Psi(A))\cf6 `\cf9  unless that abuse is explicitly declared.\cf2 \
+    \cf4 165 \cf5 +\cf6 -\cf9  \cf6 **\cf7 387\'96389:\cf6 **\cf9  The active annotations identify a central notation problem: \cf6 `\cf9 M,L\cf6 `\cf9  are used both as sublattices of coordinate lattice\cf2 \
+    \cf4      \cf9 s and as abstract lattices, \cf6 `\cf9 \\alpha\cf6 `\cf9  is sometimes an inclusion and sometimes the divisor map, and \cf6 `\cf9 \\Psi=\\lceil\\alpha\\rceil\cf6 `\cf9  needs d\cf2 \
+    \cf4      \cf9 omains. Write, for example, \cf6 `\cf9 \\Psi(p)=\\lceil\\alpha_\{\\mathbb R\}(p)\\rceil\cf6 `\cf9 .\cf2 \
+    \cf4 166 \cf5 +\cf6 -\cf9  \cf6 **\cf7 430:\cf6 **\cf9  The ceiling operation is applied to a displayed two-coordinate vector, even though the embedding used by \cf6 `\cf9 \\Psi\cf6 `\cf9  lands in\cf2 \
+    \cf4      \cf9  \cf6 `\cf9 \\mathbb R^4\cf6 `\cf9 . Display the embedded vector before rounding.\cf2 \
+    \cf4 167 \cf5 +\cf6 -\cf9  \cf6 **\cf7 518\'96520:\cf6 **\cf9  The claim that the varieties have \'93the same Cox ring\'94 is incompatible with examples in which rays are omitted. Say p\cf2 \
+    \cf4      \cf9 recisely whether they share an ambient polynomial ring, ray configuration, grading, or only a common master construction.\cf2 \
+    \cf4 168 \cf5 +\cf6 -\cf9  \cf6 **\cf7 526:\cf6 **\cf9  For \cf6 `\cf9 a\\in M\cf6 `\cf9 , the monomial should be \cf6 `\cf9 x^\{\\alpha(a)\}\cf6 `\cf9 , not \cf6 `\cf9 x^a\cf6 `\cf9 , unless \cf6 `\cf9 M\cf6 `\cf9  has explicitly been identified with its imag\cf2 \
+    \cf4      \cf9 e in \cf6 `\cf9 \\mathbb Z^n\cf6 `\cf9 .\cf2 \
+    \cf4 169 \cf5 +\cf6 -\cf9  \cf6 **\cf7 531:\cf6 **\cf9  The lattice defining the graph sits in \cf6 `\cf9 \\mathbb Z^n\\times\\mathbb Z^n\cf6 `\cf9  via the two \cf6 `\cf9 \\alpha\cf6 `\cf9  maps; it is not literally a s\cf2 \
+    \cf4      \cf9 ublattice of \cf6 `\cf9 M\\times M\cf6 `\cf9  as displayed.\cf2 \
+    \cf4 170 \cf5 +\cf6 -\cf9  \cf6 **\cf7 552:\cf6 **\cf9  \'93left hand side\'94 should identify the first factor. The Bondal\'96Thomsen set is elsewhere an image of \cf6 `\cf9 M_\{\\mathbb R\}/M\cf6 `\cf9 , no\cf2 \
+    \cf4      \cf9 t of \cf6 `\cf9 M\cf6 `\cf9  itself.\cf2 \
+    \cf4 171 \cf5 +\cf6 -\cf9  \cf6 **\cf7 559:\cf6 **\cf9  The line-bundle/equivalence statement needs the smooth or quotient-stack hypotheses; on a merely simplicial coarse varie\cf2 \
+    \cf4      \cf9 ty, the indicated classes need not all be line bundles.\cf2 \
+    \cf4 172 \cf5 +\cf6 -\cf9  \cf6 **\cf7 614:\cf6 **\cf9  The displayed formula has mismatched parentheses and malformed math delimiters.\cf2 \
+    \cf4 173 \cf5 +\cf6 -\cf9  \cf6 **\cf7 622:\cf6 **\cf9  Finite generation follows from finiteness of the relevant cell orbits/degree representatives, not merely from taking an\cf2 \
+    \cf4      \cf9 intersection; supply the missing reason.\cf2 \
+    \cf4 174 \cf5 +\cf6 -\cf9  \cf6 **\cf7 664:\cf6 **\cf9  \cf6 `\cf9 \\]\\.\cf6 `\cf9  has a stray backslash before the period.\cf2 \
+    \cf4 175 \cf5 +\cf6 -\cf9  \cf6 **\cf7 672:\cf6 **\cf9  \'93a a\'94 repeats \'93a\'94; the sentence is also a run-on.\cf2 \
+    \cf4 176 \cf5 +\cf6 -\cf9  \cf6 **\cf7 678:\cf6 **\cf9  \'93elements in a\'94 is incomplete; name the set or ring.\cf2 \
+    \cf4 177 \cf5 +\cf6 -\cf9  \cf6 **\cf7 683:\cf6 **\cf9  The regular-sequence quotient argument needs its hypotheses stated rather than asserted for the displayed ideal without\cf2 \
+    \cf4      \cf9 explanation.\cf2 \
+    \cf4 178 \cf5 +\cf6 -\cf9  \cf6 **\cf7 687:\cf6 **\cf9  \cf6 `\cf9 A\cf6 `\cf9  is introduced as a semigroup, not as the quotient ring \cf6 `\cf9 S/I\cf6 `\cf9 .\cf2 \
+    \cf4 179 \cf5 +\cf6 -\cf9  \cf6 **\cf7 693:\cf6 **\cf9  \cf6 `\cf9 \\eta_(\cf6 `\cf9  is malformed.\cf2 \
+    \cf4 180 \cf5 +\cf6 -\cf9  \cf6 **\cf7 696:\cf6 **\cf9  Distinguish a lattice vector from its monomial, and use a consistent \cf6 `\cf9 \\eta\cf6 `\cf9 /\cf6 `\cf9 \\eta_\{\\mathbb R\}\cf6 `\cf9  notation.\cf2 \
+    \cf4 181 \cf5 +\cf6 -\cf9  \cf6 **\cf7 699, 719:\cf6 **\cf9  A fractional/real vector requires the real-linear extension \cf6 `\cf9 \\eta_\{\\mathbb R\}\cf6 `\cf9  (and similarly \cf6 `\cf9 \\gamma_\{\\mathbb R\}\cf6 `\cf9 )\cf2 \
+    \cf4      \cf9 , not the lattice map.\cf2 \
+    \cf4 182 \cf5 +\cf6 -\cf9  \cf6 **\cf7 748:\cf6 **\cf9  The \cf6 `\cf9 \\expandafter\\enddocument\cf6 `\cf9  wrapper is obscure and leaves the standalone conditional handling fragile; use an ordinar\cf2 \
+    \cf4      \cf9 y conditional closed before \cf6 `\cf9 \\end\{document\}\cf6 `\cf9 .\cf2 \
+    \cf4 183 \cf5 +\cf2 \
+    \cf4 184 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 185 \cf5 +\cf2 \
+    \cf4 186 \cf5 +\cf9 Active:\cf2 \
+    \cf4 187 \cf5 +\cf2 \
+    \cf4 188 \cf5 +\cf6 -\cf9  \cf6 **\cf7 20 \'97 David:\cf6 **\cf9  Suggests moving the blurb near the beginning and referring back to it.\cf2 \
+    \cf4 189 \cf5 +\cf6 -\cf9  \cf6 **\cf7 36 \'97 David:\cf6 **\cf9  Says \cf6 `\cf9 M_L\cf6 `\cf9  is poor notation because \cf6 `\cf9 M\cf6 `\cf9  already has a central role.\cf2 \
+    \cf4 190 \cf5 +\cf6 -\cf9  \cf6 **\cf7 57 \'97 Jay:\cf6 **\cf9  Suggests replacing \cf6 `\cf9 \\Psi\cf6 `\cf9  by \cf6 `\cf9 \\psi\cf6 `\cf9  to match BCHSY.\cf2 \
+    \cf4 191 \cf5 +\cf6 -\cf9  \cf6 **\cf7 387 \'97 Jay:\cf6 **\cf9  Flags the inconsistent roles of \cf6 `\cf9 M,L\cf6 `\cf9 , \cf6 `\cf9 \\alpha\cf6 `\cf9 , and the formula \cf6 `\cf9 \\Psi=\\lceil\\alpha\\rceil\cf6 `\cf9 , and mentions Bondal\'96Th\cf2 \
+    \cf4      \cf9 omsen notation.\cf2 \
+    \cf4 192 \cf5 +\cf6 -\cf9  \cf6 **\cf7 503 \'97 Jay:\cf6 **\cf9  Requests improved colors/offsets for the strata.\cf2 \
+    \cf4 193 \cf5 +\cf6 -\cf9  \cf6 **\cf7 555 \'97 David:\cf6 **\cf9  Asks \'93where?\'94\cf2 \
+    \cf4 194 \cf5 +\cf6 -\cf9  \cf6 **\cf7 729 \'97 Jay:\cf6 **\cf9  Suggests reproducing the figure and highlighting the relevant segment.\cf2 \
+    \cf4 195 \cf5 +\cf2 \
+    \cf4 196 \cf5 +\cf9 Inside commented-out source:\cf2 \
+    \cf4 197 \cf5 +\cf2 \
+    \cf4 198 \cf5 +\cf6 -\cf9  \cf6 **\cf7 398 \'97 Jay:\cf6 **\cf9  Notes questions about the grading group and torsion notation.\cf2 \
+    \cf4 199 \cf5 +\cf6 -\cf9  \cf6 **\cf7 635 \'97 Jay:\cf6 **\cf9  Notes that \cf6 `\cf9 \\alpha\cf6 `\cf9  was already used for a map in Lecture 6.\cf2 \
+    \cf4 200 \cf5 +\cf2 \
+    \cf4 201 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-10.tex\cf6 `\cf2 \
+    \cf4 202 \cf5 +\cf2 \
+    \cf4 203 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 204 \cf5 +\cf2 \
+    \cf4 205 \cf5 +\cf6 -\cf9  \cf6 **\cf7 15:\cf6 **\cf9  \'93resolution \cf6 `\cf9 R\cf6 `\cf9  of \cf6 `\cf9 \\mathcal O_\\Delta\cf6 `\cf9  of the diagonal\'94 is redundant. The paragraph also alternates \'93Thomsen collection\'94\cf2 \
+    \cf4      \cf9 and \'93Bondal\'96Thomsen collection\'94; choose one term or explain the distinction.\cf2 \
+    \cf4 206 \cf5 +\cf6 -\cf9  \cf6 **\cf7 49:\cf6 **\cf9  \cf6 `\cf9 \\RR\cf6 `\cf9  denotes the resolution here but denotes the real numbers elsewhere. Use \cf6 `\cf9 R\cf6 `\cf9 , \cf6 `\cf9 \\mathbf R\cf6 `\cf9 , or another dedicated symb\cf2 \
+    \cf4      \cf9 ol.\cf2 \
+    \cf4 207 \cf5 +\cf6 -\cf9  \cf6 **\cf7 57:\cf6 **\cf9  Saying the \uc0\u268 ech differentials have \'93entries in \cf6 `\cf9 k\cf6 `\cf9 \'94 is imprecise. The useful fact is that these are complexes of vector s\cf2 \
+    \cf4      \cf9 paces and hence split (with the appropriate finiteness assumptions if needed).\cf2 \
+    \cf4 208 \cf5 +\cf6 -\cf9  \cf6 **\cf7 62:\cf6 **\cf9  \cf6 `\cf9 \\mathcal B(\\mathcal E)\cf6 `\cf9  is undefined and inconsistent with the surrounding \cf6 `\cf9 \\mathcal B(\\mathcal F)\cf6 `\cf9 ; it appears to be a\cf2 \
+    \cf4      \cf9 typo.\cf2 \
+    \cf4 209 \cf5 +\cf6 -\cf9  \cf6 **\cf7 67:\cf6 **\cf9  Recovering a graded module from all twists requires the total section functor \cf6 `\cf9 \\Gamma_*\cf6 `\cf9 , not an undifferentiated ordinar\cf2 \
+    \cf4      \cf9 y global-sections functor. Make the graded assembly explicit.\cf2 \
+    \cf4 210 \cf5 +\cf6 -\cf9  \cf6 **\cf7 102:\cf6 **\cf9  The theorem should carry the smooth toric hypotheses in force; it is not a statement about arbitrary toric varieties as\cf2 \
+    \cf4      \cf9 currently worded.\cf2 \
+    \cf4 211 \cf5 +\cf6 -\cf9  \cf6 **\cf7 106:\cf6 **\cf9  The theorem is stated under a projective assumption, but the proof immediately says projectivity is not needed. State th\cf2 \
+    \cf4      \cf9 e intended nonprojective version and all needed hypotheses directly.\cf2 \
+    \cf4 212 \cf5 +\cf2 \
+    \cf4 213 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 214 \cf5 +\cf2 \
+    \cf4 215 \cf5 +\cf9 None.\cf2 \
+    \cf4 216 \cf5 +\cf2 \
+    \cf4 217 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-11.tex\cf6 `\cf2 \
+    \cf4 218 \cf5 +\cf2 \
+    \cf4 219 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 220 \cf5 +\cf2 \
+    \cf4 221 \cf5 +\cf6 -\cf9  \cf6 **\cf7 6:\cf6 **\cf9  \cf6 `\cf9 \\begin\{document\}\cf6 `\cf9  is commented out, causing a hard standalone compilation failure.\cf2 \
+    \cf4 222 \cf5 +\cf6 -\cf9  \cf6 **\cf7 10:\cf6 **\cf9  The introduction claims that the section defines the Cox category, but it does not; Lauren\'92s annotation flags this.\cf2 \
+    \cf4 223 \cf5 +\cf6 -\cf9  \cf6 **\cf7 22:\cf6 **\cf9  Choosing a basis of \cf6 `\cf9 \\mathbb Z^n\cf6 `\cf9  does not also choose a basis of the sublattice \cf6 `\cf9 M\cf6 `\cf9 .\cf2 \
+    \cf4 224 \cf5 +\cf6 -\cf9  \cf6 **\cf7 29:\cf6 **\cf9  The ray vectors span \cf6 `\cf9 N_\{\\mathbb Q\}\cf6 `\cf9 , not \cf6 `\cf9 \\mathbb Q^n\cf6 `\cf9  unless a separate identification has been chosen.\cf2 \
+    \cf4 225 \cf5 +\cf6 -\cf9  \cf6 **\cf7 40:\cf6 **\cf9  \'93ideals describe as follows\'94 \uc0\u8594  \'93ideals described as follows.\'94\cf2 \
+    \cf4 226 \cf5 +\cf6 -\cf9  \cf6 **\cf7 149:\cf6 **\cf9  The notation for \cf6 `\cf9 G\cf6 `\cf9  alternates between a diagonalizable group scheme and an ordinary torus/group of points. Use the gro\cf2 \
+    \cf4      \cf9 up scheme consistently.\cf2 \
+    \cf4 227 \cf5 +\cf6 -\cf9  \cf6 **\cf7 155:\cf6 **\cf9  Invariance of the zero section is not, by itself, a complete definition of a \cf6 `\cf9 G\cf6 `\cf9 -linearization. State the lift/action on\cf2 \
+    \cf4      \cf9  the total space and its fiberwise linearity.\cf2 \
+    \cf4 228 \cf5 +\cf6 -\cf9  \cf6 **\cf7 164\'96179:\cf6 **\cf9  The base field silently switches from \cf6 `\cf9 k\cf6 `\cf9  to \cf6 `\cf9 \\mathbb C\cf6 `\cf9 . At line 179, points of \cf6 `\cf9 G\cf6 `\cf9  are not algebra maps \cf6 `\cf9 \\mathbb C\cf2 \
+    \cf4      \cf9 [t]\\to\\mathbb C[\\operatorname\{Cl\}(X)]\cf6 `\cf9  nor elements of the group algebra in the way displayed. This proof is unfinished and should\cf2 \
+    \cf4      \cf9 be replaced by the character/weight-space argument.\cf2 \
+    \cf4 229 \cf5 +\cf6 -\cf9  \cf6 **\cf7 174:\cf6 **\cf9  \cf6 `\cf9 L_p\cf6 `\cf9  should be \cf6 `\cf9 L_d\cf6 `\cf9 .\cf2 \
+    \cf4 230 \cf5 +\cf6 -\cf9  \cf6 **\cf7 208:\cf6 **\cf9  \cf6 `\cf9 \\alpha\cf6 `\cf9  does not lie in \cf6 `\cf9 \\mathbb Z^d\cf6 `\cf9 ; it is a map (or its columns lie in the appropriate lattice). The ambient rank sh\cf2 \
+    \cf4      \cf9 ould match the earlier exact sequence.\cf2 \
+    \cf4 231 \cf5 +\cf6 -\cf9  \cf6 **\cf7 225:\cf6 **\cf9  \cf6 `\cf9 \\Gamma(\\Sigma,V)\cf6 `\cf9  should be \cf6 `\cf9 \\Gamma(\\Sigma,F)\cf6 `\cf9 .\cf2 \
+    \cf4 232 \cf5 +\cf6 -\cf9  \cf6 **\cf7 230:\cf6 **\cf9  \'93may non-empty\'94 \uc0\u8594  \'93may be non-empty.\'94\cf2 \
+    \cf4 233 \cf5 +\cf6 -\cf9  \cf6 **\cf7 235:\cf6 **\cf9  \cf6 `\cf9 G\cf6 `\cf9  is undefined in the complement decomposition and appears to mean the complement \cf6 `\cf9 F\cf6 `\cf9 .\cf2 \
+    \cf4 234 \cf5 +\cf6 -\cf9  \cf6 **\cf7 239:\cf6 **\cf9  The final equality should involve \cf6 `\cf9 -\\alpha_i\cf6 `\cf9 , not \cf6 `\cf9 -\\nu_i\cf6 `\cf9 ; the current expression is dimensionally inconsistent. The m\cf2 \
+    \cf4      \cf9 issing inequality/argument is also flagged by an annotation.\cf2 \
+    \cf4 235 \cf5 +\cf6 -\cf9  \cf6 **\cf7 243:\cf6 **\cf9  \cf6 `\cf9 \\Gamma(\\Sigma,V)\cf6 `\cf9  again should use \cf6 `\cf9 F\cf6 `\cf9 .\cf2 \
+    \cf4 236 \cf5 +\cf6 -\cf9  \cf6 **\cf7 247:\cf6 **\cf9  The fan dimension is governed by \cf6 `\cf9 \\operatorname\{rank\}\\operatorname\{Cl\}(S)\cf6 `\cf9  (or the relevant quotient space), not automat\cf2 \
+    \cf4      \cf9 ically by \cf6 `\cf9 n\cf6 `\cf9 .\cf2 \
+    \cf4 237 \cf5 +\cf6 -\cf9  \cf6 **\cf7 254:\cf6 **\cf9  \cf6 `\cf9 \\input\{sections/fig-Bl2P3\}\cf6 `\cf9  fails in standalone compilation from this directory; use a path that works in both modes.\cf2 \
+    \cf4 238 \cf5 +\cf6 -\cf9  \cf6 **\cf7 268:\cf6 **\cf9  \cf6 `\cf9 X_d'\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 X_\{d'\}\cf6 `\cf9 .\cf2 \
+    \cf4 239 \cf5 +\cf6 -\cf9  \cf6 **\cf7 284:\cf6 **\cf9  A \'93common refinement of vectors\'94 is not defined. Refer to cones/fans generated by subsets and state the refinement relat\cf2 \
+    \cf4      \cf9 ion precisely.\cf2 \
+    \cf4 240 \cf5 +\cf6 -\cf9  \cf6 **\cf7 292\'96307:\cf6 **\cf9  In the \'93span\'94 construction, requiring \cf6 `\cf9 q_i>0\cf6 `\cf9  for every \cf6 `\cf9 i\cf6 `\cf9  conflicts with zero coefficients; restrict positivity to\cf2 \
+    \cf4      \cf9  the support or allow \cf6 `\cf9 q_i\\geq0\cf6 `\cf9 . The closing bracket is malformed (\cf6 `\cf9 \\langle\\cdots\\\}\cf6 `\cf9 ). The two operations are not plainly inverse\cf2 \
+    \cf4      \cf9 on arbitrary ideals and cones without closure/support conditions, which must be stated.\cf2 \
+    \cf4 241 \cf5 +\cf6 -\cf9  \cf6 **\cf7 358:\cf6 **\cf9  The cone is said to lie in \cf6 `\cf9 \\Sigma\cf6 `\cf9 , but the fan in this discussion is denoted \cf6 `\cf9 \\Delta\cf6 `\cf9 .\cf2 \
+    \cf4 242 \cf5 +\cf6 -\cf9  \cf6 **\cf7 375:\cf6 **\cf9  \cf6 `\cf9 \\mathbb Z^\{\\Sigma_1\}\cf6 `\cf9  is inconsistent with the surrounding ray set and appears to be a leftover symbol.\cf2 \
+    \cf4 243 \cf5 +\cf6 -\cf9  \cf6 **\cf7 388:\cf6 **\cf9  The map displayed is a surjection/projection, not an inclusion.\cf2 \
+    \cf4 244 \cf5 +\cf6 -\cf9  \cf6 **\cf7 391:\cf6 **\cf9  \cf6 `\cf9 \\operatorname\{Nef\}(X_p)\cf6 `\cf9  should be \cf6 `\cf9 \\operatorname\{Nef\}(X_d)\cf6 `\cf9 .\cf2 \
+    \cf4 245 \cf5 +\cf6 -\cf9  \cf6 **\cf7 399\'96408:\cf6 **\cf9  Item (7) is ill-typed: the moving cone belongs in a fixed divisor-class space, not \'93in \cf6 `\cf9 X_d\cf6 `\cf9 ,\'94 and \cf6 `\cf9 d\cf6 `\cf9  lying in its\cf2 \
+    \cf4      \cf9 own chamber cannot by itself characterize the global moving cone. Reformulate the equivalence in the common \cf6 `\cf9 \\operatorname\{Cl\}(S)_\{\cf2 \
+    \cf4      \cf9 \\mathbb R\}\cf6 `\cf9  space.\cf2 \
+    \cf4 246 \cf5 +\cf6 -\cf9  \cf6 **\cf7 419:\cf6 **\cf9  \cf6 `\cf9 X_i\cf6 `\cf9  should be \cf6 `\cf9 X_d\cf6 `\cf9 .\cf2 \
+    \cf4 247 \cf5 +\cf6 -\cf9  \cf6 **\cf7 424\'96426:\cf6 **\cf9  The proposition has an empty proof; the active annotation says the necessary construction has not been written down.\cf2 \
+    \cf4 248 \cf5 +\cf6 -\cf9  \cf6 **\cf7 447:\cf6 **\cf9  The hyperplanes need not be disjoint: they can meet along lower-dimensional faces, as line 205 already acknowledges. Rep\cf2 \
+    \cf4      \cf9 lace \'93do not intersect\'94 with the intended chamber-interior statement.\cf2 \
+    \cf4 249 \cf5 +\cf2 \
+    \cf4 250 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 251 \cf5 +\cf2 \
+    \cf4 252 \cf5 +\cf9 Active:\cf2 \
+    \cf4 253 \cf5 +\cf2 \
+    \cf4 254 \cf5 +\cf6 -\cf9  \cf6 **\cf7 10 \'97 Lauren:\cf6 **\cf9  Notes that the current section does not define the Cox category.\cf2 \
+    \cf4 255 \cf5 +\cf6 -\cf9  \cf6 **\cf7 16 \'97 Lauren:\cf6 **\cf9  Asks whether torsion is harmless.\cf2 \
+    \cf4 256 \cf5 +\cf6 -\cf9  \cf6 **\cf7 104 \'97 Lauren:\cf6 **\cf9  Asks for generators.\cf2 \
+    \cf4 257 \cf5 +\cf6 -\cf9  \cf6 **\cf7 106 \'97 Lauren:\cf6 **\cf9  Questions the choice of letters.\cf2 \
+    \cf4 258 \cf5 +\cf6 -\cf9  \cf6 **\cf7 155 \'97 Lauren:\cf6 **\cf9  Asks whether the GIT terminology is correct.\cf2 \
+    \cf4 259 \cf5 +\cf6 -\cf9  \cf6 **\cf7 170 \'97 Lauren:\cf6 **\cf9  Requests elaboration.\cf2 \
+    \cf4 260 \cf5 +\cf6 -\cf9  \cf6 **\cf7 179 \'97 Lauren:\cf6 **\cf9  Contains an ellipsis marking the incomplete argument.\cf2 \
+    \cf4 261 \cf5 +\cf6 -\cf9  \cf6 **\cf7 202 \'97 Lauren:\cf6 **\cf9  Suggests changing basis to match the picture; also asks for a picture at the end of the displayed discussion.\cf2 \
+    \cf4 262 \cf5 +\cf6 -\cf9  \cf6 **\cf7 214 \'97 Lauren:\cf6 **\cf9  Requests finding the relevant equation and adding a picture.\cf2 \
+    \cf4 263 \cf5 +\cf6 -\cf9  \cf6 **\cf7 235 \'97 Lauren:\cf6 **\cf9  Questions the notation.\cf2 \
+    \cf4 264 \cf5 +\cf6 -\cf9  \cf6 **\cf7 239 \'97 Lauren:\cf6 **\cf9  Requests an explanation/inequality.\cf2 \
+    \cf4 265 \cf5 +\cf6 -\cf9  \cf6 **\cf7 276 \'97 Lauren:\cf6 **\cf9  Requests a citation.\cf2 \
+    \cf4 266 \cf5 +\cf6 -\cf9  \cf6 **\cf7 299 \'97 Lauren:\cf6 **\cf9  Asks whether vectors should be bold.\cf2 \
+    \cf4 267 \cf5 +\cf6 -\cf9  \cf6 **\cf7 314 \'97 Lauren:\cf6 **\cf9  Questions the ray notation.\cf2 \
+    \cf4 268 \cf5 +\cf6 -\cf9  \cf6 **\cf7 328 \'97 Lauren:\cf6 **\cf9  Suggests simplifying rather than referring to 15.2.1.\cf2 \
+    \cf4 269 \cf5 +\cf6 -\cf9  \cf6 **\cf7 425 \'97 Lauren:\cf6 **\cf9  Requests a proposition because the construction has not been written.\cf2 \
+    \cf4 270 \cf5 +\cf2 \
+    \cf4 271 \cf5 +\cf9 Inside commented-out source:\cf2 \
+    \cf4 272 \cf5 +\cf2 \
+    \cf4 273 \cf5 +\cf6 -\cf9  \cf6 **\cf7 354 \'97 Lauren:\cf6 **\cf9  \'93make prettier.\'94\cf2 \
+    \cf4 274 \cf5 +\cf6 -\cf9  \cf6 **\cf7 373 \'97 Lauren:\cf6 **\cf9  Requests a citation.\cf2 \
+    \cf4 275 \cf5 +\cf6 -\cf9  \cf6 **\cf7 410 \'97 Lauren:\cf6 **\cf9  Says to adjust for the new version.\cf2 \
+    \cf4 276 \cf5 +\cf6 -\cf9  \cf6 **\cf7 429 \'97 Lauren:\cf6 **\cf9  Asks whether the material is needed elsewhere.\cf2 \
+    \cf4 277 \cf5 +\cf6 -\cf9  \cf6 **\cf7 433 \'97 Lauren:\cf6 **\cf9  Notes that it changed.\cf2 \
+    \cf4 278 \cf5 +\cf6 -\cf9  \cf6 **\cf7 438 \'97 Lauren:\cf6 **\cf9  Says the theorem was absorbed.\cf2 \
+    \cf4 279 \cf5 +\cf6 -\cf9  \cf6 **\cf7 455 \'97 Daniel:\cf6 **\cf9  Suggests mostly citing CLS.\cf2 \
+    \cf4 280 \cf5 +\cf2 \
+    \cf4 281 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-12-13.tex\cf6 `\cf2 \
+    \cf4 282 \cf5 +\cf2 \
+    \cf4 283 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 284 \cf5 +\cf2 \
+    \cf4 285 \cf5 +\cf6 -\cf9  \cf6 **\cf7 9:\cf6 **\cf9  A colon is more appropriate than the semicolon introducing the list.\cf2 \
+    \cf4 286 \cf5 +\cf6 -\cf9  \cf6 **\cf7 15:\cf6 **\cf9  Add a space after \'93for\'94 and write the range unambiguously as \cf6 `\cf9 0\\leq i\\leq n\cf6 `\cf9 .\cf2 \
+    \cf4 287 \cf5 +\cf6 -\cf9  \cf6 **\cf7 19:\cf6 **\cf9  Move prose punctuation outside the math expression.\cf2 \
+    \cf4 288 \cf5 +\cf6 -\cf9  \cf6 **\cf7 24:\cf6 **\cf9  A space is missing after the displayed notation.\cf2 \
+    \cf4 289 \cf5 +\cf6 -\cf9  \cf6 **\cf7 26:\cf6 **\cf9  The two-term display should include its map to \cf6 `\cf9 \\mathcal O_\\Delta\cf6 `\cf9  or be described as the complex whose cokernel is \cf6 `\cf9 \\mat\cf2 \
+    \cf4      \cf9 hcal O_\\Delta\cf6 `\cf9 , rather than silently calling the two free terms the whole resolution.\cf2 \
+    \cf4 290 \cf5 +\cf6 -\cf9  \cf6 **\cf7 46\'9650:\cf6 **\cf9  Verify the claimed four square degrees for every Hirzebruch surface under the chosen class-group basis. Standard proje\cf2 \
+    \cf4      \cf9 ctive-bundle exceptional collections depend on the Hirzebruch parameter, so the basis conversion and degree calculation should be s\cf2 \
+    \cf4      \cf9 hown.\cf2 \
+    \cf4 291 \cf5 +\cf6 -\cf9  \cf6 **\cf7 61:\cf6 **\cf9  \'93for \cf6 `\cf9 1\\leq i\\leq n\cf6 `\cf9 \'94 is missing \'93for.\'94\cf2 \
+    \cf4 292 \cf5 +\cf6 -\cf9  \cf6 **\cf7 73:\cf6 **\cf9  \'93is open question\'94 \uc0\u8594  \'93is an open question\'94; \cf6 `\cf9 compelxes\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 complexes\cf6 `\cf9 .\cf2 \
+    \cf4 293 \cf5 +\cf6 -\cf9  \cf6 **\cf7 89, 92:\cf6 **\cf9  \cf6 `\cf9 thm:BeilinsonFSEC\cf6 `\cf9  does not match the actual label \cf6 `\cf9 thm:beilinsonFSEC\cf6 `\cf9  (labels are case-sensitive).\cf2 \
+    \cf4 294 \cf5 +\cf6 -\cf9  \cf6 **\cf7 94:\cf6 **\cf9  \'93which will discuss\'94 \uc0\u8594  \'93which we will discuss.\'94\cf2 \
+    \cf4 295 \cf5 +\cf6 -\cf9  \cf6 **\cf7 98:\cf6 **\cf9  \'93Section 5.1\'94 is ambiguous/misnumbered in the assembled notes; use a label-based reference.\cf2 \
+    \cf4 296 \cf5 +\cf6 -\cf9  \cf6 **\cf7 107:\cf6 **\cf9  \'93have have\'94 repeats \'93have.\'94\cf2 \
+    \cf4 297 \cf5 +\cf6 -\cf9  \cf6 **\cf7 182:\cf6 **\cf9  \'93fan as\'94 \uc0\u8594  \'93fan has\'94; \'93at point\'94 \u8594  \'93at a point.\'94\cf2 \
+    \cf4 298 \cf5 +\cf6 -\cf9  \cf6 **\cf7 184:\cf6 **\cf9  The two factors are reversed: \cf6 `\cf9 \\pi_1^*D^b(\\mathbb P^2)\cf6 `\cf9  and \cf6 `\cf9 \\pi_2^*D^b(\\mathbb H_1)\cf6 `\cf9  are the type-correct subcategories\cf2 \
+    \cf4      \cf9 , not vice versa.\cf2 \
+    \cf4 299 \cf5 +\cf6 -\cf9  \cf6 **\cf7 190:\cf6 **\cf9  \'93need be a line\'94 \uc0\u8594  \'93need to be a line bundle.\'94\cf2 \
+    \cf4 300 \cf5 +\cf6 -\cf9  \cf6 **\cf7 214:\cf6 **\cf9  \cf6 `\cf9 \\S\\.VI.8\cf6 `\cf9  uses a malformed accent/section reference; typeset the bibliographic section normally.\cf2 \
+    \cf4 301 \cf5 +\cf6 -\cf9  \cf6 **\cf7 293:\cf6 **\cf9  Keep the weighted-projective quotient consistently as a stack if that is intended. Also, a semiorthogonal component is g\cf2 \
+    \cf4      \cf9 enerated by the whole pullback derived category, not merely by an unspecified list of line bundles unless a chosen exceptional coll\cf2 \
+    \cf4      \cf9 ection is supplied.\cf2 \
+    \cf4 302 \cf5 +\cf6 -\cf9  \cf6 **\cf7 299:\cf6 **\cf9  \'93This issue\'94 \uc0\u8594  \'93The issue\'94; line 300 also needs final punctuation.\cf2 \
+    \cf4 303 \cf5 +\cf6 -\cf9  \cf6 **\cf7 310:\cf6 **\cf9  If a wall lies in several maximal chambers, choosing \cf6 `\cf9 \\gamma(\\Gamma)\cf6 `\cf9  is not obviously independent of the choice. Prove\cf2 \
+    \cf4      \cf9 well-definedness or make the choice part of the data.\cf2 \
+    \cf4 304 \cf5 +\cf6 -\cf9  \cf6 **\cf7 318:\cf6 **\cf9  Add a final period.\cf2 \
+    \cf4 305 \cf5 +\cf6 -\cf9  \cf6 **\cf7 325:\cf6 **\cf9  In the stack setting, call the graph a substack/graph closure rather than a subvariety, or explicitly pass to coarse spa\cf2 \
+    \cf4      \cf9 ces.\cf2 \
+    \cf4 306 \cf5 +\cf6 -\cf9  \cf6 **\cf7 336:\cf6 **\cf9  \'93could be understand\'94 \uc0\u8594  \'93could be understood.\'94\cf2 \
+    \cf4 307 \cf5 +\cf6 -\cf9  \cf6 **\cf7 345:\cf6 **\cf9  The pushforward should be derived (\cf6 `\cf9 \\mathbf R\\pi_*\cf6 `\cf9 ) in this derived-category discussion.\cf2 \
+    \cf4 308 \cf5 +\cf6 -\cf9  \cf6 **\cf7 349:\cf6 **\cf9  \cf6 `\cf9 \\widetilde X\cf6 `\cf9  and \cf6 `\cf9 \\mathcal X\cf6 `\cf9  are mixed for the same object; choose one category/object convention.\cf2 \
+    \cf4 309 \cf5 +\cf6 -\cf9  \cf6 **\cf7 357:\cf6 **\cf9  The input to \cf6 `\cf9 \\Phi_\{ji\}\cf6 `\cf9  should be \cf6 `\cf9 \\mathcal O_\{X_i\}\cf6 `\cf9 , not \cf6 `\cf9 \\mathcal O_\{X_j\}\cf6 `\cf9 .\cf2 \
+    \cf4 310 \cf5 +\cf6 -\cf9  \cf6 **\cf7 368:\cf6 **\cf9  The codomain should use the same variety-versus-stack convention as the domain.\cf2 \
+    \cf4 311 \cf5 +\cf6 -\cf9  \cf6 **\cf7 433:\cf6 **\cf9  The spectral-sequence indices change from \cf6 `\cf9 p,q\cf6 `\cf9  to \cf6 `\cf9 s,t\cf6 `\cf9  without explanation.\cf2 \
+    \cf4 312 \cf5 +\cf6 -\cf9  \cf6 **\cf7 497:\cf6 **\cf9  \'93exceptional cases\'94 \uc0\u8594  \'93exceptional collections.\'94\cf2 \
+    \cf4 313 \cf5 +\cf2 \
+    \cf4 314 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 315 \cf5 +\cf2 \
+    \cf4 316 \cf5 +\cf9 Active:\cf2 \
+    \cf4 317 \cf5 +\cf2 \
+    \cf4 318 \cf5 +\cf6 -\cf9  \cf6 **\cf7 180 \'97 Michael:\cf6 **\cf9  Says he edited the following example.\cf2 \
+    \cf4 319 \cf5 +\cf6 -\cf9  \cf6 **\cf7 296 \'97 Michael:\cf6 **\cf9  Asks whether the coefficient field should be \cf6 `\cf9 \\mathbb Q\cf6 `\cf9  or \cf6 `\cf9 \\mathbb R\cf6 `\cf9 .\cf2 \
+    \cf4 320 \cf5 +\cf6 -\cf9  \cf6 **\cf7 342 \'97 Michael:\cf6 **\cf9  Says he added the proposition.\cf2 \
+    \cf4 321 \cf5 +\cf6 -\cf9  \cf6 **\cf7 364 \'97 Michael:\cf6 **\cf9  Notes small edits.\cf2 \
+    \cf4 322 \cf5 +\cf2 \
+    \cf4 323 \cf5 +\cf9 Inside commented-out source: none.\cf2 \
+    \cf4 324 \cf5 +\cf2 \
+    \cf4 325 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-14-15-16.tex\cf6 `\cf2 \
+    \cf4 326 \cf5 +\cf2 \
+    \cf4 327 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 328 \cf5 +\cf2 \
+    \cf4 329 \cf5 +\cf6 -\cf9  \cf6 **\cf7 30, 34:\cf6 **\cf9  The arguments of \cf6 `\cf9 \\mathcal O(\\cdots)\cf6 `\cf9  are missing closing parentheses.\cf2 \
+    \cf4 330 \cf5 +\cf6 -\cf9  \cf6 **\cf7 36, 49:\cf6 **\cf9  \cf6 `\cf9 thm:demazureL5\cf6 `\cf9  is unresolved because the labeled theorem is commented out in \cf6 `\cf9 sections-4-5.tex\cf6 `\cf9 .\cf2 \
+    \cf4 331 \cf5 +\cf6 -\cf9  \cf6 **\cf7 48:\cf6 **\cf9  The second \cf6 `\cf9 \\mathcal O(-d)\cf6 `\cf9  should be \cf6 `\cf9 \\mathcal O(-d')\cf6 `\cf9 .\cf2 \
+    \cf4 332 \cf5 +\cf6 -\cf9  \cf6 **\cf7 65, 78:\cf6 **\cf9  Use derived pushforward \cf6 `\cf9 \\mathbf R\\pi_*\cf6 `\cf9  in the derived-category statements.\cf2 \
+    \cf4 333 \cf5 +\cf6 -\cf9  \cf6 **\cf7 99:\cf6 **\cf9  The rounding argument has a sign error. With \cf6 `\cf9 d=\\sum a_\\rho D_\\rho\cf6 `\cf9 , the rounded divisor representing \cf6 `\cf9 d'\cf6 `\cf9  gives \cf6 `\cf9 d-d'\cf6 `\cf9  e\cf2 \
+    \cf4      \cf9 ffective; the current text begins with \cf6 `\cf9 -d=\\sum a_\\rho D_\\rho\cf6 `\cf9  and then derives \cf6 `\cf9 -d-d'\cf6 `\cf9 . Rewrite the calculation. There is also a s\cf2 \
+    \cf4      \cf9 tray \cf6 `\cf9 +f\cf6 `\cf9 . Both references to \cf6 `\cf9 rem:rounddown\cf6 `\cf9  are unresolved because that remark is commented out.\cf2 \
+    \cf4 334 \cf5 +\cf6 -\cf9  \cf6 **\cf7 110\'96111:\cf6 **\cf9  The polynomial \cf6 `\cf9 P\cf6 `\cf9  uses a two-component degree \cf6 `\cf9 (2,-1)\cf6 `\cf9 , but line 113 calls its class simply \cf6 `\cf9 -1\cf6 `\cf9 . Specify which gra\cf2 \
+    \cf4      \cf9 ding/class group is meant.\cf2 \
+    \cf4 335 \cf5 +\cf6 -\cf9  \cf6 **\cf7 173:\cf6 **\cf9  The two sides of the Atiyah flop are total spaces of \cf6 `\cf9 \\mathcal O_\{\\mathbb P^1\}(-1)^\{\\oplus2\}\cf6 `\cf9 , not \cf6 `\cf9 \\mathbb P^1\cf6 `\cf9 -bundles\cf2 \
+    \cf4      \cf9  over \cf6 `\cf9 \\mathbb A^2\cf6 `\cf9 .\cf2 \
+    \cf4 336 \cf5 +\cf6 -\cf9  \cf6 **\cf7 186:\cf6 **\cf9  The inequality/order \cf6 `\cf9 S\\geq d\cf6 `\cf9  is used without definition.\cf2 \
+    \cf4 337 \cf5 +\cf6 -\cf9  \cf6 **\cf7 190:\cf6 **\cf9  The displayed identities need \cf6 `\cf9 p^*\cf6 `\cf9  on one side (for example, compare \cf6 `\cf9 q^*\\mathcal O\cf6 `\cf9  with \cf6 `\cf9 p^*\\mathcal O\cf6 `\cf9 ); as written\cf2 \
+    \cf4      \cf9 both sides live on different spaces.\cf2 \
+    \cf4 338 \cf5 +\cf6 -\cf9  \cf6 **\cf7 218:\cf6 **\cf9  The sentence around the chamber notation is grammatically incomplete; the annotation also flags a conflict with graph no\cf2 \
+    \cf4      \cf9 tation.\cf2 \
+    \cf4 339 \cf5 +\cf6 -\cf9  \cf6 **\cf7 229:\cf6 **\cf9  Distinguish a line bundle from a divisor/class rather than identifying them literally.\cf2 \
+    \cf4 340 \cf5 +\cf6 -\cf9  \cf6 **\cf7 241:\cf6 **\cf9  \cf6 `\cf9 Kings\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 King's\cf6 `\cf9 .\cf2 \
+    \cf4 341 \cf5 +\cf6 -\cf9  \cf6 **\cf7 253\'96256:\cf6 **\cf9  \cf6 `\cf9 \\mathcal O_\{\\operatorname\{Cox\}\}(S)\cf6 `\cf9  and \cf6 `\cf9 \\mathcal O_\{\\operatorname\{Cox\}\}\cf6 `\cf9  are used inconsistently; define whether \cf6 `\cf2 \
+    \cf4      \cf9 S\cf6 `\cf9  is a twist, a ring, or an accidental argument.\cf2 \
+    \cf4 342 \cf5 +\cf6 -\cf9  \cf6 **\cf7 276\'96277:\cf6 **\cf9  The Ext notation is malformed (\cf6 `\cf9 \\operatorname\{Ext\}^p\{D\}\cf6 `\cf9  has no second argument/subscript). The right side of the as\cf2 \
+    \cf4      \cf9 serted identity should also be an Ext group, not an ordinary Hom unless \cf6 `\cf9 p=0\cf6 `\cf9 . After pushing from \cf6 `\cf9 X_i\cf6 `\cf9  to \cf6 `\cf9 X_j\cf6 `\cf9 , the structure she\cf2 \
+    \cf4      \cf9 af should be that of \cf6 `\cf9 X_j\cf6 `\cf9 , not \cf6 `\cf9 X_i\cf6 `\cf9 .\cf2 \
+    \cf4 343 \cf5 +\cf6 -\cf9  \cf6 **\cf7 281:\cf6 **\cf9  \cf6 `\cf9 prop:Demauzre\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 prop:Demazure\cf6 `\cf9 .\cf2 \
+    \cf4 344 \cf5 +\cf6 -\cf9  \cf6 **\cf7 283:\cf6 **\cf9  The claimed vanishing is not merely the definition of the Bondal\'96Thomsen collection; it also uses an ordering/effectivit\cf2 \
+    \cf4      \cf9 y or cohomology-vanishing result. Cite or prove that step.\cf2 \
+    \cf4 345 \cf5 +\cf6 -\cf9  \cf6 **\cf7 292:\cf6 **\cf9  \'93choose dg category\'94 \uc0\u8594  \'93choose a dg category.\'94\cf2 \
+    \cf4 346 \cf5 +\cf6 -\cf9  \cf6 **\cf7 296:\cf6 **\cf9  \'93a dg enhancement\'94 (not \'93an dg\'94); \'93a proof\'94 \uc0\u8594  \'93the proof\'94 where appropriate.\cf2 \
+    \cf4 347 \cf5 +\cf6 -\cf9  \cf6 **\cf7 303:\cf6 **\cf9  Both \cf6 `\cf9 -\\widetilde d\cf6 `\cf9  and \cf6 `\cf9 -d\cf6 `\cf9  are said to lie in \cf6 `\cf9 \\operatorname\{Cl\}(\\widetilde X)\cf6 `\cf9 ; the latter belongs to the original c\cf2 \
+    \cf4      \cf9 lass group unless pulled back. A closing parenthesis is also missing in the pushforward expression.\cf2 \
+    \cf4 348 \cf5 +\cf6 -\cf9  \cf6 **\cf7 309, 311:\cf6 **\cf9  The Hom subscript should be \cf6 `\cf9 X_j\cf6 `\cf9 , matching the objects after pushforward, not \cf6 `\cf9 X_i\cf6 `\cf9 .\cf2 \
+    \cf4 349 \cf5 +\cf6 -\cf9  \cf6 **\cf7 315:\cf6 **\cf9  The cone should be the derived/dg cone in the enhanced category; state this explicitly.\cf2 \
+    \cf4 350 \cf5 +\cf6 -\cf9  \cf6 **\cf7 320:\cf6 **\cf9  The definition of \cf6 `\cf9 Q\cf6 `\cf9  needs \'93for all \cf6 `\cf9 i\cf6 `\cf9 \'94 and should use thick closure if direct summands are intended.\cf2 \
+    \cf4 351 \cf5 +\cf6 -\cf9  \cf6 **\cf7 322:\cf6 **\cf9  Orthogonality in a derived category requires vanishing in all shifts (equivalently \cf6 `\cf9 \\mathbf R\\operatorname\{Hom\}=0\cf6 `\cf9 ), not\cf2 \
+    \cf4      \cf9  only degree-zero Hom.\cf2 \
+    \cf4 352 \cf5 +\cf2 \
+    \cf4 353 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 354 \cf5 +\cf2 \
+    \cf4 355 \cf5 +\cf9 Active:\cf2 \
+    \cf4 356 \cf5 +\cf2 \
+    \cf4 357 \cf5 +\cf6 -\cf9  \cf6 **\cf7 37 \'97 Michael:\cf6 **\cf9  Says he changed the lemma and proof.\cf2 \
+    \cf4 358 \cf5 +\cf6 -\cf9  \cf6 **\cf7 99 \'97 Michael:\cf6 **\cf9  Says he added the explanation and asks whether it should move to the next lecture.\cf2 \
+    \cf4 359 \cf5 +\cf6 -\cf9  \cf6 **\cf7 186 \'97 Michael:\cf6 **\cf9  Requests explanation.\cf2 \
+    \cf4 360 \cf5 +\cf6 -\cf9  \cf6 **\cf7 218 \'97 Michael:\cf6 **\cf9  Dislikes \cf6 `\cf9 \\Gamma\cf6 `\cf9  for chambers because it conflicts with graph notation.\cf2 \
+    \cf4 361 \cf5 +\cf2 \
+    \cf4 362 \cf5 +\cf9 Inside commented-out source:\cf2 \
+    \cf4 363 \cf5 +\cf2 \
+    \cf4 364 \cf5 +\cf6 -\cf9  \cf6 **\cf7 91 \'97 Daniel/Michael:\cf6 **\cf9  Asks whether Lev\'92s simplification can be used.\cf2 \
+    \cf4 365 \cf5 +\cf6 -\cf9  \cf6 **\cf7 199 \'97 Daniel:\cf6 **\cf9  Requests better notation.\cf2 \
+    \cf4 366 \cf5 +\cf2 \
+    \cf4 367 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-17.tex\cf6 `\cf2 \
+    \cf4 368 \cf5 +\cf2 \
+    \cf4 369 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 370 \cf5 +\cf2 \
+    \cf4 371 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Title:\cf6 **\cf9  \cf6 `\cf9 Kings\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 King's\cf6 `\cf9 .\cf2 \
+    \cf4 372 \cf5 +\cf6 -\cf9  \cf6 **\cf7 18:\cf6 **\cf9  The definition of properness is too weak if it means only that each individual Hom is finite-dimensional; normally one re\cf2 \
+    \cf4      \cf9 quires finite-dimensional total graded Hom (and the appropriate finiteness across shifts). \cf6 `\cf9 smoooth\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 smooth\cf6 `\cf9 .\cf2 \
+    \cf4 373 \cf5 +\cf6 -\cf9  \cf6 **\cf7 20:\cf6 **\cf9  \'93Lecture 9\'94 should be \'93Lecture 10\'94 for the cited generation result.\cf2 \
+    \cf4 374 \cf5 +\cf6 -\cf9  \cf6 **\cf7 24:\cf6 **\cf9  Smoothness of a full subcategory does not follow merely from fullness. Use admissibility or the full strong exceptional c\cf2 \
+    \cf4      \cf9 ollection to justify the claim, and similarly justify the application of Rouquier\'92s inequalities.\cf2 \
+    \cf4 375 \cf5 +\cf6 -\cf9  \cf6 **\cf7 39:\cf6 **\cf9  \cf6 `\cf9 Thompsen\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 Thomsen\cf6 `\cf9 .\cf2 \
+    \cf4 376 \cf5 +\cf6 -\cf9  \cf6 **\cf7 51:\cf6 **\cf9  The asserted equivalence with \cf6 `\cf9 K_\\Theta(S)\cf6 `\cf9  may require idempotent completion and a precise definition of the minimal-com\cf2 \
+    \cf4      \cf9 plex category; state those qualifications.\cf2 \
+    \cf4 377 \cf5 +\cf6 -\cf9  \cf6 **\cf7 57:\cf6 **\cf9  \'93rays of fan\'94 \uc0\u8594  \'93rays of the fan\'94; replace raw double quotes with TeX quotes.\cf2 \
+    \cf4 378 \cf5 +\cf6 -\cf9  \cf6 **\cf7 70:\cf6 **\cf9  The parenthetical \'93resp.\'94 clause is missing a closing parenthesis. The pushforward should be derived.\cf2 \
+    \cf4 379 \cf5 +\cf6 -\cf9  \cf6 **\cf7 88:\cf6 **\cf9  The displayed identity is tautological (\cf6 `\cf9 \\Phi(\\mathcal O)=\\Phi(\\mathcal O)\cf6 `\cf9 ). The intended assertion appears to be \cf6 `\cf9 \\Phi(\cf2 \
+    \cf4      \cf9 \\mathcal O_\{\\operatorname\{Cox\}\}(d))\\cong\\mathcal O_\{\\operatorname\{Cox\}\}(d)\cf6 `\cf9 .\cf2 \
+    \cf4 380 \cf5 +\cf6 -\cf9  \cf6 **\cf7 97:\cf6 **\cf9  The Hom group is placed in \cf6 `\cf9 D^b(X)\cf6 `\cf9  even though its objects are \cf6 `\cf9 F(\\mathcal F)\cf6 `\cf9  and \cf6 `\cf9 \\mathcal D\cf6 `\cf9 ; use the target category\cf2 \
+    \cf4      \cf9  of \cf6 `\cf9 F\cf6 `\cf9 .\cf2 \
+    \cf4 381 \cf5 +\cf6 -\cf9  \cf6 **\cf7 105:\cf6 **\cf9  The final claim says smoothness/projectivity are not needed, but the preceding proof uses them. Separate the stronger th\cf2 \
+    \cf4      \cf9 eorem from the hypotheses needed for the proof given.\cf2 \
+    \cf4 382 \cf5 +\cf2 \
+    \cf4 383 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 384 \cf5 +\cf2 \
+    \cf4 385 \cf5 +\cf9 None.\cf2 \
+    \cf4 386 \cf5 +\cf2 \
+    \cf4 387 \cf5 +\cf6 ##\cf10  \cf6 `\cf8 sections-18-19.tex\cf6 `\cf2 \
+    \cf4 388 \cf5 +\cf2 \
+    \cf4 389 \cf5 +\cf6 ###\cf11  \cf8 Typos and other errors\cf2 \
+    \cf4 390 \cf5 +\cf2 \
+    \cf4 391 \cf5 +\cf6 -\cf9  \cf6 **\cf7 24:\cf6 **\cf9  \'93perfect complexes\'94 should say \'93perfect complexes of \cf6 `\cf9 E\cf6 `\cf9 -modules.\'94\cf2 \
+    \cf4 392 \cf5 +\cf6 -\cf9  \cf6 **\cf7 26:\cf6 **\cf9  Clarify whether \cf6 `\cf9 K^-\cf6 `\cf9  means bounded above complexes with bounded/finitely generated homology; the present one-sided wordi\cf2 \
+    \cf4      \cf9 ng is incomplete.\cf2 \
+    \cf4 393 \cf5 +\cf6 -\cf9  \cf6 **\cf7 31:\cf6 **\cf9  The module \cf6 `\cf9 N\cf6 `\cf9  is undefined after the complex \cf6 `\cf9 C\cf6 `\cf9  is introduced. The complete-resolution construction also needs to be re\cf2 \
+    \cf4      \cf9 conciled with the truncation definition at line 39.\cf2 \
+    \cf4 394 \cf5 +\cf6 -\cf9  \cf6 **\cf7 41:\cf6 **\cf9  A complete resolution is generally unique up to homotopy equivalence, not a literal chain isomorphism. The condition \cf6 `\cf9 s>\\\cf2 \
+    \cf4      \cf9 operatorname\{reg\}(M)\cf6 `\cf9  conflicts with later uses at equality.\cf2 \
+    \cf4 395 \cf5 +\cf6 -\cf9  \cf6 **\cf7 50:\cf6 **\cf9  The text says there is no truncation at regularity zero, but the definition uses \cf6 `\cf9 s>0\cf6 `\cf9 . Use \cf6 `\cf9 s\\geq\\operatorname\{reg\}(M)\cf6 `\cf2 \
+    \cf4      \cf9 if equality is intended.\cf2 \
+    \cf4 396 \cf5 +\cf6 -\cf9  \cf6 **\cf7 54:\cf6 **\cf9  Prefer \cf6 `\cf9 0\\text\{th\}\cf6 `\cf9  or \'93zeroth\'94 to \cf6 `\cf9 0^\{th\}\cf6 `\cf9 .\cf2 \
+    \cf4 397 \cf5 +\cf6 -\cf9  \cf6 **\cf7 68:\cf6 **\cf9  The displayed equality in \cf6 `\cf9 K(E)\cf6 `\cf9  should be an isomorphism.\cf2 \
+    \cf4 398 \cf5 +\cf6 -\cf9  \cf6 **\cf7 73:\cf6 **\cf9  \'93right most\'94 \uc0\u8594  \'93rightmost.\'94\cf2 \
+    \cf4 399 \cf5 +\cf6 -\cf9  \cf6 **\cf7 76:\cf6 **\cf9  \'93so so\'94 repeats \'93so.\'94\cf2 \
+    \cf4 400 \cf5 +\cf6 -\cf9  \cf6 **\cf7 98:\cf6 **\cf9  The sentence first quantifies \cf6 `\cf9 j\cf6 `\cf9  and then shadows it as a summation index. Say \'93for every \cf6 `\cf9 i\cf6 `\cf9 \'94 and rename the summation\cf2 \
+    \cf4      \cf9 variable.\cf2 \
+    \cf4 401 \cf5 +\cf6 -\cf9  \cf6 **\cf7 106:\cf6 **\cf9  The display says \cf6 `\cf9 \\dim H^0=1\cf6 `\cf9 , then the sentence says \cf6 `\cf9 H^j=0\cf6 `\cf9  for all \cf6 `\cf9 i,j\cf6 `\cf9 . Restrict the vanishing to positive degrees\cf2 \
+    \cf4      \cf9 (and state the range of \cf6 `\cf9 i\cf6 `\cf9 ).\cf2 \
+    \cf4 402 \cf5 +\cf6 -\cf9  \cf6 **\cf7 117:\cf6 **\cf9  The truncation index changes from \cf6 `\cf9 r\cf6 `\cf9  to \cf6 `\cf9 s\cf6 `\cf9 ; \'93This is holds\'94 \uc0\u8594  \'93This holds.\'94\cf2 \
+    \cf4 403 \cf5 +\cf6 -\cf9  \cf6 **\cf7 124\'96133:\cf6 **\cf9  The monad formula has an unbound/shadowed \cf6 `\cf9 j\cf6 `\cf9  and inconsistent indices. Replace it with one standard Beilinson-monad\cf2 \
+    \cf4      \cf9  formula and define every index and differential.\cf2 \
+    \cf4 404 \cf5 +\cf6 -\cf9  \cf6 **\cf7 145, 156:\cf6 **\cf9  The text says right \cf6 `\cf9 E\cf6 `\cf9 -modules, but the differential is written using left multiplication by \cf6 `\cf9 e_j\cf6 `\cf9 ; fix the module\cf2 \
+    \cf4      \cf9 -side convention or signs/order.\cf2 \
+    \cf4 405 \cf5 +\cf6 -\cf9  \cf6 **\cf7 156:\cf6 **\cf9  \cf6 `\cf9 finetely\cf6 `\cf9  \uc0\u8594  \cf6 `\cf9 finitely\cf6 `\cf9 .\cf2 \
+    \cf4 406 \cf5 +\cf6 -\cf9  \cf6 **\cf7 165:\cf6 **\cf9  In characteristic two, \cf6 `\cf9 y^2z-x^3-xz^2\cf6 `\cf9  has different smoothness behavior; this conflicts with the initial arbitrary-char\cf2 \
+    \cf4      \cf9 acteristic convention. Add \cf6 `\cf9 \\operatorname\{char\}k\\ne2\cf6 `\cf9  (and any further needed restrictions) or choose a characteristic-independent\cf2 \
+    \cf4      \cf9 example.\cf2 \
+    \cf4 407 \cf5 +\cf6 -\cf9  \cf6 **\cf7 183:\cf6 **\cf9  \cf6 `\cf9 M\cf6 `\cf9  is reused for a set of monomials, conflicting with its global use for the character lattice and its local use for mo\cf2 \
+    \cf4      \cf9 dules.\cf2 \
+    \cf4 408 \cf5 +\cf6 -\cf9  \cf6 **\cf7 202:\cf6 **\cf9  \cf6 `\cf9 \\RR\cf6 `\cf9  conflicts with its established use for the real numbers.\cf2 \
+    \cf4 409 \cf5 +\cf6 -\cf9  \cf6 **\cf7 209:\cf6 **\cf9  Add a final period.\cf2 \
+    \cf4 410 \cf5 +\cf6 -\cf9  \cf6 **\cf7 210:\cf6 **\cf9  The direct-sum decomposition is malformed and shadows its quantifiers. Write a single formula with distinct indices and\cf2 \
+    \cf4      \cf9 a clearly stated range.\cf2 \
+    \cf4 411 \cf5 +\cf6 -\cf9  \cf6 **\cf7 231:\cf6 **\cf9  Both adjacent terms use the shift \cf6 `\cf9 i-1\cf6 `\cf9 ; one of them is likely an indexing typo. Check against the Tate differential.\cf2 \
+    \cf4 412 \cf5 +\cf6 -\cf9  \cf6 **\cf7 234:\cf6 **\cf9  Homology being annihilated by the maximal ideal does not by itself imply that the displayed rows are exact. Explain the\cf2 \
+    \cf4      \cf9 \uc0\u268 ech/localization argument that kills the relevant homology.\cf2 \
+    \cf4 413 \cf5 +\cf6 -\cf9  \cf6 **\cf7 271:\cf6 **\cf9  \'93for all \cf6 `\cf9 \\k\cf6 `\cf9 \'94 is meaningless here; likely \'93for every \cf6 `\cf9 a\\in A\cf6 `\cf9 .\'94 The conclusion also switches from the quotient stack to\cf2 \
+    \cf4      \cf9  \cf6 `\cf9 D^b(X)\cf6 `\cf9  without explanation.\cf2 \
+    \cf4 414 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Bibliography:\cf6 **\cf9  \cf6 `\cf9 Rob98\cf6 `\cf9  is present in the parent bibliography but absent from the local standalone bibliography, so the standal\cf2 \
+    \cf4      \cf9 one file has an unresolved citation.\cf2 \
+    \cf4 415 \cf5 +\cf2 \
+    \cf4 416 \cf5 +\cf6 ###\cf11  \cf8 Explicit editorial comments\cf2 \
+    \cf4 417 \cf5 +\cf2 \
+    \cf4 418 \cf5 +\cf9 None.\cf2 \
+    \cf4 419 \cf5 +\cf2 \
+    \cf4 420 \cf5 +\cf6 ##\cf10  \cf8 Cross-references and bibliography\cf2 \
+    \cf4 421 \cf5 +\cf2 \
+    \cf4 422 \cf5 +\cf9 The combined document (after temporarily correcting the Lectures 7\'969 filename) reports or contains these section-level problems:\cf2 \
+    \cf4 423 \cf5 +\cf2 \
+    \cf4 424 \cf5 +\cf6 -\cf9  Duplicate label: \cf6 `\cf9 rem:localcohomology\cf6 `\cf9  at \cf6 `\cf9 sections-4-5.tex:169\cf6 `\cf9  and \cf6 `\cf9 :364\cf6 `\cf9 .\cf2 \
+    \cf4 425 \cf5 +\cf6 -\cf9  Missing \cf6 `\cf9 thm:demazureL5\cf6 `\cf9 : used at \cf6 `\cf9 sections-1-2-3.tex:214\cf6 `\cf9 , \cf6 `\cf9 sections-6.tex:237\cf6 `\cf9 , and \cf6 `\cf9 sections-14-15-16.tex:36,49\cf6 `\cf9 ; its apparent\cf2 \
+    \cf4      \cf9  definition is commented out at \cf6 `\cf9 sections-4-5.tex:436\cf6 `\cf9 .\cf2 \
+    \cf4 426 \cf5 +\cf6 -\cf9  Missing \cf6 `\cf9 rmk:abuseNotation\cf6 `\cf9 : used at \cf6 `\cf9 sections-4-5.tex:337\cf6 `\cf9 ; its definition is commented out at \cf6 `\cf9 sections-11.tex:428\cf6 `\cf9 .\cf2 \
+    \cf4 427 \cf5 +\cf6 -\cf9  Missing \cf6 `\cf9 thm:Bondal-Thomsen equivalences\cf6 `\cf9 : used at \cf6 `\cf9 sections-6.tex:35,192\cf6 `\cf9 ; the intended theorem has \cf6 `\cf9 \\label\{.  \}\cf6 `\cf9  at line 88.\cf2 \
+    \cf4 428 \cf5 +\cf6 -\cf9  Placeholder \cf6 `\cf9 sec:*****\cf6 `\cf9  at \cf6 `\cf9 sections-7-8-9-v1.tex:14\cf6 `\cf9 .\cf2 \
+    \cf4 429 \cf5 +\cf6 -\cf9  Case mismatch \cf6 `\cf9 thm:BeilinsonFSEC\cf6 `\cf9  versus \cf6 `\cf9 thm:beilinsonFSEC\cf6 `\cf9  at \cf6 `\cf9 sections-12-13.tex:92\cf6 `\cf9 .\cf2 \
+    \cf4 430 \cf5 +\cf6 -\cf9  Missing \cf6 `\cf9 rem:rounddown\cf6 `\cf9 : used twice at \cf6 `\cf9 sections-14-15-16.tex:99\cf6 `\cf9 ; its definition is commented out at \cf6 `\cf9 sections-4-5.tex:440\cf6 `\cf9 .\cf2 \
+    \cf4 431 \cf5 +\cf6 -\cf9  Misspelled \cf6 `\cf9 prop:Demauzre\cf6 `\cf9  at \cf6 `\cf9 sections-14-15-16.tex:281\cf6 `\cf9 ; the defined label is \cf6 `\cf9 prop:Demazure\cf6 `\cf9 .\cf2 \
+    \cf4 432 \cf5 +\cf6 -\cf9  Missing parent-bibliography keys: \cf6 `\cf9 Berkesch2026Nonsimplicial\cf6 `\cf9 , \cf6 `\cf9 GS1\cf6 `\cf9 , and \cf6 `\cf9 GS2\cf6 `\cf9 . The first exists only in the section-local datab\cf2 \
+    \cf4      \cf9 ase; the latter two were not found in either database.\cf2 \
+    \cf4 433 \cf5 +\cf6 -\cf9  Missing section-local key: \cf6 `\cf9 Rob98\cf6 `\cf9 , used in \cf6 `\cf9 sections-18-19.tex\cf6 `\cf9  and present only in the parent database.\cf2 \
+    \cf4 434 \cf5 +\cf2 \
+    \cf4 435 \cf5 +\cf6 ##\cf10  \cf8 Notation inconsistencies across the notes\cf2 \
+    \cf4 436 \cf5 +\cf2 \
+    \cf4 437 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Base field:\cf6 **\cf9  \cf6 `\cf9 \\k\cf6 `\cf9 , \cf6 `\cf9 \\kk\cf6 `\cf9 , \cf6 `\cf9 k\cf6 `\cf9 , \cf6 `\cf9 \\Bbbk\cf6 `\cf9 , and occasionally \cf6 `\cf9 \\mathbb C\cf6 `\cf9  are used for the ground field. Choose one macro; state ex\cf2 \
+    \cf4      \cf9 plicitly whenever specialization to \cf6 `\cf9 \\mathbb C\cf6 `\cf9  is necessary.\cf2 \
+    \cf4 438 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Real numbers versus named complexes:\cf6 **\cf9  \cf6 `\cf9 \\RR\cf6 `\cf9  denotes \cf6 `\cf9 \\mathbb R\cf6 `\cf9  globally but is reused for a diagonal resolution in Lecture 10\cf2 \
+    \cf4      \cf9  and a BGG/Tate object in Lectures 1\'963 and 18\'9619.\cf2 \
+    \cf4 439 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Variety versus quotient stack:\cf6 **\cf9  \cf6 `\cf9 X\cf6 `\cf9 , \cf6 `\cf9 \\mathcal X\cf6 `\cf9 , \cf6 `\cf9 \\widetilde X\cf6 `\cf9 , and quotient-stack notation are interchanged, sometimes acr\cf2 \
+    \cf4      \cf9 oss a functor\'92s source and target. This is especially visible in Lectures 12\'9616 and 18\'9619. Fix separate macros for coarse toric var\cf2 \
+    \cf4      \cf9 ieties and Cox quotient stacks.\cf2 \
+    \cf4 440 \cf5 +\cf6 -\cf9  \cf6 **\cf7 The group \cf6 `\cf7 G\cf6 `\cf7 :\cf6 **\cf9  Lecture 4 writes \cf6 `\cf9 \\operatorname\{Hom\}(\\operatorname\{Cl\}(X),k^*)\cf6 `\cf9 , while Lecture 11 writes \cf6 `\cf9 \\operatorname\{Spec\}k\cf2 \
+    \cf4      \cf9 [\\operatorname\{Cl\}(X)]\cf6 `\cf9 ; elsewhere \cf6 `\cf9 G\cf6 `\cf9  also becomes an ordinary set of complex points. Use the diagonalizable group scheme, then wr\cf2 \
+    \cf4      \cf9 ite \cf6 `\cf9 G(k)\cf6 `\cf9  when points are intended.\cf2 \
+    \cf4 441 \cf5 +\cf6 -\cf9  \cf6 **\cf7 The divisor map \cf6 `\cf7 \\alpha\cf6 `\cf7 :\cf6 **\cf9  It appears with a minus sign in Lecture 4, without a stable sign convention later, as an inclusion\cf2 \
+    \cf4      \cf9 in Lecture 7, and as a map already reserved in Lecture 6. Fix a single exact sequence and sign, for example \cf6 `\cf9 M\\xrightarrow\{m\\mapsto\cf2 \
+    \cf4      \cf9 (\\langle m,u_\\rho\\rangle)_\\rho\}\\mathbb Z^\{\\Sigma(1)\}\cf6 `\cf9 ; reserve another letter for inclusions.\cf2 \
+    \cf4 442 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Lattices \cf6 `\cf7 M,L,N\cf6 `\cf7 :\cf6 **\cf9  \cf6 `\cf9 M\cf6 `\cf9  is the character lattice globally, a module in the BGG sections, and a monomial set in Lecture 18. In L\cf2 \
+    \cf4      \cf9 ecture 7, \cf6 `\cf9 M\cf6 `\cf9  and \cf6 `\cf9 L\cf6 `\cf9  alternate between abstract lattices and their images in coordinate lattices. Use distinct names for lattices,\cf2 \
+    \cf4      \cf9  modules, and monomial bases and distinguish \cf6 `\cf9 L\cf6 `\cf9  from \cf6 `\cf9 L_\{\\mathbb R\}\cf6 `\cf9 .\cf2 \
+    \cf4 443 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Degree/class versus divisor vector:\cf6 **\cf9  Expressions such as \cf6 `\cf9 S(-\\Psi(A))\cf6 `\cf9 , \cf6 `\cf9 D-E=m\cf6 `\cf9 , and applying a functional to \cf6 `\cf9 \\mathcal O(D)\cf6 `\cf2 \
+    \cf4      \cf9 conflate a divisor vector, its class in \cf6 `\cf9 \\operatorname\{Cl\}(X)\cf6 `\cf9 , a lattice element, and the associated line bundle. Use \cf6 `\cf9 \\deg(D)\cf6 `\cf9  (o\cf2 \
+    \cf4      \cf9 r brackets \cf6 `\cf9 [D]\cf6 `\cf9 ) before forming graded shifts.\cf2 \
+    \cf4 444 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Rounding maps:\cf6 **\cf9  \cf6 `\cf9 \\Psi\cf6 `\cf9 , \cf6 `\cf9 \\psi\cf6 `\cf9 , \cf6 `\cf9 \\lceil\\alpha\\rceil\cf6 `\cf9 , floor, and round-down notation are not synchronized. Define the real-lin\cf2 \
+    \cf4      \cf9 ear map first, then write componentwise rounding and its induced class explicitly. The identity at Lecture 7 line 78 currently uses\cf2 \
+    \cf4      \cf9  the wrong sign.\cf2 \
+    \cf4 445 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Bondal\'96Thomsen terminology:\cf6 **\cf9  \'93Thomsen collection,\'94 \'93Bondal\'96Thomsen collection,\'94 \cf6 `\cf9 \\Theta\cf6 `\cf9 , \cf6 `\cf9 \\Theta_X\cf6 `\cf9 , \cf6 `\cf9 \\operatorname\{BT\}(X)\cf6 `\cf9 ,\cf2 \
+    \cf4      \cf9 and \cf6 `\cf9 \\mathsf\{BT\}\cf6 `\cf9  are used for related objects without stating whether they are divisor representatives, class-group elements, or l\cf2 \
+    \cf4      \cf9 ine bundles. Pick one symbol for the class set and one for the corresponding line bundles.\cf2 \
+    \cf4 446 \cf5 +\cf6 -\cf9  \cf6 **\cf7 BGG functors:\cf6 **\cf9  \cf6 `\cf9 L,R\cf6 `\cf9 , \cf6 `\cf9 \\mathbf L,\\mathbf R\cf6 `\cf9 , homological subscripts, and cohomological superscripts are mixed within Lectures\cf2 \
+    \cf4      \cf9 1\'963 and again in Lectures 18\'9619. Choose one grading convention and specify left/right \cf6 `\cf9 E\cf6 `\cf9 -modules once.\cf2 \
+    \cf4 447 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Cox ring notation:\cf6 **\cf9  The ring is variously \cf6 `\cf9 S\cf6 `\cf9 , \cf6 `\cf9 S_X\cf6 `\cf9 , and \cf6 `\cf9 \\operatorname\{Cox\}(X)\cf6 `\cf9 ; \cf6 `\cf9 \\mathcal O_\{\\operatorname\{Cox\}\}(d)\cf6 `\cf9  someti\cf2 \
+    \cf4      \cf9 mes denotes a graded free module and sometimes a sheaf/line bundle. Reserve \cf6 `\cf9 S(d)\cf6 `\cf9  for graded modules and \cf6 `\cf9 \\mathcal O_\{\\mathcal X\}(\cf2 \
+    \cf4      \cf9 d)\cf6 `\cf9  for associated line bundles.\cf2 \
+    \cf4 448 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Fan/chamber notation:\cf6 **\cf9  \cf6 `\cf9 \\Sigma\cf6 `\cf9 , \cf6 `\cf9 \\Delta\cf6 `\cf9 , \cf6 `\cf9 \\Gamma\cf6 `\cf9 , and \cf6 `\cf9 F\cf6 `\cf9  change roles between fans, chambers, graphs, and complements. Lec\cf2 \
+    \cf4      \cf9 ture 11 even switches \cf6 `\cf9 \\Delta\cf6 `\cf9  back to \cf6 `\cf9 \\Sigma\cf6 `\cf9 , while Lecture 14 notes that \cf6 `\cf9 \\Gamma\cf6 `\cf9  conflicts with graph notation. A uniform conv\cf2 \
+    \cf4      \cf9 ention would eliminate several type errors.\cf2 \
+    \cf4 449 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Maximal-cone notation:\cf6 **\cf9  Both \cf6 `\cf9 \\Sigma_\{\\max\}\cf6 `\cf9  and \cf6 `\cf9 \\Sigma_\{\\mathrm\{max\}\}\cf6 `\cf9  occur.\cf2 \
+    \cf4 450 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Derived functors:\cf6 **\cf9  Ordinary \cf6 `\cf9 \\pi_*\cf6 `\cf9 , \cf6 `\cf9 \\operatorname\{Hom\}\cf6 `\cf9 , and equality signs are often used inside derived-category statement\cf2 \
+    \cf4      \cf9 s where \cf6 `\cf9 \\mathbf R\\pi_*\cf6 `\cf9 , \cf6 `\cf9 \\mathbf R\\operatorname\{Hom\}\cf6 `\cf9 /all shifts, and isomorphism are intended.\cf2 \
+    \cf4 451 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Exceptional-collection vocabulary:\cf6 **\cf9  \'93exceptional,\'94 \'93strong,\'94 \'93full,\'94 and \'93semiorthogonal\'94 are occasionally interchanged or ass\cf2 \
+    \cf4      \cf9 igned to the wrong vanishing condition. Fix the definitions early and refer back to them.\cf2 \
+    \cf4 452 \cf5 +\cf6 -\cf9  \cf6 **\cf7 Labels:\cf6 **\cf9  The project mixes stable identifiers with labels containing spaces, apostrophes, formulas, prose, and even \cf6 `\cf9 .  \cf6 `\cf9 . Sta\cf2 \
+    \cf4      \cf9 ndardize on forms such as \cf6 `\cf9 thm:bondal-thomsen-equivalences\cf6 `\cf9 ; this will also make cross-file references easier to audit.\cf2 \
+    \cf4 453 \cf5 +\cf2 \
+    \cf4 454 \cf5 +\cf6 ##\cf10  \cf8 Suggested repair order\cf2 \
+    \cf4 455 \cf5 +\cf2 \
+    \cf4 456 \cf5 +\cf9 1\cf6 .\cf9  Decide whether \cf6 `\cf9 Notes.tex\cf6 `\cf9  or \cf6 `\cf9 main_v2.tex\cf6 `\cf9  is the intended master file and fix the Lectures 7\'969 input name.\cf2 \
+    \cf4 457 \cf5 +\cf9 2\cf6 .\cf9  Repair the standalone wrappers, restore \cf6 `\cf9 \\begin\{document\}\cf6 `\cf9  in Lecture 11, and remove the unsafe \cf6 `\cf9 \\i\cf6 `\cf9  redefinition.\cf2 \
+    \cf4 458 \cf5 +\cf9 3\cf6 .\cf9  Fix missing/duplicate labels and bibliography keys so a combined build is diagnostically clean.\cf2 \
+    \cf4 459 \cf5 +\cf9 4\cf6 .\cf9  Set the global conventions for the field, \cf6 `\cf9 \\alpha\cf6 `\cf9 , divisor classes/degrees, varieties versus stacks, and BGG grading.\cf2 \
+    \cf4 460 \cf5 +\cf9 5\cf6 .\cf9  Address the mathematically substantive items\'97especially the derived-category definition, minimal-resolution uniqueness, Lecture\cf2 \
+    \cf4      \cf9 6 sign/degree computations, Lecture 7 rounding signs, Lecture 11 GIT equivalences, and the derived-functor type errors\'97before copy-\cf2 \
+    \cf4      \cf9 editing the remaining prose.\cf2 \
+\cb1 \
+}
