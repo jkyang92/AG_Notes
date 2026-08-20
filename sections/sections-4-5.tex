@@ -7,7 +7,7 @@
 \fi
 
 \section{Lecture 4 (Sharon Robbins): Toric varieties and Cox rings, I}\label{lec:4-toric-cox}
-%% Review how to associate a normal toric variety to a fan~\cite{CLS}*{\S 3.1}. Given a fan $\Sigma$ and the associated toric variety $X_\Sigma$, explain how the rays in $\Sigma$ determine divisors on $X_\Sigma$ via the Orbit-Cone Correspondence~\cite{CLS}*{\S 4.1}. Define the Cox ring (also called the homogeneous coordinate ring) $S$ of $X_\Sigma$, its grading by the divisor class group $\Cl(X_\Sigma)$~\cite{CLS}*{Definition 4.0.13}, and its irrelevant ideal $B$. Explain how the variety $X_\Sigma$ arises as the quotient of $\Spec(S) \setminus V(B)$ by a torus action. Potential references for Cox rings are \cite{CLS}*{\S 5.1} or Cox's original paper~\cite{cox}. Include running examples throughout, especially projective space, products of projective spaces, weighted projective spaces, and Hirzebruch surfaces $\mathcal{H}_i$ for $i \ge 1$. 
+%% Review how to associate a normal toric variety to a fan~\cite{CLS}*{\S 3.1}. Given a fan $\Sigma$ and the associated toric variety $X_\Sigma$, explain how the rays in $\Sigma$ determine divisors on $X_\Sigma$ via the Orbit-Cone Correspondence~\cite{CLS}*{\S 4.1}. Define the Cox ring (also called the homogeneous coordinate ring) $S$ of $X_\Sigma$, its grading by the divisor class group $\Cl(X_\Sigma)$~\cite{CLS}*{Definition 4.0.13}, and its irrelevant ideal $B$. Explain how the variety $X_\Sigma$ arises as the quotient of $\Spec(S) \setminus V(B)$ by a torus action. Potential references for Cox rings are \cite{CLS}*{\S 5.1} or Cox's original paper~\cite{cox}. Include running examples throughout, especially projective space, products of projective spaces, weighted projective spaces, and Hirzebruch surfaces $\mathcal{H}_i$ for $i \ge 1$.
 
 % Lecturer's outline: Associate a normal toric variety to a fan (CLS §3.1). Rays determine divisors via the Orbit-Cone Correspondence (CLS §4.1). Define the Cox ring S, its Cl(X)-grading (CLS Def 4.0.13), and irrelevant ideal B. Explain X = (Spec S - V(B))/torus. Refs CLS §5.1 or cox. Running examples: P^n, products, weighted projective spaces, Hirzebruch H_i.
 
@@ -47,7 +47,7 @@ where $\Cl(X_\Sigma)$ is the \defi{divisor class group}. The map $\alpha$ gives 
 
 \begin{remark}[Cartier and Weil divisors]\label{rem:PicCl}
   Inside the class group sits the Picard group $\Pic(X_\Sigma) \xhookrightarrow{} \Cl(X_\Sigma)$ of \emph{Cartier} divisor classes.
-  %, and the gap between the two measures the singularities of $X_\Sigma$. 
+  %, and the gap between the two measures the singularities of $X_\Sigma$.
   The toric variety is smooth if and only if $\Pic(X_\Sigma) = \Cl(X_\Sigma)$ (note that isomorphism is not sufficient), and it is simplicial if and only if $\Pic(X_\Sigma)$ has finite index in $\Cl(X_\Sigma)$, in which case every Weil divisor is \defi{$\QQ$-Cartier}, meaning some positive multiple is Cartier \cite[Prop.~4.2.6-7]{CLS}. Example~\ref{ex:P112charts} below illustrates both phenomena on $\PP(1,1,2)$; the distinction is also apparent in the module--sheaf correspondence and in Demazure vanishing in Lecture~\ref{lec:5-toric-cox}.
 \end{remark}
 
@@ -58,7 +58,7 @@ Assign to each ray $\rho\in\Sigma(1)$ a variable $x_\rho$ and consider
 \[ S = \Cox(X_\Sigma) = \kk[x_\rho : \rho\in\Sigma(1)] \]
 to be a polynomial ring graded by $\Cl(X_\Sigma)$ via $\deg(x_\rho)=[D_\rho]$. This is the \defi{Cox ring} (or \defi{homogeneous coordinate ring}) of $X_\Sigma$. A monomial $x^{\mathbf a}=\prod_\rho x_\rho^{a_\rho}$ has degree $[\sum_\rho a_\rho D_\rho]\in\Cl(X_\Sigma)$.
 
-The geometry of $X_\Sigma$, encoded in the combinatorics of the maximal cones $\Sigma_{\on{max}}$ of $\Sigma$, is recorded by the so-called \defi{irrelevant ideal}
+The geometry of $X_\Sigma$, encoded in the combinatorics of the maximal cones $\Sigma_{\on{max}}$ of $\Sigma$, is recorded by the so-called \defi{irrelevant ideal} \lauren{this notation should maybe be $x_{\widehat\sigma}$ to avoid confusion with vector exponents}
 \[
 B = \bigl\langle\, x^{\widehat\sigma}\ :\ \sigma\in\Sigma_{\max}\,\bigr\rangle, \qquad
 x^{\widehat\sigma} = \prod_{\rho\;\notin\;\sigma(1)} x_\rho,
@@ -82,14 +82,14 @@ Thus a point of a simplicial $X_\Sigma$ is a $G$-orbit of ``homogeneous coordina
 \begin{example}\label{ex:toricrunning}
   We now illustrate several toric varieties that we will use as running examples.
   \begin{enumerate}
-  \item \textbf{Projective space $\PP^n$.}  The fan of $\PP^n$ has as rays the standard basis vectors $u_1,\dots,u_n$ as well as $u_0 = -u_1-\dots-u_n$, with maximal cones spanned by all $n$-subsets. The Cox ring $S$ is $\kk[x_0,\dots,x_n]$ with the standard $\ZZ$-grading $\deg(x_i) = 1$ and irrelevant ideal $B = (x_0,\dots,x_n)$. 
+  \item \textbf{Projective space $\PP^n$.}  The fan of $\PP^n$ has as rays the standard basis vectors $u_1,\dots,u_n$ as well as $u_0 = -u_1-\dots-u_n$, with maximal cones spanned by all $n$-subsets. The Cox ring $S$ is $\kk[x_0,\dots,x_n]$ with the standard $\ZZ$-grading $\deg(x_i) = 1$ and irrelevant ideal $B = (x_0,\dots,x_n)$.
 
-  \item \textbf{Products $\PP^{n_1}\times\dots\times\PP^{n_r}$.} The fan is the product of the fans of the factors. For instance, in the case of $\PP^1 \times \PP^1$, the rays are $(\pm 1, 0)$ and $(0, \pm 1)$, as depicted in Figure~\ref{fig:fans}. The Cox ring 
-  is $\k[x_{1,0}, \dots, x_{1,n_1}, \dots, x_{r,0}, \dots, x_{r,n_r}]$, with $\Cl(X) = \ZZ^r$-grading such that $\deg(x_{i, j})$ is the $i^{\th}$ standard basis vector of $\ZZ^r$. The irrelevant ideal is $B = \bigcap_i (x_{i,0},\dots,x_{i,n_i})$, the intersection of the irrelevant ideals of each factor $\PP^{n_i}$. 
+  \item \textbf{Products $\PP^{n_1}\times\dots\times\PP^{n_r}$.} The fan is the product of the fans of the factors. For instance, in the case of $\PP^1 \times \PP^1$, the rays are $(\pm 1, 0)$ and $(0, \pm 1)$, as depicted in Figure~\ref{fig:fans}. The Cox ring
+  is $\k[x_{1,0}, \dots, x_{1,n_1}, \dots, x_{r,0}, \dots, x_{r,n_r}]$, with $\Cl(X) = \ZZ^r$-grading such that $\deg(x_{i, j})$ is the $i^{\th}$ standard basis vector of $\ZZ^r$. The irrelevant ideal is $B = \bigcap_i (x_{i,0},\dots,x_{i,n_i})$, the intersection of the irrelevant ideals of each factor $\PP^{n_i}$.
 
-  \item \textbf{Weighted projective space $\PP(1,1,2)$.} The rays of the fan are $(1,0)$, $(0,1)$, and $(-1, -2)$, and the maximal cones, just as with $\PP^2$, are those spanned by any pair of rays. The Cox ring of $\PP(1,1,2)$ is~$\k[x_0, x_1, x_2]$, with $\Z$-grading given by $\deg(x_0) = \deg(x_1) = 1$, and $\deg(x_2) = 2$. Just as in the case of $\PP^2$, the irrelevant ideal is $B = (x_0, x_1, x_2)$. Note that the inclusion of the Picard group in the class group is $2\ZZ \xhookrightarrow{} \ZZ$, and so $\PP(1,1,2)$ is singular; see Example~\ref{ex:P112charts}. This example generalizes to any weighted projective space $\PP(a_0, \dots, a_n)$ such that $\on{gcd}(a_0, \dots, a_n) = 1$. 
-  
-  %The fan is given by the quotient lattice $N = \ZZ^{n+1}/(a_0,\dots,a_n)$, the rays being the images of the standard basis vectors. Then, $S = \kk[x_0,\dots,x_n]$ and $B = (x_0,\dots,x_n)$ with $\deg(x_i) = a_i$. 
+  \item \textbf{Weighted projective space $\PP(1,1,2)$.} The rays of the fan are $(1,0)$, $(0,1)$, and $(-1, -2)$, and the maximal cones, just as with $\PP^2$, are those spanned by any pair of rays. The Cox ring of $\PP(1,1,2)$ is~$\k[x_0, x_1, x_2]$, with $\Z$-grading given by $\deg(x_0) = \deg(x_1) = 1$, and $\deg(x_2) = 2$. Just as in the case of $\PP^2$, the irrelevant ideal is $B = (x_0, x_1, x_2)$. Note that the inclusion of the Picard group in the class group is $2\ZZ \xhookrightarrow{} \ZZ$, and so $\PP(1,1,2)$ is singular; see Example~\ref{ex:P112charts}. This example generalizes to any weighted projective space $\PP(a_0, \dots, a_n)$ such that $\on{gcd}(a_0, \dots, a_n) = 1$.
+
+  %The fan is given by the quotient lattice $N = \ZZ^{n+1}/(a_0,\dots,a_n)$, the rays being the images of the standard basis vectors. Then, $S = \kk[x_0,\dots,x_n]$ and $B = (x_0,\dots,x_n)$ with $\deg(x_i) = a_i$.
 
   \item \textbf{Hirzebruch surfaces $\mathcal H_a$ ($a\ge 1$).}  The surface $\mathcal H_a=\PP(\cO_{\PP^1}\oplus\cO_{\PP^1}(a))$ is the toric variety of the fan in $N=\ZZ^2$ with rays
     \[
@@ -190,7 +190,7 @@ Note that the main result of~\cite{Berkesch2026Nonsimplicial} extends this to th
 I:J^\infty := \{f\in S : J^k f\subseteq I \text{ for some } k\}.
 \]
 We will say that a homogeneous ideal $I\subseteq S$ is \defi{$B$-saturated} if $I=I:B^\infty$.
-%gives the equivalent normalization by radical $B$-saturated ideals, matching the classical statement for $\PP^n$. 
+%gives the equivalent normalization by radical $B$-saturated ideals, matching the classical statement for $\PP^n$.
 At the level of subschemes the correspondence requires smoothness:
 
 \begin{prop}[\cite{CLS}*{Prop.~6.A.7}]\label{prop:ideal-sheaf}
@@ -220,10 +220,10 @@ To see an example of this phenomenon, we need to go to three dimensions.  Imagin
 \begin{tikzpicture}[scale = 3]
     % Define coordinates
     \coordinate (O) at (0,0); % Cone point (apex at the bottom)
-    \coordinate (C) at (-.5,1); 
-    \coordinate (A) at (.5,1); 
-    \coordinate (B) at (0,1.5); 
-    \coordinate (D) at (1,1.5); 
+    \coordinate (C) at (-.5,1);
+    \coordinate (A) at (.5,1);
+    \coordinate (B) at (0,1.5);
+    \coordinate (D) at (1,1.5);
 
     % Cone edges (from apex to base)
     \draw[thick, blue!50!black] (O) -- (D);
@@ -249,10 +249,10 @@ To see an example of this phenomenon, we need to go to three dimensions.  Imagin
 \begin{tikzpicture}[scale = 3]
     % Define coordinates
     \coordinate (O) at (0,0); % Cone point (apex at the bottom)
-    \coordinate (C) at (-.5,1); 
-    \coordinate (A) at (.5,1); 
-    \coordinate (B) at (0,1.5); 
-    \coordinate (D) at (1,1.5); 
+    \coordinate (C) at (-.5,1);
+    \coordinate (A) at (.5,1);
+    \coordinate (B) at (0,1.5);
+    \coordinate (D) at (1,1.5);
 
     % Cone edges (from apex to base)
     \draw[thick, blue!50!black] (O) -- (D);
@@ -279,10 +279,10 @@ To see an example of this phenomenon, we need to go to three dimensions.  Imagin
 \begin{tikzpicture}[scale = 3]
     % Define coordinates
     \coordinate (O) at (0,0); % Cone point (apex at the bottom)
-    \coordinate (C) at (-.5,1); 
-    \coordinate (A) at (.5,1); 
-    \coordinate (B) at (0,1.5); 
-    \coordinate (D) at (1,1.5); 
+    \coordinate (C) at (-.5,1);
+    \coordinate (A) at (.5,1);
+    \coordinate (B) at (0,1.5);
+    \coordinate (D) at (1,1.5);
 
     % Cone edges (from apex to base)
     \draw[thick, blue!50!black] (O) -- (D);
@@ -324,17 +324,17 @@ Now, there a number of ways that you could  extend either the middle or right pi
   \]Two different squarefree monomial ideals yield two very different geometric quotients:
   \begin{itemize}
   \item $B = (x_0,x_2) \cap (x_1,x_3)$ yields the Hirzebruch surface $\mathcal H_3$, which is smooth;
-  \item $B'= (x_1) \cap (x_0,x_2,x_3)$ yields the weighted projective space $\PP(1,1,3)$, which is singular.  To see this, we split $G=\{(\lambda, \mu)\}\in (\kk^*)^2$  as $\kk^*\times \kk^* = \{(1, \mu)\} \times \{(s, s^3)\}$. On the locus $x_1 \neq 0$, we can use the first $\kk^*$-factor to scale $x_1$ to $1$.  Then $\Spec(S) - V(x_1) / \kk^* \cong \mathbb A^3 \times \kk^* / \kk^* \cong \mathbb A^3$.  The second $\kk^*$-factor, $\kk^* = \{(s, s^3)\} \subseteq G$, then acts trivially on $x_1$ and so it passes to an action on this quotient $\mathbb A^3$, acting on $(x_0,x_2,x_3)$ with weights $(1,1,3)$.  This exhibits the full quotient as 
+  \item $B'= (x_1) \cap (x_0,x_2,x_3)$ yields the weighted projective space $\PP(1,1,3)$, which is singular.  To see this, we split $G=\{(\lambda, \mu)\}\in (\kk^*)^2$  as $\kk^*\times \kk^* = \{(1, \mu)\} \times \{(s, s^3)\}$. On the locus $x_1 \neq 0$, we can use the first $\kk^*$-factor to scale $x_1$ to $1$.  Then $\Spec(S) - V(x_1) / \kk^* \cong \mathbb A^3 \times \kk^* / \kk^* \cong \mathbb A^3$.  The second $\kk^*$-factor, $\kk^* = \{(s, s^3)\} \subseteq G$, then acts trivially on $x_1$ and so it passes to an action on this quotient $\mathbb A^3$, acting on $(x_0,x_2,x_3)$ with weights $(1,1,3)$.  This exhibits the full quotient as
   \[
   (\bA^4 - V(B')) / G \cong (\bA^3\setminus\{0\})\,/\,\kk^* = \PP(1,1,3).
   \]
   \end{itemize}
 
-  This is a slightly more subtle example because 
-  %Since the two quotients are not isomorphic, the Cox ring together with the group action does not determine the variety: the irrelevant ideal is essential extra data. Beware, however, that only the first presentation is the Cox construction of Theorem~\ref{thm:coxquotient}: 
-  the Cox ring of $\PP(1,1,3)$ itself is the \emph{three}-variable ring $\kk[y_0,y_1,y_2]$ with $\Cl(\PP(1,1,3))=\ZZ$ and degrees $(1,1,3)$.  This is because the ray corresponding to $x_1$ does not appear in its fan; equivalently, the ideal $(x_1)$ is a principal component of $B'$. 
+  This is a slightly more subtle example because
+  %Since the two quotients are not isomorphic, the Cox ring together with the group action does not determine the variety: the irrelevant ideal is essential extra data. Beware, however, that only the first presentation is the Cox construction of Theorem~\ref{thm:coxquotient}:
+  the Cox ring of $\PP(1,1,3)$ itself is the \emph{three}-variable ring $\kk[y_0,y_1,y_2]$ with $\Cl(\PP(1,1,3))=\ZZ$ and degrees $(1,1,3)$.  This is because the ray corresponding to $x_1$ does not appear in its fan; equivalently, the ideal $(x_1)$ is a principal component of $B'$.
 \end{example}
-It is natural to wonder: given a multigraded Cox ring, or given a set of rays, what are all of the projective, simplicial toric varieties that can arise?  This question leads to the study of the \defi{secondary fan}, which parametrizes all the toric varieties arising from a fixed graded polynomial ring; see Example~\ref{ex:hirzsecondary} and Remark~\ref{rmk:abuseNotation} in Lecture~\ref{lec:11-secondary-fan} for details on this.  
+It is natural to wonder: given a multigraded Cox ring, or given a set of rays, what are all of the projective, simplicial toric varieties that can arise?  This question leads to the study of the \defi{secondary fan}, which parametrizes all the toric varieties arising from a fixed graded polynomial ring; see Example~\ref{ex:hirzsecondary} and Remark~\ref{rmk:abuseNotation} in Lecture~\ref{lec:11-secondary-fan} for details on this.
 %Lecture~\ref{lec:12-DCox-definition} for the derived category incarnation of this same pair of quotients.
 
 
@@ -362,18 +362,18 @@ These glue to a sheaf $\widetilde M$ on $X$, and $M\mapsto\widetilde M$ is exact
 \end{remark}
 
 \begin{remark}[Local cohomology]\label{rem:localcohomology}
-  This remark is optional, but may be helpful for those familiar with local cohomology.  To understand the difference between finitely generated graded $S$-modules and sheaves on $X$, it is helpful to recall some facts about \defi{local cohomology}. 
+  This remark is optional, but may be helpful for those familiar with local cohomology.  To understand the difference between finitely generated graded $S$-modules and sheaves on $X$, it is helpful to recall some facts about \defi{local cohomology}.
   For a $\Cl(X)$-graded $S$-module $M$, its \defi{$B$-torsion submodule} is
   \[ H^0_B(M) = \{\,m\in M : B^k m = 0 \text{ for some } k\ge 0\,\} \]
-  is the largest submodule supported on $V(B)$, and $H^i_B(M)$ denotes its higher right-derived functors, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS}. 
-  %The bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is the 
+  is the largest submodule supported on $V(B)$, and $H^i_B(M)$ denotes its higher right-derived functors, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS}.
+  %The bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is the
   There is a four-term exact sequence of $\Cl(X)$-graded modules
   \[
   0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \Gamma_{\!*}(\widetilde M) \longrightarrow H^1_B(M) \longrightarrow 0, \qquad
   \Gamma_{\!*}(\widetilde M) \ce \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr),
   \]
-  together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections. 
-  %Passing to $\Gamma_{\!*}(\widetilde M)$ kills both, thus a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$. 
+  together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections.
+  %Passing to $\Gamma_{\!*}(\widetilde M)$ kills both, thus a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$.
   %\daniel{Do we ever use the phrase $B$-saturated in these notes?  If not we could omit this.}
   %An ideal $I\subseteq S$ is $B$-saturated in this sense precisely when $H^1_B(I) = H^0_B(S/I) = (I : B^\infty) / I = 0$, since $H^0_B(I) = 0$ is automatic.d
 
@@ -467,7 +467,7 @@ In short, sheaves on $\sX$ are graded $S$-modules modulo $B$-torsion, analogous 
   \[ D^b(\sX)\ \simeq\ D^b(S)\,/\,D^b_B(S). \]
 \end{cor}
 
-%We will not prove this; it follows from established results on quotient stacks, of which perhaps the most direct reference is %; see also \cite[Tag 06WT]{stacks-project}, \cite[Thm.~4.46]{vistoli}\mahrud{which paper is this?}, and \cite[Thm.~7.1.11]{alper}. 
+%We will not prove this; it follows from established results on quotient stacks, of which perhaps the most direct reference is %; see also \cite[Tag 06WT]{stacks-project}, \cite[Thm.~4.46]{vistoli}\mahrud{which paper is this?}, and \cite[Thm.~7.1.11]{alper}.
 When $X$ is smooth, $G$ acts freely on $\Spec(S)\setminus V(B)$, so $\sX\cong X$ and Corollary~\ref{cor:DbCoxStack} recovers Theorem~\ref{thm:coxderived}. When $X$ is simplicial but not smooth, the stack and the variety genuinely differ: for instance $\sX$ is smooth with $\Pic(\sX)\cong\Cl(X)$, so $\cO(1)$ \emph{is} a line bundle on $\PP_{\mathrm{stack}}(1,1,2)$, resolving the issues of Remark~\ref{rem:twistcaveat}.
 
 \begin{remark}[The variety and the Veronese subring]\label{rem:veronese}
