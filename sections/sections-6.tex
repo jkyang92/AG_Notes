@@ -11,13 +11,12 @@
 \section{Lecture 6 (Andreas Hochenegger): The Bondal-Thomsen Collection}\label{lec:6-bondal-thomsen}
 
 The Bondal-Thomsen collection is a natural set of line bundles on a toric variety $X = X(\Sigma)$ that can be characterized in several different ways.  The following definition is originally due to Bondal \cite{Bondal}.  Consider the short exact sequence
-
 \begin{equation}\label{eqn:SESCl}
 0\to M\overset{\alpha}{\longrightarrow} \ZZ^n \overset{\deg}{\longrightarrow} \Cl(X) \to 0,
 \end{equation}
 where the basis vectors of $\ZZ^{n}$ correspond to the rays of $\Sigma$. We write $\alpha_i$ for the projection of $\alpha$ onto the $i$-th basis vector of $\ZZ^{n}$, which we identify with the corresponding invariant divisor $D_{i}$. Expressed in terms of the pairing between $M$ and $N$ this is $\alpha_i(m) = \langle m, -u_i\rangle$ where $u_{i}$
 is the first integral point on the $i$-th ray of $\Sigma$. By abuse of notation, we again write $\alpha_{i}$ for the natural extension of $\alpha_{i}$ to a map
-$M\otimes \QQ\to \QQ^{n}$.
+$M\otimes \QQ\to \QQ$.
 
 Further, 
 we define $\lfloor \alpha \rfloor\colon M\otimes \QQ \to \ZZ^n$ by the formula:
@@ -55,7 +54,7 @@ The map $\alpha$ is represented by the matrix
       \[
     \alp(a,b) =\lfloor -a\rfloor + \lfloor -b\rfloor + \lfloor a+b\rfloor .
     \]
-    Any point in $(M\otimes \QQ)/ M$, can be represented uniquely by an element $(a,b)\in M\otimes \QQ^2$ with $0\leq a,b <1$.  Thus   the Bondal-Thomsen collection is the set
+    Any point in $(M\otimes \QQ)/ M$ can be represented uniquely by an element $(a,b)\in \QQ^2$ with $0\leq a,b <1$. Thus the Bondal-Thomsen collection is the set
            \[
     \alp(a,b) =\lfloor -a\rfloor + \lfloor -b\rfloor + \lfloor a+b\rfloor \text{ with } (a,b) \in [0,1)^{2}
     \]
@@ -75,18 +74,19 @@ We can think of the Bondal-Thomsen classes as lattice points in the image
 under the degree map of the product
 of $(-1,0]^{n}\subset \RR^{n}$; such a convex set is called a \emph{zonotope}. 
 
-\begin{defn}\label{defn:KoszulZonotope}
+\begin{defn}\label{defn:BondalZonotope}
     The \defi{Bondal zonotope} is the locus
     \[
-    \mathcal Z\ce\sum_{i} a_i \deg(D_i) \subseteq  \Cl(X)\otimes \RR \text{ with } a_i \in (-1,0].
+    \mathcal Z\ce \left\{\sum_{i} a_i \deg(D_i) \mathrel{\Big|} a_i \in (-1,0]\right\}
+    \subseteq \Cl(X)\otimes \RR.
     \]
 \end{defn}
 
 \begin{example}
     The Bondal zonotope of $\PP^2$ is the half-open interval $(-3,0] \subset \RR = \Cl(\P^{2})\otimes \RR$.\end{example}
     
-\begin{thm}\label{.  }
-    The following conditions on an element $d\in \Cl(X)$ are equivalent:
+\begin{thm}\label{thm:Bondal-Thomsen equivalences}
+    The following conditions on the class $d\in \Cl(X)$ of a torus invariant divisor  are equivalent:
     \begin{enumerate}
         \item  $d$ is a Bondal-Thomsen class.
         \item  $d$ is equivalent over $\QQ$ to a rational divisor of the form $\sum_{i} a_i D_i$ with $a_i \in (-1,0].$
@@ -103,13 +103,14 @@ Note that $\alp(m) - \alpha(m)$ has coefficients in $(-1,0]$ .
 By tensoring \eqref{eqn:SESCl} with $\QQ$, we see that $\deg(\alpha(m)) = 0 \in \Cl(X) \otimes \QQ$, and thus
 $\alp(m) - \alpha(m)$ is rationally equivalent to the divisor  $\alp(m)$.
 
-$(2) \Rightarrow (1)$: Conversely, let $D\in \ZZ^{n}$ be an integral divisor such that $\deg D$ is equivalent (necessarily in $\Cl(X) \otimes \QQ$), to a divisor $E$ with coefficients in $(-1,0]$.  It follows that $\lfloor D-E\rfloor = D$.
-But also  $D-E \in \ker (\deg \otimes \QQ)$, so we may write $D-E = m$ for $m \in M\otimes \QQ$.
+$(2) \Rightarrow (1)$: Conversely, let $D\in \ZZ^{n}$ be an integral divisor that is rationally equivalent to a divisor $E$ with coefficients in $(-1,0]$. It follows that $\lfloor D-E\rfloor = D$.
+But also $D-E \in \ker (\deg \otimes \QQ)$, so we may write $D-E = \alpha(m)$ for $m \in M\otimes \QQ$.
 Thus $\deg \alp(m) = \deg D$ is a Bondal-Thomsen class.
 
 (2) $\iff$  (3): trivial.
 
-(2) $\iff$ (4) We follow the proof given in \cite[Theorem 1.1]{achinger}. We first show that 
+(2) $\iff$ (4): We follow the proof given in \cite[Theorem 1.1]{achinger}. First, assume that $X$ is complete.
+We first show that
 $F_{\ell,*}\cO_X$ is a direct sum of line bundles. Since
  $X$ has an open
 affine covering by affine spaces it suffices to treat the case $X = \AA^{n}$, and in this case
@@ -119,7 +120,7 @@ $x^{a}S$ for all multi-indices $a$ with entries $0\leq a_{i}<\ell$.
 
 To see that these patch together,
 note that for any sheaf $\cL$ on $X$ the sheaf $F_{\ell,*}\cL$ carries a natural action by the
-group $G := \NN^{n}/\ell \NN^{n} \cong (\ZZ/\ell)^{n}$, acting by a character of $G$.
+group scheme $G :=\Spec(k[\ZZ^{n}/\ell \ZZ^{n}]) $, acting by a character.
 In the case of $\AA^{n}$ the summand $x^{a}S$ is the eigensheaf for eigenvalue $a$ and it follows
 that there is no problem patching the summands across different open affine sets.
 
@@ -131,14 +132,14 @@ To prove that the Bondal-Thomsen sheaves appear in the decomposition
 of $F_{\ell,*}\cO_X$
 we define exponents $m(e,d)$, for $d,e\in \Cl(X)$, by the formula
 $$
-F_{\ell,*}\cO_X(d) = \oplus_{e} \cO_{X}(e)^{\oplus m(e,d)},
+F_{\ell,*}\cO_X(d) = \oplus_{e} \cO_{X}(e)^{\oplus m(e,d)}.
 $$
 We must show that $m(e,0)$ is nonzero only when $e$ is a Bondal-Thomsen class; and that
 every Bondal-Thomsen class appears when $\ell$ is sufficiently divisible.
 
 From the push-pull formula we get
 $$
-F_{\ell,*} O_X(d)  \otimes \cO_{X}(-e)= F_{\ell,*}\cO_X(d-\ell e) \eqno{(1)}\label{pushpull}
+F_{\ell,*} \cO_X(d)  \otimes \cO_{X}(-e)= F_{\ell,*}\cO_X(d-\ell e) \eqno{(1)}\label{pushpull}
 $$
 \noindent from which we see that $m(e,d) = m(0,d-\ell e)$ depends only on the difference $d-\ell e$.
 Thus we define $m(d) := m(0,d)$. The desired conclusion will follow from the case $d=0$ of the following more general result:
@@ -158,9 +159,9 @@ $$
   Fixing a basis $\{\cO_{X}(d_{i})\}_{i = 1,\dots,\rho}$ of $\Cl(X)\cong \ZZ^{\rho}$ we define formal power series
  $$
  s(t) = \sum_{a \in \ZZ^{\rho}} h^{0}( \cO_{X}(\sum_{i}a_{i}d_{i})) t^{a}, \qquad
- m(t) = \sum_{a \in \ZZ^{\rho}} m(\cO_{X}(\sum_{i}a_{i}d_{i})) t^{a}.
+ m(t) = \sum_{a \in \ZZ^{\rho}} m(\sum_{i}a_{i}d_{i}) t^{a}.
  $$
- where as usual $a = (a_{1}\dots,a_{\rho})$ is a multi-index.
+ where, as usual, $a = (a_{1},\dots,a_{\rho})$ is a multi-index.
 From equation \eqref{pushpull} we get
 $$
 s(t) = m(t)s(t^{\ell}).
@@ -174,7 +175,7 @@ $$
 Thus
 $$
 m(t) = 
-\frac{s(t)}{s(t^{\ell a})} = 
+\frac{s(t)}{s(t^{\ell})} =
 \prod_{i=1}^{n}\frac{1-t^{\ell \deg D_{i}}}{1 -t^{\deg D_{i}}} =
 \prod_{i=1}^{n}(1+t^{\deg D_{i}}+\cdots + t^{(\ell-1)\deg D_{i}}).
 $$
@@ -184,15 +185,15 @@ $m(d)$ is the number of divisors $D$ with $\deg(D) = d\in \Cl(X)$ that have the 
  $X$ is complete.
  
  If $X$ is not complete, we add cones to the associated fan, and then subdivide, to get a birational embedding as an open subvariety
- $X \to \overline X$ where $\overline X$ is both complete and smooth. The pushforward functor commutes in an obvious sense with the inclusion. The class group of $\Cl(X)$ is the quotient of $\Cl(\overline X)$ by the classes coming from the new rays,
- and the restriction of a sum of line bundles on $\overline X$ to the open set $X$ simply deletes from the sum any line bundles that don't come from divisors on $X$; thus
+ $X \to \overline X$ where $\overline X$ is both complete and smooth. The pushforward functor commutes in an obvious sense with the inclusion. The class group $\Cl(X)$ is the quotient of $\Cl(\overline X)$ by the classes coming from the new rays,
+ and the restriction of a sum of line bundles on $\overline X$ to the open set $X$ and the kernel of the map is generated by the divisors supported on the complement of $X$; thus
  the desired formula for $X$ follows from the corresponding formula for $\overline X$.
  \end{proof}
 
 \medskip\noindent {\it Conclusion of the Proof of Theorem~\ref{thm:Bondal-Thomsen equivalences}}\\
 Applying Lemma~\ref{lem:Achinger's Lemma} in the case $d=0$, we see that $m(e,0)$ is nonzero
 if and only if there is a divisor $D$ with $\deg D = -\ell e$ such that $D = \sum_{i} a_{i}D_{i}$ with $0\leq a_{i} < \ell$;
-that is, $e = \deg(D/\ell)$, so that $e$ is a Bondal-Thomsen class, and every Bondal-Thomsen class appears for sufficiently divisible $\ell$. 
+that is, $e = -\deg(D/\ell)$, so that $e$ is a Bondal-Thomsen class, and every Bondal-Thomsen class appears for sufficiently divisible $\ell$.
 \end{proof}
 
 
@@ -205,6 +206,8 @@ $H^p(X, \cO_{X}(\lfloor D \rfloor )) = 0$
 for all $p > 0$.
 \end{thm}
 A similar statement holds for reasonable toric stacks; see \cite[Lemma 2.20]{king}.
+Note that the round-down depends on expressing $D$ in terms of a basis consisting of torus-invariant $Q$-divisors;
+it is not an intrinsic operation on divisors.
 
 \begin{prop}\label{prop:Demazure}
     Let $a\in \Cl(X)$ be a nef divisor class. If $-d\in \Theta_X$ is a Bondal-Thomsen class, then
@@ -225,7 +228,7 @@ The $\QQ$-divisor $B+D$ is nef because its class is $(a-d)+d=a$.  And $\lfloor B
     If $-d\ \in \Theta_X$ is a Bondal-Thomsen class, then $H^i(X,\cO_X(-d))=0$ for all $i>0$. If $d\ne 0$, then $H^0(X,\cO_X(-d))$ also vanishes.
 \end{cor}
 \begin{proof}
-    For $p>0$, we can apply Proposition~\ref{prop:Demazure} with $a=0$.  When $d\ne 0$, $\cO_X(-d)$ is the negative of an effective divisor. Since $X$ is complete, the effective divisors lie in a pointed cone,  so 
+    For $p>0$, we can apply Proposition~\ref{prop:Demazure} with $a=0$.  When $d\ne 0$, the class $-d$ is the negative of the class of an effective divisor. Since $X$ is complete, the effective divisors lie in a pointed cone,  so 
     $\cO_X(-d)$ has no global sections.
 \end{proof}
 
@@ -234,7 +237,7 @@ The $\QQ$-divisor $B+D$ is nef because its class is $(a-d)+d=a$.  And $\lfloor B
   \[
   \bigoplus_{\cO(E)\,\subseteq\, F_{m*}\cO_X} H^p\bigl(X,\cO(E)\bigr) \,=\, H^p\bigl(X,F_{m*}\cO_X\bigr) \,=\, H^p\bigl(X,\cO_X\bigr) \,=\, 0 \quad\text{for } p>0,
   \]
-  where the last equality is Theorem~\ref{thm:demazureL5} applied to $D=0$. Hence every line bundle summand of a toric Frobenius pushforward, i.e. every line bundle whose class is in the Bondal--Thomsen collection, has vanishing higher cohomology. 
+  where the last equality is Theorem~\ref{thm:demazure} applied to $D=0$. Hence every line bundle summand of a toric Frobenius pushforward, i.e. every line bundle whose class is in the Bondal--Thomsen collection, has vanishing higher cohomology. 
 
  A similar argument works for the second sentence of Corollary~\ref{cor:BTNoCohom}, regarding $H^0$.
   %The finitely many line bundles arising this way form the Bondal--Thomsen collection of Lecture~\ref{lec:6-bondal-thomsen}.
@@ -275,4 +278,3 @@ How does this look?
 \bibliography{Bibliography}
 \end{document}
 \fi
-
