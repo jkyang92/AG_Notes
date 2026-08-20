@@ -7,19 +7,23 @@
 \fi
 
 \section{Lecture 11 (Mahrud Sayrafi): The secondary fan}\label{lec:11-secondary-fan}
-In this section, we define the Cox category of a toric variety and explain how it combines the sheaf categories of all of the toric varieties associated to a given multigraded Cox ring. \lauren{right now we do not!}
+In this section we discuss the secondary fan of a multigraded ring $S$---a second fan associated to the toric varieties which arise from $S$ via a Cox ring quotient construction like that in Theorem~\ref{thm:coxquotient}.
 
 \subsection{Toric varieties of a multigraded ring}
-Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety, and the goal of this subsection is to give a crash course in how to think about this fan.
+Distinct smooth projective toric varieties can have the same Cox ring with the same grading, adding a wrinkle to generalizations of the dictionary between projective space and the standard graded polynomial ring.  The various possibilities are parametrized by what is called the \defi{secondary fan} or \defi{GKZ fan} of the toric variety.  The goal of this subsection is to give a crash course in how to think about this fan, before we define it precisely.
 
 \begin{notation}\label{not:multigrading}
-  We start with a polynomial ring $k[x_1,\ldots,x_n]$ and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$, \lauren{is everything really ok with torsion?} which induces a $\Cl(S)$-grading on $S$ that we will also denote by $\deg$.  We will assume throughout that our grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
+  We start with a polynomial ring $k[x_1,\ldots,x_n]$
+  %\lauren{dependence on field?}
+  and a map $\deg\colon\ZZ^n\to\Cl(S)$ to a finitely generated abelian group $\Cl(S)$,
+  %\lauren{is everything really ok with torsion?}
+  which induces a $\Cl(S)$-grading on $S$ that we also denote by $\deg$.  We will assume throughout that our grading satisfies the hypotheses of Proposition~\ref{prop:goodMultigradings}, ensuring that there exists \emph{some} simplicial projective toric variety with $S$ as its Cox ring.  Equivalently one may start with one such variety to obtain a suitable multigraded ring.
 
   Let $M$ be the kernel of $\deg$, a lattice in $\ZZ^n$, and $G$ the algebraic group $\Spec k[\Cl(S)]$.  There is a short exact sequence
   \begin{align}\label{eq:M-SES}
     0\to M\to\ZZ^n\to\Cl(S)\to 0.
   \end{align}
-  Write $\nu_1,\ldots,\nu_n$ for the rows of a matrix representing the map $M\to\ZZ^n$ and $N$ for the dual lattice $\Hom_\ZZ(M,\ZZ)$.  (Note that we had fixed a basis of $\ZZ^n$ by choosing variables for $S$.  This also fixes a basis of $M$, for ease of representing fans in $N\otimes_\ZZ\QQ$.)
+  Write $\nu_1,\ldots,\nu_n$ for the rows of a matrix representing the map $M\to\ZZ^n$ and $N$ for the dual lattice $\Hom_\ZZ(M,\ZZ)$.  (Note that we had fixed a basis of $\ZZ^n$ by choosing variables for $S$.  The choice of $\nu_i$ also fixes a basis of $M$, for ease of representing fans in $N\otimes_\ZZ\QQ$.)
 \end{notation}
 
 The short exact sequence of vector spaces
@@ -31,8 +35,8 @@ which exchanges the role of the degrees $\deg x_i$ and the vectors $\nu_i$.  Thi
 The crucial observation of the secondary fan is that there are only finitely many toric varieties coming from $S$, and in fact that they can be arranged into a polyhedral structure which reflects their geometry.  The finitely many possibilities can be enumerated in several different ways, which we will address in turn through the subsequent subsections.
 \begin{description}
   \item[GIT quotient/ample divisor]  In Theorem~\ref{thm:coxquotient} we saw that a simplicial toric variety is a geometric quotient of $\Spec S$.  GIT quotients are parametrized by linearized line bundles.  Choosing a linearization means choosing a divisor to be ample on the quotient, and we will see that the chambers of the secondary fan are in a sense possible nef cones.
-  \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know that its rays must come from \eqref{eq:M-SES}.  The collection of polytopes with normal vectors in a fixed list forms a fan.  The cones of the secondary fan will exactly enumerate complete fans on subsets of these rays.
-  \item[irrelevant ideal]  Perhaps the simplest way to describe which toric varieties are possible is to describe their irrelevant ideals, since $S$ with its grading and a suitable irrelevant ideal fully determines a toric variety.  Indeed the set of such ideals is easy to describe in terms of the map $\deg$, and each ideal quickly determines both pieces of data above.
+  \item[polytope/simplicial fan]  If a projective toric variety has $S$ as its multigraded Cox ring then we also know that its rays must come from \eqref{eq:M-SES}.  Up to translation, the polytopes with normal vectors in a fixed list lie in a fan.  The cones of the secondary fan enumerate complete normal fans with these rays.
+  \item[irrelevant ideal]  Perhaps the simplest way to describe which toric varieties are possible is to list their irrelevant ideals, since $S$ with its grading and a suitable irrelevant ideal fully determines a toric variety.  Indeed the set of such ideals is easy to describe in terms of the map $\deg$, and each ideal quickly determines both pieces of data above.
 \end{description}
 
 Some spaces appearing in the secondary fan are most properly interpreted as stacks, and some do not use all the rays from \eqref{eq:M-SES}.  We mostly avoid the former in these notes (see Remark~\ref{rem:walls}) but address the latter in Section~\ref{sec:lower-Pic-rank}.  Note that a variety with fewer than $n$ rays will not actually have $S$ as its own Cox ring, despite arising as a quotient of $\Spec S$.
@@ -101,7 +105,7 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
     \end{tikzpicture}
   \end{center}
 
-  Each degree in $\Cl(S)$ gives a $(\CC^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of $d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
+  Each degree in $\Cl(S)$ gives a $(\CC^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of~$d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
 
   A degree $(a,b)\in\Cl(S)$ is in the image of the vector $(0,0,a,b)\in \ZZ^4$.  The polytope of this vector is defined by the restriction of the inequalities $x_0\geq 0$, $x_1\geq 0$, $x_2\geq -a$, and $x_3\geq -b$.  In the coordinates \lauren{letters?} we have chosen for $M$ these give $y_0\geq 0$, $y_1\geq 0$, $-y_0+3y_1\geq -a$, and $-y_1\geq -b$.  The inequalities bound a trapezoid for $(a,b)\in\Gamma_1$ and a triangle for $(a,b)\in\Gamma_2$, corresponding to $\cH_3$ and $\PP(1,1,3)$, respectively.  Outside of $\Gamma_1$ and $\Gamma_2$ the polytope is empty.
 
@@ -137,7 +141,7 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
     \node at (-0.2,1) {$b$};
     \node at (1, -0.25) {$a$};
   \end{tikzpicture}
-\end{center}
+  \end{center}
 
   To obtain irrelevant ideals for the chambers we look at which monomials have variables whose degrees span each cone.  To span $\Gamma_2$ we must include $x_1$ and at least one other variable, giving the ideal $\langle x_0x_1,x_1x_2,x_1x_3\rangle$.  Four subsets of two variables span $\Gamma_1$, giving $\langle x_0x_1, x_0x_3, x_1x_2, x_2x_3\rangle$.
 
@@ -147,15 +151,15 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
 
 \subsection{GIT quotients}\label{sec:variation-of-GIT}
 The sequence \eqref{eq:M-SES} induces maps of algebraic groups
-\begin{align}\label{eq:M-alg}
+\begin{align}\label{eq:alg-SES}
   0\gets \Spec k[M]\gets (k^*)^n\gets G\gets 0.
 \end{align}
 The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.
 
-We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory, which can be found for instance in \cite{Dolgachev03}.
+We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory, which can be found for instance in \cite{Mumford65} or \cite{Dolgachev03}.
 
 \begin{defn}
-  A \defi{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ such that the zero section of $\cL$ is $G$-invariant.  The \defi{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism. \lauren{for people who know more about GIT: am I using these words correctly?}
+  A \defi{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ such that the zero section of $\cL$ is $G$-invariant.  The \defi{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism.
 \end{defn}
 
 Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions of $G$ on $\cO$ are given by elements of $\Cl(S)$.
@@ -170,16 +174,16 @@ Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions o
   Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
 \end{proof}
 
-By Proposition~\ref{prop:eq-Picard-gp} and \cite[Converse~1.13]{Mumford65}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, which is a torus. \lauren{elaborate?} In fact they are toric varieties, as we will see later by assigning them to fans.
+By Proposition~\ref{prop:eq-Picard-gp} and \cite[Converse~1.13]{Mumford65}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, a torus, via \eqref{eq:alg-SES}.  In fact they are toric varieties, as we will see later by assigning them to fans.
 
 According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
 \[\Proj\bigoplus_{i\in\NN}\Gamma(\Spec S,\cL_d^{\otimes i})^G\]
-where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections (see for instance \cite[Proposition~8.1]{Dolgachev03}).  In the toric case these equivariant sections are elements of $S$.
+where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of equivariant sections (see for instance \cite[Proposition~8.1]{Dolgachev03}).  In the toric case these equivariant sections are elements of $S$.
 \begin{lemma}
-  With $\cL_d$ the line bundle on $\Spec S$ given by Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$, we have that $\Gamma(\Spec S,\cL_d)^G=S_d$.
+  The line bundle $\cL_d$ on $\Spec S$ from Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ has $G$-equivariant global sections $\Gamma(\Spec S,\cL_d)^G\cong S_d$.
 \end{lemma}
 \begin{proof}
-  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=\CC[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters corresponding to their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.  \lauren{clarify further?  and check that our inverse conventions work out}
+  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=\CC[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters given by their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.
 \end{proof}
 Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
 
@@ -191,7 +195,7 @@ Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees 
 We will see more concrete constructions of these spaces in the following subsections, along with descriptions of the semistable and stable loci.
 
 \subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
-The toric structure of the quotients $X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the induced map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$.
+The toric structure of the quotients~$X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list, up to translation.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$ induced by $\deg$.
 
 \begin{rem}\label{rem:triangulations}
   While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} on the hyperplane.  See for instance \cite[Chapter~7]{GKZ}.
@@ -247,7 +251,7 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
 \end{rem}
 
 \begin{prop}[\cite{OdaPark91}*{Corollary 3.6}, \cite{CLS}*{Theorem 14.4.7}]\label{prop:fan-structure}
-  The collection of all cones $\Gamma(\Sigma,F)$ forms an $n$-dimensional rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.
+  The collection of all cones $\Gamma(\Sigma,F)$ forms a rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.
 
   The support of the secondary fan is the cone spanned by the $\deg x_i$, which in the setup of Notation~\ref{not:multigrading} is strongly convex.  We call maximal (here full dimensional) cones in the fan \defi{chambers}.
 \end{prop}
@@ -276,7 +280,7 @@ The toric variety $X_d$ is constant within the interior of each cone of the seco
 \end{proof}
 
 \begin{rem}\label{rem:walls}
-  Versions of Lemma~\ref{lem:GKZ-def}, Theorem \ref{thm:GIT-polytope}, and Corollary~\ref{cor:chamber-iso} are true for all $d\in\Cl(S)$, not only those in the interior of a chamber.  Degrees on the walls of the secondary fan can have truly generalized fans, polytopes of dimension less than the rank of $M$, indices appearing neither among the rays of $\Sigma$ nor in $F$ (as in Example~\ref{ex:secondary-wall}, which has $F=\varnothing$), and singularities which encourage us to consider them as stacks.  See \lauren{cite} for the relevant constructions in these more technical cases.
+  Versions of Lemma~\ref{lem:GKZ-def}, Theorem \ref{thm:GIT-polytope}, and Corollary~\ref{cor:chamber-iso} are true for all $d\in\Cl(S)$, not only those in the interior of a chamber.  Degrees on the walls of the secondary fan can have truly generalized fans, polytopes of dimension less than the rank of $M$, indices appearing neither among the rays of $\Sigma$ nor in $F$ (as in Example~\ref{ex:secondary-wall}, which has $F=\varnothing$), and singularities which encourage us to consider them as stacks.  See \cite{Berkesch2026Nonsimplicial} for the relevant constructions in these more technical cases.
 \end{rem}
 
 \subsection{Irrelevant ideals}\label{sec:irrelevant-ideals}
@@ -309,7 +313,7 @@ We postpone the proof of Proposition~\ref{prop:ccrefinement} until the end of th
   \]
 \end{defn}
 
-These operations are inverses of each other, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
+These operations are inverses of each other on the secondary fan, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
 
 %Here we must remember that the subset $F$ indexes facets which do not intersect $P_\alpha$ and whose rays do not appear among its normal vectors.  These correspond to variables appearing in all generators of the irrelevant ideal.
 
@@ -348,7 +352,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
 \end{thm}
 
 \begin{proof}
-  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ described in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.  The quotient toric variety is simplicial by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}.
+  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.  The quotient toric variety is simplicial by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}.
 \end{proof}
 
 %\begin{cor}
