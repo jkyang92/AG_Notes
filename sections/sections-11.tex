@@ -176,23 +176,24 @@ Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions o
 
 By Proposition~\ref{prop:eq-Picard-gp} and \cite[Converse~1.13]{Mumford65}, the possible quotients of $\Spec S$ by $G$ are parametrized by elements $d\in\Cl(S)$.  Since $\Spec S$ had an action of $(k^*)^n$ the quotients retain an action of $\Spec k[M]$, a torus, via \eqref{eq:alg-SES}.  In fact they are toric varieties, as we will see later by assigning them to fans.
 
-According to GIT, in order to construct good quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
+According to GIT, in order to construct good (categorical) quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
 \[\Proj\bigoplus_{i\in\NN}\Gamma(\Spec S,\cL_d^{\otimes i})^G\]
-where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of equivariant sections (see for instance \cite[Proposition~8.1]{Dolgachev03}).  In the toric case these equivariant sections are elements of $S$.
-\begin{lemma}
-  The line bundle $\cL_d$ on $\Spec S$ from Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ has $G$-equivariant global sections $\Gamma(\Spec S,\cL_d)^G\cong S_d$.
+where $\cL_p$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections (see for instance \cite[Proposition~8.1]{Dolgachev03}).  In the toric case these invariant sections are elements of $S$.
+\begin{lemma}\label{lem:eq-sections}
+  The line bundle $\cL_d$ on $\Spec S$ from Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ has $G$-invariant global sections $\Gamma(\Spec S,\cL_d)^G\cong S_d$.
 \end{lemma}
 \begin{proof}
   The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=\CC[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters given by their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.
 \end{proof}
-Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.
+
+Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.  By Lemma~\ref{lem:eq-sections} and the discussion above it, these rings determine quotients of $\Spec S$.
 
 \begin{cor}\label{cor:quotient-Proj}
   The GIT quotients of $\Spec S$ by $G$ are of the form $X_d\ce\Proj S_{\NN d}$ for $d\in\Cl(S)$.
 \end{cor}
 
 %Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$.
-We will see more concrete constructions of these spaces in the following subsections, along with descriptions of the semistable and stable loci.
+We will see more concrete constructions of the spaces $X_d$ in the following subsections, along with descriptions of the unstable loci that were removed by the choice of line bundle $\cL_d$ in order to create a good quotient.  In particular, it is not obvious from the description in Corollary~\ref{cor:quotient-Proj} that $X_d$ is a toric variety.  The secondary fan will additionally tell us which degrees $d$ give the same unstable locus and thus the same quotient.
 
 \subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
 The toric structure of the quotients~$X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list, up to translation.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$ induced by $\deg$.
@@ -277,11 +278,15 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
 \end{lemma}
 
 \begin{proof}
-  Let $X_\alpha$ be the toric variety of the polytope $P_\alpha$.  By \cite[Proposition~6.1.10]{CLS} the divisor $\sum_{i\in G}\alpha_iD_i$ \lauren{notation?} is ample on $X_\alpha$, so by \cite[Theorem~6.1.14]{CLS} it has a strongly convex support function $\varphi$ on $\Sigma$, satisfying $\varphi(\nu_i)=-\alpha_i$ for $i\in G$.  We claim that $\varphi(\nu_i)\geq-\alpha_i$ for $i\notin G$ by the fact that the hyperplane $x_i=-\alpha_i$ does not intersect $P_\alpha$.
+  Let $X_\alpha$ be the toric variety of the polytope $P_\alpha$.  By \cite[Proposition~6.1.10]{CLS} the divisor $\sum_{i\notin F}\alpha_iD_i$
+  %\lauren{notation?}
+  is ample on $X_\alpha$, so by \cite[Theorem~6.1.14]{CLS} it has a strongly convex support function $\varphi$ on $\Sigma$, satisfying $\varphi(\nu_i)=-\alpha_i$ for $i\in G$.  We claim that $\varphi(\nu_i)\geq-\alpha_i$ for $i\in F$.
 
   Fix $i\notin G$.  Since $\Sigma$ is the normal fan of a polytope it is complete, so we can write $\nu_i=\sum\beta_j\nu_j$ for $\beta_j>0$ and $\nu_j$ the rays of a single cone in $\Sigma$.  By the definition of a support function $\varphi$ is linear within the cone spanned by the $\nu_j$, so that $\varphi(\nu_i)=-\sum\beta_j\alpha_j$.
 
-  The rays of a cone in the normal fan correspond to hyperplanes intersecting in a face of $P_\alpha$ (swapping dimension and codimension), and this face consists of points $m$ in $P_\alpha$ whose images $(\nu_j\cdot m)$ satisfy $\nu_j\cdot m=-\alpha_j$.  If $\varphi(\nu_i)=-\alpha_i$ then $-\alpha_i=-\sum\beta_j\alpha_j$, so $\nu_i\cdot m=\sum\beta_j\nu_j\cdot m=-\sum\beta_j\alpha_j=-\nu_i$.  \lauren{needs to be explained better and altered to an inequality but I think this is correct now}
+  The rays of a cone in the normal fan correspond to hyperplanes intersecting in a face of $P_\alpha$ (swapping dimension and codimension), and this face consists of points $m$ in $P_\alpha$ whose images $(\nu_j\cdot m)$ in $\QQ^n$ satisfy $\nu_j\cdot m=-\alpha_j$.  We also have $\nu_i\cdot m > -\alpha_i$, by definition of $P_\alpha$.  Hence
+  \[\varphi(\nu_i)=-\sum\beta_j\alpha_j=\sum\beta_j(\nu_j\cdot m)=\left(\sum\beta_j\nu_j\right)\cdot m=\nu_i\cdot m\geq\nu_i.\]
+  Notice that we get a strict inequality exactly when the hyperplane $x_i=-\alpha_i$ does not intersect $P_\alpha$ at all.  The ``general'' case thus corresponds to the interior of the cone $\tilde\Gamma(\Sigma,F)$.
 \end{proof}
 
 \begin{rem}
@@ -295,11 +300,11 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
 \end{prop}
 
 \begin{example}\label{ex:secondary-blowup-2}
-  The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is shown in Figure~\ref{fig:secondary-blowup}.  The central cone corresponds to the polytope whose normal fan defines a blowup $X$ of $\PP^1\times\PP^1$ at one point.  This is the only type of polytope which requires all 5 inequalities. \lauren{change labels to polytopes}
+  The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is shown in Figure~\ref{fig:secondary-blowup}.  The central cone contains the polytope whose normal fan defines a blowup $X$ of $\PP^1\times\PP^1$ at one torus-invariant point.  This is the only type of polytope which requires all 5 inequalities. \lauren{change labels to polytopes}
 
   \input{sections/fig-Bl2P3}
 
-  (The \texttt{NormalToricVarieties} package for \emph{Macaulay2} defaults to a basis for $\Pic(X)$ where the nef cone of $X$ is the positive quadrant, but for ease of visualization we have instead chosen the extremal rays of the cone spanned by the $\deg x_i$ as our basis for $\Cl(S)$.)
+  (The \texttt{NormalToricVarieties} package for \emph{Macaulay2} defaults to a basis for $\Pic(X)$ where the nef cone of $X$ is the positive quadrant, but for ease of visualization we have instead chosen the extremal rays of the secondary fan as our basis for $\Cl(S)$.)
 
   The polytope from Example~\ref{ex:secondary-blowup} is separated from the polytope for $X$ by the wall corresponding to Example~\ref{ex:secondary-wall}.
 \end{example}
@@ -441,7 +446,7 @@ Using the inclusion of class groups, we can give a more precise description of t
   Suppose $d\in\Cl(S)$ is in the interior of a chamber~$\Gamma$ of the secondary fan of $S$.  The cone $\Nef X_p$ is the projection of $\Gamma$ to $\Cl(X_d)\otimes_\ZZ\QQ$ via the map from Lemma~\ref{lem:cl-restrict}.
 \end{thm}
 
-A variety $X_d$ with fewer than $n$ rays still has a nef cone related to its chamber $\Gamma$, and still arises as a quotient of $\Spec S$, but the short exact sequence computing its class group does not exactly match \eqref{eq:M-SES}.
+A variety $X_d$ with fewer than $n$ rays still has a nef cone related to its chamber $\Gamma$, and still arises as a GIT quotient of $\Spec S$, but the short exact sequence computing its class group no longer exactly matches \eqref{eq:M-SES}.
 
 Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ring with fewer variables is sufficient to construct the toric variety.  Thus in one sense $\idealof(\Gamma)$ is an irrelevant ideal---it defines a permissible unstable locus in $\Spec S$---yet it is not the irrelevant ideal of $X_d$ in the ordinary sense.
 
