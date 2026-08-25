@@ -11,12 +11,12 @@ Let $S = \k[x_0, \dots, x_n]$, $\Z$-graded with $\deg(x_i) = 1$, and let $E = \b
 $
 R \co D^b(S) \xra{\simeq} D^b(E)
 $
-that sends a finitely generated module $M$ (thought of as a complex concentrated in homological degree 0) to
+that sends a finitely generated module $M$ (thought of as a complex concentrated in cohomological degree 0) to
 \begin{equation}
 \label{eqn:RMformula}
 R(M) = \left[\cdots \xla{\del_R} E^*(i) \otimes_\k M_{-i} \xla{\del_R} E^*(i + 1) \otimes_\k M_{-i - 1} \xla{\del_R} \cdots \right],
 \end{equation}
-where $E^*(i) \otimes_\k M_{-i}$ is in homological degree $-i$. Moreover, we saw that we get an induced equivalence
+where $E^*(i) \otimes_\k M_{-i}$ is in cohomological degree $i$. Moreover, we saw that we get an induced equivalence
 \begin{equation}
 \label{eqn:geobgg}
 \overline{R} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce D^b(E) / \Perf(E),
@@ -28,7 +28,7 @@ Conceptually, we need a way to get our hands on the morphisms in $D^{\on{sing}}(
 \label{eqn:buchweitz}
 B \co D^{\on{sing}}(E) \xra{\simeq} K(E),
 \end{equation}
-where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. This equivalence sends an object $C$ in $D^{\on{sing}}(E)$ to the mapping cone of the canonical quasi-isomorphism $G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $N$, and $F$ is the $\k$-dual of the minimal free resolution of~$N$. We arrive at the following key commutative diagram:
+where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. This equivalence sends an object $C$ in $D^{\on{sing}}(E)$ to the mapping cone of the canonical quasi-isomorphism $G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $C$, and $F$ is the $\k$-dual of the minimal free resolution of~$C$. We arrive at the following key commutative diagram:
 \begin{equation}
 \label{eqn:tatediagram}
 \xymatrix{
@@ -47,11 +47,11 @@ The complex $T(\F)$ is called the \emph{Tate resolution of $\F$.}
 
 \begin{example}
 \label{ex:tate}
-Say $S = \k[x_0, x_1]$. Take $M = S / (x_0)$, and $\F = \widetilde{M}$, the structure sheaf of a point on $\PP^1$. The regularity of $M$ is 0, so there is no need to truncate. We have 
+Say $S = \k[x_0, x_1]$. Take $M = S / (x_0)$, and $\F = \widetilde{M}$, the structure sheaf of a point on $\PP^1$. The regularity of $M$ is zero. We have 
 $$
-R(M) = \left[ \cdots \xla{e_1} E^*(-2) \xla{e_1} E^*(-1) \xla{e_1} E^* \from 0 \right].
+R(M_{> 0}) = \left[ \cdots \xla{e_1} E^*(-2) \xla{e_1} E^*(-1) \from 0 \right].
 $$
-This complex is exact except in homological degree 0. So to get the Tate resolution, we just need to resolve its $0^{\th}$ homology, which gives:
+This complex is exact except in cohomological degree $1$. So to get the Tate resolution, we just need to resolve its first homology, which gives:
 $$
 T(\F) = \left[
 \cdots  \xla{e_1} E^*(-1) \xla{e_1} E^* \xla{e_1} E^*(1) \xla{e_1} \cdots
@@ -65,21 +65,21 @@ The next result demonstrates that the Tate resolution functor is a model for the
 
 \begin{prop}
 \label{prop:tateBR}
-For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) = (B \circ \overline{R})(\F)$. %In particular, $T(\F)$ is well-defined (up to homotopy equivalence) up to the choice of module $M$ such that $\widetilde{M} = \F$ and the choice of $s > r$. 
+For any coherent sheaf $\F$ on $\PP^n$, we have $T(\F) \cong (B \circ \overline{R})(\F)$. %In particular, $T(\F)$ is well-defined (up to homotopy equivalence) up to the choice of module $M$ such that $\widetilde{M} = \F$ and the choice of $s > r$. 
 \end{prop}
 
 
 \begin{proof}
-This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and right most vertical functors in the diagram. 
+This follows from the commutativity of Diagram~\eqref{eqn:tatediagram}: the formula for $T$ lifts $\F$ to $D^b(S)$ and then applies the top two horizontal and rightmost vertical functors in the diagram. 
 \end{proof}
 
-In Example~\ref{ex:tate}, we only needed to resolve a single module, not a complex with nonzero homology in multiple positions. An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that this always happens: $R(M_{\ge s})$ has nonzero homology only in degree $-s$, so 
-so $G$ is just the minimal free resolution of $H^{-s}(R(M_{\ge s}))$. Let us give a quick sketch of a proof of this fact, as we will need it later. We will use the following technical lemma:
+In Example~\ref{ex:tate}, we only needed to resolve a single module, not a complex with nonzero homology in multiple positions. An advantage to using the truncation $M_{\ge s}$ in the definition of the Tate resolution is that this always happens: $R(M_{\ge s})$ has nonzero cohomology only in degree $s$,  
+so $G$ is just the minimal free resolution of $H^{s}(R(M_{\ge s}))$. Let us give a quick sketch of a proof of this fact, as we will need it later. We will use the following technical lemma:
 
 
 
 \begin{prop}
-If $M$ is a finitely generated graded $S$-module with regularity $r$, then $R(M_{\ge r})$ has nonzero homology only in degree $-r$. 
+If $M$ is a finitely generated graded $S$-module that is $r$-regular, then $R(M_{\ge r})$ has nonzero cohomology only in degree $r$. 
 \end{prop}
 
 \begin{proof}
@@ -95,7 +95,7 @@ Since $M_{\ge r}$ has a linear free resolution~\cite{EG}, this follows immediate
 
 \begin{thm}
 \label{thm:tate1}
-Let $\F$ be a coherent sheaf on $\PP^n$. Its Tate resolution $T(\F)$ is minimal, and for all $i, j \in \Z$, there is an isomorphism $T(\F)_i \cong \bigoplus_{j \in \Z} E^*(i + j) \otimes_\k H^j(\PP^n, \F(-i - j))$.
+Let $\F$ be a coherent sheaf on $\PP^n$. Its Tate resolution $T(\F)$ is minimal, and for all $i \in \Z$, there is an isomorphism $T(\F)^i \cong \bigoplus_{j \in \Z} E^*(j-i) \otimes_\k H^j(\PP^n, \F(-i -j))$.
 \end{thm}
 
 Theorem~\ref{thm:tate1} tells us how to actually see projective geometry via BGG: the terms of the Tate resolution of~$\F$ encode the sheaf cohomology of all the twists of $\F$. That is, the Buchweitz equivalence~\eqref{eqn:buchweitz} pulls the geometry out of the morphisms in the singularity category and expresses  it via the objects of $K(E)$.
@@ -103,7 +103,7 @@ Theorem~\ref{thm:tate1} tells us how to actually see projective geometry via BGG
 \begin{example}
 Let us return to Example~\ref{ex:tate}. Since $\F$ is the structure sheaf of a point, we have
 $$
-H^0(\PP^1, \F(i)) = 1 \quad \text{for all $i$,} \quad H^j(\PP^1, \F(i)) = 0 \quad \text{for all $i, j$.}
+H^0(\PP^1, \F(i)) = 1 \quad \text{for all $i$,} \quad H^j(\PP^1, \F(i)) = 0 \quad \text{for all $i$ and all $j \ne 0$}
 $$
 One sees this immediately from the terms of $T(\F)$ using Theorem~\ref{thm:tate1}. 
 \end{example}
@@ -114,7 +114,7 @@ Let $\F$ be a sheaf on $\PP^n$ and $M$ an $S$-module such that $\widetilde{M} = 
 \end{remark}
 
 \begin{proof}[Proof of Theorem~\ref{thm:tate1}]
-We will sketch a proof of the formula for the terms of $T(\F)$ in greater generality in the next lecture. Concerning minimality: let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$, and let $r$ be the regularity of $M$. Recall that $R(M_{\ge r})$ has cohomology concentrated in degree $-r$ \cite{EFS}*{Corollary 2.4}. Let $\m_E$ be the homogeneous maximal ideal of $E$. The complex $G$ is the minimal free resolution of the kernel of the first nonzero differential in the minimal complex $R(M_{\ge s})$. So we just need to check that the quasi-isomorphism $G \xra{\simeq} R(M_{\ge s})$ takes values in $\m_E \cdot R(M_{\ge s})_{-s} = \m_E(-s) \otimes_\k M_s$. Equivalently, we must show that the kernel of the first nonzero differential in $R(M_{\ge s})$ is contained in $\m_E(-s) \otimes_\k M_s$. This is holds since $R(M_{\ge r})$ is exact in homological degrees less than $-r$. 
+We will sketch a proof of the formula for the terms of $T(\F)$ in greater generality in the next lecture. Concerning minimality: let $M$ be a finitely generated graded $S$-module such that $\widetilde{M} = \F$, and let $s > \reg(M)$. Recall that $R(M_{\ge s})$ has cohomology concentrated in degree $s$ \cite{EFS}*{Corollary 2.4}. Let $\m_E$ be the homogeneous maximal ideal of $E$. The complex $G$ is the minimal free resolution of the kernel of the first nonzero differential in the minimal complex $R(M_{\ge s})$. So we just need to check that the quasi-isomorphism $G \xra{\simeq} R(M_{\ge s})$ takes values in $\m_E \cdot R(M_{\ge s})_{-s} = \m_E(-s) \otimes_\k M_s$. Equivalently, we must show that the kernel of the first nonzero differential in $R(M_{\ge s})$ is contained in $\m_E(-s) \otimes_\k M_s$. This holds since $R(M_{\ge s})$ is exact in cohomological degrees greater than $s$. 
 \end{proof}
 
 \begin{remark}
@@ -128,9 +128,9 @@ Tate resolutions have had a host of applications; let us highlight two of them. 
 \from 
 \bigoplus_{i = 0}^n H^j(\F(j-i+1)) \otimes_\kk \Omega_{\PP^n}^{i-j-1}(i-j - 1) 
 \from
-\bigoplus_{i = 0}^n H^i(\F(j-i)) \otimes_\kk \Omega_{\PP^n}^{i-j}(i-j)\from \cdots 
+\bigoplus_{i = 0}^n H^i(\F(j-i)) \otimes_\kk \Omega_{\PP^n}^{i-j}(i-j)\from \cdots,
 \end{equation}
-that is quasi-isomorphic to the sheaf $\F$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad~\eqref{eqn:monad}. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
+that is quasi-isomorphic to the sheaf $\F$, where the rightmost term is in cohomological degree $j$. This complex is typically obtained via a Fourier-Mukai transform with kernel given by the Beilinson resolution of the diagonal, but, from this point of view, it is not easy to compute the differentials in~\eqref{eqn:monad}, even with the aid of Macaulay2. The insight of \cite{EFS}*{Section 6} is that one can first compute the Tate resolution $T(\F)$ (which is easy and efficient to do in Macaulay2) and then apply a simple, computable functor to $T(\F)$ to obtain the monad~\eqref{eqn:monad}. These ideas were also applied in Eisenbud-Schreyer's subsequent work on Chow forms~\cite{ES-JAMS}. 
 
 The second application is an algorithm for computing sheaf cohomology over $\PP^n$ by applying the formula in Theorem~\ref{thm:tate1}. This is, in some cases, the fastest known way to compute cohomology over $\PP^n$~\cite{decker-eisenbud}. What makes this algorithm fast is that it involves taking minimal free resolutions over an exterior algebra: since exterior algebras are finite dimensional over a field, homological calculations over them are particularly fast. 
 
@@ -146,14 +146,14 @@ A \emph{differential $E$-module} is an $A \oplus \Z$-graded right $E$-module $D$
 \end{defn}
 
 \begin{remark}
-We can think of $E$ as a differential graded (dg) algebra with homological grading given by $\deg(e_i) = -1$, internal grading given by $\deg(e_i) = -\deg(x_i)$, and trivial differential. The category of dg-modules over this dg-algebra is equivalent to $\DM(E)$. An advantage to repackaging this data as a differential $E$-module is that it makes computation in Macaulay2 a bit simpler. 
+We can think of $E$ as a differential graded (dg) algebra with cohomological grading given by $\deg(e_i) = 1$, internal grading given by $\deg(e_i) = -\deg(x_i)$, and trivial differential. The category of dg-modules over this dg-algebra is equivalent to $\DM(E)$. An advantage to repackaging this data as a differential $E$-module is that it makes computation in Macaulay2 a bit simpler. 
 \end{remark}
 
 Let $\on{mod}(S)$ be the category of $A$-graded $S$-modules, and let $\DM(E)$ be the category of differential $E$-modules. The $A$-graded BGG functor
 $$
 R \co \on{mod}(S) \to \DM(E)
 $$
-sends $M \in \on{mod}(S)$ to $\bigoplus_{a \in A} E^*(-a;0) \otimes_\k M_a$, with differential given by multiplication on the left by $\sum_{i = 0}^n e_i \otimes x_i$. The functor $R$ extends naturally to complexes of $A$-graded $S$-modules, and it has a left adjoint, just as in the classical setting. In fact, the functor $R$ induces an equivalence $D^b(S) \xra{\simeq} D^b_{\DM}(E)$, where the target is the bounded derived category of differential $E$-modules, i.e. the category of differential $E$-modules with finetely generated homology with quasi-isomorphisms inverted. But we will not need this.
+sends $M \in \on{mod}(S)$ to $\bigoplus_{a \in A} E^*(-a;0) \otimes_\k M_a$, with differential given by multiplication on the left by $\sum_{i = 0}^n e_i \otimes x_i$. The functor $R$ extends naturally to complexes of $A$-graded $S$-modules, and it has a left adjoint, just as in the classical setting. In fact, the functor $R$ induces an equivalence $D^b(S) \xra{\simeq} D^b_{\DM}(E)$, where the target is the bounded derived category of differential $E$-modules, i.e. the category of differential $E$-modules with finitely generated homology with quasi-isomorphisms inverted. But we will not need this.
 
 \begin{remark}
 \label{rem:stdm}
@@ -162,9 +162,9 @@ When $S$ is standard graded, there is an equivalence between $\DM(E)$ and the ca
 
 \begin{example}[\cite{BE25comp}*{Example 3.3}]
 \label{ex:ellipticCurve}
-Let us consider the case of the weighted projective stack $\PP(1,1,2)$, so that $\Cl(X) = \Z$, and $S = k[x_0, x_1, x_2]$ with $\deg(x_0) = 1 = \deg(x_1)$ and $\deg(x_2) = 2$. Let $M= S/(x_0^4+x_1^4+x_2^2)$ be the coordinate ring of a genus $1$ curve in $\PP(1,1,2)$.  The differential module $R(M)$ is an infinitely generated free $E$-module whose generators are in bijection with a $\kk$-basis for $M$.  In this example, we have
+Assume $\on{char}(\k) \ne 2$, and let us consider the case of the weighted projective stack $\PP(1,1,2)$, so that $\Cl(X) = \Z$, and $S = k[x_0, x_1, x_2]$ with $\deg(x_0) = 1 = \deg(x_1)$ and $\deg(x_2) = 2$. Let $M= S/(x_0^4+x_1^4+x_2^2)$ be the coordinate ring of a genus $1$ curve in $\PP(1,1,2)$.  The differential module $R(M)$ is an infinitely generated free $E$-module whose generators are in bijection with a $\kk$-basis for $M$.  In this example, we have
 $\dim_\k M_0 = 1$, and $\dim_\k M_i = 2i$ for $i \ge 1$.
-Thus, $R(M)$ has the form:
+Thus, $R(M)$ looks like:
 \vskip\baselineskip
 \footnotesize
 \[
@@ -206,8 +206,8 @@ We define $\Phi \co \coh(\X) \to \DM(E)$ to be the composition $\RR \circ \RR\Ga
 Let $\F \in \coh(\X)$. There exists $T(\F) \in \DM(E)$ with the following properties:
 \begin{enumerate}
 \item $T(\F)$ is homotopy equivalent to $\Phi(\F)$. 
-\item $T(\F)$ is free as an $E$-module, and it is minimal, i.e. its differential takes values in $\m_E \cdot T(\F)$, where~$\m_E$ is the homogeneous maximal ideal of $E$
-\item For any $a \in \Cl(X)$ and $j \in \Z$, we have $T(\F) \cong \bigoplus_{(a;j) \in A \oplus \Z} H^j(\X, \F(a)) \otimes_\k E^*(-a;j)$.
+\item $T(\F)$ is free as an $E$-module, and it is minimal, i.e. its differential takes values in $\m_E \cdot T(\F)$, where~$\m_E$ is the homogeneous maximal ideal of $E$.
+\item We have $T(\F) \cong \bigoplus_{(a;j) \in A \oplus \Z} H^j(\X, \F(a)) \otimes_\k E^*(-a;j)$.
 \item $T(\F)$ is exact. 
 %\item Let $M$ be a $\Cl(X)$-graded $S$-module such that $\widetilde{M} = \F$ and~$H^0_B(M) = 0$. The canonical injection $M \into \bigoplus_{a \in \Cl(X)} H^0(\X, \F(a))$ induces an injection of differential $E$-modules $R(M) \into T(\F)$. 
 \end{enumerate}
@@ -225,10 +225,10 @@ $$
  & \vdots && \vdots &
 }
 $$
-(where the $(i, -j)$ position is the top right term). We can use \cite{EFS}*{Lemma 3.5} to minimize the totalization of this bicomplex, and parts (1) - (3) follow immediately from this result. The uniqueness of $T(\F)$ follows from minimality, via the usual Nakayama's Lemma argument. Part (4) holds since the rows of the bicomplex are exact. To see this, we start by setting 
+(where the $(-i, j)$ position is the top right term). We can use \cite{EFS}*{Lemma 3.5} to minimize the totalization of this bicomplex, and parts (1) - (3) follow immediately from this result. The uniqueness of $T(\F)$ follows from minimality, via the usual Nakayama's Lemma argument. Part (4) holds since the rows of the bicomplex are exact. To see this, we start by setting 
 $$
 K \ce \left[
-\cdots \from \bigoplus_{a \in \Cl(X)} S(a) \otimes_\k E^*(-a;i-1) \xra{\sum_{i = 0}^n x_i \otimes e_i} \bigoplus_{a \in \Cl(X)} S(a) \otimes_\k E^*(-a;i-1) \from \cdots 
+\cdots \from \bigoplus_{a \in \Cl(X)} S(a) \otimes_\k E^*(-a;i-1) \xra{\sum_{i = 0}^n x_i \otimes e_i} \bigoplus_{a \in \Cl(X)} S(a) \otimes_\k E^*(-a;i) \from \cdots 
 \right].
 $$
 As a complex of $S$-modules, this is just $\bigoplus_{a \in \Cl(X), i \in \Z} \on{Kos}(x_0,\dots,x_n)(a)[i]$, where $\on{Kos}(x_0,\dots,x_n)$ is the Koszul complex on the variables of $S$. Let $M$ be a module such that $\widetilde{M} = \F$. The homology of the complex $M \otimes_S K$ is annihilated by the maximal ideal of $S$; it follows that each row in the above bicomplex is exact.

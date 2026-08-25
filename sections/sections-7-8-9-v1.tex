@@ -9,15 +9,13 @@
 \def\BT{{Bondal-Thomsen\ }}
 
 \section{Lecture 7 (Jason McCullough): Constructing the resolution and examples}\label{lec:7-HHL-construction}
-This section is an introduction to the papers \cite{BCHSY} and \cite{BH25}.
-
-As in Section~\ref{sec:*****}, $X = X(\Sigma)$ denotes a simplicial toric variety where $\Sigma$ is a fan with $n$ rays, and we set $M = N^{*}$. We will often make use of the exact sequence:
-$$
-0\to M \xrightarrow {\alpha} \ZZ^{n} \xrightarrow {deg} \Cl(X) \to 0
-$$
-We write $S = k[x_{1},\dots,x_{n}]= k[\NN^{n}]$ for the Cox ring of $X$. As such, $S$ comes equipped with an``irrelevant ideal", which is of great importance, because it is what distinguishes $X$ from other
-toric varieties that have the same graded ring as Cox ring. However, for the purposes of this and the next few sections, this ideal is truly irrelevant---it will play no role.
-\david{This blurb should really be near the beginning of the notes, and sections that use it (every section?) should refer to it.}
+This section is an introduction to the papers \cite{BCHSY} and \cite{BH25}. As in Section~\ref{sec:*****}, $X = X(\Sigma)$ denotes a simplicial toric variety where $\Sigma$ is a fan with $n$ rays, and we set $M = N^{*}$. %We will often make use of the exact sequence:
+%$$
+%0\to M \xrightarrow {\alpha} \ZZ^{n} \xrightarrow {deg} \Cl(X) \to 0
+%$$
+%We write $S = k[x_{1},\dots,x_{n}]= k[\NN^{n}]$ for the Cox ring of $X$. As such, $S$ comes equipped with an``irrelevant ideal", which is of great importance, because it is what distinguishes $X$ from other
+%toric varieties that have the same graded ring as Cox ring. However, for the purposes of this and the next few sections, this ideal is truly irrelevant---it will play no role.
+%\david{This blurb should really be near the beginning of the notes, and sections that use it (every section?) should refer to it.}
 
 
 The inclusion of one toric variety in another is defined by 
@@ -560,7 +558,7 @@ $\ZZ^{n}$.
   The left hand side of this summand is $\cO_X(D)$ for some $D$ in the BT collection by the same reason as in Corollary~\ref{cor:hhlSummandsBT}. And $\cO_X(\lfloor \mathbf{p}\rfloor)$ is quite directly the generator of the BT collection associated to $\mathbf{p}$. Finally, as $\mathbf{p}$ varies over all points in $\RR \otimes M_X$, every Bondal-Thomsen element appears as the Bondal-Thomsen collection was defined as the image of $M_X$ under the map described in Definition~\ref{defn:BTcollection}.
 \end{proof}
 
-The Fourier-Mukai transform with kernel equal to a resolution of the diagonal,  a key tool in the proof of the main theorem of \cite{BES}, takes a sheaf $\cF$ to a monad for $\cF$ (that is, a complex whose only homology is $\cF$).  We will see \david{where?} that the terms of this complex are direct sums of sheaves
+The Fourier-Mukai transform with kernel equal to a resolution of the diagonal,  a key tool in the proof of the main theorem of \cite{BES}, takes a sheaf $\cF$ to a monad for $\cF$ (that is, a complex whose only homology is $\cF$).  We will see in Construction~\ref{const:monad} that the terms of this complex are direct sums of sheaves
  drawn from the sheafified left-hand factors in the HHL resolution of the diagonal. Consequently, applying the Fourier-Mukai transform to arbitrary coherent sheaves yields monads whose summands are all Bondal-Thomsen elements, as follows:
 
 \begin{cor}
