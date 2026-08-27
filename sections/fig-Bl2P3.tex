@@ -3,42 +3,65 @@
 \begin{figure}[htb]\label{fig:secondary-blowup}
   \centering
   \begin{tikzpicture}[scale = 1.2]
-    %\draw[step=1cm,gray,dashed,very thin] (0,0) grid (7,7);
-    %\draw[fill=gray!60] (4,3)--(0,4.33)--(0,7)--(7,7)--(7,3)--(4,3);
     \draw[black] (0,0) -- (6,0)--(3,5.2)--(0,0);
     \draw[black] (3,0)--(3,1.733)--(1.5,2.6)--(3,0);
-    %(1.5,2.6)--(6,0)
-    %x=((4.5)/(-2.6))*y+6
-    %-3 = ((4.5)/(-2.6))*y
-    %
-    %y = 3
     \draw[black] (3,1.733)--(3,5.2);
     \draw[black] (6,0)--(3,1.733);
-    % \filldraw[black] (5,3) circle (3pt) node[anchor=north]{\tiny $d_1$};
-    % \filldraw[black] (3.5,5.5) circle (0pt) node[anchor=east]{{ $\PP(1,1,3)$}};
     \filldraw[black] (-0.5,0) circle (0pt) node[anchor=north]{{$(0,1,0)$}};
     \filldraw[black] (6.5,0) circle (0pt) node[anchor=north]{{$(1,0,0)$}};
     \filldraw[black] (3,5.2) circle (0pt) node[anchor=south]{{$(0,0,1)$}};
     \filldraw[black] (3,0) circle (0pt) node[anchor=north]{{$(1,1,0)$}};
     \filldraw[black] (1,3) circle (0pt) node[anchor=north]{{$(0,1,1)$}};
-    \filldraw[black] (2.5,1.2) circle (0pt) node[anchor=south]{{ $X$}};
-    %\filldraw[black] (2.0,1.0) circle (0pt) node[anchor=south]{{ $X_0$}};
-    \filldraw[black] (1.5,.5) circle (0pt) node[anchor=south]{{ $\PP^1\times\PP^1$}};
-    \filldraw[black] (3.8,.4) circle (0pt) node[anchor=south]{{ $\cH_1$}};
-    \filldraw[black] (2.4,2.8) circle (0pt) node[anchor=south]{{ $\cH_1$}};
-    \filldraw[black] (4,2.0) circle (0pt) node[anchor=south]{{ $\PP^2$}};
-    %\filldraw[black] (.1,1.5) circle (0pt) node[anchor=north]{{ $\cH_1$}};
-    %\filldraw[black] (1.8,4.2) circle (0pt) node[anchor=north]{{ $\PP^2$}};
-    %\filldraw[black] (5.1,2.6) circle (0pt) node[anchor=north]{{ $\text{pt}$}};
-    %\filldraw[black] (1.5,0) circle (0pt) node[anchor=north]{{ $\cH_1$}};
-    %\filldraw[black] (4.5,0) circle (0pt) node[anchor=north]{{ $\PP^2$}};
-    %\filldraw[black] (0,0) circle (0pt) node[anchor=north]{{ $\PP^1$}};
-    % \filldraw[black] (2,4) circle (3pt) node[anchor=south]{\tiny$d_2$};
-    % \filldraw[black] (3,4) circle (3pt) node[anchor=south]{\tiny$d_3$};
-    % \filldraw[black] (4,4) circle (3pt) node[anchor=south]{\tiny$d_4$};
-    % \filldraw[black] (5,4) circle (3pt) node[anchor=south]{\tiny$d_5$};
-    % \filldraw[black] (4,3) circle (3pt) node[anchor=north]{\tiny$d_0$};
-    % \filldraw[black]  (1,-1) circle (0pt);
+    \tikzset{
+      sq/.pic={
+        \draw[thick,blue!40] (0,-0.1) -- (0,0.6);
+        \draw[thick,blue!40] (0.5,-0.1) -- (0.5,0.6);
+        \draw[thick,blue!40] (-0.1,0.5) -- (0.6,0.5);
+        \draw[thick,blue!40] (-0.1,0) -- (0.6,0);
+        \draw[thick,blue!40] (0.6,-0.4) -- (0.9,-0.1);
+      }
+    }
+    \pic at (1.25,0.75) {sq};
+    \tikzset{
+      bl/.pic={
+        \draw[thick,blue!40] (0,-0.1) -- (0,0.6);
+        \draw[thick,blue!40] (0.5,0.1) -- (0.5,0.6);
+        \draw[thick,blue!40] (-0.1,0.5) -- (0.6,0.5);
+        \draw[thick,blue!40] (-0.1,0) -- (0.4,0);
+        \draw[thick,blue!40] (0.2,-0.1) -- (0.6,0.3);
+      }
+    }
+    \pic at (2.45,1.2) {bl};
+    \tikzset{
+      pp/.pic={
+        \draw[thick,blue!40] (0,-0.1) -- (0,0.6);
+        \draw[thick,blue!40] (0.7,0.3) -- (0.7,0.7);
+        \draw[thick,blue!40] (-0.1,0.5) -- (0.6,0.5);
+        \draw[thick,blue!40] (-0.2,-0.2) -- (0.2,-0.2);
+        \draw[thick,blue!40] (-0.1,-0.1) -- (0.6,0.6);
+      }
+    }
+    \pic at (3.5,2) {pp};
+    \tikzset{
+      hh/.pic={
+        \draw[thick,blue!40] (0,-0.1) -- (0,0.6);
+        \draw[thick,blue!40] (0.3,0.2) -- (0.3,0.6);
+        \draw[thick,blue!40] (-0.1,0.5) -- (0.4,0.5);
+        \draw[thick,blue!40] (-0.2,-0.2) -- (0.2,-0.2);
+        \draw[thick,blue!40] (-0.1,-0.1) -- (0.4,0.4);
+      }
+    }
+    \pic at (3.8,.4) {hh};
+    \tikzset{
+      hhh/.pic={
+        \draw[thick,blue!40] (0,0.1) -- (0,0.6);
+        \draw[thick,blue!40] (0.7,0.3) -- (0.7,0.7);
+        \draw[thick,blue!40] (-0.1,0.5) -- (0.6,0.5);
+        \draw[thick,blue!40] (-0.1,0.2) -- (0.3,0.2);
+        \draw[thick,blue!40] (0.1,0.1) -- (0.6,0.6);
+      }
+    }
+    \pic at (2.2,2.8) {hhh};
   \end{tikzpicture}
   \caption{A cross-section of the secondary fan of $X = \Bl(\PP^1\times\PP^1)$.}
   \label{fig:Bl2P3}
