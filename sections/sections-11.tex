@@ -156,7 +156,7 @@ The sequence \eqref{eq:M-SES} induces maps of algebraic groups
 \end{align}
 The group $(k^*)^n$ acts on the affine space $\Spec S$ by componentwise multiplication so $G$ does as well.
 
-We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory, which can be found for instance in \cite{Mumford65} or \cite{Dolgachev03}.
+We will consider the quotient of $\Spec S$ by the action of $G$, which depends on a choice of linearized line bundle on $\Spec S$.  We briefly recall some relevant terminology from geometric invariant theory (GIT).  The case of torus actions on affine spaces is much simpler than the general theory, which can be found in \cite{Mumford65} or \cite{Dolgachev03}.
 
 \begin{defn}
   A \defi{$G$-linearized line bundle} on a space $X$ with a $G$ action is a line bundle $\cL$ on $X$ with an action of $G$ compatible with the action on $X$ such that the zero section of $\cL$ is $G$-invariant.  The \defi{$G$-equivariant Picard group} of $X$ is the group of $G$-linearized line bundles under tensor product, up to $G$-equivariant isomorphism.
@@ -199,7 +199,7 @@ We will see more concrete constructions of the spaces $X_d$ in the following sub
 The toric structure of the quotients~$X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OdaPark91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list, up to translation.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$ induced by $\deg$.
 
 \begin{rem}\label{rem:triangulations}
-  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in this fan give \defi{triangulations} on the hyperplane.  See for instance \cite[Chapter~7]{GKZ}.
+  While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in the fan give \defi{triangulations} on the hyperplane.  This ``GKZ fan'' is explained in \cite[Chapter~7]{GKZ}.
 \end{rem}
 
 \begin{defn}\label{def:polytope-of-deg}
@@ -278,7 +278,7 @@ By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly conve
 \end{lemma}
 
 \begin{proof}
-  For simplicity we will restrict our proof to the case when $P_\alpha$ is integral.  The nonintegral case will be addressed briefly before Theorem~\ref{thm:GIT-polytope}. \lauren{citation to this fact?}
+  For simplicity we will restrict our proof to the case when $P_\alpha$ is integral.  The nonintegral case will be addressed briefly before Theorem~\ref{thm:GIT-polytope}.
 
   Let $X_\alpha$ be the toric variety of the polytope $P_\alpha$.  By \cite[Proposition~6.1.10]{CLS} the divisor $\sum_{i\notin F}\alpha_iD_{\nu_i}$ is ample on $X_\alpha$, so by \cite[Theorem~6.1.14]{CLS} it has a strongly \lauren{?} convex support function $\varphi$ on $\Sigma$, satisfying $\varphi(\nu_i)=-\alpha_i$ for $i\in G$.  We claim that $\varphi(\nu_i)\geq-\alpha_i$ for $i\in F$.
 
@@ -313,7 +313,7 @@ We will see in Theorem~\ref{thm:GIT-polytope} that the toric variety $X_d$ discu
 
 Given a full-dimensional rational polytope $P$ in $M\otimes_\ZZ\QQ$ and a vertex $v$ of $P$, take the cone of the set $P\cap(M\otimes_\ZZ\QQ)-v$ in $M\otimes_\ZZ\QQ$.  Over all vertices, the duals of these form the maximal cones of a fan in $N\otimes_\ZZ\QQ$ by \cite[Proposition 14.2.10]{CLS}, which also addresses the situation when $P$ is not full dimensional.  This process reduces to the standard construction of the normal fan of a polytope when its vertices are integral.  The toric variety of $P$ is then defined by the resulting fan.
 
-\begin{thm}[\cite{CLS}*{Theorem 14.2.13(b), Corollary 14.3.19}]\label{thm:GIT-polytope}
+\begin{thm}[\cite{CLS}*{Theorem 14.2.13(b)}]\label{thm:GIT-polytope}
   Suppose that $\alpha\in\ZZ^n$ and $d=\deg\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope~$P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
 \end{thm}
 
@@ -324,7 +324,7 @@ The toric variety $X_d$ is constant within the interior of each cone of the seco
 \end{cor}
 
 \begin{proof}
-  Choose $\alpha,\alpha'\in\ZZ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$, since the interior of a maximal cone cannot intersect another cone in the same fan.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by the fan $\Sigma$ so they are isomorphic via the identity map.
+  Choose $\alpha,\alpha'\in\ZZ^n$ so that $\deg\alpha=d$ and $\deg\alpha'=d'$.  By definition of $\Gamma(\Sigma,F)$ we have $\alpha,\alpha'\in\tilde\Gamma(\Sigma,F)$.  By Lemma~\ref{lem:GKZ-def} and Proposition~\ref{prop:fan-structure} the normal fans of $P_\alpha$ and $P_{\alpha'}$ must both be $\Sigma$, since the interior of a chamber cannot intersect another cone in the same secondary fan.  By Theorem~\ref{thm:GIT-polytope} the varieties $X_d$ and $X_{d'}$ are both defined by the fan $\Sigma$ so they are isomorphic via the identity map.
 \end{proof}
 
 \begin{rem}\label{rem:walls}
@@ -361,7 +361,22 @@ We postpone the proof of Proposition~\ref{prop:ccrefinement} until the end of th
   \]
 \end{defn}
 
-These operations are inverses of each other on the secondary fan, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
+%The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
+These operations are inverses of each other on the secondary fan, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language of Section~\ref{sec:variation-of-GIT}, it defines the unstable locus.
+
+Additionally, when $d$ is in the interior of a chamber the stable and semistable loci agree, meaning that the quotient is \emph{geometric}.  This is a consequence of the fact that the normal fan of the polytope $P_\alpha$ is \emph{simplicial} for a general choice of $\alpha$, else $P_\alpha$ would contain a face of unexpected codimension.
+
+\begin{thm}\label{thm:unstable}
+  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$.  The space $X_d$, as in Corollary~\ref{cor:quotient-Proj}, is a simplicial projective toric variety and a geometric quotient of $\Spec S\setminus V(\idealof(\Gamma))$ by $G$.
+\end{thm}
+
+\begin{proof}
+  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.
+
+  The quotient toric variety is simplicial by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}, and it is projective by Theorem~\ref{thm:GIT-polytope} and .
+\end{proof}
+
+To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
 
 %Here we must remember that the subset $F$ indexes facets which do not intersect $P_\alpha$ and whose rays do not appear among its normal vectors.  These correspond to variables appearing in all generators of the irrelevant ideal.
 
@@ -380,27 +395,7 @@ Note that $\sigma$ may contain $\nu_i$ for $i\in F$ but these are not rays of $\
 
   Let $x^\alpha$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the set of vectors $\deg x_i^{\alpha_i}$ which are nonzero is linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision (e.g.~\cite[Corollary~3.8]{OdaPark91}), and by the discussion before \cite[Proposition 15.2.10]{CLS} the chamber $\Gamma$ must be contained in at least one simplicial cone.  Since $x^\alpha$ is a minimal generator of $\idealof(\Gamma)$ no proper subset of the variables can span $\Gamma$, so~$x^\alpha$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS}.
 
-  \lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
-\end{proof}
-
-%The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
-As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language of Section~\ref{sec:variation-of-GIT}, the irrelevant ideal defines the unstable locus.
-
-%and $\text{cone}(B)$ is an open convex cone in $\Cl(S)\otimes \QQ$.
-
-%It is elementary to check that
-%\[
-%\text{ideal}(\text{cone}(\text{ideal}(\Gamma))) = \text{ideal}(\Gamma) \qquad \text{ and } \qquad \text{cone}(\text{ideal}(\text{cone}(B))) = \text{cone}(B).
-%\]
-%
-%Since there are only a finite number of squarefree monomial ideals in $S$, it follows that there is a finite list of squarefree monomial ideals $B_1, \dots, B_s$ such that $\text{cone}(B_i)$ is both full-dimensional and satisfies the relation $B_i = \text{ideal}\left(\text{cone}(B_i)\right) $. These are the chambers of the secondary fan.
-
-\begin{thm}\label{thm:unstable}
-  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$.  The space $X_d$, as in Corollary~\ref{cor:quotient-Proj}, is a simplicial projective toric variety and a geometric quotient of $\Spec S\setminus V(\idealof(\Gamma))$ by $G$.
-\end{thm}
-
-\begin{proof}
-  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.  The quotient toric variety is simplicial by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}.
+%  \lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
 \end{proof}
 
 %\begin{cor}
