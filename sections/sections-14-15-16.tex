@@ -34,7 +34,6 @@ since $X$ is a projective variety.  Also,
 \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d)) = H^i(X, \cO_{X}) = 0
 \]
 by Demazure Vanishing (Theorem~\ref{thm:demazureL5}). Fullness follows from Hanlon--Hicks--Lazarev's proof of  Bondal's Conjecture (Conjecture \ref{conj:bondal}), which we saw back in \S\ref{subsect:bondalConjecture}. Let us then turn to orthogonality.  Part (b) of orthogonality is built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a), is the meat of the argument.
-\michael{changed this next lemma and its proof}
 \begin{lemma}
     Suppose $X$ is a smooth projective toric variety whose secondary fan has a single chamber, and say $-d < -d' \in \Theta$. We have
     %Let $-d,-d'$ be two elements of the Bondal--Thomsen collection for $\sX$.  Assume that $-d'$ is anti-nef.  Then
@@ -96,7 +95,7 @@ The next lecture will tackle the proof of the $\Theta$-Transform Lemma.  Before 
 \Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) =
 \Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\cO_{\sX_1}(-d')) = H^i(\sX_1, \cO_{\sX_1}(d-d')).
 \]
-Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By the version of Demazure Vanishing  in Remark~\ref{rem:rounddown}, we conclude that all of these Ext groups vanish. \michael{Added this next explanation. Should it be moved to the next lecture?} In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho +f b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply the version of Demazure Vanishing in Remark~\ref{rem:rounddown}.
+Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By the version of Demazure Vanishing  in Remark~\ref{rem:rounddown}, we conclude that all of these Ext groups vanish. In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho +f b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply the version of Demazure Vanishing in Remark~\ref{rem:rounddown}.
 
 
 In short:  combining the $\Theta$-Transform Lemma and Demazure Vanishing immediately yields the orthogonality statement we need.
@@ -183,7 +182,7 @@ Y_+&&Y_-.
 As we often do, we will express sheaves on $Y_+$ and $Y_-$ via the corresponding $S$-modules.
 We have $\Pic(Y_+)=\ZZ$, and for $d\in \ZZ$, we write $\cO_{Y_+}(d)$ for the line bundle associated to the free module $S(d)$.  Let us consider the Fourier--Mukai transforms $R_{q*}p^* \cO_{Y_+}(d)$ for all $d$. 
 
-We start by computing the $R^0$-term.  For any $d$ we have \michael{explain}
+We start by computing the $R^0$-term.  For any $d$ we have 
 \[
 R^0q_*p^*\cO_{Y_+}(d) = \widetilde{S_{\geq d}}(d).
 \]
@@ -215,7 +214,7 @@ Let us summarize.  Both conclusions---the correct $R^0$ and the vanishing of the
 The example demonstrates that we require a delicate balance in order to obtain the conclusion of the $\Theta$-Transform Lemma.
 A complete proof of the $\Theta$-Transform Lemma is given in \cite[\S4.3]{king}.  Instead of presenting the details of the proof in these notes, we will try instead to capture what aspects of the lemma are nontrivial.
 
-Let us set some notation.  We start with a line bundle $\cO_{\sX_1}(-d)$ on $\sX_1$ and where $d$ lies in the chamber $\Gamma_1$ \michael{I don't love the $\Gamma$ notation for the chambers, as it looks like our notation for graphs.} of the secondary fan.  This implies that $\cO_{\sX_1}(d)$ is a nef line bundle on $\sX_1$, and hence that $\cO_{\sX_1}(-d)$ is anti-nef.  Write $L:=p^* \cO_{\sX_1}(-d)$ for the corresponding line bundle on the graph $\Gamma_{12}$ and note that, since nefness is stable under pullback, $L$ is an anti-nef line bundle on $\Gamma_{12}$.
+Let us set some notation.  We start with a line bundle $\cO_{\sX_1}(-d)$ on $\sX_1$ and where $d$ lies in the chamber $\Gamma_1$ of the secondary fan.  This implies that $\cO_{\sX_1}(d)$ is a nef line bundle on $\sX_1$, and hence that $\cO_{\sX_1}(-d)$ is anti-nef.  Write $L:=p^* \cO_{\sX_1}(-d)$ for the corresponding line bundle on the graph $\Gamma_{12}$ and note that, since nefness is stable under pullback, $L$ is an anti-nef line bundle on $\Gamma_{12}$.
 
 
 
