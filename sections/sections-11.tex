@@ -364,19 +364,7 @@ We postpone the proof of Proposition~\ref{prop:ccrefinement} until the end of th
 \end{defn}
 
 %The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
-These operations are inverses of each other on the secondary fan, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language of Section~\ref{sec:variation-of-GIT}, it defines the unstable locus.  Additionally, when $d$ is in the interior of a chamber the stable and semistable loci agree, meaning that the quotient is \emph{geometric}.
-
-\begin{thm}\label{thm:unstable}
-  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$.  The space $X_d$, as in Corollary~\ref{cor:quotient-Proj}, is a simplicial projective toric variety and a geometric quotient of $\Spec S\setminus V(\idealof(\Gamma))$ by $G$.
-\end{thm}
-
-\begin{proof}
-  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.
-
-  The quotient toric variety is simplicial by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}, and it is projective by Theorem~\ref{thm:GIT-polytope} and .
-\end{proof}
-
-To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
+These operations are inverses of each other on the secondary fan, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
 
 %Here we must remember that the subset $F$ indexes facets which do not intersect $P_\alpha$ and whose rays do not appear among its normal vectors.  These correspond to variables appearing in all generators of the irrelevant ideal.
 
@@ -387,15 +375,25 @@ To mimic the ordinary construction of a toric variety from $\Spec S$, we should 
 Note that $\sigma$ may contain $\nu_i$ for $i\in F$ but these are not rays of $\Sigma$ and thus are not contained in $\sigma(1)$.  In fact, for $i\in F$ the variable $x_i$ will appear in every generator of $\idealof(\Gamma)$ (see Lemma~\ref{lem:mov-equiv}).
 
 \begin{proof}
-  This is almost a restatement of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  Recall from Theorem~\ref{thm:GIT-polytope} and Corollary~\ref{cor:chamber-iso} that $\Sigma$ is a simplicial fan.  Let $x^\alpha$ be a monomial of the form $\prod_{\nu_i\notin\sigma(1)}x_i$ for $\sigma$ a maximal cone of $\Sigma$.
+  This is almost a restatement of \cite[Proposition 15.2.1]{CLS}, after untangling some notation.  Recall from Lemma~\ref{lem:GKZ-def} and the discussion before it that $\Sigma$ is a simplicial fan.  Let $x^\alpha$ be a monomial of the form $\prod_{\nu_i\notin\sigma(1)}x_i$ for $\sigma$ a maximal cone of $\Sigma$.
 
-  Since $\sigma$ is simplicial \cite[Proposition 14.3.1]{CLS} implies that the monomial $x^\alpha$ comes from a ``$\beta$-basis,'' so it spans $\Gamma$ by \cite[Proposition 15.2.1(b)]{CLS}.  A subset of the variables spans a cone of smaller dimension, which cannot contain a chamber, so~$x^\alpha$ is a minimal generator of $\idealof(\Gamma)$.
+  Since $\sigma$ is simplicial, \cite[Proposition 14.3.1]{CLS} implies that the monomial $x^\alpha$ comes from a ``$\beta$-basis,'' so it spans $\Gamma$ by \cite[Proposition 15.2.1(b)]{CLS}.  A subset of the variables spans a cone of smaller dimension, which cannot contain a chamber, so~$x^\alpha$ is a minimal generator of $\idealof(\Gamma)$.
 
   Immediately from definitions we have $\Gamma\subseteq\coneof(\idealof(\Gamma))$.  By \cite[Proposition 15.2.1(c)]{CLS} the cone $\Gamma$ is the intersection of the spans of monomials $\prod_{\nu_i\notin\sigma(1)}x_i$.  This will imply $\Gamma=\coneof(\idealof(\Gamma))$ once we show that all minimal generators of $\idealof(\Gamma)$ have the correct form, since multiplying by additional variables only increases the span of a monomial.
 
-  Let $x^\alpha$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the set of vectors $\deg x_i^{\alpha_i}$ which are nonzero is linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision (e.g.~\cite[Corollary~3.8]{OdaPark91}), and by the discussion before \cite[Proposition 15.2.10]{CLS} the chamber $\Gamma$ must be contained in at least one simplicial cone.  Since $x^\alpha$ is a minimal generator of $\idealof(\Gamma)$ no proper subset of the variables can span $\Gamma$, so~$x^\alpha$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS}.
+  Let $x^\alpha$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the subset of nonzero $\deg x_i^{\alpha_i}$ is linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision (e.g.~by \cite[Corollary~3.8]{OdaPark91}), and by the discussion before \cite[Proposition 15.2.10]{CLS} the chamber $\Gamma$ is contained in a single cone.  Since $x^\alpha$ is a minimal generator of $\idealof(\Gamma)$ no proper factor can span $\Gamma$, so~$x^\alpha$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS}.  %\lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
+\end{proof}
 
-%  \lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
+As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language of Section~\ref{sec:variation-of-GIT}, it defines the unstable locus.  Additionally, when $d$ is in the interior of a chamber the stable and semistable loci agree, meaning the quotient is \emph{geometric}.
+
+\begin{thm}\label{thm:unstable}
+  Suppose $d\in\Cl(S)$ is contained in the interior of a chamber $\Gamma$ of the secondary fan of $S$.  The unstable locus of the line bundle $\cL_d$ on $\Spec S$, as in Proposition~\ref{prop:eq-Picard-gp}, is $V(\idealof(\Gamma))$.  The space $X_d$, as in Corollary~\ref{cor:quotient-Proj}, is a simplicial projective toric variety and a geometric quotient of $\Spec S\setminus V(\idealof(\Gamma))$ by $G$.
+\end{thm}
+
+\begin{proof}
+  Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.
+
+  The quotient toric variety has fan $\Sigma$ by Lemma~\ref{lem:GKZ-def} and the \lauren{..} by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}, and it is projective by Theorem~\ref{thm:GIT-polytope} and .
 \end{proof}
 
 %\begin{cor}
