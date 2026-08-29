@@ -273,7 +273,7 @@ This behavior only occurs on finitely many linear subspaces, creating polyhedral
 
 By \cite[Proposition 14.4.3]{CLS} the set $\Gamma(\Sigma,F)$ is a strongly convex rational polyhedral cone.  Compared to ordinary fans of toric varieties, generalized fans may contain cones which are not strongly convex (see \cite[Definition 6.2.2]{CLS} and Remark~\ref{rem:walls}).  As with the behavior from Example~\ref{ex:secondary-wall}, this does not occur for a general choice of~$\alpha$, and we will focus on the general (not generalized!) case.
 
-Notably, a general polytope $P_\alpha$ will have full dimension and a complete, simplicial normal fan.  We now recall the definition and basic properties of this fan.  For a vertex $v$ of $P_\alpha$ take the cone of the set $P_\alpha\cap(M\otimes_\ZZ\QQ)-v$.  Over all vertices, the duals of these form the maximal cones of a fan in $N\otimes_\ZZ\QQ$ by \cite[Proposition 14.2.10]{CLS} (which also addresses lower dimensional $P_\alpha$).
+Notably, a general polytope $P_\alpha$ will have full dimension and a simplicial normal fan.  We now recall the definition and basic properties of this fan.  For a vertex $v$ of $P_\alpha$ take the cone of the set $P_\alpha\cap(M\otimes_\ZZ\QQ)-v$.  Over all vertices, the duals of these form the maximal cones of a complete fan in $N\otimes_\ZZ\QQ$ by \cite[Proposition 14.2.10]{CLS} (which also addresses lower dimensional~$P_\alpha$).
 
 Rays of the normal fan correspond to facets of the polytope.  In particular, the rays of the normal fan of $P_\alpha$ form a subset of $\{\nu_1,\ldots,\nu_n\}$ by Definition~\ref{def:polytope-of-deg}.  Nonsimplicial cones in the fan correspond to facets which intersect in unexpected codimension, as in Example~\ref{ex:secondary-wall}.
 
@@ -393,7 +393,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
 \begin{proof}
   Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.
 
-  The quotient toric variety has fan $\Sigma$ by Lemma~\ref{lem:GKZ-def} and the \lauren{..} by \cite[Corollary 14.3.19]{CLS}, so it is a geometric quotient by Theorem~\ref{thm:coxquotient}, and it is projective by Theorem~\ref{thm:GIT-polytope} and .
+  The fan $\Sigma$ is simplicial and complete by the discussion before Lemma~\ref{lem:GKZ-def}, so $X_d$ is simplicial, a geometric quotient by Theorem~\ref{thm:coxquotient}, and projective because $\Sigma$ is a complete normal fan. \lauren{cite?}
 \end{proof}
 
 %\begin{cor}
