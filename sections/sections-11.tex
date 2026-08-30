@@ -44,7 +44,7 @@ Some spaces appearing in the secondary fan are most properly interpreted as stac
 A reader primarily concerned with computation could start with Section~\ref{sec:irrelevant-ideals} and take on faith that the ideals described there correspond to valid quotients and form a fan.  Here we give an example of all three perspectives for our favorite toric variety.  See also Theorem~\ref{thm:main-secondary} for a~summary.
 
 \begin{example}\label{ex:hirzsecondary}
-Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is the $\ZZ^2$-graded polynomial ring $S=\CC[x_0,x_1,x_2,x_3]$ so we take $\Cl(S)=\ZZ^2$.  The degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.  These degrees partition the secondary fan into two chambers, which we label $\Gamma_1$ and $\Gamma_2$.
+Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is the $\ZZ^2$-graded polynomial ring $S=k[x_0,x_1,x_2,x_3]$ so we take $\Cl(S)=\ZZ^2$.  The degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.  These degrees partition the secondary fan into two chambers, which we label $\Gamma_1$ and $\Gamma_2$.
 
 %  First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
 
@@ -105,7 +105,7 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
     \end{tikzpicture}
   \end{center}
 
-  Each degree in $\Cl(S)$ gives a $(\CC^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of~$d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
+  Each degree in $\Cl(S)$ gives a $(k^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of~$d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
 
   A degree $(a,b)\in\Cl(S)$ is in the image of the vector $(0,0,a,b)\in \ZZ^4$.  The polytope of this vector is defined by the restriction of the inequalities $x_0\geq 0$, $x_1\geq 0$, $x_2\geq -a$, and $x_3\geq -b$.  In the coordinates $y_0,y_1$ we have chosen for $M$ these give $y_0\geq 0$, $y_1\geq 0$, $-y_0+3y_1\geq -a$, and $-y_1\geq -b$.  The inequalities bound a trapezoid for $(a,b)\in\Gamma_1$ and a triangle for $(a,b)\in\Gamma_2$, corresponding to $\cH_3$ and $\PP(1,1,3)$, respectively.  Outside of $\Gamma_1$ and $\Gamma_2$ the polytope is empty.
 
@@ -169,7 +169,7 @@ Since $\Spec S$ is affine, it only has the trivial line bundle $\cO$.  Actions o
 \end{prop}
 
 \begin{proof}
-  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to\CC^*$.  The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon \CC[t^{\pm 1}]\to\CC[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$ under the corresponding map of ordinary groups.
+  An action of $G$ on $\cO$, the only isomorphism class of line bundle on $\Spec S$, is given by a character $\chi\colon G\to k^*$.  The element $g\in G$ then acts on fibers of $\cO$ by multiplication with $\chi(g)$.  By definition of $G$ the character $\chi$ is given by a map $\chi^\sharp\colon k[t^{\pm 1}]\to k[\Cl(S)]$ so that $\chi$ is a morphism of algebraic groups, and these are determined by the image $\chi^\sharp(t)$ in $\Cl(S)$ under the corresponding map of ordinary groups.
 
   Tensor product of $G$-linearized line bundles corresponds to multiplication of characters and addition of elements in $\Cl(S)$.
 \end{proof}
@@ -183,7 +183,7 @@ where $\cL_d$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplicati
   The line bundle $\cL_d$ on $\Spec S$ from Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ has $G$-invariant global sections $\Gamma(\Spec S,\cL_d)^G\cong S_d$.
 \end{lemma}
 \begin{proof}
-  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=\CC[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters given by their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ with $\alpha\in\ZZ^n$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.
+  The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=k[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters given by their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ with $\alpha\in\ZZ^n$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.
 \end{proof}
 
 Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees in the set $\NN d$.  By Lemma~\ref{lem:eq-sections} and the discussion above it, these rings determine quotients of $\Spec S$.
@@ -393,7 +393,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
 \begin{proof}
   Write $\Gamma=\Gamma(\Sigma,F)$.  Then \cite[Corollary 14.2.22]{CLS} describes the semistable locus as the complement of $V(Z(\chi))$ for an ideal $Z(\chi)$ defined in terms of the ``virtual facets'' of $P_\alpha$ for $\deg\alpha=d$.  By their equation (14.4.11) it can also be described in terms of vertices of $P_\alpha$, or equivalently maximal cones of $\Sigma$, giving $\idealof(\Gamma)$ as described in Proposition~\ref{prop:chamber-of-ideal}.
 
-  The fan $\Sigma$ is simplicial and complete by the discussion before Lemma~\ref{lem:GKZ-def}, so $X_d$ is simplicial, a geometric quotient by Theorem~\ref{thm:coxquotient}, and projective because $\Sigma$ is a complete normal fan. \lauren{cite?}
+  The fan $\Sigma$ is simplicial and complete by the discussion before Lemma~\ref{lem:GKZ-def}, and $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  Therefore $X_d$ is simplicial, a geometric quotient by Theorem~\ref{thm:coxquotient}, and projective because it is the toric variety of a full dimensional rational polytope.
 \end{proof}
 
 %\begin{cor}
@@ -435,7 +435,7 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
 
 Using the projection of class groups, we can give a more precise description of the ample and nef classes on $X_d$.  If $\Cl(S)$ is the class group of $X_d$ then the nef cone will be exactly the cone containing~$d$ in the secondary fan.
 
-\begin{thm}[\cite{CLS}*{Theorem 15.1.3(a)}]
+\begin{thm}[\cite{CLS}*{Theorem 15.1.3(a)}]\label{thm:nef-chamber}
   Suppose $d\in\Cl(S)$ is in the interior of a chamber~$\Gamma$ of the secondary fan of $S$.  The cone $\Nef X_d$ is the projection of $\Gamma$ to $\Cl(X_d)\otimes_\ZZ\QQ$ via the map from Lemma~\ref{lem:cl-restrict}.
 \end{thm}
 
@@ -452,7 +452,7 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
     \item  $\idealof(\Gamma(\Sigma,F))$ is not contained in a principal ideal $\langle x_i\rangle$;
     \item  The rays of $\Sigma$ are precisely $\nu_1, \dots, \nu_n$;
     \item  $F=\varnothing$; and
-    \item  $d$ is in the moving cone.
+    \item  $d$ is in the \emph{moving cone} of $\Cl(S)$.
   \end{enumerate}
 \end{lemma}
 %\begin{proof}[Sketch of proof]\lauren{adjust for new version}
@@ -501,10 +501,13 @@ To finish, we collect statements from previous subsections for reference.
 \begin{proof}
   The secondary fan is the coarsest common refinement by Proposition~\ref{prop:ccrefinement}.  Its cones are constructed in Definition~\ref{def:GKZ-cones}.
 
-  The $G$-linearized line bundle $\cL_d$ is described in Proposition~\ref{prop:eq-Picard-gp}.  Its unstable locus is $V(B)$ and the quotient is geometric by Theorem~\ref{thm:unstable}.  The resulting space is $\Proj S_{\NN d}$ by Corollary~\ref{cor:quotient-Proj}.
+  The $G$-linearized line bundle $\cL_d$ is described in Proposition~\ref{prop:eq-Picard-gp}.  The unstable locus of $\cL_d$ is $V(B)$, the quotient is geometric, and the resulting space is a simplicial projective toric variety by Theorem~\ref{thm:unstable}.  It is isomorphic to $\Proj S_{\NN d}$ by Corollary~\ref{cor:quotient-Proj}.
 
-  Let $\Sigma'$ be the normal fan of $P_\alpha$, which has rays among the $\nu_i$ by Definition~\ref{def:polytope-of-deg}.  Let $F'$ be the set of rays not appearing in $\Sigma'$.  By definition of the normal fan (see the discussion before Theorem~\ref{thm:GIT-polytope}) is the set of hyperplanes intersecting $P_\alpha$ in a facet.  Then $\alpha\in\tilde\Gamma(\Sigma',F')$ by Lemma~\ref{lem:GKZ-def}, so $d\in\Gamma(\Sigma',F')$.  By Proposition~\ref{prop:fan-structure} these cones form a fan.  Since $d$ is in the interior of the maximal cone $\Gamma(\Sigma,F)$ we must have $\Sigma'=\Sigma$ and $F'=F$.  Thus $\Sigma$ is the fan of the simplicial toric variety $X_d$ by Theorem~\ref{thm:GIT-polytope} so it is also simplicial.
+  Let $\Sigma'$ be the normal fan of $P_\alpha$, which has rays among the $\nu_i$ by Definition~\ref{def:polytope-of-deg}, and let $F'$ index the rays not appearing in $\Sigma'$.  Then $\alpha\in\tilde\Gamma(\Sigma',F')$ by Lemma~\ref{lem:GKZ-def} so $d\in\Gamma(\Sigma',F')$.  Since $d$ is in the interior of $\Gamma(\Sigma,F)$ by assumption and these cones form a fan by Theorem~\ref{prop:fan-structure}, we must have $\Sigma'=\Sigma$ and $F'=F$.  Therefore $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  The fan $\Sigma$ is simplicial by the discussion before Theorem~\ref{thm:GIT-polytope}.  \lauren{interior argument?}
 
+  Since $d$ is in the interior of the maximal cone $\Gamma(\Sigma,F)$ we must have $\Sigma'=\Sigma$ and $F'=F$.  Thus $\Sigma$ is the fan of the simplicial toric variety $X_d$ by Theorem~\ref{thm:GIT-polytope} so it is also simplicial.
+
+  The group $\Cl(X_d)$ is a quotient of $\Cl(S)$ by Lemma~\ref{lem:cl-restrict}.  If they are equal then $\Gamma=\Nef(X_d)$ by Theorem~\ref{thm:nef-chamber}.
 \end{proof}
 
 %\begin{proof}
