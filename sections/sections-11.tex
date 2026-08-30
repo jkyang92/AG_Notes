@@ -46,8 +46,6 @@ A reader primarily concerned with computation could start with Section~\ref{sec:
 \begin{example}\label{ex:hirzsecondary}
 Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is the $\ZZ^2$-graded polynomial ring $S=k[x_0,x_1,x_2,x_3]$ so we take $\Cl(S)=\ZZ^2$.  The degrees of the variables are $(1,0), (-3,1), (1,0)$ and $(0,1)$, respectively.  These degrees partition the secondary fan into two chambers, which we label $\Gamma_1$ and $\Gamma_2$.
 
-%  First consider the monomial $x_0^2x_1^3$.  This monomial spans any $d\in \Cl(S)\otimes \QQ$ that lies in the span of $\deg_{\QQ}(x_0^2) = (2,0)$ and $\deg_{\QQ}(x_1^3) = (-9,3)$, i.e. this monomial spans the entire effective cone (see graphic). Consider the squarefree monomial ideals $B_1 = \langle x_0x_1, x_1x_2, x_1x_3\rangle$ and~$B_2 = \langle x_0x_1,x_0x_3, x_1x_2,x_2x_3\rangle$.  We have that $\Gamma_1 = \text{cone}(B_1)$ is the interior of the cone spanned by $(-3,1)$ and $(0,1)$, while $\Gamma_2 = \text{cone}(B_2)$ is the interior of the cone spanned by $(0,1)$ and $(1,0)$.
-
   \begin{center}
     \begin{tikzpicture}[scale=1.75]
 
@@ -67,14 +65,12 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
         (0,0) rectangle (1.6, 1.6);
       \end{scope}
 
-      % Draw only the negative x-axis and negative y-axis as solid
+      % Axes
       \draw[thick, dotted] (0, 0) -- (-3.2, 0);
       \draw[thick, dotted] (0, 0) -- (0, -0.8);
       \draw[thick, dotted] (0, 1) -- (0, 1.6);
       \draw[thick, dotted] (1, 0) -- (1.6, 0);
       \draw[thick, dotted] (-3, 1) -- (-3.2, {1/3*3.2});
-
-      % Positive x-axis and positive y-axis as dotted boundary rays
       \draw[thick, ->] (0,0) -- (1, 0);
       \draw[thick, ->] (0,0) -- (0, 1);
 
@@ -89,13 +85,11 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
         \draw (-2pt, \y) node[left, font=\small] {$\y$};
       }
 
-      % Left boundary ray of cone: direction (-3,1), dotted
+      % Left boundary ray of cone
       \draw[thick, ->] (0,0) -- (-3,1);
-
-      % Label (0,1) placed to the right of the y-axis, clear of shading
       \node[font=\small] at (-2.8, 1.2) {$(-3,1)$};
 
-      % Labels centered in each shaded region
+      % Labels in each shaded region
       \node at (-0.8, 0.8) {$\Gamma_2$};
       \node at (0.8, 0.8) {$\Gamma_1$};
 
@@ -105,7 +99,7 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
     \end{tikzpicture}
   \end{center}
 
-  Each degree in $\Cl(S)$ gives a $(k^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of~$d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3. \lauren{give generators?} Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
+  Each degree in $\Cl(S)$ gives a $(k^*)^2$-equivariant line bundle on $\Spec S$.  Since degrees in the interior of $\Gamma_1$ are ample on $\cH_3$, quotients in this region give back $\cH_3$.  Consider $d=(-1,1)$, which lies in the interior of $\Gamma_2$.  The subring of $S$ consisting of elements whose degrees are multiples of~$d$ is isomorphic to the second Veronese subring of a polynomial ring with variables of degrees 1, 1, and~3.  Proj of this ring is $\PP(1,1,3)$.  Notice that the quotient is a nonstandard description of $\PP(1,1,3)$, whose own Cox ring has only 3 variables.
 
   A degree $(a,b)\in\Cl(S)$ is in the image of the vector $(0,0,a,b)\in \ZZ^4$.  The polytope of this vector is defined by the restriction of the inequalities $x_0\geq 0$, $x_1\geq 0$, $x_2\geq -a$, and $x_3\geq -b$.  In the coordinates $y_0,y_1$ we have chosen for $M$ these give $y_0\geq 0$, $y_1\geq 0$, $-y_0+3y_1\geq -a$, and $-y_1\geq -b$.  The inequalities bound a trapezoid for $(a,b)\in\Gamma_1$ and a triangle for $(a,b)\in\Gamma_2$, corresponding to $\cH_3$ and $\PP(1,1,3)$, respectively.  Outside of $\Gamma_1$ and $\Gamma_2$ the polytope is empty.
 
@@ -144,9 +138,6 @@ Consider $\mathcal H_3$, the Hirzebruch surface of type $3$.  Its Cox ring is th
   \end{center}
 
   To obtain irrelevant ideals for the chambers we look at which monomials have variables whose degrees span each cone.  To span $\Gamma_2$ we must include $x_1$ and at least one other variable, giving the ideal $\langle x_0x_1,x_1x_2,x_1x_3\rangle$.  Four subsets of two variables span $\Gamma_1$, giving $\langle x_0x_1, x_0x_3, x_1x_2, x_2x_3\rangle$.
-
-%  These two cases demonstrate notably different behavior.  For $\mathcal H_3$, we have that~$\Cl(\mathcal H_3)=\ZZ^2 = \Cl(S)$, and hence we have not contracted any divisors.  In this case, {\color{red} $\Gamma_2$} is precisely the ample cone of $\mathcal H_3$.
-%  Things are more complicated for $\PP(1,1,3)$, as the presentation of $\PP(1,1,3)$ is nonstandard.  The Cox ring of $\PP(1,1,3)$ involves only 3 variables, but we have $S=\CC[x_0, x_1, x_2, x_3]$.  This is because the ray $\rho_1$ is not utilized in the fan corresponding to $\PP(1,1,3)$.  At the algebraic level, the corresponding variables determines a principal component of the irrelevant ideal, as we have $B_1 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle$.  There is still a natural map~$\Phi\colon \ZZ^2 = \Cl(S) \to \Cl(\PP(1,1,3))$; it must have $\deg(x_1)$ in its kernel, i.e. it must be the map $\Phi(a,b) = a +3b$. Under this map, every element $\Phi(\Gamma_1)$ covers the ample cone of $\PP(1,1,3)$.  However, there are elements outside of $\Gamma_1$ that also map to ample divisors under this map.
 \end{example}
 
 \subsection{GIT quotients}\label{sec:variation-of-GIT}
@@ -192,7 +183,6 @@ Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees 
   The GIT quotients of $\Spec S$ by $G$ are of the form $X_d\ce\Proj S_{\NN d}$ for $d\in\Cl(S)$.
 \end{cor}
 
-%Given $d\in\Cl(S)$, write $X_d$ for the toric variety $\Proj S_{\NN d}$.
 We will see more concrete constructions of the spaces $X_d$ in the following subsections, along with descriptions of the unstable loci that were removed by the choice of line bundle $\cL_d$ in order to produce a good quotient.  In particular, it is not obvious from the description in Corollary~\ref{cor:quotient-Proj} that $X_d$ is a toric variety.  The secondary fan will additionally tell us which degrees $d$ give the same unstable locus and thus the same quotient.
 
 \subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
@@ -304,7 +294,7 @@ Rays of the normal fan correspond to facets of the polytope.  In particular, the
 \end{prop}
 
 \begin{example}\label{ex:secondary-blowup-2}
-  The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is shown in Figure~\ref{fig:secondary-blowup}.  The central cone contains the polytope whose normal fan defines a blowup $X$ of $\PP^1\times\PP^1$ at one torus-invariant point.  This is the only type of polytope which requires all 5 inequalities. %\lauren{change labels to polytopes}
+  The secondary fan for the ring in Examples \ref{ex:secondary-blowup} and~\ref{ex:secondary-wall} is shown in Figure~\ref{fig:secondary-blowup}.  The central cone contains the polytope whose normal fan defines a blowup $X$ of $\PP^1\times\PP^1$ at one torus-invariant point.  This is the only type of polytope which requires all 5 inequalities.
 
   \input{sections/fig-Bl2P3}
 
@@ -337,23 +327,14 @@ The toric variety $X_d$ is constant within the interior of each cone of the seco
 
 We now describe the secondary fan more concretely in terms of the function $\deg\colon\ZZ^n\to\Cl(S)$.  Its cones correspond to possible irrelevant ideals for the varieties $X_d$, and the list of possible ideals can be computed without any knowledge of GIT or generalized fans and support functions.
 
-\begin{prop}\label{prop:ccrefinement}
+\begin{thm}\label{thm:ccrefinement}
   The secondary fan of $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg x_i$: it refines all fans with this list of rays, and it coarsens all other common refinements.
-\end{prop}
+\end{thm}
 
-%In other words, we want to determine the various toric varieties (or toric stacks) that can arise from a given multigraded polynomial ring.   This requires some additional notation. We first define a correspondence between convex cones in $\Cl(S)\otimes \QQ$ and squarefree monomial ideals in $S$.
-
-We postpone the proof of Proposition~\ref{prop:ccrefinement} until the end of the section.  The idea is that the chamber of the secondary fan containing a degree $d\in\Cl(S)$ is fully determined by the subsets of variables whose degrees span a cone containing $d$.
+We postpone the proof of Theorem~\ref{thm:ccrefinement} until the end of the section.  The idea is that the chamber of the secondary fan containing a degree $d\in\Cl(S)$ is fully determined by the subsets of variables whose degrees span a cone containing $d$.
 
 \begin{defn}\label{defn:idealConeCorrespondence}
-  Fix a monomial $x^\alpha \ce x_1^{\alpha_1}\cdots x_n^{\alpha_n}$ and a degree $d\in \Cl(S)\otimes \QQ$.  We say \defi{$x^\alpha$~spans~$d$}
-  %\[d \in \QQ_{>0} \cdot \{ \{\deg_{\QQ}(x_i) \ | \ a_i \ne 0\} \}
-  %\]the positive, rational cone spanned by $\{\deg_{\QQ}(x_i) \ | \ a_i %\ne 0\}$ contains $d$, i.e.
-  if there exist $q_i\geq 0$ such that
-  $
-  d = \sum_{i} q_i\deg x_i^{\alpha_i}.
-  $
-  For a strongly convex cone $\Gamma \subseteq \Cl(S)\otimes_\ZZ \QQ$, let
+  Fix a monomial $x^\alpha \ce x_1^{\alpha_1}\cdots x_n^{\alpha_n}$ and a degree $d\in \Cl(S)\otimes \QQ$.  For a strongly convex cone $\Gamma \subseteq \Cl(S)\otimes_\ZZ \QQ$, let
   \[
   \idealof(\Gamma) \ce \langle x^\alpha\mid x^\alpha \text{ spans } d \text{ for all } d\in \Gamma\rangle.
   \]
@@ -363,10 +344,7 @@ We postpone the proof of Proposition~\ref{prop:ccrefinement} until the end of th
   \]
 \end{defn}
 
-%The monomial $\mathbf{x}^{\mathbf{a}}$ spans $d$ if and only if the squarefree monomial containing the same variables spans $d$, so $\text{ideal}(\Gamma)$ is a squarefree monomial ideal in $S$.
 These operations are inverses of each other on the secondary fan, and define an inclusion-reversing correspondence between cones and irrelevant ideals.  To mimic the ordinary construction of a toric variety from $\Spec S$, we should also describe $\idealof(\Gamma(\Sigma,F))$ in terms of the fan $\Sigma$.
-
-%Here we must remember that the subset $F$ indexes facets which do not intersect $P_\alpha$ and whose rays do not appear among its normal vectors.  These correspond to variables appearing in all generators of the irrelevant ideal.
 
 \begin{prop}\label{prop:chamber-of-ideal}
   Suppose $\Gamma=\Gamma(\Sigma,F)$ is a chamber of the secondary fan of $S$.  The minimal generators of $\idealof(\Gamma)$ are the monomials $\prod_{\nu_i\notin\sigma(1)}x_i$ for $\sigma$ a maximal cone of $\Sigma$.  Further we have $\coneof(\idealof(\Gamma))=\Gamma$.
@@ -396,13 +374,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
   The fan $\Sigma$ is simplicial and complete by the discussion before Lemma~\ref{lem:GKZ-def}, and $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  Therefore $X_d$ is simplicial, a geometric quotient by Theorem~\ref{thm:coxquotient}, and projective because it is the toric variety of a full dimensional rational polytope.
 \end{proof}
 
-%\begin{cor}
-%  Let $\alpha\in\ZZ^n$ such that $\deg\alpha=d$ is in the interior of a chamber $\Gamma$.  Then
-%  \[\idealof(\Gamma)=\left\langle \prod_{j\in J} x_j \;\middle|\;\text{$J$ the indices of facets \emph{not} intersecting a vertex $v$ of $P_\alpha$} \right\rangle.\]
-%  \lauren{make prettier}
-%\end{cor}
-
-\begin{proof}[Proof of Proposition~\ref{prop:ccrefinement}]
+\begin{proof}[Proof of Theorem~\ref{thm:ccrefinement}]
   Fix $d$ in the interior of a chamber $\Gamma$ of the secondary fan.  We must show that $\Gamma$ is the intersection over all fans $\Delta$ on the rays $\deg x_i$ of the cone in $\Delta$ which contains~$d$.  By the proof of Proposition~\ref{prop:chamber-of-ideal} it is the intersection of simplicial cones on the rays $\deg x_i$.  Thus we must show that these intersections are the same.
 
   As in the proof of Proposition~\ref{prop:chamber-of-ideal}, a cone containing $d$ from an arbitrary fan $\Delta$ has a simplicial cone on a subset of its rays that also contains $d$.  Conversely, an arbitrary simplicial cone can be extended to a fan $\Delta$ on the remaining rays by a variant of the construction from \cite[Lemma 15.2.10]{CLS} (altered for the case where $\Delta$ is not complete).
@@ -417,10 +389,7 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
 \end{lemma}
 
 \begin{proof}
-  Let $\Sigma$ be the fan of $X_d$.
-  %By \lauren{cite} there is a short exact sequence
-  %\[0\to M\to\ZZ^{\Sigma(1)}\to\Cl(X_d)\to 0.\]
-  By Definition~\ref{def:GKZ-cones} and Theorem~\ref{thm:GIT-polytope} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an injection $\ZZ^{\Sigma(1)}\to\ZZ^n$ which commutes with the maps of rays:
+  Let $\Sigma$ be the fan of $X_d$.  By Definition~\ref{def:GKZ-cones} and Theorem~\ref{thm:GIT-polytope} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an injection $\ZZ^{\Sigma(1)}\to\ZZ^n$ which commutes with the maps of rays:
   \[\begin{tikzcd}
     N & \ZZ^n\arrow[l]\\
     N\arrow[u] & \ZZ^{\Sigma(1)}.\arrow[l]\arrow[u]
@@ -455,9 +424,6 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
     \item  $d$ is in the \emph{moving cone} of $\Cl(S)$.
   \end{enumerate}
 \end{lemma}
-%\begin{proof}[Sketch of proof]\lauren{adjust for new version}
-%  For each $X_i$, the rays of $\Sigma_i$ are a subset of $\rho_1, \dots, \rho_n$~\cite[ Chapter 14.4]{CLS}.  Since the Cox ring of $X_i$ is a polynomial ring whose variables are in bijection the rays of $\Sigma_i$, this yields the equivalence of (1) and (3).  If any of the rays $\rho_j$ does not arise in $\Sigma_i$, then the vanishing of the corresponding variable $x_j$ defines the empty set on $X_i$ and thus $x_j$ form a minimal component of $B_i$.  This yields the equivalence of (3) and (4).  The equivalence of (2) and (3) comes from the short exact sequence \eqref{eqn:SESCl}.
-%\end{proof}
 
 We saw in an earlier lecture that if $X_d$ satisfies the conditions of Lemma~\ref{lem:mov-equiv}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf on $X_d$.  To emphasize the dependence on $X_d$, we write $M|_{X_d}$ for this sheaf.  A minor modification of the associated sheaf construction works for the other $X_d$s as well.
 
@@ -473,18 +439,6 @@ We saw in an earlier lecture that if $X_d$ satisfies the conditions of Lemma~\re
   \lauren{want to add this because I don't think the construction is written anywhere}
 \end{proof}
 
-%\begin{remark}\label{rmk:abuseNotation}
-%  By a mild abuse of notation, we will refer to $B_i\subseteq S$ as \defi{the irrelevant ideal of $X_i$}. \lauren{do we need this in another section?} Why is this an abuse of notation?  When the Cox ring of $X_i$ equals $S$, i.e. when the conditions of Lemma~\ref{lem:mov-equiv} are satisfied, this is not an abuse of notation; in that case, $B_i$ is precisely the irrelevant ideal of $X_i$, in the standard definition.  But as we have seen, it can happen that the Cox ring of $X_i$ does not equal $S$.  This happens precisely when the fan $\Sigma_i$ does not involve all of the original rays.  In this case, at least one of the variables $x_j$ from the original ring $S$ will not appear in the Cox ring of $X_i$.
-%
-%  Considering our running Example~\ref{ex:hirzSecondary} is helpful: one of the varieties is $\PP(1,1,3)$ whose fan does {\em not} involve the ray $\rho_1 = (0,1)$.  Thus, the Cox ring of $\PP(1,1,3)$ would be a polynomial ring involving only $3$ variables, and a $\Cl(\PP(1,1,3)) = \ZZ$-grading, as opposed to $S$ itself which has $4$ variables and a $\ZZ^2$-grading.
-%
-%  However, we can recover $\PP(1,1,3)$ from $S$ with the $\ZZ^2$-grading by including the variable $x_1$ but then making it into a component of the irrelevant ideal.  Thus, we set $B_2 = \langle x_1\rangle \cap \langle x_0,x_2,x_3\rangle \subseteq S$.  Theorem~\lauren{changed} tells us that with this definition, we still recover $\PP(1,1,3)$ as a quotient of $\Spec(S) - V(B_2)$.
-%
-%  It would be more accurate to think of $B_i$ as the irrelevant associated to the chamber $\Gamma_i$, as opposed to the irrelevant ideal associated to $X_i$.  This viewpoint is developed in greater detail in ~\cite[\S7]{BEF}.
-%\end{remark}
-
-%Each ideal $B_i$ in Definition~\ref{defn:chambersIrrelevant} determines a corresponding fan $\Sigma_i$.  There are several alternate ways to recover a toric variety from a chamber $\Gamma_i$, and the main theorem is that they all yield $X_i$: \lauren{this theorem has largely been absorbed by the previous exposition}
-
 \subsection{Summary}
 To finish, we collect statements from previous subsections for reference.
 
@@ -494,49 +448,20 @@ To finish, we collect statements from previous subsections for reference.
     \item  The degree $d$ gives a $G$-linearized line bundle $\cL_d$ on $\Spec S$.  The unstable locus of $\cL_d$ is $V(B)$ and the geometric quotient $X_d=\Proj S_{\NN d}$ is a simplicial projective toric variety.
     \item  The simplicial fan $\Sigma$ is the normal fan of $P_\alpha$ and defines $X_d$.  Its rays are a subset of $\nu_1,\ldots,\nu_n$.  For $i\notin F$ the hyperplane corresponding to $\nu_i$ cuts out a facet of $P_\alpha$ and for $i\in F$ it does not intersect $P_\alpha$.
     \item  The group $\Cl(X_d)$ is a quotient of $\Cl(S)$, and they are equal under the conditions from Lemma~\ref{lem:mov-equiv}, in which case $\Gamma=\Nef(X_d)$.
-    %	\item  {\bf Toric stack:}   $[\Spec(S) - V(B_i) / G]$ is a smooth toric DM stack with coarse moduli space equal to $X_i$.
-    \end{enumerate}
+  \end{enumerate}
 \end{thm}
 
 \begin{proof}
-  The secondary fan is the coarsest common refinement by Proposition~\ref{prop:ccrefinement}.  Its cones are constructed in Definition~\ref{def:GKZ-cones}.
+  The secondary fan is the coarsest common refinement by Theorem~\ref{thm:ccrefinement}.  Its cones are constructed in Definition~\ref{def:GKZ-cones}.
 
   The $G$-linearized line bundle $\cL_d$ is described in Proposition~\ref{prop:eq-Picard-gp}.  The unstable locus of $\cL_d$ is $V(B)$, the quotient is geometric, and the resulting space is a simplicial projective toric variety by Theorem~\ref{thm:unstable}.  It is isomorphic to $\Proj S_{\NN d}$ by Corollary~\ref{cor:quotient-Proj}.
 
-  Let $\Sigma'$ be the normal fan of $P_\alpha$, which has rays among the $\nu_i$ by Definition~\ref{def:polytope-of-deg}, and let $F'$ index the rays not appearing in $\Sigma'$.  Then $\alpha\in\tilde\Gamma(\Sigma',F')$ by Lemma~\ref{lem:GKZ-def} so $d\in\Gamma(\Sigma',F')$.  Since $d$ is in the interior of $\Gamma(\Sigma,F)$ by assumption and these cones form a fan by Theorem~\ref{prop:fan-structure}, we must have $\Sigma'=\Sigma$ and $F'=F$.  Therefore $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  The fan $\Sigma$ is simplicial by the discussion before Theorem~\ref{thm:GIT-polytope}.  \lauren{interior argument?}
+  Let $\Sigma'$ be the normal fan of $P_\alpha$, which has rays among the $\nu_i$ by Definition~\ref{def:polytope-of-deg}, and let $F'$ index the rays not appearing in $\Sigma'$.  Then $\alpha\in\tilde\Gamma(\Sigma',F')$ by Lemma~\ref{lem:GKZ-def} so $d\in\Gamma(\Sigma',F')$.  Since $d$ is in the interior of $\Gamma(\Sigma,F)$ by assumption and these cones form a fan by Theorem~\ref{prop:fan-structure}, we must have $\Sigma'=\Sigma$ and $F'=F$.  Therefore $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  The fan $\Sigma$ is simplicial by the discussion before it.  \lauren{interior argument?}
 
   Since $d$ is in the interior of the maximal cone $\Gamma(\Sigma,F)$ we must have $\Sigma'=\Sigma$ and $F'=F$.  Thus $\Sigma$ is the fan of the simplicial toric variety $X_d$ by Theorem~\ref{thm:GIT-polytope} so it is also simplicial.
 
   The group $\Cl(X_d)$ is a quotient of $\Cl(S)$ by Lemma~\ref{lem:cl-restrict}.  If they are equal then $\Gamma=\Nef(X_d)$ by Theorem~\ref{thm:nef-chamber}.
 \end{proof}
-
-%\begin{proof}
-%  %Part (3) follows from \cite{BorisovChenSmith2004}*{\S 3}
-%  All of these results can be extracted from \cite[Chapters 14-15]{CLS}, but those are pretty technical paragraphs so it is not so easy to find an overarching statement like this.  Statement (1) essentially follows from~\cite[Proposition 14.4.9]{CLS}.  Statement (2) follows from ~\cite[Proposition 14.4.14]{CLS} combined with the fact from \cite[Theorem 5.1.11]{CLS} that for a simplicial toric variety, the quotient is a geometric quotient.
-%  %\daniel{Mostly just cite the places in CLS?}
-%\end{proof}
-
-%We will in the next lecture see  this correspondence is simpler to describe if one passes to the toric stack associated to~$X_i$ (in fact, this is the {\em main} reason to talk about stacks, in our opinion).
-
-%, and thus the following construction is not necessary for the main results about Cox categories.  However, for those familiar with the relationship between modules on a Cox rings and sheaves on a toric variety, it may provide a helpful perspective.
-
-%\begin{thm}
-%The chamber s are in bijection with any of the following:
-%\begin{enumerate}
-%	\item Simplicial toric varieties  with a subset of the given rays
-%	\item GIT quotients that arise in a a simplicial toric variety
-%	\item  The coarse moduli space of the quotient stack $[\Spec(S) - V(B_i) / G]$ equals $X_i$.
-%	\item  Choose any point $a\in \Cl(S)$ where $\deg_{\QQ}(a)$ lies in the interior of $\Gamma_i$.  Let $P_a\subseteq M$ be associated polytope and let $\Sigma$ be the normal fan of $P_a$.  The toric variety associated to $\Sigma$ is $X_i$.
-%%	\item
-%\end{enumerate}
-%\end{thm}
-
-
-%\begin{remark}
-%     We will confirm below that each pair $(S,B_i)$ determines a simplicial projective variety $X_i$.  The rough statement is that $X_i$ the quotient $\Spec(S) - V(B_i) / G$ (with the action of $G$ induced by the grading group), but this is a ``rough'' statement because of various subtleties involving quotients of projective varieties.  So there is a sense in which the multigraded ring $S$ naturally corresponds to the set of toric varieties $X_1, \dots, X_r$.
-%
-%    This connection is even sharper from a homological perspective.  The pair $(S,B_i)$ determines a module category as follows:  we write $\mod(S)$ for the category of $\Cl(S)$-graded $S$-modules and we write $\mod_{B_i}(S)$ for the subcategory  modulo those modules that are annihilated by a power of $B_i$.  To the pair $(S,B_i)$ we can attach the quotient category $\mod(S)/\mod_{B_i}(S)$.  This equals--essentially by defintion--the category of sheaves on the quotient stack $[\Spec(S) - V(B_i)/G]$ which we denote as $\mathcal X_i$.  We will see later that $\mathcal X_i$ is closely related to the aforementioned toric variety $X_i$.
-%\end{remark}
 
 \ifdefined\whole
 \else
