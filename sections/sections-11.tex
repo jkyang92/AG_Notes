@@ -274,12 +274,12 @@ Rays of the normal fan correspond to facets of the polytope.  In particular, the
 \begin{proof}
   We restrict our proof to the case when $P_\alpha$ is integral, in order to cite results which appear before the full definition of the normal fan in \cite[Proposition 14.2.10]{CLS}.
 
-  Let $X_\alpha$ be the toric variety of the polytope $P_\alpha$.  By \cite[Proposition~6.1.10]{CLS} the divisor $\sum_{i\notin F}\alpha_iD_{\nu_i}$ is ample on $X_\alpha$, so by \cite[Theorem~6.1.14]{CLS} it has a strongly \lauren{?} convex support function $\varphi$ on $\Sigma$, satisfying $\varphi(\nu_i)=-\alpha_i$ for $i\in G$.  We claim that $\varphi(\nu_i)\geq-\alpha_i$ for $i\in F$.
+  Let $X_\alpha$ be the toric variety of the polytope $P_\alpha$.  By \cite[Proposition~6.1.10]{CLS} the divisor $\sum_{i\notin F}\alpha_iD_{\nu_i}$ is ample on $X_\alpha$, so by \cite[Theorem~6.1.14]{CLS} it has a strictly convex support function $\varphi$ on $\Sigma$, satisfying $\varphi(\nu_i)=-\alpha_i$ for $i\in G$.  We claim that $\varphi(\nu_i)\geq-\alpha_i$ for $i\in F$.
 
   Fix $i\notin G$.  Since $\Sigma$ is the normal fan of a polytope it is complete, so we can write $\nu_i=\sum\beta_j\nu_j$ for $\beta_j>0$ and $\nu_j$ the rays of a single cone in $\Sigma$.  By the definition of a support function $\varphi$ is linear within the cone spanned by the $\nu_j$, so that $\varphi(\nu_i)=-\sum\beta_j\alpha_j$.
 
-  The rays of a cone in the normal fan correspond to hyperplanes intersecting in a face of $P_\alpha$ (swapping dimension and codimension), and this face consists of points $m$ in $P_\alpha$ whose images $(\nu_j\cdot m)$ in $\QQ^n$ satisfy $\nu_j\cdot m=-\alpha_j$.  We also have $\nu_i\cdot m > -\alpha_i$, by definition of $P_\alpha$.  Hence
-  \[\varphi(\nu_i)=-\sum\beta_j\alpha_j=\sum\beta_j(\nu_j\cdot m)=\left(\sum\beta_j\nu_j\right)\cdot m=\nu_i\cdot m\geq\nu_i.\]
+  The rays of a cone in the normal fan correspond to hyperplanes intersecting in a face of $P_\alpha$ (swapping dimension and codimension), and this face consists of points $m$ in $P_\alpha$ whose images $(\nu_j\cdot m)$ in $\QQ^n$ satisfy $\nu_j\cdot m=-\alpha_j$.  We also have $\nu_i\cdot m \geq -\alpha_i$, by definition of $P_\alpha$.  Hence
+  \[\varphi(\nu_i)=-\sum\beta_j\alpha_j=\sum\beta_j(\nu_j\cdot m)=\left(\sum\beta_j\nu_j\right)\cdot m=\nu_i\cdot m\geq-\alpha_i.\]
   Notice that we get a strict inequality exactly when the hyperplane $x_i=-\alpha_i$ does not intersect $P_\alpha$ at all.  The ``general'' case then corresponds to the interior of the cone $\tilde\Gamma(\Sigma,F)$.
 \end{proof}
 
@@ -456,9 +456,9 @@ To finish, we collect statements from previous subsections for reference.
 
   The $G$-linearized line bundle $\cL_d$ is described in Proposition~\ref{prop:eq-Picard-gp}.  The unstable locus of $\cL_d$ is $V(B)$, the quotient is geometric, and the resulting space is a simplicial projective toric variety by Theorem~\ref{thm:unstable}.  It is isomorphic to $\Proj S_{\NN d}$ by Corollary~\ref{cor:quotient-Proj}.
 
-  Let $\Sigma'$ be the normal fan of $P_\alpha$, which has rays among the $\nu_i$ by Definition~\ref{def:polytope-of-deg}, and let $F'$ index the rays not appearing in $\Sigma'$.  Then $\alpha\in\tilde\Gamma(\Sigma',F')$ by Lemma~\ref{lem:GKZ-def} so $d\in\Gamma(\Sigma',F')$.  Since $d$ is in the interior of $\Gamma(\Sigma,F)$ by assumption and these cones form a fan by Theorem~\ref{prop:fan-structure}, we must have $\Sigma'=\Sigma$ and $F'=F$.  Therefore $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  The fan $\Sigma$ is simplicial by the discussion before it.  \lauren{interior argument?}
+  Let $\Sigma'$ be the normal fan of $P_\alpha$ and let $F'$ index the rays not appearing in $\Sigma'$.  Then $\alpha\in\tilde\Gamma(\Sigma',F')$ by Lemma~\ref{lem:GKZ-def} so $d\in\Gamma(\Sigma',F')$.  Since $d$ is in the interior of $\Gamma(\Sigma,F)$ by assumption and these cones form a fan by Theorem~\ref{prop:fan-structure}, we must have $\Sigma'=\Sigma$ and $F'=F$.
 
-  Since $d$ is in the interior of the maximal cone $\Gamma(\Sigma,F)$ we must have $\Sigma'=\Sigma$ and $F'=F$.  Thus $\Sigma$ is the fan of the simplicial toric variety $X_d$ by Theorem~\ref{thm:GIT-polytope} so it is also simplicial.
+  Therefore $X_d$ is the toric variety of $\Sigma$ by Theorem~\ref{thm:GIT-polytope}.  The fan $\Sigma$ is simplicial and has rays among the $\nu_i$ by the discussion beforehand.  For $i\in F$ the hyperplane corresponding to $\nu_i$ intersects $P_\alpha$ in a facet because $\Sigma$ is the normal fan of $P_\alpha$.  For $i\notin F$ the hyperplane does not intersect $P_\alpha$ by the proof of Lemma~\ref{lem:GKZ-def} because $\alpha$ lies in the interior of $\tilde\Gamma(\Sigma,F)$.
 
   The group $\Cl(X_d)$ is a quotient of $\Cl(S)$ by Lemma~\ref{lem:cl-restrict}.  If they are equal then $\Gamma=\Nef(X_d)$ by Theorem~\ref{thm:nef-chamber}.
 \end{proof}
