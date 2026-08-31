@@ -1,3 +1,4 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifdefined\whole
 \else
 \documentclass{amsart}
@@ -6,21 +7,21 @@
 \fi
 
 \section{Lecture 1 (Amal Matoo): Derived Category of $\PP^n$, I}\label{lec:1-DbPPn}
+% Briefly define the bounded derived category of a variety, and briefly explain that it is an example of a triangulated category. Define the notion of a Fourier-Mukai transform between derived categories of varieties. Explain why the Fourier-Mukai transform with kernel given by the diagonal sheaf is isomorphic to the identity functor. Discuss Beilinson's resolution of the diagonal sheaf on $\PP^n\times\PP^n$.
 
 
 \daniel{Add some intro text here.  Lots more to fill in, combe back to it.}
-A common method for studying modules (or sheaves) is to ``replace'' the module (or sheaf) by a complex of simpler objects, e.g. replacing a module by a free resolution, or a sheaf by a Cech resolution.  One of the ideas behind a derived category is to treat the free resolution and the original module as ``the same''.  That is, we want to build a framework where a resolution is equivalent to the object it resolves.
+A common method for studying modules (or sheaves) is to ``replace'' the module (or sheaf) by a complex of simpler objects, e.g. replacing a module by a free resolution, or a sheaf by a \v{C}ech resolution.  One of the ideas behind a derived category is to treat the free resolution and the original module as ``the same''.  That is, we want to build a framework where a resolution is equivalent to the object it resolves.
 
 It will turn out, moreover \dots
 
 \daniel{Ideas:  free complexes mod homotopy; metaphor with basis of a vector space.}
 
 
-{\color{blue}  Throughout $\kk$ will represent an algebraically closed field of arbitrary characteristic. \daniel{Add other standing assumptions if we think of them.}}
-% Briefly define the bounded derived category of a variety, and briefly explain that it is an example of a triangulated category. Define the notion of a Fourier-Mukai transform between derived categories of varieties. Explain why the Fourier-Mukai transform with kernel given by the diagonal sheaf is isomorphic to the identity functor. Discuss Beilinson's resolution of the diagonal sheaf on $\PP^n\times\PP^n$.
+Unless otherwise specified, $\kk$ denotes an algebraically closed field of arbitrary characteristic, and every variety or scheme is assumed to be over $\kk$. \daniel{Add other standing assumptions if we think of them.}
 
 \subsection{What is a derived category?}
-Let $X$ be a variety over a field $\kk$, and let $\coh X$ denote the abelian category of coherent sheaves on $X$. The central object of these notes is the \defi{bounded derived category} $\Db(X)$.\footnote{Technical note: since we will never consider unbounded derived categories in these notes, we can write $\Db(X)$ instead of $D^b(X)$ or various other notations found in the literature.}  As noted above, the category $\Db(X)$ naturally ``contains'' all homological information carried by $\coh X$, but it turns out that $\Db(X)$ often has better properties. We briefly recall its construction and refer to \cite{huybrechts} for a thorough treatment.
+Let $X$ be a variety over a field $\kk$, and let $\coh X$ denote the abelian category of coherent sheaves on $X$. The central object of these notes is the \defi{bounded derived category} $\Db(X)$.\footnote{Technical note: since we will never consider unbounded derived categories in these notes, we can write $\Db(X)$ instead of $D^b(X)$ or various other notations found in the literature.}  As noted above, the category $\Db(X)$ naturally ``contains'' all homological information carried by $\coh X$, but it turns out that $\Db(X)$ often has better properties. We briefly recall its construction and refer to \cite{Huybrechts2006} for a thorough treatment.
 
 Let $\mathcal E^\bullet$ and $\mathcal F^\bullet$ be bounded complexes of coherent sheaves on $X$.  As a reminder, this means that
 \[
@@ -30,26 +31,21 @@ is a complex such that each $\cE^i$ is a coherent sheaf, and where $\cE^i=0$ for
 \[
 H^i f\colon H^i(\cE^\bullet) \to H^i(\cF^\bullet)
 \]
-for all $i$, where $H^i(\cE^\bullet):= \ker \phi^i /\im \phi^{i-1}$.  We say that $f$ is a \defi{quasi-isomoprhism} if each of these maps $H^if$ is an isomorphism of sheaves on $X$.
-
-
+for all $i$, where $H^i(\cE^\bullet):= \ker \phi^i /\im \phi^{i-1}$.  We say that $f$ is a \defi{quasi-isomorphism} if each of these maps $H^if$ is an isomorphism of sheaves on $X$.
 
 
 \begin{defn}
-
-The \defi{bounded derived category of $X$} has objects given by bounded complexes of coherent sheaves and morphisms given by chain maps, with quasi-isomorphisms formally inverted.
-
-% and
-%   Let $K^b(X)$ denote the \defi{bounded homotopy category} of $\coh X$: its objects are bounded cochain complexes of coherent sheaves on $X$, and its morphisms are chain maps modulo homotopy. The \defi{bounded derived category} $\Db(X)$ has the same objects as $K^b(X)$, but every quasi-isomorphism is formally inverted.
+  The \defi{bounded derived category of $X$} has objects given by bounded complexes of coherent sheaves and morphisms given by chain maps modulo homotopy, with quasi-isomorphisms formally inverted.
+  %% Let $K^b(X)$ denote the \defi{bounded homotopy category} of $\coh X$: its objects are bounded cochain complexes of coherent sheaves on $X$, and its morphisms are chain maps modulo homotopy. The \defi{bounded derived category} $\Db(X)$ has the same objects as $K^b(X)$, but every quasi-isomorphism is formally inverted.
 \end{defn}
 
 \begin{remark}
 We are aiming to include as little discussion of the technical aspects of derived categories as possible, but there is a rich world here to be explored.  
-For instance, by definition, a morphism is a finite ``zig-zag diagram" of genuine morphisms of complexes and formally inverted quasi-isomorphisms.  It turns out that a simpler description works: any morphism in the derived category $\begin{tikzcd} \cE \arrow[r] & \cF \end{tikzcd}$ in $\Db(X)$ 
+For instance, by definition, a morphism is a finite ``zig-zag diagram'' of genuine morphisms of complexes and formally inverted quasi-isomorphisms.  It turns out that a simpler description works: any morphism in the derived category $\begin{tikzcd} \cE \arrow[r] & \cF \end{tikzcd}$ in $\Db(X)$
 can be represented by a \defi{roof} 
 $\begin{tikzcd} \cE & \arrow["\simeq"', l] \cE' \arrow[r] & \cF \end{tikzcd}$ 
 in which the left arrow is a quasi-isomorphism.
-See~\cite{caldararu} or \cite{huybrechts} for excellent expository introductions.
+See~\cite{Caldararu05} or \cite{Huybrechts2006} for excellent expository introductions.
 \end{remark}
 
 \begin{example}\label{ex:roofPP2}
@@ -61,7 +57,7 @@ See~\cite{caldararu} or \cite{huybrechts} for excellent expository introductions
   \arrow[from=1-4, to=1-3]
   \end{tikzcd}
   \]
-  is exact as a complex of sheaves on $\PP^2$.  Thus the Koszul complex induces a quasi-isomorphism between the sheaf $\cO$ and the complex $[\cO(-1)^3 \gets \cO(-2)^3\gets \cO(-3)]$.  The derived category allows us to formally invert this quasi-isomorphism. There is an honest morphism of complexes between $[\cO(-1)^3 \gets \cO(-2)^3\gets \cO(-3)]$ and the complex $\cO(-3)[2]$, which consists of $\cO(-3)$ in cohomological position $-2$. Specifically, that morphism simply sends $\cO(-3)$ to $\cO(-3)$ by the identity and sends the other sheaves to $0$. Combining these, we obtain a morphism in the derived category, from $\cO$ to $\cO(-3)[2]$:
+  is exact as a complex of sheaves on $\PP^2$.  Thus the Koszul complex induces a quasi-isomorphism between the sheaf $\cO$ and the complex $[\cO(-1)^3 \gets \cO(-2)^3\gets \cO(-3)]$.  The derived category allows us to formally invert this quasi-isomorphism. There is an honest morphism of complexes from $[\cO(-1)^3 \gets \cO(-2)^3\gets \cO(-3)]$ to the complex $\cO(-3)[2]$, which consists of $\cO(-3)$ in cohomological position $-2$. Specifically, that morphism simply sends $\cO(-3)$ to $\cO(-3)$ by the identity and sends the other sheaves to $0$. Combining these, we obtain a morphism in the derived category, from $\cO$ to $\cO(-3)[2]$:
     \[\begin{tikzcd}
   \cO & {\bigl[\,\cO(-1)^3} & {\cO(-2)^3} & {\cO(-3)\,\bigr]} & {\cO(-3)[2]}.
   \arrow["\simeq"', from=1-2, to=1-1]
@@ -78,7 +74,7 @@ $\Ext^2(\cO,\cO(-3))=\HH^2(\PP^2,\cO(-3))\cong\kk$.
 Passing to the derived category destroys the abelian structure: kernels and cokernels no longer make sense, and there are no short exact sequences. What survives is the  structure of a \defi{triangulated category}, in which short exact sequences are replaced by \defi{distinguished triangles}.
 
 \begin{defn}
-  A \defi{triangulated category} is an additive category $\cD$ equipped with an autoequivalence $E\mapsto E[1]$ (the \defi{shift}) and a class of distinguished triangles $E\to F\to G\to E[1]$ subject to a list of axioms (see \cite[\S1.2]{huybrechts}). Moreover, every morphism $f\colon E\to F$ fits into a distinguished triangle
+  A \defi{triangulated category} is an additive category $\cD$ equipped with an autoequivalence $E\mapsto E[1]$ (the \defi{shift}) and a class of distinguished triangles $E\to F\to G\to E[1]$ subject to a list of axioms (see \cite[\S1.2]{Huybrechts2006}). Moreover, every morphism $f\colon E\to F$ fits into a distinguished triangle
   \[\begin{tikzcd}
     E \rar{f} & F \rar & \cone(f) \rar & E[1].
   \end{tikzcd}\]
@@ -86,18 +82,18 @@ Passing to the derived category destroys the abelian structure: kernels and coke
 
 The category $\Db(X)$ is triangulated, with the shift given on a complex $\cE^\bullet$ by $\cE[1]^i=\cE^{i+1}$ and $d_{\cE[1]}=-d_{\cE}$, and with $\cone(f)^i=\cE^{i+1}\oplus \cF^i$ for a chain map $f\colon\cE^\bullet\to\cF^\bullet$. A full subcategory closed under shifts and cones is a \defi{triangulated subcategory}; it is \defi{thick} if it is moreover closed under direct summands. The smallest thick triangulated subcategory containing a set of objects $\{E_i\}$ is the subcategory they \defi{generate}, and we say $\{E_i\}$ \defi{generates} $\cD$ if this subcategory is all of $\cD$. We say a functor between triangulated categories that preserves shifts and distinguished triangles is \defi{exact}. 
 
-Now we come to a key point:  there is a fully faithful embedding $\coh X\into \Db(X)$ sending a sheaf $\cE$ to the complex consisting only of $\cE$ in homological degree $0$:
+Now we come to a key point:  there is a fully faithful embedding $\coh X\into \Db(X)$ sending a sheaf $\cE$ to the complex consisting only of $\cE$ in cohomological degree $0$:
 \[
 \cE \mapsto [\cdots\to  0 \to \cE \to  0\to \cdots].
 \]
 What ``fully faithful'' means is that morphisms are preserved.  More is true, as \emph{derived} morphisms are also preserved.  That is, if you take two sheaves $\cE$ and $\cF$, then we have a natural isomorphism:
 \[ \Ext^i_X(\cE,\cF)\cong \Hom_{\Db(X)}(\cE,\cF[i]). \]
-In other words, the $\Ext$ groups from the category of sheaves are realized as precisely the morphisms in the derived category, with $\Ext^i$ corresponding to morphisms from $\cE$ to a homological shift of $\cF$.
-%derived morphisms into shifts. 
+In other words, the $\Ext$ groups from the category of sheaves are realized as precisely the morphisms in the derived category, with $\Ext^i$ corresponding to morphisms from $\cE$ to the shift $\cF[i]$.
+%derived morphisms into shifts.
 
-    In big picture terms, one thing that this means is that there is no loss of information when we pass from $\coh(X)$ to $D(X)$.  So if we can understand properties about $D(X)$, then this will tell us properties about the thing we originally cared about, which was $\coh(X)$.  If $D(X)$ is easier to describe than $\coh(X)$---which is the case in many examples---then this provides motivation for studying $D(X)$ instead of $\coh(X)$.
+    In big picture terms, one thing that this means is that there is no loss of information when we pass from $\coh X$ to $\Db(X)$.  So if we can understand properties about $\Db(X)$, then this will tell us properties about the thing we originally cared about, which was $\coh X$.  If $\Db(X)$ is easier to describe than $\coh X$---which is the case in many examples---then this provides motivation for studying $\Db(X)$ instead of $\coh X$.
 
-We henceforth identify a sheaf with the corresponding complex so that a short exact sequence $0 \to \cE \to \cF \to \cG \to 0$ in $\coh X$ is represented by a distinguished triangle $\cE \to \cF \to \cG \to \cE[1]$ in $\Db(X)$, but note that distinguished triangles allow extensions between objects that live in different homological degrees, thus not every distinguished triangle comes from a short exact sequence.
+We henceforth identify a sheaf with the corresponding complex so that a short exact sequence $0 \to \cE \to \cF \to \cG \to 0$ in $\coh X$ is represented by a distinguished triangle $\cE \to \cF \to \cG \to \cE[1]$ in $\Db(X)$, but note that distinguished triangles allow extensions between objects that live in different cohomological degrees, thus not every distinguished triangle comes from a short exact sequence.
 \def\cI{{\mathcal I}}
 % \begin{example}\label{ex:nontrivial-triangle}
 %   Let $\cI$ be the ideal sheaf generated by $(x_0+x_1+x_2, x_0x_1x_2)$ on $\P^2$, cutting out three collinear points on a cubic. A direct computation shows
@@ -106,7 +102,7 @@ We henceforth identify a sheaf with the corresponding complex so that a short ex
 %   \[ \mathrm{ev}\colon\ \cO(-1)\oplus\cO(-1)[-1]\ \cong\ \RHom_{\PP^2}\bigl(\cO(-1),\,\cI\bigr)\otimes_\kk\cO(-1)\ \longrightarrow\ \cI \]
 %   has a source living in cohomological degrees $0$ and $1$, so it is not a sheaf, and the distinguished triangle that completes it, namely
 %   \[ \cO(-1)\oplus\cO(-1)[-1]\xto{\ \mathrm{ev}\ }\cI\longrightarrow \cone(\mathrm{ev})\longrightarrow \cO(-1)[1]\oplus\cO(-1), \]
-%   does not come from any short exact sequence of coherent sheaves\footnote{The object $\cone(\mathrm{ev})$ is known as the \defi{left mutation} of $\cI$ past $\cO(-1)$; see, for instance, \cite[\S4]{BDLS25}.}. % Here that mutation happens to be an ordinary sheaf, fitting into the extension $0\to\cO_L(-3)\to L_{\cO(-1)}\cI\to\cO(-1)\to0$, which reverses the tautological sequence $0\to\cO(-1)\xto{\,x_0+x_1+x_2\,}\cI\to\cO_L(-3)\to0$ built from the degree-$0$ part of $\mathrm{ev}$.
+%   does not come from any short exact sequence of coherent sheaves\footnote{The object $\cone(\mathrm{ev})$ is known as the \defi{left mutation} of $\cI$ past $\cO(-1)$; see, for instance, \cite[\S4]{BDL+26}.}. % Here that mutation happens to be an ordinary sheaf, fitting into the extension $0\to\cO_L(-3)\to L_{\cO(-1)}\cI\to\cO(-1)\to0$, which reverses the tautological sequence $0\to\cO(-1)\xto{\,x_0+x_1+x_2\,}\cI\to\cO_L(-3)\to0$ built from the degree-$0$ part of $\mathrm{ev}$.
 % \end{example}
 
 
@@ -117,7 +113,7 @@ Any object of the derived category of a product $X\times Y$ induces an exact fun
 %in a manner formally analogous to integral transforms in functional analysis.
 
 
-Most standard functors of sheaves from $\coh(X)$ to $\coh(Y)$ will induce a corresponding (total) derived functor $D(X)$ to $D(Y)$.  For instance, if $f\colon X\to Y$ is morphism, then since $f_*\colon \coh(X)\to \coh(Y)$ is left exact, there is a corresponding functor $Rf_*\colon D(X)\to D(Y)$.  We will not give a full review of derived functors, again referring to standard references for those unfamiliar with this theory.
+Most standard functors of sheaves from $\coh X$ to $\coh Y$ will induce a corresponding (total) derived functor from $\Db(X)$ to $\Db(Y)$.  For instance, if $f\colon X\to Y$ is a proper morphism, then $f_*\colon \coh X\to \coh Y$ is left exact, and properness guarantees both that $f_*$ preserves coherence and that the derived functor takes bounded complexes to bounded complexes, so that there is a corresponding functor $Rf_*\colon \Db(X)\to \Db(Y)$.  We will not give a full review of derived functors, again referring to standard references for those unfamiliar with this theory.
 
 Fourier--Mukai transforms are built as compositions of standard derived functors.
 
@@ -133,12 +129,12 @@ Fourier--Mukai transforms are built as compositions of standard derived functors
 \end{defn}
 
 \begin{remark}
-    Those seeing this definition for the first time may have the impression that Fourier--Mukai transforms are somewhat technical, and that it would be difficult to work out an explicit example in practice.  This is correct!  It is easy to write out a formal definition of a Fourier--Mukai transform, and these functors do have nice properties.  But in practice, these functors can be very subtle, and it can be hard to understand how to compute even seemingly simple examples.  This will be a key theme in later sections.  In fact, perhaps the most technical lemma in the entire notes amounts to computing the Fourier--Mukai transforms of a finite set of line bundles.  (See \S\ref{lec:14-proof-outline}.)
+    Those seeing this definition for the first time may have the impression that Fourier--Mukai transforms are somewhat technical, and that it would be difficult to work out an explicit example in practice.  This is correct!  It is easy to write out a formal definition of a Fourier--Mukai transform, and these functors do have nice properties.  But in practice, these functors can be very subtle, and it can be hard to understand how to compute even seemingly simple examples.  This will be a key theme in later sections.  In fact, perhaps the most technical lemma in the entire notes amounts to computing the Fourier--Mukai transforms of a finite set of line bundles.  (See Lecture~\ref{lec:14-proof-outline}.)
 \end{remark}
 
 
 \begin{remark}
-    A theorem of Orlov (which is quite interesting, but will play no role in these notes) asserts that, for smooth projective $X$ and $Y$, every exact equivalence $\Db(X)\xto{\simeq}\Db(Y)$ arises as a Fourier--Mukai transform for some kernel $\cK$, which is unique up to isomorphism in the derived category \cite{orlov_eqv}.
+    A theorem of Orlov (which is quite interesting, but will play no role in these notes) asserts that, for smooth projective $X$ and $Y$, every exact equivalence $\Db(X)\xto{\simeq}\Db(Y)$ arises as a Fourier--Mukai transform for some kernel $\cK$, which is unique up to isomorphism in the derived category \cite{Orlov97}.
 \end{remark}
 
 By far the most important case of the Fourier--Mukai transform occurs when $Y = X$ and $\cK \in \Db(X\times X)$ is the structure sheaf $\cO_\Delta\ce\iota_*\cO_X$ of the diagonal subscheme $\iota\colon\Delta\to X\times X$\!.  In this case we have:
@@ -156,31 +152,31 @@ By far the most important case of the Fourier--Mukai transform occurs when $Y = 
 \subsection{Beilinson's resolution of the diagonal}
 Because we are working in the derived category, the sheaf $\cO_{\Delta}$ is isomorphic to any resolution of that sheaf.  Proposition~\ref{prop:diagonalidentity} can therefore become a powerful computational tool if we can replace $\cO_\Delta$ by an explicit and simple locally free resolution. In this case, the left derived tensor product with a complex of locally free sheaves will become the usual tensor product, allowing for more concrete applications.
 
-On $X=\PP^n$, exactly such a resolution was constructed by Beilinson \cite{beilinson}. Let $\cT_{\PP^n}$ denote the tangent bundle and set
+On $X=\PP^n$, exactly such a resolution was constructed by Beilinson \cite{Beilinson78}. Let $\cT_{\PP^n}$ denote the tangent bundle and set
 \[ \mathcal W\ce \cO_{\PP^n}(1)\boxtimes \cT_{\PP^n}(-1), \]
-a vector bundle of rank $n$ on $\PP^n\times\PP^n$, where $\cF\boxtimes\cG\ce p^*\cF\otimes q^*\cG$ denotes the external tensor product.  There is a canonical section $s\in \HH^0(\PP^n\times\PP^n,\mathcal W)$ whose vanishing locus is precisely the diagonal $\Delta$ (see \cite[\S3]{caldararu} or \cite[\S8.3]{huybrechts}). 
-%\mahrud{good opportunity for an enlightning M2 computation of the actual section here} 
+a vector bundle of rank $n$ on $\PP^n\times\PP^n$, where $\cF\boxtimes\cG\ce p^*\cF\otimes q^*\cG$ denotes the external tensor product.  There is a canonical section $s\in \HH^0(\PP^n\times\PP^n,\mathcal W)$ whose vanishing locus is precisely the diagonal $\Delta$ (see \cite[\S3]{Caldararu05} or \cite[\S8.3]{Huybrechts2006}).
+%\mahrud{good opportunity for an enlightning M2 computation of the actual section here}
 Since $\PP^n\times\PP^n$ is smooth, hence Cohen--Macaulay, and the vanishing locus $\Delta$ has codimension $n=\rank\mathcal W$, the section $s$ is regular, so the Koszul complex on $s$ is a locally free resolution
 \[ 0\to \textstyle\bigwedge^n\mathcal W^\vee \to \cdots\to \bigwedge^2\mathcal W^\vee\to \mathcal W^\vee \to \cO_{\PP^n\times\PP^n}\to \cO_\Delta\to 0. \]
 Using $\mathcal W^\vee\cong \cO(-1)\boxtimes \Omega^1_{\PP^n}(1)$ and $\bigwedge^i\bigl(\Omega^1(1)\bigr)\cong \Omega^i(i)$, we obtain $\bigwedge^i\mathcal W^\vee \cong \cO(-i)\boxtimes \Omega^i_{\PP^n}(i)$, so Beilinson's resolution takes the form
 \[ \cO_\Delta \simeq \Big[\, \cO(-n)\boxtimes\Omega^n(n)\to \cdots\to \cO(-1)\boxtimes\Omega^1(1)\to \cO\boxtimes\cO\,\Big], \]
-a complex each of whose terms is a box product of a line bundle with a twisted exterior power of the cotangent bundle. In the next lecture we combine this resolution with Proposition~\ref{prop:diagonalidentity} to prove that the line bundles $\cO,\cO(1),\dots,\cO(n)$ generate $\Db(\PP^n)$. The same circle of ideas---now applied to resolutions of the diagonal on toric varieties---reappears in Lecture~\ref{sec:FMTransform} as the Fourier--Mukai transforms at the heart of the Cox category.
+a complex each of whose terms is a box product of a line bundle with a twisted exterior power of the cotangent bundle. In the next lecture we combine this resolution with Proposition~\ref{prop:diagonalidentity} to prove that the line bundles $\cO(-n),\cO(-n+1),\dots,\cO$ generate $\Db(\PP^n)$. The same circle of ideas---now applied to resolutions of the diagonal on toric varieties---reappears in Lecture~\ref{sec:FMTransform} as the Fourier--Mukai transforms at the heart of the Cox category.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 2 (Abhik Pal): Derived Category of $\PP^n$, II}\label{lec:2-DbPPn}
-%% Define semiorthogonal decompositions and (full, strong) exceptional collections for triangulated categories. As a key example, use Beilinson's resolution of the diagonal to prove that the Beilinson collection gives a full strong exceptional collection for~$D^b(\PP^n)$~\cite{caldararu}*{\S 3}. Discuss how this implies that the Grothendieck group $K_0(\PP^n)$ is isomorphic to~$\Z^{n+1}$. %State Bondal's Theorem relating the derived category of a smooth projective variety with a full strong exceptional collection to the derived category of a noncommutative algebra~\cite{huybrechts}*{Theorem 8.34}.
-%% This theorem launched a search for exceptional collections and semiorthgonal decompositions for other varieties. As time permits, provide a brief overview of some results in this vein, such as Kapranov's exceptional collections for smooth quadrics and Grassmanians~\cite{kapranov}, or
-%% Orlov's blowup formula~\cite{huybrechts}*{Proposition 11.18} and projective bundle formula~\cite{huybrechts}*{Corollary 8.36}. See~\cite{kuznetsov} for a survey on this topic.
-One reason that we work with derived categories instead of the category of coherent sheaves is that derived categories often allow for more elegant global descriptions and thus cleaner structural insights into properties of sheaves.  
+%% Define semiorthogonal decompositions and (full, strong) exceptional collections for triangulated categories. As a key example, use Beilinson's resolution of the diagonal to prove that the Beilinson collection gives a full strong exceptional collection for~$D^b(\PP^n)$~\cite{Caldararu05}*{\S 3}. Discuss how this implies that the Grothendieck group $K_0(\PP^n)$ is isomorphic to~$\Z^{n+1}$. %State Bondal's Theorem relating the derived category of a smooth projective variety with a full strong exceptional collection to the derived category of a noncommutative algebra~\cite{Huybrechts2006}*{Theorem 8.34}.
+%% This theorem launched a search for exceptional collections and semiorthgonal decompositions for other varieties. As time permits, provide a brief overview of some results in this vein, such as Kapranov's exceptional collections for smooth quadrics and Grassmanians~\cite{Kapranov88}, or
+%% Orlov's blowup formula~\cite{Huybrechts2006}*{Proposition 11.18} and projective bundle formula~\cite{Huybrechts2006}*{Corollary 8.36}. See~\cite{Kuznetsov14} for a survey on this topic.
+One reason that we work with derived categories instead of the category of coherent sheaves is that derived categories often allow for more elegant global descriptions and thus cleaner structural insights into properties of sheaves.
 Most commonly, this is done by decomposing the derived category into simple building blocks, in a manner akin to finding a basis for a vector space.
 %or writing an integer as a product of primes.
 
 % To give examples of this, we must first outline the language
-% In this lecture we decompose the derived category $\Db(X)$ of a smooth projective variety into simple building blocks. 
-To make this decomposition precise, we need to introduce the notions of a semiorthogonal decomposition and, in the best case, a full strong exceptional collection. See \cite[\S1.4]{huybrechts}, \cite[\S3]{caldararu}, or \cite{kuznetsov} for more details.
+% In this lecture we decompose the derived category $\Db(X)$ of a smooth projective variety into simple building blocks.
+To make this decomposition precise, we need to introduce the notions of a semiorthogonal decomposition and, in the best case, a full strong exceptional collection. See \cite[\S1.4]{Huybrechts2006}, \cite[\S3]{Caldararu05}, or \cite{Kuznetsov14} for more details.
 
-Given a full triangulated subcategory $\cB\subseteq \cD$, its \defi{right orthogonal} $\cB^\perp$ is the full subcategory of objects $C$ with $\Hom_\cD(B, C)=0$ for all $B\in\cB$; the \defi{left orthogonal} ${}^\perp\cB$ is defined symmetrically. A sequence $(\cB_0,\dots,\cB_r)$ of triangulated subcategories is \defi{semiorthogonal} if $\cB_j\subseteq \cB_i^\perp$ whenever $j<i$.
+Throughout this discussion, $\cD$ denotes a $\kk$-linear triangulated category, the case of interest being $\cD = \Db(X)$ for a smooth projective variety $X$.  Given a full triangulated subcategory $\cB\subseteq \cD$, its \defi{right orthogonal} $\cB^\perp$ is the full subcategory of objects $C$ with $\Hom_\cD(B, C)=0$ for all $B\in\cB$; the \defi{left orthogonal} ${}^\perp\cB$ is defined symmetrically. A sequence $(\cB_0,\dots,\cB_r)$ of triangulated subcategories is \defi{semiorthogonal} if $\cB_j\subseteq \cB_i^\perp$ whenever $j<i$.
 
 \begin{defn}
   A \defi{semiorthogonal decomposition} $\cD = \langle \cB_0,\dots,\cB_r\rangle$ is a semiorthogonal sequence of subcategories that together generate $\cD$. That is, the smallest thick triangulated subcategory containing all objects from every $\cB_i$ is precisely $\cD$.
@@ -191,7 +187,7 @@ We should think of this as akin to writing a vector space as a direct sum of sub
 \begin{remark}\label{rem:SODfiltration}
   Semiorthogonal decompositions are frequently defined by a different condition, namely that every object $T\in\cD$ should admit a filtration
   \[ 0 = T_{r+1}\to T_r\to\cdots\to T_1\to T_0 = T \qquad\text{with}\quad \cone(T_{i+1}\to T_i)\in\cB_i. \]
-  Semiorthogonality forces such a filtration to be unique up to isomorphism and functorial in $T$, and the objects admitting one form a thick subcategory, so this condition is equivalent to the generation condition in the definition above (see \cite[\S2]{kuznetsov}). In particular, a semiorthogonal decomposition comes with projection functors $\cD\to\cB_i$ sending $T$ to $\cone(T_{i+1}\to T_i)$; these are what make semiorthogonal decompositions usable in practice.
+  Semiorthogonality forces such a filtration to be unique up to isomorphism and functorial in $T$, and the objects admitting one form a thick subcategory.  When each $\cB_i$ is admissible, this condition is equivalent to the generation condition in the definition above (see \cite[\S2]{Kuznetsov14}). In particular, a semiorthogonal decomposition comes with projection functors $\cD\to\cB_i$ sending $T$ to $\cone(T_{i+1}\to T_i)$; these are what make semiorthogonal decompositions usable in practice.
 \end{remark}
 
 \begin{defn}
@@ -208,9 +204,9 @@ We should think of this as akin to writing a vector space as a direct sum of sub
     \]
     since $X$ is projective and integral.  And we have
     \[
-    \Ext^{\ell}_X(L,L) = H^{\ell}(X,\cO_X)=0
+    \Ext^{\ell}_X(L,L) = H^{\ell}(X,\cO_X)=0 \qquad\text{for all }\ell>0,
     \]
-    by Demazure Vanishing (which will see in Theorem~\ref{thm:demazureL5}).
+    by Demazure Vanishing applied to the trivial divisor, which we will see in Theorem~\ref{thm:demazure}.
 \end{example}
 % A convenient way to visualize an exceptional collection is through its \defi{Ext table}, the $(r+1)\times(r+1)$ matrix whose $(i,j)$ entry is the Laurent polynomial
 % \[ \sum_{\ell\in\ZZ}\dim_\kk\Ext^\ell(E_i,E_j)\,T^\ell, \]
@@ -220,7 +216,7 @@ We should think of this as akin to writing a vector space as a direct sum of sub
 
 A full exceptional collection $E_0,\dots,E_r$ yields a semiorthogonal decomposition $\cD = \langle E_0,\dots,E_r\rangle$ in which each block is the subcategory generated by a single $E_i$, itself equivalent to $\Db(\kk)$, the category of bounded complexes of $\kk$-vector spaces. The fundamental example is due to Beilinson.
 
-\begin{thm}[\cite{beilinson}]\label{thm:beilinsonFSEC}
+\begin{thm}[\cite{Beilinson78}]\label{thm:beilinsonFSEC}
   The projective space $\PP^n$ admits two full strong exceptional collections:
   \[ \Db(\PP^n) = \langle \cO(-n),\cO(-n+1),\dots,\cO\rangle = \langle \Omega^n(n),\dots,\Omega^1(1),\cO\rangle. \]
 \end{thm}
@@ -231,18 +227,18 @@ A full exceptional collection $E_0,\dots,E_r$ yields a semiorthogonal decomposit
   %Alternatively, we can use the following two properties of exceptional collections:
   %\begin{itemize}
  % \item a collection remains exceptional if every term is twisted by an invertible sheaf; and
- % \item exceptional collections admit an action of the braid group by left and right mutations, though note that strongness is not always preserved (see, for instance, \cite[\S4]{BDLS25}).
+ % \item exceptional collections admit an action of the braid group by left and right mutations, though note that strongness is not always preserved (see, for instance, \cite[\S4]{BDL+26}).
   %\end{itemize}
   %In particular, the collection of cotangent bundles is the result of applying a half-twist braid on the collection $\cO,\cO(1),\dots,\cO(n)$, which is a twist of the original collection of line bundles. This orthonormality between the two families explains why Beilinson's resolution of the diagonal pairs one member of each collection in every term, and it is the starting point for the \defi{Beilinson monad}, which we will revisit through the lens of Tate resolutions in Lecture~\ref{lec:18-tate-resolutions-PPn}.
 For fullness: given a coherent sheaf $\cF$ on $\PP^n$,  Proposition~\ref{prop:diagonalidentity} implies that $\cF\cong \Phi_{\cO_\Delta}(\cF)$ in $\Db(\PP^n)$. We will see in Construction~\ref{const:monad} that $\Phi_{\cO_\Delta}(\cF)$ is isomorphic to a complex $\B$ with terms
   $$
   \B_k
-  = \bigoplus_{i-j=k} H^j(X, \F \otimes \Omega^i(i)) \otimes\OO(-i).
+  = \bigoplus_{i-j=k} H^j(\PP^n, \F \otimes \Omega^i(i)) \otimes\OO(-i).
   $$
-  It follows that the objects $\OO(-n), \OO(-n+1) \dots, \OO$ generate $\Db(\PP^n)$. 
+  It follows that the objects $\OO(-n), \OO(-n+1), \dots, \OO$ generate $\Db(\PP^n)$.
   %Replacing $\cO_\Delta$ by Beilinson's resolution and applying the projection formula termwise, \michael{explain a bit more why we can apply the functor termwise. We're passing to the $E^1$ page of a hypercohomology spectral sequence} the term $\cO(-i)\boxtimes\Omega^i(i)$ contributes
   %\[ Rq_*\bigl(p^*(\cF(-i))\otimes q^*\Omega^i(i)\bigr)\cong R\Gamma\bigl(\PP^n,\cF(-i)\bigr)\otimes \Omega^i(i). \]
-  %Thus $\cF$ is built by iterated cones out of the objects $\Omega^i(i)$ tensored with $\kk$-vector spaces, so the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$ See \cite[\S3]{caldararu} and \cite[\S{A.2}]{BCHS26} for details of the construction.
+  %Thus $\cF$ is built by iterated cones out of the objects $\Omega^i(i)$ tensored with $\kk$-vector spaces, so the objects $\Omega^n(n),\dots,\Omega^1(1),\cO$ generate $\Db(\PP^n)$ See \cite[\S3]{Caldararu05} and \cite[\S{A.2}]{BCHS26} for details of the construction.
 \end{proof}
 
 \begin{cor}\label{cor:UniquenessAndFSEC}
@@ -254,9 +250,9 @@ Let $K$ denote the homotopy category of complexes of graded $S$-modules whose te
 \end{proof}
 
 \begin{remark}
-Corollary~\ref{cor:UniquenessAndFSEC} demonstrates what we mean about an ``elegant global description''.  Any object in the derived category of coherent sheaves on $\PP^n$ can be identified a minimal free complex $F_\bullet$ where each $F_i$ is a direct sum of $S(-n), S(-n+1), \cdots, S$, and that identification is unique up to isomorphism.  So while $D(\PP^n)$ may seem like a highly technical category, the corollary shows that it is in fact equivalent to something very concrete.  
+  Corollary~\ref{cor:UniquenessAndFSEC} demonstrates what we mean about an ``elegant global description''.  Any object in the derived category of coherent sheaves on $\PP^n$ can be identified with a minimal free complex $F_\bullet$ where each $F_i$ is a direct sum of $S(-n), S(-n+1), \cdots, S$, and that identification is unique up to isomorphism.  So while $\Db(\PP^n)$ may seem like a highly technical category, the corollary shows that it is in fact equivalent to something very concrete.
 
-Theorem~\ref{thm:beilinsonFSEC} and Corollary~\ref{cor:UniquenessAndFSEC} provide a model for what we want from a global description of a derived category.  By finding an FSEC of line bundles for $D(\PP^n)$, we have broken $D(\PP^n)$ into individual pieces, the $\cO(-i)$, each of which we totally understand; this allows us to provide essentially canonical representations for any sheaf on $\PP^n$, or more generally for any object in $D(\PP^n)$, in terms of the very simple objects $\cO(-n), \dots, \cO$ or, for the more algebraically minded, in terms of $S(-n), \dots, S$.
+  Theorem~\ref{thm:beilinsonFSEC} and Corollary~\ref{cor:UniquenessAndFSEC} provide a model for what we want from a global description of a derived category.  By finding an FSEC of line bundles for $\Db(\PP^n)$, we have broken $\Db(\PP^n)$ into individual pieces, the $\cO(-i)$, each of which we totally understand; this allows us to provide essentially canonical representations for any sheaf on $\PP^n$, or more generally for any object in $\Db(\PP^n)$, in terms of the very simple objects $\cO(-n), \dots, \cO$ or, for the more algebraically minded, in terms of $S(-n), \dots, S$.
 \end{remark}
 
 
@@ -300,38 +296,38 @@ Inspired by Theorem~\ref{thm:beilinsonFSEC}, the past several decades have seen 
 % with the three commutativity relations $x_i \bar x_j=x_j \bar x_i$ for $0\le i<j\le 2$, where $x_0,x_1,x_2$ and $\bar x_0,\bar x_1,\bar x_2$ are two copies of a basis of $\HH^0(\PP^2,\cO(1))$. See \cite{King97} and \cite[\S{A.3}]{BCHS26} for more examples.
 %
 % The same recipe applies to any smooth projective toric variety carrying a full strong exceptional collection of line bundles, which is where the toric story of the later lectures begins. 
-Beyond projective space, Kapranov constructed full exceptional collections on smooth quadrics, Grassmannians, and flag varieties \cite{kapranov}, while Orlov's blowup formula \cite[Prop.~11.18]{huybrechts} and projective bundle formula \cite[Cor.~8.36]{huybrechts} produce semiorthogonal decompositions from geometric constructions. These papers are just the tip of a giant iceberg; a full list of all papers involving the search for exceptional collections would involve hundreds of references.
+Beyond projective space, Kapranov constructed full exceptional collections on smooth quadrics, Grassmannians, and flag varieties \cite{Kapranov88}, while Orlov's blowup formula \cite[Prop.~11.18]{Huybrechts2006} and projective bundle formula \cite[Cor.~8.36]{Huybrechts2006} produce semiorthogonal decompositions from geometric constructions. These papers are just the tip of a giant iceberg; a full list of all papers involving the search for exceptional collections would involve hundreds of references.
 
 Within the toric world, the search for exceptional collections led to King's conjecture in \cite{King97}, which proposed that something like Theorem~\ref{thm:beilinsonFSEC} held for any smooth, projective toric variety.  More specifically, King's Conjecture proposed that any such toric variety admitted an FSEC of line bundles.  The conjecture received a great deal of attention for a period, though it turned out to be false.  We will return to, and prove a revised version of, King's Conjecture in later lectures.
 %and prove a revised  in Lecture~\ref{lec:12-DCox-definition}. % conj:king
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 3 (Isidora Bailly-Hall): Derived Category of $\PP^n$, III}\label{lec:3-DbPPn}
-%% Describe the Bernstein-Gel'fand-Gel'fand (BGG) correspondence, which gives an equivalence of bounded derived categories between a graded polynomial ring~$S$ and its Koszul dual exterior algebra $E$. Describe the functors between these two categories, following \cite{EFS}*{\S 2}, and include some explicit examples. Illustrate that these functors are inverses equivalences by evaluating their compositions at the residue field. (A detailed proof that these functors are inverse equivalences is too much for one lecture.) Letting $D^b_\m(S)$ denote the subcategory of $D^b(S)$ given by complexes with homology supported in the homogeneous maximal ideal $\m$, explain that the BGG correspondence identifies $D^b_\m(S)$  with perfect complexes in $D^b(E)$. Briefly discuss Verdier quotients of triangulated categories, and note that $D^b(S) / D^b_\m(S)$ is equivalent to $D^b(\PP^n)$. Conclude that the BGG correspondence identifies $D^b(\PP^n)$ with the singularity category of~$E$, i.e. $D^b(E)$ modulo perfect complexes.
+%% Describe the Bernstein-Gel'fand-Gel'fand (BGG) correspondence, which gives an equivalence of bounded derived categories between a graded polynomial ring~$S$ and its Koszul dual exterior algebra $E$. Describe the functors between these two categories, following \cite{EFS03}*{\S 2}, and include some explicit examples. Illustrate that these functors are inverses equivalences by evaluating their compositions at the residue field. (A detailed proof that these functors are inverse equivalences is too much for one lecture.) Letting $D^b_\m(S)$ denote the subcategory of $D^b(S)$ given by complexes with homology supported in the homogeneous maximal ideal $\m$, explain that the BGG correspondence identifies $D^b_\m(S)$  with perfect complexes in $D^b(E)$. Briefly discuss Verdier quotients of triangulated categories, and note that $D^b(S) / D^b_\m(S)$ is equivalent to $D^b(\PP^n)$. Conclude that the BGG correspondence identifies $D^b(\PP^n)$ with the singularity category of~$E$, i.e. $D^b(E)$ modulo perfect complexes.
 
 The previous lectures described $\Db(\PP^n)$ through exceptional collections of sheaves, allowing for a concrete global description in terms of simple objects. In Lecture~\ref{lec:18-tate-resolutions-PPn}, we will use the theory of Tate resolutions to give a totally different, but equally concrete global description of $\Db(\PP^n)$.  
-This is a complementary and highly computational perspective, and it is built upon the \defi{Bernstein--Gel'fand--Gel'fand (BGG) correspondence} \cite{BGG}, which compares complexes of modules over a polynomial ring with complexes over its Koszul-dual exterior algebra. We follow \cite[\S2]{EFS} and return to this topic again when we introduce Tate resolutions in Lecture~\ref{lec:18-tate-resolutions-PPn}.
+This is a complementary and highly computational perspective, and it is built upon the \defi{Bernstein--Gel'fand--Gel'fand (BGG) correspondence} \cite{BGG78}, which compares complexes of modules over a polynomial ring with complexes over its Koszul-dual exterior algebra. We follow \cite[\S2]{EFS03} and return to this topic again when we introduce Tate resolutions in Lecture~\ref{lec:18-tate-resolutions-PPn}.
 
 Let $W$ be an $(n+1)$-dimensional $\kk$-vector space with dual $V = W^*$, and set
 \[
 S = \Sym(W) = \kk[x_0,\dots,x_n], \qquad
 E = \textstyle\bigwedge(V) = \bigwedge(e_0,\dots,e_n),
 \]
-where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional (noncommutative) algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, meaning that that there are $\k$-algebra isomorphisms $\Ext_S^*(\k, \k) \cong E$, and $\Ext_E^*(\k, \k) \cong S$. There are many other examples of Koszul dual algebras: see e.g. \cite{PP05} for a survey.
+where $\{e_j\}$ is the basis of $V$ dual to $\{x_j\}$, so that $E$ is the \defi{exterior algebra} on $V$, a finite-dimensional graded-commutative algebra in which $e_ie_j=-e_je_i$ and $e_j^2=0$. We grade these algebras so that $\deg(x_j)=1$ and $\deg(e_j)=-1$, and $\PP^n = \Proj S = \PP(W)$. The two algebras are \defi{Koszul dual}, meaning that there are $\kk$-algebra isomorphisms $\Ext_S^*(\kk, \kk) \cong E$, and $\Ext_E^*(\kk, \kk) \cong S$. There are many other examples of Koszul dual algebras: see e.g. \cite{PolishchukPositselski2005} for a survey.
 
 %a relationship encoded by the distinguished element $\sum_j x_j\otimes e_j\in S\otimes_\kk E$, which squares to zero and governs all of the constructions below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The BGG correspondence}
 
-The correspondence is realized by an equivalence $R \co \Db(S) \xra{\simeq} \Db(E)$ of bounded derived categories of graded modules: let us explain how this equivalence works. Let $E^*$ denote the $\k$-dual of~$E$, which is isomorphic as an $E$-module to $E(-n-1)$. For a graded $S$-module $M$, let $R(M)$ be the complex of free graded $E$-modules with
-  \[   R(M)^i =  E^*(-i) \otimes_\k M_{i} \quad\text{in cohomological degree } i, \]
-  with differential given by multiplication  by $\sum_{i = 0}^n e_i \otimes x_i$. 
+The correspondence is realized by an equivalence $R \co \Db(S) \xra{\simeq} \Db(E)$ of bounded derived categories of graded modules: let us explain how this equivalence works. Let $E^*$ denote the $\kk$-dual of~$E$, which is isomorphic as an $E$-module to $E(-n-1)$. For a graded $S$-module $M$, let $R(M)$ be the complex of free graded $E$-modules with
+  \[   R(M)^i =  E^*(-i) \otimes_\kk M_{i} \quad\text{in cohomological degree } i, \]
+  with differential given by multiplication by $\sum_{j = 0}^n e_j \otimes x_j$. 
  
   
   One extends $R$ from modules to complexes by applying the above formula term-wise and totalizing. The inverse of $R$, which we denote by $L$, is given as follows. For a graded $E$-module $P$, let $L(P)$ be the complex of free graded $S$-modules with
   \[ L(P)^i = S(i) \otimes_\kk P_{-i} \quad\text{in cohomological degree } i, \]
-  whose differential is also multiplication  by $\sum_{i = 0}^n x_i \otimes e_i$. One extends $L$ to complexes in the same way as $R$. 
+  whose differential is also multiplication by $\sum_{j = 0}^n x_j \otimes e_j$. One extends $L$ to complexes in the same way as $R$.
 
 \begin{example}\label{ex:Rfunctor}
   Say $S = \k[x_0, x_1]$ and $M = S / (x_0)$. Since $\dim_\k M_i = 1$ for $i \ge 0$, each nonzero term of $R(M)$ has rank 1. And since $x_0$ annihilates $M$, the differential is just multiplication by $e_1$:
@@ -398,9 +394,9 @@ Let us illustrate the equivalence by evaluating the composition at the residue f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The singularity category of $E$}
 
-The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategories, and passing to quotients recovers $\Db(\PP^n)$. Let $\Db_\m(S)\subseteq \Db(S)$ denote the  subcategory given by complexes whose homology is finite dimensional over $\k$, and let $\Perf(E)$ be the subcategory of \emph{perfect complexes}, i.e. bounded complexes of finitely generated free modules. Since $\Db_\m(S)$ (resp. $\Perf(E)$) is the thick subcategory generated by twists of $\k$ (resp. $E$), and the functor $R$ maps twists of $\k$ to twists (and cohomological shifts) of $E$, one concludes:
+The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategories, and passing to quotients recovers $\Db(\PP^n)$. Let $\Db_\m(S)\subseteq \Db(S)$ denote the full subcategory given by complexes whose homology is finite dimensional over $\kk$, and let $\Perf(E)$ be the full subcategory of \emph{perfect complexes}, i.e. objects that are quasi-isomorphic to a bounded complex of finitely generated free modules. Since $\Db_\m(S)$ (resp. $\Perf(E)$) is the thick subcategory generated by twists of $\kk$ (resp. $E$), and the functor $R$ maps twists of $\kk$ to twists (and cohomological shifts) of $E$, one concludes:
 
-\begin{prop}[\cite{EFS}*{\S2}]\label{prop:BGGsupport}
+\begin{prop}[\cite{EFS03}*{\S2}]\label{prop:BGGsupport}
   Under the equivalence of Theorem~\ref{thm:BGG}, the subcategory $\Db_\m(S)$ corresponds to $\Perf(E)$.
 \end{prop}
 
@@ -410,7 +406,7 @@ The equivalence of Theorem~\ref{thm:BGG} interacts with two natural subcategorie
   Proposition~\ref{prop:BGGsupport} exchanges two finiteness conditions that live on opposite sides of the correspondence. Over $S$, which has finite global dimension, every object of $\Db(S)$ is a perfect complex, whereas having finite-length homology is a strong restriction. Over $E$ the situation is reversed: every object of $\Db(E)$ has finite-dimensional homology, since $E$ itself is finite-dimensional, whereas perfection is a strong restriction because $E$ has infinite global dimension. For instance, the residue field $\kk$ of $E$ has an infinite minimal free resolution. This asymmetry explains why the same Verdier quotient construction below produces a geometric category on the symmetric side and a singularity category on the exterior side.
 \end{remark}
 
-\begin{defn}[see {\cite[Ch.~10]{weibel}}]
+\begin{defn}[see {\cite[Ch.~10]{Weibel1994}}]
   Given a thick subcategory $\cB\subseteq \cD$, the \defi{Verdier quotient} $\cD/\cB$ is the triangulated category with the same objects as $\cD$, obtained by formally inverting all morphisms whose cone lies in $\cB$.
 \end{defn}
 
@@ -419,22 +415,23 @@ Applying this to $\Db_\m(S)$ recovers the geometry of $\PP^n$: there is an equiv
 which is the derived-category analogue of Serre's description of coherent sheaves on $\Proj S$ as finitely generated graded $S$-modules modulo those of finite length (compare Lecture~\ref{lec:5-toric-cox}, where the analogous statement $\Db(X)\simeq \Db(S)/\Db_B(S)$ is discussed for toric $X$).
 
 On the exterior side, the analogous quotient is the \defi{singularity category}
-\[ D^{\on{sing}}(E) \ce \Db(E)\,/\,\Perf(E), \]
-in the sense of Buchweitz and Orlov \cite{buc21}; since $E$ is self-injective, $\Dsg(E)$ is equivalent to the stable module category of $E$. Combining Theorem~\ref{thm:BGG} with Proposition~\ref{prop:BGGsupport} and passing to Verdier quotients, we conclude:
-\[ \Db(\PP^n) \simeq \Db(S)/\Db_\m(S) \simeq \Db(E)/\Perf(E) = D^{\on{sing}}(E). \]
+\[ \Dsg(E) \ce \Db(E)\,/\,\Perf(E), \]
+in the sense of Buchweitz and Orlov \cite{Buchweitz2021,Orlov09b}; since $E$ is self-injective, $\Dsg(E)$ is equivalent to the stable module category of $E$. Combining Theorem~\ref{thm:BGG} with Proposition~\ref{prop:BGGsupport} and passing to Verdier quotients, we conclude:
+\[ \Db(\PP^n) \simeq \Db(S)/\Db_\m(S) \simeq \Db(E)/\Perf(E) = \Dsg(E). \]
 That is, the BGG correspondence identifies the derived category of $\PP^n$ with the singularity category of the exterior algebra $E$. We will return to this equivalence in Lecture~\ref{lec:18-tate-resolutions-PPn} and discuss its generalization to toric varieties in Lecture~\ref{lec:19-tate-resolutions-toric}.
 
 %\begin{remark}
 %  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
  % \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk \omega_E(j) \]
-%  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
+%  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES15}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
 %\end{remark}
 
 %\begin{remark}
 %  The computational power of the BGG correspondence lies in the fact that $E$ is finite-dimensional, thus Gr\"obner bases are degree bounded and computations reduce to linear algebra. Utilizing this, the \defi{Tate resolution} of a coherent sheaf $\cF$ on $\PP^n$ is a doubly infinite acyclic complex of free $E$-modules whose $i$-th term encodes all twisted cohomology of $\cF$, with
  % \[ \bigoplus_{j\in\ZZ}\HH^{i+j}\bigl(\PP^n,\cF(-j)\bigr)\otimes_\kk E^*(j) \]
-%  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
+%  appearing as a canonical subquotient. This packages the cohomology of every twist of $\cF$ into a single object and enables efficient cohomology computations. Eisenbud, Erman, and Schreyer extended the theory to products of projective spaces \cite{EES15}, and its generalization to toric varieties is the subject of Lectures~\ref{lec:18-tate-resolutions-PPn} and \ref{lec:19-tate-resolutions-toric}.
 %\end{remark}
+
 \ifdefined\whole
 \else
 \bibliographystyle{plain}
