@@ -21,18 +21,18 @@ The elements of the Thomsen collection of $X \times X$ are of the form $\cL \box
 
 Theorem~\ref{thm:HHLdiagonal} led to proofs of three conjectures in commutative algebra and toric geometry.
 
-\subsection{The Berkesch-Erman-Smith Conjecture} Let $S$ be the Cox ring of $X$, and let $M$ be an~$S$-module. In \cite{BES}, Berkesch-Erman-Smith define a \defi{virtual resolution of $M$} to be a complex $F$ of free $S$-modules such that $\widetilde{F}$ is a locally free resolution of $\widetilde{M}$. They posed the following conjecture:
+\subsection{The Berkesch-Erman-Smith Conjecture} Let $S$ be the Cox ring of $X$, and let $M$ be an~$S$-module. In \cite{BES20}, Berkesch-Erman-Smith define a \defi{virtual resolution of $M$} to be a complex $F$ of free $S$-modules such that $\widetilde{F}$ is a locally free resolution of $\widetilde{M}$. They posed the following conjecture:
 
 \begin{conj}[Berkesch-Erman-Smith's Conjecture]
 \label{conj:BES}
 Every finitely generated $\Pic{X}$-graded $S$-module $M$ admits a virtual resolution of length at most $\dim{X}$.
 \end{conj}
 
-In fact, this was originally posed as a question~\cite{BES}*{Question 6.5}, but it has been stated as a conjecture in subsequent works, e.g.~\cites{yang,BS24}. Before Hanlon-Hicks-Lazarev proved Conjecture~\ref{conj:BES}, it was known when $X$ is a product of projective spaces~\cite{BES}, when $\Pic(X)$ has rank 2~\cite{BS24}, and when $M$ is a monomial ideal~\cite{yang}.
+In fact, this was originally posed as a question~\cite{BES20}*{Question 6.5}, but it has been stated as a conjecture in subsequent works, e.g.~\cites{Yang21a,BS24}. Before Hanlon-Hicks-Lazarev proved Conjecture~\ref{conj:BES}, it was known when $X$ is a product of projective spaces~\cite{BES20}, when $\Pic(X)$ has rank 2~\cite{BS24}, and when $M$ is a monomial ideal~\cite{Yang21a}.
 
 Let us explain how Theorem~\ref{thm:HHLdiagonal} implies Conjecture~\ref{conj:BES}. We will need the following:
 
-\begin{thm}[Fujita Vanishing Theorem \cite{lazarsfeld04}*{Theorem 1.4.35}]
+\begin{thm}[Fujita Vanishing Theorem \cite{Lazarsfeld2004}*{Theorem 1.4.35}]
 \label{thm:fujita}
 Let $\F$ be a coherent sheaf on~$X$, and let~$\cA$ be an ample line bundle on $X$. There exists $m \gg 0$, depending on $\F$ and $\cA$, such that
 $$
@@ -54,7 +54,7 @@ in $\Db(X)$. We now use this to compute the Fourier-Mukai transform of a coheren
     0 & \ar[l] \bigoplus_{\cL_1\boxtimes\cL_2 \in \cR_0} \cC_{\F\otimes\cL_1} \otimes \cL_2 & \ar[l] \cdots
     &   \ar[l] \bigoplus_{\cL_1\boxtimes\cL_2 \in \cR_{\dim{X}}} \cC_{\F\otimes\cL_1} \otimes \cL_2 & \ar[l] 0}.
 \end{equation}
-Since the differentials of $\cC_{\cG}$ have entries in $\kk$, the columns of \eqref{eq:bicomplex} split. Thus, we may apply \cite{EFS}*{Lem.~3.5} to conclude that the totalization of \eqref{eq:bicomplex} is homotopy equivalent to a complex $\B(\F)$ concentrated in degrees $k=-\dim{X},\dots,\dim{X}$ with terms
+Since the differentials of $\cC_{\cG}$ have entries in $\kk$, the columns of \eqref{eq:bicomplex} split. Thus, we may apply \cite{EFS03}*{Lem.~3.5} to conclude that the totalization of \eqref{eq:bicomplex} is homotopy equivalent to a complex $\B(\F)$ concentrated in degrees $k=-\dim{X},\dots,\dim{X}$ with terms
 \begin{equation}\label{eq:BM}
   \B(\F)_k
   = \bigoplus_{i-j=k} \bigoplus_{\cL_1\boxtimes\cL_2 \in \cR_i} H^j(X, \F\otimes\cL_1) \otimes\cL_2.
@@ -76,7 +76,7 @@ Given a triangulated category $\cT$, we say objects $T_1, \dots, T_m \in \cT$ \d
 The line bundles in the Thomsen collection of $X$ classically generate $D^b(X)$.
 \end{conj}
 
-In fact, Bondal stated without proof in \cite{Bondal} that Conjecture~\ref{conj:bondal} holds. But this statement was later referred to as Bondal's Conjecture in e.g. \cites{Uehara, HHL}. See~\cite{HHL}*{Remark 1.5} for a list of known cases of Bondal's Conjecture before it was proven by Hanlon-Hicks-Lazarev.
+In fact, Bondal stated without proof in \cite{Bondal06} that Conjecture~\ref{conj:bondal} holds. But this statement was later referred to as Bondal's Conjecture in e.g. \cites{Uehara14, HHL24}. See~\cite{HHL24}*{Remark 1.5} for a list of known cases of Bondal's Conjecture before it was proven by Hanlon-Hicks-Lazarev.
 
 \begin{proof}[Proof of Conjecture~\ref{conj:bondal}]
 Given a coherent sheaf $\E$ on $X$, the complex $\cB(\cE)$ from the proof of Conjecture~\ref{conj:BES} exhibits~$\E$ as an iterated extension in $D^b(X)$ of line bundles in the Thomsen collection of $X$. Conjecture~\ref{conj:bondal} immediately follows.
@@ -86,24 +86,24 @@ Given a coherent sheaf $\E$ on $X$, the complex $\cB(\cE)$ from the proof of Con
 
 Theorem~\ref{thm:HHLdiagonal} also resolved the toric case of a conjecture of Orlov on the Rouquier dimension of derived categories. Let us begin with the definition of Rouquier dimension.
 
-\begin{defn}[\cite{rouquier08}*{Definition 3.2}]
+\begin{defn}[\cite{Rouquier08}*{Definition 3.2}]
 Let $\cT$ be a triangulated category. If $T \in \cT$ and $i \ge 0$, we let $\langle T \rangle_i$ denote the (not necessarily triangulated) subcategory of $\cT$ given by direct summands of objects obtained by
 taking an $i$-fold extension of finite direct sums of shifts of $T$. The \defi{Rouquier dimension} of $\cT$ is defined to be $\dim\mathcal{T} \ce \inf \{ d \text{ : } \cT =  \langle T \rangle_{d+1} \text{ for some } T \in \cT\}$.
 \end{defn}
 
-\begin{conj}[\cite{orlov}*{Conjecture 10}]
+\begin{conj}[\cite{Orlov09a}*{Conjecture 10}]
 \label{conj:orlov}
 If $Y$ is a smooth, quasi-projective variety, then the equality $\dim D^b(Y) = \dim Y$ holds.
 \end{conj}
 
-See \cite{BC}*{\S 1.2} for  known cases of Conjecture~\ref{conj:orlov}. This list predates the resolution of the toric case of Conjecture~\ref{conj:orlov}, which is due, independently, to Favero-Huang and Hanlon-Hicks-Lazarev:
+See \cite{BC23}*{\S 1.2} for  known cases of Conjecture~\ref{conj:orlov}. This list predates the resolution of the toric case of Conjecture~\ref{conj:orlov}, which is due, independently, to Favero-Huang and Hanlon-Hicks-Lazarev:
 
-\begin{thm}[\cites{FH,HHL}]
+\begin{thm}[\cites{FH23,HHL24}]
 Conjecture~\ref{conj:orlov} holds when $Y$ is a toric variety.
 \end{thm}
 
 \begin{proof}
-This is immediate from \cite{rouquier08}*{Proposition 7.6} and Theorem~\ref{thm:HHLdiagonal}, noting that Theorem~\ref{thm:HHLdiagonal} does not require $X$ to be projective (see \cite{HHL}*{Corollary B}).
+This is immediate from \cite{Rouquier08}*{Proposition 7.6} and Theorem~\ref{thm:HHLdiagonal}, noting that Theorem~\ref{thm:HHLdiagonal} does not require $X$ to be projective (see \cite{HHL24}*{Corollary B}).
 \end{proof}
 
 \ifdefined\whole

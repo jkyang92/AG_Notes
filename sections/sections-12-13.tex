@@ -47,7 +47,7 @@ If $X$ is a Hirzebruch surface, then
 $$
 \cO_{X}(-1,-1),\cO_{X}(-1,0), \cO_{X}(0,-1),\cO_{X}
 $$
-is a full, strong exceptional collection for $D^b(X)$.   For those who are curious: this is a special case of Orlov's semiorthogonal decomposition result for projective bundles \cite[Cor.~8.36]{huybrechts}.
+is a full, strong exceptional collection for $D^b(X)$.   For those who are curious: this is a special case of Orlov's semiorthogonal decomposition result for projective bundles \cite[Cor.~8.36]{Huybrechts2006}.
 \end{example}
 
 This raises a natural question:  which smooth, projective toric varieties satisfy an analogue of Beilinson's theorem?  In 1997, King conjectured that the answer was ``all of them''.
@@ -63,14 +63,14 @@ A variant of Corollary~\ref{cor:UniquenessAndFSEC} holds any variety satisfying 
 
 King's Conjecture turned out to be
 false.  Hille-Perling gave the first counterexamples, and followup work of Michalek and Efimov gave counterexamples for fairly simple varieties and showed that the conjecture cannot be salvaged by restricting, for instance, to Fano toric varieties
-~\cites{hille-perling, michalek11, efimov}.
+~\cites{HP06, Michalek11a, Efimov14}.
 
 Nevertheless, King's Conjecture
 continued to inspire work on exceptional collections for toric
 varieties, and there is a huge literature in this vein:
-~\cites{altmann-immaculate,
-BFK,BallardEtAl2020arxivConsequences,BallardetAl-highFrobenius,BallardEtAl2018arxivDerivedCategories,bernardi-tirabassi,borisov-hua,borisov-orlov-equivariant,borisov-wang,costa-miro-roig04,costa-miro-roig10,dlm,Jerby1,Jerby2,Jerby3,kawamataI,kawamataII,lason-michalek,ohkawa2013frobenius,PN,sanchez2023derived,Uehara},
-\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening of the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{kawamataI}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Corollary~\ref{cor:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks, namely the line bundles in the Beilinson collection, the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve compelxes of sheaves.
+~\cites{ABK+20,
+BFK19,BDL+20,BIL+26,BDM22,BT09,BH09,BO19,BW21,CM04,CM10,DLM09,Jerby15,Jerby17,Jerby20,Kawamata06,Kawamata13,LM11,OU13,PrabhuNaik17,Sanchez23,Uehara14},
+\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening of the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{Kawamata06}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Corollary~\ref{cor:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks, namely the line bundles in the Beilinson collection, the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve compelxes of sheaves.
 
 Over the remaining lectures, we will develop and prove an alternative
 realization of King’s Conjecture.  (The king is dead, long live the king!)
@@ -89,7 +89,7 @@ Beilinson resolution of diagonal & HHL resolution of diagonal\\
 Theorem~\ref{thm:beilinsonFSEC} (King's Conjecture for $\PP^n$)    &  {\bf Revised King's Conjecture}
 \end{tabular}
 \end{center}
-Note that the Bondal-Thomsen collection and the HHL resolution depend only on the Cox ring.  This suggests that the ``right'' analogue of Theorem~\ref{thm:BeilinsonFSEC}, i.e. the ``right'' version of King's Conjecture, should perhaps depend only on the Cox ring. That is, a revised King's Conjecture should involve a category that combines the sheaves from all of the toric varieties with the same Cox ring.
+Note that the Bondal-Thomsen collection and the HHL resolution depend only on the Cox ring.  This suggests that the ``right'' analogue of Theorem~\ref{thm:beilinsonFSEC}, i.e. the ``right'' version of King's Conjecture, should perhaps depend only on the Cox ring. That is, a revised King's Conjecture should involve a category that combines the sheaves from all of the toric varieties with the same Cox ring.
 
 This only raises another question:  if $X$ and $X'$ are two toric varieties with the same Cox ring, how do ``combine'' their derived categories?
 
@@ -109,10 +109,10 @@ This should be viewed as a vague statement for the moment, as we have not define
     There exists a smooth, toric stack $\widetilde{\sX}$ that admits proper birational maps $\pi_i\colon \widetilde{\sX} \to \sX_i$ for all $i=1,2,\dots,r$.
 \end{lemma}
 \begin{proof}
-    At the level of varieties, this would be very standard as one could just take a simplicial refinement of the fans of each of the $X_i$.  Extending that proof to toric stacks requires working with additional notation, but there are very few new ideas and so we omit the proof.  See \cite{king}*{\S 3.1} for details.
+    At the level of varieties, this would be very standard as one could just take a simplicial refinement of the fans of each of the $X_i$.  Extending that proof to toric stacks requires working with additional notation, but there are very few new ideas and so we omit the proof.  See \cite{BBB+24}*{\S 3.1} for details.
 \end{proof}
 
-A standard fact \cite{king}*{Lemma 3.7} is that the (derived) pullback $\pi_i^*$ from $D(\sX_i)$ to $D(\widetilde{\sX})$ is fully faithful.\footnote{Because we are focused on derived categories, every time we write $\pi_i^*$ we should really be using the derived functor $L\pi_i^*$.  However, since we focus almost entirely on the pullbacks of line bundles, $L\pi_i^*$ and $\pi_i^*$ will coincide.  We will thus abuse notation and write $\pi_i^*$ throughout.}  Thus, $\pi_i^*$ embeds each derived category of $\sX_i$ into the derived category of $\widetilde{\sX}$.
+A standard fact \cite{BBB+24}*{Lemma 3.7} is that the (derived) pullback $\pi_i^*$ from $D(\sX_i)$ to $D(\widetilde{\sX})$ is fully faithful.\footnote{Because we are focused on derived categories, every time we write $\pi_i^*$ we should really be using the derived functor $L\pi_i^*$.  However, since we focus almost entirely on the pullbacks of line bundles, $L\pi_i^*$ and $\pi_i^*$ will coincide.  We will thus abuse notation and write $\pi_i^*$ throughout.}  Thus, $\pi_i^*$ embeds each derived category of $\sX_i$ into the derived category of $\widetilde{\sX}$.
 This provides a way to ``combine'' $D(\sX_1), D(\sX_2), \cdots, D(\sX_r)$: we can take the span of these categories inside of the ambient category $D(\widetilde{\sX})$.
 
 \begin{defn}\label{defn:CoxCategory}
@@ -120,7 +120,7 @@ We define the Cox category of $S$, denoted $D_{\Cox}(S)$ as follows.  Since each
 We define $D_{\Cox}(S)$ as the subcategory of~$D(\widetilde{\sX})$ generated\footnote{By ``generated'' we mean the smallest triangulated category containing these objects and that is closed under taking summands.} by $\pi_1^*D(\sX_1), \pi_2^* D(\sX_2), \dots, \pi_r^* D(\sX_r)$. In other words, $D_{\Cox}(S)$ is like the category generated by (the pullbacks of) all sheaves from all of the $\sX_i$.
 \end{defn}
 It is easy to check that the definition of $D_{\Cox}(S)$
-does not depend upon the choice of $\widetilde{\sX}$ from Lemma~\ref{lem:TildeX}; see \cite{king}*{Corollary 3.9}. But these copies overlap.
+does not depend upon the choice of $\widetilde{\sX}$ from Lemma~\ref{lem:TildeX}; see \cite{BBB+24}*{Corollary 3.9}. But these copies overlap.
 \begin{example}
    For any $1\leq i \leq r$ consider the structure sheaf $\cO_{\sX_i}$.  We have $\pi_i^*\cO_{\sX_i} = \cO_{\tsX}$.  Thus $\cO_{\tsX}$ lies in the intersection of the copy of each $D(\sX_i)$.
 \end{example}
@@ -210,7 +210,7 @@ Let us continue with the metaphor that $D_{\Cox}(S)$ is like a projective variet
 % patch'' of $D_{\Cox}$, each Fourier--Mukai transform corresponds to a
 % transition function, and each $\pi_{i*}\colon D_{\Cox} \to D(\sX_i)$
 % represents restriction to the patch.
-One can also make this metaphor more precise, and totally excise the cover $\tsX$, by using the Grothendieck construction \cite{SGA1}*{\S\.VI.8}.  This gets pretty technical, and so we omit it in these notes; see \cite{king}*{Appendix A} for details.
+One can also make this metaphor more precise, and totally excise the cover $\tsX$, by using the Grothendieck construction \cite{SGA1}*{\S\.VI.8}.  This gets pretty technical, and so we omit it in these notes; see \cite{BBB+24}*{Appendix A} for details.
 % birational-gluing-via-integral-transforms
 % perspective precise (see \Cref{thm:cox_groth}) by providing an equivalent
 % characterization of $D_{\Cox}$ as constructed from a lax functor whose 1-skeleton is the data of
@@ -345,7 +345,7 @@ Let $\widetilde{\X}$ be as in the definition of the Cox category, and let $\pi_i
 \end{prop}
 
 \begin{proof}[Sketch of proof]
-Let $t_i \co \Gamma_{ij} \to \X_i$ and $t_j \co \Gamma_{ij} \to \X_j$ be the canonical maps. The first observation is that $\Phi_{ij}$ is given by $Rt_{j*} t_i^*$; this follows from the projection formula, in a manner similar to the proof of Proposition~\ref{prop:diagonalidentity}. Now, the claim is that there exists a map $\pi \co \widetilde{X} \to \Gamma_{ij}$ such that $\pi^*$ is fully faithful, $t_i\pi = \pi_i$, and $t_j \pi = \pi_j$. Indeed, the fully faithfulness of $\pi^*$ is equivalent to the unit of adjunction $\id \to R\pi_*\pi^*$ being an isomorphism, and so we have $\Phi_{ij} = Rt_{j*} t_i^* = R(t_{j} \circ \pi)_*(t_i\pi)^* = R\pi_{j*} \pi_i^*$. The map $\pi$ may be induced by a refinement of stacky fans, and its fully faithfulness can be deduced from \cite{king}*{Lemma 3.7}; we omit the details. 
+Let $t_i \co \Gamma_{ij} \to \X_i$ and $t_j \co \Gamma_{ij} \to \X_j$ be the canonical maps. The first observation is that $\Phi_{ij}$ is given by $Rt_{j*} t_i^*$; this follows from the projection formula, in a manner similar to the proof of Proposition~\ref{prop:diagonalidentity}. Now, the claim is that there exists a map $\pi \co \widetilde{X} \to \Gamma_{ij}$ such that $\pi^*$ is fully faithful, $t_i\pi = \pi_i$, and $t_j \pi = \pi_j$. Indeed, the fully faithfulness of $\pi^*$ is equivalent to the unit of adjunction $\id \to R\pi_*\pi^*$ being an isomorphism, and so we have $\Phi_{ij} = Rt_{j*} t_i^* = R(t_{j} \circ \pi)_*(t_i\pi)^* = R\pi_{j*} \pi_i^*$. The map $\pi$ may be induced by a refinement of stacky fans, and its fully faithfulness can be deduced from \cite{BBB+24}*{Lemma 3.7}; we omit the details. 
 \end{proof}
 
 \begin{example}
@@ -353,7 +353,7 @@ Let $t_i \co \Gamma_{ij} \to \X_i$ and $t_j \co \Gamma_{ij} \to \X_j$ be the can
     \[
     \cO_{\sX_i\times\sX_j} \otimes_{\cO_{\sX_i\times \sX_j}}\cO_{\Gamma_{ij}} = \cO_{\Gamma_{ij}}.
     \]
-We thus have that $\Phi_{ij}(\cO_{\sX_j})$ is the pushforward of $\cO_{\Gamma_{ij}}$ under the natural birational morphism $\Gamma_{ij}\to \sX_j$.  We then have $R(q|_{\Gamma_{ij}})_* \cO_{\Gamma_{ij}} = \cO_{\sX_j}$ by \cite{king}*{Proposition 3.5}.
+We thus have that $\Phi_{ij}(\cO_{\sX_j})$ is the pushforward of $\cO_{\Gamma_{ij}}$ under the natural birational morphism $\Gamma_{ij}\to \sX_j$.  We then have $R(q|_{\Gamma_{ij}})_* \cO_{\Gamma_{ij}} = \cO_{\sX_j}$ by \cite{BBB+24}*{Proposition 3.5}.
 \end{example}
 
 \begin{example}

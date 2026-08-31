@@ -1,4 +1,36 @@
+TODO: where should this go? Titled ``Secondary fan example''
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % Define the points for easier reference
+    \coordinate (A) at (1,0);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (0,1);
+    \coordinate (D) at (0,-1);
+    \coordinate (E) at (0,0);
+    \coordinate (F) at (1.2,0.2);
+    \coordinate (G) at (2.2,0.2);
+    \coordinate (H) at (0.2,1.2);
+    \coordinate (I) at (0.2,-.8);
+    \coordinate (J) at (0.2,0.2);
+
+    % Draw all line segments connecting the points
+    \draw (A) -- (B) -- (C) -- cycle;
+    \draw (A) -- (D) -- (C);
+    \draw (B) -- (D); 
+    \draw (A) -- (E);
+
+    % Plot the points (as small black circles)
+    \fill (A) circle (2pt);
+    \fill (B) circle (2pt);
+    \fill (C) circle (2pt);
+    \fill (D) circle (2pt);
+    \draw (.3,.3) node {$A$};
+    \draw (.3,-.3) node {$B$};
+\end{tikzpicture}
+\end{center}
+
 \subsection{TODO: July 23rd}
+
 \begin{itemize}
 \item Daniel and Michael: Sections 1-5.
 
@@ -6,7 +38,7 @@
 \item David:** Says `$M_L$` is poor notation because `M` already has a central role.\michael{Agree with this too. I will leave it to David/Jay to make this edit.}
 \item David: Sections 6-9. -- reference needed before 8.5 ( I left the \david{where?} macro in the tex file.) \michael{Added.}
 In section 6 just before Demazure Vanishing michael asked:
-%\michael{This is (close to) \cite{king}*{Lemma 2.20}, which isn't that easy, right?}
+%\michael{This is (close to) \cite{BBB+24}*{Lemma 2.20}, which isn't that easy, right?}
 \michael{that comment of mine can be ignored.}
 
 \item Michael: Section 12-16.
