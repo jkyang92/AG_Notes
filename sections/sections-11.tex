@@ -170,9 +170,11 @@ By Proposition~\ref{prop:eq-Picard-gp} and \cite[Converse~1.13]{Mumford1965}, th
 According to GIT, in order to construct good (categorical) quotients we must first remove the unstable locus in $\Spec S$ corresponding to $d$.  The quotient of the remaining semistable locus is then isomorphic to
 \[\Proj\bigoplus_{i\in\NN}\Gamma(\Spec S,\cL_d^{\otimes i})^G\]
 where $\cL_d$ is the $G$-linearized line bundle of $d\in\Cl(S)$ and multiplication in the ring is given by tensor product of sections (see for instance \cite[Proposition~8.1]{Dolgachev2003}).  In the toric case these invariant sections are elements of $S$.
+
 \begin{lemma}\label{lem:eq-sections}
   The line bundle $\cL_d$ on $\Spec S$ from Proposition~\ref{prop:eq-Picard-gp} for $d\in\Cl(S)$ has $G$-invariant global sections $\Gamma(\Spec S,\cL_d)^G\cong S_d$.
 \end{lemma}
+
 \begin{proof}
   The underlying line bundle of $\cL_d$ is trivial so $\Gamma(\Spec S,\cL_d)=S$.  As in the proof of Proposition~\ref{prop:eq-Picard-gp}, an element $g$ acts on $\cL_d$ via multiplication by the image of $g$ under the character $\chi$ corresponding to $d$.  The $\ZZ^n$ in \eqref{eq:M-SES} is the character group of the torus and $S=k[\ZZ^n]$, so elements of the torus also act on monomials of $S$ via the characters given by their exponents.  Thus~$g$ acts on a monomial $x^\alpha$ with $\alpha\in\ZZ^n$ by $\chi(g^{-1})$ where $\chi$ is the character of $\deg\alpha$, so this monomial will be an invariant exactly when $\deg\alpha=d$.
 \end{proof}
@@ -425,7 +427,7 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
   \end{enumerate}
 \end{lemma}
 
-We saw in an earlier lecture that if $X_d$ satisfies the conditions of Lemma~\ref{lem:mov-equiv}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf on $X_d$.  To emphasize the dependence on $X_d$, we write $M|_{X_d}$ for this sheaf.  A minor modification of the associated sheaf construction works for the other $X_d$s as well.
+We saw in Section~\ref{sec:module-sheaf} that if $X_d$ satisfies the conditions of Lemma~\ref{lem:mov-equiv}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf on $X_d$.  To emphasize the dependence on $X_d$, we write $M|_{X_d}$ for this sheaf.  A minor modification of the associated sheaf construction works for the other $X_d$s as well.
 
 \begin{prop}
   Suppose $d$ is in the interior of a chamber of the secondary fan of $S$ and $\cE$ is a quasi-coherent sheaf on $X_d$.
@@ -436,7 +438,9 @@ We saw in an earlier lecture that if $X_d$ satisfies the conditions of Lemma~\re
 \end{prop}
 
 \begin{proof}
-  \lauren{want to add this because I don't think the construction is written anywhere}
+  This is a generalization of Proposition~\ref{prop:sheaf-module} without assuming the circumstances of Lemma~\ref{lem:mov-equiv}.  See also \cite[Theorem 3.2]{Cox95} and \cite[Corollary~3.6]{BEF26}.
+
+  Write $\Gamma(\Sigma,F)$ for the chamber containing $d$.  Generators of $\idealof(\Gamma(\Sigma,F))$ have the form $x_{\hat\sigma}$ for $\sigma$ a cone of $\Sigma$.  The sheaf $M|_{X_d}$ is defined by the module \lauren{..} on the open set $U_f$ of $X_d$ where $f$ doesn't vanish.
 \end{proof}
 
 \subsection{Summary}
@@ -447,7 +451,7 @@ To finish, we collect statements from previous subsections for reference.
   \begin{enumerate}
     \item  The degree $d$ gives a $G$-linearized line bundle $\cL_d$ on $\Spec S$.  The unstable locus of $\cL_d$ is $V(B)$ and the geometric quotient $X_d=\Proj S_{\NN d}$ is a simplicial projective toric variety.
     \item  The simplicial fan $\Sigma$ is the normal fan of $P_\alpha$ and defines $X_d$.  Its rays are a subset of $\nu_1,\ldots,\nu_n$.  For $i\notin F$ the hyperplane corresponding to $\nu_i$ cuts out a facet of $P_\alpha$ and for $i\in F$ it does not intersect $P_\alpha$.
-    \item  The group $\Cl(X_d)$ is a quotient of $\Cl(S)$, and they are equal under the conditions from Lemma~\ref{lem:mov-equiv}, in which case $\Gamma=\Nef(X_d)$.
+    \item  The group $|[\Cl(X_d)$ is a quotient of $\Cl(S)$, and they are equal under the conditions from Lemma~\ref{lem:mov-equiv}, in which case $\Gamma=\Nef(X_d)$.
   \end{enumerate}
 \end{thm}
 
