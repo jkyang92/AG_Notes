@@ -392,12 +392,12 @@ In either of the constructions of $X_d$, the resulting torus-invariant divisor m
 
 \begin{proof}
   Let $\Sigma$ be the fan of $X_d$.  By Definition~\ref{def:GKZ-cones} and Theorem~\ref{thm:GIT-polytope} the rays in $\Sigma(1)$ correspond to a subset of the vectors $\{\nu_1,\ldots,\nu_n\}$, giving an injection $\ZZ^{\Sigma(1)}\to\ZZ^n$ which commutes with the maps of rays:
-  \[\begin{tikzcd}
+  \[\begin{tikzcd}[column sep=small, row sep=small]
     N & \ZZ^n\arrow[l]\\
     N\arrow[u] & \ZZ^{\Sigma(1)}.\arrow[l]\arrow[u]
   \end{tikzcd}\]
   Taking $\Hom_\ZZ(-,\ZZ)$ and using \eqref{eqn:SEScl4} we get
-  \[\begin{tikzcd}
+  \[\begin{tikzcd}[column sep=small, row sep=small]
     0\arrow[r] & M\arrow[r]\arrow[d] & \ZZ^n\arrow[r]\arrow[d] & \Cl(S)\arrow[r] & 0\\
     0\arrow[r] & M\arrow[r] & \ZZ^{\Sigma(1)}\arrow[r] & \Cl(X_d)\arrow[r] & 0
   \end{tikzcd}\]
@@ -430,17 +430,15 @@ Similarly, the Cox ring of such an $X_d$ is not actually $S$, as a polynomial ri
 We saw in Section~\ref{sec:module-sheaf} that if $X_d$ satisfies the conditions of Lemma~\ref{lem:mov-equiv}, a (finitely generated) $\Cl(S)$-graded $S$-module $M$ induces a (coherent) sheaf on $X_d$.  To emphasize the dependence on $X_d$, we write $M|_{X_d}$ for this sheaf.  A minor modification of the associated sheaf construction works for the other $X_d$s as well.
 
 \begin{prop}
-  Suppose $d$ is in the interior of a chamber of the secondary fan of $S$ and $\cE$ is a quasi-coherent sheaf on $X_d$.
-  \begin{enumerate}
-    \item There exists a graded $S$-module $M$ such that $M|_{X_d}\cong \cE$.
-    \item  If $\cE$ is coherent then $M$ can be chosen to be a finitely generated $S$-module.
-  \end{enumerate}
+  Suppose $d$ is in the interior of a chamber of the secondary fan of $S$ and $\cE$ is a quasi-coherent sheaf on $X_d$.  Then there exists a $\Cl(S)$-graded $S$-module $M$ such that $M|_{X_d}\cong \cE$.
 \end{prop}
 
 \begin{proof}
-  This is a generalization of Proposition~\ref{prop:sheaf-module} without assuming the circumstances of Lemma~\ref{lem:mov-equiv}.  See also \cite[Theorem 3.2]{Cox95} and \cite[Corollary~3.6]{BEF26}.
+  This generalizes Proposition~\ref{prop:sheaf-module} without assuming the circumstances of Lemma~\ref{lem:mov-equiv}.  We only sketch the additional argument.  See also \cite[Theorem 3.2]{Cox95} and \cite[Corollary~3.6]{BEF26}.
 
-  Write $\Gamma(\Sigma,F)$ for the chamber containing $d$.  Generators of $\idealof(\Gamma(\Sigma,F))$ have the form $x_{\hat\sigma}$ for $\sigma$ a cone of $\Sigma$.  The sheaf $M|_{X_d}$ is defined by the module \lauren{..} on the open set $U_f$ of $X_d$ where $f$ doesn't vanish.
+  Write $\Gamma=\Gamma(\Sigma,F)$ for the chamber containing $d$.  Generators $x^\alpha$ of $\idealof(\Gamma)$ have the form $\prod_{\nu_i\notin\sigma}x_i$ for $\sigma$ a cone of $\Sigma$ by Proposition~\ref{prop:chamber-of-ideal}.  The sheaf $M|_{X_d}$ is defined by the degree 0 part of the localized module $M_{x^\alpha}$ on the open set $X_d$ where $x^\alpha$ doesn't vanish.  Recall that $x_i$ divides all generators of $\idealof(\Gamma)$ when $i\in F$, so that $x_i$ and $x_i^{-1}$ act isomorphically on $M_{x^\alpha}$.
+
+  Write $\varphi\colon\Cl(S)\to\Cl(X_d)$ for the projection from Lemma~\ref{lem:cl-restrict}.  Given a quasi-coherent sheaf $\cF$ on $X_d$, \cite[Theorem~3.2]{Cox95} constructs a $\Cl(X_d)$-graded module $N$ over $k[x_i\mid i\notin F]$ such that $\widetilde M=\cF$ in the ordinary sense.  To extend $N$ to $S$ and $\Cl(S)$ define $M_d=N_{\varphi(d)}$ for each $d\in\Cl(S)$ and let $x_i$ act on $M$ by the identity on $N$ for all $i\in F$.
 \end{proof}
 
 \subsection{Summary}
