@@ -188,7 +188,9 @@ Write $S_{\NN d}$ for the subring of $S$ consisting of polynomials with degrees 
 We will see more concrete constructions of the spaces $X_d$ in the following subsections, along with descriptions of the unstable loci that were removed by the choice of line bundle $\cL_d$ in order to produce a good quotient.  In particular, it is not obvious from the description in Corollary~\ref{cor:quotient-Proj} that $X_d$ is a toric variety.  The secondary fan will additionally tell us which degrees $d$ give the same unstable locus and thus the same quotient.
 
 \subsection{Polytopes and the combinatorial secondary fan}\label{sec:polytope-fan}
-The toric structure of the quotients~$X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OP91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list, up to translation.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.  Write $\deg_\QQ$ for the map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$ induced by $\deg$.
+The toric structure of the quotients~$X_d$ connects their GIT problem to the combinatorial literature about the secondary fan.  (See, for instance, \cite{OP91}.)  In this context the secondary fan parametrizes polytopes whose normal vectors lie in a fixed list, up to translation.  It will live in $\Cl(S)\otimes_\ZZ\QQ$.
+
+Write $\deg_\QQ$ for the map $\QQ^n\to\Cl(S)\otimes_\ZZ\QQ$ induced by $\deg$.  Note that \cite[Proposition 4.2.6]{CLS2011} implies that no variable $x_i$ has $\deg_\QQ x_i=0$ even when $\Cl(S)$ contains torsion.
 
 \begin{rem}\label{rem:triangulations}
   While Notation~\ref{not:multigrading} sets up the case where $\deg$ is a positive grading and the quotients $X_d$ are projective, there is also a secondary fan in the case where the vectors $\nu_i$ lie in an affine hyperplane, and thus the rays span a strongly convex cone.  Instead of polytopes the chambers in the fan give \defi{triangulations} on the hyperplane.  This ``GKZ fan'' is explained in \cite[Chapter~7]{GKZ1994}.
@@ -292,7 +294,7 @@ Rays of the normal fan correspond to facets of the polytope.  In particular, the
 \begin{prop}[\cite{OP91}*{Corollary 3.6}, \cite{CLS2011}*{Theorem 14.4.7}]\label{prop:fan-structure}
   The collection of all cones $\Gamma(\Sigma,F)$ forms a rational polyhedral fan in $\Cl(S)\otimes_\ZZ\QQ$, known as the \defi{secondary fan} of the ring $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$.
 
-  The support of the secondary fan is the cone spanned by the $\deg x_i$, which in the setup of Notation~\ref{not:multigrading} is strongly convex.  We call maximal (here full dimensional) cones in the fan \defi{chambers}.
+  The support of the secondary fan is the cone spanned by the $\deg_\QQ x_i$, which in the setup of Notation~\ref{not:multigrading} is strongly convex.  We call maximal (here full dimensional) cones in the fan \defi{chambers}.
 \end{prop}
 
 \begin{example}\label{ex:secondary-blowup-2}
@@ -308,7 +310,7 @@ Rays of the normal fan correspond to facets of the polytope.  In particular, the
 The toric variety $X_d$ discussed in Section~\ref{sec:variation-of-GIT} is determined by the polytope $P_\alpha$ with $\deg\alpha=d$, meaning that it is the toric variety of the normal fan of $P_\alpha$.  Hence the secondary fan parametrizes the toric structures of the spaces $X_d$ as the choice of $d$ varies.
 
 \begin{thm}[\cite{CLS2011}*{Theorem 14.2.13(b)}]\label{thm:GIT-polytope}
-  Suppose that $\alpha\in\ZZ^n$ and $d=\deg\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope~$P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj}.
+  Suppose that $\alpha\in\ZZ^n$ and $\deg_\QQ\alpha$ is in the interior of a chamber of the secondary fan of $S$.  The toric variety of the polytope~$P_\alpha$ is isomorphic to the quotient $X_d$ of $\Spec S$ by $G$ as given in Corollary~\ref{cor:quotient-Proj} for $d=\deg\alpha$.
 \end{thm}
 
 The toric variety $X_d$ is constant within the interior of each cone of the secondary fan.  Varieties from distinct chambers will have distinct normal fans, though they may be isomorphic via a nontrivial map of lattices (as in Example~\ref{ex:secondary-blowup-2}, where the Hirzebruch surface $\cH_1$ appears twice).
@@ -330,7 +332,7 @@ The toric variety $X_d$ is constant within the interior of each cone of the seco
 We now describe the secondary fan more concretely in terms of the function $\deg\colon\ZZ^n\to\Cl(S)$.  Its cones correspond to possible irrelevant ideals for the varieties $X_d$, and the list of possible ideals can be computed without any knowledge of GIT or generalized fans and support functions.
 
 \begin{thm}\label{thm:ccrefinement}
-  The secondary fan of $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg x_i$: it refines all fans with this list of rays, and it coarsens all other common refinements.
+  The secondary fan of $S$ graded via $\deg\colon\ZZ^n\to\Cl(S)$ is the coarsest common refinement of the vectors $\deg_\QQ x_i$: it refines all fans with this list of rays, and it coarsens all other common refinements.
 \end{thm}
 
 We postpone the proof of Theorem~\ref{thm:ccrefinement} until the end of the section.  The idea is that the chamber of the secondary fan containing a degree $d\in\Cl(S)$ is fully determined by the subsets of variables whose degrees span a cone containing $d$.
@@ -361,7 +363,7 @@ Note that $\sigma$ may contain $\nu_i$ for $i\in F$ but these are not rays of $\
 
   Immediately from definitions we have $\Gamma\subseteq\coneof(\idealof(\Gamma))$.  By \cite[Proposition 15.2.1(c)]{CLS2011} the cone $\Gamma$ is the intersection of the spans of monomials $\prod_{\nu_i\notin\sigma(1)}x_i$.  This will imply $\Gamma=\coneof(\idealof(\Gamma))$ once we show that all minimal generators of $\idealof(\Gamma)$ have the correct form, since multiplying by additional variables only increases the span of a monomial.
 
-  Let $x^\alpha$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the subset of nonzero $\deg x_i^{\alpha_i}$ is linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision (e.g.~by \cite[Corollary~3.8]{OP91}), and by the discussion before \cite[Proposition 15.2.10]{CLS2011} the chamber $\Gamma$ is contained in a single cone.  Since $x^\alpha$ is a minimal generator of $\idealof(\Gamma)$ no proper factor can span $\Gamma$, so~$x^\alpha$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS2011}.  %\lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
+  Let $x^\alpha$ be a minimal generator of $\idealof(\Gamma)$.  We claim that the subset of nonzero $\deg_\QQ x_i^{\alpha_i}$ is linearly independent.  They span a strongly convex cone by the assumptions of Notation~\ref{not:multigrading} (see Lemma~\ref{lem:positive-gradings}).  This cone has a simplicial subdivision (e.g.~by \cite[Corollary~3.8]{OP91}), and by the discussion before \cite[Proposition 15.2.10]{CLS2011} the chamber $\Gamma$ is contained in a single cone.  Since $x^\alpha$ is a minimal generator of $\idealof(\Gamma)$ no proper factor can span $\Gamma$, so~$x^\alpha$ itself spans a simplicial cone.  The existence of $\sigma$ then follows from \cite[Proposition 15.2.1(b)]{CLS2011}.  %\lauren{can this be simplified?  maybe to avoid 15.2.1 altogether?}
 \end{proof}
 
 As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal should be removed to form the quotient $X_d$.  In the language of Section~\ref{sec:variation-of-GIT}, it defines the unstable locus.  Additionally, when $d$ is in the interior of a chamber the stable and semistable loci agree, meaning the quotient is \emph{geometric}.
@@ -377,7 +379,7 @@ As in Theorem~\ref{thm:coxquotient}, the vanishing locus of the irrelevant ideal
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:ccrefinement}]
-  Fix $d$ in the interior of a chamber $\Gamma$ of the secondary fan.  We must show that $\Gamma$ is the intersection over all fans $\Delta$ on the rays $\deg x_i$ of the cone in $\Delta$ which contains~$d$.  By the proof of Proposition~\ref{prop:chamber-of-ideal} it is the intersection of simplicial cones on the rays $\deg x_i$.  Thus we must show that these intersections are the same.
+  Fix $d$ in the interior of a chamber $\Gamma$ of the secondary fan.  We must show that $\Gamma$ is the intersection over all fans $\Delta$ on the rays $\deg_\QQ x_i$ of the cone in $\Delta$ which contains~$d$.  By the proof of Proposition~\ref{prop:chamber-of-ideal} it is the intersection of simplicial cones on the rays $\deg_QQ x_i$.  Thus we must show that these intersections are the same.
 
   As in the proof of Proposition~\ref{prop:chamber-of-ideal}, a cone containing $d$ from an arbitrary fan $\Delta$ has a simplicial cone on a subset of its rays that also contains $d$.  Conversely, an arbitrary simplicial cone can be extended to a fan $\Delta$ on the remaining rays by a variant of the construction from \cite[Lemma 15.2.10]{CLS2011} (altered for the case where $\Delta$ is not complete).
 \end{proof}
@@ -436,7 +438,7 @@ We saw in Section~\ref{sec:module-sheaf} that if $X_d$ satisfies the conditions 
 \begin{proof}
   This generalizes Proposition~\ref{prop:sheaf-module} without assuming the circumstances of Lemma~\ref{lem:mov-equiv}.  We only sketch the additional argument.  See also \cite[Theorem 3.2]{Cox95} and \cite[Corollary~3.6]{BEF26}.
 
-  Write $\Gamma=\Gamma(\Sigma,F)$ for the chamber containing $d$.  Generators $x^\alpha$ of $\idealof(\Gamma)$ have the form $\prod_{\nu_i\notin\sigma}x_i$ for $\sigma$ a cone of $\Sigma$ by Proposition~\ref{prop:chamber-of-ideal}.  The sheaf $M|_{X_d}$ is defined by the degree 0 part of the localized module $M_{x^\alpha}$ on the open set $X_d$ where $x^\alpha$ doesn't vanish.  Recall that $x_i$ divides all generators of $\idealof(\Gamma)$ when $i\in F$, so that $x_i$ and $x_i^{-1}$ act isomorphically on $M_{x^\alpha}$.
+  Write $\Gamma=\Gamma(\Sigma,F)$ for the chamber containing $d$.  Generators $x^\alpha$ of $\idealof(\Gamma)$ have the form $\prod_{\nu_i\notin\sigma}x_i$ for $\sigma$ a cone of $\Sigma$ by Proposition~\ref{prop:chamber-of-ideal}.  The sheaf $M|_{X_d}$ is defined by the degree 0 part of the localized module $M_{x^\alpha}$ on the open set $X_d$ where $x^\alpha$ doesn't vanish.  Recall that $x_i$ divides all generators of $\idealof(\Gamma)$ when $i\in F$, so that $x_i$ and $x_i^{-1}$ act isomorphically on $M_{x^\alpha}$ for each $x^\alpha$.
 
   Write $\varphi\colon\Cl(S)\to\Cl(X_d)$ for the projection from Lemma~\ref{lem:cl-restrict}.  Given a quasi-coherent sheaf $\cF$ on $X_d$, \cite[Theorem~3.2]{Cox95} constructs a $\Cl(X_d)$-graded module $N$ over $k[x_i\mid i\notin F]$ such that $\widetilde M=\cF$ in the ordinary sense.  To extend $N$ to $S$ and $\Cl(S)$ define $M_d=N_{\varphi(d)}$ for each $d\in\Cl(S)$ and let $x_i$ act on $M$ by the identity on $N$ for all $i\in F$.
 \end{proof}
@@ -445,7 +447,7 @@ We saw in Section~\ref{sec:module-sheaf} that if $X_d$ satisfies the conditions 
 To finish, we collect statements from previous subsections for reference.
 
 \begin{thm}\label{thm:main-secondary}
-  Let $S$ and $\deg$ be as in Notation~\ref{not:multigrading}.  The secondary fan of $S$ is the coarsest common refinement of the vectors $\deg x_i$.  Its cones are indexed by fans $\Sigma$ and indices $F\subseteq\{1,\ldots,n\}$.  Suppose $d\in\Cl(S)$ lies in the interior of a chamber $\Gamma=\Gamma(\Sigma,F)$ and $B=\idealof(\Gamma)$.  Choose $\alpha\in\ZZ^n$ with $\deg\alpha=d$.
+  Let $S$ and $\deg$ be as in Notation~\ref{not:multigrading}.  The secondary fan of $S$ is the coarsest common refinement of the vectors $\deg_QQ x_i$.  Its cones are indexed by fans $\Sigma$ and indices $F\subseteq\{1,\ldots,n\}$.  Suppose $d\in\Cl(S)$ lies in the interior of a chamber $\Gamma=\Gamma(\Sigma,F)$ and $B=\idealof(\Gamma)$.  Choose $\alpha\in\ZZ^n$ with $\deg\alpha=d$.
   \begin{enumerate}
     \item  The degree $d$ gives a $G$-linearized line bundle $\cL_d$ on $\Spec S$.  The unstable locus of $\cL_d$ is $V(B)$ and the geometric quotient $X_d=\Proj S_{\NN d}$ is a simplicial projective toric variety.
     \item  The simplicial fan $\Sigma$ is the normal fan of $P_\alpha$ and defines $X_d$.  Its rays are a subset of $\nu_1,\ldots,\nu_n$.  For $i\notin F$ the hyperplane corresponding to $\nu_i$ cuts out a facet of $P_\alpha$ and for $i\in F$ it does not intersect $P_\alpha$.
