@@ -20,21 +20,21 @@ R(M) = \left[\cdots \xla{\del_R} E^*(-i) \otimes_\k M_{i} \xla{\del_R} E^*(-i + 
 where $E^*(-i) \otimes_\k M_{i}$ is in cohomological degree $i$. Moreover, we saw that we get an induced equivalence
 \begin{equation}
 \label{eqn:geobgg}
-\overline{R} \co D^b(\PP^n) \xra{\simeq} D^{\on{sing}}(E) \ce D^b(E) / \Perf(E),
+\overline{R} \co D^b(\PP^n) \xra{\simeq} D_{sg}(E) \ce D^b(E) / \Perf(E),
 \end{equation}
-where $D^{\on{sing}}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect $E$-complexes. We recall that the objects in $D^{\on{sing}}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D^{\on{sing}}(E)$, which only affects morphisms. Since the morphisms in $D^{\on{sing}}(E)$ are difficult to understand concretely, this renders the projective geometry in $D^{\on{sing}}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS03}, and the goal of this lecture is to explain this theory.
+where $D_{sg}(E)$ denotes the singularity category of $E$, and $\Perf(E)$ is the category of perfect $E$-complexes. We recall that the objects in $D_{sg}(E)$ are the same as those in $D^b(E)$, but the morphisms are obtained by inverting all morphisms in $D^b(E)$ whose mapping cone lies in $\Perf(E)$. The equivalence~\eqref{eqn:geobgg} gives a ``geometric" version of the BGG correspondence, though an unsatisfying one: the passage from $D^b(S)$ to $D^b(\PP^n)$ translates to the passage from $D^b(E)$ to $D_{sg}(E)$, which only affects morphisms. Since the morphisms in $D_{sg}(E)$ are difficult to understand concretely, this renders the projective geometry in $D_{sg}(E)$ effectively invisible. This problem is solved by Eisenbud-Fl\o ystad-Schreyer's theory of Tate resolutions~\cite{EFS03}, and the goal of this lecture is to explain this theory.
 
-Conceptually, we need a way to get our hands on the morphisms in $D^{\on{sing}}(E)$. There is a classical method for making the morphisms in a derived category explicit, namely by replacing it with an appropriate homotopy category. For instance, $D^b(E)$ is equivalent to the homotopy category $K^-(E)$ of complexes with finitely generated total cohomology whose terms vanish in small cohomological degrees. In the case of an exterior algebra, this equivalence may be given by taking the $\k$-dual of a minimal free resolution\footnote{It makes sense to take a (minimal) free resolution of any complex of finitely generated $E$-modules with bounded homology~\cite{Roberts1998a}*{Proposition 4.4.1}.}. There is a similar result for the singularity category, due to Buchweitz~\cite{Buchweitz2021}*{Theorem 4.4.1}, and this is the added ingredient we need. Specifically: there is an equivalence
+Conceptually, we need a way to get our hands on the morphisms in $D_{sg}(E)$. There is a classical method for making the morphisms in a derived category explicit, namely by replacing it with an appropriate homotopy category. For instance, $D^b(E)$ is equivalent to the homotopy category $K^-(E)$ of complexes with finitely generated total cohomology whose terms vanish in small cohomological degrees. In the case of an exterior algebra, this equivalence may be given by taking the $\k$-dual of a minimal free resolution\footnote{It makes sense to take a (minimal) free resolution of any complex of finitely generated $E$-modules with bounded homology~\cite{Roberts1998a}*{Proposition 4.4.1}.}. There is a similar result for the singularity category, due to Buchweitz~\cite{Buchweitz2021}*{Theorem 4.4.1}, and this is the added ingredient we need. Specifically: there is an equivalence
 \begin{equation}
 \label{eqn:buchweitz}
-B \co D^{\on{sing}}(E) \xra{\simeq} K(E),
+B \co D_{sg}(E) \xra{\simeq} K(E),
 \end{equation}
-where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. This equivalence sends an object $C$ in $D^{\on{sing}}(E)$ to the mapping cone of the canonical quasi-isomorphism $G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $C$, and $F$ is the $\k$-dual of the minimal free resolution of~$C$. We arrive at the following key commutative diagram:
+where $K(E)$ is the homotopy category of (possibly unbounded on both sides) exact complexes of finitely generated graded free $E$-modules. This equivalence sends an object $C$ in $D_{sg}(E)$ to the mapping cone of the canonical quasi-isomorphism $G \to F$, where $G$ is the minimal free resolution of the $\k$-dual of $C$, and $F$ is the $\k$-dual of the minimal free resolution of~$C$. We arrive at the following key commutative diagram:
 \begin{equation}
 \label{eqn:tatediagram}
 \xymatrix{
 D^b(S) \ar[d] \ar[r]_-{\simeq}^-{R} & D^b(E) \ar[d] \ar[r]_-{\simeq} & K^-(E) \ar[d] \\
-D^b(\PP^n) \ar[r]^-{\overline{R}}_-{\simeq} & D^{\on{sing}}(E) \ar[r]_-{\simeq}^B & K(E). \\
+D^b(\PP^n) \ar[r]^-{\overline{R}}_-{\simeq} & D_{sg}(E) \ar[r]_-{\simeq}^B & K(E). \\
 }
 \end{equation}
 The only functor here we have not yet described is the rightmost vertical one, which sends an object~$F$ to $\cone(G \xra{\simeq} F)$, where $G$ is the minimal free resolution of~$F$.

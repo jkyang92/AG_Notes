@@ -10,15 +10,14 @@
 % Briefly define the bounded derived category of a variety, and briefly explain that it is an example of a triangulated category. Define the notion of a Fourier-Mukai transform between derived categories of varieties. Explain why the Fourier-Mukai transform with kernel given by the diagonal sheaf is isomorphic to the identity functor. Discuss Beilinson's resolution of the diagonal sheaf on $\PP^n\times\PP^n$.
 
 
-\daniel{Add some intro text here.  Lots more to fill in, combe back to it.}
-A common method for studying modules (or sheaves) is to ``replace'' the module (or sheaf) by a complex of simpler objects, e.g. replacing a module by a free resolution, or a sheaf by a \v{C}ech resolution.  One of the ideas behind a derived category is to treat the free resolution and the original module as ``the same''.  That is, we want to build a framework where a resolution is equivalent to the object it resolves.
+A common method for studying modules is to ``replace'' the module by a complex of simpler objects, e.g. replacing a module by its free resolution.  A similar method applies to sheaves, where one replaces a sheaf by a line bundle resotluion, or by a \v{C}ech resolution.  One of the ideas behind a derived category is to treat the resolution and the original object as ``the same'', i.e. to have a framework where a resolution is equivalent to the object it resolves.
 
-It will turn out, moreover \dots
+%For modules over a ring, there is a fairly concrete way to do this.  Every module can be represented by a free resolution, and that resolution is unique up to homotopy.  One can thus work with the homotopy category of free complexes, and It will turn out, moreover \dots
 
-\daniel{Ideas:  free complexes mod homotopy; metaphor with basis of a vector space.}
+%\daniel{Ideas:  free complexes mod homotopy; metaphor with basis of a vector space.}
 
 
-Unless otherwise specified, $\kk$ denotes an algebraically closed field of arbitrary characteristic, and every variety or scheme is assumed to be over $\kk$. \daniel{Add other standing assumptions if we think of them.}
+Unless otherwise specified, $\kk$ denotes an algebraically closed field of arbitrary characteristic, and every variety or scheme is assumed to be over $\kk$.  We note that, throughout these notes, we provide citations to certain results--most notably those from \cite{CLS2011}--where the assumption is that $\kk$ has characteristic $0$.  Generally the characteristic zero results can  easily be extended to arbitrary characteristic, though there are a few exceptions where the extension is more subtle, e.g. when it comes to actions of finite groups.
 
 \subsection{What is a derived category?}
 Let $X$ be a variety over a field $\kk$, and let $\coh X$ denote the abelian category of coherent sheaves on $X$. The central object of these notes is the \defi{bounded derived category} $\Db(X)$.\footnote{Technical note: since we will never consider unbounded derived categories in these notes, we can write $\Db(X)$ instead of $D^b(X)$ or various other notations found in the literature.}  As noted above, the category $\Db(X)$ naturally ``contains'' all homological information carried by $\coh X$, but it turns out that $\Db(X)$ often has better properties. We briefly recall its construction and refer to \cite{Huybrechts2006} for a thorough treatment.
@@ -206,7 +205,7 @@ We should think of this as akin to writing a vector space as a direct sum of sub
     \[
     \Ext^{\ell}_X(L,L) = H^{\ell}(X,\cO_X)=0 \qquad\text{for all }\ell>0,
     \]
-    by Demazure Vanishing applied to the trivial divisor, which we will see in Theorem~\ref{thm:demazure}.
+    by Demazure Vanishing (see Theorem~\ref{thm:demazure} below) applied to the trivial divisor.
 \end{example}
 % A convenient way to visualize an exceptional collection is through its \defi{Ext table}, the $(r+1)\times(r+1)$ matrix whose $(i,j)$ entry is the Laurent polynomial
 % \[ \sum_{\ell\in\ZZ}\dim_\kk\Ext^\ell(E_i,E_j)\,T^\ell, \]
@@ -222,7 +221,7 @@ A full exceptional collection $E_0,\dots,E_r$ yields a semiorthogonal decomposit
 \end{thm}
 
 \begin{proof}[Sketch of proof]
-  We only address the first collection. We have $\Ext^\ell_{\PP^n}(\cO(i),\cO(j))=\HH^\ell(\PP^n,\cO(j-i))$. Recall the cohomology of line bundles on $\PP^n$ (see \cite[Thm.~III.5.1]{hartshorne}): $\HH^\ell(\PP^n,\cO(d))=0$ for $0<\ell<n$ and every $d$, while $\HH^0(\PP^n,\cO(d))=0$ for $d<0$ and $\HH^n(\PP^n,\cO(d))=0$ for $d>-(n+1)$. When $i\le j$ the twist $j-i$ is nonnegative, so only $\HH^0$ survives; this gives the exceptional condition. When $i>j$ the twist lies in $\{-n,\dots,-1\}$, so all cohomology vanishes; this gives the strong condition. %To see that the sequence $\Omega^n(n),\dots,\Omega^1(1),\cO$ is exceptional, Bott's formula for the cohomology of twisted differential forms on $\PP^n$ (see \cite[\S8.3]{huybrechts}) gives, for $0\le i,j\le n$,
+  We only address the first collection. We have $\Ext^\ell_{\PP^n}(\cO(i),\cO(j))=\HH^\ell(\PP^n,\cO(j-i))$. Recall the cohomology of line bundles on $\PP^n$: $\HH^\ell(\PP^n,\cO(d))=0$ for $0<\ell<n$ and every $d$, while $\HH^0(\PP^n,\cO(d))=0$ for $d<0$ and $\HH^n(\PP^n,\cO(d))=0$ for $d>-(n+1)$. When $i\le j$ the twist $j-i$ is nonnegative, so only $\HH^0$ survives; this gives the exceptional condition. When $i>j$ the twist lies in $\{-n,\dots,-1\}$, so all cohomology vanishes; this gives the strong condition. %To see that the sequence $\Omega^n(n),\dots,\Omega^1(1),\cO$ is exceptional, Bott's formula for the cohomology of twisted differential forms on $\PP^n$ (see \cite[\S8.3]{huybrechts}) gives, for $0\le i,j\le n$,
   %\[ \Ext^\ell\bigl(\cO(i),\Omega^j(j)\bigr) = \HH^\ell\bigl(\PP^n,\Omega^j(j-i)\bigr) = \begin{cases} \kk & i=j=\ell,\\ 0 & \text{otherwise.}\end{cases} \]
   %Alternatively, we can use the following two properties of exceptional collections:
   %\begin{itemize}
@@ -253,6 +252,8 @@ Let $K$ denote the homotopy category of complexes of graded $S$-modules whose te
   Corollary~\ref{cor:UniquenessAndFSEC} demonstrates what we mean about an ``elegant global description''.  Any object in the derived category of coherent sheaves on $\PP^n$ can be identified with a minimal free complex $F_\bullet$ where each $F_i$ is a direct sum of $S(-n), S(-n+1), \cdots, S$, and that identification is unique up to isomorphism.  So while $\Db(\PP^n)$ may seem like a highly technical category, the corollary shows that it is in fact equivalent to something very concrete.
 
   Theorem~\ref{thm:beilinsonFSEC} and Corollary~\ref{cor:UniquenessAndFSEC} provide a model for what we want from a global description of a derived category.  By finding an FSEC of line bundles for $\Db(\PP^n)$, we have broken $\Db(\PP^n)$ into individual pieces, the $\cO(-i)$, each of which we totally understand; this allows us to provide essentially canonical representations for any sheaf on $\PP^n$, or more generally for any object in $\Db(\PP^n)$, in terms of the very simple objects $\cO(-n), \dots, \cO$ or, for the more algebraically minded, in terms of $S(-n), \dots, S$.
+
+  A common metaphor is that finding an FSEC for a derived category is like finding a basis for a vector space.  From an FSEC, one gets essentially unique representations of all objects as in Corollary~\ref{cor:UniquenessAndFSEC}, just like how a basis provides unique representations of vectors.  The metaphor works on many levels:  bases are non-unique, and FSEC's can be as well.  Some bases are better than other: for instance, the monomials provide an especially nice basis for the vector space of degree $d$ polynomials in $n$ variables.  Similarly, an FSEC consisting of simple objects like line bundles is especially desirable.
 \end{remark}
 
 
@@ -415,9 +416,9 @@ Applying this to $\Db_\m(S)$ recovers the geometry of $\PP^n$: there is an equiv
 which is the derived-category analogue of Serre's description of coherent sheaves on $\Proj S$ as finitely generated graded $S$-modules modulo those of finite length (compare Lecture~\ref{lec:5-toric-cox}, where the analogous statement $\Db(X)\simeq \Db(S)/\Db_B(S)$ is discussed for toric $X$).
 
 On the exterior side, the analogous quotient is the \defi{singularity category}
-\[ \Dsg(E) \ce \Db(E)\,/\,\Perf(E), \]
+\[ D_{sg}(E) \ce \Db(E)\,/\,\Perf(E), \]
 in the sense of Buchweitz and Orlov \cite{Buchweitz2021,Orlov09b}; since $E$ is self-injective, $\Dsg(E)$ is equivalent to the stable module category of $E$. Combining Theorem~\ref{thm:BGG} with Proposition~\ref{prop:BGGsupport} and passing to Verdier quotients, we conclude:
-\[ \Db(\PP^n) \simeq \Db(S)/\Db_\m(S) \simeq \Db(E)/\Perf(E) = \Dsg(E). \]
+\[ \Db(\PP^n) \simeq \Db(S)/\Db_\m(S) \simeq \Db(E)/\Perf(E) = D_{sg}(E). \]
 That is, the BGG correspondence identifies the derived category of $\PP^n$ with the singularity category of the exterior algebra $E$. We will return to this equivalence in Lecture~\ref{lec:18-tate-resolutions-PPn} and discuss its generalization to toric varieties in Lecture~\ref{lec:19-tate-resolutions-toric}.
 
 %\begin{remark}
