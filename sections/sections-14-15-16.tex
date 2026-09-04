@@ -27,11 +27,11 @@ Let's start with the special case where the secondary fan only has a single cham
 \end{enumerate}
 Exceptionality is trivial:
 \[
-\Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^0(X, \cO_{X}(-d -(-d)) = H^0(X, \cO_{X}) = \k
+\Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^0(X, \cO_{X}(-d -(-d))) = H^0(X, \cO_{X}) = \k
 \]
 since $X$ is a projective variety.  Also,
 \[
-\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d)) = H^i(X, \cO_{X}) = 0
+\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d))) = H^i(X, \cO_{X}) = 0
 \]
 by Demazure Vanishing (Theorem~\ref{thm:demazure}). Fullness follows from Hanlon--Hicks--Lazarev's proof of  Bondal's Conjecture (Conjecture \ref{conj:bondal}), which we saw back in \S\ref{subsect:bondalConjecture}. Let us then turn to orthogonality.  Part (b) of orthogonality is built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a), is the meat of the argument.
 \begin{lemma}
@@ -95,7 +95,7 @@ The next lecture will tackle the proof of the $\Theta$-Transform Lemma.  Before 
 \Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) =
 \Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\cO_{\sX_1}(-d')) = H^i(\sX_1, \cO_{\sX_1}(d-d')).
 \]
-Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By Demazure Vanishing for $\QQ$-Cartier divisors (Theorem~\ref{thm:demazure}), we conclude that all of these Ext groups vanish. In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho +f b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply Theorem~\ref{thm:demazure}.
+Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By Demazure Vanishing for $\QQ$-Cartier divisors (Theorem~\ref{thm:demazure}), we conclude that all of these Ext groups vanish. In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho + b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply Theorem~\ref{thm:demazure}.
 
 
 In short:  combining the $\Theta$-Transform Lemma and Demazure Vanishing immediately yields the orthogonality statement we need.
@@ -166,7 +166,7 @@ This breaks into fundamentally different parts:
 As we will try to demonstrate in the next example, these two parts are in tension with one another.
 
 \begin{example}[Atiyah Flop]\label{ex:atiyahFlop}
-This is a non-projective example, but it is instructive for thinking about the $\Theta$-Transform Lemma.  Consider the Cox ring $S=\Bbbk[x_0,x_1,y_0,y_1]$ with $\deg(x_i)=1$ and $\deg(y_j)=-1$.  The Bondal zonotope (see Definition~\ref{defn:KoszulZonotope}\mahrud{FIXME}) associated to this nonstandard graded ring is the open interval $(-2,2)$, and so the Bondal--Thomsen collection consists of the divisors of degree $-1,0$ and $1$.
+This is a non-projective example, but it is instructive for thinking about the $\Theta$-Transform Lemma.  Consider the Cox ring $S=\Bbbk[x_0,x_1,y_0,y_1]$ with $\deg(x_i)=1$ and $\deg(y_j)=-1$.  The Bondal zonotope (see Definition~\ref{defn:BondalZonotope}) associated to this nonstandard graded ring is the open interval $(-2,2)$, and so the Bondal--Thomsen collection consists of the divisors of degree $-1,0$ and $1$.
 
 The secondary fan has two chambers: $\mathbb R_{\geq 0}$ and $\mathbb R_{\leq 0}$.
 The first chamber corresponds to a threefold $Y_+ =[\Spec(S) - V(x_0,x_1) / \GG_m]$.  This is a $\PP^1$-bundle (coordinates $x_0,x_1$ on the fibers) over $\mathbb A^2$ (coordinates $y_0,y_1$ on the base).  The second chamber corresponds to $Y_- =[\Spec(S) - V(y_0,y_1) / \GG_m]$, which is a $\PP^1$-bundle (coordinates $y_0,y_1$ on the fibers) over $\mathbb A^2$ (coordinates $x_0,x_1$ on the base).
@@ -277,7 +277,7 @@ which follows from Demazure Vanishing.
     &=\Ext^p{\sX_i}(\cO_{\sX_i}(-d), \cO_{\sX_i}(-d')) &\text{(Lemma~\ref{lem:PushPull})}\\
     &=H^p(\sX_i, \cO_{\sX_i}(d-d'))=0. &
 \end{align*}
-The final equality follows from Proposition~\ref{prop:Demauzre}\mahrud{FIXME}, in a manner similar to the outline of the proof of Theorem~\ref{thm:main1} in Lecture~\ref{lec:14-proof-outline}: see the paragraph below Remark~\ref{rem:simplify}.\footnote{We are using here the stacky version of Demazure Vanishing. But the shift from varieties to stacks is mostly formal in this setting.  See \cite[Theorem 2.11]{BBB+24} for the necessary stacky statement.}%noting that $d$ is a nef class on $\sX_i$ because $d$ lies in the closure of the chamber $\Gamma_i$.
+The final equality follows from Demazure Vanishing (Theorem~\ref{thm:demazure}), in a manner similar to the outline of the proof of Theorem~\ref{thm:main1} in Lecture~\ref{lec:14-proof-outline}: see the paragraph below Remark~\ref{rem:simplify}.\footnote{We are using here the stacky version of Demazure Vanishing. But the shift from varieties to stacks is mostly formal in this setting.  See \cite[Theorem 2.11]{BBB+24} for the necessary stacky statement.}%noting that $d$ is a nef class on $\sX_i$ because $d$ lies in the closure of the chamber $\Gamma_i$.
 
 {\bf Orthogonality (b)}: This follows from Definition~\ref{defn:BTcollection}.
 
@@ -290,33 +290,33 @@ The final equality follows from Proposition~\ref{prop:Demauzre}\mahrud{FIXME}, i
 Before proving this, we begin with a heuristic for why it ought to be true, and some approaches for proving it. 
 By Hanlon-Hicks-Lazarev's proof of Bondal's Conjecture (Conjecture~\ref{conj:bondal}), the line bundles corresponding Bondal--Thomsen degrees generate $D(\sX_j)$ for all $j$.  And by the $\Theta$-Transform Lemma, the line bundles $\cO_{\Cox}(-d)$ with $-d\in \Theta$ push forward to the Bondal--Thomsen line bundles on $\sX_j$ for all $j$.  In other words, the line bundles  $\cO_{\Cox}(-d)$ with $-d\in \Theta$  push forward to a generating set on $D(\sX_j)$ for each $j$.  Since $D_{\Cox}(S)$ was built as the ``union'', in some sense, of the $D(\sX_j)$, this suggests Proposition~\ref{prop:generation} should hold. 
 
-But to make this intuition precise, we require additional argument.  There are several ways to proceed.
+But to make this intuition precise, we require an additional argument.  There are several ways to proceed.
 
-The most satisfying approach is to enrich $D_{\Cox}(S)$ to a dg-category, and then prove that the Hanlon--Hicks--Lazarev resolution of the diagonal induces an dg-category resolution of the diagonal for $D_{\Cox}(S)$.  This is true, and it is implied by Theorem~\ref{thm:resDiagCoxVague}, but that proof involves a fair amount of category theory.  That said, this approach is satisfying because it ``explains'' the mysterious uniformity of the Hanlon--Hicks--Lazarev resolution of the diagonal observed back in Corollary~\ref{cor:diagonalUniform}, where the resolution is uniform for the $X_i$ appearing in the secondary fan. We will explore this further in Lecture~\ref{lec:17-consequences}. 
+The most satisfying approach is to enrich $D_{\Cox}(S)$ to a dg-category, and then prove that the Hanlon--Hicks--Lazarev resolution of the diagonal induces a dg-category resolution of the diagonal for $D_{\Cox}(S)$.  This is true, and it is implied by Theorem~\ref{thm:resDiagCoxVague}, but that proof involves a fair amount of category theory.  That said, this approach is satisfying because it ``explains'' the mysterious uniformity of the Hanlon--Hicks--Lazarev resolution of the diagonal observed back in Corollary~\ref{cor:diagonalUniform}, where the resolution is uniform for the $X_i$ appearing in the secondary fan. We will explore this further in Lecture~\ref{lec:17-consequences}. 
 
 Another satisfying method would be the following.  By the proof Bondal's Conjecture, we know that the Bondal--Thomsen collection $\Theta_{\widetilde{\sX}}$ for $\widetilde{\sX}$ generates $D(\widetilde{\sX})$.
 If $D_{\Cox}(S)\subseteq D(\widetilde{\sX})$ is an admissible subcategory, then we can apply the resulting projection functor $p\colon  D(\widetilde{\sX}) \to D_{\Cox}(S)$, to conclude that $p(\Theta_{\widetilde{\sX}})$ generates $D_{\Cox}(S)$.  And then, by utilizing a standard fact that ``Bondal--Thomsen pushes forward to Bondal--Thomsen'' as in, e.g. \cite[Proposition 2.28]{BBB+24}, we get the desired generation result.  Again, this is true, but we will not prove it: see~\cite[Corollary 5.5]{BBB+24}.
 
 Let us now give a proof of Proposition~\ref{prop:generation}, following \cite[Proposition 5.1]{BBB+24}. 
 
-\begin{proof}We start by choosing some $m\in M\otimes \QQ$ and we write $-\widetilde{d}$ for the corresponding Bondal--Thomsen element in $ \Cl(\widetilde{\sX})$  and $-d$ for the corresponding Bondal--Thomsen element in $ \Cl(\widetilde{\sX})$.\footnote{So using notation from \S\ref{lec:6-bondal-thomsen}, we would have that $-d = \deg \floor{\alpha(m)}$.}  By \cite[Proposition 2.28]{BBB+24}, $\pi_{j*}(\cO_{\widetilde{\sX}}(-\widetilde{d}) = \cO_{\sX_j}(-d)$.  If we choose $j$ so that $\cO_{\Cox}(-d)=\pi_j^* \cO_{\sX_j}(-d)$, then by adjunction we have
+\begin{proof}We start by choosing some $m\in M\otimes \QQ$ and we write $-\widetilde{d}$ for the corresponding Bondal--Thomsen element in $ \Cl(\widetilde{\sX})$  and $-d$ for the corresponding Bondal--Thomsen element in $ \Cl(\widetilde{\sX})$.\footnote{So using notation from \S\ref{lec:6-bondal-thomsen}, we would have that $-d = \deg \floor{\alpha(m)}$.}  By \cite[Proposition 2.28]{BBB+24}, $\pi_{j*}(\cO_{\widetilde{\sX}}(-\widetilde{d})) = \cO_{\sX_j}(-d)$.  If we choose $j$ so that $\cO_{\Cox}(-d)=\pi_j^* \cO_{\sX_j}(-d)$, then by adjunction we have
 \begin{align*}
 \Hom_{\widetilde{\sX}}(\cO_{\Cox}(-d), \cO_{\widetilde{\sX}}(-\widetilde{d}))
 &=
 \Hom_{\widetilde{\sX}}(\pi_j^* \cO_{\sX_j}(-d), \cO_{\widetilde{\sX}}(-\widetilde{d}))\\
 &=
-\Hom_{\widetilde{\sX}}(\cO_{\sX_j}(-d), \pi_{j*} \cO_{\widetilde{\sX}}(-\widetilde{d}))\\
+\Hom_{\widetilde{\sX_j}}(\cO_{\sX_j}(-d), \pi_{j*} \cO_{\widetilde{\sX}}(-\widetilde{d}))\\
 &=
-\Hom_{\widetilde{\sX}}(\cO_{\sX_j}(-d), \cO_{\sX_j}(-d)).
+\Hom_{\widetilde{\sX_j}}(\cO_{\sX_j}(-d), \cO_{\sX_j}(-d)).
 \end{align*}
 This last group contains the identity morphism, and so there exists a corresponding $f\colon \cO_{\Cox}(-d)\to \cO_{\widetilde{\sX}}(-\widetilde{d})$.  Let $C(f)$ be the cone of $f$.  By the $\Theta$-Transform Lemma and \cite[Proposition 2.28]{BBB+24}, if we push this forward to $\sX_i$ for any $i$, then we will get
 \[
-\pi_{i*}(C(f)) = \big[ \cO_{\sX_i}(-d) \overset{\pi_{i*}(f)}{\longrightarrow
-}\cO_{\sX_i}(-d)\big].
+\pi_{i*}(C(f)) = \left[ \cO_{\sX_i}(-d) \overset{\pi_{i*}(f)}{\longrightarrow
+}\cO_{\sX_i}(-d)\right].
 \]
 Since the $\pi_{i*}(f)$ maps all agree on the torus (where the $\sX_i$ and $\widetilde{\sX}$ are all isomorphic), these all agree with the identity map on the dense torus.  But a map from a line bundle to itself on $\sX_i$ is given by a constant function, and so if it is the identity on a dense open subset, then it is the identity morphism.  In particular,~$\pi_{i*}(C(f))=0$ for all $i$.
 
-Define $\mathcal Q$ to be the subcategory of $D(\widetilde{\sX})$ given by objects $\cF$ such that $\pi_{i*}\cF = 0$. We also define the left-orthogonal subcategory of $\mathcal Q$ as
+Define $\mathcal Q$ to be the subcategory of $D(\widetilde{\sX})$ given by objects $\cF$ such that $\pi_{i*}\cF = 0$ for all $i$. We also define the left-orthogonal subcategory of $\mathcal Q$ as
 \[
 \phantom{X}^{\perp}\mathcal Q := \{ \cE \in D(\widetilde{\sX}) \text{ : } \Hom(\cE, \cF) = 0 \text{ for all }\cF \in \mathcal Q\}.
 \]

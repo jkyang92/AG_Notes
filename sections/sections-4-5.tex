@@ -165,21 +165,21 @@ Continuing from Lecture~\ref{lec:4-toric-cox}, we describe the dictionary betwee
 
 Just as homogeneous ideals of $\kk[x_0,\dots,x_n]$ cut out closed subschemes of $\PP^n$, homogeneous ideals of $S$ cut out closed subschemes of $X$, provided we account for the irrelevant ideal $B$.
 
-\begin{remark}[Saturation and local cohomology]\label{rem:localcohomology}
-  %Both notions of $B$-saturation are governed by \defi{local cohomology}. 
-  For a $\Cl(X)$-graded $S$-module $M$, its \defi{$B$-torsion submodule} is
-  \[ H^0_B(M) = \{\,m\in M : B^k m = 0 \text{ for some } k\ge 0\,\} \]
-  which is the largest submodule supported on $V(B)$, and $H^i_B(M)$ denotes its higher right-derived functors, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS}. 
-%  In the smooth case, is bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is 
-  There is a four-term exact sequence of $\Cl(X)$-graded modules
-  \[
-  0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr)\longrightarrow H^1_B(M) \longrightarrow 0,
-%  \qquad\Gamma_{\!*}(\widetilde M) \ce ,
-  \]
-  together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections. Passing to $\Gamma_{\!*}(\widetilde M)$ kills both. Accordingly, a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$, i.e.\ when $M \xrightarrow{\ \sim\ } \Gamma_{\!*}(\widetilde M)$.
+% \begin{remark}[Saturation and local cohomology]\label{rem:localcohomology}
+%   %Both notions of $B$-saturation are governed by \defi{local cohomology}. 
+%   For a $\Cl(X)$-graded $S$-module $M$, its \defi{$B$-torsion submodule} is
+%   \[ H^0_B(M) = \{\,m\in M : B^k m = 0 \text{ for some } k\ge 0\,\} \]
+%   which is the largest submodule supported on $V(B)$, and $H^i_B(M)$ denotes its higher right-derived functors, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS}. 
+% %  In the smooth case, is bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is 
+%   There is a four-term exact sequence of $\Cl(X)$-graded modules
+%   \[
+%   0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr)\longrightarrow H^1_B(M) \longrightarrow 0,
+% %  \qquad\Gamma_{\!*}(\widetilde M) \ce ,
+%   \]
+%   together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections. Passing to $\Gamma_{\!*}(\widetilde M)$ kills both. Accordingly, a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$, i.e.\ when $M \xrightarrow{\ \sim\ } \Gamma_{\!*}(\widetilde M)$.
 
-  For a homogeneous ideal $I\subseteq S$ this recovers the definition above: since $S$ is a domain, $H^0_B(I)=0$ is automatic, and using $H^1_B(S)=0$, which holds because $\operatorname{codim}V(B)\ge 2$, the sequence for $I$ gives $H^1_B(I) \cong H^0_B(S/I) = (I : B^\infty) / I$. So $I$ is $B$-saturated as a module exactly when $I = I : B^\infty$. Note that this is weaker than asking the \emph{quotient} $S/I$ to be a $B$-saturated module, which would in addition require $H^1_B(S/I) = 0$.
-\end{remark}
+%   For a homogeneous ideal $I\subseteq S$ this recovers the definition above: since $S$ is a domain, $H^0_B(I)=0$ is automatic, and using $H^1_B(S)=0$, which holds because $\operatorname{codim}V(B)\ge 2$, the sequence for $I$ gives $H^1_B(I) \cong H^0_B(S/I) = (I : B^\infty) / I$. So $I$ is $B$-saturated as a module exactly when $I = I : B^\infty$. Note that this is weaker than asking the \emph{quotient} $S/I$ to be a $B$-saturated module, which would in addition require $H^1_B(S/I) = 0$.
+% \end{remark}
 \begin{prop}[Toric Ideal--Variety Correspondence, \cite{CLS2011}*{Prop.~5.2.7}]\label{prop:ideal-variety}
   Let $X$ be a simplicial toric variety with Cox ring $S$ and irrelevant ideal $B$. There is a bijective correspondence
   \[ \{\text{closed subvarieties of } X\} \longleftrightarrow \{\text{radical homogeneous ideals } I\subseteq B\}. \]
@@ -369,9 +369,9 @@ These glue to a sheaf $\widetilde M$ on $X$, and $M\mapsto\widetilde M$ is exact
   is the largest submodule of $M$ supported on $V(B)$, and $H^i_B(-)$ denotes the higher right derived functors of the left exact functor $H^0_B(-)$, computed from the \v{C}ech complex on a generating set of $B$ \cite[\S9]{CLS2011}.
   %The bridge to geometry\footnote{This reflects the geometry when $X$ is smooth, and in the simplicial case after replacing $X$ by its canonical stack $\sX$ of Theorem~\ref{thm:simplicialStack}.} is the
   There is a four-term exact sequence of $\Cl(X)$-graded modules
-  \[
-  0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \Gamma_{\!*}(\widetilde M) \longrightarrow H^1_B(M) \longrightarrow 0, \qquad
-  \Gamma_{\!*}(\widetilde M) \ce \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr),
+ \[
+  0 \longrightarrow H^0_B(M) \longrightarrow M \longrightarrow \bigoplus_{\mathbf d\in\Cl(X)} H^0\bigl(X,\widetilde{M(\mathbf d)}\bigr)\longrightarrow H^1_B(M) \longrightarrow 0,
+%  \qquad\Gamma_{\!*}(\widetilde M) \ce ,
   \]
   together with the isomorphisms $H^p\bigl(X,\widetilde{M(\mathbf d)}\bigr) \cong H^{p+1}_B(M)_{\mathbf d}$ for $p\ge 1$. Thus $H^0_B(M)$ is exactly the part of $M$ that sheafification forgets, while $H^1_B(M)$ measures the failure of $M$ to already consist of all twisted global sections.
   %Passing to $\Gamma_{\!*}(\widetilde M)$ kills both, thus a module $M$ is called \defi{$B$-saturated} when $H^0_B(M) = H^1_B(M) = 0$.
@@ -385,22 +385,22 @@ These glue to a sheaf $\widetilde M$ on $X$, and $M\mapsto\widetilde M$ is exact
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Derived categories of toric varieties}
-There is a functor that sends a finitely generated, graded $S$-module $M$ to the corresponding coherent sheaf $\widetilde{M}$ on $X$.  The kernel of this functor separates the geometry of $X$ from the algebra of $S$. Write $\Mod_{\mathrm{gr}}(S)$ for the category of finitely generated $\Cl(X)$-graded $S$-modules, and $\Mod_B(S)\subseteq\Mod_{\mathrm{gr}}(S)$ for the full subcategory of \defi{$B$-torsion} modules, i.e.\ those annihilated by a power of $B$.
+There is a functor that sends a finitely generated, graded $S$-module $M$ to the corresponding coherent sheaf $\widetilde{M}$ on $X$.  The kernel of this functor separates the geometry of $X$ from the algebra of $S$. Write $\operatorname{mod}{\mathrm{gr}}(S)$ for the category of finitely generated $\Cl(X)$-graded $S$-modules, and $\operatorname{mod}_B(S)\subseteq\operatorname{mod}_{\mathrm{gr}}(S)$ for the full subcategory of \defi{$B$-torsion} modules, i.e.\ those annihilated by a power of $B$.
 
 \begin{prop}[\cite{CLS2011}*{Prop.~5.3.9 and 5.3.10}]\label{prop:sheaf-module}
   Let $X$ be a toric variety with Cox ring $S$ and irrelevant ideal $B$.
   \begin{enumerate}
   \item Every quasicoherent sheaf on $X$ is isomorphic to $\widetilde M$ for some graded $S$-module $M$, which may be chosen finitely generated when the sheaf is coherent.
-  \item  Let $M\in\Mod_{\mathrm{gr}}(S)$.  If $M$ is $B$-torsion, i.e. if $M\in \Mod_B(S)$, then $\widetilde{M}=0$.
-  \item If $X$ is \emph{smooth} and $M\in\Mod_{\mathrm{gr}}(S)$, then $\widetilde M=0$ if and only if $M$ is $B$-torsion.
+  \item  Let $M\in\operatorname{mod}_{\mathrm{gr}}(S)$.  If $M$ is $B$-torsion, i.e. if $M\in \operatorname{mod}_B(S)$, then $\widetilde{M}=0$.
+  \item If $X$ is \emph{smooth} and $M\in\operatorname{mod}_{\mathrm{gr}}(S)$, then $\widetilde M=0$ if and only if $M$ is $B$-torsion.
   \end{enumerate}
 \end{prop}
 
-Consequently, sheafification $M\mapsto \widetilde{M}$ always induces a functor $\Mod_{\mathrm{gr}}(S)\,/\,\Mod_B(S)\to \coh(X)$, and when $X$ is smooth, this yields an equivalence of abelian categories
+Consequently, sheafification $M\mapsto \widetilde{M}$ always induces a functor $\operatorname{mod}_{\mathrm{gr}}(S)\,/\,\operatorname{mod}_B(S)\to \coh(X)$, and when $X$ is smooth, this yields an equivalence of abelian categories
 \begin{equation}\label{eqn:abEquiv}
-\coh(X)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_B(S),
+\coh(X)\ \simeq\ \operatorname{mod}_{\mathrm{gr}}(S)\,/\,\operatorname{mod}_B(S),
 \end{equation}
-which is Cox's theorem \cite{Cox95}. Passing to derived categories yields:
+which follows from Cox's work \cite[\S3]{Cox95}. Passing to derived categories yields:
 
 \begin{thm}\label{thm:coxderived}
   Let $X=X_\Sigma$ be a smooth toric variety with no torus factor, with Cox ring $S$ and irrelevant ideal $B$, and let $\Db_B(S)\subseteq \Db(S)$ be the thick subcategory of complexes with homology supported on $V(B)$. Sheafification induces an equivalence of triangulated categories
@@ -452,12 +452,12 @@ Theorem~\ref{thm:coxderived} fails for $\PP(1,1,2)$ because the geometric quotie
 Since $X$ is simplicial, the stabilizers of the $G$-action are finite, so $\sX$ is a smooth toric Deligne--Mumford stack (tame if $\on{char}\kk$ does not divide the order of any stabilizer, which is automatic in characteristic zero), and the natural map $\pi\co\sX\to X$ realizes $X$ as its coarse moduli space \cite{BCS05}.\footnote{Our viewpoint on toric stacks here is deliberately algebraic, through modules and sheaves. A more geometric treatment via stacky fans and toric morphisms is introduced in \cite{BCS05} and expanded in \cites{GS15a,GS15b}.}
 
 A (quasi)coherent sheaf on $[U/G]$ is precisely a $G$-equivariant (quasi)coherent sheaf on $U$~\cite[Ex.~7.21]{Vistoli89}. Consider $\sX = \PP_{\mathrm{stack}}(1,1,2) = [\bA^3\setminus\{0\}\,/\,\kk^*]$. A quasicoherent sheaf on $\bA^3$ is simply an $S$-module $M$, and a $\kk^*$-equivariant structure on it is a decomposition $M = \bigoplus_{d\in\ZZ} M_d$ into eigenspaces of the action. That is, exactly a $\ZZ$-grading compatible with the grading of $S$. Removing $V(\m)$ kills precisely the modules supported at the origin, i.e.\ the finite-length modules. Hence
-\[ \coh\bigl(\PP_{\mathrm{stack}}(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_{\m}(S), \]
+\[ \coh\bigl(\PP_{\mathrm{stack}}(1,1,2)\bigr)\ \simeq\ \operatorname{mod}_{\mathrm{gr}}(S)\,/\,\operatorname{mod}_{\m}(S), \]
 exactly as for $\PP^n$. The same reasoning applies in general:
 
 \begin{thm}[\cite{BCS05}]\label{thm:simplicialStack}
   Let $X$ be a simplicial toric variety with $\Cl(X)$-graded Cox ring $S$ and irrelevant ideal $B$, and let $\sX = [\Spec(S)\setminus V(B)\,/\,G]$ be its canonical toric stack. Then
-  \[ \coh(\sX)\ \simeq\ \Mod_{\mathrm{gr}}(S)\,/\,\Mod_B(S). \]
+  \[ \coh(\sX)\ \simeq\ \operatorname{mod}_{\mathrm{gr}}(S)\,/\,\operatorname{mod}_B(S). \]
 \end{thm}
 
 In short, sheaves on $\sX$ are graded $S$-modules modulo $B$-torsion, analogous to the smooth case in Proposition~\ref{prop:sheaf-module}, and this is the whole point of passing from the variety $X$ to the stack $\sX$. Passing to derived categories:
@@ -472,7 +472,7 @@ When $X$ is smooth, $G$ acts freely on $\Spec(S)\setminus V(B)$, so $\sX\cong X$
 
 \begin{remark}[The variety and the Veronese subring]\label{rem:veronese}
   The singular variety admits a parallel description. Writing $S^{(2)}=\kk[x^2,xy,y^2,z]$ for the second Veronese subring of $S$, generated in degree $2$, one has
-  \[ \coh\bigl(\PP(1,1,2)\bigr)\ \simeq\ \Mod_{\mathrm{gr}}\bigl(S^{(2)}\bigr)\,/\,\Mod_{\m}\bigl(S^{(2)}\bigr), \]
+  \[ \coh\bigl(\PP(1,1,2)\bigr)\ \simeq\ \operatorname{mod}_{\mathrm{gr}}\bigl(S^{(2)}\bigr)\,/\,\operatorname{mod}_{\m}\bigl(S^{(2)}\bigr), \]
   the classical Serre description of $\Proj S^{(2)}$. This explains Example~\ref{ex:oddP112}: the module $M$ there is not finite length over $S$, so it induces a \emph{nonzero} sheaf on the stack, but $M^{(2)}=\bigoplus_{d\in2\ZZ}M_d=0$, so it induces the \emph{zero} sheaf on the variety. The stack quotient is thus tied to $S$ itself, while the GIT quotient is tied to the Veronese subring; for the multigraded module theory of these notes the stack is the more natural object, and we pass to it whenever singular simplicial toric varieties arise. % in the Cox category of Lecture~\ref{lec:12-DCox-definition}.
 \end{remark}
 

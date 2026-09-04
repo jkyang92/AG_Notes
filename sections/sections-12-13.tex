@@ -70,7 +70,7 @@ continued to inspire work on exceptional collections for toric
 varieties, and there is a huge literature in this vein:
 ~\cites{ABK+20,
 BFK19,BDL+20,BIL+26,BDM22,BT09,BH09,BO19,BW21,CM04,CM10,DLM09,Jerby15,Jerby17,Jerby20,Kawamata06,Kawamata13,LM11,OU13,PrabhuNaik17,Sanchez23,Uehara14},
-\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening of the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{Kawamata06}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Corollary~\ref{cor:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks, namely the line bundles in the Beilinson collection, the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is an open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve compelxes of sheaves.
+\emph{inter alia}.  The closest result to King's Conjecture was probably Kawamata's theorem, which proved a weakening of the conjecture by dropping the line bundle requirement and removing the strongness condition~\cite{Kawamata06}.  While this is a major result, the contrast with Beilinson's theorem is pretty stark: while Corollary~\ref{cor:UniquenessAndFSEC} yields unique representations of any sheaf in terms of well-known building blocks, namely the line bundles in the Beilinson collection, the representations from Kawamata's would fail to be unique, and they would be in terms of building blocks that we don't understand whatsoever.  Notably: it is an open question whether the objects in Kawamata's collection are sheaves or whether they will necessarily involve complexes of sheaves.
 
 Over the remaining lectures, we will develop and prove an alternative
 realization of King’s Conjecture.  (The king is dead, long live the king!)
@@ -95,7 +95,7 @@ This only raises another question:  if $X$ and $X'$ are two toric varieties with
 
 
 
-More specifically, in Section 5.1, we saw that a multigraded polynomial ring $S$ determines a finite set of simplicial toric varieties $X_1, X_2, \dots, X_r$ each of which has a corresponding stack $\sX_1, \sX_2, \dots, \sX_r$.
+More specifically, we have seen that a multigraded polynomial ring $S$ determines a finite set of simplicial toric varieties $X_1, X_2, \dots, X_r$ each of which has a corresponding stack $\sX_1, \sX_2, \dots, \sX_r$.
 How can we combine their derived categories?  That is to say: we want to define a single category--which we refer to
  as the \defi{Cox category}, and denote by $D_{\Cox}(X)$ or $D_{\Cox}(S)$--that combines the study of modules on these $\sX_i$ {\em simultaneously}.
 The theorem we are driving for is:
@@ -178,15 +178,15 @@ We can thus think of $D_{\Cox}(S)$ as ``gluing'' the various $D(\sX_i)$ together
 \end{example}
 
 \begin{example}\label{ex:BlowupAtOnePoint}
-    Let $S$ be the Cox ring of $\cH_1$ the Hirzebruch surface of type $1$.  In this case, the secondary fan as two chambers: one chamber corresponds to $\PP^2$ and one corresponding to $\cH_1$. There is a natural morphism $\alpha\colon \cH_1\to \PP^2$ given by the blowup of $\PP^2$ at point, and thus we can take $\widetilde{X} = \cH_1$, $\pi_1 = \alpha \co \cH_1 \to \PP^2$, and $\pi_2 = \id \co \cH_1 \to \cH_1$.  We thus have
+    Let $S$ be the Cox ring of $\cH_1$ the Hirzebruch surface of type $1$.  In this case, the secondary fan has two chambers: one chamber corresponds to $\PP^2$ and one corresponding to $\cH_1$. There is a natural morphism $\alpha\colon \cH_1\to \PP^2$ given by the blowup of $\PP^2$ at point, and thus we can take $\widetilde{X} = \cH_1$, $\pi_1 = \alpha \co \cH_1 \to \PP^2$, and $\pi_2 = \id \co \cH_1 \to \cH_1$.  We thus have
     $
-    D_{\Cox}(S) = \langle \pi_1^* D(\cH_1), \pi_2^* D(\PP^2)\rangle =
+    D_{\Cox}(S) = \langle \pi_1^* D(\PP^2), \pi_2^* D(\cH_1)\rangle =
       D(\cH_1)
     $.
 \end{example}
 
 \begin{example}\label{ex:Hirzebruch}
-    Let $S$ be the Cox ring of $\cH_3$ the Hirzebruch surface of type $3$.  In this case, the secondary fan has two chambers: one chamber corresponds to a weighted projective space $\PP(1,1,3)$ and one corresponding to $\cH_3$.  Unlike the previous example, $\PP(1,1,3)$ is simplicial but not smooth, and so we need to consider the weighted projective stack $\PP_{\operatorname{stack}}(1,1,3)$. There is a morphism from $\cH_3$ to the weighted projective space $\PP(1,1,3)$, where the pullback of the line bundle $\cO_{\PP(1,1,3)}(3)$ is $\cO_{\cH_3}(0,1)$.  But there is no such morphism to $\PP_{\operatorname{stack}}(1,1,3)$.  The reason for this is simple:  if there were such a morphism $\alpha\colon \cH_3 \to \PP_{\operatorname{stack}}(1,1,3)$, then since $\cO(1)$ is a line bundle on the stack, its pullback would need be a line $L$ such that $L^{\otimes 3} = \alpha^* \cO(3) = \cO_{\cH_3}(0,1)$, which is impossible. This issue is avoided on the weighted projective space because $\cO(1)$ is not a line bundle on that space. Thus, we have our first example where $D_{\Cox}(S)$ is a genuine combination of two subcategories.
+    Let $S$ be the Cox ring of $\cH_3$ the Hirzebruch surface of type $3$.  In this case, the secondary fan has two chambers: one chamber corresponds to a weighted projective space $\PP(1,1,3)$ and one corresponding to $\cH_3$.  Unlike the previous example, $\PP(1,1,3)$ is simplicial but not smooth, and so we need to consider the weighted projective stack $\PP_{\operatorname{stack}}(1,1,3)$. There is a morphism from $\cH_3$ to the weighted projective space $\PP(1,1,3)$, where the pullback of the line bundle $\cO_{\PP(1,1,3)}(3)$ is $\cO_{\cH_3}(0,1)$.  But there is no such morphism to $\PP_{\operatorname{stack}}(1,1,3)$.  The reason for this is simple:  if there were such a morphism $\alpha\colon \cH_3 \to \PP_{\operatorname{stack}}(1,1,3)$, then since $\cO(1)$ is a line bundle on the stack, its pullback would need to be a line $L$ such that $L^{\otimes 3} = \alpha^* \cO(3) = \cO_{\cH_3}(0,1)$, which is impossible. This issue is avoided on the weighted projective space because $\cO(1)$ is not a line bundle on that space. Thus, we have our first example where $D_{\Cox}(S)$ is a genuine combination of two subcategories.
 \end{example}
 
 
@@ -296,7 +296,7 @@ The Bondal--Thomsen collection corresponds to a set of degrees in $\Cl(\cH_3)= \
 Figure~\ref{fig:HirzSecondaryFan}.
 
 To state Theorem~\ref{thm:main1} precisely, we need to assign to each element $-d\in \Theta$ an appropriate object in
-$D_{\Cox}$. This issue is that we have too many possible choices!  For a given $-d$ should we take the pullback of $\cO_{\PP(1,1,3)}(-d)$ or the pullback of $\cO_{\cH_3}(-d)$.  If these always coincided, we would not have an issue, but we are not that lucky.
+$D_{\Cox}$. The issue is that we have too many possible choices!  For a given $-d$ should we take the pullback of $\cO_{\PP(1,1,3)}(-d)$ or the pullback of $\cO_{\cH_3}(-d)$.  If these always coincided, we would not have an issue, but we are not that lucky.
 
 So for a given degree $d$, how do we decide when to pull back from $\PP(1,1,3)$ and when to pullback from $\cH_3$?  We let the secondary fan be our guide.  For instance, referring to Figure~\ref{fig:HirzSecondaryFan},
 $d_5$ lies in the chamber for $\cH_3$; thus, we define $\cO_{\Cox}(-d_5)$ as
@@ -321,7 +321,7 @@ Continuing with the notation of Figure~\ref{fig:HirzSecondaryFan}, the ordering 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 13 (John Cobb): The Cox category, II: Fourier-Mukai Transforms}\label{lec:13-DCox-FM-transform}
 \label{sec:FMTransform}
-Each of the toric stacks $\sX_1, \dots, \sX_r$ contains a copy of the same dense torus.  In particular, there is a natural birational map $\sX_i\dashrightarrow \sX_j$ for any $i,j$.  We write $\Gamma_{ij}$ for the graph of this birational map as a subvariety of $\sX_i\times \sX_j$.  There are natural projection maps $p,q$ from $\sX_i\times \sX_j$ to the two factors. We obtain the following diagram:
+Each of the toric stacks $\sX_1, \dots, \sX_r$ contains a copy of the same dense torus.  In particular, there is a natural birational map $\sX_i\dashrightarrow \sX_j$ for any $i,j$.  We write $\Gamma_{ij}$ for the graph of this birational map as a substack of $\sX_i\times \sX_j$.  There are natural projection maps $p,q$ from $\sX_i\times \sX_j$ to the two factors. We obtain the following diagram:
 \[
 \xymatrix{
 &\sX_i\times \sX_j\ar[ld]_{p}\ar[rd]^{q}&\\
@@ -332,7 +332,7 @@ This allows us to define a Fourier--Mukai transform
 \[
 \Phi_{ij}\colon D^b(\sX_i)\to D^b(\sX_j) \text{ where } \Phi_{ij}(\cE) := Rq_*\left(p^*\cE \Lotimes_{\cO_{\sX_i\times \sX_j}} \cO_{\Gamma_{ij}}\right).
 \]
-At a more concrete level, the Fourier--Mukai transform can be understand as follows.  There is a Hanlon-Hicks-Lazarev complex $\cR$ that resolves $\Gamma_{ij}\subseteq \sX_i\times \sX_j$ and so we can ``underive'' the tensor product, by replacing $\cO_{\Gamma_{ij}}$ by $\cR$:
+At a more concrete level, the Fourier--Mukai transform can be understood as follows.  There is a Hanlon-Hicks-Lazarev complex $\cR$ that resolves $\Gamma_{ij}\subseteq \sX_i\times \sX_j$ and so we can ``underive'' the tensor product, by replacing $\cO_{\Gamma_{ij}}$ by $\cR$:
 \[
 \Phi_{ij}(\cE) = Rq_*\left(p^*\cE \otimes_{\cO_{\sX_i\times \sX_j}} \cR\right).
 \]
@@ -353,7 +353,7 @@ Let $t_i \co \Gamma_{ij} \to \X_i$ and $t_j \co \Gamma_{ij} \to \X_j$ be the can
     \[
     \cO_{\sX_i\times\sX_j} \otimes_{\cO_{\sX_i\times \sX_j}}\cO_{\Gamma_{ij}} = \cO_{\Gamma_{ij}}.
     \]
-We thus have that $\Phi_{ij}(\cO_{\sX_j})$ is the pushforward of $\cO_{\Gamma_{ij}}$ under the natural birational morphism $\Gamma_{ij}\to \sX_j$.  We then have $R(q|_{\Gamma_{ij}})_* \cO_{\Gamma_{ij}} = \cO_{\sX_j}$ by \cite{BBB+24}*{Proposition 3.5}.
+We thus have that $\Phi_{ij}(\cO_{\sX_i})$ is the pushforward of $\cO_{\Gamma_{ij}}$ under the natural birational morphism $\Gamma_{ij}\to \sX_j$.  We then have $R(q|_{\Gamma_{ij}})_* \cO_{\Gamma_{ij}} = \cO_{\sX_j}$ by \cite{BBB+24}*{Proposition 3.5}.
 \end{example}
 
 \begin{example}
@@ -428,7 +428,7 @@ Each line bundle is a box product from the factors.  For instance, $\cO(2,-1,-2)
 Call this complex $\cC$. There is a hypercohomology spectral sequence
 \begin{equation}
 \label{eqn:hyperss}
-E^{p,q}_1 = R^tq_*(\cC^s) \Rightarrow R^{s + t}q_*(\cC). 
+E^{s,t}_1 = R^tq_*(\cC^s) \Rightarrow R^{s + t}q_*(\cC). 
 \end{equation}
 As in Construction~\ref{const:monad}, given a coherent sheaf $\cF$ on $\cH_3$ and a locally free sheaf $\cG$ on $\PP(1,1,3)$, the projection formula and base change imply that   $R^tq_*\left(\cF\boxtimes \cG\right) \cong H^t(\cH_3, \F) \otimes_\k \cG$. For all but one summand $\cL \boxtimes \cL'$ of~$\cC$, we have $H^t(\cH_3, \cL) = 0$ for all $t$; the only nonvanishing cohomology that arises is $H^1(\cH_3, \OO(-2, 0)) \cong \k$. We conclude that $E_1^{s, t} = 0$ unless $s = -1$ and $t = 1$, and so $Rq_*(\cC) \cong \OO_{\PP(1,1,3)}(-1)$ (concentrated in cohomological degree 0). 
 %Since each of the terms is box product, we can thus compute the pushforward of this complex in terms of the pushforwards of the terms.  For a box product $\cF\boxtimes \cG$ on a product $X_1\times X_2$, the projection formula implies that
@@ -492,7 +492,7 @@ What does the Revised King's Conjecture really tell us?  Let's first address wha
 
 We get a uniqueness property akin to Corollary~\ref{cor:UniquenessAndFSEC}.  Namely, take a sheaf $\cE$ on a toric variety $X$.  Because $\Theta$ generates $D(X)$, one can represent $\cE$ in terms of the Bondal--Thomsen collection, but this representation will often be fundamentally non-unique.  However, if we want to represent $\cE$ \emph{and} the Fourier--Mukai transforms of $\cE$ to the other $\sX_i$ from the secondary fan, then we can do this in a unique (up to homotopy) way.  This is (very roughly) the statement of Theorem~\ref{thm:homotopycat}.  In short: in some sense, it is simpler to classify sheaves on the whole secondary fan than it is to just classify sheaves on a single toric variety $X$.
 
-So the theorem tells us that while King's Conjecture was false, the underlying idea was very much correct.  The cases where full strong exceptional cases of line bundles exist---projective space, products, projective bundles, etc---are indicative of what happens in the general case.  The correct statement just required a framework that was not yet obvious back then.
+So the theorem tells us that while King's Conjecture was false, the underlying idea was very much correct.  The cases where full strong exceptional collections of line bundles exist---projective space, products, projective bundles, etc---are indicative of what happens in the general case.  The correct statement just required a framework that was not yet obvious back then.
 \end{remark}
 
 \ifdefined\whole
