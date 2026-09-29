@@ -23,7 +23,7 @@ cellsToComplex = (S, cells, raysMatrix, openHyperplanes) -> (
     modulesTable := applyValues(pointsTable, p -> S^{entries (- pointToDegree p)}); -- ~19s
     fineDegreeTable := applyValues(pointsTable, pointToFineDegree); -- ~16s
     --remove extra polytopes
-    polytopesByDimension = applyValues(polytopesByDimension, polys -> select(polys, p -> pointsTable#?p));
+    polytopesByDimension = applyValues(polytopesByDimension, polys -> sort select(polys, p -> pointsTable#?p));
     rt := new HashTable from {
         "ring" => S,
         "verts" => verts,
@@ -164,7 +164,7 @@ lineBundleBondalThomsenMonad(NormalToricVariety,List) := (X, a) -> (
             print ("Warning: mismatched degrees " | degreeShift | " and " | degreeShift');
             );
         -- because f will be part of a differential, it should be degree -1
-        f := if gPrev === null then null else (S^{-degreeShift}**(S**homologyProj))*gPrev*inducedMap(source gPrev, (source gPrev)[-1],Degree=>-1);
+        f := if gPrev === null then null else ((S^{-degreeShift}**(S**homologyProj))*gPrev*inducedMap(source gPrev, (source gPrev)[-1],Degree=>-1))[-d];
         gInit := if gPrev === null
             then S^{-degreeShift}**(S**homologyInc)
             else (
