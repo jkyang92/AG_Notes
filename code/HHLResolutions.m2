@@ -33,6 +33,7 @@ export {
     "andersonModule",
     "hhlLaurentModule",
     "hhlModule",
+    "hyperplaneStratificationPolytopes",
     "gensToLaurentModule",
     "gensToToricModule",
     "andersonDiagonalResolution",
@@ -72,6 +73,56 @@ needsPackage "HHLResolutions"
 check HHLResolutions
 viewHelp HHLResolutions
 
+X = weightedProjectiveSpace {2,6,15,30}
+
+gcd {6,10,30,45}
+
+X = weightedProjectiveSpace {42,195,286,385}
+
+factor 42
+factor 195
+X = weightedProjectiveSpace {30,154,429,455}
+
+{30,154,429,455} / factor
+
+p1 = 2
+p2 = 3
+p3 = 5
+p4 = 7
+p5 = 11
+p6 = 13
+
+gcd {p1*p2*p3,p1*p4*p5,p2*p4*p6,p3*p5*p6}
+X = weightedProjectiveSpace {2*3*5,2*3*7,2*5*7,3*5*7}
+
+Y = normalToricVariety({{0}},{{0}})
+phi = map(X,Y,0);
+    S = ring X;
+    C = makeHHLResolution(X,matrix phi)
+sort (degrees C.dd_1)_0
+
+matrix phi
+
+C1 = makeHHLResolution(X,matrix phi)
+C2 = makeHHLResolution(X,matrix {{},{},{}})
+
+(cells,verts,g,box) = makeHHLPolytopes(X,matrix {{},{},{}})
+
+vertices convexHull cells
+
+pruneComplex C2
+
+degrees prune HH_0 C2
+gcd {42,195,286,385}
+
+
+sort degrees C_0
+sort degrees C_1
+
+sort (degrees C1.dd_0)_1
+sort (degrees C2.dd_1)_0
+
+dim Y
 
 X = toricProjectiveSpace 3
 Y = X ** X;
@@ -82,7 +133,7 @@ hhlModuleGens(phi)
 andersonDiagonalModuleGens(X)
 andersonDiagonalModuleVertices(X)
 
-X = hirzebruchSurface 3
+X = hirzebruchSurface 2
 Y = X ** X;
 phi = diagonalToricMap X
 S = ring Y;
@@ -111,10 +162,6 @@ G'_1
 ML_0+ML_1+ML_8-(ML_5+ML_6+ML_3)
 
 C := makeHHLResolution(Y,matrix phi);
-
-sort (-degrees C_0)
-sort (-degrees C_1)
-sort (-degrees C_2)
 
 M2 := trim HH_0 C
 

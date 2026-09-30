@@ -106,10 +106,32 @@ TEST ///
   --This case corresponds to the FM transform for S(1) (not -1!) which gives the truncation of S(1) at 0.
   a = {1,0,0};
   C := lineBundleBondalThomsenMonad(X,a);
-  assert(prune HH_0 C == prune (((image matrix {{x_0,x_2,x_1}}) ** S^{1})));
+  assert(prune HH_0 C == prune (((image matrix {{x_0,x_1,x_2}}) ** S^{1})));
   assert(concentration prune C == (0,2));
   -- only BT collection terms should show up
   assert(set (-degrees C_0 | -degrees C_1 | -degrees C_2) == set {{-2},{-1},{0}})
 ///
 
+-- A test of some edge cases related the the boundary map
+TEST ///
+ray = {{1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1}}
+con = apply(7, i->{i,i+1})|{{7,0}}
+X = normalToricVariety(ray,con)
+S = ring X
 
+--For now this is mostly a test that these commands don't fail but we should check at least the ranks as well
+a = {0, -4, 0, 2, 3, 5, 3, 2};
+C = lineBundleBondalThomsenMonad(X,a);
+a = {0, -5, 0, -4, 3, 1, 3, 2};
+C = lineBundleBondalThomsenMonad(X,a);
+///
+
+
+--For now this test is ignored as it is far too slow to include, but we should find a smaller one with the same problem
+--TEST ///
+///
+X = weightedProjectiveSpace {30,154,429,455}
+S = ring X;
+C = hhlResolution(X, matrix {{},{},{}})
+assert(sort degrees prune HH_0 C == apply(30, i -> {i}))
+///
