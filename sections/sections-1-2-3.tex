@@ -363,7 +363,7 @@ The correspondence is realized by an equivalence $R \co \Db(S) \xra{\simeq} \Db(
 
 Notice that $\rank_E R(M) = \dim_\k M$, and similarly for $L$. Thus, applying $L$ to any finitely generated~$E$-module gives a bounded complex. But since finitely generated $S$-modules are rarely finitely dimensional over $\k$, we typically have $R(M)_i \ne 0$ for $i \ll 0$. Nevertheless, if $M$ is finitely generated, the homology of $R(M)$ is as well, by the following lemma: 
 
-\begin{lemma}[\cite{EFS}*{Proposition 2.3(a)}]
+\begin{lemma}[\cite{EFS03}*{Proposition 2.3(a)}]
 \label{lem:tor}
 For any graded $S$-module $M$, we have $H_i(R(M))_j \cong \Tor^S_{i+j}(M, \k)_j$.
 \end{lemma}
@@ -378,18 +378,18 @@ The idea is that, forgetting gradings, $R(M)$ is isomorphic to $M \otimes_S K$, 
 We omit the proof of the following theorem; a complete argument is more than one lecture allows. 
 
 
-\begin{thm}[\cite{EFS}*{Corollary 2.7}, \cite{BGG}]\label{thm:BGG}
+\begin{thm}[\cite{EFS03}*{Corollary 2.7}, \cite{BGG78}]\label{thm:BGG}
   The functors $L$ and $R$ descend to mutually inverse equivalences of triangulated categories
   \[  R\colon \Db(S)\xto{\simeq}\Db(E), \qquad L\colon \Db(E)\xto{\simeq}\Db(S). \]
 \end{thm}
 
 
-%A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $R(M)$ is an unbounded complex. However, $R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $L$, since $P$ is finite-dimensional over $\kk$. 
+%A subtlety is hidden in the statement: for a finitely generated $S$-module $M$ not supported in $\m$, infinitely many graded pieces $M_i$ are nonzero, so $R(M)$ is an unbounded complex. However, $R(M)$ is exact in all sufficiently large cohomological degrees (specifically, in degrees beyond the Castelnuovo--Mumford regularity of $M$; see \cite[\S2]{EFS03}), so it is quasi-isomorphic to a bounded complex and determines an object of $\Db(E)$; no such issue arises for $L$, since $P$ is finite-dimensional over $\kk$.
 
 Let us illustrate the equivalence by evaluating the composition at the residue field $\kk = S/\m$, where $\m = (x_0,\dots,x_n)$.
 
 \begin{remark}\label{rem:BGGregularity}
-  For a finitely generated graded $S$-module $M$, the complex $\mathbf R(M)$ is exact in cohomological degrees $i > \operatorname{reg} M$, and conversely the Castelnuovo--Mumford regularity of $M$ can be detected on the exterior side by applying $\mathbf R$ to the truncations $M_{\ge d}$ \cite[\S2]{EFS}. Regularity is usually defined through the vanishing of graded Betti numbers over $S$; under the BGG correspondence it becomes literal cohomological vanishing over $E$. This reformulation powers the Tate resolutions of Lecture~\ref{lec:18-tate-resolutions-PPn}.
+  For a finitely generated graded $S$-module $M$, the complex $\mathbf R(M)$ is exact in cohomological degrees $i > \operatorname{reg} M$, and conversely the Castelnuovo--Mumford regularity of $M$ can be detected on the exterior side by applying $\mathbf R$ to the truncations $M_{\ge d}$ \cite[\S2]{EFS03}. Regularity is usually defined through the vanishing of graded Betti numbers over $S$; under the BGG correspondence it becomes literal cohomological vanishing over $E$. This reformulation powers the Tate resolutions of Lecture~\ref{lec:18-tate-resolutions-PPn}.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
