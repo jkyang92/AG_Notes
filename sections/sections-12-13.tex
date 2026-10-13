@@ -312,9 +312,13 @@ We also need to choose an ordering on the elements of $\Theta$.
 \begin{defn}\label{defn:ordering}
    The set $\Theta$ is equipped with a partial ordering such that $-d \le -d'$ if and only if $d - d'$ is effective. We choose any refinement of this partial ordering to a total ordering $-d_0, \dots, -d_t$.
 \end{defn}
+Our total ordering will satisfy the condition that $-d_j < -d_k$ only if $d_k - d_j$ is {\em not effective}.  
 
 \begin{example}
 Continuing with the notation of Figure~\ref{fig:HirzSecondaryFan}, the ordering would be $-d_5<-d_4<-d_3<-d_2<-d_1<-d_0$
+\end{example}
+\begin{example}
+    On $\PP^1\times \PP^1$ the Bondal--Thomsen collection consists of the classes corresponding to the degree $(-1,-1), (-1,0), (0,-1)$ and $(0,0)$.  In the total ordering, one can choose either $(-1,0)<(0,-1)$ or $(0,-1)<(-1,0)$.  In either case, the difference will fail to be effective.
 \end{example}
 
 

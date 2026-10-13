@@ -16,13 +16,11 @@ Let's start with the special case where the secondary fan only has a single cham
     \Hom_{X}(\cO_{X}(-d), \cO_{X}(-d)) = \k, \text{ and }
     \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) = 0 \text { for $i>0$.}
     \]
-    \item Orthogonality: For any $-d'<-d\in \Theta$ we have
-        \begin{enumerate}
-            \item
-
-            $\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0$ for $i>0$ and
-            \item  $\Hom(\cO_{X}(-d), \cO_{X}(-d'))=0$.
-        \end{enumerate}
+    \item Strong Orthogonality: Let $-d,-d'\in \Theta$.  We must show that
+       \begin{enumerate}
+             \item  We always have $\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d')) = 0$ for $i>0$ and
+              \item If $-d'<-d$ then $\Hom(\cO_{X}(-d), \cO_{X}(-d'))=0$.
+     \end{enumerate}
     \item Fullness:  The bundles $\cO_{X}(-d)$ with $-d\in \Theta$ generate the derived category.
 \end{enumerate}
 Exceptionality is trivial:
@@ -33,7 +31,7 @@ since $X$ is a projective variety.  Also,
 \[
 \Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong H^i(X, \cO_{X}(-d -(-d))) = H^i(X, \cO_{X}) = 0
 \]
-by Demazure Vanishing (Theorem~\ref{thm:demazure}). Fullness follows from Hanlon--Hicks--Lazarev's proof of  Bondal's Conjecture (Conjecture \ref{conj:bondal}), which we saw back in \S\ref{subsect:bondalConjecture}. Let us then turn to orthogonality.  Part (b) of orthogonality is built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering}.  So orthogonality, part (a), is the meat of the argument.
+by Demazure Vanishing (Theorem~\ref{thm:demazure}). Fullness follows from Hanlon--Hicks--Lazarev's proof of  Bondal's Conjecture (Conjecture \ref{conj:bondal}), which we saw back in \S\ref{subsect:bondalConjecture}. Let us then turn to orthogonality.  Part (b) of orthogonality is built into our definition of the ordering of the elements of $\Theta$; see Definition~\ref{defn:ordering} which guarantees that $-d'<-d$ implies that $d-d'$ is not effective.  So Strong Orthogonality, part (a), is the meat of the argument.
 \begin{lemma}
     Suppose $X$ is a smooth projective toric variety whose secondary fan has a single chamber, and say $-d < -d' \in \Theta$. We have
     %Let $-d,-d'$ be two elements of the Bondal--Thomsen collection for $\sX$.  Assume that $-d'$ is anti-nef.  Then
@@ -42,13 +40,15 @@ by Demazure Vanishing (Theorem~\ref{thm:demazure}). Fullness follows from Hanlon
     \]
 \end{lemma}
 \begin{proof}
-We have 
-$
-\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong  H^i(X, \cO_{X}(d - d')) = 0
-$, and $d - d'$ is effective. Since the secondary fan of $X$ has a single chamber, this means $d-d'$ is nef, and so we are done by Demazure vanishing  (Theorem~\ref{thm:demazure}).
+As noted above, Strong Orthogonality part (a) is all we need to prove.
+Since the secondary fan of $X$ has a single chamber, every effective divisor is nef.  In particular, $\cO_X(d)$ is a nef divisor and thus $\cO_X(d-d')$ has the form ``nef $+$ Bondal-Thomsen''.  We can thus apply Proposition~\ref{prop:Demazure} to obtain: 
+\[
+\Ext^i_{X}(\cO_{X}(-d), \cO_{X}(-d)) \cong  H^i(X, \cO_{X}(d - d')) = 0,
+\]
+yielding part (a) of the orthogonality condition.
 \end{proof}
 
-The above outline extends to the case where the secondary fan has one chamber, but where $X$ is simplicial but not smooth, by replacing $X$ with its associated toric stack. 
+The above lemma extends to the case where the secondary fan has one chamber, but where $X$ is simplicial but not smooth (e.g. a weighted projective space), by replacing $X$ with its associated toric stack.   It also extends to the case where all of the elements of the Bondal--Thomsen collection lie in a single chamber (e.g. the Hirzebruch surface $\mathcal H_1)$.
 
 \bigskip
 
@@ -95,7 +95,8 @@ The next lecture will tackle the proof of the $\Theta$-Transform Lemma.  Before 
 \Ext^i_{D_{\Cox}(S)}(\cO_{\Cox}(-d),\cO_{\Cox}(-d')) =
 \Ext^i_{\sX_1}(\cO_{\sX_1}(-d),\cO_{\sX_1}(-d')) = H^i(\sX_1, \cO_{\sX_1}(d-d')).
 \]
-Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By Demazure Vanishing for $\QQ$-Cartier divisors (Theorem~\ref{thm:demazure}), we conclude that all of these Ext groups vanish. In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho + b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply Theorem~\ref{thm:demazure}.
+Since $-d$ comes from the chamber $\Gamma_1$, it follows that $\cO_{\sX_1}(d)$ is nef.  By Demazure Vanishing for $\QQ$-Cartier divisors (Theorem~\ref{thm:demazure}), we conclude that all of these Ext groups vanish. A bit more preicsely, we note that $\cO_{\sX_1}(d-d')$ has the form ``nef $+$ Bondal--Thomsen'', and we can apply Proposition~\ref{prop:Demazure} which yields vanishing of higher cohomology for divisors precisely of this form. 
+%In more detail: write $-d = \sum_\rho a_\rho D_\rho$ and $-d' = \sum_\rho \floor{b_\rho}D_\rho$, where $a_\rho \in \Z$, and $b_\rho \in (-1, 0]$. The divisor $\sum_\rho b_\rho D_\rho$ is $\Q$-linearly equivalent to zero, and so $-d$ is $\Q$-linearly equivalent to $\sum_\rho (a_\rho + b_\rho) D_\rho$. In particular, $\sum_\rho (a_\rho + b_\rho) D_\rho$ is a nef $\Q$-divisor. Since each $a_\rho$ is an integer, rounding down the coefficients of $\sum_\rho (a_\rho + b_\rho) D_\rho$ gives $\sum_{\rho} (a_\rho + \floor{b_\rho}) = -d - d'$. Now apply Theorem~\ref{thm:demazure}.
 
 
 In short:  combining the $\Theta$-Transform Lemma and Demazure Vanishing immediately yields the orthogonality statement we need.
@@ -124,7 +125,8 @@ Through similar computations for the other pairs, one can directly confirm that 
 
 To summarize, the outline of the proof amounts to:
 \begin{enumerate}
-    \item  Combine the $\Theta$-Transform Lemma and Demazure Vanishing to obtain the necessary orthogonality statement.
+    \item  Exceptionality is trivial and condition (b) of Strong Orthogonality follows from Definition~\ref{defn:ordering}.
+    \item  Combine the $\Theta$-Transform Lemma and Demazure Vanishing (or more precisely Proposition~\ref{prop:Demazure}) to obtain the Strong Orthogonality Part (a) statement.
     \item Use the Hanlon-Hicks-Lazarev resolution of the diagonal to conclude that $\cO_{\Cox}(-d)$ with $-d\in \Theta$ generate $D_{\Cox}(S)$.
 \end{enumerate}
 
