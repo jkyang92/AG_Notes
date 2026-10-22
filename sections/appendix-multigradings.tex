@@ -25,15 +25,15 @@ For convenience, we fix bases of $M$ and $\ZZ^n$ so that we can represent $\alph
   \begin{enumerate}
     \item $S$ is positively graded.
     \item $S_0=k$.
-    \item $\Eff(S)_{\QQ}$ is a pointed cone.
+    \item $\Eff(S)_{\QQ}$ is strongly convex.
   \end{enumerate}
 \end{lemma}
 \begin{proof}
     $(1)\Rightarrow (2)$:  By assumption $k$ lies in $S_0$.  If another polynomial lies in $S_0$ then there exists $b\neq 0$ such that $\deg b=0$.  Thus $\sum b_i\deg\epsilon_i=0$ so $\sum b_i\varphi\circ\deg(\epsilon_i)=0$ for some $\varphi$ witnessing the positivity of the grading, which is impossible.
 
-    $(2)\Rightarrow (3)$:  If $\Eff(S)_{\QQ}$ is not a pointed cone then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
+    $(2)\Rightarrow (3)$:  If $\Eff(S)_{\QQ}$ is not strongly convex then there exists $d\in \Cl(S)$ with $d\neq 0$ where $d$ and $-d$ both lie in $\Eff(S)$.  Choose $f\in S_d$ and $g\in S_{-d}$, so that $\deg(fg)=0$.  Since $S_0=k$ both $f$ and $g$ are units and thus scalars, contradicting $d\neq 0$.
 
-    $(3)\Rightarrow (1)$:  Define the positive grading $\phi$ by choosing a projection of vector spaces $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a pointed cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
+    $(3)\Rightarrow (1)$:  Define the positive grading $\phi$ by choosing a projection of vector spaces $\Cl(S)\otimes \QQ\to \QQ$ that sends $\Eff(S)_{\QQ}\setminus \{0\}$ into $\QQ_{>0}$.  This is possible because $\Eff(S)_{\QQ}$ is a strongly convex cone. Then clear denominators as needed so that the image of $\Eff(S)$ lies in $\ZZ$.
   \end{proof}
 
 \begin{prop}\label{prop:goodMultigradings}
@@ -47,7 +47,7 @@ The two conditions below are equivalent for $S$ and $\deg$ as above (and are not
         $\alpha$ are distinct and nonzero, and the entries of each row have greatest common divisor 1;
         \item The grading on $S$ defined by $\deg$ is a positive grading.
     \end{enumerate}
-    \item  There exists a projective, simplicial toric variety $X$ \lauren{with no torus factors??} whose Cox ring is $S$ as a multigraded ring, in the following specific sense: The fan for $X$ contains $n$ rays and we have an isomorphism $\Cl(X)\cong \Cl(S)$ such that for each $i$ the image $\deg(x_i)\in \Cl(S)$ is the class in $\Cl(X)$ of the torus invariant divisor corresponding to the $i$th ray of $X$.
+    \item  There exists a projective, simplicial toric variety $X$ whose Cox ring is $S$ as a multigraded ring, in the following specific sense: The fan for $X$ contains $n$ rays and we have an isomorphism $\Cl(X)\cong \Cl(S)$ such that for each $i$ the image $\deg(x_i)\in \Cl(S)$ is the class in $\Cl(X)$ of the torus invariant divisor corresponding to the $i$th ray of $X$.
 \end{enumerate}
 \end{prop}
 
@@ -69,15 +69,17 @@ The two conditions below are equivalent for $S$ and $\deg$ as above (and are not
   \begin{proof}
     $(2)\Rightarrow (1)$ follows from standard facts about toric varieties.
 
-    Given such an $X$, the degree map $\deg\colon\ZZ^n\to\Cl(X)$ is surjective because the classes of torus-invariant divisors generate $\Cl(X)$ \cite[Theorem 4.1.3]{CLS2011}.  Choose a basis for the lattice $N$ containing the fan for $X$ and take the dual basis for the lattice $M$, giving a matrix $N\gets \ZZ^n$ containing primitive elements along each ray of the fan.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (b).  The grading $\deg$ is positive by \cite[Corollary 1.2(i)]{Cox95} and Lemma~\ref{lem:positive-gradings}.
+    Given such an $X$, the degree map $\deg\colon\ZZ^n\to\Cl(X)$ is surjective because the classes of torus-invariant divisors generate $\Cl(X)$ \cite[Theorem 4.1.3]{CLS2011}.  (Note that $X$ has no torus factors because it is projective.)  Choose a basis for the lattice $N$ containing the fan for $X$ and take the dual basis for the lattice $M$, giving a matrix $N\gets \ZZ^n$ containing primitive elements along each ray of the fan.  Since the rays are distinct and nonzero the columns of this matrix are nonzero and no column is a scalar multiple of another. Dualizing then yields a map $\alpha\colon M\to \ZZ^n$ satisfying condition (b).  The grading $\deg$ is positive by \cite[Corollary 1.2(i)]{Cox95} and Lemma~\ref{lem:positive-gradings}.
 
-    $(1)\Rightarrow (2)$ is more subtle.  We will be using facts from~\cite[Chapters 14 and 15]{CLS2011}.
+    $(1)\Rightarrow (2)$ is more subtle.  We will use facts from~\cite[Chapters 14 and 15]{CLS2011}.
 
-    The beginning of \cite[Chapter 14.4]{CLS2011} defines a secondary fan for arbitrary algebraic actions of a subgroup $G\subseteq (k^*)^n$ on $\Spec(S)\cong \mathbb A^n$ (see for instance \cite[Lemma 14.4.6,7]{CLS2011}).  Our map $\deg\colon\ZZ^n\to\Cl(S)$ defines a map of group rings $k[\ZZ^n]\to k[\Cl(S)]$.  The surjectivity in (a) implies that the corresponding map of algebraic groups defines a subgroup of $\Spec k[\ZZ^n]\cong(k^*)^n$. \lauren{is this right?} The \lauren{possibly nonexistent?} chambers of the secondary fan for the induced action of this subgroup on $\Spec S$ correspond to GIT quotients for different choices of linearized line bundle.  We will show that at least one has the properties we desire.
+    The beginning of \cite[Chapter 14.4]{CLS2011} defines a secondary fan for arbitrary algebraic actions of a subgroup $G\subseteq (k^*)^n$ on $\Spec(S)\cong \mathbb A^n$ (see for instance \cite[Lemmas 14.4.6 and 14.4.7]{CLS2011}).  Our map $\deg\colon\ZZ^n\to\Cl(S)$ defines a map of group rings $k[\ZZ^n]\to k[\Cl(S)]$.  The surjectivity in (a) implies that the corresponding map of algebraic groups defines a subgroup of $\Spec k[\ZZ^n]\cong(k^*)^n$.  The chambers of the secondary fan for the induced action of this subgroup on $\Spec S$ correspond to GIT quotients for different choices of linearized line bundle.  We will show that at least one has the properties we desire.
 
-    In particular, \cite[Proposition 15.1.6]{CLS2011} describes when the secondary fan contains a chamber which uses all rows of $\alpha$.  Condition (b) implies that this collection of rows is ``geometric'' and thus satisfies the hypotheses of the proposition.  Take $X$ to be a quotient which satisfies the conclusion.  By \cite[Theorem 14.2.13]{CLS2011} the space $X$ is a toric variety whose fan contains rays along the rows of $\alpha$, so all of these rays appear in its fan.  Since the entries of each row have no common factor the matrix $\alpha$ appears directly in the computation of $\Cl(X)$ \cite[Theorem 4.1.3]{CLS2011}, implying that $\deg$ is the degree function of torus-invariant divisors for some isomorphism $\Cl(X)\cong\Cl(S)$ \lauren{induced by a diagram chasing lemma or something about Gale duals?}.
+    In particular, \cite[Proposition 15.1.6]{CLS2011} describes when the secondary fan contains a chamber which uses all rows of $\alpha$.  Condition (b) implies that this collection of rows is ``geometric'' and thus satisfies the hypotheses of the proposition.  Take $X$ to be a quotient which satisfies the conclusion.
 
-    Finally \cite[Proposition 14.4.1]{CLS2011} implies that $X$ is semiprojective and its fan has support determined by the Gale dual of $\deg$.  Condition (c) implies that $\Eff(S)_\QQ$ is a pointed cone by Lemma~\ref{lem:positive-gradings}, so the support of the fan of $X$ is all of $N_\QQ$ by \cite[Proposition 14.3.2]{CLS2011}. \lauren{is strongly convex the same as pointed?} The space $X$ is semiprojective and proper, thus projective. \lauren{cite?}
+    By \cite[Theorem 14.2.13]{CLS2011} the space $X$ is a toric variety whose fan contains rays along the rows of $\alpha$, so all of these rays appear in its fan.  By construction of $M$ the rays span $N\otimes_\ZZ\QQ$.  Since the entries of each row have no common factor the matrix $\alpha$ appears directly in the computation of $\Cl(X)$ \cite[Theorem 4.1.3]{CLS2011}, implying that $\deg$ is the degree function of torus-invariant divisors for some isomorphism $\Cl(X)\cong\Cl(S)$.
+
+    Finally \cite[Proposition 14.4.1]{CLS2011} implies that $X$ is semiprojective and its fan has support determined by the Gale dual of $\deg$.  Condition (c) implies that $\Eff(S)_\QQ$ is a strongly convex cone by Lemma~\ref{lem:positive-gradings}, so the support of the fan of $X$ is all of $N_\QQ$ by \cite[Proposition 14.3.2]{CLS2011}.  The space $X$ is thus semiprojective and proper, so projective \cite[Propositions 7.0.6 and 7.2.9]{CLS2011}.
   \end{proof}
 
 \ifdefined\whole
