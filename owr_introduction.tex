@@ -1,0 +1,171 @@
+% Oberwolfach Arbeitsgemeinschaft 2642 -- abstract and introduction by the organizers
+% Draft. Compiles standalone with amsart; paste the abstract / MSC / introduction
+% into the OWR report template. References are in owr_introduction.bib.
+
+\documentclass{amsart}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\Db}{D^{b}}
+\newcommand{\DCox}{D_{\mathrm{Cox}}}
+\DeclareMathOperator{\Cl}{Cl}
+
+\begin{document}
+
+\title{Arbeitsgemeinschaft: New Homological Methods in Toric Geometry}
+\author{Michael K.\ Brown, David Eisenbud, Daniel Erman}
+\date{11--16 October 2026}
+\maketitle
+
+%--------------------------------------------------------------------
+\section*{Abstract}
+
+This Arbeitsgemeinschaft gave an account of recent advances in the
+homological study of toric varieties. The main themes of the lectures were (1) the Hanlon--Hicks--Lazarev
+resolution of toric subvarieties by line bundles and its applications to conjectures of
+Bondal, Berkesch--Erman--Smith, and Orlov; (2) the Cox
+category, which glues together the derived categories of all toric stacks sharing a Cox
+ring and in which the Bondal--Thomsen collection is a full strong exceptional collection
+(a revised form of King's conjecture); and (3) Tate resolutions over toric varieties.
+
+\medskip
+\noindent\textbf{Mathematics Subject Classification (2020):}
+14M25, 14F08, 13D02, 18G80, 14A20, 13D09, 14L24, 16S37.
+
+%--------------------------------------------------------------------
+\section*{Introduction by the Organizers}
+
+The derived category of projective space is among the best understood objects in
+algebraic geometry. Beilinson's resolution of the diagonal shows that the line bundles
+$\cO(-n),\dots,\cO$ form a full strong exceptional collection for $\Db(\PP^n)$, so that
+every object of $\Db(\PP^n)$ is represented, uniquely up to homotopy, by a minimal complex
+whose terms are sums of these line bundles~\cite{Bei78}. In a complementary direction, the
+Bernstein--Gel'fand--Gel'fand correspondence~\cite{BGG78} and the Tate resolutions of
+Eisenbud, Fl{\o}ystad, and Schreyer~\cite{EFS03} identify $\Db(\PP^n)$ with a homotopy
+category of exact complexes over an exterior algebra, in such a way that the terms of the
+complex attached to a sheaf record the cohomology of all of its twists.
+
+Toric varieties are the natural next testing ground for these ideas. By work of
+Cox~\cite{Cox95}, a toric variety $X$ is a quotient of an open subset of affine space by a
+group determined by the $\Cl(X)$-grading on its Cox ring $S$, and coherent sheaves on $X$
+(or on the associated toric stack, when $X$ is only simplicial) correspond to
+$\Cl(X)$-graded $S$-modules modulo torsion with respect to the irrelevant ideal. Analogues
+of Beilinson's theorem nevertheless proved elusive. King conjectured in 1997 that every
+smooth projective toric variety admits a full strong exceptional collection of line
+bundles~\cite{Kin97}; this was disproved by Hille and Perling~\cite{HP06}, and further
+counterexamples of Micha{\l}ek and Efimov~\cite{Mic11,Efi14} showed that the conjecture
+cannot be rescued by natural restrictions such as the Fano condition. The closest positive
+result, due to Kawamata~\cite{Kaw06}, produces full exceptional collections that are
+neither strong nor made of line bundles.
+
+The last few years have seen rapid progress, and the aim of this Arbeitsgemeinschaft was
+to give a complete account of three interlocking developments.
+
+\subsection*{The Hanlon--Hicks--Lazarev resolution}
+Hanlon, Hicks, and Lazarev~\cite{HHL24} constructed, for any toric subvariety of a toric
+variety, an explicit resolution by line bundles. In particular, the diagonal of a smooth
+toric variety $X$ has a resolution of length $\dim X$ whose terms are sums of line bundles
+$L\boxtimes L'$ with $L$ and $L'$ in the Bondal--Thomsen collection, i.e.\ among the line
+bundles appearing as summands of toric Frobenius pushforwards of
+$\cO_X$~\cite{Bon06,Tho00}. The resolution is cellular: it is supported on the subdivision
+of a real torus by coordinate hyperplanes, with labels obtained by taking ceilings of
+coordinates. The original proof was symplectic in origin; recent work of Berkesch,
+Cranton Heller, Smith, and Yang~\cite{BCHSY25} and of Borisov and Han~\cite{BH25} gave
+short algebraic proofs, interpreting the construction as a resolution of the
+normalization of a toric ring. These resolutions quickly yielded proofs of three
+conjectures: Bondal's conjecture that the Bondal--Thomsen collection generates
+$\Db(X)$~\cite{Bon06}; the conjecture of Berkesch, Erman, and Smith that every finitely
+generated module over the Cox ring admits a virtual resolution of length at most
+$\dim X$~\cite{BES20}; and the toric case of Orlov's conjecture that the Rouquier
+dimension of $\Db(X)$ equals $\dim X$~\cite{Orl09}, proven independently by Favero and
+Huang~\cite{FH23}.
+
+\subsection*{The Cox category and a revised King's conjecture}
+A striking feature of the Bondal--Thomsen collection and of the Hanlon--Hicks--Lazarev
+resolution of the diagonal is that both depend only on the graded Cox ring $S$, and not on
+the fan. The toric varieties (and stacks) sharing a given Cox ring are parametrized by the
+chambers of its secondary fan, which suggests that the right analogue of Beilinson's
+theorem should see all of them at once. In joint work of Ballard, Berkesch, Brown,
+Cranton Heller, Erman, Favero, Ganatra, Hanlon, and Huang~\cite{BBBplus24}, this is made
+precise through the \emph{Cox category} $\DCox(S)$: the subcategory of the derived category
+of a common toric stack resolution generated by the pullbacks of the derived categories of
+all the toric stacks $\cX_1,\dots,\cX_r$ arising from the secondary fan. The main
+theorem, a revised King's conjecture, states that the Bondal--Thomsen collection, with
+each line bundle pulled back from the chamber containing its degree, is a full strong
+exceptional collection for $\DCox(S)$. The key technical input is a
+\emph{$\Theta$-transform lemma}: Fourier--Mukai transforms between chambers send
+Bondal--Thomsen line bundles to the corresponding Bondal--Thomsen line bundles, with no
+higher direct images. Consequences include that $\DCox(S)$ is smooth and proper of
+Rouquier dimension $\dim X$; an equivalence between $\DCox(S)$ and an explicit homotopy
+category of complexes of free $S$-modules; a resolution of the diagonal for $\DCox(S)$
+explaining the uniformity of the Hanlon--Hicks--Lazarev resolution across the secondary
+fan; and noncommutative resolutions of singularities for semiprojective toric varieties,
+extending the affine results of \v{S}penko--Van den Bergh~\cite{SVdB17} and
+Faber--Muller--Smith~\cite{FMS19}.
+
+\subsection*{Tate resolutions on toric varieties}
+Building on the case of products of projective spaces~\cite{EES15}, Brown and Erman
+extended the BGG correspondence and Tate resolutions to toric varieties~\cite{BE26}.
+Because the $\Cl(X)$-grading no longer induces a homological grading, the exterior side
+must be formulated in terms of differential modules. The toric Tate resolution of a
+coherent sheaf $\cF$ is a minimal free differential module over the exterior algebra whose Betti numbers 
+encode the cohomology table of $\cF$. This leads to a toric BGG equivalence between $\Db(\cX)$ and a
+homotopy category of free differential modules~\cite{BEkoszul}, as well as to
+an algorithm for computing sheaf cohomology on weighted projective stacks~\cite{BE25}.
+
+\subsection*{Course of the workshop}
+Following the Arbeitsgemeinschaft format, all nineteen talks were given by participants,
+following a detailed program and set of lecture notes prepared by the organizers together
+with Lauren Cranton Heller, Mahrud Sayrafi, and Jay Yang. Several running examples
+recurred throughout the week, chief among them the Hirzebruch surface $\mathbb{H}_3$,
+whose secondary fan has two chambers, corresponding to $\mathbb{H}_3$ and the weighted
+projective stack $\PP(1,1,3)$; it is the smallest example in which the Cox category is a
+genuine combination of two derived categories.
+
+Monday was devoted to background. Three talks treated $\Db(\PP^n)$: derived categories
+and Fourier--Mukai transforms; Beilinson's resolution of the diagonal and full strong
+exceptional collections; and the BGG correspondence, culminating in the identification of
+$\Db(\PP^n)$ with the singularity category of the exterior algebra. Two further talks
+introduced toric varieties, Cox rings, the toric module--sheaf correspondence, and toric stacks.
+
+On Tuesday, a talk on the Bondal--Thomsen collection (via the Bondal zonotope, Frobenius
+pushforwards, and Musta\c{t}\u{a} vanishing) was followed by three talks on the
+Hanlon--Hicks--Lazarev resolution: its construction and first examples, further features
+including the resolution of the diagonal of $\mathbb{H}_3$, and a complete algebraic
+proof. Several talks emphasized computation of these resolutions using Macaulay2. 
+
+Wednesday morning covered the applications of the Hanlon--Hicks--Lazarev theorem to the
+conjectures of Bondal, Berkesch--Erman--Smith, and Orlov; the secondary fan, from the
+points of view of GIT, polytopes, and irrelevant ideals; and the definition of the Cox
+category. The afternoon was reserved for the traditional excursion.
+
+On Thursday, a talk on Fourier--Mukai transforms between the toric stacks of the secondary
+fan was followed by a three-part proof of the revised King's conjecture: an outline
+reducing orthogonality to the $\Theta$-transform lemma; an analysis of that lemma,
+including the Atiyah flop as an illustration of the delicate balance between the
+$R^0$-term and the vanishing of higher direct images; and the proof of fullness. %The day
+closed with an open question-and-answer session.
+
+Friday featured consequences of the revised King's conjecture (smoothness, properness,
+Rouquier dimension, and noncommutative resolutions), followed by two talks on Tate
+resolutions: first over $\PP^n$, and then over toric varieties via differential modules.
+
+% TODO (organizers): optionally add a sentence on participation and on any
+% notable outcomes of the discussion sessions.
+
+Several open directions emerged naturally from the program: whether the Cox category, or
+invariants such as its K-theory and Hochschild homology, admit an intrinsic geometric
+description; whether the $\Theta$-transform lemma admits a simpler proof, for instance
+via vanishing theorems from birational geometry; a geometric description of the
+differentials in Tate resolutions; and whether toric Tate resolutions can be constructed
+from ordinary free resolutions when the class group has rank greater than one.
+
+\newpage
+\bibliographystyle{amsalpha}
+\bibliography{owr_introduction}
+
+\end{document}
